@@ -12,6 +12,7 @@ The name qualifier format `provider name:local name` means for example that the 
 
 ## Available Commands
 
+| Command | Action |
 | ----- | ----- |
 | create | create a user in the vault |
 | search | find users by username |

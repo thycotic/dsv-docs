@@ -6,6 +6,7 @@ With DSV, the term “roles” describes security principals in the vault that t
 
 ## Available Commands
 
+| Command | Action |
 | ----- | ----- |
 | create | create a role in the vault |
 | search | find roles by role name |

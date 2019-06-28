@@ -6,6 +6,7 @@ Client credentials enable applications to authenticate as the role assigned to t
 
 ## Available Commands
 
+| Command | Action |
 | ----- | ----- |
 | create | create a user in the vault |
 | search | find clients by role name |
