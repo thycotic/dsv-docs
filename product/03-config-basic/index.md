@@ -1,8 +1,8 @@
-﻿[title]: # (Configure DSV • Basics)
+﻿[title]: # (Configure DSV: Basics)
 [tags]: # (,)
 [priority]: # (3000)
 
-# Configure DSV • Basics
+# Configure DSV: Basics
 
 Knowing how DSV stores its settings makes DSV configuration work straightforward. 
 

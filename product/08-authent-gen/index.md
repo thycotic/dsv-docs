@@ -1,8 +1,8 @@
-﻿[title]: # (Authentication • General)
+﻿[title]: # (Authentication: General)
 [tags]: # (,)
 [priority]: # (8000)
 
-# Authentication • General
+# Authentication: General
 
 As noted in **Configure DSV: Advanced**, DSV supports several authentication methods, potentially easing cloud deployments by tapping in-place authentication providers such as AWS and Azure.
 

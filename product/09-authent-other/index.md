@@ -1,8 +1,8 @@
-﻿[title]: # (Authentication • Azure or AWS)
+﻿[title]: # (Authentication: Azure or AWS)
 [tags]: # (,)
 [priority]: # (9000)
 
-# Authentication • Azure or AWS
+# Authentication: Azure or AWS
 
 Edit the DSV configuration by running config edit, which opens up a default editor such as nano in most linux shells, on save the configuration will be automatically updated in vault.
 
