@@ -2,7 +2,7 @@
 [tags]: # (,)
 [priority]: # (1000)
 
-#Welcome to the DSV Tech Doc Depot
+# Welcome to the DSV Tech Doc Depot
 
 Welcome to Thycotic’s Tech Doc Depot for DevOps Secrets Vault. If it relates to DSV, you will find it here.
 
@@ -20,7 +20,7 @@ Support options depend on license status, with paid licenses having more support
 
 All DSV customers have access to the insights and guidance of other DSV customers via the user forums, which are free to join and browse:
 
-* {user forums link or other indicator of where to find the forums}
+* user forums link or other indicator of where to find the forums
 
 We encourage all DSV customers to contribute their experience and guidance on best practices to the forums. Other customers will appreciate your insights, tips, and notes.
 
@@ -36,7 +36,7 @@ For support by phone, call {phone number} between the hours of {time} and {time}
 
 You can reach out by email using our support address:
 
-* {email address}
+* email address
 
 Be sure to include your {Customer ID? what info should they have ready?} in your email, along with a detailed description of your issue.
 
@@ -46,6 +46,6 @@ Thycotic support will respond to your email within {response time SLA?}.
 
 Those with paid licenses can directly open a support ticket to record an issue and track it to resolution:
 
-* {link or other means to open ticket?}
+* link or other means to open ticket?
 
-* {response time SLA?}
+* response time SLA?
