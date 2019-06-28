@@ -10,7 +10,8 @@ Paths record the filesystem locations of executables. The configuration for DevO
 The DSV configuration, or ‘config,’ exists as a YAML or JSON document. 
  
  ## Available Commands
-
+ 
+| Command | Action |
 | ---- | ---- |
 | read | view the current configuration |
 | edit | modify the configuration in an OS-native text editor such as VI or nano (Linux shell only) |

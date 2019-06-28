@@ -8,6 +8,7 @@ When DSV has possession of secrets outside the Secret Server Vault, it keeps the
 
 ## Available Commands
 
+| Command | Action |
 | ----- | ----- |
 | bustcache | clear the secret cache |
 | create | create a secret in the vault |
