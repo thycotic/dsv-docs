@@ -12,11 +12,11 @@ The name qualifier format `provider name:local name` means for example that the 
 
 ## Available Commands
 
------ | ----- 
-create | create a user in the vault
-search | find users by username
-read | read a user’s details
-delete | delete a user from the vault
+| ----- | ----- |
+| create | create a user in the vault |
+| search | find users by username |
+| read | read a user’s details |
+| delete | delete a user from the vault |
 
 ### Examples
 
@@ -24,11 +24,11 @@ delete | delete a user from the vault
 
 The create command takes several `--parameters` that spec foundational aspects of the user record.
 
------ | -----
---username | local username; required; supports local authentication by username and password; need not match that used by a federated authentication provider (if present)
---password | password for local authentication by username and password
---provider | matches the `name` attribute of the authentication provider in the `settings` section of the config
---external-id | identifier recognized by third-party federated authentication providers, such as AWS or ARN
+| ----- | ----- |
+| --username | local username; required; supports local authentication by username and password; need not match that used by a federated authentication provider (if present) |
+| --password | password for local authentication by username and password |
+| --provider | matches the `name` attribute of the authentication provider in the `settings` section of the config |
+| --external-id | identifier recognized by third-party federated authentication providers, such as AWS or ARN |
 
 Create a local user with username _test-admin_ and password _secret-password:
 

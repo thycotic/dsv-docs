@@ -6,12 +6,12 @@ With DSV, the term “roles” describes security principals in the vault that t
 
 ## Available Commands
 
------ | ----- 
-create | create a role in the vault
-search | find roles by role name
-read | read a role’s details
-update | upload a superseding role
-delete | delete a role from the vault
+| ----- | ----- |
+| create | create a role in the vault |
+| search | find roles by role name |
+| read | read a role’s details |
+| update | upload a superseding role |
+| delete | delete a role from the vault |
 
 ### Examples
 
@@ -19,11 +19,11 @@ delete | delete a role from the vault
 
 The create command takes several `--parameters` that spec key aspects of the role record.
 
------ | -----
---desc | description of the role
---name | name of the role
---provider | matches the `name` attribute of the authentication provider in the `settings` section of the config
---external-id | identifier recognized by third-party federated authentication providers, such as AWS or ARN
+| ----- | ----- |
+| --desc | description of the role |
+| --name | name of the role |
+| --provider | matches the `name` attribute of the authentication provider in the `settings` section of the config |
+| --external-id | identifier recognized by third-party federated authentication providers, such as AWS or ARN |
 
 
 Create a local role with the name _test-role_:

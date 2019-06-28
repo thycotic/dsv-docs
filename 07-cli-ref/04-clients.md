@@ -6,11 +6,11 @@ Client credentials enable applications to authenticate as the role assigned to t
 
 ## Available Commands
 
------ | ----- 
-create | create a user in the vault
-search | find clients by role name
-read | read a client’s details
-delete | delete a user from the vault
+| ----- | ----- |
+| create | create a user in the vault |
+| search | find clients by role name |
+| read | read a client’s details |
+| delete | delete a user from the vault |
 
 ### Examples
 
