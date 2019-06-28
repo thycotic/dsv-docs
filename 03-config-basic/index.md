@@ -2,6 +2,8 @@
 [tags]: # (,)
 [priority]: # (3000)
 
+# Configure DSV • Basics
+
 Knowing how DSV stores its settings makes DSV configuration work straightforward. 
 
 ## Configs and Profiles

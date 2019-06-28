@@ -2,11 +2,13 @@
 [tags]: # (,)
 [priority]: # (1100)
 
+# Overview
+
 DevOps Secrets Vault (DSV) offers a cross-platform solution for command-line and scripted access to secrets stored in a hosted Secret Server vault.
 
 * You can directly operate DSV from the command line, entering DSV commands and observing the Secret Server responses in real time.
 
-    This can make it easier to resolve Help Desk cases involving Secret Server issues affecting specific users or applicatios.
+  This can make it easier to resolve Help Desk cases involving Secret Server issues affecting specific users or applicatios.
 
 * You can deploy DSV as command sequences (scripts) within a machine image or application container.
 

@@ -2,6 +2,8 @@
 [tags]: # (,)
 [priority]: # (1200)
 
+# Download and Install DSV
+
 Setting up DSV requires only a few steps.
 
 ## Download the Executable for Your OS

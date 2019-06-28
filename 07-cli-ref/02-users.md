@@ -2,15 +2,17 @@
 [tags]: # (,)
 [priority]: # (7020)
 
+## Users
+
 For DSV, the term “users” refers to security principals in the vault that can authenticate locally by a username and password or can authenticate through a federated provider such as AWS or ARN.
 
-## Understanding Qualified Usernames
+### Understanding Qualified Usernames
 
 When a user or role ties to a third-party provider, the name will be the fully qualified name to help distinguish potentially duplicate user or role names across different systems.
 
 The name qualifier format `provider name:local name` means for example that the _test-admin_ user will have the username _aws-dev:test-admin_ while the local user with username _test-admin_ will not have a qualifier, so its username will just be _test-admin_.
 
-## Available Commands
+### Available Commands
 
 | Command | Action |
 | ----- | ----- |
@@ -25,6 +27,7 @@ The name qualifier format `provider name:local name` means for example that the 
 
 The create command takes several `--parameters` that spec foundational aspects of the user record.
 
+| Parameter | Content |
 | ----- | ----- |
 | --username | local username; required; supports local authentication by username and password; need not match that used by a federated authentication provider (if present) |
 | --password | password for local authentication by username and password |

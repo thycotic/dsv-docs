@@ -2,11 +2,13 @@
 [tags]: # (,)
 [priority]: # (7010)
 
+## Secrets
+
 Secrets are sensitive data protected by Secret Server. Many secrets relate to authentication—such as passwords, SSH keys, and SSL certificates—but secrets can be anything represented as a file on computer storage media.
 
 When DSV has possession of secrets outside the Secret Server Vault, it keeps them encrypted and locked down in conformance to the specific permissions and policies in the config.
 
-## Available Commands
+### Available Commands
 
 | Command | Action |
 | ----- | ----- |

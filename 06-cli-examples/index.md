@@ -2,6 +2,8 @@
 [tags]: # (,)
 [priority]: # (6000)
 
+# CLI Examples
+
 A secret is any sensitive information you want to store in a Secret Server vault. Common secrets include passwords, SSH keys, and SSL certificates, but a secret can be anything represented as a file on computer media.
 
 Secrets are identified by a path, which lets you organize your vault and define access permissions.

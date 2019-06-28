@@ -2,6 +2,8 @@
 [tags]: # (,)
 [priority]: # (1000)
 
+#Welcome to the DSV Tech Doc Depot
+
 Welcome to Thycotic’s Tech Doc Depot for DevOps Secrets Vault. If it relates to DSV, you will find it here.
 
 * The navigation panel at left sequences topics for new customers. Browsing this resource like a book fosters a solid technical grounding in DevOps Secrets Vault.

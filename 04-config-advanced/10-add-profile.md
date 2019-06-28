@@ -1,6 +1,8 @@
 ﻿[title]: # (Add a Profile to a Config)
 [tags]: # (,)
 [priority]: # (4010)
+
+## Add a Profile to a Config
  
 On initial configuration, DSV will have a config with just one profile.
 
@@ -20,7 +22,7 @@ Assuming `thy init` succeeds, DSV will append the profile to the config. To outp
 
 `thy cli-config read`
 
-### Using an Alternate Profile for Most CLI Actions
+## Using an Alternate Profile for Most CLI Actions
 
 `thy secret read --path mysecret --profile developer`
 

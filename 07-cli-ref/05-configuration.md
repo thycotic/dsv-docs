@@ -2,6 +2,8 @@
 [tags]: # (,)
 [priority]: # (7050)
 
+# Configurations
+
 Paths record the filesystem locations of executables. The configuration for DevOps Secrets Vault
 
 * defines paths and permissions for paths within the application, and
@@ -86,14 +88,14 @@ tenantName: example
 ```
 
 The `permissionDocument` lists policies that define a subject’s access to a certain resource path. The syntax supports wildcards via the `<.*>` construct.
-
------ | -----
-actions | a list of possible actions on the resource (create, read, update, delete, list, share, assign)
-conditions | an optional CIDR range to lock down access to a specific IP range
-description | human friendly description of the policy intent
-effect | whether the policy is allowing or preventing access; valid values are: `allow`, `deny`
-id | system-generated unique identifier to track changes to a particular policy
-resources | the resource path defining the entities to which the permissions apply; a resource path prefixes the entity type (`secrets, clients, roles, users`) to a colon delimited path to the resource.
+| Element | Definition |
+|----- | ----- |
+| actions | a list of possible actions on the resource (create, read, update, delete, list, share, assign) |
+| conditions | an optional CIDR range to lock down access to a specific IP range |
+| description | human friendly description of the policy intent |
+| effect | whether the policy is allowing or preventing access; valid values are: `allow`, `deny` |
+| id | system-generated unique identifier to track changes to a particular policy |
+| resources | the resource path defining the entities to which the permissions apply; a resource path prefixes the entity type (`secrets, clients, roles, users`) to a colon delimited path to the resource. |
 
 ### Policy Evaluation
 

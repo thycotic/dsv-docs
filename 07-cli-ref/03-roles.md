@@ -2,9 +2,11 @@
 [tags]: # (,)
 [priority]: # (7030)
 
+## Roles
+
 With DSV, the term “roles” describes security principals in the vault that tie to third-party providers or client credentials for granting permissions.
 
-## Available Commands
+### Available Commands
 
 | Command | Action |
 | ----- | ----- |
@@ -20,6 +22,7 @@ With DSV, the term “roles” describes security principals in the vault that t
 
 The create command takes several `--parameters` that spec key aspects of the role record.
 
+| Parameter | Content |
 | ----- | ----- |
 | --desc | description of the role |
 | --name | name of the role |

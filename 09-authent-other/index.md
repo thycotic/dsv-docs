@@ -2,6 +2,8 @@
 [tags]: # (,)
 [priority]: # (9000)
 
+# Authentication • Azure or AWS
+
 Edit the DSV configuration by running config edit, which opens up a default editor such as nano in most linux shells, on save the configuration will be automatically updated in vault.
 
 !!! note "Secret Permissions" On Windows you must read the config, save it as a file, edit locally, and then run the config update command. The config edit command is only available on Linux and Mac currently.
