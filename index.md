@@ -1,20 +1,30 @@
-﻿[title]: # (Welcome to DSV Info Depot)
+﻿[title]: # (Welcome)
 [tags]: # (,)
 [priority]: # (1000)
 
-Welcome to Thycotic’s Info Depot for DevOps Secrets Vault. If it relates to DSV, you will find it here.
+Welcome to Thycotic’s Tech Doc Depot for DevOps Secrets Vault. If it relates to DSV, you will find it here.
 
-Info Depot centers on search, not browsing.
+* The navigation panel at left sequences topics for new customers. Browsing this resource like a book fosters a solid technical grounding in DevOps Secrets Vault.
 
-* Type what you need in the Search box {at upper right?}, and the Depot will pick out your best bets.
+* The Search tool, always available at upper right, will appeal to more experienced customers or those short for time. Type what you need in the Search box, and Tech Doc Depot will pick out your best bets.
+
+Besides this tech doc resource, Thycotic offers DSV customers several other support channels.
 
 ## Customer Support Resources
 
-If you cannot find what you need, make us aware, and we will help. Thycotic offers several support channels to DSV users.
+Support options depend on license status, with paid licenses having more support channels.
 
-### Paid Users
+### All DSV Licenses
 
-Paid DSV users have access to support by phone and email, and can choose to open a ticket to track a support need.
+All DSV customers have access to the insights and guidance of other DSV customers via the user forums, which are free to join and browse:
+
+* {user forums link or other indicator of where to find the forums}
+
+We encourage all DSV customers to contribute their experience and guidance on best practices to the forums. Other customers will appreciate your insights, tips, and notes.
+
+### Paid DSV Licenses
+
+Customers with paid licenses for DSV have access to support by phone and email, with Thycotic’s support ticketing system promoting follow-through to issue resolution.
 
 #### Support by Phone
 
@@ -32,27 +42,8 @@ Thycotic support will respond to your email within {response time SLA?}.
 
 #### Support Ticketing
 
-You can also open a ticket to track your support issue:
+Those with paid licenses can directly open a support ticket to record an issue and track it to resolution:
 
-* {link or other means to open ticket?} {response time SLA?}
+* {link or other means to open ticket?}
 
-### All Users
-
-All DSV users have access to the insights and guidance of other DSV users via the user forums, which are free to join and browse:
-
-* {are there such? if so: user forums link or other indicator of where to find the forums}
-
-We encourage all DSV users to contribute their experience and guidance on best practices to the forums. Other users will appreciate your insights, tips, and notes.
-
-## Browsing Guide
-
-If you do browse Info Depot like a book, here is a guide to the categories at
-left:
-
-* **Administrator’s Guide to DSV and the Enterprise**: If you run IT in your organization, we know you are busy. These pages get right to the point discussing DSV from an administrator’s perspective, so you can learn what you need and get back to your day job sooner.
-
-* **DevOps Secrets Vault Extensions**: Learn how to install and use DSV extensions for **Jenkins** and **Kubernetes**, plus how to obtain and install the **DSV Java SDK**.
-
-* **DSV Command Line Quick Reference**: DVS works by the command line, so this will be your key resource.
-
-* **Release Notes**: Learn about topics of particular concern for this release (presently {release number}).
+* {response time SLA?}

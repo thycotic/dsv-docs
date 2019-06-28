@@ -1,3 +1,19 @@
-# dsv-docs
+# DevOps Secrets Vault DRAFT Documentation
 
-DevOps Secrets Vault Tech Doc and Ancillaries
+This repository contains DevOps Secrets Vault tech doc and ancillaries.
+
+For questions about this repository, contact the technical writer:
+
+     David Buck
+	 david.buck@thycotic.com
+
+For questions about Thycotics technical documentation in general, contact the Technical Publications manager:
+
+    Tucker Hall
+	tucker.hall@thycotics.com
+	
+| auth | authenticate to the vault or display the current access token |
+| eval | check the value of a command line flag or variable |
+| init | initialize DSV on first run |
+| permission | manage permissions for secrets, roles, users, and other entities in the vault |
+| whoami | display the currently autcahenticated user |
