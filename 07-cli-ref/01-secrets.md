@@ -8,15 +8,15 @@ When DSV has possession of secrets outside the Secret Server Vault, it keeps the
 
 ## Available Commands
 
------ | ----- 
-bustcache | clear the secret cache
-create | create a secret in the vault
-search |search for secrets
-describe | view secret metadata only
-read | view a secret's data
-edit | modify a secret, writing only changes to the vault 
-update | modify a secret, writing the entire secret to the vault
-delete | delete a secret
+| ----- | ----- |
+| bustcache | clear the secret cache |
+| create | create a secret in the vault |
+| search |search for secrets |
+| describe | view secret metadata only |
+| read | view a secret's data |
+| edit | modify a secret, writing only changes to the vault |
+| update | modify a secret, writing the entire secret to the vault |
+| delete | delete a secret |
 
 ### Examples
 

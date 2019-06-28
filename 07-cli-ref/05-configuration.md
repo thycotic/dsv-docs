@@ -11,9 +11,10 @@ The DSV configuration, or ‘config,’ exists as a YAML or JSON document.
  
  ## Available Commands
 
-read | view the current configuration
-edit | modify the configuration in an OS-native text editor such as VI or nano (Linux shell only)
-update | upload a superseding configuration document
+| ---- | ---- |
+| read | view the current configuration |
+| edit | modify the configuration in an OS-native text editor such as VI or nano (Linux shell only) |
+| update | upload a superseding configuration document |
 
 ## Permissions
 
