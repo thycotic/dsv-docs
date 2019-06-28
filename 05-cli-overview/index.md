@@ -2,6 +2,10 @@
 [tags]: # (,)
 [priority]: # (5000)
 
+# CLI Overview
+
+Like most CLI applications, DSV combines a base collection of commands and their parameters with a selection of flags to deliver a task-focused toolset.
+
 ## DSV Command Syntax
 
 DSV commands follow a simple syntax:

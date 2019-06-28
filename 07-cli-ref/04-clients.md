@@ -2,9 +2,11 @@
 [tags]: # (,)
 [priority]: # (7040)
 
+## Clients
+
 Client credentials enable applications to authenticate as the role assigned to the client record.
 
-## Available Commands
+### Available Commands
 
 | Command | Action |
 | ----- | ----- |

@@ -2,6 +2,8 @@
 [tags]: # (,)
 [priority]: # (4000)
 
+# Configure DSV • Advanced
+
 The `thy init` command without flags produces a default DSV config. A custom config offers more control, allowing you to:
 
 * choose how DSV stores credentials

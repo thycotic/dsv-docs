@@ -2,6 +2,8 @@
 [tags]: # (,)
 [priority]: # (7000)
 
+# CLI Reference
+
 The common subjects of DSV CLI commands include:
 
 * secrets
