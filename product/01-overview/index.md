@@ -4,22 +4,21 @@
 
 # Overview
 
-DevOps Secrets Vault (DSV) offers a cross-platform solution for command-line and scripted access to secrets stored in a hosted Secret Server vault.
+DevOps Secrets Vault (DSV) offers a cross-platform, cloud-oriented solution for secure application access to your organization’s credentials.
 
-* You can directly operate DSV from the command line, entering DSV commands and observing the Secret Server responses in real time.
+* DSV uses Amazon Web Services to host its secrets vaults in the cloud, ensuring strong security, high availability, and automatic scaling for capacity.
 
-  This can make it easier to resolve Help Desk cases involving Secret Server issues affecting specific users or applicatios.
+* Although the vaults reside in the cloud, DSV (being a command line application) must be installed locally on each workstation where it will be used. Thycotic offers DSV executables for Windows, Linux, and the MacOS.
 
-* You can deploy DSV as command sequences (scripts) within a machine image or application container.
+Because it provides both a Command Line Interface (CLI) for human operators and an Application Programming Interface (API) for programmatic operators, DSV makes credentials readily available even as they remain highly secure. With DSV optimized for automation and SOC2 compliant, no excuse remains for risky practices like hardcoding credentials in configuration files, or storing them in an Excel spreadsheet. 
 
-  This allows applications to securely obtain and use secrets, such as passwords, during execution—avoiding reliance on credentials insecurely embedded in the application’s code.
+Besides credentials, DSV accepts almost any file as a secret, for example, sensitive legal documents or spreadsheets. This creates almost endless use cases, limited only by your creativity. In line with that potential, DSV
 
-  By enabling secure communications between applications and Secret Server, DSV opens a path to previously unattainable levels of security for enterprise IT.
+* supports both AWS and Azure cloud authentication
 
-While Secret Server operates on-premises or in the cloud, DSV (being a command line application) must be installed locally on each workstation where it will be used. Thycotic offers DSV executables for Windows, Linux, and the MacOS.
+* features local caching for high performance under load
 
+* offers extensions to work with Jenkins and Kubernetes, with more to come
 
-
-
-
+* includes a Java SDK 
 
