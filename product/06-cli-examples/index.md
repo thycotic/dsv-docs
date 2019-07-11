@@ -81,7 +81,7 @@ Outputs:
 }
 ```
 
-## Filter JSON Command Output to Obtain Specific Fields
+## Filter JSON Command Output for Specific Fields
 
 When you need to locate a specific field in a JSON output, use a JSON filter. An example use case is writing scripts that need to obtain a password but lack the capacity to efficiently parse JSON.
 
