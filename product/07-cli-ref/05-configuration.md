@@ -9,10 +9,10 @@ Paths record the filesystem locations of executables. The configuration for DevO
 * defines paths and permissions for paths within the application, and
 * contains settings for third-party authentication providers like AWS or ARN, if present
 
-The DSV configuration, or ‘config,’ exists as a YAML or JSON document. 
- 
- ## Available Commands
- 
+The DSV configuration, or ‘config,’ exists as a YAML or JSON document.
+
+## Commands that Act on Configurations
+
 | Command | Action |
 | ---- | ---- |
 | read | view the current configuration |
@@ -21,7 +21,7 @@ The DSV configuration, or ‘config,’ exists as a YAML or JSON document.
 
 ## Permissions
 
-To see the current permission policies run: 
+To see the current permission policies run:
 
 ```bash
 thy config read -be yaml

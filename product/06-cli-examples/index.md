@@ -4,9 +4,9 @@
 
 # CLI Examples
 
-A secret is any sensitive information you want to store in a Secret Server vault. Common secrets include passwords, SSH keys, and SSL certificates, but a secret can be anything represented as a file on computer media.
+Organizations use DSV to secure and protect sensitive information—secrets. Common secrets include passwords, SSH keys, and SSL certificates. While in practice JSON and YAML form the content of most secrets, your vault will accept almost anything represented as a file on computer media.
 
-Secrets are identified by a path, which lets you organize your vault and define access permissions.
+Every secret correlates uniquely with a specific path that describes the location of the secret within a collection of many other secrets. The idea here is no different than the concept of a path to a file on a hard drive. A path uniquely identifies every secret, and by using paths, you organize your vault and define access permissions.
 
 ## Create a Secret
 
@@ -29,6 +29,8 @@ Create the secret and specify the path to its storage location:
 ```bash
 thy secret create --path /servers/us-east/server01 --data @secret.json
 ```
+
+{ *what will clients see for the path?* }
 
 Outputs:
 
@@ -86,11 +88,6 @@ Outputs:
 When you need to locate a specific field in a JSON output, use a JSON filter. An example use case is writing scripts that need to obtain a password but lack the capacity to efficiently parse JSON.
 
 ```bash
-$  thy secret read --path /servers/us-east/server01 -bf data.password
+thy secret read --path /servers/us-east/server01 -bf data.password
 secretp@ssword
 ```
-
-
-
-
-
