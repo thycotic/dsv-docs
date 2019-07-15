@@ -6,7 +6,7 @@
 
 With DSV, the term “roles” describes security principals in the vault that tie to third-party providers or client credentials for granting permissions.
 
-### Available Commands
+### Commands that Act on Roles
 
 | Command | Action |
 | ----- | ----- |
@@ -20,7 +20,7 @@ With DSV, the term “roles” describes security principals in the vault that t
 
 #### Create
 
-The create command takes several `--parameters` that spec key aspects of the role record.
+The `create` command takes several `--parameters` that spec key aspects of the role record.
 
 | Parameter | Content |
 | ----- | ----- |
@@ -29,8 +29,7 @@ The create command takes several `--parameters` that spec key aspects of the rol
 | --provider | matches the `name` attribute of the authentication provider in the `settings` section of the config |
 | --external-id | identifier recognized by third-party federated authentication providers, such as AWS or ARN |
 
-
-Create a local role with the name _test-role_:
+Create a local role with the name *\_test-role\_*:
 
 ```bash
 thy role create --name test-role
@@ -38,9 +37,9 @@ thy role create --name test-role
 
 #### Search
 
-The search command locates roles by searching on their role names. It accepts as a `--query` parameter the role name you provide, and searches for records with a matching role name.
+The `search` command locates roles by searching on their role names. It accepts as a `--query` parameter the role name you provide, and searches for records with a matching role name.
 
-Search for a role named _dev-admin_:
+Search for a role named *\_dev-admin\_*:
 
 ```bash
 thy role search --query dev-admin
@@ -60,7 +59,9 @@ thy role search --query us-east/server02 --limit 2 --cursor eyJpZCI6ImZmZjZjODUx
 
 #### Read
 
-Provide a role name and read the role’s details in beautified form.
+The `read` command retrieves and displays information without changing anything.
+
+Provide a role name and read the role’s details in beautified form:
 
 ```bash
 thy role read --name test-role -b
@@ -68,7 +69,11 @@ thy role read --name test-role -b
 
 #### Update
 
-Provide a role name and update the role to replace the description field’s value.
+Use `update` to change a role’s data.
+
+>Note that `update` rewrites the **entire** set of role data, even if only a single field has changed. In this way, `update` is highly similar to `create`.
+
+Provide a role name and update the role to replace the description field’s value:
 
 ```bash
 thy role update --name test-role --desc "a new description"
@@ -76,9 +81,10 @@ thy role update --name test-role --desc "a new description"
 
 #### Delete
 
-Provide a role name and delete the role.
+The `delete` command will remove roles.
+
+Provide a role name and delete the role:
 
 ```bash
 thy role delete --name test-role
 ```
-

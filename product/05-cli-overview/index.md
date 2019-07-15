@@ -4,23 +4,24 @@
 
 # CLI Overview
 
-Like most CLI applications, DSV combines a base collection of commands and their parameters with a selection of flags to deliver a task-focused toolset.
+Like most Command Line Interface Applications, DevOps Secrets Vault combines—
 
-## DSV Command Syntax
+* a base collection of commands,
+* the objects on which the commands perform actions,
+* the parameters that modify those actions, and
+* options flags
 
-DSV commands follow a simple syntax:
+—to deliver a task-focused toolset.
 
-`thy` `command` `subcommand` `flags and parameters`
+## CLI Command Syntax
 
-However, as read by human brains the `command` often seems more like the object of the subcommand, making the fit with the stated syntax dubious at best.
+With few exceptions, CLI commands follow a simple syntax:
 
-* For example, in `thy role create`, `role` seems like the object of the subcommand `create`, not a command next to which `create` is a subcommand.
+  `thy` `object` `command` `flags and parameters`
 
-The confusion traces to abbreviation. Many DSV commands abbreviate for phrases like “manage roles” or “retrieve secrets” by leaving out the action word in favor of just the subject. With “role” instead of “manage roles” and “secret” instead of “create secret,” the abbreviation obscures the command aspect.
+For example, in `thy role create`, `role` is the object of the command `create`. In English, the command could be written as “the object is a role, and the action to take is to create it.” You will observe this pattern throughout the CLI.
 
-If you imagine the word ‘manage’ being prefixed onto any command that seems more like an object than a verb, for example `thy` *manage-role* `create`, the syntax fit will be more apparent.
-
-Some parameters and flags apply only to some commands. DSV also includes output modifiers for filtering and formatting command responses.
+Some parameters and flags apply only to some commands. DSV also includes output modifiers for filtering and formatting responses to commands.
 
 ## Commands
 
@@ -105,7 +106,7 @@ PS C:\> thy secret create --path example/ps-json --data '@secret.json'
 C:\> thy secret create --path example/cmd-json --data @secret.json
 ```
 
-For passing a file as data, only Powershell requires the file path and name to be wrapped in quote marks, in this single-quote marks.
+For passing a file as data, only Powershell requires the file path and name to be wrapped in quote marks, in this case single-quote marks.
 
 ## Output Modifiers
 
@@ -114,7 +115,7 @@ DSV offers global flags that combine with most commands to format or redirect ou
 * `--encoding, -e` specify the output format as either JSON or YAML
 * `--beautify, -b` beautify JSON or YAML output
 * `--filter, -f` filter to output only a specific JSON attribute; this feature uses the **jq** library (https://stedolan.github.io/jq/)
-* `--out, -o` control the output destination; defaults to stdout, with valid values being `stdout`, `clip`, and `file:[file-name]`
+* `--out, -o` control the output destination; valid values: `stdout`, `clip`, and `file:[file-name]`, with `stdout` the default
 
 ### Encoding and Beautify
 
@@ -136,13 +137,13 @@ path: servers:us-east:server01
 
 The filter modifier relies on the **jq** library, a lightweight, flexible command line JSON processor.
 
-{need more information on this}
+{ *need more information on this* }
 
 ### Out
 
 The `-o` modifier allows output to be redirected to a file.
- 
-```
+
+```cmd
 thy secret read --path /servers/us-east/server01 -b -o file:secret.json
 \$ nano secret.json
 ```
@@ -162,7 +163,7 @@ Contents of secret.json:
 }
 ```
 
-{need to cover the "clip" option ~ what does that do?}
+{ *need to cover the "clip" option ~ what does that do?* }
 
 ## Output Piping
 
@@ -172,7 +173,8 @@ As an example, you can save any DSV CLI output into an environment variable by p
 
 ```bash
 export MYSECRET=$(thy secret read --path secret1)
-``` 
+```
+
 ```powershell
 $MYSECRET=thy secret read --path secret1
 ```

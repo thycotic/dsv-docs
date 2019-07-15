@@ -6,11 +6,11 @@
 
 DevOps Secrets Vault unites two main components:
 
-* on the customer premises: locally installed, OS-specific CLI executables on workstations used to operate DSV
+* on the customer premises: locally installed, OS-specific CLI executables on workstations used to operate DevOps Secrets Vault
 
-* in the cloud: a secrets vault created as a tenant per DVS as a multi-tenancy SaaS delivered by an AWS instance
+* in the cloud: a secrets vault created as a tenant per DSV as a multi-tenancy SaaS delivered by an AWS instance
 
-Architectural Summary View • DevOps Secrets Vault
+Architectural Summary View: DevOps Secrets Vault
 ![Image](./images/dsv-architecture-simple-01.png)
 
 * DSV supports the AWS and Azure cloud authentication providers.

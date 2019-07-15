@@ -4,7 +4,7 @@
 
 # CLI Reference
 
-The common subjects of DSV CLI commands include:
+The common objects of CLI commands include:
 
 * secrets
 
@@ -17,7 +17,3 @@ The common subjects of DSV CLI commands include:
 * configurations
 
 This reference organizes topics around these subjects, providing task-oriented, example-rich coverage of the full extent of DSV features.
-
-
-
-
