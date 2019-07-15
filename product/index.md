@@ -1,4 +1,4 @@
-﻿[title]: # (not applicable)
+﻿[title]: # (Overview)
 [tags]: # (,)
 [priority]: # (1000)
 
@@ -6,18 +6,12 @@
 
 Welcome to Thycotic’s technical documentation collection for DevOps Secrets Vault. The collection includes short, topically focused, technically oriented material, including product descriptions, diagrams, instructions, general guidance, and reference content.
 
-## Using This Documentation
+See the [Overview](./01-overview/index.htm) for basics, and [Obtain DSV](./02-obtain/index.htm) for information about trying out the product.
 
-The navigation panel at left organizes the collection similarly to a book.
+The Configure DSV sections explain the initial setup steps, both [basic](./03-config-basic/index.htm) and [advanced](./04-config-advanced/index.htm); the CLI [Overview](./05-cli-overview/index.htm), [Examples](./06-cli-examples/index.htm), and [Reference](./07-cli-ref/index.htm) sections get down to the details of using DevOps Secrets Vault.
 
-* For a stepwise introduction to DevOps Secrets Vault, browse the topics in order.
+Authentication sections provide [general](./08-authent-gen/index.htm) authentication information with [distinct coverage for Azure and AWS](./09-authent-other/index.htm).
 
-Use the search tool, always available at upper right, if you need to find something specific.
+Visit Related Docs for information about extensions available for DevOps Secrets Vault, currently including tools for using DSV with [Kubernetes](..\extensions\kubernetes\index.htm) and [Jenkins](..\extensions\jenkins\index.htm).
 
-* Type what you need in the Search box to see your best bets.
-
-These collected technical materials complement [other support channels](./14-cust-support/index.htm) available to Thycotic DSV customers.
-
----
-Thycotic welcomes your feedback—email us at { *which_email@thycotic.com* }.
-
+The [Release Notes](./12-relnotes/index.htm) provide late-breaking information, and [Customer Support Resources](./13-cust-support/index.htm) connects you to available resources.

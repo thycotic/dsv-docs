@@ -1,6 +1,6 @@
 ﻿[title]: # (Customer Support Resources)
 [tags]: # (,)
-[priority]: # (14000)
+[priority]: # (13000)
 
 # Customer Support Resources
 

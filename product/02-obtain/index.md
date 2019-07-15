@@ -21,7 +21,7 @@ Next, download the Command Line Interface executable files for the operating sys
 
 > Thycotic provides DSV executables for multiple platforms at:
 >
-> [downloads.secretsvaultcloud.com](https://downloads.secretsvaultcloud.com/).
+> [downloads.secretsvaultcloud.com](https://downloads.secretsvaultcloud.com/)
 
 * Your organization may have standards and policies governing the installation of software, so be sure to speak with your IT staff before installing.
 
