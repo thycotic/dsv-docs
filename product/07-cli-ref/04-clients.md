@@ -6,7 +6,7 @@
 
 Client credentials enable applications to authenticate as the role assigned to the client record.
 
-### Available Commands
+### Commands that Act on Clients
 
 | Command | Action |
 | ----- | ----- |
@@ -19,7 +19,7 @@ Client credentials enable applications to authenticate as the role assigned to t
 
 #### Create
 
-The create command accepts as its `--role` parameter a fully qualified role name, and creates a client credential assigned to that role.
+The `create` command accepts as its `--role` parameter a fully qualified role name, and creates a client credential assigned to that role.
 
 ```bash
 thy client create --role app-role
@@ -39,11 +39,11 @@ The output will include a `clientId` and `clientSecret` suitable for use during 
 }
 ```
 
-The client secret is available only when you create the client. If the secret is lost, delete the client and create a new one.
+> NOTE: The client secret is available only when you create the client. If the secret is lost, delete the client and create a new one.
 
 #### Search
 
-The search command accepts as its `--query` parameter the name of a role, and searches for clients having that role.
+The `search` command accepts as its `--query` parameter the name of a role, and searches for clients having that role.
 
 ```bash
 thy client search --query dev-role
@@ -57,7 +57,7 @@ thy client search dev-role
 
 #### Read
 
-The read command accepts a client ID as a parameter and returns the details for the given client. As with most commands, remember that you can apply flags to beautify, redirect, or reformat the returned material.
+The `read` command accepts a client ID as a parameter and returns the details for the given client. As with most commands, remember that you can apply flags to beautify, redirect, or reformat the returned material.
 
 ```bash
 thy client read --client-id a59d37bf-4028-4eb9-9df4-6f1fea7d9298
@@ -65,7 +65,7 @@ thy client read --client-id a59d37bf-4028-4eb9-9df4-6f1fea7d9298
 
 #### Delete
 
-The delete command accepts a client ID as a parameter and deletes from the vault the indicated client.
+The `delete` command accepts a client ID as a parameter and deletes from the vault the indicated client.
 
 ```bash
 thy client delete --client-id a59d37bf-4028-4eb9-9df4-6f1fea7d9298
