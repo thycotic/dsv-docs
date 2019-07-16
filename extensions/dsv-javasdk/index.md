@@ -2,10 +2,14 @@
 [tags]: # (,)
 [priority]: # (11030)
 
-## DSV Java SDK
+# DevOps Secrets Vault Java SDK
 
+The DSV Java SDK is for organizations that ...
 
-### Obtain
+## Obtain
 
+...
 
-### Install
+## Install
+
+...
