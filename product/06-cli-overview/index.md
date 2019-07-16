@@ -1,6 +1,6 @@
 ﻿[title]: # (CLI Overview)
 [tags]: # (,)
-[priority]: # (5000)
+[priority]: # (1600)
 
 # CLI Overview
 
@@ -38,6 +38,8 @@ Some parameters and flags apply only to some commands. DSV also includes output 
 | secret | create, update, and retrieve secrets from the vault |
 | user | manage users |
 | whoami | display the currently autcahenticated user |
+
+  
 
 ## Parameters
 

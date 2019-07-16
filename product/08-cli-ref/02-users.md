@@ -1,6 +1,6 @@
 ﻿[title]: # (Users)
 [tags]: # (,)
-[priority]: # (7020)
+[priority]: # (1820)
 
 ## Users
 
@@ -21,6 +21,8 @@ The name qualifier format `provider name:local name` means for example that the 
 | read | read a user’s details |
 | delete | delete a user from the vault |
 
+  
+
 ### Examples
 
 #### Create
@@ -33,6 +35,8 @@ The `create` command takes several `--parameters` that spec foundational aspects
 | --password | password for local authentication by username and password |
 | --provider | matches the `name` attribute of the authentication provider in the `settings` section of the config |
 | --external-id | identifier recognized by third-party federated authentication providers, such as AWS or ARN |
+
+  
 
 Create a local user with username `_test-admin_` and password `_secret-password`:
 
