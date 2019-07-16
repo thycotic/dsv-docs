@@ -12,7 +12,7 @@ Kubernetes helps coordinate containerized applications across a cluster of machi
 
 The illustration shows an example of a Kubernetes Architecture implementation.
 
-![image](./images/kubernetes-design.jpg)
+![image](./images/kubernetes-design.png)
 
 # Description of Operations
 
