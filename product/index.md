@@ -32,10 +32,9 @@ Extensions expected in future DSV releases include Puppet, OpenShift, Chef, Ansi
 
 Additionally, for customers interested in creating their own extensions to integrate DSV into their infrastructure, we provide the [DSV Java SDK](..\extensions\dsv-javasdk\index.htm).
 
-
-
-
-
-
+## DevOps Secrets Vault API Documentation
 
 For those doing application development, the separately located [API Documentation](https://api.secretsvaultcloud.com) lists the available API calls and pins out their correct use.
+
+{ *tag for updates to URLs required* }
+

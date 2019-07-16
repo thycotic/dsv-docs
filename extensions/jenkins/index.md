@@ -1,51 +1,54 @@
 ﻿[title]: # (Jenkins)
 [tags]: # (,)
-[priority]: # (11010)
+[priority]: # (2300)
 
-## Jenkins
+# Jenkins Extension to DevOps Secrets Vault 
 
+The Jenkins extension allows builds to retrieve secrets from the vault at runtime. It can bind secrets to environment variables through a build step, or by reference in a **jenkinsfile**.
 
-### Obtain
+## Obtain
 
+Download the [latest version of the Jenkins HPI extension](https://tools.qabambe.com/jenkins/devops-secrets-vault-jenkins.hpi).
 
-### Install
+## Install
 
+In Jenkins, select **Manage Jenkins > Manage Plugins > Advanced**.
 
-### Use
+Click **Browse**, locate the **devops-secrets-vault-jenkins.hpi** you downloaded, and bring it into Jenkins.
 
+![Jenkins](./images/jenkins-upload.png# border)
 
-# Overview
----
+### Linking Jenkins to DevOps Secrets Vault
 
-The Jenkins plugin allows builds to retrieve secrets from the vault at runtime. 
-Secrets can be bound to environment variables in a build step or referenced in a jenkinsfile.
+Jenkins must be able to query DSV to look up secrets at build time. To enable this,  you configure a Jenkins credential to authenticate to your vault.
 
+#### Setup Client Credentials
 
-## Installation
-
-* Download the latest version of the Jenkins hpi plugin from https://tools.qabambe.com.
-* In Jenkins go to **Manage Jenkins -> Manage Plugins -> Advanced**.
-* Click **Browse** and upload the jenkins hpi file.
-
-
-![Jenkins](assets/img/jenkins-upload.png# border)
-
-## Linking Jenkins to Light Vault
-
-Jenkins needs to be able to query light vault to lookup secrets at build time. In order to do this you must configure a Jenkins credential
-to authenticate to your vault.
-
-### Setup Client Credentials
-Using the thy CLI create a new client credential linked to a role that has read permissions on secrets Jenkins will need. 
+Use the DVS CLI to create a new client credential linked to a role that has read permissions on secrets Jenkins will need. 
 
 Example commands for bash:
 
-* Create a role - `thy role create --name jenkins --desc "grants access to build secrets" `
-* Create a client credential - `thy client create --role jenkins" `
-* Save off the clientId and clientSecret returned by `thy client create`. You will use these to grant Jenkins access to the vault.
-* Add the jenkins role to a permission policy - `thy config edit -e yaml`
+Create a Role:  
 
-Example permission doc that grants the jenkins role readonly access to secrets under the resources/ path:
+```bash
+thy role create --name jenkins --desc "grants access to build secrets"
+```
+
+Create a Client Credential:  
+
+```bash
+thy client create --role jenkins
+```
+
+Save the clientId and clientSecret returned by this command. You will use these to grant Jenkins access to the vault.
+
+Add the Jenkins Role to a Permission Policy:  
+
+```bash
+thy config edit -e yaml
+```
+
+Here is an example permission document granting the **jenkins** role read-only access to secrets under the resources/path:
 
 ```yaml
 permissionDocument:
@@ -74,21 +77,25 @@ permissionDocument:
   - roles:<jenkins>
 ```
 
+#### Add Newly Created Client Credential in Jenkins
 
-In Jenkins add the newly created client credential
+In Jenkins, use these steps to add the newly created client credential:
 
-* Under **Credentials** add new credentials.
-![Jenkins](assets/img/jenkins-add-credential.png# border)
-* Enter in the vault url, your tenant, clientId, and clientSecret from the previously created client credential.
-![Jenkins](assets/img/jenkins-add-vault-credential.png# border)
-    * You can optionally specify an ID, otherwise jenkins will autogenerate one for you.
+* Under **Credentials**, add new credentials.
+
+![Jenkins](./images/jenkins-add-credential.png# border)
+
+* Enter the vault url, your tenant name, the clientId, and the clientSecret from the newly created client credential.
+
+![Jenkins](./images/jenkins-add-vault-credential.png# border)
+
+* You can specify an ID, or skip this step and let Jenkins autogenerate the ID.
 
 ### Create a Test Secret
-In order to use secrets from the vault in the jenkins build pipelines we will need to create a secret for the
-jenkins role to access. Note that in the configuration above, the jenkins role has access to read anything under `resources`. 
+
+To use secrets from the vault in the Jenkins build pipelines, we need a secret for the jenkins role to access. Note that in the configuration above, the Jenkins role has access to read anything under `resources`. 
 
 We will create a test secret at the path `resources/server01`:
-
 
 ```bash
 thy secret create resources/server01 '{"servername":"server01","password":"somepass1"}'
@@ -97,10 +104,10 @@ thy secret create resources/server01 '{"servername":"server01","password":"somep
 Read back the secret to verify the data looks right:
 
 ```bash
-thy secret resources/server01
+thy secret read -be JSON resources/server01
 ```
 
-The secret JSON result should look something like:
+The resulting JSON secret should look similar to:
 
 ```json
 {
@@ -114,39 +121,42 @@ The secret JSON result should look something like:
 }
 ```
 
-During our jenkins builds the plugin will pull the `password` value of "somepass1" from the data property in the secret.
+During our Jenkins builds, the extension will pull the `password` value of `somepass1` from the `data` property in the secret.
 
 ## Freestyle Build
-If you don't want to modify an existing build, simply create a new item in Jenkins and select Freestyle project.
 
-To get credentials in a freestyle build:
+If you prefer not to modify an existing build, create a new item in Jenkins and select **Freestyle project**.
 
-* Under build environment check the **Thycotic Light Vault Plugin** box
-* Choose the credential previously created. This is what will authenticate to the vault to get secrets.
+To get credentials in a Freestyle build:
+
+* Under **Build Environment**, mark the **Thycotic Light Vault Plugin** checkbox active.
+
+* Choose the credential previously created. This will authenticate to the vault to get secrets.
+
 * Add a secret and enter:
-    * The path to the secret in the vault.
-    * The environment variable you want to bind the secret value to.
-    * The secret data field to get the value from. In this case we are getting the value from 
-    the "password" field of our previously created secret.
-* In build steps you can reference the environment variable as normal. For example the shell script shown will echo out 
-the `$MY_PASSWORD` environment variable.
 
+  * the path to the secret in the vault
 
-![Jenkins](assets/img/jenkins-build-step.png# border)
+  * the environment variable to which you want to bind the secret value
 
-* The console output of the build shows the retrieved secret password value of "somepass1" as expected.
+  * the secret data field from which to get the value; in this case we are getting the value from 
+    the `password` field of our previously created secret
 
+* In build steps, you can reference the environment variable as you normally would. For example, the shell script shown here will echo the `$MY_PASSWORD` environment variable.
 
-![Jenkins](assets/img/jenkins-build-output.png# border)
+![Jenkins](./images/jenkins-build-step.png# border)
 
+* The console output of the build should show the retrieved secret password value of "somepass1" as expected.
+
+![Jenkins](./images/jenkins-build-output.png# border)
 
 ## Jenkinsfile
 
-In a pipeline you can bind to the plugin to get secrets as environment variables.
+In a pipeline, you can bind to the extension to get secrets as environment variables.
 
-The secret referenced is the same one created above, and the field value pulled from `password` on the secret should be "somepass1". 
+The secret referenced is the same one created above, so the field value pulled from `password` on the secret would be **somepass1**. 
 
-Set the pipeline script to the following, replacing the key, secret path, and thycoticCredentialId with your values.
+Set the pipeline script to the following, replacing the `key`, `secret path`, and `thycoticCredentialId` with your values.
 
 ```groovy
 node {
@@ -171,12 +181,10 @@ node {
 }
 ```
 
+![Jenkins](./images/jenkins-pipeline.png# border)
 
-![Jenkins](assets/img/jenkins-pipeline.png# border)
+Running the pipeline, the output will be the password value of the secret from the vault.
 
-Run the pipeline, the output will be the password value of the secret from the vault
+![Jenkins](./images/jenkins-pipeline-output.png# border)
 
-
-![Jenkins](assets/img/jenkins-pipeline-output.png# border)
-
-As expected the jenkinsfile outputs the password value from the secret at `resources/server01`.
+As expected, the jenkinsfile outputs the password value from the secret at `resources/server01`.
