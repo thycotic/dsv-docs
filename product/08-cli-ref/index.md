@@ -1,6 +1,6 @@
 ﻿[title]: # (CLI Reference)
 [tags]: # (,)
-[priority]: # (7000)
+[priority]: # (1800)
 
 # CLI Reference
 
@@ -16,4 +16,4 @@ The common objects of CLI commands include:
 
 * configurations
 
-This reference organizes topics around these subjects, providing task-oriented, example-rich coverage of the full extent of DSV features.
+This reference organizes topics around these subjects, providing task-oriented coverage of DSV features paired with examples. 

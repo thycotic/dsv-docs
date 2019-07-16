@@ -1,6 +1,6 @@
 ﻿[title]: # (Clients)
 [tags]: # (,)
-[priority]: # (7040)
+[priority]: # (1840)
 
 ## Clients
 
@@ -14,6 +14,8 @@ Client credentials enable applications to authenticate as the role assigned to t
 | search | find clients by role name |
 | read | read a client’s details |
 | delete | delete a user from the vault |
+
+  
 
 ### Examples
 

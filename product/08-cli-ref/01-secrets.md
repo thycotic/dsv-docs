@@ -1,6 +1,6 @@
 ﻿[title]: # (Secrets)
 [tags]: # (,)
-[priority]: # (7010)
+[priority]: # (1810)
 
 ## Secrets
 
@@ -20,6 +20,8 @@ When DSV has possession of secrets outside the Secret Server Vault (that is, the
 | edit | modify a secret, writing only changes to the vault |
 | update | modify a secret, writing the entire secret to the vault |
 | delete | delete a secret |
+
+  
 
 ### Examples
 
@@ -145,7 +147,7 @@ As a well established computing technique of long standing, piping is not limite
 
 #### Edit
 
-Use `edit` opens the secret data in the default text editor for bash, such as **vi** or **nano**.
+Use `edit` to open the secret data in the default text editor for bash, such as **vi** or **nano**.
 
 * Saving in the editor updates the secret in the vault.
 

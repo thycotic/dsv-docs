@@ -1,6 +1,6 @@
 ﻿[title]: # (CLI Quick Reference)
 [tags]: # (,)
-[priority]: # (11000)
+[priority]: # (2000)
 
 # CLI Quick Reference
 

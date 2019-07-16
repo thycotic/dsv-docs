@@ -1,6 +1,6 @@
 ﻿[title]: # (CLI Examples)
 [tags]: # (,)
-[priority]: # (6000)
+[priority]: # (1700)
 
 # CLI Examples
 
