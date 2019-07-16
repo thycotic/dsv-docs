@@ -12,7 +12,7 @@ Download the DSV Java SDK from this location:
 
   http://www.whatistheurl.com
 
-  { *tag for edit required for actual URL* }
+  { *tag for an edit required for actual URL* }
 
 ## Install
 

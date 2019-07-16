@@ -2,7 +2,7 @@
 [tags]: # (,)
 [priority]: # (2300)
 
-# Jenkins Extension to DevOps Secrets Vault 
+# Jenkins Extension for DevOps Secrets Vault 
 
 The Jenkins extension allows builds to retrieve secrets from the vault at runtime. It can bind secrets to environment variables through a build step, or by reference in a **jenkinsfile**.
 
