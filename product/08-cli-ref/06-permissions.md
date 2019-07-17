@@ -1,4 +1,4 @@
-[title]: # (Permissions)
+ï»¿[title]: # (Permissions)
 [tags]: # (,)
 [priority]: # (1860)
 
@@ -70,7 +70,7 @@ settings: null
 tenantName: example
 ```
 
-The `permissionDocument` lists policies that define a subject’s access to a certain resource path. The syntax supports wildcards via the `<.*>` construct.
+The `permissionDocument` lists policies that define a subjectâ€™s access to a certain resource path. The syntax supports wildcards via the `<.*>` construct.
 
 | Element | Definition |
 |----- | ----- |
@@ -97,7 +97,7 @@ To correctly evaluate permission policies, you must know the rules that apply to
 
 * The `list` action has a special behavior.
 
-  * First, `list` (search) is global—it runs across all items of an entity, not limited to paths and sub-paths.
+  * First, `list` (search) is globalâ€”it runs across all items of an entity, not limited to paths and sub-paths.
 
   * Second, to grant a user an ability to search entities via `list`, use the root of the entity if you want `list` to include other entities and actions within the same policy. The root entity, for example, is `secrets`, with no other characters following.
 

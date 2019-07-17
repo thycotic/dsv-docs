@@ -95,7 +95,7 @@ thy secret describe --path us-east/server02
 
 #### Read
 
-Use `read` to get a secret’s data. As explained in the [CLI Overview](.\05-cli-overview\index.htm) the `-b` flag beautifies the output, while the `-e` flag sets the output format to JSON or YAML and the `-o` flag (as commonly used) redirects the output to a file.
+Use `read` to get a secret’s data. The `-b` flag beautifies the output, while the `-e` flag sets the output format to JSON or YAML and the `-o` flag (as commonly used) redirects the output to a file.
 
 ``` bash
 thy secret read --path us-east/server02 -b -e yaml
@@ -121,7 +121,7 @@ Output:
 
 `secret`
 
-> TIP: Although the `-o` flag allows redirection of output to files, it does not support directly assigning the output to an environmental variable. However, as explained in the [CLI Overview](.\05-cli-overview\index.htm), you can use piping to achieve that outcome.
+> TIP: Although the `-o` flag allows redirection of output to files, it does not support directly assigning the output to an environmental variable. However, you can use piping to achieve that outcome.
 
 **Piping** refers to passing to a command a parameter value that is itself a command, or assigning to a variable a value that is a command. In effect, piping means assigning as a value the means to obtain the value, rather than the value itself.
 
