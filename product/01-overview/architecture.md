@@ -10,12 +10,10 @@ DevOps Secrets Vault unites two main components:
 
 * in the cloud: a secrets vault created as a tenant per DSV as a multi-tenancy SaaS delivered by an AWS instance
 
-Architectural Summary View: DevOps Secrets Vault
+**Architectural Summary View: DevOps Secrets Vault**
 ![Image](./images/dsv-architecture-simple-01.png)
 
-* DSV supports the AWS and Azure cloud authentication providers.
-
-* Activities originate at the customer premises one of three ways:
+DSV supports the AWS and Azure cloud authentication providers. Activities originate at the customer premises one of three ways:
 
   * a command entered manually at the CLI
   
@@ -23,10 +21,8 @@ Architectural Summary View: DevOps Secrets Vault
   
   * an API call by an application
   
-* The API Gateway receives API calls, obtains the responses, and relays them to the caller, using HTTP GET, PUT, POST and other methods common to the REST architectural style.
+The API Gateway receives API calls, obtains the responses, and relays them to the caller using HTTP GET, PUT, POST and other methods common to the REST architectural style. The Authorizer uses OAuth to handle API Gateway authorization.
 
-* The Authorizer uses OAuth to handle API Gateway authorization.
+The Vault Application hosts the core DSV functionality, essentially a set of AWS Lambda (serverless) commands. Lambda auto-scales to demand.
 
-* The Vault Application hosts the core DSV application, essentially a set of AWS Lambda (serverless) commands. Lambda auto-scales to demand.
-
-* Extensive logging enables strong audit trails and protections, while encryption protects secrets at rest in the vault.
+Extensive logging enables strong audit trails and protections, while encryption protects secrets in the vault and anywhere data is at rest.

@@ -12,9 +12,9 @@ See the [Overview](./01-overview/index.htm) for basics, and [Obtain DSV](./02-ob
 
 The CLI [Overview](./06-cli-overview/index.htm), [Examples](./07-cli-examples/index.htm), and [Reference](./08-cli-ref/index.htm) sections pin out the details of using DevOps Secrets Vault.
 
-The [Release Notes](./11-relnotes/index.htm) provide late-breaking information, and [Customer Support Resources](./12-cust-support/index.htm) connects you to available support resources.
+The [Release Notes](./11-relnotes/index.htm) provide late-breaking information, and the [Customer Support Resources](./12-cust-support/index.htm) topic connects you to available support resources.
 
-Related documents include those about the [Jenkins](..\extensions\jenkins\index.htm) and[Kubernetes](..\extensions\kubernetes\index.htm) extensions and the [DSV Java SDK](..\sdk\java\index.htm).
+Related documents include those about the [Jenkins](..\extensions\jenkins\index.htm) and[Kubernetes](..\extensions\kubernetes\index.htm) extensions and the [DSV Java SDK](..\sdk\java\index.htm), plus an API reference (see below).
 
 ---
 
