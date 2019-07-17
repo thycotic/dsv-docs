@@ -109,7 +109,7 @@ When you create a user in AWS, remember that the username serves as a friendly n
 thy user create --username test-admin --external-id arn:aws:iam::00000000000:user/test-admin --provider aws-dev
 ```
 
-After creating the user, modify the config to give that user access to the default administrator permission policy. For details on limiting access to specific paths, see the [Permissions](../08-cli-ref/06-permissions.md) section of the [CLI Reference](../08-cli-ref/index.md).
+After creating the user, modify the config to give that user access to the default administrator permission policy. For details on limiting access to specific paths, see the [Permissions](../08-cli-ref/06-permissions.htm) section of the [CLI Reference](../08-cli-ref/index.htm).
 
 ```bash
 thy config edit --encoding yaml
@@ -253,7 +253,7 @@ thy user create --username test-api --provider azure-prod --external-id /subscri
  
 ```
 
-Modify the config to give that user access to the default administrator permission policy. For details on limiting access to specific paths see the [Permissions](../08-cli-ref/06-permissions.md) section of the [CLI Reference](../08-cli-ref/index.md).
+Modify the config to give that user access to the default administrator permission policy. For details on limiting access to specific paths see the [Permissions](../08-cli-ref/06-permissions.htm) section of the [CLI Reference](../08-cli-ref/index.htm).
 
 ```bash
 thy config edit --encoding yaml
@@ -310,7 +310,7 @@ If you want to grant access to a set of VM’s in a resource group that use a sy
 thy role create --name identity-rg --provider azure-prod --external-id /subscriptions/216d58f0-9fa1-49fa-b1f6-81e9f8a12f82/resourceGroups/build
 ```
 
-Modify the config to give that role access to the default administrator permission policy. For details on limiting access to specific paths see the [Permissions](../08-cli-ref/06-permissions.md) section of the [CLI Reference](../08-cli-ref/index.md).
+Modify the config to give that role access to the default administrator permission policy. For details on limiting access to specific paths see the [Permissions](../08-cli-ref/06-permissions.htm) section of the [CLI Reference](../08-cli-ref/index.htm).
 
 ```bash
 thy config edit --encoding yaml

@@ -113,7 +113,7 @@ Select `(3) AWS IAM (federated)` to authenticate as a trusted Identity Access Ma
 
 Select `(4) Azure (federated)` to authenticate as a trusted Azure Managed Service Identity  (MSI).
 
-The [Authentication: General](..\04-authent-gen\index.md) and [Authentication: Azure or AWS](..\05-authent-azure-aws\index.md) provide details for each of these choices. 
+The [Authentication: General](..\04-authent-gen\index.htm) and [Authentication: Azure or AWS](..\05-authent-azure-aws\index.htm) provide details for each of these choices. 
 
 Finally, the initialization process will prompt about the **cache strategy for secrets**. The choice here depends on your specific set of concerns around security, network connectivity, performance, and systems availability.
 
@@ -137,5 +137,5 @@ Please enter cache strategy for secrets:
 
 Selecting the cache strategy completes setup. You can begin using the DevOps Secrets Vault Command Line Interface to administer secrets in your organization’s secure cloud-hosted secrets vault.
 
-The [Commands Overview](..\06-cli-overview\index.md), [Commands Examples](..\07-cli-examples\index.md), and [CLI Reference](..\08-cli-ref\index.md) will get you started.
+The [Commands Overview](..\06-cli-overview\index.htm), [Commands Examples](..\07-cli-examples\index.htm), and [CLI Reference](..\08-cli-ref\index.htm) will get you started.
 
