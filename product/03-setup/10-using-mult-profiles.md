@@ -2,7 +2,7 @@
 [tags]: # (,)
 [priority]: # (1310)
 
-## Using Multiple Profiles
+# Using Multiple Profiles
 
 On initial configuration, your DevOps Secrets Vault config will have just one profile with the choices you specified for credentials storage, authentication type, and cache strategy for secrets.
 

@@ -4,7 +4,7 @@
 
 # Authentication: General
 
-As noted in [Setup DevOps Secrets Vault](..\03-setup\index.htm), DSV supports several authentication methods, potentially easing cloud deployments by tapping in-place authentication providers such as AWS and Azure.
+As noted in [Setup DevOps Secrets Vault](..\03-setup\index.md), DSV supports several authentication methods, potentially easing cloud deployments by tapping in-place authentication providers such as AWS and Azure.
 
 ## Types of Authentication
 
@@ -44,7 +44,7 @@ Password authentication relies directly on individual user accounts. Routine act
 
 * adding the new user to the DSV config
 
-See the [Users](..\08-cli-ref\02-users.htm) portion of the CLI Reference for details.
+See the [Users](..\08-cli-ref\02-users.md) portion of the CLI Reference for details.
 
 ### Client Credentials
 
@@ -60,10 +60,10 @@ Routine activities associated with this authentication method include:
 
 * invoking the `init` command and supplying those client credentials
 
-See the [Roles](..\08-cli-ref\03-roles.htm) portion of the CLI Reference for more information.
+See the [Roles](..\08-cli-ref\03-roles.md) portion of the CLI Reference for more information.
 
 ### Third Party Authentication
 
-Authentication through Azure or AWS requires additional setup steps so that DSV has information about trusted accounts, users, and roles and the permissions assigned to each. The [Authentication: Azure or AWS](..\05-authent-azure-aws\index.htm) section covers this in detail. 
+Authentication through Azure or AWS requires additional setup steps so that DSV has information about trusted accounts, users, and roles and the permissions assigned to each. The [Authentication: Azure or AWS](..\05-authent-azure-aws\index.md) section covers this in detail. 
 
 
