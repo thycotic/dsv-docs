@@ -1,10 +1,10 @@
-﻿[title]: # (Overview)
+﻿[title]: # (About This Collection)
 [tags]: # (,)
 [priority]: # (1000)
 
-# User’s Guide to DevOps Secrets Vault
+# About This Collection
 
-Welcome to Thycotic’s technical documentation collection for DevOps Secrets Vault. The collection includes short, topically focused, technically oriented material, including product descriptions, diagrams, instructions, general guidance, and reference content.
+This technical documentation collection for DevOps Secrets Vault includes short, topically focused, technically oriented material, including product descriptions, diagrams, instructions, general guidance, and reference content.
 
 See the [Overview](./01-overview/index.htm) for basics, and [Obtain DSV](./02-obtain/index.htm) for information about trying out the product.
 

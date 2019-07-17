@@ -4,6 +4,8 @@
 
 # CLI Reference
 
+## Common Command Objects
+
 The common objects of CLI commands include:
 
 * secrets
@@ -16,4 +18,4 @@ The common objects of CLI commands include:
 
 * configurations
 
-This reference organizes topics around these subjects, providing task-oriented coverage of DSV features paired with examples. 
+This reference organizes around these subjects, providing task-oriented coverage of DSV features paired with examples. 
