@@ -24,7 +24,7 @@ Jenkins must be able to query DSV to look up secrets at build time. To enable th
 
 #### Setup Client Credentials
 
-Use the DVS CLI to create a new client credential linked to a role that has read permissions on secrets Jenkins will need. 
+Use the DSV CLI to create a new client credential linked to a role that has read permissions on secrets Jenkins will need. 
 
 Example commands for bash:
 

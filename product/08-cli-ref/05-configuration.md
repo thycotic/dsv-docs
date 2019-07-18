@@ -49,7 +49,7 @@ permissionDocument:
   effect: allow
 ```
 
-For more details about how DVS works with permissions, see the [Permissions](.\06-permissions.htm) article.
+For more details about how DSV works with permissions, see the [Permissions](.\06-permissions.md) article.
 
 { *for the entirety of the content under the following two headings, I am way out on a limb; this is essentially placeholder material consistent in form with the doc for other entities such as `user` or `role`, but no inputs for such were evident, so this is improvised--it requires correction* }
 
