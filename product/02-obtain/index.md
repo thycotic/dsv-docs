@@ -33,7 +33,7 @@ Next, download the Command Line Interface executable files for the operating sys
 
 ## Rename the Executable
 
-By default, the executable file name as downloaded will reflect the DSV version number. Rename the executable to `thy` or `thy.exe` to simplify command entry.
+By default, the executable file name as downloaded will reflect the OS and 32-bit or 64-bit architecture. Rename the executable to `thy` or `thy.exe` to simplify command entry.
 
 ## Place the Executable
 

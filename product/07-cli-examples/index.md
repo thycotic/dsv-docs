@@ -27,10 +27,8 @@ Here is an example of JSON that could be made a secret. The JSON is arbitrary, s
 Create the secret and specify the path to its storage location:
 
 ```bash
-thy secret create --path /servers/us-east/server01 --data @secret.json
+thy secret create --path aws/us-east-1/rds/postgres01 --data @secret.json
 ```
-
-{ *what will clients see for the path?* }
 
 Outputs:
 

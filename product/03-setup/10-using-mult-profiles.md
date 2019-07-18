@@ -6,7 +6,7 @@
 
 On initial configuration, your DevOps Secrets Vault config will have just one profile with the choices you specified for credentials storage, authentication type, and cache strategy for secrets.
 
-However, DSV supports creating other profiles, potentially with different credentials, and adding them to the config. Once the config has more than one profile, you can set which one DSV will use by default. { *verify: see below* }
+However, DSV supports creating other profiles, potentially with different credentials, and adding them to the config. Once the config has more than one profile, you can set which one DSV will use by default.
 
 ## Add a Profile to a Config
 
@@ -22,12 +22,12 @@ If you want to verify the profile has been added, output the updated config cont
 
 `thy cli-config read`
 
-## Using an Alternate Profile for Most CLI Actions
+## Using an Alternate Profile for a Specific CLI Action
 
-For a config with more than one profile, you can specify the profile to be used by default using this command:
+For a config with more than one profile, the profile used by default for any command will be the first profile created. However, you can override the default by specifying the profile to be used for a  command as a parameter:
 
 `thy secret read --path mysecret --profile developer`
 
 So commanded, the CLI will try to auth as the user specified in the `developer` profile and attempt to read the secret as that user.
 
-{ *this appears to just specify the profile to be used with that one command; what will set the default profile to be used for all commands?* }
+The CLI does not have a command to set the default for all commands moving forward. For that, you should edit the `.thy.yml` file in the home directory to change the profile set as the default.
