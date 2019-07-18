@@ -79,10 +79,18 @@ thy secret search us-east/server02
 
 The `--limit` parameter allows you to set the maximum number of search results that will display per page (cursor).
 
-The `--cursor` parameter accepts { *what manner of value?* } and sets the element used to get the next page of results.
+The `--cursor` parameter accepts the element used to get the next page of results.
+
+For a search where there are more results than returned in the first set, the API returns a cursor—a large piece of text. You pass that back to get the next set of results.
+
+For example, if the command `thy secret search  -q admin  --limit 10` matched 12 secrets with admin in the name, the CLI would return the first 10 plus a cursor. To obtain the next two results, you would use this command:
+
+`thy secret search  -q admin  -limit 10  --cursor AFSDFSD...DKFJLSDJ=`
+
+Cursors may be lengthy:
 
 ```bash
-thy secret search --query us-east/server02 --limit 2 --cursor eyJpZCI6ImZmZjZjODUxTJ2ZXJzaW9uIjo50IiwidHiJ9
+\thy-win-x64.exe secret search -q resources --limit 10 --cursor eyJpZCI6ImEwOTFjOWIzLWE4MmQtNGRiYy1hYThiLTYxMDY0NDZhZjA3MSIsInBhdGgiOiIiLCJ2ZXJzaW9uIjoidi1jdXJyZW50IiwidHlwZSI6IiIsImxhdGVzdCI6MH0=
 ```
 
 #### Describe

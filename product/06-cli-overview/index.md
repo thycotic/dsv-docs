@@ -116,7 +116,7 @@ DSV offers global flags that combine with most commands to format or redirect ou
 
 * `--encoding, -e` specify the output format as either JSON or YAML
 * `--beautify, -b` beautify JSON or YAML output
-* `--filter, -f` filter to output only a specific JSON attribute; this feature uses the **jq** library (https://stedolan.github.io/jq/)
+* `--filter, -f` filter to output only a specific JSON attribute; this feature uses the [jq library](https://stedolan.github.io/jq/)
 * `--out, -o` control the output destination; valid values: `stdout`, `clip`, and `file:[file-name]`, with `stdout` the default
 
 ### Encoding and Beautify
@@ -137,9 +137,37 @@ path: servers:us-east:server01
 
 ### Filter
 
-The filter modifier relies on the **jq** library, a lightweight, flexible command line JSON processor.
+The filter modifier relies on a lightweight, flexible command line JSON processor, the [jq library](https://stedolan.github.io/jq/).  Visit the JQ GitHub repo to learn more about how to use JQ.
 
-{ *need more information on this* }
+The following code block illustrates.
+
+```JSON
+thy secret read --path resources/server01/mysql -b
+
+{
+  "attributes": {
+    "tag1": "this is a tag"
+  },
+  "created": "2019-07-17T21:33:35Z",
+  "createdBy": "users:ben",
+  "data": {
+    "foo": ["bar2", "blah"],
+    "password": "root-password",
+    "username": "blah"
+  },
+  "id": "59f2ab72-7f51-4f0e-8ffd-35cb94b818fb",
+  "lastModified": "2019-07-17T21:36:01Z",
+  "lastModifiedBy": "users:ben",
+  "path": "resources:server01:mysql",
+  "version": "1"
+}
+
+thy secret read --path resources/server01/mysql --filter data.password
+
+root-password
+```
+
+The command without the filter produced the entire secret, while the command with the filter read out only the password value.
 
 ### Out
 
@@ -165,7 +193,7 @@ Contents of secret.json:
 }
 ```
 
-{ *need to cover the "clip" option ~ what does that do?* }
+Using `-o clip` puts the command output on the OS clipboard.
 
 ## Output Piping
 
