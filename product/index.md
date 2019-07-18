@@ -14,7 +14,7 @@ The CLI [Overview](./06-cli-overview/index.md), [Examples](./07-cli-examples/ind
 
 The [Release Notes](./11-relnotes/index.md) provide late-breaking information, and the [Customer Support Resources](./12-cust-support/index.md) topic connects you to available support resources.
 
-Related documents include those about the [Jenkins](..\extensions\jenkins\index.md) and[Kubernetes](..\extensions\kubernetes\index.md) extensions and the [DSV Java SDK](..\sdk\java\index.md), plus an API reference (see below).
+Related documents include those about the [Jenkins](..\extensions\jenkins\index.md) and [Kubernetes](..\extensions\kubernetes\index.md) extensions and the [DSV Java SDK](..\sdk\java\index.md), plus an API reference (see below).
 
 ---
 
@@ -36,5 +36,4 @@ Additionally, for customers interested in creating their own extensions to integ
 
 For those doing application development, the separately located [API Documentation](https://api.secretsvaultcloud.com) lists the available API calls and pins out their correct use.
 
-{ *tag for updates to URLs required* }
 
