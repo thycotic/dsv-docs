@@ -13,6 +13,14 @@ Contact Thycotic for provisioning:
 
 * { *need to say how to do this* }
 
+### Sandbox Tenants
+
+content?
+
+### Free Version of DevOps Secrets Vault
+
+content?
+
 ## Download the Executable for Your OS
 
 Next, download the Command Line Interface executable files for the operating systems you will use when you operate DevOps Secrets Vault.

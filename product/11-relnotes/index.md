@@ -3,5 +3,15 @@
 [priority]: # (2100)
 
 # Release Notes
+Release Date: July 2019
+*Corresponds to DevOps Secrets Vault 1.0*
+---
 
-{ *content to be developed from a draft by B. VanCannon* }
+The July 2019 release of DevOps Secrets Vault 1.0 marks the product’s debut.
+
+Users of the Beta will note these major changes:
+
+* what
+* what
+* what
+
