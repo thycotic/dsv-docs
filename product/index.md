@@ -2,10 +2,12 @@
 [tags]: # (,)
 [priority]: # (1000)
 
-# Attention New Users
-
+# Welcome to Your DevOps Secrets Vault Technical Documentation Collection
+  
 ---
   
+New user? Make sure you have done all your setup and configuration steps:
+
 *If you have **already** signed up for a vault, installed the CLI executable, and configured for your authentication provider, you’re good to go—skip down to the next heading. If you have not completed any of these steps, please note the following to get started.*
 
 The DevOps Secrets Vault service operates through two main parts: a Cloud-hosted, API-driven vault that stores your secrets, and a locally installed executable that gives you a Command Line Interface (CLI) for managing your secrets through the API.
