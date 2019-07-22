@@ -1,8 +1,8 @@
-﻿[title]: # (CLI Overview)
+﻿[title]: # (CLI Primer)
 [tags]: # (,)
 [priority]: # (1600)
 
-# CLI Overview
+# CLI Primer
 
 Like most Command Line Interface Applications, DevOps Secrets Vault combines—
 
@@ -24,7 +24,9 @@ For example, in `thy role create`, `role` is the object of the command `create`.
 Some parameters and flags apply only to some commands. DSV also includes output modifiers for filtering and formatting responses to commands.
 
 ## Commands
-
+  
+---
+  
 | Commmand | Definition |
 | ----------- | ------------- |
 | auth | authenticate to the vault or display the current access token |
@@ -38,9 +40,9 @@ Some parameters and flags apply only to some commands. DSV also includes output 
 | secret | create, update, and retrieve secrets from the vault |
 | user | manage users |
 | whoami | display the currently autcahenticated user |
-
   
-
+---
+  
 ## Parameters
 
 Parameters can be:
@@ -139,7 +141,7 @@ path: servers:us-east:server01
 
 The filter modifier relies on a lightweight, flexible command line JSON processor, the [jq library](https://stedolan.github.io/jq/).  Visit the JQ GitHub repo to learn more about how to use JQ.
 
-The following code block illustrates.
+The following code block illustrates:
 
 ```JSON
 thy secret read --path resources/server01/mysql -b

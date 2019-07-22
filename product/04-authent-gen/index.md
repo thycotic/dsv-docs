@@ -29,7 +29,7 @@ DevOps Secrets Vault works with third party authentication providers, including:
     * *Google Cloud Platform*: DSV does not yet accept authentication provided by the Google Cloud Platform, but Thycotic expects to include support for this in an upcoming DSV release.
 
 > Note: These authentication types, which are oriented to user accounts, should not be confused with the REST API authentication that powers DSV itself. DSV’s RESTful architecture allows it to interact with the vault API over HTTP; to authenticate for these interactions, DSV uses an authorization token obtained by a call to the API.
-> 
+>
 > Scripts and applications that will include direct REST calls can similarly obtain a token for use with the calls using the CLI `auth` command.
 
 ### Password
@@ -62,6 +62,4 @@ See the [Roles](..\08-cli-ref\03-roles.md) portion of the CLI Reference for more
 
 ### Third Party Authentication
 
-Authentication through Azure or AWS requires additional setup steps so that DSV has information about trusted accounts, users, and roles and the permissions assigned to each. The [Authentication: Azure or AWS](..\05-authent-azure-aws\index.md) section covers this in detail. 
-
-
+Authentication through Azure or AWS requires additional setup steps so that DSV has information about trusted accounts, users, and roles and the permissions assigned to each. The [Authentication: Azure or AWS](..\05-authent-azure-aws\index.md) section covers this in detail.
