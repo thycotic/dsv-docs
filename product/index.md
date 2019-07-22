@@ -18,7 +18,7 @@ Neither works without the other, so you must set up both before you can use DevO
   * [Authentication: General](./04-authent-gen/index.md) covers typical installations.
   * [Authentication: Azure or AWS](./05-authent-azure-aws/index.md) covers use of DSV with third party authentication platforms.
 
-When you have finished set up steps, come back here to learn more--this collection is full of information about DevOps Secrets Vault and how to use it most effectively.
+When you have finished set up steps, don’t be finished with this doc resource--this collection is full of information about DevOps Secrets Vault and how to use it most effectively.
   
 ---
   
