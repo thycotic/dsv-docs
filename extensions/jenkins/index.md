@@ -143,13 +143,21 @@ To get credentials in a Freestyle build:
     the `password` field of our previously created secret
 
 * In build steps, you can reference the environment variable as you normally would. For example, the shell script shown here will echo the `$MY_PASSWORD` environment variable.
-
+  
+---
+  
 ![image](./images/jenkins-build-step.png)
-
+  
+---
+  
 * The console output of the build should show the retrieved secret password value of "somepass1" as expected.
-
+  
+---
+  
 ![image](./images/jenkins-build-output.png)
-
+  
+---
+  
 ## Jenkinsfile
 
 In a pipeline, you can bind to the extension to get secrets as environment variables.
@@ -180,11 +188,19 @@ node {
     }
 }
 ```
-
+  
+---
+  
 ![image](./images/jenkins-pipeline.png)
-
+  
+---
+  
 Running the pipeline, the output will be the password value of the secret from the vault.
-
+  
+---
+  
 ![image](./images/jenkins-pipeline-output.png)
-
+  
+---
+  
 As expected, the jenkinsfile outputs the password value from the secret at `resources/server01`.
