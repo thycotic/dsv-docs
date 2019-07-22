@@ -13,31 +13,35 @@ When a user or role ties to a third-party provider, the name will be the fully q
 The name qualifier format `provider name:local name` means for example that the _test-admin_ user will have the username _aws-dev:test-admin_ while the local user with username _test-admin_ will not have a qualifier, so its username will just be _test-admin_.
 
 ### Commands that Act on Users
-
+  
+---
+  
 | Command | Action |
 | ----- | ----- |
 | create | create a user in the vault |
 | search | find users by username |
 | read | read a user’s details |
 | delete | delete a user from the vault |
-
   
-
+---
+  
 ### Examples
 
 #### Create
 
 The `create` command takes several `--parameters` that spec foundational aspects of the user record.
-
+  
+---
+  
 | Parameter | Content |
 | ----- | ----- |
 | --username | local username; required; supports local authentication by username and password; need not match that used by a federated authentication provider (if present) |
 | --password | password for local authentication by username and password |
 | --provider | matches the `name` attribute of the authentication provider in the `settings` section of the config |
 | --external-id | identifier recognized by third-party federated authentication providers, such as AWS or ARN |
-
   
-
+---
+  
 Create a local user with username `_test-admin_` and password `_secret-password`:
 
 ```bash

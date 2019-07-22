@@ -9,7 +9,9 @@ Secrets are sensitive data protected in your vault. Many secrets relate to authe
 When DSV has possession of secrets outside the Secret Server Vault (that is, the CLI or API has reproduced a secret anywhere outside the vault), it keeps them encrypted and locked down in conformance to the specific permissions and policies in the config.
 
 ### Commands that Act on Secrets
-
+  
+---
+  
 | Command | Action |
 | ----- | ----- |
 | bustcache | clear the secret cache |
@@ -20,9 +22,9 @@ When DSV has possession of secrets outside the Secret Server Vault (that is, the
 | edit | modify a secret, writing only changes to the vault |
 | update | modify a secret, writing the entire secret to the vault |
 | delete | delete a secret |
-
   
-
+---
+  
 ### Examples
 
 #### Bustcache

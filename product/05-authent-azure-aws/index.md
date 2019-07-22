@@ -12,8 +12,6 @@ Working on Linux or MacOS, you can use `thy config edit --encoding yaml` to open
 
 On Windows, you must use `thy config read -be YAML` to read out the config; save it as a file; edit locally; and use `thy config update --path {path to file} --data \@filename` to upload your work into the vault, entirely overwriting the prior config.
 
-{ *need the preceding commands checked for accuracy* }
-
 The initial config will look similar to this:
 
 ```yaml
@@ -52,13 +50,15 @@ settings:
 * `type` is the authentication provider type; valid values as of this release are `aws` and `azure`
 * `properties` are configuration settings specific to the authentication provider
 
-
+---
+  
 | Property     | Provider      | Description|
 | :----------- |:------------- | :-----------|
 | accountid    | aws           | AWS account ID where the users or roles will be authorized|
 | tenantid     | azure         | Azure tenant ID where the MSIs will be authorized|
-
-
+  
+---
+  
 > Note: The account identifiers for third-party authentication are a top level setting that allow you or other users to authorize specific security principals within that account. They do not automatically grant access to any user or role within the provider.
 
 Any time you have saved changes to the configuration, you should read the configuration to verify your work. Each property you added will have an auto-generated ID, a unique identifier DSV uses to track changes to the property. All config settings have such IDs.
@@ -163,7 +163,7 @@ Please enter auth type:
 
 When you select `AWS IAM` DSV will prompt for the specific AWS profile to use if you are authenticating using a non-default AWS profile.
 
-```
+```bash
 Please enter aws profile for federated aws auth (optional, default:default)
 ```
 
@@ -176,12 +176,12 @@ secretp@ssword
 
 ### AWS Role Example
 
-Prerequisites
+This example assumes that you:
 
-* Have your own thy CLI configured locally with an admin account
-* Create an IAM role in the AWS Console
-* Launch an EC2 instance using the IAM role
-* Download the thy CLI on the EC2 instance from [downloads.lvc.thycotic.com](https://downloads.lvc.thycotic.com).
+* have your own thy CLI configured locally with an admin account
+* created an IAM role in the AWS Console
+* launched an EC2 instance using the IAM role
+* [downloaded](https://downloads.lvc.thycotic.com) the thy CLI onto the EC2 instance
 
 Create a corresponding role in DSV with the external-id of the IAM role's ARN.
 
@@ -236,7 +236,6 @@ On the EC2 instance, configure the CLI by running `thy init --advanced` and choo
 Once configured, you can read an existing secret to verify the EC2 instance is able able to authenticate and access data.
 
 ```bash
-
 thy secret read --path /servers/us-east/server01 -bf data.password
 secretp@ssword
 ```
@@ -245,12 +244,10 @@ secretp@ssword
 
 First you will need to configure the user that corresponds to an [Azure User Assigned MSI](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview).
 
-The username is a friendly name within DSV and does not need to match the MSI username. 
-The provider must match the resource id of the MSI in azure.
+The username is a friendly name within DSV and does not need to match the MSI username. The provider must match the resource id of the MSI in azure.
 
 ```bash
 thy user create --username test-api --provider azure-prod --external-id /subscriptions/216d58f0-9fa1-49fa-b1f6-81e9f8a12f82/resourcegroups/build/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-api
- 
 ```
 
 Modify the config to give that user access to the default administrator permission policy. For details on limiting access to specific paths see the [Permissions](../08-cli-ref/06-permissions.md) section of the [CLI Reference](../08-cli-ref/index.md).
@@ -289,8 +286,7 @@ settings:
 tenantName: example
 ```
 
-On a VM in Azure that is assigned the user MSI as the identity, download and initialize the CLI. 
-Choose the Azure federated authentication option.
+On a VM in Azure that is assigned the user MSI as the identity, download and initialize the CLI. Choose the Azure federated authentication option.
 
 ```bash
 thy init --advanced
@@ -316,8 +312,7 @@ Modify the config to give that role access to the default administrator permissi
 thy config edit --encoding yaml
 ```
 
-Add the user as a subject to the **Default Admin Policy**. 
-Third party accounts must be prefixed with the provider name; in this case the fully qualified role name will be `azure-prod:identity-rg`.
+Add the user as a subject to the **Default Admin Policy**. Third party accounts must be prefixed with the provider name; in this case the fully qualified role name will be `azure-prod:identity-rg`.
 
 ```yaml
 permissionDocument:

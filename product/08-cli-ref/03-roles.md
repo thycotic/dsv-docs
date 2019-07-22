@@ -7,7 +7,9 @@
 With DSV, the term “roles” describes security principals in the vault that tie to third-party providers or client credentials for granting permissions.
 
 ### Commands that Act on Roles
-
+  
+---
+  
 | Command | Action |
 | ----- | ----- |
 | create | create a role in the vault |
@@ -15,24 +17,26 @@ With DSV, the term “roles” describes security principals in the vault that t
 | read | read a role’s details |
 | update | upload a superseding role |
 | delete | delete a role from the vault |
-
   
-
+---
+  
 ### Examples
 
 #### Create
 
 The `create` command takes several `--parameters` that spec key aspects of the role record.
-
+  
+---
+  
 | Parameter | Content |
 | ----- | ----- |
 | --desc | description of the role |
 | --name | name of the role |
 | --provider | matches the `name` attribute of the authentication provider in the `settings` section of the config |
 | --external-id | identifier recognized by third-party federated authentication providers, such as AWS or ARN |
-
   
-
+---
+  
 Create a local role with the name *\_test-role\_*:
 
 ```bash
