@@ -8,6 +8,4 @@ The DSV Java SDK is in pre-release and does not come with documentation. Thycoti
 
 ## Obtain
 
-Download the DSV Java SDK from this location:
-
-* dsv.thycotic.com/downloads/javasdk
+Thycotic’s website provides the [DSV Java SDK for download](https://dsv.thycotic.com/downloads/javasdk).
