@@ -42,7 +42,7 @@ For any Severity 1 issues, use only the phone support channel. For all others, y
 
 To obtain support by email you must login to the Support Portal to obtain a PIN to include in your email.
 
-*Visit the [Support Portal Login Page](https://thycotic.force.com/support/s/login/) using the credentials you received when you became a paid user of DevOps Secrets Vault.
+* Visit the [Support Portal Login Page](https://thycotic.force.com/support/s/login/) using the credentials you received when you became a paid user of DevOps Secrets Vault.
 
 * After logging in, you will be on the main page. Click on the large blue bar labeled PIN to obtain a PIN number.
 
@@ -64,7 +64,7 @@ Sending a support request from an email not on file may delay case assignment.
 
 As an alternative to support by email, you can open a support ticket and track your issue to resolution.
 
-*Visit the [Support Portal Login Page](https://thycotic.force.com/support/s/login/) using the credentials you received when you became a paid user of DevOps Secrets Vault.
+* Visit the [Support Portal Login Page](https://thycotic.force.com/support/s/login/) using the credentials you received when you became a paid user of DevOps Secrets Vault.
 
 * After logging in, you will be on the main page. Click the **Cases** tab, then **Create a Case**.
 * Follow the instructions to complete the case entry.
