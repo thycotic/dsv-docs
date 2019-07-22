@@ -12,15 +12,17 @@ Paths record the filesystem locations of executables. The configuration for DevO
 The DSV configuration, or ‘config,’ exists as a YAML or JSON document. Put simply, it is all about permissions.
 
 ## Commands that Act on Configurations
-
+  
+---
+  
 | Command | Action |
 | ---- | ---- |
 | read | view the current configuration |
 | edit | modify the configuration in an OS-native text editor such as VI or nano (Linux shell only) |
 | update | upload a superseding configuration document |
-
   
-
+---
+  
 ### Examples
 
 #### Read
@@ -51,8 +53,6 @@ permissionDocument:
 
 For more details about how DSV works with permissions, see the [Permissions](.\06-permissions.md) article.
 
-{ *for the entirety of the content under the following two headings, I am way out on a limb; this is essentially placeholder material consistent in form with the doc for other entities such as `user` or `role`, but no inputs for such were evident, so this is improvised--it requires correction* }
-
 #### Edit
 
 Working on Linux or MacOS, use `edit` to open your configuration in the OS’s default editor (typically **VI** or **nano**).
@@ -64,7 +64,7 @@ thy config edit --encoding YAML
 The editor directly updates the configuration in the vault when you save your work.
 
 > Note: On Windows, you cannot use `edit` on the configuration. Instead, you must:
-> 
+>
 > * use `thy config read -be YAML` to read out the config
 > * save it as a file
 > * edit the file locally
@@ -85,4 +85,3 @@ or
 ```bash
 thy secret update --path us-east/server02 --data \@configfilename.json
 ```
-
