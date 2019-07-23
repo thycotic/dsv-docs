@@ -7,16 +7,18 @@
 Client credentials enable applications to authenticate as the role assigned to the client record.
 
 ### Commands that Act on Clients
-
+  
+---
+  
 | Command | Action |
 | ----- | ----- |
 | create | create a user in the vault |
 | search | find clients by role name |
 | read | read a client’s details |
 | delete | delete a user from the vault |
-
   
-
+---
+  
 ### Examples
 
 #### Create

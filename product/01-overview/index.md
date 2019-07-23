@@ -10,11 +10,11 @@ DSV marks an expansion of Thycotic’s product line to include back-office and d
 
 ## Application Model
 
-Thycotic created DevOps Secrets Vault as a modern application rooted in the serverless architecture of Amazon Web Services (AWS) Lambda. In congruence with the Software-as-a-Service (SaaS) model, the secrets vaults and the API reside in the Cloud, and Thycotic provisions each customer with a tenancy.
+Thycotic created DevOps Secrets Vault as a modern application rooted in the serverless architecture of Amazon Web Services (AWS) Lambda. In congruence with the Software-as-a-Service (SaaS) model, the secrets vaults and the API reside in the cloud, and Thycotic provisions each customer with a tenancy.
 
-However, the CLI (Command Line Interface) must be considered core to the product as well, and this installs locally. The Thycotic website offers CLI executable downloads for Windows, Linux, and MacOS in both 32 and 64-bit architectures. Importantly, Thycotic offers the CLI for DevOps Secrets Server as an open source, customizable component of the DSV cloud service, with the source code available on Github under the (which?) open source license.
+However, the CLI (Command Line Interface) must be considered core to the product as well, and this installs locally. The Thycotic website offers CLI executable downloads for Windows, Linux, and MacOS in both 32 and 64-bit architectures. Importantly, Thycotic offers the CLI for DevOps Secrets Vault as an open source, customizable component of the DSV cloud service, with the source code available on Github.
 
-* See [Obtain DSV](../02-obtain/index.md) for instructions on downloading and installing the executables and obtaining the source code.
+* See [Obtain DSV](../02-obtain/index.md) for instructions on how to get DevOps Secrets Vault up and running for your organization.
 
 ## Features
 
@@ -31,14 +31,26 @@ DevOps Secrets Vault characteristics include:
 * JWT-formatted, OAuth-compliant access tokens
 * SOC 2 Type II conformant—affirmative audit results by independent organization available
 
-### Extensible with Plug-ins
+## DevOps Secrets Vault Extensions
 
-DevOps Secrets Vault supports multiple programming languages and DevOps tools via extensions and SDKs.
+DSV extensions support its use with other tools, allowing them to authenticate to DevOps Secrets Vault and thereby enabling a centralized vault for all DevOps needs. Currently, Thycotic offers two extensions.
 
-Currently, Thycotic provides downloadable plug-ins for [Jenkins](../extensions/jenkins/index.md) and [Kubernetes](../extensions/kubernetes/index.md) to authenticate to DevOps Secrets Vault and enable a centralized vault for all DevOps needs. Like the CLI, Thycotic provides these as open-source tools with the code available on GitHub.
+* The [Jenkins](..\extensions\jenkins\index.md) extension supports shops using Jenkins for continuous integration.
 
-For quick integration and customization into customer applications, Thycotic provides a downloadable [Java SDK](../sdk/java/index.md).
+* The [Kubernetes](..\extensions\kubernetes\index.md) extension supports organizations using Kubernetes to manage containerized applications.
 
-### Tools for Development
+Extensions expected in future DSV releases include Puppet, OpenShift, Chef, Ansible, and Salt, among others.
 
-As detailed by [Obtain DSV](../02-obtain/index.md), Thycotic offers **Sandbox** tenants for testing configurations and functionality before production deployment. Thycotic also offers a feature-complete, non-time-limited **free version** of DevOps Secrets Vault that supports up to 250 secrets and 2500 API calls a month.
+## Java SDK for DevOps Secrets Vault
+
+For customers interested in creating their own extensions to integrate DSV into their infrastructure, Thycotic provides the [DSV Java SDK](..\sdk\java\index.md).
+
+## DevOps Secrets Vault API Documentation
+
+For those doing application development, the separately located [API Documentation](https://dsv.thycotic.com/api) lists the available API calls and details their correct use for quick integration and customization into your applications.
+
+## Tools for Development
+
+As detailed by [Obtain DSV](../02-obtain/index.md), Thycotic offers a feature-complete, non-time-limited **free version** of DevOps Secrets Vault that supports up to 250 secrets and 2500 API calls a month.
+
+Thycotic also offers customers extra **Sandbox** tenancies for testing configurations and functionality before production deployment.

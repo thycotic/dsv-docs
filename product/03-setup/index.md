@@ -39,7 +39,7 @@ Specify the tenant name Thycotic provided when setting up your organization’s 
 
 If your tenant has no user configured, DSV will prompt you to create the initial local administrator.
 
-```
+```bash
 Please choose username for initial local admin: admin
 Please choose password for initial local admin:
 Please choose password for initial local admin (confirm):
@@ -63,7 +63,7 @@ When you use the `--advanced` flag, DSV presents you with a series of questions 
 >
 > `thy init --advanced --profile [name]`
 >
-> This is useful if you decide later to have multiple profiles, because you won’t need to run this setup again to specify the profile name; you will only need to run setup to create the additional named profiles.
+> This is useful if you decide later to have [multiple profiles](.\10-using-mult-profiles.md), because you won’t need to run this setup again to assign the default profile a name; you will only need to run setup to create the additional named profiles.
 
 All setups begin with DSV asking your tenant name.
 
@@ -73,7 +73,7 @@ Please enter tenant name: example
 Please enter domain (default:secretsvaultcloud.thycotic.com):
 ```
 
-Specify the tenant name Thycotic provided when setting up your organization’s account.
+Specify the tenant name Thycotic provided when you set up your organization’s account with Thycotic One.
 
 * Remember, you need only enter your tenant name, for example, just `acme` not `acme.secretsvaultcloud.com`, because initialization adds the domain automatically.
 

@@ -4,18 +4,8 @@
 
 # DevOps Secrets Vault Java SDK
 
-The DSV Java SDK is for organizations interested in creating their own extensions to integrate DSV into their infrastructure.
+The DSV Java SDK is in pre-release and does not come with documentation. Thycotic intends it for technically mature organizations interested in creating their own extensions to integrate DSV into their infrastructure. Thycotic will provide documentation with a later release of the SDK.
 
 ## Obtain
 
-Download the DSV Java SDK from this location:
-
-  http://www.whatistheurl.com
-
-  { *tag for an edit required for actual URL* }
-
-## Install
-
-
-## Use
-
+Thycotic’s website provides the [DSV Java SDK for download](https://dsv.thycotic.com/downloads/javasdk).

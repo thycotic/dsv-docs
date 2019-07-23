@@ -4,16 +4,24 @@
 
 # Kubernetes
 
-# Overview
+You can obtain the Kubernetes extension here:
+
+[dsv.thycotic.com/downloads/kubernetes](http://dsv.thycotic.com/downloads/kubernetes)
+
+## Overview
 
 Kubernetes helps coordinate containerized applications across a cluster of machines. DevOps Secrets Vault (DSV) will integrate with any existing Kubernetes application deployment. In this article, we show how you might implement the DSV application with your cluster.
 
-## Architecture 
+## Architecture
 
 The illustration shows an example of a Kubernetes Architecture implementation.
-
+  
+---
+  
 ![image](./images/kubernetes-design.png)
-
+  
+---
+  
 # Description of Operations
 
 The example application uses a broker and client container deployment with volume mount sharing for pods to access the retreived secrets.  This page includes an example of a `broker.yml` suitable for creation.
@@ -145,7 +153,9 @@ spec:
     port: 443
     targetPort: 443
 ```
-
+  
+---
+  
 This file can also be used locally; for example:
 
 `kubectl create -f broker.yml`
@@ -191,8 +201,11 @@ metadata:
   name: thycotic-keys
   namespace: default
 type: Opaque
-
+```
+  
 ---
+  
+```yaml
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:

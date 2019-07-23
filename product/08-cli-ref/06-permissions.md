@@ -4,7 +4,7 @@
 
 # Permissions
 
-DevOps Secrets Server configs are all about permissions. To see the current permissions policies, you read out the contents of the config:
+DevOps Secrets Vault configs are all about permissions. To see the current permissions policies, you read out the contents of the config:
 
 ```bash
 thy config read -be yaml
@@ -71,7 +71,9 @@ tenantName: example
 ```
 
 The `permissionDocument` lists policies that define a subject’s access to a certain resource path. The syntax supports wildcards via the `<.*>` construct.
-
+  
+---
+  
 | Element | Definition |
 |----- | ----- |
 | actions | a list of possible actions on the resource (create, read, update, delete, list, share, assign) |
@@ -80,9 +82,9 @@ The `permissionDocument` lists policies that define a subject’s access to a ce
 | effect | whether the policy is allowing or preventing access; valid values are `allow` and `deny` |
 | id | system-generated unique identifier to track changes to a particular policy |
 | resources | the resource path defining the entities to which the permissions apply; a resource path prefixes the entity type (`secrets, clients, roles, users`) to a colon delimited path to the resource. |
-
   
-
+---
+  
 ## Policy Evaluation
 
 To correctly evaluate permission policies, you must know the rules that apply to permissions.
@@ -173,4 +175,3 @@ In the example below, `roles` is the entity for reading and searching (`list` ac
 ```
 
 The syntax of the latter is important. In general, the root form of an entity has no `*` after the entity name, or anything besides the name.
-
