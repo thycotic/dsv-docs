@@ -20,28 +20,28 @@ DSV records your choices in a **profile**. You can:
 * specify the default profile for commands
 * on a per command basis, specify the profile to be used
 
-You make these choices during setup, which you perform using the command `thy init`.
+You make these choices during setup, which you perform using the command: `thy init`
 
 ## The Simplest Case: Setup with Default Settings
 
 The simplest possible case is to use `thy init` without flags. This will initialize DSV with default settings, so that you do not make any of the above choices and operate the CLI using a single, un-named profile.
 
-To obtain such a default setup, run `thy init`. DSV prompts for your tenant name.
+Run `thy init` to obtain such a default setup. DSV prompts for your tenant name.
 
 ```bash
 thy init
-Please enter tenant name: acme
+ Please enter tenant name: acme
 ```
 
 Specify the tenant name Thycotic provided when setting up your organization’s account.
 
-* Do not specify the full domain—just `acme`, not `acme.secretsvaultcloud.com`—because initialization will add the domain automatically.
+* Do not specify the full domain; use `acme` instead of `acme.secretsvaultcloud.com` because initialization will add the domain automatically.
 
 When you sign up for a trial and choose your DSV tenant name you are also prompted to create a Thycotic One user. By default the provisioning process links your Thycotic One account and your DSV tenant, so the initial admin you sign in with will be your Thycotic One username and password.
 
 ```bash
 Please enter username for tenant "acme":
-Please enter password:
+ Please enter password:
 ```
 
 Once DSV accepts these credentials, you are ready to begin using the DevOps Secrets Vault Command Line Interface to administer secrets in your organization’s secure, cloud-hosted secrets vault.
@@ -56,22 +56,23 @@ To configure DSV with your custom choices for these settings, use this command:
 
 When you use the `--advanced` flag, DSV presents you with a series of questions and choices.
 
-> **TIP:** The `--profile` flag allows you to set the name of the profile setup will create, and you can use the `--profile` and `--advanced` flags at the same time. For example:
->
-> `thy init --advanced --profile [name]`
->
-> This is useful if you decide later to have multiple profiles, because you won’t need to run this setup again to specify the profile name; you will only need to run setup to create the additional named profiles.
+* **TIP:** The `--profile` flag allows you to set the name of the profile setup will create; you can use the `--profile` and `--advanced` flags at the same time. For example:
+
+  `thy init --advanced --profile [name]`
+
+  This is useful if you decide later to have multiple profiles, because you won’t need to run this setup again to specify the profile name; you will only need to run setup to create the additional named profiles.
 
 All setups begin with DSV asking your tenant name and domain. Your domain is based on the server location was chosen during provisioning: United States, European Union, or Australia.
 
 ```bash
 thy init --advanced
-Please enter tenant name: example
-Please choose domain:
+ Please enter tenant name: example
+ Please choose domain:
         (1) secretsvaultcloud.com (default)
         (2) secretsvaultcloud.eu
         (3) secretsvaultcloud.com.au
 ```
+  
 
 Specify the tenant name Thycotic provided when setting up your organization’s account.
 
@@ -141,10 +142,12 @@ Finally, you will be prompted for your username, password, and Thycotic One prov
 
 ```bash
 Please enter username for tenant "acme":
-Please enter password:
-Thycotic One authentication provider name (leave blank for local users): thy-one
+ Please enter password:
+ Thycotic One authentication provider name (leave blank for local users): thy-one
 ```
 
 That completes setup. You can begin using the DevOps Secrets Vault Command Line Interface to administer secrets in your organization’s secure cloud-hosted secrets vault.
 
-The [Commands Overview](..\06-cli-overview\index.md), [Commands Examples](..\07-cli-examples\index.md), and [CLI Reference](..\08-cli-ref\index.md) articles will get you started.
+The [Commands Overview](..\06-cli-overview\index.md), [Commands Examples](..\07-cli-examples\index.md), and [CLI Reference](..\08-cli-ref\index.md) articles will get you started.  
+  
+
