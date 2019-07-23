@@ -4,7 +4,7 @@
 
 # Overview
 
-DevOps Secrets Vault (DSV) offers a cross-platform, up to date solution for securing your organization’s secrets (most commonly, credentials) in a cloud-hosted vault, where your staff administer them using a Command Line Interface (CLI) and your applications access them programmatically by calls to a RESTful Application Programming Interface (API).
+DevOps Secrets Vault (DSV) offers a cross-platform cloud solution for securing your organization’s secrets (most commonly, credentials) in a cloud-hosted vault, where your staff administer them using a Command Line Interface (CLI) and your applications access them programmatically by calls to a RESTful Application Programming Interface (API).
 
 DSV marks an expansion of Thycotic’s product line to include back-office and developer tools. It meets your technical staff where they live—at the command line—and talks to your applications in the language they speak, through an API. DevOps Secrets Vault allows faster automation of secrets operations at higher volumes, suiting it for use by non-human actors, such as servers (physical or virtual), containers, and applications. DSV helps eliminate risky practices like hardcoding credentials in configuration files, or storing them in an Excel spreadsheet.
 
