@@ -4,7 +4,7 @@
 
 # Permissions
 
-DevOps Secrets Server configs are all about permissions. To see the current permissions policies, you read out the contents of the config:
+DevOps Secrets Vault configs are all about permissions. To see the current permissions policies, you read out the contents of the config:
 
 ```bash
 thy config read -be yaml

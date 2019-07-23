@@ -10,9 +10,9 @@ DSV marks an expansion of Thycotic’s product line to include back-office and d
 
 ## Application Model
 
-Thycotic created DevOps Secrets Vault as a modern application rooted in the serverless architecture of Amazon Web Services (AWS) Lambda. In congruence with the Software-as-a-Service (SaaS) model, the secrets vaults and the API reside in the Cloud, and Thycotic provisions each customer with a tenancy.
+Thycotic created DevOps Secrets Vault as a modern application rooted in the serverless architecture of Amazon Web Services (AWS) Lambda. In congruence with the Software-as-a-Service (SaaS) model, the secrets vaults and the API reside in the cloud, and Thycotic provisions each customer with a tenancy.
 
-However, the CLI (Command Line Interface) must be considered core to the product as well, and this installs locally. The Thycotic website offers CLI executable downloads for Windows, Linux, and MacOS in both 32 and 64-bit architectures. Importantly, Thycotic offers the CLI for DevOps Secrets Server as an open source, customizable component of the DSV cloud service, with the source code available on Github.
+However, the CLI (Command Line Interface) must be considered core to the product as well, and this installs locally. The Thycotic website offers CLI executable downloads for Windows, Linux, and MacOS in both 32 and 64-bit architectures. Importantly, Thycotic offers the CLI for DevOps Secrets Vault as an open source, customizable component of the DSV cloud service, with the source code available on Github.
 
 * See [Obtain DSV](../02-obtain/index.md) for instructions on how to get DevOps Secrets Vault up and running for your organization.
 
@@ -47,7 +47,7 @@ For customers interested in creating their own extensions to integrate DSV into 
 
 ## DevOps Secrets Vault API Documentation
 
-For those doing application development, the separately located [API Documentation](https://api.secretsvaultcloud.com) lists the available API calls and pins out their correct use for quick integration and customization into your applications.
+For those doing application development, the separately located [API Documentation](https://dsv.thycotic.com/api) lists the available API calls and details their correct use for quick integration and customization into your applications.
 
 ## Tools for Development
 
