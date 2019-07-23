@@ -26,7 +26,13 @@ Customers with paid licenses for DSV have access to support by phone and email. 
 
 ### Support by Phone
 
-Thycotic support can be contacted worldwide via the phone numbers below:
+To obtain support by phone you must first login to the Support Portal to obtain a PIN. You must provide the PIN when you call to show that your license includes support. The PIN also makes it easier for the person helping you to locate your customer records, promoting a better support experience.
+
+* Visit the [Support Portal Login Page](https://thycotic.force.com/support/s/login/) using the credentials you received when you became a paid user of DevOps Secrets Vault.
+
+* After logging in, you will be on the main page. Click on the large blue bar labeled PIN to obtain a PIN number. Write this down so you will have it ready when you call.
+
+Thycotic delivers support by phone worldwide. Select the most relevant number from this list:
 
 * AMERICAS: +1 202 991 0540
 * EMEA: +44 20 3880 0017 (UK)
@@ -34,7 +40,7 @@ Thycotic support can be contacted worldwide via the phone numbers below:
 * APAC: +61 3 8595 5827 (Australia)
   * +63 2 231 3885 (Philippines)
   * +64 9-887 4015 (New Zealand)
-  *+65 3157 0602 (Singapore)
+  * +65 3157 0602 (Singapore)
 
 For any Severity 1 issues, use only the phone support channel. For all others, you can use the means you prefer, including by phone.
 
