@@ -8,7 +8,7 @@ The Jenkins extension allows builds to retrieve secrets from the vault at runtim
 
 ## Obtain
 
-Download the [latest version of the Jenkins HPI extension](https://tools.qabambe.com/jenkins/devops-secrets-vault-jenkins.hpi).
+Download the [latest version of the Jenkins HPI extension](https://dsv.thycotic.com/downloads/jenkins/devops-secrets-vault-jenkins.hpi).
 
 ## Install
 
