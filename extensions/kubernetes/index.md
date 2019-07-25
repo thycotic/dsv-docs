@@ -4,13 +4,19 @@
 
 # Kubernetes
 
-You can obtain the Kubernetes extension here:
+The Kubernetes extension to DevOps Secrets Vault consists of several images available from Docker. These illustrate how to build containers incorporating DevOps Secrets Vault functionality. To obtain these images, at your Docker command line, use `docker pull` commands for each image:
 
-[dsv.thycotic.com/downloads/kubernetes](http://dsv.thycotic.com/downloads/kubernetes)
-
+```bash
+docker pull quay.io/thycotic/devops-secrets-vault-client
+docker pull quay.io/thycotic/devops-secrets-vault-broker
+docker pull quay.io/thycotic/devops-secrets-vault-example
+```
+  
+---
+  
 ## Overview
 
-Kubernetes helps coordinate containerized applications across a cluster of machines. DevOps Secrets Vault (DSV) will integrate with any existing Kubernetes application deployment. In this article, we show how you might implement the DSV application with your cluster.
+Kubernetes helps coordinate containerized applications across a cluster of machines. DevOps Secrets Vault (DSV) will integrate with any existing Kubernetes application deployment. This article, with reference to the example YAML code, explains how you would use the provided client and broker YAML to implement the DSV application with your cluster.
 
 ## Architecture
 
