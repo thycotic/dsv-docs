@@ -36,4 +36,4 @@ The [Customer Support Resources](./11-cust-support/index.md) article connects yo
 
 Related documents (button above articles menu) include those about the [Jenkins](../extensions/jenkins/index.md) and [Kubernetes](../extensions/kubernetes/index.md) extensions and the [DSV Java SDK](../sdk/java/index.md).
 
-Thycotic also provides in a separate location a full [API Reference](dsv.thycotic.com/api) for DevOps Secrets Vault.
+Thycotic also provides in a separate location a full [API Reference](https://dsv.thycotic.com/api) for DevOps Secrets Vault.
