@@ -60,15 +60,9 @@ states in which data exists.
 
 ### Data at Rest
 
-We distinguish between information *about* customers and information customers enter as secrets. 
+Information *about* customers in DynamoDB, and application activity and related logs stored in S3 and sometimes in Elasticsearch during analysis, will always be encrypted when at rest via AWS KMS. If the hardware for those resources were stolen, no breach would occur, since the data is encrypted.
 
-Information *about* customers in Dynamo, and application activity and related logs stored in S3 and sometimes in Elasticsearch during analysis, will always be encrypted when at rest via AWS KMS:
-
-* Amazon shares a key among its customers allowing them to encryupt data when it is stored on Amazon resources. If the hardware for those resources were stolen, no breach would occur, since the data is encrypted.
-
-* Since customers possess the key, the data appears unencrypted to them. If someone were to gain access to the credentials of an Amazon customer, the data would appear unencruypted to them, too—since the stolen credentials have access to the AWS KMS key.
-
-That is why DevOpsSecrets Vault applies an additional layer of encryption protection to customer secrets, where the customer holds one half of the the key and Thycotic the other half. Even for an intruder using stolen Amazon credentials, customer secrets would remain protected, because only by cooperation between Thycotic and each of its customers can customer secrets be read.
+Customer secret data is further encrypted by the application with a customer specific key managed by Thycotic. This helps ensure that if data were exposed, either via a breach in the Amazon Web Services APIs or an application vulnerability that granted read access to a tenant database, the secret data would remain encrypted.
 
 ### Data in Transit
 
