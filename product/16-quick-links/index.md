@@ -4,7 +4,7 @@
 
 # Quick Links
 
-For your convenience, this pages lists commonly used links so you don’t need to remember which page you were on when you saw the link.
+For your convenience, this page lists commonly used links related to DevOps Secrets Vault.
 
 The tables show friendly links on the left with the unadorned URL on the right, in case you need to write the link down, read it to somebody, or prefer to know just where the link goes before using it.
 
@@ -16,7 +16,7 @@ The tables show friendly links on the left with the unadorned URL on the right, 
 |---------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
 | [DSV API Documentation](https://dsv.thycotic.com/api)                                                                                 | https://dsv.thycotic.com/api                                            |
 | [DSV Product Home Page](https://thycotic.com/products/devops-secrets-vault-password-management/)                                      | https://thycotic.com/products/devops-secrets-vault-password-management/ |
-| [Thycotic Support Portal Login Page](https://thycotic.force.com/support/s/login/) \*to get PIN for email or phone support\*           | https://thycotic.force.com/support/s/login/                             |
+| [Thycotic Support Portal Login Page](https://thycotic.force.com/support/s/login/) *to get PIN for email or phone support*           | https://thycotic.force.com/support/s/login/                             |
   
 ---
   
@@ -39,7 +39,7 @@ The tables show friendly links on the left with the unadorned URL on the right, 
   
 | Friendly Link                                                                                                                  | Unadorned Link                                                                                      |
 |--------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
-| The [jq Library](<https://stedolan.github.io/jq/>) \*for filtering JSON results\*                                              | https://stedolan.github.io/jq/                                                                      |
+| The [jq Library](<https://stedolan.github.io/jq/>) *for filtering JSON results*                                              | https://stedolan.github.io/jq/                                                                      |
 | [Linux pass](https://www.passwordstore.org/)                                                                                   | https://www.passwordstore.org/                                                                      |
 | [AWS CLI](https://aws.amazon.com/cli/)                                                                                         | https://aws.amazon.com/cli/                                                                         |
 | [Windows Credential Manager](https://support.microsoft.com/en-us/help/4026814/windows-accessing-credential-manager)            | https://support.microsoft.com/en-us/help/4026814/windows-accessing-credential-manager               |
