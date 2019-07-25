@@ -51,7 +51,7 @@ permissionDocument:
   effect: allow
 ```
 
-For more details about how DSV works with permissions, see the [Permissions](.\06-permissions.md) article.
+For more details about how DSV works with permissions, see the [Permissions](./06-permissions.md) article.
 
 #### Edit
 
