@@ -39,7 +39,7 @@ Some parameters and flags apply only to some commands. DSV also includes output 
 | role | manage roles |
 | secret | create, update, and retrieve secrets from the vault |
 | user | manage users |
-| whoami | display the currently autcahenticated user |
+| whoami | display the currently authenticated user |
   
 ---
   

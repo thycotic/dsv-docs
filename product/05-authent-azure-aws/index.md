@@ -181,7 +181,7 @@ This example assumes that you:
 * have your own thy CLI configured locally with an admin account
 * created an IAM role in the AWS Console
 * launched an EC2 instance using the IAM role
-* [downloaded](https://downloads.lvc.thycotic.com) the thy CLI onto the EC2 instance
+* [downloaded](https://dsv.thycotic.com/downloads) the thy CLI onto the EC2 instance
 
 Create a corresponding role in DSV with the external-id of the IAM role's ARN.
 

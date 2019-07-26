@@ -36,14 +36,11 @@ products and services.
 
 ## Business Continuity
 
-AWS Dynamo databases feature transactional log backups providing a Recovery
+AWS Dynamo databases feature point in time recovery backups with a Recovery
 Point Objective (RPO) of 5 minutes. The recovery time objective (RTO) is under 6
 hours with a target of 20 minutes.
 
 ## Disaster Recovery
-
-In the event of a disaster such as an AWS region failing, we would have to
-rebuild using AMI/CloudFormation files and deploy in a new region.
 
 For the DSV application, the broadest scale of consequence for a disaster would
 be equivalent to an AWS region failing. That would cause complete loss of access
@@ -60,10 +57,9 @@ states in which data exists.
 
 ### Data at Rest
 
-When secrets are in a storage state, they reside in the AWS Dynamo database,
-encrypted via the AWS KMS service using the AWS-owned key.
+Information *about* customers in DynamoDB, and application activity and related logs stored in S3 and sometimes in Elasticsearch during analysis, will always be encrypted when at rest via AWS KMS. If the hardware for those resources were stolen, no breach would occur, since the data is encrypted.
 
-Encryption also applies to logs in S3 storage and Elasticsearch.
+Customer secret data is further encrypted by the application with a customer specific key managed by Thycotic. This helps ensure that if data were exposed, either via a breach in the Amazon Web Services APIs or an application vulnerability that granted read access to a tenant database, the secret data would remain encrypted.
 
 ### Data in Transit
 
@@ -100,11 +96,7 @@ the initial user to reset the password if needed.
 
 ### CLI Code Signing
 
-The downloadable CLI executables include code signing certificates.
-
-Additionally, the download website provides a 256-bit hash of the executable
-file in a text file, so that customers may run a hash check on the downloaded
-material.
+The download website provides a 256-bit hash of the executable files in a text file, so that customers may run a hash check on the downloaded material. The Windows CLI executable is also signed.
 
 ### Token Signing
 
@@ -147,11 +139,8 @@ conformance to GDPR principles.
 
 ### Third Party GDPR Conformance Assessment 
 
-The Thycotic SOC 2 Type II report contains an independent third-party assessment
-of our control environment for conformance to applicable GDPR criteria.
+The Thycotic SOC 2 Type II report contains an independent third-party assessment of our control environment for conformance to applicable GDPR criteria.
 
-The report ties to the AICPA’s Trust Services Criteria (specifically the
-Security, Availability, and Confidentiality criteria) and issues annually in
-accordance with the AICPA’s AT Section 101 (Attest Engagements).
+The report ties to the AICPA’s Trust Services Criteria (specifically the Security, Availability, and Confidentiality criteria) and issues annually in accordance with the AICPA’s AT Section 101 (Attest Engagements).
 
 

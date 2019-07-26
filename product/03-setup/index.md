@@ -20,32 +20,29 @@ DSV records your choices in a **profile**. You can:
 * specify the default profile for commands
 * on a per command basis, specify the profile to be used
 
-You make these choices during setup, which you perform using the command `thy init`.
+You make these choices during setup, which you perform using the command: `thy init`
 
 ## The Simplest Case: Setup with Default Settings
 
 The simplest possible case is to use `thy init` without flags. This will initialize DSV with default settings, so that you do not make any of the above choices and operate the CLI using a single, un-named profile.
 
-To obtain such a default setup, run `thy init`. DSV prompts for your tenant name.
+Run `thy init` to obtain such a default setup. DSV prompts for your tenant name.
 
 ```bash
 thy init
-Please enter tenant name: acme
+ Please enter tenant name: acme
 ```
 
 Specify the tenant name Thycotic provided when setting up your organization’s account.
 
-* Do not specify the full domain—just `acme`, not `acme.secretsvaultcloud.com`—because initialization will add the domain automatically.
+* Do not specify the full domain; use `acme` instead of `acme.secretsvaultcloud.com` because initialization will add the domain automatically.
 
-If your tenant has no user configured, DSV will prompt you to create the initial local administrator.
+When you sign up for a trial and choose your DSV tenant name you are also prompted to create a Thycotic One user. By default the provisioning process links your Thycotic One account and your DSV tenant, so the initial admin you sign in with will be your Thycotic One username and password.
 
 ```bash
-Please choose username for initial local admin: admin
-Please choose password for initial local admin:
-Please choose password for initial local admin (confirm):
+Please enter username for tenant "acme":
+ Please enter password:
 ```
-
-If your tenant already has a user configured, DSV will instead prompt you to enter the username and password for that user, which Thycotic will have provided to you during provisioning.
 
 Once DSV accepts these credentials, you are ready to begin using the DevOps Secrets Vault Command Line Interface to administer secrets in your organization’s secure, cloud-hosted secrets vault.
 
@@ -59,21 +56,25 @@ To configure DSV with your custom choices for these settings, use this command:
 
 When you use the `--advanced` flag, DSV presents you with a series of questions and choices.
 
-> **TIP:** The `--profile` flag allows you to set the name of the profile setup will create, and you can use the `--profile` and `--advanced` flags at the same time. For example:
->
-> `thy init --advanced --profile [name]`
->
-> This is useful if you decide later to have [multiple profiles](.\10-using-mult-profiles.md), because you won’t need to run this setup again to assign the default profile a name; you will only need to run setup to create the additional named profiles.
+* **TIP:** The `--profile` flag allows you to set the name of the profile setup will create; you can use the `--profile` and `--advanced` flags at the same time. For example:
 
-All setups begin with DSV asking your tenant name.
+  `thy init --advanced --profile [name]`
+
+  This is useful if you decide later to have multiple profiles, because you won’t need to run this setup again to specify the profile name; you will only need to run setup to create the additional named profiles.
+
+All setups begin with DSV asking your tenant name and domain. Your domain is based on the server location was chosen during provisioning: United States, European Union, or Australia.
 
 ```bash
 thy init --advanced
-Please enter tenant name: example
-Please enter domain (default:secretsvaultcloud.thycotic.com):
+ Please enter tenant name: example
+ Please choose domain:
+        (1) secretsvaultcloud.com (default)
+        (2) secretsvaultcloud.eu
+        (3) secretsvaultcloud.com.au
 ```
+  
 
-Specify the tenant name Thycotic provided when you set up your organization’s account with Thycotic One.
+Specify the tenant name Thycotic provided when setting up your organization’s account.
 
 * Remember, you need only enter your tenant name, for example, just `acme` not `acme.secretsvaultcloud.com`, because initialization adds the domain automatically.
 
@@ -111,11 +112,11 @@ Select `(2) Client Credential` to authenticate by Client ID and Client Secret au
 
 Select `(3) AWS IAM (federated)` to authenticate as a trusted Identity Access Management Role or User.
 
-Select `(4) Azure (federated)` to authenticate as a trusted Azure Managed Service Identity  (MSI).
+Select `(4) Azure (federated)` to authenticate as a trusted Azure Managed Service Identity (MSI).
 
-The [Authentication: General](..\04-authent-gen\index.md) and [Authentication: Azure or AWS](..\05-authent-azure-aws\index.md) provide details for each of these choices. 
+The [Authentication: General](../04-authent-gen/index.md) and [Authentication: Azure or AWS](../05-authent-azure-aws/index.md) articles provide details for each of these choices.
 
-Finally, the initialization process will prompt about the **cache strategy for secrets**. The choice here depends on your specific set of concerns around security, network connectivity, performance, and systems availability.
+Next, the initialization process will prompt about the **cache strategy for secrets**. The choice here depends on your specific set of concerns around security, network connectivity, performance, and systems availability.
 
 ```bash
 Please enter cache strategy for secrets:
@@ -135,7 +136,18 @@ Please enter cache strategy for secrets:
 
 * The last choice allows use of cached secrets even when they have expired, *provided* the server cannot be reached. This offers the most resilience against disruptions, but may not comport with some organization’s security policies.
 
-Selecting the cache strategy completes setup. You can begin using the DevOps Secrets Vault Command Line Interface to administer secrets in your organization’s secure cloud-hosted secrets vault.
+Finally, you will be prompted for your username, password, and Thycotic One provider name. By default your Thycotic One authentication provider name should be **thy-one**.
 
-The [Commands Overview](..\06-cli-overview\index.md), [Commands Examples](..\07-cli-examples\index.md), and [CLI Reference](..\08-cli-ref\index.md) will get you started.
+* Administrators can create local users not tied to an external authentication system. When authenticating as such a user, leave the prompt for the Thycotic One provider name blank.
+
+```bash
+Please enter username for tenant "acme":
+ Please enter password:
+ Thycotic One authentication provider name (leave blank for local users): thy-one
+```
+
+That completes setup. You can begin using the DevOps Secrets Vault Command Line Interface to administer secrets in your organization’s secure cloud-hosted secrets vault.
+
+The [Commands Overview](../06-cli-overview/index.md), [Commands Examples](../07-cli-examples/index.md), and [CLI Reference](../08-cli-ref/index.md) articles will get you started.  
+  
 

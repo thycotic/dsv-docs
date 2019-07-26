@@ -32,8 +32,8 @@ The [CLI Primer](./06-cli-primer/index.md), [CLI Examples](./07-cli-examples/ind
 
 The [Customer Support Resources](./11-cust-support/index.md) article connects you to available support resources.
 
-[Release Notes](./12-relnotes/index.md) will document the history of changes and updates to the DevOps Secrets Vault service, moving forward. For this first General Availability launch of the service, it describes the overall feature set and task suitability of the product.
+[Release Notes](./12-relnotes/index.md) will document the history of changes and updates to the DevOps Secrets Vault service, moving forward. For this first General Availability launch of the service, it simply notes the date and version number and that this is the first release.
 
 Related documents (button above articles menu) include those about the [Jenkins](../extensions/jenkins/index.md) and [Kubernetes](../extensions/kubernetes/index.md) extensions and the [DSV Java SDK](../sdk/java/index.md).
 
-Thycotic also provides in a separate location a full [API Reference](dsv.thycotic.com/api) for DevOps Secrets Vault.
+Thycotic also provides in a separate location a full [API Reference](https://dsv.thycotic.com/api) for DevOps Secrets Vault.
