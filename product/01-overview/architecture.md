@@ -42,9 +42,6 @@ hours with a target of 20 minutes.
 
 ## Disaster Recovery
 
-In the event of a disaster such as an AWS region failing, we would have to
-rebuild using AMI/CloudFormation files and deploy in a new region.
-
 For the DSV application, the broadest scale of consequence for a disaster would
 be equivalent to an AWS region failing. That would cause complete loss of access
 to Thycotic’s cloud entities located in the failed region for an indefinite,
