@@ -34,6 +34,6 @@ The [Customer Support Resources](./11-cust-support/index.md) article connects yo
 
 [Release Notes](./12-relnotes/index.md) will document the history of changes and updates to the DevOps Secrets Vault service, moving forward. For this first General Availability launch of the service, it simply notes the date and version number and that this is the first release.
 
-Related documents (button above articles menu) include those about the [Jenkins](../extensions/jenkins/index.md) and [Kubernetes](../extensions/kubernetes/index.md) extensions and the [DSV Java SDK](../sdk/java/index.md).
+Related documents (button above articles menu) include those about the [Jenkins](/dsv-extension-jenkins) and [Kubernetes](/dsv-extension-kubernetes) extensions and the [DSV Java SDK](/dsv-sdk-java).
 
 Thycotic also provides in a separate location a full [API Reference](https://dsv.thycotic.com/api) for DevOps Secrets Vault.

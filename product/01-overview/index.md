@@ -35,15 +35,15 @@ DevOps Secrets Vault characteristics include:
 
 DSV extensions support its use with other tools, allowing them to authenticate to DevOps Secrets Vault and thereby enabling a centralized vault for all DevOps needs. Currently, Thycotic offers two extensions.
 
-* The [Jenkins](../extensions/jenkins/index.md) extension supports shops using Jenkins for continuous integration.
+* The [Jenkins](/dsv-extension-jenkins) extension supports shops using Jenkins for continuous integration.
 
-* The [Kubernetes](../extensions/kubernetes/index.md) extension supports organizations using Kubernetes to manage containerized applications.
+* The [Kubernetes](/dsv-extension-kubernetes) extension supports organizations using Kubernetes to manage containerized applications.
 
 Extensions expected in future DSV releases include Puppet, OpenShift, Chef, Ansible, and Salt, among others.
 
 ## Java SDK for DevOps Secrets Vault
 
-For customers interested in creating their own extensions to integrate DSV into their infrastructure, Thycotic provides the [DSV Java SDK](../sdk/java/index.md).
+For customers interested in creating their own extensions to integrate DSV into their infrastructure, Thycotic provides the [DSV Java SDK](/dsv-sdk-java).
 
 ## DevOps Secrets Vault API Documentation
 
