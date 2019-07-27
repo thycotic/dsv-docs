@@ -43,7 +43,7 @@ Extensions expected in future DSV releases include Puppet, OpenShift, Chef, Ansi
 
 ## Java SDK for DevOps Secrets Vault
 
-For customers interested in creating their own extensions to integrate DSV into their infrastructure, Thycotic provides the [DSV Java SDK](/sdk-java).
+For customers interested in creating their own extensions to integrate DSV into their infrastructure, Thycotic provides the [DSV Java SDK](/dsv-sdk-java).
 
 ## DevOps Secrets Vault API Documentation
 
