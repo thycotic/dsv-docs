@@ -10,5 +10,5 @@ Thycotic will provide documentation with a later release of the SDK.
 
 ## Obtain
 
-Use this link to download the [DSV Java SDK](https://dsv.thycotic.com/downloads/java-sdk/devops-secrets-vault-sdk-1.0.jar).
+You can [download the DSV Java SDK](https://mvnrepository.com/artifact/com.thycotic/devops-secrets-vault-sdk/1.0.0) from Thycotic’s Maven repository for DevOps Secrets Vault.
 
