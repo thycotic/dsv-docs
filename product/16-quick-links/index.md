@@ -24,13 +24,13 @@ The tables show friendly links on the left with the unadorned URL on the right, 
   
 ---
   
-| Friendly Link                                                                                                        | Unadorned Link                                                               |
-|----------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------|
-| [DSV CLI Executables Download Page](https://dsv.thycotic.com/downloads)                                              | https://dsv.thycotic.com/downloads                                           |
-| [Jenkins Extension to DSV–the HPI File](https://dsv.thycotic.com/downloads/jenkins/devops-secrets-vault-jenkins.hpi) | https://dsv.thycotic.com/downloads/jenkins/devops-secrets-vault-jenkins.hpi  |
-| [Kubernetes Extension to DSV](/dsv-extension-kubernetes)                                                             | https://docs.thycotic.com/dsv-extension-kubernetes                           |
-| [DSV Java SDK](https://dsv.thycotic.com/downloads/java-sdk/devops-secrets-vault-sdk-1.0.jar)                         | https://dsv.thycotic.com/downloads/java-sdk/devops-secrets-vault-sdk-1.0.jar |
-  
+| Friendly Link                                                                                                        | Unadorned Link                                                                 |
+|----------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------|
+| [DSV CLI Executables Download Page](https://dsv.thycotic.com/downloads)                                              | https://dsv.thycotic.com/downloads                                             |
+| [Jenkins Extension to DSV–the HPI File](https://dsv.thycotic.com/downloads/jenkins/devops-secrets-vault-jenkins.hpi) | https://dsv.thycotic.com/downloads/jenkins/devops-secrets-vault-jenkins.hpi    |
+| [Kubernetes Extension to DSV](/dsv-extension-kubernetes)                                                             | https://docs.thycotic.com/dsv-extension-kubernetes                             |
+| [DSV Java SDK](https://mvnrepository.com/artifact/com.thycotic/devops-secrets-vault-sdk/1.0.0)                       | https://mvnrepository.com/artifact/com.thycotic/devops-secrets-vault-sdk/1.0.0 |
+    
 ---
   
 ## Third-Party Downloads
