@@ -1,5 +1,5 @@
 ﻿[title]: # (CLI Primer)
-[tags]: # (,)
+[tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (1600)
 
 # CLI Primer

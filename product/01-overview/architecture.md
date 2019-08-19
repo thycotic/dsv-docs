@@ -1,5 +1,5 @@
 ﻿[title]: # (Architecture and Security)
-[tags]: # (,)
+[tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (1110)
 
 # Architecture and Security

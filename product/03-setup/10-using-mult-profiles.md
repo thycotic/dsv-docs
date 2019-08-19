@@ -1,5 +1,5 @@
 ﻿[title]: # (Using Multiple Profiles)
-[tags]: # (,)
+[tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (1310)
 
 # Using Multiple Profiles
