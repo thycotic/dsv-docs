@@ -26,46 +26,31 @@ DSV Cloud Service: Version History (Most Recent First)
   
 DSV CLI Executable for Windows: Version History (Most Recent First)
 
-| **Version** | **Date**   | **Notes**                                                                                                                                      |
-|-------------|------------|------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1.0.1       | 2019.08.15 | fixed issue where the CLI returned an error when the stored refresh token had been invalidated and the current cached access token was expired |
-| 1.0.0       | 2019.07.23 | first General Availability release                                                                                                             |
-
--   when you upload a config document from a file via the **config update**
-    command, the updated config from the cloud is now saved back to the local
-    file; this ensures the return to the user of any auto-generated IDs for the
-    permission policies and settings
-
--   fixed initialization issues with windows credential manager and linux pass
-    storage
+| **Version** | **Date**   | **Notes**  |
+|-------------|------------|------------|
+| 1.0.1       | 2019.08.15 | * fixed issue where the CLI returned an error when the stored refresh token had been invalidated and the current cached access token was expired |
+|             |            | * when you upload a config document from a file via the **config update** command, the updated config from the cloud is now saved back to the local file; this ensures the return to the user of any auto-generated IDs for the permission policies and settings |
+|             |            | * fixed initialization issues with Windows Credential Manager |
+| 1.0.0       | 2019.07.23 | first General Availability release |
   
 ---
   
 DSV CLI Executable for Linux: Version History (Most Recent First)
 
-| **Version** | **Date**   | **Notes**                                                                                                                                      |
-|-------------|------------|------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1.0.1       | 2019.08.15 | fixed issue where the CLI returned an error when the stored refresh token had been invalidated and the current cached access token was expired |
-| 1.0.0       | 2019.07.23 | first General Availability release                                                                                                             |
-
--   when you upload a config document from a file via the **config update**
-    command, the updated config from the cloud is now saved back to the local
-    file; this ensures the return to the user of any auto-generated IDs for the
-    permission policies and settings
-
--   fixed initialization issues with Linux pass storage
+| **Version** | **Date**   | **Notes**  |
+|-------------|------------|------------|
+| 1.0.1       | 2019.08.15 | * fixed issue where the CLI returned an error when the stored refresh token had been invalidated and the current cached access token was expired |
+|             |            | * when you upload a config document from a file via the **config update** command, the updated config from the cloud is now saved back to the local file; this ensures the return to the user of any auto-generated IDs for the permission policies and settings |
+|             |            | * fixed initialization issues with Linux pass storage |
+| 1.0.0       | 2019.07.23 | first General Availability release |
   
 ---
   
 DSV CLI Executable for MacOS: Version History (Most Recent First)
 
-| **Version** | **Date**   | **Notes**                                                                                                                                      |
-|-------------|------------|------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1.0.1       | 2019.08.15 | fixed issue where the CLI returned an error when the stored refresh token had been invalidated and the current cached access token was expired |
-| 1.0.0       | 2019.07.23 | first General Availability release                                                                                                             |
-
--   when you upload a config document from a file via the **config update**
-    command, the updated config from the cloud is now saved back to the local
-    file; this ensures the return to the user of any auto-generated IDs for the
-    permission policies and settings
-
+| **Version** | **Date**   | **Notes**  |
+|-------------|------------|------------|
+| 1.0.1       | 2019.08.15 | * fixed issue where the CLI returned an error when the stored refresh token had been invalidated and the current cached access token was expired |
+|             |            | * when you upload a config document from a file via the **config update** command, the updated config from the cloud is now saved back to the local file; this ensures the return to the user of any auto-generated IDs for the permission policies and settings |
+| 1.0.0       | 2019.07.23 | first General Availability release |
+ 
