@@ -14,6 +14,8 @@ Thycotic expects to periodically update DevOps Secrets Vault, such as to provide
 
 This article includes a series of tables to track changes to DSV. The first table covers the cloud basis for DSV, and the others cover the OS-specific CLI executables and the API. In all the tables, the most recent changes appear first.
 
+Remember, you can download the latest CLI executables [here](https://dsv.thycotic.com/downloads).
+
 ## DSV Cloud Service: Change Log
 
   
@@ -36,9 +38,9 @@ This article includes a series of tables to track changes to DSV. The first tabl
 
 | **Version** | **Date**   | **Notes**  |
 |-------------|------------|------------|
-| 1.0.1       | 2019.08.15 | fixed issue where the CLI returned an error when the stored refresh token had been invalidated and the current cached access token was expired |
-|             |            | when you upload a config document from a file via the **config update** command, the updated config from the cloud is now saved back to the local file; this ensures the return to the user of any auto-generated IDs for the permission policies and settings |
-|             |            | fixed initialization issues with Windows Credential Manager |
+| 1.0.1       | 2019.08.15 | fixed: issue where the CLI returned an error when the stored refresh token had been invalidated and the current cached access token was expired |
+|             |            | improved: when you upload a config document from a file via the **config update** command, the updated config from the cloud is now saved back to the local file; this ensures the return to the user of any auto-generated IDs for the permission policies and settings |
+|             |            | fixed: initialization issues with Windows Credential Manager |
 | 1.0.0       | 2019.07.23 | first General Availability release |
 
   
@@ -54,9 +56,9 @@ This article includes a series of tables to track changes to DSV. The first tabl
 
 | **Version** | **Date**   | **Notes**  |
 |-------------|------------|------------|
-| 1.0.1       | 2019.08.15 | fixed issue where the CLI returned an error when the stored refresh token had been invalidated and the current cached access token was expired |
-|             |            | when you upload a config document from a file via the **config update** command, the updated config from the cloud is now saved back to the local file; this ensures the return to the user of any auto-generated IDs for the permission policies and settings |
-|             |            | fixed initialization issues with Linux pass storage |
+| 1.0.1       | 2019.08.15 | fixed: issue where the CLI returned an error when the stored refresh token had been invalidated and the current cached access token was expired |
+|             |            | improved: when you upload a config document from a file via the **config update** command, the updated config from the cloud is now saved back to the local file; this ensures the return to the user of any auto-generated IDs for the permission policies and settings |
+|             |            | fixed: initialization issues with Linux pass storage |
 | 1.0.0       | 2019.07.23 | first General Availability release |
 
   
@@ -72,8 +74,8 @@ This article includes a series of tables to track changes to DSV. The first tabl
 
 | **Version** | **Date**   | **Notes**  |
 |-------------|------------|------------|
-| 1.0.1       | 2019.08.15 | * fixed issue where the CLI returned an error when the stored refresh token had been invalidated and the current cached access token was expired |
-|             |            | * when you upload a config document from a file via the **config update** command, the updated config from the cloud is now saved back to the local file; this ensures the return to the user of any auto-generated IDs for the permission policies and settings |
+| 1.0.1       | 2019.08.15 | fixed: issue where the CLI returned an error when the stored refresh token had been invalidated and the current cached access token was expired |
+|             |            | improved: when you upload a config document from a file via the **config update** command, the updated config from the cloud is now saved back to the local file; this ensures the return to the user of any auto-generated IDs for the permission policies and settings |
 | 1.0.0       | 2019.07.23 | first General Availability release |
 
   
