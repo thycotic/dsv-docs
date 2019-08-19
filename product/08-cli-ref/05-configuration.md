@@ -1,5 +1,5 @@
 ﻿[title]: # (Configurations)
-[tags]: # (,)
+[tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (1850)
 
 # Configurations

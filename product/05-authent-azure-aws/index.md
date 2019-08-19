@@ -1,5 +1,5 @@
 ﻿[title]: # (Authentication: Azure or AWS)
-[tags]: # (,)
+[tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (1500)
 
 # Authentication: Azure or AWS

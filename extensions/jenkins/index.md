@@ -1,5 +1,5 @@
 ﻿[title]: # (Jenkins)
-[tags]: # (,)
+[tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (2300)
 
 # Jenkins Extension for DevOps Secrets Vault 

@@ -1,5 +1,5 @@
 ﻿[title]: # (Secrets)
-[tags]: # (,)
+[tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (1810)
 
 ## Secrets

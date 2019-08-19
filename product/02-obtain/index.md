@@ -1,5 +1,5 @@
 ﻿[title]: # (Obtain DevOps Secrets Vault)
-[tags]: # (,)
+[tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (1200)
 
 # Obtain DevOps Secrets Vault
