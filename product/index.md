@@ -1,5 +1,5 @@
 ﻿[title]: # (Getting Started)
-[tags]: # (,)
+[tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (1000)
 
 # Welcome to the DevOps Secrets Vault Technical Documentation Collection

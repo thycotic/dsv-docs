@@ -1,5 +1,5 @@
 ﻿[title]: # (DSV Java SDK)
-[tags]: # (,)
+[tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (2500)
 
 # DevOps Secrets Vault Java SDK

@@ -1,56 +1,98 @@
 ﻿[title]: # (Release Notes)
-[tags]: # (,)
+[tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (2200)
 
 # Release Notes
 
-The July 2019 release of DevOps Secrets Vault, corresponding to version 1.0.0, marked the product’s first general availability release.
+The July 2019 release of DevOps Secrets Vault marked the product’s first General Availability release.
 
-Thycotic offers DevOps Secrets Vault as a cloud service, so all DSV users always receive the currently offered service.
+Thycotic expects to periodically update DevOps Secrets Vault, such as to provide fixes and improvements or to introduce additional features. As a cloud application, DSV lacks version numbers, because updates become available to all users as they occur—the current version is always the only version available.
 
-* However, users operate DSV through a Command Line Interface (CLI) provided by downloaded, locally installed, and OS-specific executables.
-* Thycotic periodically updates these OS-specific executables to deliver fixes, improvements, and feature additions.
-* Generally, older versions of the CLI executable for an OS will continue to work, but you will want to have the latest to benefit from fixes and obtain new features.
+* However, users operate DSV through a Command Line Interface (CLI) provided by downloaded, locally installed, and OS-specific executables. These bear version numbers.
+* Thycotic periodically updates these OS-specific executables to deliver fixes, improvements, and feature additions. You obtain these updated versions of the CLI executables by downloading them.
+* Generally, older versions of CLI executables will continue to work, but you will want to have the latest executables to benefit from fixes and obtain new features.
 
-This article includes a series of tables to track changes to DSV. The first table covers the cloud basis for DSV, and the others cover the OS-specific CLI executables. 
+This article includes a series of tables to track changes to DSV. The first table covers the cloud basis for DSV, and the others cover the OS-specific CLI executables and the API. In all the tables, the most recent changes appear first.
+
+## DSV Cloud Service: Change Log
+
   
 ---
   
-DSV Cloud Service: Version History (Most Recent First)
 
-| **Version** | **Date**   | **Notes**                          |
-|-------------|------------|------------------------------------|
+| **Version**   | **Notes**                           |
+|---------------|-------------------------------------|
+| July 2019     | first General Availability release  |
+
+  
+---
+  
+
+## DSV CLI Executable for Windows: Version History
+
+  
+---
+  
+
+| **Version** | **Date**   | **Notes**  |
+|-------------|------------|------------|
+| 1.0.1       | 2019.08.15 | fixed issue where the CLI returned an error when the stored refresh token had been invalidated and the current cached access token was expired |
+|             |            | when you upload a config document from a file via the **config update** command, the updated config from the cloud is now saved back to the local file; this ensures the return to the user of any auto-generated IDs for the permission policies and settings |
+|             |            | fixed initialization issues with Windows Credential Manager |
 | 1.0.0       | 2019.07.23 | first General Availability release |
+
   
 ---
   
-DSV CLI Executable for Windows: Version History (Most Recent First)
+
+## DSV CLI Executable for Linux: Version History
+
+  
+---
+  
+
+
+| **Version** | **Date**   | **Notes**  |
+|-------------|------------|------------|
+| 1.0.1       | 2019.08.15 | fixed issue where the CLI returned an error when the stored refresh token had been invalidated and the current cached access token was expired |
+|             |            | when you upload a config document from a file via the **config update** command, the updated config from the cloud is now saved back to the local file; this ensures the return to the user of any auto-generated IDs for the permission policies and settings |
+|             |            | fixed initialization issues with Linux pass storage |
+| 1.0.0       | 2019.07.23 | first General Availability release |
+
+  
+---
+  
+
+## DSV CLI Executable for MacOS: Version History
+
+  
+---
+  
+
 
 | **Version** | **Date**   | **Notes**  |
 |-------------|------------|------------|
 | 1.0.1       | 2019.08.15 | * fixed issue where the CLI returned an error when the stored refresh token had been invalidated and the current cached access token was expired |
 |             |            | * when you upload a config document from a file via the **config update** command, the updated config from the cloud is now saved back to the local file; this ensures the return to the user of any auto-generated IDs for the permission policies and settings |
-|             |            | * fixed initialization issues with Windows Credential Manager |
 | 1.0.0       | 2019.07.23 | first General Availability release |
+
   
 ---
   
-DSV CLI Executable for Linux: Version History (Most Recent First)
 
-| **Version** | **Date**   | **Notes**  |
-|-------------|------------|------------|
-| 1.0.1       | 2019.08.15 | * fixed issue where the CLI returned an error when the stored refresh token had been invalidated and the current cached access token was expired |
-|             |            | * when you upload a config document from a file via the **config update** command, the updated config from the cloud is now saved back to the local file; this ensures the return to the user of any auto-generated IDs for the permission policies and settings |
-|             |            | * fixed initialization issues with Linux pass storage |
-| 1.0.0       | 2019.07.23 | first General Availability release |
+## DSV API Change Log
+
   
 ---
   
-DSV CLI Executable for MacOS: Version History (Most Recent First)
 
-| **Version** | **Date**   | **Notes**  |
-|-------------|------------|------------|
-| 1.0.1       | 2019.08.15 | * fixed issue where the CLI returned an error when the stored refresh token had been invalidated and the current cached access token was expired |
-|             |            | * when you upload a config document from a file via the **config update** command, the updated config from the cloud is now saved back to the local file; this ensures the return to the user of any auto-generated IDs for the permission policies and settings |
-| 1.0.0       | 2019.07.23 | first General Availability release |
- 
+| **Date**   | **Notes**  |
+|------------|------------|
+| 2019.08.15 | fixed: issue where the refresh token generated by Thycotic One authentication was not correctly generating the full subject name and could cause access denied errors |
+|            | fixed: issue where adding a pre-existing Thycotic One user as a DSV user would not correctly save the Thycotic One user id |
+|            | fixed: issue where the config created and updated metadata fields that were not properly shown in responses |
+|            | added: version validation to **config update** to help prevent conflicts |
+
+  
+---
+  

@@ -1,5 +1,5 @@
 ﻿[title]: # (Quick Links)
-[tags]: # (,)
+[tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (2600)
 
 # Quick Links

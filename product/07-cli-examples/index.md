@@ -1,5 +1,5 @@
 ﻿[title]: # (CLI Examples)
-[tags]: # (,)
+[tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (1700)
 
 # CLI Examples

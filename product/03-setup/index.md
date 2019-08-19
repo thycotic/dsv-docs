@@ -1,5 +1,5 @@
 ﻿[title]: # (Setup DevOps Secrets Vault)
-[tags]: # (,)
+[tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (1300)
 
 # Setup DevOps Secrets Vault

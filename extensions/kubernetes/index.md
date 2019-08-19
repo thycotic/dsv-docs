@@ -1,5 +1,5 @@
 ﻿[title]: # (Kubernetes)
-[tags]: # (,)
+[tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (2400)
 
 # Kubernetes

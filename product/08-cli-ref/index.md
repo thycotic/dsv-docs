@@ -1,5 +1,5 @@
 ﻿[title]: # (CLI Reference)
-[tags]: # (,)
+[tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (1800)
 
 # CLI Reference
