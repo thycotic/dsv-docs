@@ -21,16 +21,25 @@ Kubernetes helps coordinate containerized applications across a cluster of machi
 ## Architecture
 
 The illustration shows an example of a Kubernetes Architecture implementation.
+
   
 ---
   
-![image](./images/kubernetes-design.png)
+
+![image](kubernetes-design.png)
+
+  
+* **NOTE**: In studying the diagram, it would be easy to mistakenly conclude that the Kubernetes Secrets Manager is being used to store the pods’ secrets, which is not the case. The role of Kubernetes Secrets Manager here is to distribute TLS certificates to secure the connection between the broker and sidecar agent, in cases where this is desirable. In most cases this would be unnecessary since the user cluster will typically be secured already.
+
+  If secrets were to be stored in Kubernetes Secrets Manager, they would be universally available in the cluster—which is contrary to the goal. Instead, with the DSV Kubernetes plug-in, and with the volume mount sharing depicted in the diagram, each pod sees only its own secrets, and secrets remain available as long as the pods are healthy.
+
   
 ---
   
+
 # Description of Operations
 
-The example application uses a broker and client container deployment with volume mount sharing for pods to access the retreived secrets.  This page includes an example of a `broker.yml` suitable for creation.
+The example application uses a broker and client container deployment with volume mount sharing for pods to access the retrieved secrets.  This page includes an example of a `broker.yml` suitable for creation.
 
 ## Introduction to the Broker
 
