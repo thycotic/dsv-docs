@@ -1,6 +1,6 @@
 ﻿[title]: # (Jenkins)
 [tags]: # (DevOps Secrets Vault,DSV,)
-[priority]: # (2300)
+[priority]: # (100000)
 
 # Jenkins Extension for DevOps Secrets Vault 
 
@@ -16,7 +16,7 @@ In Jenkins, select **Manage Jenkins > Manage Plugins > Advanced**.
 
 Click **Browse**, locate the **devops-secrets-vault-jenkins.hpi** you downloaded, and bring it into Jenkins.
 
-![image](./images/jenkins-upload.png)
+![image](jenkins-upload.png)
 
 ### Linking Jenkins to DevOps Secrets Vault
 
@@ -83,11 +83,11 @@ In Jenkins, use these steps to add the newly created client credential:
 
 * Under **Credentials**, add new credentials.
 
-![image](./images/jenkins-add-credential.png)
+![image](jenkins-add-credential.png)
 
 * Enter the vault url, your tenant name, the clientId, and the clientSecret from the newly created client credential.
 
-![image](./images/jenkins-add-vault-credential.png)
+![image](jenkins-add-vault-credential.png)
 
 * You can specify an ID, or skip this step and let Jenkins autogenerate the ID.
 
@@ -146,7 +146,7 @@ To get credentials in a Freestyle build:
   
 ---
   
-![image](./images/jenkins-build-step.png)
+![image](jenkins-build-step.png)
   
 ---
   
@@ -154,7 +154,7 @@ To get credentials in a Freestyle build:
   
 ---
   
-![image](./images/jenkins-build-output.png)
+![image](jenkins-build-output.png)
   
 ---
   
@@ -191,7 +191,7 @@ node {
   
 ---
   
-![image](./images/jenkins-pipeline.png)
+![image](jenkins-pipeline.png)
   
 ---
   
@@ -199,8 +199,18 @@ Running the pipeline, the output will be the password value of the secret from t
   
 ---
   
-![image](./images/jenkins-pipeline-output.png)
+![image](jenkins-pipeline-output.png)
   
 ---
   
 As expected, the jenkinsfile outputs the password value from the secret at `resources/server01`.
+
+
+
+  
+
+  
+
+______  
+
+![Article End](dsv-bug.png)

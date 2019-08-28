@@ -1,6 +1,6 @@
 ﻿[title]: # (Kubernetes)
 [tags]: # (DevOps Secrets Vault,DSV,)
-[priority]: # (2400)
+[priority]: # (100100)
 
 # Kubernetes
 
@@ -26,7 +26,7 @@ The illustration shows an example of a Kubernetes Architecture implementation.
 ---
   
 
-![image](kubernetes-design.png)
+![image](dsv-and-kubernetes-scaled.png)
 
   
 * **NOTE**: In studying the diagram, it would be easy to mistakenly conclude that the Kubernetes Secrets Manager is being used to store the pods’ secrets, which is not the case. The role of Kubernetes Secrets Manager here is to distribute TLS certificates to secure the connection between the broker and sidecar agent, in cases where this is desirable. In most cases this would be unnecessary since the user cluster will typically be secured already.
@@ -280,3 +280,13 @@ spec:
         secret:
           secretName: thycotic-keys
 ```
+
+
+
+  
+
+  
+
+______  
+
+![Article End](dsv-bug.png)

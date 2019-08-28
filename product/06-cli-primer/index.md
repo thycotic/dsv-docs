@@ -216,3 +216,14 @@ Both of the preceding would create an environment variable named `MYSECRET` that
 ```bash
 echo $MYSECRET
 ```
+
+
+  
+
+  
+
+______  
+
+![Article End](../dsv-bug.png)
+
+  

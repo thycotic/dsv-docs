@@ -96,3 +96,15 @@ Provide a role name and delete the role:
 ```bash
 thy role delete --name test-role
 ```
+
+
+  
+
+  
+
+______  
+
+![Article End](../dsv-bug.png)
+
+  
+
