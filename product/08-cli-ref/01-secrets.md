@@ -190,3 +190,14 @@ To `delete` a secret simply specify the path.
 ``` bash
 thy secret delete --path us-east/server02
 ```
+
+
+  
+
+  
+
+______  
+
+![Article End](../dsv-bug.png)
+
+  
