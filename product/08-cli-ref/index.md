@@ -21,3 +21,14 @@ The common objects of CLI commands include:
 This reference organizes around these subjects, providing task-oriented coverage of DSV features paired with examples.
 
 Thycotic also provides in a separate location a full [API Reference](https://dsv.thycotic.com/api) for DevOps Secrets Vault.
+
+
+  
+
+  
+
+______  
+
+![Article End](../dsv-bug.png)
+
+  

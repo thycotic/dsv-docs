@@ -115,3 +115,14 @@ Delete a local user identified by the full local username:
 ```bash
 thy user delete --username test-admin
 ```
+
+
+  
+
+  
+
+______  
+
+![Article End](../dsv-bug.png)
+
+  
