@@ -176,13 +176,6 @@ In the example below, `roles` is the entity for reading and searching (`list` ac
 
 The syntax of the latter is important. In general, the root form of an entity has no `*` after the entity name, or anything besides the name.
 
-
-  
-
-  
-
-______  
-
 ![Article End](../dsv-bug.png)
 
   

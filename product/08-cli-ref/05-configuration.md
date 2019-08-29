@@ -86,13 +86,6 @@ or
 thy secret update --path us-east/server02 --data \@configfilename.json
 ```
 
-
-  
-
-  
-
-______  
-
 ![Article End](../dsv-bug.png)
 
   

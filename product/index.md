@@ -62,12 +62,6 @@ Additionally, apart from this collection, Thycotic maintains a [DevOps Secrets V
   
 ---
 
-  
-
-  
-
-______  
-
 ![Article End](dsv-bug.png)
 
   
