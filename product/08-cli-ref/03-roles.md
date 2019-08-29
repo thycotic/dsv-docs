@@ -97,13 +97,6 @@ Provide a role name and delete the role:
 thy role delete --name test-role
 ```
 
-
-  
-
-  
-
-______  
-
 ![Article End](../dsv-bug.png)
 
   

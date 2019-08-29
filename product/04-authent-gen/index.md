@@ -64,13 +64,6 @@ See the [Roles](../08-cli-ref/03-roles.md) portion of the CLI Reference for more
 
 Authentication through Azure or AWS requires additional setup steps so that DSV has information about trusted accounts, users, and roles and the permissions assigned to each. The [Authentication: Azure or AWS](../05-authent-azure-aws/index.md) section covers this in detail.
 
-
-  
-
-  
-
-______  
-
 ![Article End](../dsv-bug.png)
 
   
