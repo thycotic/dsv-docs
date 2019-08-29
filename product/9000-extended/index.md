@@ -6,14 +6,6 @@
 
 The Extended Document Collection (not yet set up) will include KB-style articles, and may include training materials, user bulletins, and discussion threads.
 
-
-
-  
-
-  
-
-______  
-
 ![Article End](../dsv-bug.png)
 
   

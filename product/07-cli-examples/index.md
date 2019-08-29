@@ -90,13 +90,6 @@ thy secret read --path /servers/us-east/server01 -bf data.password
 secretp@ssword
 ```
 
-
-  
-
-  
-
-______  
-
 ![Article End](../dsv-bug.png)
 
   

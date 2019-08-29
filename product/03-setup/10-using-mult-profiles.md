@@ -32,13 +32,6 @@ So commanded, the CLI will try to auth as the user specified in the `developer` 
 
 The CLI does not have a command to set the default for all commands moving forward. For that, you should edit the `.thy.yml` file in the home directory to change the profile set as the default.
 
-
-  
-
-  
-
-______  
-
 ![Article End](../dsv-bug.png)
 
   

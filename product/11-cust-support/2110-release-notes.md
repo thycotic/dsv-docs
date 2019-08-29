@@ -6,10 +6,6 @@
 
 The July 2019 release of DevOps Secrets Vault marked the product’s first General Availability release.
 
-  
----
-  
-
 Thycotic periodically updates DevOps Secrets Vault, such as to provide fixes and improvements or to introduce additional features. As a cloud application, DSV lacks version numbers, because updates become available to all users as they occur—the current version is always the only version available.
 
 * However, users operate DSV through a Command Line Interface (CLI) provided by downloaded, locally installed, and OS-specific executables. These bear version numbers.
@@ -18,21 +14,13 @@ Thycotic periodically updates DevOps Secrets Vault, such as to provide fixes and
 
 * The version number will always be the same across the OS editions of the CLI executable; if a change resulting in a version number iteration only affects one of the OS editions, it will be noted, but all editions will still get the new version number.
 
-*You obtain these updated versions of the CLI executables by downloading them from [DevOps Secrets Vault Downloads](https://dsv.thycotic.com/downloads).
+* You obtain these updated versions of the CLI executables by downloading them from [DevOps Secrets Vault Downloads](https://dsv.thycotic.com/downloads).
 
 * Generally, older versions of CLI executables will continue to work, but you will want to have the latest executables to benefit from fixes and obtain new features.
-
-  
----
-  
 
 This article tracks changes to DSV. The first table covers the cloud basis for DSV, and the second covers the OS-specific CLI executables and the API. In both tables, the most recent changes appear first.
 
 ## DSV Cloud Service: Change Log
-
-  
----
-  
 
 | **Date**             | **Notes**                                  |
 |----------------------|--------------------------------------------|
@@ -42,15 +30,7 @@ This article tracks changes to DSV. The first table covers the cloud basis for D
 |                      | added: version validation to **config update** to help prevent conflicts |
 | July 2019            | first General Availability of the service  |
 
-  
----
-  
-
 ## DSV CLI Executables for Windows, Linux, and MacOS: Version History
-
-  
----
-  
 
 | **Version** | **Date**   | **Notes**  |
 |-------------|------------|------------|
@@ -59,15 +39,5 @@ This article tracks changes to DSV. The first table covers the cloud basis for D
 |             |            | fixed: initialization issues with Windows Credential Manager and Linux Pass storage |
 | 1.0.0       | 2019.07.23 | version coinciding with the July 2019 first General Availability of the DSV service |
 
-  
----
-
-  
-
-  
-
-______  
 
 ![Article End](..\dsv-bug.png)
-
-  

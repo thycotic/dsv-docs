@@ -22,13 +22,6 @@ This reference organizes around these subjects, providing task-oriented coverage
 
 Thycotic also provides in a separate location a full [API Reference](https://dsv.thycotic.com/api) for DevOps Secrets Vault.
 
-
-  
-
-  
-
-______  
-
 ![Article End](../dsv-bug.png)
 
   

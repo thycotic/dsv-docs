@@ -355,13 +355,6 @@ Read an existing secret to verify you are able to authenticate and access data.
 thy secret read --path /servers/us-east/server01 -b
 ```
 
-
-  
-
-  
-
-______  
-
 ![Article End](../dsv-bug.png)
 
   
