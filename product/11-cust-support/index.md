@@ -14,9 +14,9 @@ Support options depend on license status, with paid licenses having more support
 
 If you have a free license, use this document collection to find information about DSV and how to use it.
 
-The [CLI Primer](./06-cli-primer/index.md), [CLI Examples](./07-cli-examples/index.md), and [CLI Reference](./08-cli-ref/index.md) articles cover the details of using DevOps Secrets Vault.
+The [CLI Primer](../06-cli-primer/), [CLI Examples](../07-cli-examples/), and [CLI Reference](../08-cli-ref/) articles cover the details of using DevOps Secrets Vault.
 
-The [Authentication: General](./04-authent-gen/index.md) covers typical installations, and the [Authentication: Azure or AWS](./05-authent-azure-aws/index.md) section covers use of DSV with third party authentication platforms.
+The [Authentication: General](../04-authent-gen/) covers typical installations, and the [Authentication: Azure or AWS](../05-authent-azure-aws/) section covers use of DSV with third party authentication platforms.
 
 For those doing application development, the separately located [API Documentation](https://dsv.thycotic.com/api) lists the available API calls and details their correct use for quick integration and customization into your applications.
 
