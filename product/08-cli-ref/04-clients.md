@@ -1,5 +1,5 @@
 ﻿[title]: # (Clients)
-[tags]: # (,)
+[tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (1840)
 
 ## Clients
@@ -74,3 +74,7 @@ The `delete` command accepts a client ID as a parameter and deletes from the vau
 ```bash
 thy client delete --client-id a59d37bf-4028-4eb9-9df4-6f1fea7d9298
 ```
+
+![Article End](../dsv-bug.png)
+
+  

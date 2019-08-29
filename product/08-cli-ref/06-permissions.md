@@ -1,5 +1,5 @@
 ﻿[title]: # (Permissions)
-[tags]: # (,)
+[tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (1860)
 
 # Permissions
@@ -175,3 +175,8 @@ In the example below, `roles` is the entity for reading and searching (`list` ac
 ```
 
 The syntax of the latter is important. In general, the root form of an entity has no `*` after the entity name, or anything besides the name.
+
+![Article End](../dsv-bug.png)
+
+  
+

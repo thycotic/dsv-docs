@@ -1,5 +1,5 @@
 ﻿[title]: # (Obtain DevOps Secrets Vault)
-[tags]: # (,)
+[tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (1200)
 
 # Obtain DevOps Secrets Vault
@@ -47,3 +47,7 @@ Add the location of the executable to your PATH environment variable so you can 
 * For Linux or macOS, use `export` to modify the shell profile file, for example `~.profile` or `~.bash_profile`, so that it adds thy to the PATH on system startup:
 
   `export PATH=~thycotic/cli:$PATH`
+
+![Article End](../dsv-bug.png)
+
+  

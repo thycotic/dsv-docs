@@ -1,5 +1,5 @@
 ﻿[title]: # (Using Multiple Profiles)
-[tags]: # (,)
+[tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (1310)
 
 # Using Multiple Profiles
@@ -31,3 +31,7 @@ For a config with more than one profile, the profile used by default for any com
 So commanded, the CLI will try to auth as the user specified in the `developer` profile and attempt to read the secret as that user.
 
 The CLI does not have a command to set the default for all commands moving forward. For that, you should edit the `.thy.yml` file in the home directory to change the profile set as the default.
+
+![Article End](../dsv-bug.png)
+
+  

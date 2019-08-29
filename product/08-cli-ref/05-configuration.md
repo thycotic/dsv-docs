@@ -1,5 +1,5 @@
 ﻿[title]: # (Configurations)
-[tags]: # (,)
+[tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (1850)
 
 # Configurations
@@ -85,3 +85,7 @@ or
 ```bash
 thy secret update --path us-east/server02 --data \@configfilename.json
 ```
+
+![Article End](../dsv-bug.png)
+
+  

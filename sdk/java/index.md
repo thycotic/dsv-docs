@@ -1,5 +1,5 @@
 ﻿[title]: # (DSV Java SDK)
-[tags]: # (,)
+[tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (2500)
 
 # DevOps Secrets Vault Java SDK
@@ -12,3 +12,4 @@ Thycotic will provide documentation with a later release of the SDK.
 
 You can [download the DSV Java SDK](https://mvnrepository.com/artifact/com.thycotic/devops-secrets-vault-sdk/1.0.0) from Thycotic’s Maven repository for DevOps Secrets Vault.
 
+![image](dsv-bug.png)

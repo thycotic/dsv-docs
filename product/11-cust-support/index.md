@@ -1,5 +1,5 @@
 ﻿[title]: # (Customer Support Resources)
-[tags]: # (,)
+[tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (2100)
 
 # Customer Support Resources
@@ -34,13 +34,28 @@ To obtain support by phone you must first login to the Support Portal to obtain 
 
 Thycotic delivers support by phone worldwide. Select the most relevant number from this list:
 
-* AMERICAS: +1 202 991 0540
-* EMEA: +44 20 3880 0017 (UK)
-* +49 69 6677 37597 (Germany)
-* APAC: +61 3 8595 5827 (Australia)
-  * +63 2 231 3885 (Philippines)
-  * +64 9-887 4015 (New Zealand)
-  * +65 3157 0602 (Singapore)
+Thycotic delivers support by phone worldwide. Select the applicable number from this table.
+
+  
+---
+  
+
+| **Region** | **Country** | **Support Number** |
+|------------|-------------|--------------------|
+|            |             |                    |
+| AMERICAS   | all         | \+1 202 991 0540   |
+|            |             |                    |
+| EMEA       | UK          | \+44 20 3880 0017  |
+|            | Germany     | \+49 69 6677 37597 |
+|            |             |                    |
+| APAC       | Australia   | \+61 3 8595 5827   |
+|            | Philippines | \+63 2 231 3885    |
+|            | New Zealand | \+64 9-887 4015    |
+|            | Singapore   | \+65 3157 0602     |
+
+  
+---
+  
 
 For any Severity 1 issues, use only the phone support channel. For all others, you can use the means you prefer, including by phone.
 
@@ -55,15 +70,16 @@ To obtain support by email you must login to the Support Portal to obtain a PIN 
 * After logging in, you will be on the main page. Click on the large blue bar labeled PIN to obtain a PIN number.
 
 * Send your email to support@thycotic.com **with the PIN number as part of the subject line** of your email, for example:
+
   * PIN 345 My Script Stopped Running Unexpectedly
 
 To help Thycotic help you, be sure to include this information in your email body:
 
-1. your company name
-2. a contact name
-3. a contact phone number
-4. the product name
-5. a detailed description of the issue
+1. company name
+2. contact name
+3. contact phone number
+4. product name
+5. details of the issue
 
 You must send your email using an email account the address of which is already noted in your account with Thycotic.
 Sending a support request from an email not on file may delay case assignment.
@@ -76,3 +92,7 @@ As an alternative to support by email, you can open a support ticket and track y
 
 * After logging in, you will be on the main page. Click the **Cases** tab, then **Create a Case**.
 * Follow the instructions to complete the case entry.
+
+![Article End](../dsv-bug.png)
+
+  

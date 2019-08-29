@@ -1,5 +1,5 @@
 ﻿[title]: # (Roles)
-[tags]: # (,)
+[tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (1830)
 
 ## Roles
@@ -96,3 +96,8 @@ Provide a role name and delete the role:
 ```bash
 thy role delete --name test-role
 ```
+
+![Article End](../dsv-bug.png)
+
+  
+

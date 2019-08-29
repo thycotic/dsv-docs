@@ -1,5 +1,5 @@
 ﻿[title]: # (Overview)
-[tags]: # (,)
+[tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (1100)
 
 # Overview
@@ -54,3 +54,7 @@ For those doing application development, the separately located [API Documentati
 As detailed by [Obtain DSV](../02-obtain/index.md), Thycotic offers a feature-complete, non-time-limited **free version** of DevOps Secrets Vault that supports up to 250 secrets and 2500 API calls a month.
 
 Thycotic also offers customers extra **Sandbox** tenancies for testing configurations and functionality before production deployment.
+
+![Article End](../dsv-bug.png)
+
+  

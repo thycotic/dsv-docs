@@ -1,5 +1,5 @@
 ﻿[title]: # (CLI Examples)
-[tags]: # (,)
+[tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (1700)
 
 # CLI Examples
@@ -89,3 +89,7 @@ When you need to locate a specific field in a JSON output, use a JSON filter. An
 thy secret read --path /servers/us-east/server01 -bf data.password
 secretp@ssword
 ```
+
+![Article End](../dsv-bug.png)
+
+  

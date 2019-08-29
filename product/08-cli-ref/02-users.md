@@ -1,5 +1,5 @@
 ﻿[title]: # (Users)
-[tags]: # (,)
+[tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (1820)
 
 ## Users
@@ -115,3 +115,7 @@ Delete a local user identified by the full local username:
 ```bash
 thy user delete --username test-admin
 ```
+
+![Article End](../dsv-bug.png)
+
+  

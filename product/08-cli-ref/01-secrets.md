@@ -1,5 +1,5 @@
 ﻿[title]: # (Secrets)
-[tags]: # (,)
+[tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (1810)
 
 ## Secrets
@@ -190,3 +190,7 @@ To `delete` a secret simply specify the path.
 ``` bash
 thy secret delete --path us-east/server02
 ```
+
+![Article End](../dsv-bug.png)
+
+  

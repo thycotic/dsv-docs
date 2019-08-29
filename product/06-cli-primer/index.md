@@ -1,5 +1,5 @@
 ﻿[title]: # (CLI Primer)
-[tags]: # (,)
+[tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (1600)
 
 # CLI Primer
@@ -216,3 +216,7 @@ Both of the preceding would create an environment variable named `MYSECRET` that
 ```bash
 echo $MYSECRET
 ```
+
+![Article End](../dsv-bug.png)
+
+  

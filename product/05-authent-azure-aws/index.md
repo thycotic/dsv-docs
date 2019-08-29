@@ -1,5 +1,5 @@
 ﻿[title]: # (Authentication: Azure or AWS)
-[tags]: # (,)
+[tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (1500)
 
 # Authentication: Azure or AWS
@@ -354,3 +354,7 @@ Read an existing secret to verify you are able to authenticate and access data.
 ```bash
 thy secret read --path /servers/us-east/server01 -b
 ```
+
+![Article End](../dsv-bug.png)
+
+  
