@@ -6,7 +6,7 @@
 
 The DSV Java SDK is in pre-release and does not come with documentation. Thycotic intends it for technically mature organizations interested in creating their own extensions to integrate DSV into their infrastructure.
 
-Thycotic will provide documentation with a later release of the SDK.
+Thycotic will provide documentation with an upcoming release of the SDK.
 
 ## Obtain
 
