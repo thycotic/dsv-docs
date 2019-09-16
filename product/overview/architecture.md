@@ -15,7 +15,9 @@ DSV supports the Thycotic One, AWS, and Azure cloud authentication providers.
 Activities originate on customer premises in three ways:
 
 * a command entered manually using the CLI
+
 * a command issued by a running shell script or application
+
 * an API call by an application
   
 ---
@@ -79,6 +81,7 @@ Username/password could also link to Thycotic1 for authentication. This allows t
 
 ## Integrity Checks
 
+Both code signing and token signing further secure the DSV service.
 
 ### CLI Code Signing
 
