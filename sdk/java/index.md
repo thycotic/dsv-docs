@@ -2,7 +2,7 @@
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (2500)
 
-# DevOps Secrets Vault Java SDK
+# DSV Java SDK
 
 The DSV Java SDK is in pre-release and does not come with documentation. Thycotic intends it for technically mature organizations interested in creating their own extensions to integrate DSV into their infrastructure.
 
