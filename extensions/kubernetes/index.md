@@ -1,6 +1,6 @@
 ﻿[title]: # (Kubernetes)
-[tags]: # (,)
-[priority]: # (2400)
+[tags]: # (DevOps Secrets Vault,DSV,)
+[priority]: # (100100)
 
 # Kubernetes
 
@@ -11,9 +11,7 @@ docker pull quay.io/thycotic/devops-secrets-vault-client
 docker pull quay.io/thycotic/devops-secrets-vault-broker
 docker pull quay.io/thycotic/devops-secrets-vault-example
 ```
-  
----
-  
+
 ## Overview
 
 Kubernetes helps coordinate containerized applications across a cluster of machines. DevOps Secrets Vault (DSV) will integrate with any existing Kubernetes application deployment. This article, with reference to the example YAML code, explains how you would use the provided client and broker YAML to implement the DSV application with your cluster.
@@ -21,16 +19,20 @@ Kubernetes helps coordinate containerized applications across a cluster of machi
 ## Architecture
 
 The illustration shows an example of a Kubernetes Architecture implementation.
+
+![image](dsv-and-kubernetes-scaled.png)
+
+In studying the diagram, it would be easy to mistakenly conclude that the Kubernetes Secrets Manager is being used to store the pods’ secrets, which is not the case. The role of Kubernetes Secrets Manager here is to distribute TLS certificates to secure the connection between the DSV broker and sidecar agent, in cases where this is desirable. In most cases this would be unnecessary since the user cluster will typically be secured already.
+
+If secrets were to be stored in Kubernetes Secrets Manager, they would be universally available in the cluster—which is contrary to the goal. Instead, with the DSV broker, and with the volume mount sharing depicted in the diagram, each pod sees only its own secrets, and secrets remain available as long as the pods are healthy.
+
   
 ---
   
-![image](./images/kubernetes-design.png)
-  
----
-  
+
 # Description of Operations
 
-The example application uses a broker and client container deployment with volume mount sharing for pods to access the retreived secrets.  This page includes an example of a `broker.yml` suitable for creation.
+The example application uses a **broker** and client container deployment with volume mount sharing for pods to access the retrieved secrets.  This page includes an example of a `broker.yml` suitable for creation.
 
 ## Introduction to the Broker
 
@@ -271,3 +273,5 @@ spec:
         secret:
           secretName: thycotic-keys
 ```
+
+![Article End](dsv-bug.png)
