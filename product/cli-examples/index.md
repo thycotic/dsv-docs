@@ -1,12 +1,12 @@
-﻿[title]: # (CLI Examples)
+﻿[title]: # (CLI Secrets Examples)
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (1700)
 
-# CLI Examples
+# CLI Secrets Examples
 
 Organizations use DSV to secure and protect sensitive information—secrets. Common secrets include passwords, SSH keys, and SSL certificates. While in practice JSON and YAML form the content of most secrets, your vault will accept almost anything represented as a file on computer media.
 
-Every secret correlates uniquely with a specific path that describes the location of the secret within a collection of many other secrets. The idea here is no different than the concept of a path to a file on a hard drive. A path uniquely identifies every secret, and by using paths, you organize your vault and define access permissions.
+Every secret correlates uniquely with a specific path that describes the location of the secret within a collection of many other secrets. The idea here is no different than the concept of a path to a file on a hard drive. A path uniquely identifies every secret, and by using paths, you organize your vault and create the basis of policy on who can access what paths, in other words, permissions.
 
 ## Create a Secret
 
@@ -89,6 +89,30 @@ When you need to locate a specific field in a JSON output, use a JSON filter. An
 thy secret read --path /servers/us-east/server01 -bf data.password
 secretp@ssword
 ```
+
+## Separately Update Attributes, Data, and Description
+
+Using `--data`, `--attributes`, and `--desc` flags, respectively, you can update data, attributes, and description separately. For example:
+
+```bash
+thy secret update servers/us-east/server01 --data '{"host": "server01", “password”: “badpassword”,”username”: “admininistrator”}' --desc 'update description’  --attributes ‘{“attr”: “add one”}’
+
+
+{
+  "attributes": {
+       “attr”: “add one”
+},
+  "data": {
+    "host": "server01",
+    "password": "badpassword",
+    "username": "administrator"
+  },
+  “description”: “update description”,
+  "id": "c5239a6c-422e-4f57-b3a6-5167656af852",
+  "path": "servers:us-east:server01"
+}
+```
+
 
 ![Article End](../dsv-bug.png)
 

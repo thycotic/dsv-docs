@@ -2,7 +2,7 @@
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (1)
 
-# Welcome to the DevOps Secrets Vault (DSV) Technical Documentation Collection
+# Welcome to DevOps Secrets Vault (DSV) Technical Assistance
 
   
 ---
@@ -26,7 +26,7 @@ Neither works without the other, so you must set up both before you can use DevO
 
   * [Authentication: Azure or AWS](./authent-azure-aws/index.md) covers use of DSV with third party authentication platforms.
 
-When you have finished set up steps, don’t be finished with this doc resource--this collection is full of information about DevOps Secrets Vault and how to use it most effectively.
+When you have finished set up steps, don’t be finished with this doc resource—this collection is full of information about DevOps Secrets Vault and how to use it most effectively.
 
   
 ---
@@ -54,13 +54,7 @@ The [CLI Primer](./cli-primer/index.md), [CLI Examples](./cli-examples/index.md)
 
 * Until this extended collection debuts, **Related documents** (the button at the top of the Navigation Panel) provides access to articles about the [Jenkins](/dsv-extension-jenkins) and [Kubernetes](/dsv-extension-kubernetes) extensions and the [DSV Java SDK](/dsv-sdk-java).
 
----
-  
-
-Additionally, apart from this collection, Thycotic maintains a [DevOps Secrets Vault API Reference](https://dsv.thycotic.com/api).
-
-  
----
+Alongside this collection, Thycotic maintains a [DevOps Secrets Vault API Reference](https://dsv.thycotic.com/api).
 
 ![Article End](dsv-bug.png)
 

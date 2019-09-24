@@ -1,10 +1,10 @@
-﻿[title]: # (Permissions)
+﻿[title]: # (Policy)
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (1860)
 
-# Permissions
+# Policy
 
-DevOps Secrets Vault configs are all about permissions. To see the current permissions policies, you read out the contents of the config:
+DevOps Secrets Vault configs are all about the policies that control permissions. To see the current permissions policies, you read out the contents of the config:
 
 ```bash
 thy config read -be yaml
