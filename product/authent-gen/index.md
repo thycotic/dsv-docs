@@ -62,7 +62,7 @@ See the [Roles](../cli-ref/roles.md) portion of the CLI Reference for more infor
 
 ### Third Party Authentication
 
-Authentication through Azure or AWS requires additional setup steps so that DSV has information about trusted accounts, users, and roles and the permissions assigned to each. The [Authentication: Azure or AWS](../authent-azure-aws/index.md) section covers this in detail.
+Authentication through Azure or AWS requires additional setup steps so that DSV has information about trusted accounts, users, and roles and the permission policies applicable to each. The [Authentication: Azure or AWS](../authent-azure-aws/index.md) section covers this in detail.
 
 ![Article End](../dsv-bug.png)
 

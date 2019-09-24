@@ -6,10 +6,10 @@
 
 Paths record the filesystem locations of executables. The configuration for DevOps Secrets Vault
 
-* defines paths and permissions for paths within the application, and
+* defines paths and policy for paths access (permissions) within the application, and
 * contains settings for third-party authentication providers like AWS or ARN, if present
 
-The DSV configuration, or ‘config,’ exists as a YAML or JSON document. Put simply, it is all about permissions.
+The DSV configuration, or ‘config,’ exists as a YAML or JSON document. Put simply, it is all about the policy by which you manage and control permissions.
 
 ## Commands that Act on Configurations
   
@@ -51,7 +51,7 @@ permissionDocument:
   effect: allow
 ```
 
-For more details about how DSV works with permissions, see the [Permissions](./permissions.md) article.
+DSV policy objects provide permissions management. For details, see the [Policy](./policy.md) article.
 
 #### Edit
 
