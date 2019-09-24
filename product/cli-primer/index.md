@@ -27,19 +27,20 @@ Some parameters and flags apply only to some commands. DSV also includes output 
   
 ---
   
-| Commmand | Definition |
-| ----------- | ------------- |
-| auth | authenticate to the vault or display the current access token |
-| cli-config | manage DSV settings |
-| client | manage client credentials for application vault access |
-| config | manage the top level DSV app configuration document shared by all users |
-| eval | check the value of a command line flag or variable |
-| init | initialize DSV on first run |
-| permission | manage permissions for secrets, roles, users, and other entities in the vault |
-| role | manage roles |
-| secret | create, update, and retrieve secrets from the vault |
-| user | manage users |
-| whoami | display the currently authenticated user |
+| Commmand   | Syntax                               | Definition                                                                                |
+| ---------- | ------------------------------------ | ----------------------------------------------------------------------------------------- |
+| auth       | auth                                 |  authenticate to the vault or display the current access token                            |
+| cli-config | init                                 | manage DSV settings                                                                       |
+| client     | client (<client-id> \| --client-id)  | manage client credentials for application vault access                                    |
+| config     | config                               |  manage the top level DSV app configuration document shared by all users                  |
+| eval       | eval                                 | check the value of a command line flag or variable                                        |
+| group      | group (<group-name> \| --group-name) | manage collections of users uniformly by placing them in managed group                    |
+| init       | cli-config init                      | initialize DSV on first run                                                               |
+| policy     | policy (<path> \| --path \| -r)      | manage policies on permissions for secrets, roles, users, and other entities in the vault |
+| role       | role (<name> \| --name \| -n)        | manage roles                                                                              |
+| secret     | secret (<path> \| --path \| -r)      | create, update, and retrieve secrets from the vault                                       |
+| user       | user (<username> \| --username)      | manage users                                                                              |
+| whoami     | whoami                               | display the currently authenticated user                                                  |
   
 ---
   

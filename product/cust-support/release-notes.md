@@ -20,19 +20,19 @@ This article tracks changes to DSV. Highlights of the most recent update appear 
 
 ## September 2019 Release Notes Highlights
 
-Users can now *update a secret’s data, attributes, and description individually* by using the --data, --attributes and --desc flags, respectively.
+Users can now **update a secret’s data, attributes, and description individually** by using the --data, --attributes and --desc flags, respectively.
 
-*Configuration now scales more effectively*, with policies and authentication providers residing in separate files to allow for independent updates. Before, a single configuration file held all policies and authentication providers.
+**Configuration now scales more effectively**, with policies and authentication providers residing in separate files to allow for independent updates. Before, a single configuration file held all policies and authentication providers.
 
-This release *omits the `permissions` command because the `policy` command supersedes it*—named policies no longer require everyone to modify a global document. 
+This release **omits the `permissions` command because the `policy` command supersedes it**—named policies no longer require everyone to modify a global document. 
 
-To fix a bug in the API Audit Search function, *the `secret` parameter in Audit Search is now the `path` parameter*.
+To fix a bug in the API Audit Search function, **the `secret` parameter in Audit Search is now the `path` parameter**.
 
-A *new Change Password feature* enables users to change their passwords.
+A **new Change Password feature** enables users to change their passwords.
 
-*Adding users to a group achieves permissions delegation* in this release.
+**Adding users to a group achieves permissions delegation** in this release.
 
-*Deleting a secret now deletes all past versions*, rather than just the latest.
+**Deleting a secret now deletes all past versions**, rather than just the latest.
 
 ## DSV Cloud Service: Change Log
 
@@ -51,6 +51,13 @@ A *new Change Password feature* enables users to change their passwords.
 |                        | fixed: issue where the config created and updated metadata fields that were not properly shown in responses |
 |                        | added: version validation to **config update** to help prevent conflicts |
 | July 2019              | first General Availability of the service  |
+
+  
+
+
+  
+
+
 
 ## DSV CLI Executables for Windows, Linux, and MacOS: Version History
 
