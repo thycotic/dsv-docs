@@ -16,16 +16,38 @@ The name qualifier format `provider name:local name` means for example that the 
   
 ---
   
-| Command | Action |
-| ----- | ----- |
-| create | create a user in the vault |
-| search | find users by username |
-| read | read a user’s details |
-| delete | delete a user from the vault |
+| Command        | Action                         |
+| -------------- | ------------------------------ |
+| changepassword | change a local user’s password |
+| create         | create a user in the vault     |
+| search         | find users by username         |
+| read           | read a user’s details          |
+| delete         | delete a user from the vault   |
   
 ---
   
 ### Examples
+
+#### Changepassword
+
+The `changepassword` command, effective for local users only, initiates an elemental password change sequence:
+
+```bash
+thy auth changepassword
+
+Please enter your current password:
+*************
+
+Please enter the new password:
+*************
+
+Please enter the new password (confirm):
+*************
+```
+
+With a local user, correct entry for the current password prompt, and valid, matching responses to the first and second prompts for the new password, the response will be a message that the password has been changed.
+
+A Thycotic One Federated user must instead visit Thycotic One to change their password. Attempting to use the changepassword command within the CLI will fail, with DVS directing the external user to visit [](https://thycotic-one-sscdev-dev-eastus-web01.azurewebsites.net).
 
 #### Create
 
