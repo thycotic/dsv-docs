@@ -34,7 +34,7 @@ This technical documentation collection for DevOps Secrets Vault (DSV) includes 
  
 * The search box at upper right provides direct access to articles relevant to your search terms. It pulls results from the entire collection, both Core and (eventually) Extended.
 
-The Navigation Panel’s headings pull together information supporting a solid grounding in DevOps Secrets Vault. That includes the overview, setup, and configuration material linked above for new users, plus:
+The Navigation Panel’s headings pull all of this together to support a solid grounding in DevOps Secrets Vault, backed by references, examples, and other technical aids:
 
 The [CLI Primer](./cli-primer/index.md), [CLI Examples](./cli-examples/index.md), and [CLI Reference](./cli-ref/index.md) articles cover the details of using DevOps Secrets Vault.
 
