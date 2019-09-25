@@ -19,17 +19,13 @@ Kubernetes helps coordinate containerized applications across a cluster of machi
 ## Architecture
 
 The illustration shows an example of a Kubernetes Architecture implementation.
-
+ 
 ![image](dsv-and-kubernetes-scaled.png)
-
+ 
 In studying the diagram, it would be easy to mistakenly conclude that the Kubernetes Secrets Manager is being used to store the pods’ secrets, which is not the case. The role of Kubernetes Secrets Manager here is to distribute TLS certificates to secure the connection between the DSV broker and sidecar agent, in cases where this is desirable. In most cases this would be unnecessary since the user cluster will typically be secured already.
 
 If secrets were to be stored in Kubernetes Secrets Manager, they would be universally available in the cluster—which is contrary to the goal. Instead, with the DSV broker, and with the volume mount sharing depicted in the diagram, each pod sees only its own secrets, and secrets remain available as long as the pods are healthy.
-
-  
----
-  
-
+ 
 # Description of Operations
 
 The example application uses a **broker** and client container deployment with volume mount sharing for pods to access the retrieved secrets.  This page includes an example of a `broker.yml` suitable for creation.
@@ -49,6 +45,7 @@ In using the `broker.yml` file, be sure to first swap in variable values appropr
           value: PR8mWU8Xpz7yIgUgMXeQQHFJRlBVY1ple-2apYOMowZ
 ```
 
+ 
 When the broker is running, it watches for new pods coming online that execute with a specific annotation, *dsv*. For each such pod, it looks at the value of the **tenant** to be used, and adds the pod to its internal registry.
 
 ### The Broker YAML File
@@ -63,8 +60,8 @@ rules:
 - apiGroups: [""] # "" indicates the core API group
   resources: ["pods"]
   verbs: ["get", "watch", "list"]
-
----
+ 
+ 
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
@@ -77,16 +74,16 @@ subjects:
   - kind: ServiceAccount
     name: default
     namespace: default
-
----
+ 
+ 
 apiVersion: v1
 kind: Secret
 metadata:
   name: thycotic-keys
   namespace: default
 type: Opaque
-
----
+ 
+ 
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
@@ -129,8 +126,8 @@ spec:
         - name: secretkey
           secret:
             secretName: thycotic-keys
-
----
+ 
+ 
 kind: Service
 apiVersion: v1
 metadata:
@@ -142,8 +139,8 @@ spec:
   - protocol: TCP
     port: 80
     targetPort: 3000
-
----
+ 
+ 
 kind: Service
 apiVersion: v1
 metadata:
@@ -161,9 +158,8 @@ spec:
     port: 443
     targetPort: 443
 ```
-  
----
-  
+ 
+
 This file can also be used locally; for example:
 
 `kubectl create -f broker.yml`
@@ -172,16 +168,16 @@ This file can also be used locally; for example:
 
 The client container fetches and periodically updates a configuration file stored at a shared volume. This is defined as a shared volume by the pods within the container (see `example.yml`).
 
-> Note: In your application container, make sure you add a volume mount to the shared information, as follows.
+Be sure in your application container to add a volume mount to the shared information, as follows.
 
 ```yaml
 volumeMounts:
 - name: client-volume
     mountPath: /var/secret/
 ```
-
+ 
 For the container running the DSV client, you should define the following as environment variables:
-
+ 
 ```yaml
 env:
 - name: REFRESH_TIME
@@ -197,9 +193,9 @@ env:
     fieldRef:
         fieldPath: metadata.name
 ```
-
+ 
 `THY_SECRETS` defines the path(s) of the secrets the container uses. This is a list separated by spaces.
-
+ 
 ## Example YAML
 
 ```yaml
@@ -210,9 +206,8 @@ metadata:
   namespace: default
 type: Opaque
 ```
-  
----
-  
+ 
+
 ```yaml
 apiVersion: apps/v1beta2
 kind: Deployment
@@ -274,4 +269,5 @@ spec:
           secretName: thycotic-keys
 ```
 
+ 
 ![Article End](dsv-bug.png)
