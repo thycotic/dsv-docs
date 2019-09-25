@@ -34,7 +34,7 @@ By default, the executable file name as downloaded will reflect the OS and 32-bi
 
 Place the executable in the location of your choice, and as suitable for the device OS.
 
-Note the path to the executable, that is, the location on the storage media, for example, `C:\program files\thycotic`, as you will need this for the PATH environment variable of the OS.
+Note the path to the executable, that is, the location on the storage media—for example `C:\program files\thycotic`—as you will need this for the PATH environment variable of the OS.
 
 ## Add the Executable Path to the PATH Environment Variable
 
@@ -44,9 +44,9 @@ Add the location of the executable to your PATH environment variable so you can 
 
   Select the offered item. Windows will display the System Properties dialog. Use the Environment Variables button to reach the Environment Variables dialog.
 
-  Add the path to the `thy` executable (for example, `C:\thycotic\cli`) to the PATH system variable.
+  Add the path to the `thy` executable—for example `C:\thycotic\cli`—to the PATH system variable.
 
-* For Linux or macOS, use `export` to modify the shell profile file, for example `~.profile` or `~.bash_profile`, so that it adds thy to the PATH on system startup:
+* For Linux or macOS, use `export` to modify the shell profile file, `~.profile` or `~.bash_profile` typically, so that it adds thy to the PATH on system startup:
 
   `export PATH=~thycotic/cli:$PATH`
 
