@@ -42,7 +42,7 @@ Password authentication relies directly on individual user accounts. Routine act
 
 * adding the new user to the DSV config
 
-See the [Users](../cli-ref/users.md) portion of the CLI Reference for details.
+See the [Users](../cli-ref/user.md) portion of the CLI Reference for details.
 
 ### Client Credentials
 
@@ -58,7 +58,7 @@ Routine activities associated with this authentication method include:
 
 * invoking the `init` command and supplying those client credentials
 
-See the [Roles](../cli-ref/roles.md) portion of the CLI Reference for more information.
+See the [Roles](../cli-ref/role.md) portion of the CLI Reference for more information.
 
 ### Third Party Authentication
 
