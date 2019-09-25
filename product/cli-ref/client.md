@@ -1,8 +1,8 @@
-﻿[title]: # (Clients)
+﻿[title]: # (Client)
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (1840)
 
-## Clients
+## Client
 
 Client credentials enable applications to authenticate as the role assigned to the client record.
 
