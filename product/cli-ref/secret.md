@@ -1,8 +1,8 @@
-﻿[title]: # (Secrets)
+﻿[title]: # (Secret)
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (1810)
 
-## Secrets
+## Secret
 
 Secrets are sensitive data protected in your vault. Many secrets relate to authentication—such as passwords, SSH keys, and SSL certificates—but secrets can be anything represented as a file on computer storage media.
 
