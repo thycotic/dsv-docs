@@ -148,7 +148,7 @@ Please enter username for tenant "acme":
 
 That completes setup. You can begin using the DevOps Secrets Vault Command Line Interface to administer secrets in your organization’s secure cloud-hosted secrets vault.
 
-The [Commands Overview](../cli-overview/index.md), [Commands Examples](../cli-examples/index.md), and [CLI Reference](../cli-ref/index.md) articles will get you started.  
+The [CLI Primer](../cli-primer/index.md), [CLI Examples](../cli-examples/index.md), and [CLI Reference](../cli-ref/index.md) articles will get you started.  
 
 ![Article End](../dsv-bug.png)
 
