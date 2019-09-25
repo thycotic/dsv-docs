@@ -53,10 +53,10 @@ settings:
 * `properties` are configuration settings specific to the authentication provider
  
  
-| Property     | Provider      | Description|
-| :----------- |:------------- | :-----------|
-| accountid    | aws           | AWS account ID where the users or roles will be authorized|
-| tenantid     | azure         | Azure tenant ID where the MSIs will be authorized|
+| Property     | Provider      | Description                                                |
+| :----------- | :------------ | :--------------------------------------------------------- |
+| accountid    | aws           | AWS account ID where the users or roles will be authorized |
+| tenantid     | azure         | Azure tenant ID where the MSIs will be authorized          |
  
  
 Note that the account identifiers for third-party authentication are a top level setting that allow you or other users to authorize specific security principals within that account. They do not automatically grant access to any user or role within the provider.
