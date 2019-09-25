@@ -24,9 +24,8 @@ For example, in `thy role create`, `role` is the object of the command `create`.
 Some parameters and flags apply only to some commands. DSV also includes output modifiers for filtering and formatting responses to commands.
 
 ## Commands
-  
----
-  
+ 
+ 
 | Commmand   | Syntax                               | Definition                                                                                |
 | ---------- | ------------------------------------ | ----------------------------------------------------------------------------------------- |
 | auth       | auth                                 |  authenticate to the vault or display the current access token                            |
@@ -41,9 +40,9 @@ Some parameters and flags apply only to some commands. DSV also includes output 
 | secret     | secret (<path> \| --path \| -r)      | create, update, and retrieve secrets from the vault                                       |
 | user       | user (<username> \| --username)      | manage users                                                                              |
 | whoami     | whoami                               | display the currently authenticated user                                                  |
-  
----
-  
+ 
+ 
+
 ## Parameters
 
 Parameters can be:
@@ -113,7 +112,7 @@ C:\> thy secret create --path example/cmd-json --data @secret.json
 
 For passing a file as data, only Powershell requires the file path and name to be wrapped in quote marks, in this case single-quote marks.
 
-## Output Modifiers
+# Output Modifiers
 
 DSV offers global flags that combine with most commands to format or redirect output.
 
@@ -122,7 +121,7 @@ DSV offers global flags that combine with most commands to format or redirect ou
 * `--filter, -f` filter to output only a specific JSON attribute; this feature uses the [jq library](https://stedolan.github.io/jq/)
 * `--out, -o` control the output destination; valid values: `stdout`, `clip`, and `file:[file-name]`, with `stdout` the default
 
-### Encoding and Beautify
+## Encoding and Beautify
 
 `thy secret read --path /servers/us-east/server01 -be yaml`
 
@@ -138,7 +137,7 @@ id: c5239a6c-422e-4f57-b3a6-5167656af852
 path: servers:us-east:server01
 ```
 
-### Filter
+## Filter
 
 The filter modifier relies on a lightweight, flexible command line JSON processor, the [jq library](https://stedolan.github.io/jq/).  Visit the JQ GitHub repo to learn more about how to use JQ.
 
@@ -172,7 +171,7 @@ root-password
 
 The command without the filter produced the entire secret, while the command with the filter read out only the password value.
 
-### Out
+## Out
 
 The `-o` modifier allows output to be redirected to a file.
 
@@ -198,7 +197,7 @@ Contents of secret.json:
 
 Using `-o clip` puts the command output on the OS clipboard.
 
-## Output Piping
+# Output Piping
 
 Output piping takes advantage of a common coding practice in which the value of a parameter passed to a command is itself a command or set of commands. When the outer command receiving the parameter executes, it evaluates the parameter, which requires it to run the command that was passed as a parameter. The output of that command becomes the parameter value for the outer command, which then continues to execute.
 

@@ -23,12 +23,14 @@ Here is an example of JSON that could be made a secret. The JSON is arbitrary, s
     "password": "secretp@ssword"
 }
 ```
+ 
 
 Create the secret and specify the path to its storage location:
 
 ```bash
 thy secret create --path aws/us-east-1/rds/postgres01 --data @secret.json
 ```
+ 
 
 Outputs:
 
@@ -43,6 +45,7 @@ Outputs:
   "path": "servers:us-east:server01"
 }
 ```
+ 
 
 ## Retrieve a Secret
 
@@ -51,12 +54,14 @@ To retrieve a secret use the secret read command and specify the path to the sec
 ```bash
 thy secret read --path /servers/us-east/server01
 ```
+ 
 
 Outputs:
 
 ```bash
 {"attributes":null,"data":{"host":"server01","password":"secretp@ssword","username":"administrator"},"id":"c5239a6c-422e-4f57-b3a6-5167656af852","path":"servers:us-east:server01"}
 ```
+ 
 
 ## Beautify the Output of a Command
 
@@ -65,6 +70,7 @@ To beautify JSON responses to DSV commands, use the `-b` or `--beautify` flag.
 ```bash
 thy secret read --path /servers/us-east/server01 -b
 ```
+ 
 
 Outputs:
 
@@ -80,6 +86,7 @@ Outputs:
   "path": "servers:us-east:server01"
 }
 ```
+ 
 
 ## Filter JSON Command Output for Specific Fields
 
@@ -89,6 +96,7 @@ When you need to locate a specific field in a JSON output, use a JSON filter. An
 thy secret read --path /servers/us-east/server01 -bf data.password
 secretp@ssword
 ```
+ 
 
 ## Separately Update Attributes, Data, and Description
 
