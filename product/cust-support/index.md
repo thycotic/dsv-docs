@@ -3,7 +3,11 @@
 [priority]: # (2100)
 
 ---
+ 
+
 New to DevOps Secrets Vault? Go back to the [Getting Started](../index.htm) page for the steps to obtain, install, and configure DSV.
+
+ 
 ---
 
 # Support
@@ -30,7 +34,7 @@ Paid DSV subscribers have access to support by phone and email. You also can ope
 
 ## Obtaining a Support PIN
 
-To obtain support by email or phone, first log in to the Support Portal to obtain a PIN. The PIN validates that your license includes support, and you must provide the PIN in your email or when you call. The PIN also makes it easier for the person helping you to locate your customer records and give you better support.
+To obtain support by email or phone, first log in to the Support Portal to obtain a PIN. The PIN validates that your license includes support, and you must provide the PIN in your email or when you call. The PIN also makes it easier for the person helping you to locate your customer records and give you better support.
 
 *  Visit the [Support Portal Login Page](https://thycotic.force.com/support/s/login/) using the credentials you received when your organization subscribed to the DSV service.
 
@@ -52,7 +56,8 @@ Thycotic delivers support by phone worldwide. Select the applicable number from 
 |            | Philippines | \+63 2 231 3885    |
 |            | New Zealand | \+64 9-887 4015    |
 |            | Singapore   | \+65 3157 0602     |
-
+ 
+ 
 ## Support by Email
 
 Send your email to support@thycotic.com **with the PIN number as part of the subject line** of your email, for example:

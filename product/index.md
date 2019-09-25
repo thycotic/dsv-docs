@@ -3,15 +3,11 @@
 [priority]: # (1)
 
 # Welcome to DevOps Secrets Vault (DSV) Technical Assistance
-
-  
----
-  
-
+ 
 New user? Make sure you have done all your setup and configuration steps:
-
+ 
 *If you have **already** signed up for a vault, installed the CLI executable, and configured for your authentication provider, you’re good to go—skip down to the next heading. If you have not completed any of these steps, please note the following to get started.*
-
+ 
 The DevOps Secrets Vault service operates through two main components: a cloud-hosted, API-driven vault that stores your secrets, and a locally installed executable that gives you a Command Line Interface (CLI) for managing your secrets through the API.
 
 Neither works without the other, so you must set up both before you can use DevOps Secrets Vault. Additionally, once you are up and running, you must configure for your authentication provider.
@@ -27,11 +23,7 @@ Neither works without the other, so you must set up both before you can use DevO
   * [Authentication: Azure or AWS](./authent-azure-aws/index.md) covers use of DSV with third party authentication platforms.
 
 When you have finished set up steps, don’t be finished with this doc resource—this collection is full of information about DevOps Secrets Vault and how to use it most effectively.
-
-  
----
-  
-
+ 
 # About This Collection
 
 This technical documentation collection for DevOps Secrets Vault (DSV) includes short, topically focused, technically oriented material, including product descriptions, diagrams, instructions, general guidance, and reference content. The collection includes two parts, Core and Extended:
