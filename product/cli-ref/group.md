@@ -1,10 +1,10 @@
-﻿[title]: # (Groups)
+﻿[title]: # (Group)
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (1825)
 
-# Groups
+# Group
 
-Groups facilitate the application of the same policies to all members of a given set of users.
+A Group facilitate the application of the same policies to all members of a given set of Users.
 
 ## Commands that Act on Groups
   

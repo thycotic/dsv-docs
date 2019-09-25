@@ -114,7 +114,7 @@ Select `(3) AWS IAM (federated)` to authenticate as a trusted Identity Access Ma
 
 Select `(4) Azure (federated)` to authenticate as a trusted Azure Managed Service Identity (MSI).
 
-The [Authentication: General](../04-authent-gen/index.md) and [Authentication: Azure or AWS](../05-authent-azure-aws/index.md) articles provide details for each of these choices.
+The [Authentication: General](../authent-gen/index.md) and [Authentication: Azure or AWS](../authent-azure-aws/index.md) articles provide details for each of these choices.
 
 Next, the initialization process will prompt about the **cache strategy for secrets**. The choice here depends on your specific set of concerns around security, network connectivity, performance, and systems availability.
 
@@ -126,7 +126,7 @@ Please enter cache strategy for secrets:
         (4) Cache then server, but allow expired cache if server unreachable
 ```
 
-> Note: In this context, *server* simply means the elements in the cloud that collectively manifest as though a unitary entity, not a literal server.
+Note that in this context, *server* simply means the technical elements in the cloud that collectively manifest as though a unitary entity, not a literal server.
 
 * DSV defaults to **never** caching secrets. Every credential request requires an API call.
 
@@ -148,7 +148,7 @@ Please enter username for tenant "acme":
 
 That completes setup. You can begin using the DevOps Secrets Vault Command Line Interface to administer secrets in your organization’s secure cloud-hosted secrets vault.
 
-The [Commands Overview](../06-cli-overview/index.md), [Commands Examples](../07-cli-examples/index.md), and [CLI Reference](../08-cli-ref/index.md) articles will get you started.  
+The [Commands Overview](../cli-overview/index.md), [Commands Examples](../cli-examples/index.md), and [CLI Reference](../cli-ref/index.md) articles will get you started.  
 
 ![Article End](../dsv-bug.png)
 

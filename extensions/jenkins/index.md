@@ -15,14 +15,16 @@ Download the [latest version of the Jenkins HPI extension](https://dsv.thycotic.
 In Jenkins, select **Manage Jenkins > Manage Plugins > Advanced**.
 
 Click **Browse**, locate the **devops-secrets-vault-jenkins.hpi** you downloaded, and bring it into Jenkins.
-
+ 
+ 
 ![image](jenkins-upload.png)
-
-### Linking Jenkins to DevOps Secrets Vault
+ 
+ 
+## Linking Jenkins to DevOps Secrets Vault
 
 Jenkins must be able to query DSV to look up secrets at build time. To enable this,  you configure a Jenkins credential to authenticate to your vault.
 
-#### Setup Client Credentials
+## Setup Client Credentials
 
 Use the DSV CLI to create a new client credential linked to a role that has read permissions on secrets Jenkins will need. 
 
@@ -77,21 +79,21 @@ permissionDocument:
   - roles:<jenkins>
 ```
 
-#### Add Newly Created Client Credential in Jenkins
+## Add Newly Created Client Credential in Jenkins
 
 In Jenkins, use these steps to add the newly created client credential:
 
 * Under **Credentials**, add new credentials.
-
+ 
 ![image](jenkins-add-credential.png)
-
+ 
 * Enter the vault url, your tenant name, the clientId, and the clientSecret from the newly created client credential.
-
+ 
 ![image](jenkins-add-vault-credential.png)
-
+ 
 * You can specify an ID, or skip this step and let Jenkins autogenerate the ID.
 
-### Create a Test Secret
+## Create a Test Secret
 
 To use secrets from the vault in the Jenkins build pipelines, we need a secret for the jenkins role to access. Note that in the configuration above, the Jenkins role has access to read anything under `resources`. 
 
@@ -143,21 +145,13 @@ To get credentials in a Freestyle build:
     the `password` field of our previously created secret
 
 * In build steps, you can reference the environment variable as you normally would. For example, the shell script shown here will echo the `$MY_PASSWORD` environment variable.
-  
----
-  
+ 
 ![image](jenkins-build-step.png)
-  
----
-  
+ 
 * The console output of the build should show the retrieved secret password value of "somepass1" as expected.
-  
----
-  
+ 
 ![image](jenkins-build-output.png)
-  
----
-  
+ 
 ## Jenkinsfile
 
 In a pipeline, you can bind to the extension to get secrets as environment variables.
@@ -188,21 +182,14 @@ node {
     }
 }
 ```
-  
----
-  
+
+ 
 ![image](jenkins-pipeline.png)
-  
----
-  
+ 
 Running the pipeline, the output will be the password value of the secret from the vault.
-  
----
-  
+ 
 ![image](jenkins-pipeline-output.png)
-  
----
-  
+ 
 As expected, the jenkinsfile outputs the password value from the secret at `resources/server01`.
 
 ![Article End](dsv-bug.png)
