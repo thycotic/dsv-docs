@@ -32,6 +32,7 @@ thy group add-members --group-name admins --data '@/tmp/newmember.json
   "memberNames": ["billy", "larry"]
 }
 ```
+ 
 
 ### Create
 

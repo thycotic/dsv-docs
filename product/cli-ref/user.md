@@ -1,10 +1,10 @@
-﻿[title]: # (Users)
+﻿[title]: # (User)
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (1820)
 
-## Users
+## User
 
-For DSV, the term “users” refers to security principals in the vault that can authenticate locally by a username and password or can authenticate through a federated provider such as Amazon Web Services or Amazon Resource Names.
+For DSV, the term “user” refers to a security principal in the vault that can authenticate locally by a username and password or can authenticate through a federated provider such as Amazon Web Services or Amazon Resource Names.
 
 ### Understanding Qualified Usernames
 
