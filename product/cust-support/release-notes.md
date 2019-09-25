@@ -51,14 +51,10 @@ A **new Change Password feature** enables users to change their passwords.
 |                        | fixed: issue where the config created and updated metadata fields that were not properly shown in responses |
 |                        | added: version validation to **config update** to help prevent conflicts |
 | July 2019              | first General Availability of the service  |
-
-  
-
-
-  
-
-
-
+ 
+  
+  
+ 
 ## DSV CLI Executables for Windows, Linux, and MacOS: Version History
 
 | **Version** | **Date**   | **Notes**  |

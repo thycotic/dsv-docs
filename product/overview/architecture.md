@@ -19,12 +19,12 @@ Activities originate on customer premises in three ways:
 * a command issued by a running shell script or application
 
 * an API call by an application
-  
----
-  
+ 
+ 
 **Architectural Summary View: DevOps Secrets Vault**
-![image](dsv-architecture-simple-01.png)
-  
+![image](dsv-architecture-simple.png)
+ 
+
 The API Gateway receives API calls, obtains the responses, and relays them to the caller using HTTP GET, PUT, POST and other methods common to the REST architectural style. The Authorizer uses OAuth to handle API Gateway authorization.
 
 The Vault Application hosts the core DSV functionality, essentially a set of AWS Lambda (serverless) commands. Lambda auto-scales to demand.
