@@ -180,7 +180,7 @@ thy secret update --path us-east/server02 --data {\\"password\\":\\"secret2\\"}
 or
 
 ```bash
-thy secret update --path us-east/server02 --data \@secret.json
+thy secret update --path us-east/server02 --data @secret.json
 ```
 
 #### Delete
