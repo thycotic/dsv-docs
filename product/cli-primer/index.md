@@ -30,15 +30,15 @@ Some parameters and flags apply only to some commands. DSV also includes output 
 | ---------- | ------------------------------------ | ----------------------------------------------------------------------------------------- |
 | auth       | auth                                 |  authenticate to the vault or display the current access token                            |
 | cli-config | init                                 | manage DSV settings                                                                       |
-| client     | client (<client-id> \| --client-id)  | manage client credentials for application vault access                                    |
+| client     | client (<client-id> | --client-id)  | manage client credentials for application vault access                                    |
 | config     | config                               |  manage the top level DSV app configuration document shared by all users                  |
 | eval       | eval                                 | check the value of a command line flag or variable                                        |
-| group      | group (<group-name> \| --group-name) | manage collections of users uniformly by placing them in managed group                    |
+| group      | group (<group-name> | --group-name) | manage collections of users uniformly by placing them in managed group                    |
 | init       | cli-config init                      | initialize DSV on first run                                                               |
-| policy     | policy (<path> \| --path \| -r)      | manage policies on permissions for secrets, roles, users, and other entities in the vault |
-| role       | role (<name> \| --name \| -n)        | manage roles                                                                              |
-| secret     | secret (<path> \| --path \| -r)      | create, update, and retrieve secrets from the vault                                       |
-| user       | user (<username> \| --username)      | manage users                                                                              |
+| policy     | policy (<path> | --path | -r)      | manage policies on permissions for secrets, roles, users, and other entities in the vault |
+| role       | role (<name> | --name | -n)        | manage roles                                                                              |
+| secret     | secret (<path> | --path | -r)      | create, update, and retrieve secrets from the vault                                       |
+| user       | user (<username> | --username)      | manage users                                                                              |
 | whoami     | whoami                               | display the currently authenticated user                                                  |
  
  
@@ -85,16 +85,16 @@ thy secret create --path example/bash-json --data '{"password":"bash-secret"}'
 ```
 
 ```PowerShell
-PS C:\> thy secret create --path example/ps-json --data '{\"password\":\"powershell-secret\"}'
+PS C:> thy secret create --path example/ps-json --data '{\"password\":\"powershell-secret\"}'
 ```
 
 ```cmd
-C:\> thy secret create --path example/cmd-json --data "{\"password\":\"cmd-secret\"}"
+C:> thy secret create --path example/cmd-json --data "{\"password\":\"cmd-secret\"}"
 ```
 
 ### File Path
 
-Passing JSON as a parameter remains practical only as long as the JSON remains short. Instead of passing JSON as a parameter, you can pass it as a file, using the \@ prefix to specify the path to the file.
+Passing JSON as a parameter remains practical only as long as the JSON remains short. Instead of passing JSON as a parameter, you can pass it as a file, using the @ prefix to specify the path to the file.
 
 For instance, here the command is to create a secret using a local file named secret.json. The examples show the minor variations among operating systems and shells.
 
@@ -103,11 +103,11 @@ thy secret create --path example/bash-json --data @secret.json
 ```
 
 ```PowerShell
-PS C:\> thy secret create --path example/ps-json --data '@secret.json'
+PS C:> thy secret create --path example/ps-json --data '@secret.json'
 ```
 
 ```cmd
-C:\> thy secret create --path example/cmd-json --data @secret.json
+C:> thy secret create --path example/cmd-json --data @secret.json
 ```
 
 For passing a file as data, only Powershell requires the file path and name to be wrapped in quote marks, in this case single-quote marks.

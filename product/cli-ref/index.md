@@ -25,5 +25,3 @@ CLI commands commonly act on these object types:
 This Reference complements the separately maintained [API Reference](https://dsv.thycotic.com/api) for DevOps Secrets Vault.
 
 ![Article End](../dsv-bug.png)
-
-  
