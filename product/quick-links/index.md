@@ -35,7 +35,7 @@ The tables show friendly links on the left with the unadorned URL on the right, 
 | [Windows Credential Manager](https://support.microsoft.com/en-us/help/4026814/windows-accessing-credential-manager)            | https://support.microsoft.com/en-us/help/4026814/windows-accessing-credential-manager               |
 | [Azure User Assigned MSI](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview) | https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview |
 
-![Article End](../dsv-bug.png)
+
 
   
 

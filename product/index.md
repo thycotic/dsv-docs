@@ -48,6 +48,5 @@ The [CLI Primer](./cli-primer/index.md), [CLI Examples](./cli-examples/index.md)
 
 Alongside this collection, Thycotic maintains a [DevOps Secrets Vault API Reference](https://dsv.thycotic.com/api).
 
-![Article End](dsv-bug.png)
 
   

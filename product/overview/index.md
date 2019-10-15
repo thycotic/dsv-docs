@@ -66,6 +66,6 @@ As detailed by [Obtain DSV](../obtain/index.md), Thycotic offers a feature-compl
 
 Thycotic also offers customers extra **Sandbox** tenancies for testing configurations and functionality before production deployment.
 
-![Article End](../dsv-bug.png)
+
 
   
