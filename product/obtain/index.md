@@ -50,6 +50,6 @@ Add the location of the executable to your PATH environment variable so you can 
 
   `export PATH=~thycotic/cli:$PATH`
 
-![Article End](../dsv-bug.png)
+
 
   

@@ -138,6 +138,6 @@ Delete a local user identified by the full local username:
 thy user delete --username test-admin
 ```
 
-![Article End](../dsv-bug.png)
+
 
   

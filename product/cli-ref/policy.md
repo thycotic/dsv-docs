@@ -182,4 +182,4 @@ resources:
 
 Now the developers can create policies below the `secrets:servers:` path; for example, developer1 can create policies for `secrets:servers:webservers` and developer2 can do the same at `secrets:servers:databases`.
 
-![Article End](../dsv-bug.png)
+

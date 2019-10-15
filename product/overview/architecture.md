@@ -119,6 +119,6 @@ The Thycotic SOC 2 Type II report contains an independent third-party assessment
 
 The report ties to the AICPA’s Trust Services Criteria (specifically the Security, Availability, and Confidentiality criteria) and issues annually in accordance with the AICPA’s AT Section 101 (Attest Engagements).
 
-![Article End](../dsv-bug.png)
+
 
   

@@ -122,7 +122,7 @@ thy group delete --group-name admins
 <no response>
 ```
 
-![Article End](../dsv-bug.png)
+
 
   
 

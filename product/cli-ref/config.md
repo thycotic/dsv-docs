@@ -148,4 +148,4 @@ Note that the account identifiers for third-party authentication are a top level
 
 See the [Authentication: AWS and Azure](../authent-azure-aws/) article for examples of using AWS and Azure for authentication.
 
-![Article End](../dsv-bug.png)
+
