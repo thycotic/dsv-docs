@@ -86,6 +86,6 @@ As an alternative to support by email or phone, you can open a support ticket an
 
 * Follow the instructions to complete your case.
 
-![Article End](../dsv-bug.png)
+
 
   

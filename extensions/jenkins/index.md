@@ -192,4 +192,4 @@ Running the pipeline, the output will be the password value of the secret from t
  
 As expected, the jenkinsfile outputs the password value from the secret at `resources/server01`.
 
-![Article End](dsv-bug.png)
+

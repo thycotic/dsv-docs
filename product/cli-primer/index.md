@@ -217,6 +217,6 @@ Both of the preceding would create an environment variable named `MYSECRET` that
 echo $MYSECRET
 ```
 
-![Article End](../dsv-bug.png)
+
 
   

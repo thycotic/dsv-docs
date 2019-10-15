@@ -150,7 +150,7 @@ That completes setup. You can begin using the DevOps Secrets Vault Command Line 
 
 The [CLI Primer](../cli-primer/index.md), [CLI Examples](../cli-examples/index.md), and [CLI Reference](../cli-ref/index.md) articles will get you started.  
 
-![Article End](../dsv-bug.png)
+
 
   
 
