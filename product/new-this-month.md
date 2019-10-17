@@ -2,7 +2,7 @@
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (9005)
 
-# Recent New Features
+# New This Month
 
 These changes and improvements to DSV became effective on Tuesday, October 22.
 
@@ -24,13 +24,12 @@ Related to the new flags for the update command, the data section may now have a
 
 Caching behavior has been updated. The change ensures that among multiple users who might have cached information about the same secret at the same time, changes by one of the users will be seen by the other users should they happen to make a query the results for which would include the changed element.
 
-## CLI Audit 
+## CLI Audit
 
 You can now find and examine audit logs via the CLI. Previously, this was only possible through the API. 
 
-## Soft Delete 
+## Soft Delete
 
 When you delete a secret, role, user, or group, as before it will no longer be usable. However, with the new soft delete capacity of DSV, you now have 72 hours to use the new restore command to in effect undelete the item. After 72 hours, the item will no longer be retrievable.
 
 Should you want to perform a hard delete, precluding any restore operation, you can use the delete command’s --force flag.
-
