@@ -4,15 +4,15 @@
 
 # Overview
 
-DevOps Secrets Vault (DSV) offers a cross-platform, up to date solution for securing your organization’s secrets (most commonly, credentials) in a cloud-hosted vault, where your staff administer them using a Command Line Interface (CLI) and your applications access them programmatically by calls to a RESTful Application Programming Interface (API).
+DevOps Secrets Vault (DSV) offers a cross-platform, up to date solution for securing your organization’s Secrets (most commonly, credentials) in a cloud-hosted vault, where your staff administer them using a Command Line Interface (CLI) and your applications access them programmatically by calls to a RESTful Application Programming Interface (API).
 
 DSV marks an expansion of Thycotic’s product line to include back-office and developer tools. It meets your technical staff where they live—at the command line—and talks to your applications in the language they speak, through an API.
 
-DevOps Secrets Vault allows faster automation of secrets operations at higher volumes, suiting it for use by non-human actors, such as servers (physical or virtual), containers, and applications. DSV helps eliminate risky practices like hardcoding credentials in configuration files, or storing them in an Excel spreadsheet.
+DevOps Secrets Vault allows faster automation of Secrets operations at higher volumes, suiting it for use by non-human actors, such as servers (physical or virtual), containers, and applications. DSV helps eliminate risky practices like hardcoding credentials in configuration files, or storing them in an Excel spreadsheet.
 
 ## Application Model
 
-Thycotic created DevOps Secrets Vault as a modern application rooted in the serverless architecture of Amazon Web Services (AWS) Lambda. In congruence with the Software-as-a-Service (SaaS) model, the secrets vaults and the API reside in the cloud, and Thycotic provisions each customer with a tenancy.
+Thycotic created DevOps Secrets Vault as a modern application rooted in the serverless architecture of Amazon Web Services (AWS) Lambda. In congruence with the Software-as-a-Service (SaaS) model, the Secrets vaults and the API reside in the cloud, and Thycotic provisions each customer with a tenancy.
 
 However, the CLI (Command Line Interface) must be considered core to the product as well, and this installs locally. The Thycotic website offers CLI executable downloads for Windows, Linux, and MacOS in both 32 and 64-bit architectures. Importantly, Thycotic offers the CLI for DevOps Secrets Vault as an open source, customizable component of the DSV cloud service, with the source code available on Github.
 
@@ -34,7 +34,7 @@ DevOps Secrets Vault characteristics include:
 
 * local caching options handle high performance workloads with reduced latency and fewer API calls
 
-* authentication by passwords, client secret keys, and federation through ThycoticOne, AWS IAM, and Azure MSI (Google Cloud planned)
+* authentication by passwords, client Secret keys, and federation through ThycoticOne, AWS IAM, and Azure MSI (Google Cloud planned)
 
   * users and roles of the federated services can be used to provide federated authentication to the DevOps Secrets Vault; by assigning roles as they are created, this solves the bootstrapping issue of autoscaling services
   
@@ -62,7 +62,7 @@ For those doing application development, the separately located [API Documentati
 
 ## Tools for Development
 
-As detailed by [Obtain DSV](../obtain/index.md), Thycotic offers a feature-complete, non-time-limited **free version** of DevOps Secrets Vault that supports up to 250 secrets and 2500 API calls a month.
+As detailed by [Obtain DSV](../obtain/index.md), Thycotic offers a feature-complete, non-time-limited **free version** of DevOps Secrets Vault that supports up to 250 Secrets and 2500 API calls a month.
 
 Thycotic also offers customers extra **Sandbox** tenancies for testing configurations and functionality before production deployment.
 

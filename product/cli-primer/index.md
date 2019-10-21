@@ -17,9 +17,9 @@ Like most Command Line Interface Applications, DevOps Secrets Vault combines—
 
 With few exceptions, CLI commands follow a simple syntax:
 
-  `thy` `object` `command` `flags and parameters`
+  *thy* *object* *command* *flags and parameters*
 
-For example, in `thy role create`, `role` is the object of the command `create`. In English, the command could be written as “the object is a role, and the action to take is to create it.” You will observe this pattern throughout the CLI.
+For example, in *thy role create*, *role* is the object of the command *create*. In English, the command could be written as “the object is a role, and the action to take is to create it.” You will observe this pattern throughout the CLI.
 
 Some parameters and flags apply only to some commands. DSV also includes output modifiers for filtering and formatting responses to commands.
 
@@ -30,15 +30,15 @@ Some parameters and flags apply only to some commands. DSV also includes output 
 | ---------- | ------------------------------------ | ----------------------------------------------------------------------------------------- |
 | auth       | auth                                 |  authenticate to the vault or display the current access token                            |
 | cli-config | init                                 | manage DSV settings                                                                       |
-| client     | client (<client-id> | --client-id)  | manage client credentials for application vault access                                    |
+| client     | client (<client-id> | --client-id)   | manage client credentials for application vault access                                    |
 | config     | config                               |  manage the top level DSV app configuration document shared by all users                  |
 | eval       | eval                                 | check the value of a command line flag or variable                                        |
-| group      | group (<group-name> | --group-name) | manage collections of users uniformly by placing them in managed group                    |
+| group      | group (<group-name> | --group-name)  | manage collections of users uniformly by placing them in managed group                    |
 | init       | cli-config init                      | initialize DSV on first run                                                               |
-| policy     | policy (<path> | --path | -r)      | manage policies on permissions for secrets, roles, users, and other entities in the vault |
-| role       | role (<name> | --name | -n)        | manage roles                                                                              |
-| secret     | secret (<path> | --path | -r)      | create, update, and retrieve secrets from the vault                                       |
-| user       | user (<username> | --username)      | manage users                                                                              |
+| policy     | policy (<path> | --path | -r)        | manage policies on permissions for Secrets, roles, users, and other entities in the vault |
+| role       | role (<name> | --name | -n)          | manage roles                                                                              |
+| secret     | secret (<path> | --path | -r)        | create, update, and retrieve Secrets from the vault                                       |
+| user       | user (<username> | --username)       | manage users                                                                              |
 | whoami     | whoami                               | display the currently authenticated user                                                  |
  
  
@@ -56,21 +56,21 @@ Parameters can be:
 
 Most commands take strings as parameters, quoted or unquoted. For example, the username needs quote marks but the password does not. Both are valid string parameter values.
 
-`thy user create --username "admin1" --password password2`
+*thy user create --username "admin1" --password password2*
 
 If a string value has spaces, it must be wrapped in quotes. For example, when creating a role, the description should be quoted.
 
-`thy role create --name test-role --desc "a test role"`
+*thy role create --name test-role --desc "a test role"*
 
 ### Boolean
 
-Some parameters are simple Boolean flags controlling whether or not something applies, for example, whether to beautify the JSON output of a secret read.
+Some parameters are simple Boolean flags controlling whether or not something applies, for example, whether to beautify the JSON output of a Secret read.
 
-`thy secret read --path example/bash-json --beautify`
+*thy secret read --path example/bash-json --beautify*
 
 ### JSON Data
 
-In some cases the parameter expects JSON. For example, the `--data` parameter on a `thy secret create` command expects JSON data.
+In some cases the parameter expects JSON. For example, the *--data* parameter on a *thy secret create* command expects JSON data.
 
 JSON parameter formatting depends on the OS and shell program.
 
@@ -96,7 +96,7 @@ C:> thy secret create --path example/cmd-json --data "{\"password\":\"cmd-secret
 
 Passing JSON as a parameter remains practical only as long as the JSON remains short. Instead of passing JSON as a parameter, you can pass it as a file, using the @ prefix to specify the path to the file.
 
-For instance, here the command is to create a secret using a local file named secret.json. The examples show the minor variations among operating systems and shells.
+For instance, here the command is to create a Secret using a local file named secret.json. The examples show the minor variations among operating systems and shells.
 
 ```bash
 thy secret create --path example/bash-json --data @secret.json
@@ -116,14 +116,14 @@ For passing a file as data, only Powershell requires the file path and name to b
 
 DSV offers global flags that combine with most commands to format or redirect output.
 
-* `--encoding, -e` specify the output format as either JSON or YAML
-* `--beautify, -b` beautify JSON or YAML output
-* `--filter, -f` filter to output only a specific JSON attribute; this feature uses the [jq library](https://stedolan.github.io/jq/)
-* `--out, -o` control the output destination; valid values: `stdout`, `clip`, and `file:[file-name]`, with `stdout` the default
+* *--encoding, -e* specify the output format as either JSON or YAML
+* *--beautify, -b* beautify JSON or YAML output
+* *--filter, -f* filter to output only a specific JSON attribute; this feature uses the [jq library](https://stedolan.github.io/jq/)
+* *--out, -o* control the output destination; valid values: *stdout*, *clip*, and *file:[file-name]*, with *stdout* the default
 
 ## Encoding and Beautify
 
-`thy secret read --path /servers/us-east/server01 -be yaml`
+*thy secret read --path /servers/us-east/server01 -be yaml*
 
 Outputs:
 
@@ -131,7 +131,7 @@ Outputs:
 attributes: null
 data:
   host: server01
-  password: secretp@ssword
+  password: Secretp@ssword
   username: administrator
 id: c5239a6c-422e-4f57-b3a6-5167656af852
 path: servers:us-east:server01
@@ -169,25 +169,25 @@ thy secret read --path resources/server01/mysql --filter data.password
 root-password
 ```
 
-The command without the filter produced the entire secret, while the command with the filter read out only the password value.
+The command without the filter produced the entire Secret, while the command with the filter read out only the password value.
 
 ## Out
 
-The `-o` modifier allows output to be redirected to a file.
+The *-o* modifier allows output to be redirected to a file.
 
 ```cmd
-thy secret read --path /servers/us-east/server01 -b -o file:secret.json
-\$ nano secret.json
+thy secret read --path /servers/us-east/server01 -b -o file:Secret.json
+\$ nano Secret.json
 ```
 
-Contents of secret.json:
+Contents of Secret.json:
 
 ```json
 {
   "attributes": null,
   "data": {
     "host": "server01",
-    "password": "secretp@ssword",
+    "password": "Secretp@ssword",
     "username": "administrator"
   },
   "id": "c5239a6c-422e-4f57-b3a6-5167656af852",
@@ -195,7 +195,7 @@ Contents of secret.json:
 }
 ```
 
-Using `-o clip` puts the command output on the OS clipboard.
+Using *-o clip* puts the command output on the OS clipboard.
 
 # Output Piping
 
@@ -204,17 +204,17 @@ Output piping takes advantage of a common coding practice in which the value of 
 As an example, you can save any DSV CLI output into an environment variable by piping the output from the standard output into an environment variable.
 
 ```bash
-export MYSECRET=$(thy secret read --path secret1)
+export MYSecret=$(thy secret read --path Secret1)
 ```
 
 ```powershell
-$MYSECRET=thy secret read --path secret1
+$MYSecret=thy secret read --path Secret1
 ```
 
-Both of the preceding would create an environment variable named `MYSECRET` that would store the secret data. To view the data you would use:
+Both of the preceding would create an environment variable named *MYSecret* that would store the Secret data. To view the data you would use:
 
 ```bash
-echo $MYSECRET
+echo $MYSecret
 ```
 
 

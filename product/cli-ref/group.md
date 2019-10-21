@@ -23,7 +23,7 @@ A Group facilitate the application of the same policies to all members of a give
 
 ### Add-Members
 
-Add members to a group similarly to this example, wherein the file `newmember.json` contains: `{"memberNames": [ "billy",”larry’]}`
+Add members to a group similarly to this example, wherein the file *newmember.json* contains: *{"memberNames": [ "billy",”larry’]}*
 
 ```bash
 thy group add-members --group-name admins --data '@/tmp/newmember.json
@@ -36,7 +36,7 @@ thy group add-members --group-name admins --data '@/tmp/newmember.json
 
 ### Create
 
-This example command would create a group named **admins** from a file **data.json** containing `{"groupName": "admins"}` (or same with single-quote marks, for Powershell) and located in the **tmp** folder:
+This example command would create a group named **admins** from a file **data.json** containing *{"groupName": "admins"}* (or same with single-quote marks, for Powershell) and located in the **tmp** folder:
 
 ```bash
 thy group create --data @/tmp/data.json
@@ -63,7 +63,7 @@ thy group create -data {"groupName": "admins"}
 
 Note that in Powershell, single quotes are required and double quotes escaped, like this:
 
-`thy group  create --data  '{\"groupName\": \"administrators\"}'`
+*thy group  create --data  '{\"groupName\": \"administrators\"}'*
 
 
 To see what groups the user Billy belongs to, you would use:
@@ -96,18 +96,18 @@ thy group read --group-name admins
 
 ### Update
 
-This example would assign the **admins** group to an existing policy at the path `secrets:servers:us-west`:
+This example would assign the **admins** group to an existing policy at the path *Secrets:servers:us-west*:
 
-`thy policy update --actions "<.*>" --subjects groups:admins --path secrets/servers/us-west`
+*thy policy update --actions "<.*>" --subjects groups:admins --path Secrets/servers/us-west*
 
 Note that you can designate paths with either of the colon : or forward slash / characters.
 
 ### Delete-Members
 
-To remove members from a group, follow this example, wherein `deletemembers.json` contains: `{"memberNames": ["billy"]}`
+To remove members from a group, follow this example, wherein *deletemembers.json* contains: *{"memberNames": ["billy"]}*
 
 ```bash
-thy group delete-members --group-name admins --data @/tmp/deletemembers.json` 
+thy group delete-members --group-name admins --data @/tmp/deletemembers.json* 
 <no response>
 ```
 
@@ -121,6 +121,11 @@ To delete a group, you would follow this example:
 thy group delete --group-name admins
 <no response>
 ```
+
+When you delete a group, it will no longer be usable. However, with the soft delete capacity of DSV, you have 72 hours to use the *restore* command to in effect undelete the group. After 72 hours, the group will no longer be retrievable.
+
+Should you want to perform a hard delete, precluding any restore operation, you can use the *delete* command’s *--force* flag.
+
 
 
 

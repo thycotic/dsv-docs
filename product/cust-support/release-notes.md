@@ -20,49 +20,49 @@ This article tracks changes to DSV. Highlights of the most recent update appear 
 
 ## October 2019 Release Notes Highlights
 
-With the update command’s **new flags**, *--data*, *-- desc*, and *--attributes*, you can update each of the three parts of a secret separately from the other parts. 
+With the update command’s **new flags**, *--data*, *-- desc*, and *--attributes*, you can update each of the three parts of a Secret separately from the other parts. 
 
-The secret update command also has a **new** *--overwrite* flag. This Boolean flag controls whether the *--data* flag’s content overwrites extant fields in the secret’s data object, or merges with them.
+The Secret update command also has a **new** *--overwrite* flag. This Boolean flag controls whether the *--data* flag’s content overwrites extant fields in the Secret’s data object, or merges with them.
 
-Related to those improvements, a secret’s data section may now have **as many fields as you specify**.
+Related to those improvements, a Secret’s data section may now have **as many fields as you specify**.
 
-**Caching behavior** has been updated. The change provides better handling of situations where two or more users are caching information about a secret and choose to make updates.
+**Caching behavior** has been updated. The change provides better handling of situations where two or more users are caching information about a Secret and choose to make updates.
 
 You can now **find and examine audit logs via the CLI**. Previously, this was only possible through the API. 
 
-The new *restore* command allows you to retrieve a deleted secret, role, user, or group up to 72 hours after deleting it, which places DSV by default in a soft delete posture. However, you can preclude any restore operation by using the *delete* command’s *--force* flag.
+The new *restore* command allows you to retrieve a deleted Secret, role, user, or group up to 72 hours after deleting it, which places DSV by default in a soft delete posture. However, you can preclude any restore operation by using the *delete* command’s *--force* flag.
 
 ## September 2019 Release Notes Highlights
 
 **Configuration now scales more effectively**, with policies and authentication providers residing in separate files to allow for independent updates. Before, a single configuration file held all policies and authentication providers.
 
-This release **omits the `permissions` command because the `policy` command supersedes it**—named policies no longer require everyone to modify a global document. 
+This release **omits the *permissions* command because the *policy* command supersedes it**—named policies no longer require everyone to modify a global document. 
 
-To fix a bug in the API Audit Search function, **the `secret` parameter in Audit Search is now the `path` parameter**.
+To fix a bug in the API Audit Search function, **the *Secret* parameter in Audit Search is now the *path* parameter**.
 
 A **new Change Password feature** enables users to change their passwords.
 
 **Adding users to a group achieves permissions delegation** in this release.
 
-**Deleting a secret now deletes all past versions**, rather than just the latest.
+**Deleting a Secret now deletes all past versions**, rather than just the latest.
 
 ## DSV Cloud Service: Change Log
 
 | **Update**             | **Notes**                                  |
 |------------------------|--------------------------------------------|
-| October 2019           | improvement: a secret’s data, attributes, and description can be individually updated via the update command’s new --data, --attributes and --desc flags, respectively |
-|                        | improvement: the secret update command’s new Boolean --overwrite flag controls whether the --data flag’s content overwrites or merges with extant data object fields |
-|                        | improvement: a secret’s data section may now have as many fields as an organization requires |
-|                        | improvement: updated caching behavior improves outcomes where two or more users with cached secret information choose to make updates  |
+| October 2019           | improvement: a Secret’s data, attributes, and description can be individually updated via the update command’s new --data, --attributes and --desc flags, respectively |
+|                        | improvement: the Secret update command’s new Boolean --overwrite flag controls whether the --data flag’s content overwrites or merges with extant data object fields |
+|                        | improvement: a Secret’s data section may now have as many fields as an organization requires |
+|                        | improvement: updated caching behavior improves outcomes where two or more users with cached Secret information choose to make updates  |
 |                        | improvement: the CLI now supports finding and examining audit logs, previously possible only via the API |
-|                        | improvement: the new restore command allows a deleted secret, role, user, or group to be retrieved up to 72 hours after deletion, excepting when the delete flag --force was used  |
+|                        | improvement: the new restore command allows a deleted Secret, role, user, or group to be retrieved up to 72 hours after deletion, excepting when the delete flag --force was used  |
 |                        |      |
 | September 2019         | improvement: better scaling of configuration files achieved by keeping policies and authentication providers in separate files  |
-|                        | improvement: the `permissions` command has been superseded by the `policy` command; named policies no longer require everyone to modify a global document |
+|                        | improvement: the *permissions* command has been superseded by the *policy* command; named policies no longer require everyone to modify a global document |
 |                        | improvement: the new Change Password feature enables users to change their passwords |
 |                        | improvement: adding users to a group achieves permissions delegation |
-|                        | improvement: deleting a secret now deletes all past versions, rather than just the latest |
-|                        | fixed: the API Audit Search function’s bug, related to the improperly named `secret` parameter, is resolved by the properly named `path` parameter |
+|                        | improvement: deleting a Secret now deletes all past versions, rather than just the latest |
+|                        | fixed: the API Audit Search function’s bug, related to the improperly named *Secret* parameter, is resolved by the properly named *path* parameter |
 |                        |      |
 | August 2019            | fixed: issue where the refresh token generated by Thycotic One authentication was not correctly generating the full subject name and could cause access denied errors |
 |                        | fixed: issue where adding a pre-existing Thycotic One user as a DSV user would not correctly save the Thycotic One user id |

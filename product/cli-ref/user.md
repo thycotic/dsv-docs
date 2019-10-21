@@ -10,7 +10,7 @@ For DSV, the term “user” refers to a security principal in the vault that ca
 
 When a user or role ties to a third-party provider, the name will be the fully qualified name to help distinguish potentially duplicate user or role names across different systems.
 
-The name qualifier format `provider name:local name` means for example that the _test-admin_ user will have the username _aws-dev:test-admin_ while the local user with username _test-admin_ will not have a qualifier, so its username will just be _test-admin_.
+The name qualifier format *provider name:local name* means for example that the _test-admin_ user will have the username _aws-dev:test-admin_ while the local user with username _test-admin_ will not have a qualifier, so its username will just be _test-admin_.
 
 ### Commands that Act on Users
   
@@ -30,7 +30,7 @@ The name qualifier format `provider name:local name` means for example that the 
 
 #### Changepassword
 
-The `changepassword` command, effective for local users only, initiates an elemental password change sequence:
+The *changepassword* command, effective for local users only, initiates an elemental password change sequence:
 
 ```bash
 thy auth changepassword
@@ -51,7 +51,7 @@ A Thycotic One Federated user must instead visit Thycotic One to change their pa
 
 #### Create
 
-The `create` command takes several `--parameters` that spec foundational aspects of the user record.
+The *create* command takes several *--parameters* that spec foundational aspects of the user record.
   
 ---
   
@@ -59,18 +59,18 @@ The `create` command takes several `--parameters` that spec foundational aspects
 | ----- | ----- |
 | --username | local username; required; supports local authentication by username and password; need not match that used by a federated authentication provider (if present) |
 | --password | password for local authentication by username and password |
-| --provider | matches the `name` attribute of the authentication provider in the `settings` section of the config |
+| --provider | matches the *name* attribute of the authentication provider in the *settings* section of the config |
 | --external-id | identifier recognized by third-party federated authentication providers, such as AWS or ARN |
   
 ---
   
-Create a local user with username `_test-admin_` and password `_secret-password`:
+Create a local user with username *_test-admin_* and password *_Secret-password*:
 
 ```bash
-thy user create --username test-admin --password secret-password
+thy user create --username test-admin --password Secret-password
 ```
 
-Create a user account for login by the AWS `IAM _test-admin_` user, with the account tied to an `_aws-dev_` account in the configuration:
+Create a user account for login by the AWS *IAM _test-admin_* user, with the account tied to an *_aws-dev_* account in the configuration:
 
 ```bash
 thy user create --username test-admin --external-id arn:aws:iam::00000000000:user/test-admin --provider aws-dev
@@ -78,7 +78,7 @@ thy user create --username test-admin --external-id arn:aws:iam::00000000000:use
 
 #### Search
 
-The `search` command locates users by searching on their usernames. It accepts as a `--query` parameter the username you provide, and searches for records with a matching username.
+The *search* command locates users by searching on their usernames. It accepts as a *--query* parameter the username you provide, and searches for records with a matching username.
 
 ```bash
 thy user search --query test-admin
@@ -108,7 +108,7 @@ Output:
 
 #### Read
 
-The `read` command retrieves and displays information without changing anything.
+The *read* command retrieves and displays information without changing anything.
 
 Provide a fully qualified username and read the user’s details:
 
@@ -124,7 +124,7 @@ thy user get --username test-admin
 
 #### Delete
 
-The `delete` command will remove records of both local users and users associated with third-party authentication providers. In both cases, you must provide the fully qualified username.
+The *delete* command will remove records of both local users and users associated with third-party authentication providers. In both cases, you must provide the fully qualified username.
 
 Delete a third-party user identified by a fully qualified name:
 
@@ -137,6 +137,10 @@ Delete a local user identified by the full local username:
 ```bash
 thy user delete --username test-admin
 ```
+
+When you delete a user, it will no longer be usable. However, with the soft delete capacity of DSV, you have 72 hours to use the *restore* command to in effect undelete the user. After 72 hours, the user will no longer be retrievable.
+
+Should you want to perform a hard delete, precluding any restore operation, you can use the *delete* command’s *--force* flag.
 
 
 

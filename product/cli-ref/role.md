@@ -22,14 +22,14 @@ With DSV, the term “role” describes a security principal in the vault that t
 
 #### Create
 
-The `create` command takes several `--parameters` that spec key aspects of the role record.
+The *create* command takes several *--parameters* that spec key aspects of the role record.
 
  
 | Parameter | Content |
 | ----- | ----- |
 | --desc | description of the role |
 | --name | name of the role |
-| --provider | matches the `name` attribute of the authentication provider in the `settings` section of the config |
+| --provider | matches the *name* attribute of the authentication provider in the *settings* section of the config |
 | --external-id | identifier recognized by third-party federated authentication providers, such as AWS or ARN |
 
  
@@ -41,7 +41,7 @@ thy role create --name test-role
 
 #### Search
 
-The `search` command locates roles by searching on their role names. It accepts as a `--query` parameter the role name you provide, and searches for records with a matching role name.
+The *search* command locates roles by searching on their role names. It accepts as a *--query* parameter the role name you provide, and searches for records with a matching role name.
 
 Search for a role named *\_dev-admin\_*:
 
@@ -63,7 +63,7 @@ thy role search --query us-east/server02 --limit 2 --cursor eyJpZCI6ImZmZjZjODUx
 
 #### Read
 
-The `read` command retrieves and displays information without changing anything.
+The *read* command retrieves and displays information without changing anything.
 
 Provide a role name and read the role’s details in beautified form:
 
@@ -73,9 +73,9 @@ thy role read --name test-role -b
 
 #### Update
 
-Use `update` to change a role’s data.
+Use *update* to change a role’s data.
 
->Note that `update` rewrites the **entire** set of role data, even if only a single field has changed. In this way, `update` is highly similar to `create`.
+>Note that *update* rewrites the **entire** set of role data, even if only a single field has changed.
 
 Provide a role name and update the role to replace the description field’s value:
 
@@ -85,7 +85,7 @@ thy role update --name test-role --desc "a new description"
 
 #### Delete
 
-The `delete` command will remove roles.
+The *delete* command will remove roles.
 
 Provide a role name and delete the role:
 
@@ -93,6 +93,9 @@ Provide a role name and delete the role:
 thy role delete --name test-role
 ```
 
+When you delete a role, it will no longer be usable. However, with the soft delete capacity of DSV, you have 72 hours to use the *restore* command to in effect undelete the role. After 72 hours, the role will no longer be retrievable.
+
+Should you want to perform a hard delete, precluding any restore operation, you can use the *delete* command’s *--force* flag.
 
 
   

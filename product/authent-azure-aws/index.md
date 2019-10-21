@@ -8,14 +8,14 @@
 
 After reviewing the information in this section, you may want to edit your DSV configuration to make adjustments appropriate to your organization’s infrastructure particulars.
 
-Working on Linux or MacOS, you can use `thy config edit --encoding yaml` to open your configuration in the OS’s default editor (typically **VI** or **nano**). The editor directly updates the configuration in the vault when you save your work.
+Working on Linux or MacOS, you can use *thy config edit --encoding yaml* to open your configuration in the OS’s default editor (typically **VI** or **nano**). The editor directly updates the configuration in the vault when you save your work.
 
 On Windows, you must:
 
-* use `thy config read -be YAML` to read out the config
+* use *thy config read -be YAML* to read out the config
 * save it as a file
 * edit the file locally
-* use `thy config update --path {path to file} --data \@filename` to upload your work into the vault, entirely overwriting the prior config.
+* use *thy config update --path {path to file} --data \@filename* to upload your work into the vault
 
 The initial config will look similar to this:
 
@@ -43,21 +43,21 @@ clientSecret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 type: thycoticone
 tenantName: company
 ```
-You would modify the `settings` section using:
+You would modify the *settings* section using:
 
-`thy config auth-provider create --name <name> --type <type> --{AWS or Azure flag} <AWS account ID or Azure tenant ID>`
+*thy config auth-provider create --name <name> --type <type> --{AWS or Azure flag} <AWS account ID or Azure tenant ID>*
 
 in which:
 
 * name is the friendly name used in DSV to reference this policy
 * type is the authentication provider type; valid values are aws azure and thycoticone
 * properties are configuration settings specific to the authentication provider
-* the flag for AWS is `--aws-account-id`
-* the flag for Azure is `--azure-tenant-id`
+* the flag for AWS is *--aws-account-id*
+* the flag for Azure is *--azure-tenant-id*
 
 To view the resulting addition to the config file, you would use:
 
-`thy config read -be yaml`
+*thy config read -be yaml*
 
 The readout would look similar to this:
 
@@ -111,9 +111,9 @@ arn:aws:iam::00000000000:user/test-admin --provider aws-dev
 
 After creating the user, modify the config to give that user access to the default administrator permission policy. For details on limiting access to specific paths, see the [Policy](../cli-ref/policy.md) section of the [CLI Reference](../cli-ref/index.md).
 
-`thy config edit --encoding yaml`
+*thy config edit --encoding yaml*
 
-Add `test-admin` as a user subject to the **Default Admin Policy**. Third party accounts must be prefixed with the provider name; in this case, the fully qualified username would be `aws-dev:test-admin`.
+Add *test-admin* as a user subject to the **Default Admin Policy**. Third party accounts must be prefixed with the provider name; in this case, the fully qualified username would be *aws-dev:test-admin*.
 
 ```yaml
 permissionDocument:
@@ -145,9 +145,9 @@ tenantName: company
 
 Next, on a machine with the [AWS CLI](https://aws.amazon.com/cli/) installed and configured with an AWS IAM user, download the DVS CLI executable appropriate to the OS of the machine, and initialize the CLI:
 
-`thy init --advanced`
+*thy init --advanced*
 
-When prompted for the authorization type, choose `AWS IAM (federated)`.
+When prompted for the authorization type, choose *AWS IAM (federated)*.
 
 ```bash
 Please enter auth type:
@@ -163,11 +163,11 @@ Please enter auth type:
 
 DSV will prompt for the specific AWS profile to use if you are authenticating using a non-default AWS profile.
 
-`Please enter aws profile for federated aws auth (optional, default:default)`
+*Please enter aws profile for federated aws auth (optional, default:default)*
 
-Read an existing secret to verify you can authenticate and access data.
+Read an existing Secret to verify you can authenticate and access data.
 
-`thy secret read --path /servers/us-east/server01 -bf data.password secretp@ssword`
+*thy secret read --path /servers/us-east/server01 -bf data.password secretp@ssword*
 
 ### AWS Role Example
 
@@ -196,7 +196,7 @@ You should see a result similar to this:
 }
 ```
 
-Add the role `aws-dev:test-role` to the **Default Admin Policy** in your vault config to grant the new role admin access.
+Add the role *aws-dev:test-role* to the **Default Admin Policy** in your vault config to grant the new role admin access.
 
 ```yaml
 permissionDocument:
@@ -227,11 +227,11 @@ type: azure
 tenantName: company
 ```
 
-On the EC2 instance, configure the CLI by running `thy init --advanced` and choosing AWS IAM as the authentication type.
+On the EC2 instance, configure the CLI by running *thy init --advanced* and choosing AWS IAM as the authentication type.
 
-Once configured, you can read an existing secret to verify the EC2 instance is able able to authenticate and access data.
+Once configured, you can read an existing Secret to verify the EC2 instance is able able to authenticate and access data.
 
-`thy secret read --path /servers/us-east/server01 -bf data.password secretp@ssword`
+*thy secret read --path /servers/us-east/server01 -bf data.password secretp@ssword*
 
 ### Azure User Assigned MSI Example
 
@@ -246,9 +246,9 @@ thy user create --username test-api --provider azure-prod --external-id
 
 Modify the config to give that user access to the default administrator permission policy. For details on limiting access to specific paths see the [Policy](../cli-ref/policy.md) section of the [CLI Reference](../cli-ref/index.md).
 
-`thy config edit --encoding yaml`
+*thy config edit --encoding yaml*
 
-Add the user as a subject to the **Default Admin Policy**. Third party accounts must be prefixed with the provider name; in this case the fully qualified username will be `azure-prod:test-api`.
+Add the user as a subject to the **Default Admin Policy**. Third party accounts must be prefixed with the provider name; in this case the fully qualified username will be *azure-prod:test-api*.
 
 ```yaml
 permissionDocument:
@@ -280,9 +280,9 @@ tenantName: company
 
 On a VM in Azure that has the user MSI assigned as the identity, download the DVS CLI executable appropriate to the OS of the VM and initialize the CLI.
 
-`thy init --advanced`
+*thy init --advanced*
 
-When prompted for the authorization type, choose the `Azure (federated)` authentication option.
+When prompted for the authorization type, choose the *Azure (federated)* authentication option.
 
 ```bash
 Please enter auth type:
@@ -296,7 +296,7 @@ Please enter auth type:
 (4) Azure (federated)
 ```
 
-Read an existing secret to verify you can authenticate and access data.
+Read an existing Secret to verify you can authenticate and access data.
 
 thy secret read --path /servers/us-east/server01 -b
 
@@ -312,9 +312,9 @@ thy role create --name identity-rg --provider azure-prod --external-id /subscrip
 
 Modify the config to give that role access to the default administrator permission policy. For details on limiting access to specific paths see the [Policy](../cli-ref/policy.md) section of the [CLI Reference](../cli-ref/index.md).
 
-`thy config edit --encoding yaml`
+*thy config edit --encoding yaml*
 
-Add the user as a subject to the **Default Admin Policy**. Third party accounts must be prefixed with the provider name; in this case the fully qualified role name will be `azure-prod:identity-rg`.
+Add the user as a subject to the **Default Admin Policy**. Third party accounts must be prefixed with the provider name; in this case the fully qualified role name will be *azure-prod:identity-rg*.
 
 ```yaml
 permissionDocument:
@@ -347,9 +347,9 @@ tenantName: company
 
 On a VM in Azure that is part of the resource group and has a system-assigned MSI, download the DVS CLI executable appropriate to the OS of the VM and initialize the CLI.
 
-`thy init --advanced`
+*thy init --advanced*
 
-When prompted for the authorization type, choose the `Azure (federated)` option.
+When prompted for the authorization type, choose the *Azure (federated)* option.
 
 ```bash
 Please enter auth type:
@@ -363,8 +363,8 @@ Please enter auth type:
 (4) Azure (federated)
 ```
 
-Read an existing secret to verify you are able to authenticate and access data.
+Read an existing Secret to verify you are able to authenticate and access data.
 
-`thy secret read --path /servers/us-east/server01 -b`
+*thy secret read --path /servers/us-east/server01 -b*
 
 
