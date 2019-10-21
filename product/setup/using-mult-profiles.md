@@ -28,7 +28,7 @@ For a config with more than one profile, the profile used by default for any com
 
 *thy secret read --path mySecret --profile developer*
 
-So commanded, the CLI will try to auth as the user specified in the *developer* profile and attempt to read the Secret as that user.
+So commanded, the CLI will try to auth as the User specified in the *developer* profile and attempt to read the Secret as that User.
 
 The CLI does not have a command to set the default for all commands moving forward. For that, you should edit the *.thy.yml* file in the home directory to change the profile set as the default.
 

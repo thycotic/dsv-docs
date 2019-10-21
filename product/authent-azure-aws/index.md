@@ -98,22 +98,22 @@ tenantName: company
 
 ## Authorizing a Security Principal
 
-After creating a provider account, you should authorize specific roles or users.
+After creating a provider account, you should authorize specific Roles or Users.
 
 ### AWS User Example
 
-When you create a user in AWS, remember that the username serves as a friendly name within DSV. It does not have to match the Identity Access Management (IAM) username, but the provider must match the provider name previously configured.
+When you create a User in AWS, remember that the username serves as a friendly name within DSV. It does not have to match the Identity Access Management (IAM) username, but the provider must match the provider name previously configured.
 
 ```bash
 thy user create --username test-admin --external-id
 arn:aws:iam::00000000000:user/test-admin --provider aws-dev
 ```
 
-After creating the user, modify the config to give that user access to the default administrator permission policy. For details on limiting access to specific paths, see the [Policy](../cli-ref/policy.md) section of the [CLI Reference](../cli-ref/index.md).
+After creating the User, modify the config to give that User access to the default administrator permission policy. For details on limiting access to specific paths, see the [Policy](../cli-ref/policy.md) section of the [CLI Reference](../cli-ref/index.md).
 
 *thy config edit --encoding yaml*
 
-Add *test-admin* as a user subject to the **Default Admin Policy**. Third party accounts must be prefixed with the provider name; in this case, the fully qualified username would be *aws-dev:test-admin*.
+Add *test-admin* as a User subject to the **Default Admin Policy**. Third party accounts must be prefixed with the provider name; in this case, the fully qualified username would be *aws-dev:test-admin*.
 
 ```yaml
 permissionDocument:
@@ -174,11 +174,11 @@ Read an existing Secret to verify you can authenticate and access data.
 This example assumes that you:
 
 * have your own thy CLI configured locally with an admin account
-* created an IAM role in the AWS Console
-* launched an EC2 instance using the IAM role
+* created an IAM Role in the AWS Console
+* launched an EC2 instance using the IAM Role
 * [downloaded](https://dsv.thycotic.com/downloads) the thy CLI onto the EC2 instance
 
-Create a corresponding role in DSV with the external-id of the IAM role’s ARN.
+Create a corresponding Role in DSV with the external-id of the IAM Role’s ARN.
 
 ```bash
 thy role create --name test-role --external-id
@@ -196,7 +196,7 @@ You should see a result similar to this:
 }
 ```
 
-Add the role *aws-dev:test-role* to the **Default Admin Policy** in your vault config to grant the new role admin access.
+Add the Role *aws-dev:test-role* to the **Default Admin Policy** in your vault config to grant the new Role admin access.
 
 ```yaml
 permissionDocument:
@@ -235,7 +235,7 @@ Once configured, you can read an existing Secret to verify the EC2 instance is a
 
 ### Azure User Assigned MSI Example
 
-First you will need to configure the user that corresponds to an [Azure User Assigned MSI](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview).
+First you will need to configure the User that corresponds to an [Azure User Assigned MSI](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview).
 
 Remember that the username is a friendly name within DSV. It does not have to match the MSI username, but the provider must match the resource id of the MSI in Azure.
 
@@ -244,11 +244,11 @@ thy user create --username test-api --provider azure-prod --external-id
 /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/build/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-api
 ```
 
-Modify the config to give that user access to the default administrator permission policy. For details on limiting access to specific paths see the [Policy](../cli-ref/policy.md) section of the [CLI Reference](../cli-ref/index.md).
+Modify the config to give that User access to the default administrator permission policy. For details on limiting access to specific paths see the [Policy](../cli-ref/policy.md) section of the [CLI Reference](../cli-ref/index.md).
 
 *thy config edit --encoding yaml*
 
-Add the user as a subject to the **Default Admin Policy**. Third party accounts must be prefixed with the provider name; in this case the fully qualified username will be *azure-prod:test-api*.
+Add the User as a subject to the **Default Admin Policy**. Third party accounts must be prefixed with the provider name; in this case the fully qualified username will be *azure-prod:test-api*.
 
 ```yaml
 permissionDocument:
@@ -278,7 +278,7 @@ type: azure
 tenantName: company
 ```
 
-On a VM in Azure that has the user MSI assigned as the identity, download the DVS CLI executable appropriate to the OS of the VM and initialize the CLI.
+On a VM in Azure that has the User MSI assigned as the identity, download the DVS CLI executable appropriate to the OS of the VM and initialize the CLI.
 
 *thy init --advanced*
 
@@ -302,19 +302,17 @@ thy secret read --path /servers/us-east/server01 -b
 
 ### Azure Resource Group
 
-If you want to grant access to a set of VMs in a resource group that use a
-system assigned MSI rather than a user assigned MSI, you can create a role that
-corresponds to the resource group’s resource ID.
+If you want to grant access to a set of VMs in a resource group that use a System assigned MSI rather than a User assigned MSI, you can create a Role that corresponds to the resource group’s resource ID.
 
 ```bash
 thy role create --name identity-rg --provider azure-prod --external-id /subscriptions/216d58f0-9fa1-49fa-b1f6-81e9f8a12f82/resourceGroups/build
 ```
 
-Modify the config to give that role access to the default administrator permission policy. For details on limiting access to specific paths see the [Policy](../cli-ref/policy.md) section of the [CLI Reference](../cli-ref/index.md).
+Modify the config to give that Role access to the default administrator permission policy. For details on limiting access to specific paths see the [Policy](../cli-ref/policy.md) section of the [CLI Reference](../cli-ref/index.md).
 
 *thy config edit --encoding yaml*
 
-Add the user as a subject to the **Default Admin Policy**. Third party accounts must be prefixed with the provider name; in this case the fully qualified role name will be *azure-prod:identity-rg*.
+Add the User as a subject to the **Default Admin Policy**. Third party accounts must be prefixed with the provider name; in this case the fully qualified Role name will be *azure-prod:identity-rg*.
 
 ```yaml
 permissionDocument:

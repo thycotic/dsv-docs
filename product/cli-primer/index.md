@@ -19,7 +19,7 @@ With few exceptions, CLI commands follow a simple syntax:
 
   *thy* *object* *command* *flags and parameters*
 
-For example, in *thy role create*, *role* is the object of the command *create*. In English, the command could be written as “the object is a role, and the action to take is to create it.” You will observe this pattern throughout the CLI.
+For example, in *thy role create*, *role* is the object of the command *create*. In English, the command could be written as “the object is a Role, and the action to take is to create it.” You will observe this pattern throughout the CLI.
 
 Some parameters and flags apply only to some commands. DSV also includes output modifiers for filtering and formatting responses to commands.
 
@@ -28,18 +28,18 @@ Some parameters and flags apply only to some commands. DSV also includes output 
  
 | Commmand   | Syntax                               | Definition                                                                                |
 | ---------- | ------------------------------------ | ----------------------------------------------------------------------------------------- |
-| auth       | auth                                 |  authenticate to the vault or display the current access token                            |
+| auth       | auth                                 | authenticate to the vault or display the current access token                            |
 | cli-config | init                                 | manage DSV settings                                                                       |
 | client     | client (<client-id> | --client-id)   | manage client credentials for application vault access                                    |
-| config     | config                               |  manage the top level DSV app configuration document shared by all users                  |
+| config     | config                               | manage the top level DSV app configuration document shared by all Users                  |
 | eval       | eval                                 | check the value of a command line flag or variable                                        |
-| group      | group (<group-name> | --group-name)  | manage collections of users uniformly by placing them in managed group                    |
+| group      | group (<group-name> | --group-name)  | manage collections of Users uniformly by placing them in a managed Group                    |
 | init       | cli-config init                      | initialize DSV on first run                                                               |
-| policy     | policy (<path> | --path | -r)        | manage policies on permissions for Secrets, roles, users, and other entities in the vault |
-| role       | role (<name> | --name | -n)          | manage roles                                                                              |
+| policy     | policy (<path> | --path | -r)        | manage policies on permissions for Secrets, Roles, Users, and other entities in the vault |
+| role       | role (<name> | --name | -n)          | manage Roles                                                                              |
 | secret     | secret (<path> | --path | -r)        | create, update, and retrieve Secrets from the vault                                       |
-| user       | user (<username> | --username)       | manage users                                                                              |
-| whoami     | whoami                               | display the currently authenticated user                                                  |
+| user       | user (<username> | --username)       | manage Users                                                                              |
+| whoami     | whoami                               | display the currently authenticated User                                                  |
  
  
 
@@ -58,7 +58,7 @@ Most commands take strings as parameters, quoted or unquoted. For example, the u
 
 *thy user create --username "admin1" --password password2*
 
-If a string value has spaces, it must be wrapped in quotes. For example, when creating a role, the description should be quoted.
+If a string value has spaces, it must be wrapped in quotes. For example, when creating a Role, the description should be quoted.
 
 *thy role create --name test-role --desc "a test role"*
 

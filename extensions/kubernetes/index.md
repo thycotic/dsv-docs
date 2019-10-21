@@ -22,7 +22,7 @@ The illustration shows an example of a Kubernetes Architecture implementation.
  
 ![image](dsv-and-kubernetes-scaled.png)
  
-In studying the diagram, it would be easy to mistakenly conclude that the Kubernetes Secrets Manager is being used to store the pods’ Secrets, which is not the case. The role of Kubernetes Secrets Manager here is to distribute TLS certificates to secure the connection between the DSV broker and sidecar agent, in cases where this is desirable. In most cases this would be unnecessary since the user cluster will typically be secured already.
+In studying the diagram, it would be easy to mistakenly conclude that the Kubernetes Secrets Manager is being used to store the pods’ Secrets, which is not the case. The action of Kubernetes Secrets Manager here is to distribute TLS certificates to secure the connection between the DSV broker and sidecar agent, in cases where this is desirable. In most cases this would be unnecessary since the user cluster will typically be secured already.
 
 If Secrets were to be stored in Kubernetes Secrets Manager, they would be universally available in the cluster—which is contrary to the goal. Instead, with the DSV broker, and with the volume mount sharing depicted in the diagram, each pod sees only its own Secrets, and Secrets remain available as long as the pods are healthy.
  
@@ -32,7 +32,7 @@ The example application uses a **broker** and client container deployment with v
 
 ## Introduction to the Broker
 
-The role definition at the beginning of the *broker.yml* file enables the broker pod to execute. The Service descriptions in the *broker.yml* example below are also required as the DSV client uses the name to make internal calls.
+The Role definition at the beginning of the *broker.yml* file enables the broker pod to execute. The Service descriptions in the *broker.yml* example below are also required as the DSV client uses the name to make internal calls.
 
 In using the *broker.yml* file, be sure to first swap in variable values appropriate to your organization, specifically:
 

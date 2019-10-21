@@ -53,11 +53,11 @@ clientSecret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 type: thycoticone
 ```
 
-Federated from Thycotic One, the Thycotic identity provider, the initial user possesses full administrator rights. This enables self-service password reset through Thycotic One.
+Federated from Thycotic One, the Thycotic identity provider, the initial User possesses full administrator rights. This enables self-service password reset through Thycotic One.
 
-In keeping with best practices, you should set up a less privileged user policy for routine use. The highly privileged initial Admin account should be used only when a task requires its privileges.
+In keeping with best practices, you should set up a less privileged User policy for routine use. The highly privileged initial Admin account should be used only when a task requires its privileges.
 
-To add users, you first create them in [Thycotic One](https://login.thycotic.com). Then, you enable them within DSV:
+To add Users, you first create them in [Thycotic One](https://login.thycotic.com). Then, you enable them within DSV:
 
 ```bash
 thy user create --username <username> --password <password> --provider
@@ -66,7 +66,7 @@ thy-one
 
 ### Edit
 
-Thycotic recommends against changing the Default Admin Policy other than to add a user.
+Thycotic recommends against changing the Default Admin Policy other than to add a User.
 
 * For adding and editing policies beyond the Default Admin Policy, see the [Policy](policy.md) article.
 
@@ -103,7 +103,7 @@ thy secret update --path us-east/server02 --data @configfilename.json
 
 ## Advanced: Add Authentication Providers
 
-Thycotic recommends against changing the Thycotic One provider because it provides for the initial user and any others you add that federate to Thycotic One. However, you can add providers.
+Thycotic recommends against changing the Thycotic One provider because it provides for the initial User and any others you add that federate to Thycotic One. However, you can add providers.
 
 ### Add AWS as a Provider
 
@@ -144,7 +144,7 @@ thy config auth-provider create --name azure-prod --type azure --azure-tenant-id
 "version": "0"
 ```
 
-Note that the account identifiers for third-party authentication are a top level setting that allow you or other users to authorize specific security principals within that account. They do not automatically grant access to any user or role within the provider.
+Note that the account identifiers for third-party authentication are a top level setting that allow you or other Users to authorize specific security principals within that account. They do not automatically grant access to any User or Role within the provider.
 
 See the [Authentication: AWS and Azure](../authent-azure-aws/) article for examples of using AWS and Azure for authentication.
 

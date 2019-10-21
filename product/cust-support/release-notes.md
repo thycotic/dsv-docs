@@ -4,11 +4,11 @@
 
 # Release Notes
 
-Thycotic periodically updates DevOps Secrets Vault, such as to provide fixes and improvements or to introduce additional features. As a cloud application, DSV lacks version numbers, because updates become available to all users as they occur—the current version is always the only version available.
+Thycotic periodically updates DevOps Secrets Vault, such as to provide fixes and improvements or to introduce additional features. As Cloud application, DSV lacks version numbers, because updates become available to all users as they occur—the current version is always the only version available.
 
 * However, users operate DSV through a Command Line Interface (CLI) provided by downloaded, locally installed, and OS-specific executables. These bear version numbers.
 
-* Thycotic periodically updates these OS-specific executables to deliver fixes, improvements, and feature additions, as needed to keep the customer-side CLI executables conformant with the cloud-based DSV service offerings.
+* Thycotic periodically updates these OS-specific executables to deliver fixes, improvements, and feature additions, as needed to keep the customer-side CLI executables conformant with the Cloud-based DSV service offerings.
 
 * The version number will always be the same across the OS editions of the CLI executable; if a change resulting in a version number iteration only affects one of the OS editions, it will be noted, but all editions will still get the new version number.
 
@@ -16,7 +16,7 @@ Thycotic periodically updates DevOps Secrets Vault, such as to provide fixes and
 
 * Generally, older versions of CLI executables will continue to work, but you will want to have the latest executables to benefit from fixes and obtain new features.
 
-This article tracks changes to DSV. Highlights of the most recent update appear first. The same information appears in the tables that follow. The first table covers the cloud basis for DSV, and the second covers the OS-specific CLI executables and the API. In both tables, the most recent changes appear first.
+This article tracks changes to DSV. Highlights of the most recent update appear first. The same information appears in the tables that follow. The first table covers the Cloud basis for DSV, and the second covers the OS-specific CLI executables and the API. In both tables, the most recent changes appear first.
 
 ## October 2019 Release Notes Highlights
 
@@ -30,7 +30,7 @@ Related to those improvements, a Secret’s data section may now have **as many 
 
 You can now **find and examine audit logs via the CLI**. Previously, this was only possible through the API. 
 
-The new *restore* command allows you to retrieve a deleted Secret, role, user, or group up to 72 hours after deleting it, which places DSV by default in a soft delete posture. However, you can preclude any restore operation by using the *delete* command’s *--force* flag.
+The new *restore* command allows you to retrieve a deleted Secret, Role, User, or Group up to 72 hours after deleting it, which places DSV by default in a soft delete posture. However, you can preclude any restore operation by using the *delete* command’s *--force* flag.
 
 ## September 2019 Release Notes Highlights
 
@@ -42,7 +42,7 @@ To fix a bug in the API Audit Search function, **the *Secret* parameter in Audit
 
 A **new Change Password feature** enables users to change their passwords.
 
-**Adding users to a group achieves permissions delegation** in this release.
+**Adding Users to a Group achieves permissions delegation** in this release.
 
 **Deleting a Secret now deletes all past versions**, rather than just the latest.
 
@@ -55,17 +55,17 @@ A **new Change Password feature** enables users to change their passwords.
 |                        | improvement: a Secret’s data section may now have as many fields as an organization requires |
 |                        | improvement: updated caching behavior improves outcomes where two or more users with cached Secret information choose to make updates  |
 |                        | improvement: the CLI now supports finding and examining audit logs, previously possible only via the API |
-|                        | improvement: the new restore command allows a deleted Secret, role, user, or group to be retrieved up to 72 hours after deletion, excepting when the delete flag --force was used  |
+|                        | improvement: the new restore command allows a deleted Secret, Role, User, or Group to be retrieved up to 72 hours after deletion, excepting when the delete flag --force was used  |
 |                        |      |
 | September 2019         | improvement: better scaling of configuration files achieved by keeping policies and authentication providers in separate files  |
 |                        | improvement: the *permissions* command has been superseded by the *policy* command; named policies no longer require everyone to modify a global document |
 |                        | improvement: the new Change Password feature enables users to change their passwords |
-|                        | improvement: adding users to a group achieves permissions delegation |
+|                        | improvement: adding Users to a Group achieves permissions delegation |
 |                        | improvement: deleting a Secret now deletes all past versions, rather than just the latest |
 |                        | fixed: the API Audit Search function’s bug, related to the improperly named *Secret* parameter, is resolved by the properly named *path* parameter |
 |                        |      |
 | August 2019            | fixed: issue where the refresh token generated by Thycotic One authentication was not correctly generating the full subject name and could cause access denied errors |
-|                        | fixed: issue where adding a pre-existing Thycotic One user as a DSV user would not correctly save the Thycotic One user id |
+|                        | fixed: issue where adding a pre-existing Thycotic One user as a DSV User would not correctly save the Thycotic One user id |
 |                        | fixed: issue where the config created and updated metadata fields that were not properly shown in responses |
 |                        | added: version validation to **config update** to help prevent conflicts |
 |                        |      |
@@ -79,7 +79,7 @@ A **new Change Password feature** enables users to change their passwords.
 | **Version** | **Date**   | **Notes**  |
 |-------------|------------|------------|
 | 1.0.1       | 2019.08.15 | fixed: issue where the CLI returned an error when the stored refresh token had been invalidated and the current cached access token was expired |
-|             |            | improved: when you upload a config document from a file via the **config update** command, the updated config from the cloud is now saved back to the local file; this ensures the return to the user of any auto-generated IDs for the permission policies and settings |
+|             |            | improved: when you upload a config document from a file via the **config update** command, the updated config from the Cloud is now saved back to the local file; this ensures the return to the User of any auto-generated IDs for the permission policies and settings |
 |             |            | fixed: initialization issues with Windows Credential Manager and Linux Pass storage |
 | 1.0.0       | 2019.07.23 | version coinciding with the July 2019 first General Availability of the DSV service |
 

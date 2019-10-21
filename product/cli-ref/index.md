@@ -9,12 +9,12 @@ Organized by the type of command object, these articles use task-oriented exampl
 CLI commands commonly act on these object types:
 
 * Secret
-* user
-* group
-* role
-* client
-* config
-* policy
+* User
+* Group
+* Role
+* Client
+* Config
+* Policy
 
 This Reference complements the separately maintained DevOps Secrets Vault [API Reference](https://dsv.thycotic.com/api).
 

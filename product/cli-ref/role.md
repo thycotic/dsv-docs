@@ -11,29 +11,29 @@ With DSV, the term “role” describes a security principal in the vault that t
  
 | Command | Action |
 | ----- | ----- |
-| create | create a role in the vault |
-| search | find roles by role name |
-| read | read a role’s details |
-| update | upload a superseding role |
-| delete | delete a role from the vault |
+| create | create a Role in the vault |
+| search | find Roles by Role name |
+| read | read a Role’s details |
+| update | upload a superseding Role |
+| delete | delete a Role from the vault |
 
  
 ### Examples
 
 #### Create
 
-The *create* command takes several *--parameters* that spec key aspects of the role record.
+The *create* command takes several *--parameters* that spec key aspects of the Role record.
 
  
 | Parameter | Content |
 | ----- | ----- |
-| --desc | description of the role |
-| --name | name of the role |
+| --desc | description of the Role |
+| --name | name of the Role |
 | --provider | matches the *name* attribute of the authentication provider in the *settings* section of the config |
 | --external-id | identifier recognized by third-party federated authentication providers, such as AWS or ARN |
 
  
-Create a local role with the name *\_test-role\_*:
+Create a local Role with the name *\_test-role\_*:
 
 ```bash
 thy role create --name test-role
@@ -41,9 +41,9 @@ thy role create --name test-role
 
 #### Search
 
-The *search* command locates roles by searching on their role names. It accepts as a *--query* parameter the role name you provide, and searches for records with a matching role name.
+The *search* command locates Roles by searching on their Role names. It accepts as a *--query* parameter the Role name you provide, and searches for records with a matching Role name.
 
-Search for a role named *\_dev-admin\_*:
+Search for a Role named *\_dev-admin\_*:
 
 ```bash
 thy role search --query dev-admin
@@ -65,7 +65,7 @@ thy role search --query us-east/server02 --limit 2 --cursor eyJpZCI6ImZmZjZjODUx
 
 The *read* command retrieves and displays information without changing anything.
 
-Provide a role name and read the role’s details in beautified form:
+Provide a Role name and read the Role’s details in beautified form:
 
 ```bash
 thy role read --name test-role -b
@@ -73,11 +73,11 @@ thy role read --name test-role -b
 
 #### Update
 
-Use *update* to change a role’s data.
+Use *update* to change a Role’s data.
 
->Note that *update* rewrites the **entire** set of role data, even if only a single field has changed.
+>Note that *update* rewrites the **entire** set of Role data, even if only a single field has changed.
 
-Provide a role name and update the role to replace the description field’s value:
+Provide a Role name and update the Role to replace the description field’s value:
 
 ```bash
 thy role update --name test-role --desc "a new description"
@@ -85,15 +85,15 @@ thy role update --name test-role --desc "a new description"
 
 #### Delete
 
-The *delete* command will remove roles.
+The *delete* command will remove Roles.
 
-Provide a role name and delete the role:
+Provide a Role name and delete the Role:
 
 ```bash
 thy role delete --name test-role
 ```
 
-When you delete a role, it will no longer be usable. However, with the soft delete capacity of DSV, you have 72 hours to use the *restore* command to in effect undelete the role. After 72 hours, the role will no longer be retrievable.
+When you delete a Role, it will no longer be usable. However, with the soft delete capacity of DSV, you have 72 hours to use the *restore* command to in effect undelete the Role. After 72 hours, the Role will no longer be retrievable.
 
 Should you want to perform a hard delete, precluding any restore operation, you can use the *delete* command’s *--force* flag.
 

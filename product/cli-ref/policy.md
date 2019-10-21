@@ -60,7 +60,7 @@ The syntax supports wildcards via the <.*> construct.
 | description        | human friendly description of the policy intent                                                                                                                                                                                                                                                                                                         |
 | effect             | whether the policy is allowing or preventing access; valid values are allow and deny                                                                                                                                                                                                                                                                    |
 | id                 | system-generated unique identifier to track changes to a particular policy                                                                                                                                                                                                                                                                              |
-| resources subjects | the resource path defining the targets to which the permissions apply; a resource path prefixes the entity type (Secrets, clients, roles, users, config, config:auth, config:policies, audit, system:log) to a colon delimited path to the resource. users or entities to which the policy enables authorization. Prefixes include users, roles, groups |
+| resources subjects | the resource path defining the targets to which the permissions apply; a resource path prefixes the entity type (Secrets, clients, Roles, Users, config, config:auth, config:policies, audit, system:log) to a colon delimited path to the resource, Users or entities to which the policy enables authorization; prefixes include Users, Roles, Groups |
 
 ## Policy Evaluation
 
@@ -68,17 +68,17 @@ To correctly evaluate permission policies, you must know the rules that apply to
 
 * Permissions are cumulative.
 
-  * If there is a top level permission for the path Secrets:servers:<.\*> that grants a user **write** access, then even if they are only granted **read** access at the resource path Secrets:servers:webservers:<.\*>, they will still have write access due to the top level implicit match.
+  * If there is a top level permission for the path Secrets:servers:<.\*> that grants a User **write** access, then even if they are only granted **read** access at the resource path Secrets:servers:webservers:<.\*>, they will still have write access due to the top level implicit match.
 
 * An explicit deny trumps an explicit or implicit allow.
 
-* Actions are explicit. A user assigned **update** and **read** will not automatically have **create** for the resource path.
+* Actions are explicit. A User assigned **update** and **read** will not automatically have **create** for the resource path.
 
 * The **list** action has a special behavior.
 
   * First, **list** (search) is global—it runs across all items of an entity, not limited to paths and sub-paths.
 
-  * Second, to grant a user an ability to search entities via *list*, use the root of the entity if you want *list* to include other entities and actions within the same policy. The root entity, for example, is Secrets, with no other characters following.
+  * Second, to grant a User an ability to search entities via *list*, use the root of the entity if you want *list* to include other entities and actions within the same policy. The root entity, for example, is Secrets, with no other characters following.
 
 ## Policy Examples
 
@@ -120,9 +120,9 @@ resources:
 
 ### Allow Users to Assign Specific Roles
 
-**Case:** A user needs to assign roles when they create client credentials, but must not be able to self-elevate by assigning an admin level role.
+**Case:** A User needs to assign Roles when they create client credentials, but must not be able to self-elevate by assigning an admin level Role.
 
-**Solution:** Use a naming convention when creating roles and specify a prefix with a wildcard to only allow users to assign roles that match the naming convention, as modeled in the following example.
+**Solution:** Use a naming convention when creating Roles and specify a prefix with a wildcard to only allow Users to assign Roles that match the naming convention, as modeled in the following example.
 
 ```yaml
 - id: erji23829828
@@ -139,7 +139,7 @@ resources:
 
 ### Allow Users to List Specific Entities
 
-**Case:** A user needs to read and list entities within a policy.
+**Case:** A User needs to read and list entities within a policy.
 
 **Solution:** Add a list action and the root of the entity used for searching.
 

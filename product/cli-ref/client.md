@@ -4,7 +4,7 @@
 
 ## Client
 
-Client credentials enable applications to authenticate as the role assigned to the client record.
+Client credentials enable applications to authenticate as the Role assigned to the client record.
 
 ### Commands that Act on Clients
   
@@ -12,10 +12,10 @@ Client credentials enable applications to authenticate as the role assigned to t
   
 | Command | Action |
 | ----- | ----- |
-| create | create a user in the vault |
-| search | find clients by role name |
+| create | create a User in the vault |
+| search | find clients by Role name |
 | read | read a client’s details |
-| delete | delete a user from the vault |
+| delete | delete a User from the vault |
   
 ---
   
@@ -23,13 +23,13 @@ Client credentials enable applications to authenticate as the role assigned to t
 
 #### Create
 
-The *create* command accepts as its *--role* parameter a fully qualified role name, and creates a client credential assigned to that role.
+The *create* command accepts as its *--role* parameter a fully qualified Role name, and creates a client credential assigned to that Role.
 
 ```bash
 thy client create --role app-role
 ```
 
-The output will include a *clientId* and *clientSecret* suitable for use during CLI installation, or within REST calls to authenticate as the role assigned to the *clientId*.
+The output will include a *clientId* and *clientSecret* suitable for use during CLI installation, or within REST calls to authenticate as the Role assigned to the *clientId*.
 
 ```bash
 {
@@ -47,7 +47,7 @@ The output will include a *clientId* and *clientSecret* suitable for use during 
 
 #### Search
 
-The *search* command accepts as its *--query* parameter the name of a role, and searches for clients having that role.
+The *search* command accepts as its *--query* parameter the name of a Role, and searches for clients having that Role.
 
 ```bash
 thy client search --query dev-role

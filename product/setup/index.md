@@ -35,7 +35,7 @@ thy init
 
 Specify the tenant name Thycotic provided when setting up your organization’s account.
 
-* Do not specify the full domain; use *acme* instead of *acme.Secretsvaultcloud.com* because initialization will add the domain automatically.
+* Do not specify the full domain; use *acme* instead of *acme.secretsvaultcloud.com* because initialization will add the domain automatically.
 
 When you sign up for a trial and choose your DSV tenant name you are also prompted to create a Thycotic One user. By default the provisioning process links your Thycotic One account and your DSV tenant, so the initial admin you sign in with will be your Thycotic One username and password.
 
@@ -44,7 +44,7 @@ Please enter username for tenant "acme":
  Please enter password:
 ```
 
-Once DSV accepts these credentials, you are ready to begin using the DevOps Secrets Vault Command Line Interface to administer Secrets in your organization’s secure, cloud-hosted Secrets vault.
+Once DSV accepts these credentials, you are ready to begin using the DevOps Secrets Vault Command Line Interface to administer Secrets in your organization’s secure, Cloud-hosted Secrets vault.
 
 ## The More Likely Case: Setup with Custom Settings
 
@@ -68,15 +68,15 @@ All setups begin with DSV asking your tenant name and domain. Your domain is bas
 thy init --advanced
  Please enter tenant name: example
  Please choose domain:
-        (1) Secretsvaultcloud.com (default)
-        (2) Secretsvaultcloud.eu
-        (3) Secretsvaultcloud.com.au
+        (1) secretsvaultcloud.com (default)
+        (2) secretsvaultcloud.eu
+        (3) secretsvaultcloud.com.au
 ```
   
 
 Specify the tenant name Thycotic provided when setting up your organization’s account.
 
-* Remember, you need only enter your tenant name, for example, just *acme* not *acme.Secretsvaultcloud.com*, because initialization adds the domain automatically.
+* Remember, you need only enter your tenant name, for example, just *acme* not *acme.secretsvaultcloud.com*, because initialization adds the domain automatically.
 
 Next, DSV prompts you about **credential storage**.
 
@@ -126,7 +126,7 @@ Please enter cache strategy for Secrets:
         (4) Cache then server, but allow expired cache if server unreachable
 ```
 
-Note that in this context, *server* simply means the technical elements in the cloud that collectively manifest as though a unitary entity, not a literal server.
+Note that in this context, *server* simply means the technical elements in the Cloud that collectively manifest as though a unitary entity, not a literal server.
 
 * DSV defaults to **never** caching Secrets. Every credential request requires an API call.
 
@@ -138,15 +138,15 @@ Note that in this context, *server* simply means the technical elements in the c
 
 Finally, you will be prompted for your username, password, and Thycotic One provider name. By default your Thycotic One authentication provider name should be **thy-one**.
 
-* Administrators can create local users not tied to an external authentication system. When authenticating as such a user, leave the prompt for the Thycotic One provider name blank.
+* Administrators can create local Users not tied to an external authentication system. When authenticating as such a User, leave the prompt for the Thycotic One provider name blank.
 
 ```bash
 Please enter username for tenant "acme":
  Please enter password:
- Thycotic One authentication provider name (leave blank for local users): thy-one
+ Thycotic One authentication provider name (leave blank for local Users): thy-one
 ```
 
-That completes setup. You can begin using the DevOps Secrets Vault Command Line Interface to administer Secrets in your organization’s secure cloud-hosted Secrets vault.
+That completes setup. You can begin using the DevOps Secrets Vault Command Line Interface to administer Secrets in your organization’s secure Cloud-hosted Secrets vault.
 
 The [CLI Primer](../cli-primer/index.md), [CLI Examples](../cli-examples/index.md), and [CLI Reference](../cli-ref/index.md) articles will get you started.  
 
