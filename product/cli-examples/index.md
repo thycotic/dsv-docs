@@ -4,17 +4,17 @@
 
 # CLI Secrets Examples
 
-Organizations use DSV to secure and protect sensitive information—secrets. Common secrets include passwords, SSH keys, and SSL certificates. While in practice JSON and YAML form the content of most secrets, your vault will accept almost anything represented as a file on computer media.
+Organizations use DSV to secure and protect sensitive information—Secrets. Common Secrets include passwords, SSH keys, and SSL certificates. While in practice JSON and YAML form the content of most Secrets, your vault will accept almost anything represented as a file on computer media.
 
-Every secret correlates uniquely with a specific path that describes the location of the secret within a collection of many other secrets. The idea here is no different than the concept of a path to a file on a hard drive. A path uniquely identifies every secret, and by using paths, you organize your vault and create the basis of policy on who can access what paths, in other words, permissions.
+Every Secret correlates uniquely with a specific path that describes the location of the Secret within a collection of many other Secrets. The idea here is no different than the concept of a path to a file on a hard drive. A path uniquely identifies every Secret, and by using paths, you organize your vault and create the basis of policy on who can access what paths, in other words, permissions.
 
 ## Create a Secret
 
-To create a secret, open a text editor and define your secret as JSON.
+To create a Secret, open a text editor and define your Secret as JSON.
 
-`$ nano secret.json`
+*$ nano secret.json*
 
-Here is an example of JSON that could be made a secret. The JSON is arbitrary, so you can set any number of fields.
+Here is an example of JSON that could be made a Secret. The JSON is arbitrary, so you can set any number of fields.
 
 ```json
 {
@@ -25,7 +25,7 @@ Here is an example of JSON that could be made a secret. The JSON is arbitrary, s
 ```
  
 
-Create the secret and specify the path to its storage location:
+Create the Secret and specify the path to its storage location:
 
 ```bash
 thy secret create --path aws/us-east-1/rds/postgres01 --data @secret.json
@@ -49,7 +49,7 @@ Outputs:
 
 ## Retrieve a Secret
 
-To retrieve a secret use the secret read command and specify the path to the secret’s storage location.
+To retrieve a Secret use the Secret read command and specify the path to the Secret’s storage location.
 
 ```bash
 thy secret read --path /servers/us-east/server01
@@ -65,7 +65,7 @@ Outputs:
 
 ## Beautify the Output of a Command
 
-To beautify JSON responses to DSV commands, use the `-b` or `--beautify` flag.
+To beautify JSON responses to DSV commands, use the *-b* or *--beautify* flag.
 
 ```bash
 thy secret read --path /servers/us-east/server01 -b
@@ -100,7 +100,7 @@ secretp@ssword
 
 ## Separately Update Attributes, Data, and Description
 
-Using `--data`, `--attributes`, and `--desc` flags, respectively, you can update data, attributes, and description separately. For example:
+Using *--data*, *--attributes*, and *--desc* flags, respectively, you can update data, attributes, and description separately. For example:
 
 ```bash
 thy secret update servers/us-east/server01 --data '{"host": "server01", “password”: “badpassword”,”username”: “admininistrator”}' --desc 'update description’  --attributes ‘{“attr”: “add one”}’
@@ -120,8 +120,3 @@ thy secret update servers/us-east/server01 --data '{"host": "server01", “passw
   "path": "servers:us-east:server01"
 }
 ```
-
-
-
-
-  
