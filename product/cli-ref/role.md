@@ -93,10 +93,4 @@ Provide a Role name and delete the Role:
 thy role delete --name test-role
 ```
 
-When you delete a Role, it will no longer be usable. However, with the soft delete capacity of DSV, you have 72 hours to use the *restore* command to in effect undelete the Role. After 72 hours, the Role will no longer be retrievable.
-
-Should you want to perform a hard delete, precluding any restore operation, you can use the *delete* command’s *--force* flag.
-
-
-  
 

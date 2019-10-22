@@ -14,7 +14,7 @@ DevOps Secrets Vault allows faster automation of Secrets operations at higher vo
 
 Thycotic created DevOps Secrets Vault as a modern application rooted in the serverless architecture of Amazon Web Services (AWS) Lambda. In congruence with the Software-as-a-Service (SaaS) model, the Secrets vaults and the API reside in the Cloud, and Thycotic provisions each customer with a tenancy.
 
-However, the CLI (Command Line Interface) must be considered core to the product as well, and this installs locally. The Thycotic website offers CLI executable downloads for Windows, Linux, and MacOS in both 32 and 64-bit architectures.
+However, the CLI (Command Line Interface) must be considered core to the product as well, and this installs locally. The Thycotic website offers CLI executable downloads for Windows, Linux, and macOS in both 32 and 64-bit architectures.
 
 * Recognizing the value of transparency for security products, Thycotic offers the CLI for DevOps Secrets Vault as an **open source, customizable component** of the DSV Cloud service, with the source code available on Github.
 

@@ -196,10 +196,3 @@ To *delete* a Secret simply specify the path.
 ``` bash
 thy secret delete --path us-east/server02
 ```
-
-When you delete a Secret, it will no longer be usable. However, with the soft delete capacity of DSV, you have 72 hours to use the *restore* command to in effect undelete the Secret. After 72 hours, the Secret will no longer be retrievable.
-
-Should you want to perform a hard delete, precluding any restore operation, you can use the *delete* command’s *--force* flag.
-
-
-  

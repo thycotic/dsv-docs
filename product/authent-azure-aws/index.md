@@ -8,7 +8,7 @@
 
 After reviewing the information in this section, you may want to edit your DSV configuration to make adjustments appropriate to your organization’s infrastructure particulars.
 
-Working on Linux or MacOS, you can use *thy config edit --encoding yaml* to open your configuration in the OS’s default editor (typically **VI** or **nano**). The editor directly updates the configuration in the vault when you save your work.
+Working on Linux or macOS, you can use *thy config edit --encoding yaml* to open your configuration in the OS’s default editor (typically **VI** or **nano**). The editor directly updates the configuration in the vault when you save your work.
 
 On Windows, you must:
 

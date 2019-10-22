@@ -138,10 +138,4 @@ Delete a local User identified by the full local username:
 thy user delete --username test-admin
 ```
 
-When you delete a User, it will no longer be usable. However, with the soft delete capacity of DSV, you have 72 hours to use the *restore* command to in effect undelete the User. After 72 hours, the User will no longer be retrievable.
-
-Should you want to perform a hard delete, precluding any restore operation, you can use the *delete* command’s *--force* flag.
-
-
-
   

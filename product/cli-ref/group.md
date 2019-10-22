@@ -12,27 +12,14 @@ A Group facilitate the application of the same policies to all members of a give
   
 | Command        | Action                         |
 | -------------- | ------------------------------ |
-| add-members    | add members to a Group         |
 | create         | create a Group in the vault    |
+| add-members    | add members to a Group         |
 | read           | read a Group’s details         |
 | update         | update a Group                 |
 | delete-members | remove members from a Group    |
 | delete         | delete a Group                 |
 
 ## Examples
-
-### Add-Members
-
-Add members to a Group similarly to this example, wherein the file *newmember.json* contains: *{"memberNames": [ "billy",”larry’]}*
-
-```bash
-thy group add-members --group-name admins --data '@/tmp/newmember.json
-
-{
-  "memberNames": ["billy", "larry"]
-}
-```
- 
 
 ### Create
 
@@ -63,8 +50,9 @@ thy group create -data {"groupName": "admins"}
 
 Note that in Powershell, single quotes are required and double quotes escaped, like this:
 
-*thy group  create --data  '{\"groupName\": \"administrators\"}'*
+*thy group  create --data  '{\"groupName\": \"admins\"}'*
 
+#### Find Group Membership
 
 To see what Groups the user Billy belongs to, you would use:
 
@@ -80,6 +68,18 @@ thy user groups --username billy
 }
 ```
 
+### Add-Members
+
+Add members to a Group similarly to this example, wherein the file *newmember.json* contains: *{"memberNames": [ "billy",”larry’]}*
+
+```bash
+thy group add-members --group-name admins --data '@/tmp/newmember.json
+
+{
+  "memberNames": ["billy", "larry"]
+}
+```
+ 
 ### Read
 
 This example demonstrates how to read a Group:
@@ -94,7 +94,7 @@ thy group read --group-name admins
 }
 ```
 
-### Update
+### Update | Assign Group to Policy
 
 This example would assign the **admins** Group to an existing policy at the path *Secrets:servers:us-west*:
 
@@ -121,12 +121,6 @@ To delete a Group, you would follow this example:
 thy group delete --group-name admins
 <no response>
 ```
-
-When you delete a Group, it will no longer be usable. However, with the soft delete capacity of DSV, you have 72 hours to use the *restore* command to in effect undelete the Group. After 72 hours, the Group will no longer be retrievable.
-
-Should you want to perform a hard delete, precluding any restore operation, you can use the *delete* command’s *--force* flag.
-
-
 
 
   

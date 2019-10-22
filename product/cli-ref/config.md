@@ -70,7 +70,7 @@ Thycotic recommends against changing the Default Admin Policy other than to add 
 
 * For adding and editing policies beyond the Default Admin Policy, see the [Policy](policy.md) article.
 
-Working on Linux or MacOS, use *edit* to open your configuration in the OS’s default editor (typically **VI** or **nano**).
+Working on Linux or macOS, use *edit* to open your configuration in the OS’s default editor (typically **VI** or **nano**).
 
 ``` bash
 thy config edit --encoding YAML
