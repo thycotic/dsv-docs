@@ -7,29 +7,24 @@
 DevOps Secrets Vault operates through two main components:
 
 * on the customer premises: locally installed, OS-specific Command Line Interface executables on workstations used to operate DevOps Secrets Vault
+* in the Cloud: a Secrets vault created as a tenant, in keeping with DSV as a multi-tenancy SaaS delivered by an AWS instance
 
-* in the cloud: a secrets vault created as a tenant per DSV as a multi-tenancy SaaS delivered by an AWS instance
-
-DSV supports the Thycotic One, AWS, and Azure cloud authentication providers.
+DSV supports the Thycotic One, AWS, and Azure Cloud authentication providers.
 
 Activities originate on customer premises in three ways:
 
 * a command entered manually using the CLI
-
 * a command issued by a running shell script or application
-
 * an API call by an application
- 
- 
+
 **Architectural Summary View: DevOps Secrets Vault**
 ![image](dsv-architecture-simple.png)
- 
 
 The API Gateway receives API calls, obtains the responses, and relays them to the caller using HTTP GET, PUT, POST and other methods common to the REST architectural style. The Authorizer uses OAuth to handle API Gateway authorization.
 
 The Vault Application hosts the core DSV functionality, essentially a set of AWS Lambda (serverless) commands. Lambda auto-scales to demand.
 
-Extensive logging enables strong audit trails and protections, while encryption protects secrets in the vault and anywhere data is at rest.
+Extensive logging enables strong audit trails and protections, while encryption protects Secrets in the vault and anywhere data is at rest.
 
 ## Availability
 
@@ -41,9 +36,9 @@ AWS Dynamo databases feature point in time recovery backups with a Recovery Poin
 
 ## Disaster Recovery
 
-For the DSV application, the broadest scale of consequence for a disaster would be equivalent to an AWS region failing. That would cause complete loss of access to Thycotic’s cloud entities located in the failed region for an indefinite, ongoing time.
+For the DSV application, the broadest scale of consequence for a disaster would be equivalent to an AWS region failing. Absent a contingency plan, that would cause complete loss of access to Thycotic’s Cloud entities located in the failed region for an indefinite, ongoing time.
 
-In such a circumstance, Thycotic would rebuild using AMI/Cloud formation files and deploy in a new region.
+Thycotic does maintain contingency plans, and in such a circumstance, Thycotic would rebuild using AMI/Cloud formation files and deploy in a new AWS region.
 
 ## Confidentiality
 
@@ -53,7 +48,7 @@ In discussing confidentiality, we must interpret the term against the different 
 
 Information *about* customers in DynamoDB, and application activity and related logs stored in S3 and sometimes in Elasticsearch during analysis, will always be encrypted when at rest via AWS KMS. If the hardware for those resources were stolen, no breach would occur, since the data is encrypted.
 
-Customer secret data is further encrypted by the application with a customer specific key managed by Thycotic. This helps ensure that if data were exposed, either via a breach in the Amazon Web Services APIs or an application vulnerability that granted read access to a tenant database, the secret data would remain encrypted.
+Customer Secret data is further encrypted by the application with a customer specific key managed by Thycotic. This helps ensure that if data were exposed, either via a breach in the Amazon Web Services APIs or an application vulnerability that granted read access to a tenant database, the Secret data would remain encrypted.
 
 ### Data in Transit
 
@@ -64,20 +59,16 @@ DSV establishes the https connection using the TLS 1.2 protocols. For server-sid
 DSV provides five methods for client authentication:
 
 * username/password
-
 * Thycotic One
-
 * Client ID
-
 * AWS IAM
-
 * Microsoft MSI
 
 Authentication grants an access token with a one-hour time-to-live (TTL). When the token times out, DSV requires re-authentication.
 
 The username/password authentication method uses a refresh token good for 48 hours. The refresh token renews along with each new access token, so the 48 hours counts relative to the last access token’s time of issuance. If the refresh token expires, DSV requires re-authentication.
 
-Username/password could also link to Thycotic1 for authentication. This allows the initial user to reset the password if needed.
+Username/password could also link to Thycotic1 for authentication. This allows the initial User to reset the password if needed.
 
 ## Integrity Checks
 
@@ -89,25 +80,25 @@ The download website provides a 256-bit hash of the executable files in a text f
 
 ### Token Signing
 
-Access tokens granted to users or applications must transit from the client to the API, potentially allowing an unauthorized party to tamper with the tokens. To prevent this, DSV signs access tokens.
+Access tokens granted to Users or applications must transit from the client to the API, potentially allowing an unauthorized party to tamper with the tokens. To prevent this, DSV signs access tokens.
 
 ## Personally Identifiable Information (PII) and GDPR
 
-DSV requires certain personally identifiable information (PII) to identify each user’s account. This includes the user’s name, email address, and password, these being the minimum necessary for authentication, and the user’s IP address, used during auditing as an indicator of the user’s location.
+DSV requires certain personally identifiable information (PII) to identify each User’s account. This includes the User’s name, email address, and password, these being the minimum necessary for authentication, and the User’s IP address, used during auditing as an indicator of the User’s location.
 
-DSV functions to store and protect user’s “secrets,” and to make the secrets accessible to the user and potentially their designees. The term secrets here commonly means passwords, which are not PII, but DSV users can store anything they choose as a secret—for example, images, documents, or other files.
+DSV functions to store and protect User’s “Secrets,” and to make the Secrets accessible to the User and potentially their designees. The term Secrets here commonly means passwords, which are not PII, but DSV Users can store anything they choose as a Secret—for example, images, documents, or other files.
 
-* Accordingly, only users know whether DSV secrets have PII status.
+* Accordingly, only Users know whether DSV Secrets have PII status.
 
-* Because the nature of DSV is to encrypt and protect secrets for users, secrets that are PII will de facto benefit from DSV’s stringent controls for privacy and user control, in accordance with both the letter and spirit of the GDPR.
+* Because the nature of DSV is to encrypt and protect Secrets for Users, Secrets that are PII will de facto benefit from DSV’s stringent controls for privacy and user control, in accordance with both the letter and spirit of the GDPR.
 
-Only select, trusted employees of Thycotic can access secrets data and decrypt it, and only via a controlled process that generates an audit trail inaccessible to those employees. This serves the interests of users without compromising their privacy and control.
+Only select, trusted employees of Thycotic can access Secrets data and decrypt it, and only via a controlled process that generates an audit trail inaccessible to those employees. This serves the interests of users without compromising their privacy and control.
 
 In GDPR terms, Thycotic customers are the data controllers, and Thycotic is the data processor.
 
-* The customer determines all information (the secrets) stored in the vault and decides how long to store it.
+* The customer determines all information (the Secrets) stored in the vault and decides how long to store it.
 
-* Each DSV customer entirely controls their users, their user roles, and the access to secrets by their users, according to the policies of the customer organization. DSV logs activity so the customer can monitor access and changes to the secrets, users, and roles within the vault—again, all according to the customer’s policies.
+* Each DSV customer entirely controls their Users, their User Roles, and the access to Secrets by their Users, according to the policies of the customer organization. DSV logs activity so the customer can monitor access and changes to the Secrets, Users, and Roles within the vault—again, all according to the customer’s policies.
 
 * For traceability, DSV logs include source IP addresses and time stamps.
 
