@@ -8,9 +8,9 @@ For DSV, the term “user” refers to a security principal in the vault that ca
 
 ### Understanding Qualified Usernames
 
-When a user or role ties to a third-party provider, the name will be the fully qualified name to help distinguish potentially duplicate user or role names across different systems.
+When a User or Role ties to a third-party provider, the name will be the fully qualified name to help distinguish potentially duplicate User or Role names across different systems.
 
-The name qualifier format `provider name:local name` means for example that the _test-admin_ user will have the username _aws-dev:test-admin_ while the local user with username _test-admin_ will not have a qualifier, so its username will just be _test-admin_.
+The name qualifier format *provider name:local name* means for example that the _test-admin_ User will have the username _aws-dev:test-admin_ while the local User with username _test-admin_ will not have a qualifier, so its username will just be _test-admin_.
 
 ### Commands that Act on Users
   
@@ -18,11 +18,11 @@ The name qualifier format `provider name:local name` means for example that the 
   
 | Command        | Action                         |
 | -------------- | ------------------------------ |
-| changepassword | change a local user’s password |
-| create         | create a user in the vault     |
-| search         | find users by username         |
-| read           | read a user’s details          |
-| delete         | delete a user from the vault   |
+| changepassword | change a local User’s password |
+| create         | create a User in the vault     |
+| search         | find Users by username         |
+| read           | read a User’s details          |
+| delete         | delete a User from the vault   |
   
 ---
   
@@ -30,7 +30,7 @@ The name qualifier format `provider name:local name` means for example that the 
 
 #### Changepassword
 
-The `changepassword` command, effective for local users only, initiates an elemental password change sequence:
+The *changepassword* command, effective for local Users only, initiates an elemental password change sequence:
 
 ```bash
 thy auth changepassword
@@ -45,13 +45,13 @@ Please enter the new password (confirm):
 *************
 ```
 
-With a local user, correct entry for the current password prompt, and valid, matching responses to the first and second prompts for the new password, the response will be a message that the password has been changed.
+With a local User, correct entry for the current password prompt, and valid, matching responses to the first and second prompts for the new password, the response will be a message that the password has been changed.
 
-A Thycotic One Federated user must instead visit Thycotic One to change their password. Attempting to use the changepassword command within the CLI will fail, with DVS directing the external user to visit [](https://thycotic-one-sscdev-dev-eastus-web01.azurewebsites.net).
+A Thycotic One Federated User must instead visit Thycotic One to change their password. Attempting to use the changepassword command within the CLI will fail, with DVS directing the external User to visit [](https://thycotic-one-sscdev-dev-eastus-web01.azurewebsites.net).
 
 #### Create
 
-The `create` command takes several `--parameters` that spec foundational aspects of the user record.
+The *create* command takes several *--parameters* that spec foundational aspects of the User record.
   
 ---
   
@@ -59,18 +59,18 @@ The `create` command takes several `--parameters` that spec foundational aspects
 | ----- | ----- |
 | --username | local username; required; supports local authentication by username and password; need not match that used by a federated authentication provider (if present) |
 | --password | password for local authentication by username and password |
-| --provider | matches the `name` attribute of the authentication provider in the `settings` section of the config |
+| --provider | matches the *name* attribute of the authentication provider in the *settings* section of the config |
 | --external-id | identifier recognized by third-party federated authentication providers, such as AWS or ARN |
   
 ---
   
-Create a local user with username `_test-admin_` and password `_secret-password`:
+Create a local User with username *_test-admin_* and password *_Secret-password*:
 
 ```bash
-thy user create --username test-admin --password secret-password
+thy user create --username test-admin --password Secret-password
 ```
 
-Create a user account for login by the AWS `IAM _test-admin_` user, with the account tied to an `_aws-dev_` account in the configuration:
+Create a User account for login by the AWS *IAM _test-admin_* User, with the account tied to an *_aws-dev_* account in the configuration:
 
 ```bash
 thy user create --username test-admin --external-id arn:aws:iam::00000000000:user/test-admin --provider aws-dev
@@ -78,7 +78,7 @@ thy user create --username test-admin --external-id arn:aws:iam::00000000000:use
 
 #### Search
 
-The `search` command locates users by searching on their usernames. It accepts as a `--query` parameter the username you provide, and searches for records with a matching username.
+The *search* command locates Users by searching on their usernames. It accepts as a *--query* parameter the username you provide, and searches for records with a matching username.
 
 ```bash
 thy user search --query test-admin
@@ -108,15 +108,15 @@ Output:
 
 #### Read
 
-The `read` command retrieves and displays information without changing anything.
+The *read* command retrieves and displays information without changing anything.
 
-Provide a fully qualified username and read the user’s details:
+Provide a fully qualified username and read the User’s details:
 
 ```bash
 thy user read --username aws-dev:test-admin
 ```
 
-Provide a full local username and read the user’s details:
+Provide a full local username and read the User’s details:
 
 ```bash
 thy user get --username test-admin
@@ -124,20 +124,18 @@ thy user get --username test-admin
 
 #### Delete
 
-The `delete` command will remove records of both local users and users associated with third-party authentication providers. In both cases, you must provide the fully qualified username.
+The *delete* command will remove records of both local Users and Users associated with third-party authentication providers. In both cases, you must provide the fully qualified username.
 
-Delete a third-party user identified by a fully qualified name:
+Delete a third-party User identified by a fully qualified name:
 
 ```bash
 thy user delete --username aws-dev:test-admin
 ```
 
-Delete a local user identified by the full local username:
+Delete a local User identified by the full local username:
 
 ```bash
 thy user delete --username test-admin
 ```
-
-![Article End](../dsv-bug.png)
 
   

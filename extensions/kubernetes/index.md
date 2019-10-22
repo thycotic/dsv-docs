@@ -4,7 +4,7 @@
 
 # Kubernetes
 
-The Kubernetes extension to DevOps Secrets Vault consists of several images available from Docker. These illustrate how to build containers incorporating DevOps Secrets Vault functionality. To obtain these images, at your Docker command line, use `docker pull` commands for each image:
+The Kubernetes extension to DevOps Secrets Vault consists of several images available from Docker. These illustrate how to build containers incorporating DevOps Secrets Vault functionality. To obtain these images, at your Docker command line, use *docker pull* commands for each image:
 
 ```bash
 docker pull quay.io/thycotic/devops-secrets-vault-client
@@ -22,30 +22,29 @@ The illustration shows an example of a Kubernetes Architecture implementation.
  
 ![image](dsv-and-kubernetes-scaled.png)
  
-In studying the diagram, it would be easy to mistakenly conclude that the Kubernetes Secrets Manager is being used to store the pods’ secrets, which is not the case. The role of Kubernetes Secrets Manager here is to distribute TLS certificates to secure the connection between the DSV broker and sidecar agent, in cases where this is desirable. In most cases this would be unnecessary since the user cluster will typically be secured already.
+In studying the diagram, it would be easy to mistakenly conclude that the Kubernetes Secrets Manager is being used to store the pods’ Secrets, which is not the case. The action of Kubernetes Secrets Manager here is to distribute TLS certificates to secure the connection between the DSV broker and sidecar agent, in cases where this is desirable. In most cases this would be unnecessary since the user cluster will typically be secured already.
 
-If secrets were to be stored in Kubernetes Secrets Manager, they would be universally available in the cluster—which is contrary to the goal. Instead, with the DSV broker, and with the volume mount sharing depicted in the diagram, each pod sees only its own secrets, and secrets remain available as long as the pods are healthy.
+If Secrets were to be stored in Kubernetes Secrets Manager, they would be universally available in the cluster—which is contrary to the goal. Instead, with the DSV broker, and with the volume mount sharing depicted in the diagram, each pod sees only its own Secrets, and Secrets remain available as long as the pods are healthy.
  
 # Description of Operations
 
-The example application uses a **broker** and client container deployment with volume mount sharing for pods to access the retrieved secrets.  This page includes an example of a `broker.yml` suitable for creation.
+The example application uses a **broker** and client container deployment with volume mount sharing for pods to access the retrieved Secrets. This page includes an example of a *broker.yml* suitable for creation.
 
 ## Introduction to the Broker
 
-The role definition at the beginning of the `broker.yml` file enables the broker pod to execute. The Service descriptions in the `broker.yml` example below are also required as the DSV client uses the name to make internal calls.
+The Role definition at the beginning of the *broker.yml* file enables the broker pod to execute. The Service descriptions in the *broker.yml* example below are also required as the DSV client uses the name to make internal calls.
 
-In using the `broker.yml` file, be sure to first swap in variable values appropriate to your organization, specifically:
+In using the *broker.yml* file, be sure to first swap in variable values appropriate to your organization, specifically:
 
 ```yaml
         - name: TENANT
           value: your_tenant_name
         - name: CLIENT_ID
-          value: a8d4be3b-3f29-4a31-8ade-da4dea915e65
+          value: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
         - name: CLIENT_SECRET
-          value: PR8mWU8Xpz7yIgUgMXeQQHFJRlBVY1ple-2apYOMowZ
+          value: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-xxxxxxxxx
 ```
 
- 
 When the broker is running, it watches for new pods coming online that execute with a specific annotation, *dsv*. For each such pod, it looks at the value of the **tenant** to be used, and adds the pod to its internal registry.
 
 ### The Broker YAML File
@@ -61,7 +60,6 @@ rules:
   resources: ["pods"]
   verbs: ["get", "watch", "list"]
  
- 
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
@@ -74,15 +72,13 @@ subjects:
   - kind: ServiceAccount
     name: default
     namespace: default
- 
- 
+  
 apiVersion: v1
 kind: Secret
 metadata:
   name: thycotic-keys
   namespace: default
 type: Opaque
- 
  
 apiVersion: apps/v1beta2
 kind: Deployment
@@ -119,14 +115,13 @@ spec:
         - name: TENANT
           value: your_tenant_name
         - name: CLIENT_ID
-          value: a8d4be3b-3f29-4a31-8ade-da4dea915e65
-        - name: CLIENT_SECRET
-          value: PR8mWU8Xpz7yIgUgMXeQQHFJRlBVY1ple-2apYOMowZ
+          value: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+      - name: CLIENT_SECRET
+          value: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-xxxxxxxxx
       volumes:
         - name: secretkey
           secret:
             secretName: thycotic-keys
- 
  
 kind: Service
 apiVersion: v1
@@ -139,7 +134,6 @@ spec:
   - protocol: TCP
     port: 80
     targetPort: 3000
- 
  
 kind: Service
 apiVersion: v1
@@ -160,13 +154,13 @@ spec:
 ```
  
 
-This file can also be used locally; for example:
+This file can also be used locally, for example:
 
-`kubectl create -f broker.yml`
+*kubectl create -f broker.yml*
 
 ## Introduction to the Client
 
-The client container fetches and periodically updates a configuration file stored at a shared volume. This is defined as a shared volume by the pods within the container (see `example.yml`).
+The client container fetches and periodically updates a configuration file stored at a shared volume. This is defined as a shared volume by the pods within the container (see *example.yml*).
 
 Be sure in your application container to add a volume mount to the shared information, as follows.
 
@@ -194,9 +188,9 @@ env:
         fieldPath: metadata.name
 ```
  
-`THY_SECRETS` defines the path(s) of the secrets the container uses. This is a list separated by spaces.
+*THY_SECRETS* defines the path(s) of the Secrets the container uses. This is a list separated by spaces.
  
-## Example YAML
+### Example YAML
 
 ```yaml
 apiVersion: v1
@@ -269,5 +263,3 @@ spec:
           secretName: thycotic-keys
 ```
 
- 
-![Article End](dsv-bug.png)
