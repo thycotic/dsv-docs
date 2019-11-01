@@ -30,7 +30,7 @@ You can now **find and examine audit logs via the CLI**. Previously, this was on
 
 This release **omits the *permissions* command because the *policy* command supersedes it**—named policies no longer require everyone to modify a global document. 
 
-To fix a bug in the API Audit Search function, **the *Secret* parameter in Audit Search is now the *path* parameter**.
+To fix a bug in the API Audit Search function, **the *secret* parameter in Audit Search is now the *path* parameter**.
 
 A **new Change Password feature** enables users to change their passwords.
 

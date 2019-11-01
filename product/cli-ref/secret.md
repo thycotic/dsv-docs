@@ -35,7 +35,7 @@ The *bustcache* command clears the local cache, if present.
 thy secret bustcache
 ```
 
-Note again here the syntax pattern in which an object of a command precedes the command: *Secrets* is the object of the command *bustcache*, so that the cache of Secrets will be ‘busted’ (cleared).
+Note again here the syntax pattern in which an object of a command precedes the command: *secret* is the object of the command *bustcache*, so that the cache of Secrets will be ‘busted’ (cleared).
 
 #### Create
 
@@ -92,7 +92,7 @@ For example, if the command *thy secret search  -q admin  --limit 10* matched 12
 Cursors may be lengthy:
 
 ```bash
-\thy-win-x64.exe Secret search -q resources --limit 10 --cursor eyJpZCI6ImEwOTFjOWIzLWE4MmQtNGRiYy1hYThiLTYxMDY0NDZhZjA3MSIsInBhdGgiOiIiLCJ2ZXJzaW9uIjoidi1jdXJyZW50IiwidHlwZSI6IiIsImxhdGVzdCI6MH0=
+\thy-win-x64.exe secret search -q resources --limit 10 --cursor eyJpZCI6ImEwOTFjOWIzLWE4MmQtNGRiYy1hYThiLTYxMDY0NDZhZjA3MSIsInBhdGgiOiIiLCJ2ZXJzaW9uIjoidi1jdXJyZW50IiwidHlwZSI6IiIsImxhdGVzdCI6MH0=
 ```
 
 #### Describe
@@ -145,7 +145,7 @@ or
 \$TEST=thy secret read --path us-east/server02
 ```
 
-Both examples use piping to assign to the variable *TEST* the value contained in the Secret, by making the *Secret read* command a parameter within a larger command or statement.
+Both examples use piping to assign to the variable *TEST* the value contained in the Secret, by making the *secret read* command a parameter within a larger command or statement.
 
 Once stored as the value of *TEST*, the data remain easily accessible:
 
