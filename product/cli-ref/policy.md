@@ -16,13 +16,13 @@ thy policy search
 You can add a query item to search policies by path:
 
 ```bash
-thy policy search Secrets/databases
+thy policy search secrets/databases
 ```
 
 or
 
 ```bash
-thy policy search –query Secrets/databases
+thy policy search –query secrets/databases
 ```
 
 A typical policy looks like this:
@@ -34,7 +34,7 @@ A typical policy looks like this:
 "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 "lastModified": "2019-09-24T20:13:53Z",
 "lastModifiedBy": "users:thy-one:admin@company.com",
-"path": "Secrets:servers:us-west",
+"path": "secrets:servers:us-west",
 "permissionDocument": [
 {
 "actions": ["read"],
@@ -43,7 +43,7 @@ A typical policy looks like this:
 "effect": "allow",
 "id": "xxxxxxxxxxxxxxxxxxxx",
 "meta": null,
-"resources": ["Secrets:servers:us-west:<.*>"],
+"resources": ["secrets:servers:us-west:<.*>"],
 "subjects": ["groups:west admins"]
 }
 ],
@@ -68,7 +68,7 @@ To correctly evaluate permission policies, you must know the rules that apply to
 
 * Permissions are cumulative.
 
-  * If there is a top level permission for the path Secrets:servers:<.\*> that grants a User **write** access, then even if they are only granted **read** access at the resource path Secrets:servers:webservers:<.\*>, they will still have write access due to the top level implicit match.
+  * If there is a top level permission for the path secrets:servers:<.\*> that grants a User **write** access, then even if they are only granted **read** access at the resource path secrets:servers:webservers:<.\*>, they will still have write access due to the top level implicit match.
 
 * An explicit deny trumps an explicit or implicit allow.
 
@@ -78,7 +78,7 @@ To correctly evaluate permission policies, you must know the rules that apply to
 
   * First, **list** (search) is global—it runs across all items of an entity, not limited to paths and sub-paths.
 
-  * Second, to grant a User an ability to search entities via *list*, use the root of the entity if you want *list* to include other entities and actions within the same policy. The root entity, for example, is Secrets, with no other characters following.
+  * Second, to grant a User an ability to search entities via *list*, use the root of the entity if you want *list* to include other entities and actions within the same policy. The root entity, for example, is secrets, with no other characters following.
 
 ## Policy Examples
 
@@ -86,10 +86,10 @@ To correctly evaluate permission policies, you must know the rules that apply to
 
 **Case:** Subjects need access to Secrets for an environment, but that logical environment contains a more restricted area.
 
-**Solution:** Two policies. The first provides the Subjects (*developer1@thycotic.com|developer2@thycotic.com*) general access to the Secrets resources at the path *Secrets:servers:us-east-1:<.*>*.
+**Solution:** Two policies. The first provides the Subjects (*developer1@thycotic.com|developer2@thycotic.com*) general access to the Secrets resources at the path *secrets:servers:us-east-1:<.*>*.
 
 ```yaml
-path: Secrets:servers:us-east-1
+path: secrets:servers:us-east-1
 permissionDocument:
 - id: xxxxxxxxxxxx
 description: Developer Policy.
@@ -99,13 +99,13 @@ actions:
 - "<read|delete|create|update|share>"
 effect: allow
 resources:
-- Secrets:servers:us-east-1:<.*>
+- secrets:servers:us-east-1:<.*>
 ```
 
 The second policy adds an explicit *deny* with a more specific path to deny access at the more privileged level, as in the following example.
 
 ```yaml
-path: Secrets:servers:us-east-1
+path: secrets:servers:us-east-1
 permissionDocument:
 - id: xxxxxxxxxxxx
 description: Developer Deny Policy.
@@ -115,7 +115,7 @@ actions:
 - "<.*>"
 effect: deny
 resources:
-- Secrets:servers:us-east-1:production:<.*>
+- secrets:servers:us-east-1:production:<.*>
 ```
 
 ### Allow Users to Assign Specific Roles
@@ -176,10 +176,10 @@ actions:
 - "<create|read|delete|update>"
 effect: allow
 resources:
-- Secrets:servers:<.*>
-- config:policies:Secrets:servers:<.*>
+- secrets:servers:<.*>
+- config:policies:secrets:servers:<.*>
 ```
 
-Now the developers can create policies below the *Secrets:servers:* path; for example, developer1 can create policies for *Secrets:servers:webservers* and developer2 can do the same at *Secrets:servers:databases*.
+Now the developers can create policies below the *secrets:servers:* path; for example, developer1 can create policies for *secrets:servers:webservers* and developer2 can do the same at *secrets:servers:databases*.
 
 
