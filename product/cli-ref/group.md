@@ -96,9 +96,9 @@ thy group read --group-name admins
 
 ### Update | Assign Group to Policy
 
-This example would assign the **admins** Group to an existing policy at the path *Secrets:servers:us-west*:
+This example would assign the **admins** Group to an existing policy at the path *secrets:servers:us-west*:
 
-*thy policy update --actions "<.*>" --subjects groups:admins --path Secrets/servers/us-west*
+*thy policy update --actions "<.*>" --subjects groups:admins --path secrets/servers/us-west*
 
 Note that you can designate paths with either of the colon : or forward slash / characters.
 

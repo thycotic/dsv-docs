@@ -64,10 +64,10 @@ The *create* command takes several *--parameters* that spec foundational aspects
   
 ---
   
-Create a local User with username *_test-admin_* and password *_Secret-password*:
+Create a local User with username *_test-admin_* and password *_secret-password*:
 
 ```bash
-thy user create --username test-admin --password Secret-password
+thy user create --username test-admin --password secret-password
 ```
 
 Create a User account for login by the AWS *IAM _test-admin_* User, with the account tied to an *_aws-dev_* account in the configuration:
