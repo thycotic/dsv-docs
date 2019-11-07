@@ -20,7 +20,7 @@ Kubernetes helps coordinate containerized applications across a cluster of machi
 
 The illustration shows an example of a Kubernetes Architecture implementation.
  
-![image](dsv-and-kubernetes-scaled.png)
+![image](./images/dsv-kubernetes.png)
  
 In studying the diagram, it would be easy to mistakenly conclude that the Kubernetes Secrets Manager is being used to store the pods’ Secrets, which is not the case. The action of Kubernetes Secrets Manager here is to distribute TLS certificates to secure the connection between the DSV broker and sidecar agent, in cases where this is desirable. In most cases this would be unnecessary since the user cluster will typically be secured already.
 
