@@ -32,19 +32,19 @@ Use the DSV CLI to create a new client credential linked to a Role that has read
 
 Create a Role  
 
-```bash
+```BASH
 thy role create --name jenkins --desc "grants access to build Secrets"
 ```
 Create a Client Credential
 
-```bash
+```BASH
 thy client create --role jenkins
 ```
 Save the *clientId* and *clientSecret* returned by this command. You will use these to grant Jenkins access to the vault.
 
 Add the Jenkins Role to a Permission Policy  
 
-```bash
+```BASH
 thy config edit -e yaml
 ```
 Here is an example permission document granting the Jenkins Role read-only access to Secrets under the resources/path:
@@ -96,12 +96,12 @@ To use Secrets from the vault in the Jenkins build pipelines, we need a Secret f
 
 We will create a test Secret at the path *resources/server01*:
 
-```bash
+```BASH
 thy secret create resources/server01 '{"servername":"server01","password":"somepass1"}'
 ```
 Read back the Secret to verify the data looks right:
 
-```bash
+```BASH
 thy secret read -be JSON resources/server01
 ```
 The resulting JSON Secret should look similar to:

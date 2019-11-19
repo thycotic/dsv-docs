@@ -6,7 +6,7 @@
 
 The Kubernetes extension to DevOps Secrets Vault consists of several images available from Docker. These illustrate how to build containers incorporating DevOps Secrets Vault functionality. To obtain these images, at your Docker command line, use *docker pull* commands for each image:
 
-```bash
+```BASH
 docker pull quay.io/thycotic/devops-secrets-vault-client
 docker pull quay.io/thycotic/devops-secrets-vault-broker
 docker pull quay.io/thycotic/devops-secrets-vault-example
@@ -45,7 +45,7 @@ In using the *broker.yml* file, be sure to first swap in variable values appropr
           value: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-xxxxxxxxx
 ```
 
-When the broker is running, it watches for new pods coming online that execute with a specific annotation, *dsv*. For each such pod, it looks at the value of the **tenant** to be used, and adds the pod to its internal registry.
+When the broker is running, it watches for new pods coming online that execute with a specific Annotation, *dsv*. For each such pod, it looks at the value of the **tenant** to be used, and adds the pod to its internal registry.
 
 ### The Broker YAML File
 

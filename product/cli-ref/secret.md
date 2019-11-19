@@ -85,13 +85,15 @@ The *--cursor* parameter accepts the element used to get the next page of result
 
 For a search where there are more results than returned in the first set, the API returns a cursor—a large piece of text. You pass that back to get the next set of results.
 
-For example, if the command *thy secret search  -q admin  --limit 10* matched 12 Secrets with admin in the name, the CLI would return the first 10 plus a cursor. To obtain the next two results, you would use this command:
+For example, if the command `thy secret search -q admin --limit 10` matched 12 Secrets with admin in the name, the CLI would return the first 10 plus a cursor. To obtain the next two results, you would use this command:
 
-*thy secret search  -q admin  -limit 10  --cursor AFSDFSD...DKFJLSDJ=*
+```BASH
+thy secret search -q admin -limit 10 --cursor AFSDFSD...DKFJLSDJ=
+```
 
 Cursors may be lengthy:
 
-```bash
+```BASH
 \thy-win-x64.exe secret search -q resources --limit 10 --cursor eyJpZCI6ImEwOTFjOWIzLWE4MmQtNGRiYy1hYThiLTYxMDY0NDZhZjA3MSIsInBhdGgiOiIiLCJ2ZXJzaW9uIjoidi1jdXJyZW50IiwidHlwZSI6IiIsImxhdGVzdCI6MH0=
 ```
 
@@ -123,7 +125,7 @@ path: us-east:server02
 
 The *--filter* or *-f* flag supports filtering to isolate a specific data attribute, for example:
 
-```bash
+```BASH
 thy secret read --path us-east/server02 -f data.password
 ```
 
@@ -135,13 +137,13 @@ Output:
 
 **Piping** refers to passing to a command a parameter value that is itself a command, or assigning to a variable a value that is a command. In effect, piping means assigning as a value the means to obtain the value, rather than the value itself.
 
-```bash
+```BASH
 export TEST=\$(thy secret read --path us-east/server02)
 ```
 
 or
 
-```bash
+```BASH
 \$TEST=thy secret read --path us-east/server02
 ```
 
@@ -149,7 +151,7 @@ Both examples use piping to assign to the variable *TEST* the value contained in
 
 Once stored as the value of *TEST*, the data remain easily accessible:
 
-```bash
+```BASH
 echo \$TEST
 ```
 
@@ -161,7 +163,7 @@ Use *edit* to open the Secret data in the default text editor for bash, such as 
 
 * Saving in the editor updates the Secret in the vault.
 
-``` bash
+```BASH
 thy secret edit --path us-east/server02
 ```
 
@@ -179,13 +181,13 @@ The *--overwrite* flag applies only at the field level; it does not allow you to
 
 As with *create*, as the value of the *--data* parameter *update* accepts JSON entered directly at the command line, or the path to a JSON file.
 
-```bash
+```BASH
 thy secret update --path us-east/server02 --data {\\"password\\":\\"Secret2\\"}
 ```
 
 or
 
-```bash
+```BASH
 thy secret update --path us-east/server02 --data @secret.json
 ```
 
@@ -196,3 +198,8 @@ To *delete* a Secret simply specify the path.
 ``` bash
 thy secret delete --path us-east/server02
 ```
+
+When you delete a Secret, it will no longer be usable. However, with the soft delete capacity of DSV, you have 72 hours to use the *restore* command to undelete the Secret. After 72 hours, the Secret will no longer be retrievable.
+
+Should you want to perform a hard delete, precluding any restore operation, you can use the *delete* command’s *--force* flag.
+

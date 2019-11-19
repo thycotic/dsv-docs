@@ -23,25 +23,32 @@ For example, in *thy role create*, *role* is the object of the command *create*.
 
 Some parameters and flags apply only to some commands. DSV also includes output modifiers for filtering and formatting responses to commands.
 
+## OS Differences on Slash-Escaping Special Characters
+
+JSON parameter formatting varies in minor ways depending on the OS and shell program. Basically:
+
+* CMD.EXE and PowerShell require that double quote (") marks within the JSON be escaped with a backslash (\)
+* CMD.EXE requires the JSON overall to be enclosed in double quote (") marks; Powershell, with single quote (') marks.
+* Linux accepts JSON without internal character escapes, requiring only that the JSON be enclosed by single quote (') marks.
+
+The [JSON Data](./cli-primer#json_data) section later on this page provides examples.
+
 ## Commands
- 
- 
-| Commmand   | Syntax                               | Definition                                                                                |
-| ---------- | ------------------------------------ | ----------------------------------------------------------------------------------------- |
-| auth       | auth                                 | authenticate to the vault or display the current access token                            |
-| cli-config | init                                 | manage DSV settings                                                                       |
-| client     | client (<client-id> | --client-id)   | manage client credentials for application vault access                                    |
-| config     | config                               | manage the top level DSV app configuration document shared by all Users                  |
-| eval       | eval                                 | check the value of a command line flag or variable                                        |
-| group      | group (<group-name> | --group-name)  | manage collections of Users uniformly by placing them in a managed Group                    |
-| init       | cli-config init                      | initialize DSV on first run                                                               |
-| policy     | policy (<path> | --path | -r)        | manage policies on permissions for Secrets, Roles, Users, and other entities in the vault |
-| role       | role (<name> | --name | -n)          | manage Roles                                                                              |
-| secret     | secret (<path> | --path | -r)        | create, update, and retrieve Secrets from the vault                                       |
-| user       | user (<username> | --username)       | manage Users                                                                              |
-| whoami     | whoami                               | display the currently authenticated User                                                  |
- 
- 
+
+| Commmand   | Syntax                                 | Definition                                                                                |
+| ---------- | -------------------------------------- | ----------------------------------------------------------------------------------------- |
+| auth       | auth                                   | authenticate to the vault or display the current access token                            |
+| cli-config | init                                   | manage DSV settings                                                                       |
+| client     | client (`<client-id> | --client-id`)   | manage client credentials for application vault access                                    |
+| config     | config                                 | manage the top level DSV app configuration document shared by all Users                  |
+| eval       | eval                                   | check the value of a command line flag or variable                                        |
+| group      | group (`<group-name> | --group-name`)  | manage collections of Users uniformly by placing them in a managed Group                    |
+| init       | cli-config init                        | initialize DSV on first run                                                               |
+| policy     | policy (`<path> | --path | -r`)        | manage policies on permissions for Secrets, Roles, Users, and other entities in the vault |
+| role       | role (`<name> | --name | -n`)          | manage Roles                                                                              |
+| secret     | secret (`<path> | --path | -r`)        | create, update, and retrieve Secrets from the vault                                       |
+| user       | user (`<username> | --username`)       | manage Users                                                                              |
+| whoami     | whoami                                 | display the currently authenticated User                                                  |
 
 ## Parameters
 
@@ -56,21 +63,27 @@ Parameters can be:
 
 Most commands take strings as parameters, quoted or unquoted. For example, the username needs quote marks but the password does not. Both are valid string parameter values.
 
-*thy user create --username "admin1" --password password2*
+```BASH
+thy user create --username "admin1" --password password2
+```
 
 If a string value has spaces, it must be wrapped in quotes. For example, when creating a Role, the description should be quoted.
 
-*thy role create --name test-role --desc "a test role"*
+```BASH
+thy role create --name test-role --desc "a test role"
+```
 
 ### Boolean
 
 Some parameters are simple Boolean flags controlling whether or not something applies, for example, whether to beautify the JSON output of a Secret read.
 
-*thy secret read --path example/bash-json --beautify*
+```BASH
+thy secret read --path example/bash-json --beautify
+```
 
 ### JSON Data
 
-In some cases the parameter expects JSON. For example, the *--data* parameter on a *thy secret create* command expects JSON data.
+In some cases the parameter expects JSON. For example, the `--data` parameter on a `thy secret create` command expects JSON data.
 
 JSON parameter formatting depends on the OS and shell program.
 
@@ -80,7 +93,7 @@ JSON parameter formatting depends on the OS and shell program.
 
 * cmd.exe: wrap the JSON in a double quote (") and inside the JSON escape each double quote (") with a backslash (\)
 
-```bash
+```BASH
 thy secret create --path example/bash-json --data '{"password":"bash-secret"}'
 ```
 
@@ -98,7 +111,7 @@ Passing JSON as a parameter remains practical only as long as the JSON remains s
 
 For instance, here the command is to create a Secret using a local file named secret.json. The examples show the minor variations among operating systems and shells.
 
-```bash
+```BASH
 thy secret create --path example/bash-json --data @secret.json
 ```
 
@@ -116,14 +129,16 @@ For passing a file as data, only Powershell requires the file path and name to b
 
 DSV offers global flags that combine with most commands to format or redirect output.
 
-* *--encoding, -e* specify the output format as either JSON or YAML
-* *--beautify, -b* beautify JSON or YAML output
-* *--filter, -f* filter to output only a specific JSON attribute; this feature uses the [jq library](https://stedolan.github.io/jq/)
-* *--out, -o* control the output destination; valid values: *stdout*, *clip*, and *file:[file-name]*, with *stdout* the default
+* `--encoding, -e` specify the output format as either JSON or YAML
+* `--beautify, -b` beautify JSON or YAML output
+* `--filter, -f` filter to output only a specific JSON attribute; this feature uses the [jq library](https://stedolan.github.io/jq/)
+* `--out, -o` control the output destination; valid values: *stdout*, *clip*, and *file:[file-name]*, with *stdout* the default
 
 ## Encoding and Beautify
 
-*thy secret read --path /servers/us-east/server01 -be yaml*
+```BASH
+thy secret read --path /servers/us-east/server01 -be yaml
+```
 
 Outputs:
 
@@ -203,7 +218,7 @@ Output piping takes advantage of a common coding practice in which the value of 
 
 As an example, you can save any DSV CLI output into an environment variable by piping the output from the standard output into an environment variable.
 
-```bash
+```BASH
 export MYSecret=$(thy secret read --path Secret1)
 ```
 
@@ -213,10 +228,6 @@ $MYSecret=thy secret read --path Secret1
 
 Both of the preceding would create an environment variable named *MYSecret* that would store the Secret data. To view the data you would use:
 
-```bash
+```BASH
 echo $MYSecret
 ```
-
-
-
-  

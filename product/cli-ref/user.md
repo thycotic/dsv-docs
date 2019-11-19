@@ -32,7 +32,7 @@ The name qualifier format *provider name:local name* means for example that the 
 
 The *changepassword* command, effective for local Users only, initiates an elemental password change sequence:
 
-```bash
+```BASH
 thy auth changepassword
 
 Please enter your current password:
@@ -55,24 +55,24 @@ The *create* command takes several *--parameters* that spec foundational aspects
   
 ---
   
-| Parameter | Content |
-| ----- | ----- |
-| --username | local username; required; supports local authentication by username and password; need not match that used by a federated authentication provider (if present) |
-| --password | password for local authentication by username and password |
-| --provider | matches the *name* attribute of the authentication provider in the *settings* section of the config |
-| --external-id | identifier recognized by third-party federated authentication providers, such as AWS or ARN |
+| Parameter       | Content |
+| --------------- | ------- |
+| `--username`    | local username; required; supports local authentication by username and password; need not match that used by a federated authentication provider (if present) |
+| `--password`    | password for local authentication by username and password |
+| `--provider`    | matches the *name* attribute of the authentication provider in the *settings* section of the config |
+| `--external-id` | identifier recognized by third-party federated authentication providers, such as AWS or ARN |
   
 ---
   
 Create a local User with username *_test-admin_* and password *_secret-password*:
 
-```bash
+```BASH
 thy user create --username test-admin --password secret-password
 ```
 
 Create a User account for login by the AWS *IAM _test-admin_* User, with the account tied to an *_aws-dev_* account in the configuration:
 
-```bash
+```BASH
 thy user create --username test-admin --external-id arn:aws:iam::00000000000:user/test-admin --provider aws-dev
 ```
 
@@ -80,7 +80,7 @@ thy user create --username test-admin --external-id arn:aws:iam::00000000000:use
 
 The *search* command locates Users by searching on their usernames. It accepts as a *--query* parameter the username you provide, and searches for records with a matching username.
 
-```bash
+```BASH
 thy user search --query test-admin
 ```
 
@@ -112,13 +112,13 @@ The *read* command retrieves and displays information without changing anything.
 
 Provide a fully qualified username and read the User’s details:
 
-```bash
+```BASH
 thy user read --username aws-dev:test-admin
 ```
 
 Provide a full local username and read the User’s details:
 
-```bash
+```BASH
 thy user get --username test-admin
 ```
 
@@ -128,14 +128,17 @@ The *delete* command will remove records of both local Users and Users associate
 
 Delete a third-party User identified by a fully qualified name:
 
-```bash
+```BASH
 thy user delete --username aws-dev:test-admin
 ```
 
 Delete a local User identified by the full local username:
 
-```bash
+```BASH
 thy user delete --username test-admin
 ```
 
-  
+When you delete a User, it will no longer be usable. However, with the soft delete capacity of DSV, you have 72 hours to use the *restore* command to undelete the User. After 72 hours, the User will no longer be retrievable.
+
+Should you want to perform a hard delete, precluding any restore operation, you can use the *delete* command’s *--force* flag.
+

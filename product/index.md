@@ -4,7 +4,7 @@
 
 # Welcome to DevOps Secrets Vault (DSV) Technical Assistance
 
-This October, DSV has new flags for the update command, changes to the granularity of edits to Secrets data objects, and other refinements. [Recent New Features](recent-new-features.md) has the details.
+This October, DSV has new flags for the update command, changes to the granularity of edits to Secrets data objects, and other refinements. [New This Month](./support/new-this-month.md) has the details.
 
 ---
 
@@ -36,7 +36,7 @@ Visit [Obtain DevOps Secrets Vault](./obtain/index.md) to learn how to sign up f
 
 After you finish setup, you can learn more about DevOps Secrets Vault in the [CLI Primer](./cli-primer/index.md), [CLI Secrets Examples](./cli-examples/index.md), and [CLI Reference](./cli-ref/index.md) articles.
 
-[Support Resources](./cust-support/index.md) connects you to available product support and provides [Release Notes](./cust-support/release-notes.md).
+[Support Resources](./support/index.md) connects you to available product support and provides [Release Notes](./support/release-notes.md).
 
 [Quick Links](./quick-links/) lists for your convenience commonly used links related to DevOps Secrets Vault.
 

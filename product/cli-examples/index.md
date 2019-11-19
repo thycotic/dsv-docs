@@ -27,7 +27,7 @@ Here is an example of JSON that could be made a Secret. The JSON is arbitrary, s
 
 Create the Secret and specify the path to its storage location:
 
-```bash
+```BASH
 thy secret create --path aws/us-east-1/rds/postgres01 --data @secret.json
 ```
  
@@ -51,14 +51,14 @@ Outputs:
 
 To retrieve a Secret use the Secret read command and specify the path to the Secret’s storage location.
 
-```bash
+```BASH
 thy secret read --path /servers/us-east/server01
 ```
  
 
 Outputs:
 
-```bash
+```BASH
 {"attributes":null,"data":{"host":"server01","password":"secretp@ssword","username":"administrator"},"id":"c5239a6c-422e-4f57-b3a6-5167656af852","path":"servers:us-east:server01"}
 ```
  
@@ -67,7 +67,7 @@ Outputs:
 
 To beautify JSON responses to DSV commands, use the *-b* or *--beautify* flag.
 
-```bash
+```BASH
 thy secret read --path /servers/us-east/server01 -b
 ```
  
@@ -92,7 +92,7 @@ Outputs:
 
 When you need to locate a specific field in a JSON output, use a JSON filter. An example use case is writing scripts that need to obtain a password but lack the capacity to efficiently parse JSON.
 
-```bash
+```BASH
 thy secret read --path /servers/us-east/server01 -bf data.password
 secretp@ssword
 ```
@@ -102,7 +102,7 @@ secretp@ssword
 
 Using *--data*, *--attributes*, and *--desc* flags, respectively, you can update data, attributes, and description separately. For example:
 
-```bash
+```BASH
 thy secret update servers/us-east/server01 --data '{"host": "server01", “password”: “badpassword”,”username”: “admininistrator”}' --desc 'update description’  --attributes ‘{“attr”: “add one”}’
 
 
