@@ -89,7 +89,7 @@ Note: On Windows, you cannot use *edit* on the configuration. Instead, you must:
 
 Use *update* to change a config by uploading JSON data.
 
-The value of the *--data* parameter for *update* accepts JSON entered directly at the command line, or the path to a JSON file.
+The value of the `--data` parameter for *update* accepts JSON entered directly at the command line, or the path to a JSON file.
 
 ```BASH
 thy config update --path us-east/server02 --data {\\"something\\":\\"value\\"}

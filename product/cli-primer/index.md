@@ -27,7 +27,7 @@ Some parameters and flags apply only to some commands. DSV also includes output 
 
 JSON parameter formatting varies in minor ways depending on the OS and shell program. Basically:
 
-* CMD.EXE and PowerShell require that double quote (") marks within the JSON be escaped with a backslash (\)
+* CMD.EXE and PowerShell require that double quote (") marks within the JSON be escaped with a backslash (\\)
 * CMD.EXE requires the JSON overall to be enclosed in double quote (") marks; Powershell, with single quote (') marks.
 * Linux accepts JSON without internal character escapes, requiring only that the JSON be enclosed by single quote (') marks.
 
@@ -39,15 +39,15 @@ The [JSON Data](./cli-primer#json_data) section later on this page provides exam
 | ---------- | -------------------------------------- | ----------------------------------------------------------------------------------------- |
 | auth       | auth                                   | authenticate to the vault or display the current access token                            |
 | cli-config | init                                   | manage DSV settings                                                                       |
-| client     | client (`<client-id> | --client-id`)   | manage client credentials for application vault access                                    |
+| client     | client (`<client-id> • --client-id`)   | manage client credentials for application vault access                                    |
 | config     | config                                 | manage the top level DSV app configuration document shared by all Users                  |
 | eval       | eval                                   | check the value of a command line flag or variable                                        |
-| group      | group (`<group-name> | --group-name`)  | manage collections of Users uniformly by placing them in a managed Group                    |
+| group      | group (`<group-name> • --group-name`)  | manage collections of Users uniformly by placing them in a managed Group                    |
 | init       | cli-config init                        | initialize DSV on first run                                                               |
-| policy     | policy (`<path> | --path | -r`)        | manage policies on permissions for Secrets, Roles, Users, and other entities in the vault |
-| role       | role (`<name> | --name | -n`)          | manage Roles                                                                              |
-| secret     | secret (`<path> | --path | -r`)        | create, update, and retrieve Secrets from the vault                                       |
-| user       | user (`<username> | --username`)       | manage Users                                                                              |
+| policy     | policy (`<path> • --path • -r`)        | manage policies on permissions for Secrets, Roles, Users, and other entities in the vault |
+| role       | role (`<name> • --name • -n`)          | manage Roles                                                                              |
+| secret     | secret (`<path> • --path • -r`)        | create, update, and retrieve Secrets from the vault                                       |
+| user       | user (`<username> • --username`)       | manage Users                                                                              |
 | whoami     | whoami                                 | display the currently authenticated User                                                  |
 
 ## Parameters
@@ -88,10 +88,8 @@ In some cases the parameter expects JSON. For example, the `--data` parameter on
 JSON parameter formatting depends on the OS and shell program.
 
 * Linux: wrap the JSON in a single quote (')
-
-* PowerShell: wrap the JSON in a single quote (') and inside the JSON escape each double quote (") with a backslash (\)
-
-* cmd.exe: wrap the JSON in a double quote (") and inside the JSON escape each double quote (") with a backslash (\)
+* PowerShell: wrap the JSON in a single quote (') and inside the JSON escape each double quote (") with a backslash (\\)
+* cmd.exe: wrap the JSON in a double quote (") and inside the JSON escape each double quote (") with a backslash (\\)
 
 ```BASH
 thy secret create --path example/bash-json --data '{"password":"bash-secret"}'

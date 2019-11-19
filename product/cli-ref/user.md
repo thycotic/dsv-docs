@@ -47,11 +47,11 @@ Please enter the new password (confirm):
 
 With a local User, correct entry for the current password prompt, and valid, matching responses to the first and second prompts for the new password, the response will be a message that the password has been changed.
 
-A Thycotic One Federated User must instead visit Thycotic One to change their password. Attempting to use the changepassword command within the CLI will fail, with DVS directing the external User to visit [](https://thycotic-one-sscdev-dev-eastus-web01.azurewebsites.net).
+A Thycotic One Federated User must instead visit Thycotic One to change their password. Attempting to use the *changepassword* command within the CLI will fail.
 
 #### Create
 
-The *create* command takes several *--parameters* that spec foundational aspects of the User record.
+The *create* command takes several `--parameters` that spec foundational aspects of the User record.
   
 ---
   
@@ -78,7 +78,7 @@ thy user create --username test-admin --external-id arn:aws:iam::00000000000:use
 
 #### Search
 
-The *search* command locates Users by searching on their usernames. It accepts as a *--query* parameter the username you provide, and searches for records with a matching username.
+The *search* command locates Users by searching on their usernames. It accepts as a `--query` parameter the username you provide, and searches for records with a matching username.
 
 ```BASH
 thy user search --query test-admin
@@ -140,5 +140,5 @@ thy user delete --username test-admin
 
 When you delete a User, it will no longer be usable. However, with the soft delete capacity of DSV, you have 72 hours to use the *restore* command to undelete the User. After 72 hours, the User will no longer be retrievable.
 
-Should you want to perform a hard delete, precluding any restore operation, you can use the *delete* command’s *--force* flag.
+Should you want to perform a hard delete, precluding any restore operation, you can use the *delete* command’s `--force` flag.
 

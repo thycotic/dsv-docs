@@ -20,7 +20,7 @@ When DSV has possession of Secrets outside the vault (that is, the CLI or API ha
 | describe | view Secret metadata only |
 | read | view a Secret's data |
 | edit | modify a Secret using the OS’s default command-line editor, such as **VI** or **nano** |
-| update | modify a Secret, with **--data**, **--attributes** and **--desc** flags to modify selected portions only, and a Boolean **--overwrite** flag to control whether the **--data** flag’s content overwrites or merges with extant data object fields  |
+| update | modify a Secret, with `--data`, `--attributes` and `--desc` flags to modify selected portions only, and a Boolean `--overwrite` flag to control whether the `--data` flag’s content overwrites or merges with extant data object fields  |
 | delete | delete a Secret |
   
 ---
@@ -39,13 +39,13 @@ Note again here the syntax pattern in which an object of a command precedes the 
 
 #### Create
 
-Secrets data passes into the *create* command as the value of its *--data* parameter. The parameter accepts JSON entered directly at the command line, or the path to a JSON file.
+Secrets data passes into the *create* command as the value of its `--data` parameter. The parameter accepts JSON entered directly at the command line, or the path to a JSON file.
 
 ``` bash
 thy secret create --path us-east/server02 --data {\"password\":\"Secret\"}
 ```
 
-If the *--data* parameter’s value will be the path to a JSON file, DSV syntax requires an *@* character immediately preceding the first character of the path. The parameter accepts abolute and relative path strings.
+If the `--data` parameter’s value will be the path to a JSON file, DSV syntax requires an `@` character immediately preceding the first character of the path. The parameter accepts abolute and relative path strings.
 
 ``` bash
 thy secret create --path us-east/server03 --data @/home/user/Secret.json
@@ -79,9 +79,9 @@ Or simply:
 thy secret search us-east/server02
 ```
 
-The *--limit* parameter allows you to set the maximum number of search results that will display per page (cursor).
+The `--limit` parameter allows you to set the maximum number of search results that will display per page (cursor).
 
-The *--cursor* parameter accepts the element used to get the next page of results.
+The `--cursor` parameter accepts the element used to get the next page of results.
 
 For a search where there are more results than returned in the first set, the API returns a cursor—a large piece of text. You pass that back to get the next set of results.
 
@@ -107,7 +107,7 @@ thy secret describe --path us-east/server02
 
 #### Read
 
-Use *read* to get a Secret’s data. The *-b* flag beautifies the output, while the *-e* flag sets the output format to JSON or YAML and the *-o* flag (as commonly used) redirects the output to a file.
+Use *read* to get a Secret’s data. The `-b` flag beautifies the output, while the `-e` flag sets the output format to JSON or YAML and the `-o` flag (as commonly used) redirects the output to a file.
 
 ``` bash
 thy secret read --path us-east/server02 -b -e yaml
@@ -123,7 +123,7 @@ id: 3f15f2a5-f76a-4f43-911c-d8b4f1cc2290
 path: us-east:server02
 ```
 
-The *--filter* or *-f* flag supports filtering to isolate a specific data attribute, for example:
+The `--filter` or `-f` flag supports filtering to isolate a specific data attribute, for example:
 
 ```BASH
 thy secret read --path us-east/server02 -f data.password
@@ -133,7 +133,7 @@ Output:
 
 *Secret*
 
-> TIP: Although the *-o* flag allows redirection of output to files, it does not support directly assigning the output to an environmental variable. However, you can use piping to achieve that outcome.
+> TIP: Although the `-o` flag allows redirection of output to files, it does not support directly assigning the output to an environmental variable. However, you can use piping to achieve that outcome.
 
 **Piping** refers to passing to a command a parameter value that is itself a command, or assigning to a variable a value that is a command. In effect, piping means assigning as a value the means to obtain the value, rather than the value itself.
 
@@ -147,7 +147,7 @@ or
 \$TEST=thy secret read --path us-east/server02
 ```
 
-Both examples use piping to assign to the variable *TEST* the value contained in the Secret, by making the *secret read* command a parameter within a larger command or statement.
+Both examples use piping to assign to the variable *TEST* the value contained in the Secret, by making the `secret read` command a parameter within a larger command or statement.
 
 Once stored as the value of *TEST*, the data remain easily accessible:
 
@@ -171,15 +171,15 @@ thy secret edit --path us-east/server02
 
 Use *update* to change a Secret’s data. The command has several flags pertinent to Secrets:
 
-* the **--data** flag allows you to only update the data portion of the Secret
-  * the Boolean **--overwrite** flag controls whether the **--data** flag’s content overwrites or merges with extant data object fields
+* the `--data` flag allows you to only update the data portion of the Secret
+  * the Boolean `--overwrite` flag controls whether the `--data` flag’s content overwrites or merges with extant data object fields
   * the data object accepts as many fields as you choose
-* the **--attributes** flag allows you to only update the attributes of the Secret
-* the **--desc** flag allows you to only update the description of the Secret
+* the `--attributes` flag allows you to only update the attributes of the Secret
+* the `--desc` flag allows you to only update the description of the Secret
 
-The *--overwrite* flag applies only at the field level; it does not allow you to merge new attributes of a data field into existing attributes of that field, only to merge new data fields into the extant set of data fields.
+The `--overwrite` flag applies only at the field level; it does not allow you to merge new attributes of a data field into existing attributes of that field, only to merge new data fields into the extant set of data fields.
 
-As with *create*, as the value of the *--data* parameter *update* accepts JSON entered directly at the command line, or the path to a JSON file.
+As with *create*, for the value of the `--data` parameter `update` accepts JSON entered directly at the command line, or the path to a JSON file.
 
 ```BASH
 thy secret update --path us-east/server02 --data {\\"password\\":\\"Secret2\\"}
@@ -201,5 +201,5 @@ thy secret delete --path us-east/server02
 
 When you delete a Secret, it will no longer be usable. However, with the soft delete capacity of DSV, you have 72 hours to use the *restore* command to undelete the Secret. After 72 hours, the Secret will no longer be retrievable.
 
-Should you want to perform a hard delete, precluding any restore operation, you can use the *delete* command’s *--force* flag.
+Should you want to perform a hard delete, precluding any restore operation, you can use the *delete* command’s `--force` flag.
 
