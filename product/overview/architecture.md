@@ -18,6 +18,7 @@ Activities originate on customer premises in three ways:
 * an API call by an application
 
 **Architectural Summary View: DevOps Secrets Vault**
+
 ![Architectural Summary View of DevOps Secrets Vault](./images/ha-dr-architecture-scaled.png)
 
 DevOps Secrets Vault leverages **AWS DynamoDB** global tables for data storage, with a configuration using automatic dual-region replication as a continuous backup mechanism.
