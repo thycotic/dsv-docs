@@ -17,7 +17,7 @@ In Jenkins, select **Manage Jenkins > Manage Plugins > Advanced**.
 Click **Browse**, locate the **devops-secrets-vault-jenkins.hpi** you downloaded, and bring it into Jenkins.
  
  
-![image](jenkins-upload.png)
+![image](./images/jenkins-upload.png)
  
  
 ## Linking Jenkins to DevOps Secrets Vault
@@ -32,19 +32,19 @@ Use the DSV CLI to create a new client credential linked to a Role that has read
 
 Create a Role  
 
-```bash
+```BASH
 thy role create --name jenkins --desc "grants access to build Secrets"
 ```
 Create a Client Credential
 
-```bash
+```BASH
 thy client create --role jenkins
 ```
 Save the *clientId* and *clientSecret* returned by this command. You will use these to grant Jenkins access to the vault.
 
 Add the Jenkins Role to a Permission Policy  
 
-```bash
+```BASH
 thy config edit -e yaml
 ```
 Here is an example permission document granting the Jenkins Role read-only access to Secrets under the resources/path:
@@ -82,11 +82,11 @@ In Jenkins, use these steps to add the newly created client credential:
 
 * Under **Credentials**, add new credentials.
  
-![image](jenkins-add-credential.png)
+![image](./images/jenkins-add-credential.png)
  
 * Enter the vault URL, your tenant name, the clientId, and the clientSecret from the newly created client credential.
  
-![image](jenkins-add-vault-credential.png)
+![image](./images/jenkins-add-vault-credential.png)
  
 * You can specify an ID or let Jenkins autogenerate the ID.
 
@@ -96,12 +96,12 @@ To use Secrets from the vault in the Jenkins build pipelines, we need a Secret f
 
 We will create a test Secret at the path *resources/server01*:
 
-```bash
+```BASH
 thy secret create resources/server01 '{"servername":"server01","password":"somepass1"}'
 ```
 Read back the Secret to verify the data looks right:
 
-```bash
+```BASH
 thy secret read -be JSON resources/server01
 ```
 The resulting JSON Secret should look similar to:
@@ -134,11 +134,11 @@ To get credentials in a Freestyle build:
   * the Secret data field from which to get the value; in this case we are getting the value from the *password* field of our previously created Secret
 * In build steps, you can reference the environment variable as you normally would. For example, the shell script shown here will echo the *$MY_PASSWORD* environment variable.
  
-![image](jenkins-build-step.png)
+![image](./images/jenkins-build-step.png)
  
 * The console output of the build should show the retrieved Secret password value of "somepass1" as expected.
  
-![image](jenkins-build-output.png)
+![image](./images/jenkins-build-output.png)
  
 ## Jenkinsfile
 
@@ -171,11 +171,11 @@ node {
 }
 ```
 
-![image](jenkins-pipeline.png)
+![image](./images/jenkins-pipeline.png)
  
 Running the pipeline, the output will be the password value of the Secret from the vault.
  
-![image](jenkins-pipeline-output.png)
+![image](./images/jenkins-pipeline-output.png)
  
 As expected, the jenkinsfile outputs the password value from the Secret at *resources/server01*.
 
