@@ -18,12 +18,12 @@ Activities originate on customer premises in three ways:
 * an API call by an application
 
 **Architectural Summary View: DevOps Secrets Vault**
-![Architectural Summary View of DevOps Secrets Vault](./images/dsv-ha-dr-architecture-scaled.png)
+![Architectural Summary View of DevOps Secrets Vault](./images/ha-dr-architecture-scaled.png)
 
 DevOps Secrets Vault leverages **AWS DynamoDB** global tables for data storage, with a configuration using automatic dual-region replication as a continuous backup mechanism.
 
 * Of the two AWS Regions used in this architecture, one serves as the primary application platform and the other as a hot stand-by.
-* Thycotic monitors both regions via AWS Route 53 so that if the primary platform fails, client traffic automatically routes to the hot stand-by in under one minute.
+* Thycotic monitors both regions via **AWS Route 53** so that if the primary platform fails, client traffic automatically routes to the hot stand-by in under one minute.
 
 Users authenticate by a ThycoticOne, Amazon AWS, or Microsoft Azure authentication provider. Within the DSV application platform, the API Gateway receives API calls, obtains the responses, and relays them to the caller using HTTP GET, PUT, POST and other methods common to the REST architectural style. The Authorizer uses OAuth to handle API Gateway authorization.
 

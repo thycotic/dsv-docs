@@ -4,7 +4,7 @@
 
 # Welcome to DevOps Secrets Vault (DSV) Technical Assistance
 
-This October, DSV has new flags for the update command, changes to the granularity of edits to Secrets data objects, and other refinements. [New This Month](./support/new-this-month.md) has the details.
+This November, DSV assumed a soft delete posture for most delete operations and now offers increased availability and recoverability. [New This Month](./support/new-this-month.md) has the details.
 
 ---
 

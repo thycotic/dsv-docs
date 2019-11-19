@@ -26,7 +26,7 @@ DSV now has a soft delete posture for most delete operations and offers increase
 
 You can still perform a hard delete that precludes any restore operation.
 
-* Use the delete command’s --force flag to perform a hard delete.
+* Use the delete command’s `--force` flag to perform a hard delete.
 
 ### Improved Availability and Recoverability
 

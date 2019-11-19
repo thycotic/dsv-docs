@@ -3,11 +3,9 @@
 [priority]: # (2100)
 
 ---
- 
 
-New to DevOps Secrets Vault? Go back to the [Getting Started](../index.htm) page for the steps to obtain, install, and configure DSV.
+New to DevOps Secrets Vault? Go back to the [Getting Started](../index.md) page for the steps to obtain, install, and configure DSV.
 
- 
 ---
 
 # Support

@@ -111,7 +111,7 @@ Note that you can designate paths with either of the colon : or forward slash / 
 To remove members from a Group, follow this example, wherein *deletemembers.json* contains: *{"memberNames": ["billy"]}*
 
 ```BASH
-thy group delete-members --group-name admins --data @/tmp/deletemembers.json* 
+thy group delete-members --group-name admins --data @/tmp/deletemembers.json
 <no response>
 ```
 
@@ -128,5 +128,5 @@ thy group delete --group-name admins
 
 When you delete a Group, it will no longer be usable. However, with the soft delete capacity of DSV, you have 72 hours to use the *restore* command to undelete the Group. After 72 hours, the Group will no longer be retrievable.
 
-Should you want to perform a hard delete, precluding any restore operation, you can use the *delete* command’s *--force* flag.
+Should you want to perform a hard delete, precluding any restore operation, you can use the *delete* command’s `--force` flag.
 

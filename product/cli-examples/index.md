@@ -23,14 +23,12 @@ Here is an example of JSON that could be made a Secret. The JSON is arbitrary, s
     "password": "secretp@ssword"
 }
 ```
- 
 
 Create the Secret and specify the path to its storage location:
 
 ```BASH
 thy secret create --path aws/us-east-1/rds/postgres01 --data @secret.json
 ```
- 
 
 Outputs:
 
@@ -45,7 +43,6 @@ Outputs:
   "path": "servers:us-east:server01"
 }
 ```
- 
 
 ## Retrieve a Secret
 
@@ -54,23 +51,20 @@ To retrieve a Secret use the Secret read command and specify the path to the Sec
 ```BASH
 thy secret read --path /servers/us-east/server01
 ```
- 
 
 Outputs:
 
 ```BASH
 {"attributes":null,"data":{"host":"server01","password":"secretp@ssword","username":"administrator"},"id":"c5239a6c-422e-4f57-b3a6-5167656af852","path":"servers:us-east:server01"}
 ```
- 
 
 ## Beautify the Output of a Command
 
-To beautify JSON responses to DSV commands, use the *-b* or *--beautify* flag.
+To beautify JSON responses to DSV commands, use the `-b` or `--beautify` flag.
 
 ```BASH
 thy secret read --path /servers/us-east/server01 -b
 ```
- 
 
 Outputs:
 
@@ -86,7 +80,6 @@ Outputs:
   "path": "servers:us-east:server01"
 }
 ```
- 
 
 ## Filter JSON Command Output for Specific Fields
 
@@ -96,15 +89,13 @@ When you need to locate a specific field in a JSON output, use a JSON filter. An
 thy secret read --path /servers/us-east/server01 -bf data.password
 secretp@ssword
 ```
- 
 
 ## Separately Update Attributes, Data, and Description
 
-Using *--data*, *--attributes*, and *--desc* flags, respectively, you can update data, attributes, and description separately. For example:
+Using the `--data`, `--attributes`, and `--desc` flags, respectively, you can update a Secret’s data, attributes, and description separately. For example:
 
 ```BASH
 thy secret update servers/us-east/server01 --data '{"host": "server01", “password”: “badpassword”,”username”: “admininistrator”}' --desc 'update description’  --attributes ‘{“attr”: “add one”}’
-
 
 {
   "attributes": {
