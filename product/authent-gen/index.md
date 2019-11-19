@@ -42,7 +42,7 @@ See the [Roles](../cli-ref/role.md) portion of the CLI Reference for more inform
 
 ## Third Party Authentication
 
-DevOps Secrets Vault works with third party authentication providers, including:
+Besides ThycoticOne, DevOps Secrets Vault works with third party authentication providers, including:
 
 **AWS IAM**: DSV uses the current AWS profile to generate a signed request which the vault validates against AWS. You can use this with EC2 instances and with a Lambda that is assigned an IAM Role or an IAM User account.
 

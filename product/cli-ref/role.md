@@ -22,20 +22,20 @@ With DSV, the term “role” describes a security principal in the vault that t
 
 #### Create
 
-The *create* command takes several *--parameters* that spec key aspects of the Role record.
+The *create* command takes several `--parameters` that spec key aspects of the Role record.
 
  
 | Parameter | Content |
 | ----- | ----- |
-| --desc | description of the Role |
-| --name | name of the Role |
-| --provider | matches the *name* attribute of the authentication provider in the *settings* section of the config |
-| --external-id | identifier recognized by third-party federated authentication providers, such as AWS or ARN |
+| `--desc` | description of the Role |
+| `--name` | name of the Role |
+| `--provider` | matches the *name* attribute of the authentication provider in the *settings* section of the config |
+| `--external-id` | identifier recognized by third-party federated authentication providers, such as AWS or ARN |
 
  
 Create a local Role with the name *\_test-role\_*:
 
-```bash
+```BASH
 thy role create --name test-role
 ```
 
@@ -45,19 +45,19 @@ The *search* command locates Roles by searching on their Role names. It accepts 
 
 Search for a Role named *\_dev-admin\_*:
 
-```bash
+```BASH
 thy role search --query dev-admin
 ```
 
 Or simply:
 
-```bash
+```BASH
 thy role search devadmin
 ```
 
 You can also specify the maximum number of search results per page (cursor) and a cursor to get the next batch of results.
 
-```bash
+```BASH
 thy role search --query us-east/server02 --limit 2 --cursor eyJpZCI6ImZmZjZjODUxTJ2ZXJzaW9uIjo50IiwidHiJ9
 ```
 
@@ -67,7 +67,7 @@ The *read* command retrieves and displays information without changing anything.
 
 Provide a Role name and read the Role’s details in beautified form:
 
-```bash
+```BASH
 thy role read --name test-role -b
 ```
 
@@ -79,7 +79,7 @@ Use *update* to change a Role’s data.
 
 Provide a Role name and update the Role to replace the description field’s value:
 
-```bash
+```BASH
 thy role update --name test-role --desc "a new description"
 ```
 
@@ -89,8 +89,12 @@ The *delete* command will remove Roles.
 
 Provide a Role name and delete the Role:
 
-```bash
+```BASH
 thy role delete --name test-role
 ```
+
+When you delete a Role, it will no longer be usable. However, with the soft delete capacity of DSV, you have 72 hours to use the *restore* command to undelete the Role. After 72 hours, the Role will no longer be retrievable.
+
+Should you want to perform a hard delete, precluding any restore operation, you can use the *delete* command’s *--force* flag.
 
 

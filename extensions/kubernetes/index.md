@@ -6,7 +6,7 @@
 
 The Kubernetes extension to DevOps Secrets Vault consists of several images available from Docker. These illustrate how to build containers incorporating DevOps Secrets Vault functionality. To obtain these images, at your Docker command line, use *docker pull* commands for each image:
 
-```bash
+```BASH
 docker pull quay.io/thycotic/devops-secrets-vault-client
 docker pull quay.io/thycotic/devops-secrets-vault-broker
 docker pull quay.io/thycotic/devops-secrets-vault-example
@@ -20,7 +20,7 @@ Kubernetes helps coordinate containerized applications across a cluster of machi
 
 The illustration shows an example of a Kubernetes Architecture implementation.
  
-![image](dsv-and-kubernetes-scaled.png)
+![image](./images/dsv-kubernetes.png)
  
 In studying the diagram, it would be easy to mistakenly conclude that the Kubernetes Secrets Manager is being used to store the pods’ Secrets, which is not the case. The action of Kubernetes Secrets Manager here is to distribute TLS certificates to secure the connection between the DSV broker and sidecar agent, in cases where this is desirable. In most cases this would be unnecessary since the user cluster will typically be secured already.
 
@@ -45,7 +45,7 @@ In using the *broker.yml* file, be sure to first swap in variable values appropr
           value: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-xxxxxxxxx
 ```
 
-When the broker is running, it watches for new pods coming online that execute with a specific annotation, *dsv*. For each such pod, it looks at the value of the **tenant** to be used, and adds the pod to its internal registry.
+When the broker is running, it watches for new pods coming online that execute with a specific Annotation, *dsv*. For each such pod, it looks at the value of the **tenant** to be used, and adds the pod to its internal registry.
 
 ### The Broker YAML File
 

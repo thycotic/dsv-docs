@@ -4,7 +4,7 @@
 
 # Release Notes
 
-Thycotic periodically updates DevOps Secrets Vault, such as to provide fixes and improvements or to introduce additional features. As Cloud application, DSV lacks version numbers, because updates become available to all users as they occur—the current version is always the only version available.
+Thycotic periodically updates DevOps Secrets Vault, such as to provide fixes and improvements or to introduce additional features. As a Cloud application, DSV lacks version numbers, because updates become available to all users as they occur—the current version is always the only version available.
 
 * However, users operate DSV through a Command Line Interface (CLI) provided by downloaded, locally installed, and OS-specific executables. These bear version numbers.
 * Thycotic periodically updates these OS-specific executables to deliver fixes, improvements, and feature additions, as needed to keep the customer-side CLI executables conformant with the Cloud-based DSV service offerings.
@@ -14,34 +14,31 @@ Thycotic periodically updates DevOps Secrets Vault, such as to provide fixes and
 
 This article tracks changes to DSV. Highlights of the most recent update appear first. The same information appears in the tables that follow. The first table covers the Cloud basis for DSV, and the second covers the OS-specific CLI executables and the API. In both tables, the most recent changes appear first.
 
-## October 2019 Release Notes Highlights
+## November 2019 Release Notes Highlights
 
-With the update command’s **new flags**, *--data*, *-- desc*, and *--attributes*, you can update each of the three parts of a Secret separately from the other parts. 
+DSV now has a soft delete posture for most delete operations and offers increased availability and recoverability.
 
-The Secret update command also has a **new** *--overwrite* flag. This Boolean flag controls whether the *--data* flag’s content overwrites extant fields in the Secret’s data object, or merges with them.
+### Soft Delete
 
-**Server side policy caching** has been updated to better handle permission updates.
+* When you delete a Secret, Role, User, Group, Policy, or Authentication Provider, as before it will no longer be usable.
+* However, with DSV’s new soft delete posture, you have 72 hours to use the new `restore` command to undelete the item.
+* After 72 hours, the item will no longer be retrievable.
 
-You can now **find and examine audit logs via the CLI**. Previously, this was only possible through the API. 
+You can still perform a hard delete that precludes any restore operation.
 
-## September 2019 Release Notes Highlights
+* Use the delete command’s --force flag to perform a hard delete.
 
-**Configuration now scales more effectively**, with policies and authentication providers residing in separate files to allow for independent updates. Before, a single configuration file held all policies and authentication providers.
+### Improved Availability and Recoverability
 
-This release **omits the *permissions* command because the *policy* command supersedes it**—named policies no longer require everyone to modify a global document. 
-
-To fix a bug in the API Audit Search function, **the *secret* parameter in Audit Search is now the *path* parameter**.
-
-A **new Change Password feature** enables users to change their passwords.
-
-**Adding Users to a Group achieves permissions delegation** in this release.
-
-**Deleting a Secret now deletes all past versions**, rather than just the latest.
+Recent changes in DSV’s cloud architecture back uptime of 99.999 percent, with continuous backup enabling fail-over to a hot backup in under one minute. Updates to the EULA (your End User License Agreement) detail the new SLA for availability.
 
 ## DSV Cloud Service: Change Log
 
 | **Update**             | **Notes**                                  |
 |------------------------|--------------------------------------------|
+| November 2019          | **improvement**: after deleting a Secret, Role, User, Group, Policy, or Authentication Provider, the new `restore` command will undelete the item up to 72 hours later
+|                        | **improvement**: architectural changes back uptime of 99.999 percent; continuous backup enables hot backup fail-over in under a minute |
+|                        |      |
 | October 2019           | **improvement**: a Secret’s data, attributes, and description can be individually updated via the *update* command’s new *--data*, *--attributes* and *--desc* flags, respectively |
 |                        | **improvement**: the Secret *update* command’s new Boolean *--overwrite* flag controls whether the *--data* flag’s content overwrites or merges with extant data object fields |
 |                        | **improvement**: improvement: updated server side policy caching to better handle permission updates |
