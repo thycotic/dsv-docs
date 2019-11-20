@@ -4,28 +4,28 @@
 
 # Policy
 
+Policies control access to resources and authorization to act on resources, such as to change them, via **permissions**.
 DevOps Secrets Vault permissions are foundational for proper operation and security.
-Policies control access to resources and authorization to act on resources, such as to change them.
 
-To get a json encoded list of all policies, use:
+To get a json encoded list of all Policies, use:
 
-```bash
+```BASH
 thy policy search
 ```
 
-You can add a query item to search policies by path:
+You can add a query item to search Policies by path:
 
-```bash
+```BASH
 thy policy search secrets/databases
 ```
 
 or
 
-```bash
+```BASH
 thy policy search –query secrets/databases
 ```
 
-A typical policy looks like this:
+A typical Policy looks like this:
 
 ```yaml
 {
@@ -57,14 +57,14 @@ The syntax supports wildcards via the <.*> construct.
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | actions            | a list of possible actions on the resource including create, read, update, delete, list, share, and assign (regular expressions and list supported)                                                                                                                                                                                                                      |
 | conditions         | an optional CIDR range to lock down access to a specific IP range                                                                                                                                                                                                                                                                                       |
-| description        | human friendly description of the policy intent                                                                                                                                                                                                                                                                                                         |
-| effect             | whether the policy is allowing or preventing access; valid values are allow and deny                                                                                                                                                                                                                                                                    |
-| id                 | system-generated unique identifier to track changes to a particular policy                                                                                                                                                                                                                                                                              |
-| resources subjects | the resource path defining the targets to which the permissions apply; a resource path prefixes the entity type (Secrets, clients, Roles, Users, config, config:auth, config:policies, audit, system:log) to a colon delimited path to the resource, Users or entities to which the policy enables authorization; prefixes include Users, Roles, Groups |
+| description        | human friendly description of the Policy intent                                                                                                                                                                                                                                                                                                         |
+| effect             | whether the Policy is allowing or preventing access; valid values are allow and deny                                                                                                                                                                                                                                                                    |
+| id                 | system-generated unique identifier to track changes to a particular Policy                                                                                                                                                                                                                                                                              |
+| resources subjects | the resource path defining the targets to which the permissions apply; a resource path prefixes the entity type (Secrets, clients, Roles, Users, config, config:auth, config:policies, audit, system:log) to a colon delimited path to the resource, Users or entities to which the Policy enables authorization; prefixes include Users, Roles, Groups |
 
 ## Policy Evaluation
 
-To correctly evaluate permission policies, you must know the rules that apply to permissions.
+To correctly evaluate permission Policies, you must know the rules that apply to permissions.
 
 * Permissions are cumulative.
 
@@ -78,7 +78,7 @@ To correctly evaluate permission policies, you must know the rules that apply to
 
   * First, **list** (search) is global—it runs across all items of an entity, not limited to paths and sub-paths.
 
-  * Second, to grant a User an ability to search entities via *list*, use the root of the entity if you want *list* to include other entities and actions within the same policy. The root entity, for example, is secrets, with no other characters following.
+  * Second, to grant a User an ability to search entities via *list*, use the root of the entity if you want *list* to include other entities and actions within the same Policy. The root entity, for example, is secrets, with no other characters following.
 
 ## Policy Examples
 
@@ -86,7 +86,7 @@ To correctly evaluate permission policies, you must know the rules that apply to
 
 **Case:** Subjects need access to Secrets for an environment, but that logical environment contains a more restricted area.
 
-**Solution:** Two policies. The first provides the Subjects (*developer1@thycotic.com|developer2@thycotic.com*) general access to the Secrets resources at the path *secrets:servers:us-east-1:<.*>*.
+**Solution:** Two Policies. The first provides the Subjects (*developer1@thycotic.com|developer2@thycotic.com*) general access to the Secrets resources at the path *secrets:servers:us-east-1:<.*>*.
 
 ```yaml
 path: secrets:servers:us-east-1
@@ -102,7 +102,7 @@ resources:
 - secrets:servers:us-east-1:<.*>
 ```
 
-The second policy adds an explicit *deny* with a more specific path to deny access at the more privileged level, as in the following example.
+The second Policy adds an explicit *deny* with a more specific path to deny access at the more privileged level, as in the following example.
 
 ```yaml
 path: secrets:servers:us-east-1
@@ -139,7 +139,7 @@ resources:
 
 ### Allow Users to List Specific Entities
 
-**Case:** A User needs to read and list entities within a policy.
+**Case:** A User needs to read and list entities within a Policy.
 
 **Solution:** Add a list action and the root of the entity used for searching.
 
@@ -180,6 +180,6 @@ resources:
 - config:policies:secrets:servers:<.*>
 ```
 
-Now the developers can create policies below the *secrets:servers:* path; for example, developer1 can create policies for *secrets:servers:webservers* and developer2 can do the same at *secrets:servers:databases*.
+Now the developers can create Policies below the *secrets:servers:* path; for example, developer1 can create Policies for *secrets:servers:webservers* and developer2 can do the same at *secrets:servers:databases*.
 
 

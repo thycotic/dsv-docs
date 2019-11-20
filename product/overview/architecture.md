@@ -7,7 +7,7 @@
 DevOps Secrets Vault operates through two main components:
 
 * on the customer premises: locally installed, OS-specific Command Line Interface executables on workstations used to operate DevOps Secrets Vault
-* in the Cloud: a Secrets vault created as a tenant, in keeping with DSV as a multi-tenancy SaaS delivered by an AWS instance
+* in the Cloud: a Secrets vault created as a tenant, in keeping with DSV as a multi-tenancy SaaS delivered by redundant AWS instances
 
 DSV supports the Thycotic One, AWS, and Azure Cloud authentication providers.
 
@@ -18,27 +18,27 @@ Activities originate on customer premises in three ways:
 * an API call by an application
 
 **Architectural Summary View: DevOps Secrets Vault**
-![image](dsv-architecture-simple.png)
 
-The API Gateway receives API calls, obtains the responses, and relays them to the caller using HTTP GET, PUT, POST and other methods common to the REST architectural style. The Authorizer uses OAuth to handle API Gateway authorization.
+![Architectural Summary View of DevOps Secrets Vault](./images/ha-dr-architecture-scaled.png)
 
-The Vault Application hosts the core DSV functionality, essentially a set of AWS Lambda (serverless) commands. Lambda auto-scales to demand.
+DevOps Secrets Vault leverages **AWS DynamoDB** global tables for data storage, with a configuration using automatic dual-region replication as a continuous backup mechanism.
+
+* Of the two AWS Regions used in this architecture, one serves as the primary application platform and the other as a hot stand-by.
+* Thycotic monitors both regions via **AWS Route 53** so that if the primary platform fails, client traffic automatically routes to the hot stand-by in under one minute.
+
+Users authenticate by a ThycoticOne, Amazon AWS, or Microsoft Azure authentication provider. Within the DSV application platform, the API Gateway receives API calls, obtains the responses, and relays them to the caller using HTTP GET, PUT, POST and other methods common to the REST architectural style. The Authorizer uses OAuth to handle API Gateway authorization.
+
+The Vault Application hosts the core DSV functionality, essentially a set of AWS Lambda serverless commands. Lambda auto-scales to demand.
 
 Extensive logging enables strong audit trails and protections, while encryption protects Secrets in the vault and anywhere data is at rest.
 
 ## Availability
 
-The DSV Uptime SLA percentage is 99.90 percent based on the uptimes of component products and services.
+Thycotic architected DSV to support 99.999% uptime. Consult your EULA (End User License Agreement) for details.
 
-## Business Continuity
+## Business Continuity and Disaster Recovery
 
-AWS Dynamo databases feature point in time recovery backups with a Recovery Point Objective (RPO) of 5 minutes. The recovery time objective (RTO) is under 6 hours with a target of 20 minutes.
-
-## Disaster Recovery
-
-For the DSV application, the broadest scale of consequence for a disaster would be equivalent to an AWS region failing. Absent a contingency plan, that would cause complete loss of access to Thycotic’s Cloud entities located in the failed region for an indefinite, ongoing time.
-
-Thycotic does maintain contingency plans, and in such a circumstance, Thycotic would rebuild using AMI/Cloud formation files and deploy in a new AWS region.
+For the DSV application, the broadest scale of consequence for a disaster would be equivalent to an AWS region failing. The dual-region architecture mitigates this risk, providing switch-over to the hot stand-by within one minute should the primary platform become impaired for any reason, whether a disaster or other cause.
 
 ## Confidentiality
 

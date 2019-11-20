@@ -21,7 +21,7 @@ The configuration for DevOps Secrets Vault:
 
 To read out the current config, run:
 
-```bash
+```BASH
 thy config read -be yaml
 ```
 
@@ -59,7 +59,7 @@ In keeping with best practices, you should set up a less privileged User policy 
 
 To add Users, you first create them in [Thycotic One](https://login.thycotic.com). Then, you enable them within DSV:
 
-```bash
+```BASH
 thy user create --username <username> --password <password> --provider
 thy-one
 ```
@@ -80,24 +80,24 @@ The editor directly updates the configuration in the vault when you save your wo
 
 Note: On Windows, you cannot use *edit* on the configuration. Instead, you must:
 
-* use *thy config read -be YAML* to read out the config
+* use `thy config read -be YAML` to read out the config
 * save it as a file
 * edit the file locally
-* use *thy config update --path {path to file} --data @filename* to upload your work into the vault, entirely overwriting the prior config
+* use `thy config update --path {path to file} --data @filename` to upload your work into the vault, entirely overwriting the prior config
 
 ### Update
 
 Use *update* to change a config by uploading JSON data.
 
-The value of the *--data* parameter for *update* accepts JSON entered directly at the command line, or the path to a JSON file.
+The value of the `--data` parameter for *update* accepts JSON entered directly at the command line, or the path to a JSON file.
 
-```bash
+```BASH
 thy config update --path us-east/server02 --data {\\"something\\":\\"value\\"}
 ```
 
 or
 
-```bash
+```BASH
 thy secret update --path us-east/server02 --data @configfilename.json
 ```
 
@@ -109,7 +109,7 @@ Thycotic recommends against changing the Thycotic One provider because it provid
 
 To add AWS as an authentication provider, use:
 
-```bash
+```BASH
 thy config auth-provider create --name <name> --type <type> --<properties>
 ```
 
@@ -125,7 +125,7 @@ in which:
 
 To add Azure as an authentication provider, use:
 
-```bash
+```BASH
 thy config auth-provider create --name azure-prod --type azure --azure-tenant-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 

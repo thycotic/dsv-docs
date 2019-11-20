@@ -15,9 +15,7 @@ DSV encrypts the password in the config on successful authentication. This preve
 Routine activities associated with this authentication method include:
 
 * creating a new User
-
 * entering the username and password of the new User
-
 * adding the new User to the DSV config
 
 See the [Users](../cli-ref/user.md) portion of the CLI Reference for details.
@@ -31,18 +29,15 @@ Client credentials tie to Roles, not User accounts, the significance being that 
 Routine activities associated with the client credentials authentication method include:
 
 * creating a new Role
-
 * adding the new Role to the DSV config
-
 * creating new client credentials using the new Role
-
 * invoking the *init* command and supplying those client credentials
 
 See the [Roles](../cli-ref/role.md) portion of the CLI Reference for more information.
 
 ## Third Party Authentication
 
-DevOps Secrets Vault works with third party authentication providers, including:
+Besides ThycoticOne, DevOps Secrets Vault works with third party authentication providers, including:
 
 **AWS IAM**: DSV uses the current AWS profile to generate a signed request which the vault validates against AWS. You can use this with EC2 instances and with a Lambda that is assigned an IAM Role or an IAM User account.
 
