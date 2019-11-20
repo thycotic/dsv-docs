@@ -20,15 +20,15 @@ DSV records your choices in a **profile**. You can:
 * specify the default profile for commands
 * on a per command basis, specify the profile to be used
 
-You make these choices during setup, which you perform using the command: *thy init*
+You make these choices during setup, which you perform using the command: `thy init`
 
 ## The Simplest Case: Setup with Default Settings
 
-The simplest possible case is to use *thy init* without flags. This will initialize DSV with default settings, so that you do not make any of the above choices and operate the CLI using a single, un-named profile.
+The simplest possible case is to use `thy init` without flags. This will initialize DSV with default settings, so that you do not make any of the above choices and operate the CLI using a single, un-named profile.
 
-Run *thy init* to obtain such a default setup. DSV prompts for your tenant name.
+Run `thy init` to obtain such a default setup. DSV prompts for your tenant name.
 
-```bash
+```BASH
 thy init
  Please enter tenant name: acme
 ```
@@ -39,7 +39,7 @@ Specify the tenant name Thycotic provided when setting up your organization’s 
 
 When you sign up for a trial and choose your DSV tenant name you are also prompted to create a Thycotic One user. By default the provisioning process links your Thycotic One account and your DSV tenant, so the initial admin you sign in with will be your Thycotic One username and password.
 
-```bash
+```BASH
 Please enter username for tenant "acme":
  Please enter password:
 ```
@@ -52,19 +52,21 @@ Although setup with defaults would get you started, you probably want to specify
 
 To configure DSV with your custom choices for these settings, use this command:
 
-*thy init --advanced*
+```BASH
+thy init --advanced
+```
 
-When you use the *--advanced* flag, DSV presents you with a series of questions and choices.
+When you use the `--advanced` flag, DSV presents you with a series of questions and choices.
 
-* **TIP:** The *--profile* flag allows you to set the name of the profile setup will create; you can use the *--profile* and *--advanced* flags at the same time. For example:
+* **TIP:** The `--profile` flag allows you to set the name of the profile setup will create; you can use the `--profile` and `--advanced` flags at the same time. For example:
 
-  *thy init --advanced --profile [name]*
+  `thy init --advanced --profile [name]`
 
   This is useful if you decide later to have multiple profiles, because you won’t need to run this setup again to specify the profile name; you will only need to run setup to create the additional named profiles.
 
 All setups begin with DSV asking your tenant name and domain. Your domain is based on the server location was chosen during provisioning: United States, European Union, or Australia.
 
-```bash
+```BASH
 thy init --advanced
  Please enter tenant name: example
  Please choose domain:
@@ -80,7 +82,7 @@ Specify the tenant name Thycotic provided when setting up your organization’s 
 
 Next, DSV prompts you about **credential storage**.
 
-```bash
+```BASH
 Please enter store type:
         (1) File store (default)
         (2) None (no caching)
@@ -98,7 +100,7 @@ Select *(4) Windows Credential Manager (windows only)* to use [Windows Credentia
 
 Your next selection concerns the **type of authentication**.
 
-```bash
+```BASH
 Please enter auth type:
         (1) Password (default)
         (2) Client Credential
@@ -118,7 +120,7 @@ The [Authentication: General](../authent-gen/index.md) and [Authentication: Azur
 
 Next, the initialization process will prompt about the **cache strategy for Secrets**. The choice here depends on your specific set of concerns around security, network connectivity, performance, and systems availability.
 
-```bash
+```BASH
 Please enter cache strategy for Secrets:
         (1) Never (default)
         (2) Server then cache
@@ -140,7 +142,7 @@ Finally, you will be prompted for your username, password, and Thycotic One prov
 
 * Administrators can create local Users not tied to an external authentication system. When authenticating as such a User, leave the prompt for the Thycotic One provider name blank.
 
-```bash
+```BASH
 Please enter username for tenant "acme":
  Please enter password:
  Thycotic One authentication provider name (leave blank for local Users): thy-one

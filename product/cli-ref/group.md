@@ -25,7 +25,7 @@ A Group facilitate the application of the same policies to all members of a give
 
 This example command would create a Group named **admins** from a file **data.json** containing *{"groupName": "admins"}* (or same with single-quote marks, for Powershell) and located in the **tmp** folder:
 
-```bash
+```BASH
 thy group create --data @/tmp/data.json
 
 {
@@ -38,7 +38,7 @@ thy group create --data @/tmp/data.json
 
 This example would create a Group without referencing a file:
 
-```bash
+```BASH
 thy group create -data {"groupName": "admins"} 
 {
   "groupName": "admins",
@@ -50,13 +50,15 @@ thy group create -data {"groupName": "admins"}
 
 Note that in Powershell, single quotes are required and double quotes escaped, like this:
 
-*thy group  create --data  '{\"groupName\": \"admins\"}'*
+```BASH
+thy group  create --data  '{\"groupName\": \"admins\"}'
+```
 
 #### Find Group Membership
 
 To see what Groups the user Billy belongs to, you would use:
 
-```bash
+```BASH
 thy user groups --username billy
 {
   "groups": [
@@ -72,7 +74,7 @@ thy user groups --username billy
 
 Add members to a Group similarly to this example, wherein the file *newmember.json* contains: *{"memberNames": [ "billy",”larry’]}*
 
-```bash
+```BASH
 thy group add-members --group-name admins --data '@/tmp/newmember.json
 
 {
@@ -84,7 +86,7 @@ thy group add-members --group-name admins --data '@/tmp/newmember.json
 
 This example demonstrates how to read a Group:
 
-```bash
+```BASH
 thy group read --group-name admins
 {
   "groupName": "admins",
@@ -98,7 +100,9 @@ thy group read --group-name admins
 
 This example would assign the **admins** Group to an existing policy at the path *secrets:servers:us-west*:
 
-*thy policy update --actions "<.*>" --subjects groups:admins --path secrets/servers/us-west*
+```BASH
+thy policy update --actions "<.*>" --subjects groups:admins --path secrets/servers/us-west
+```
 
 Note that you can designate paths with either of the colon : or forward slash / characters.
 
@@ -106,8 +110,8 @@ Note that you can designate paths with either of the colon : or forward slash / 
 
 To remove members from a Group, follow this example, wherein *deletemembers.json* contains: *{"memberNames": ["billy"]}*
 
-```bash
-thy group delete-members --group-name admins --data @/tmp/deletemembers.json* 
+```BASH
+thy group delete-members --group-name admins --data @/tmp/deletemembers.json
 <no response>
 ```
 
@@ -117,11 +121,12 @@ Note that this does not delete the user objects that were members. It simply mak
 
 To delete a Group, you would follow this example:
 
-```bash
+```BASH
 thy group delete --group-name admins
 <no response>
 ```
 
+When you delete a Group, it will no longer be usable. However, with the soft delete capacity of DSV, you have 72 hours to use the *restore* command to undelete the Group. After 72 hours, the Group will no longer be retrievable.
 
-  
+Should you want to perform a hard delete, precluding any restore operation, you can use the *delete* command’s `--force` flag.
 
