@@ -14,7 +14,7 @@ DSV syntax gives you two ways to add a profile to the config.
 
 * Run `thy init` and type `add` or `a` at the prompt. Then enter the name of a new profile.
 
-* To do it with one command, run `thy init --profile [name]` to add a profile with the default settings or (more likely) `thy init --advanced --profile [name]` to add a profile with the settings you choose.
+* To do it with one command, run `thy init --profile [name]`.
 
 ## See the Config Contents
 
