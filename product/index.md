@@ -4,7 +4,7 @@
 
 # Welcome to DevOps Secrets Vault (DSV) Technical Assistance
 
-This November, DSV assumed a soft delete posture for most delete operations and now offers increased availability and recoverability. [New This Month](./support/new-this-month.md) has the details.
+This December, DSV changed the `thy init` command used to initialize accounts so that it always steps through all key options, producing a more consistent experience for users and better aligning with typical command usage. The December release also countered a potential security risk identified in the audit log system, and added automatic update availability notification.
 
 ---
 
@@ -36,7 +36,9 @@ Visit [Obtain DevOps Secrets Vault](./obtain/index.md) to learn how to sign up f
 
 After you finish setup, you can learn more about DevOps Secrets Vault in the [CLI Primer](./cli-primer/index.md), [CLI Secrets Examples](./cli-examples/index.md), and [CLI Reference](./cli-ref/index.md) articles.
 
-[Support Resources](./support/index.md) connects you to available product support and provides [Release Notes](./support/release-notes.md).
+The [Release Notes](release-notes.md) alert you to any changes or other considerations related to service updates (releases), with the latest Release Notes listed first.
+
+[Support Resources](./support/index.md) connects you to available product support.
 
 [Quick Links](./quick-links/) lists for your convenience commonly used links related to DevOps Secrets Vault.
 

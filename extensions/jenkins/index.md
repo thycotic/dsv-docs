@@ -17,7 +17,7 @@ In Jenkins, select **Manage Jenkins > Manage Plugins > Advanced**.
 Click **Browse**, locate the **devops-secrets-vault-jenkins.hpi** you downloaded, and bring it into Jenkins.
  
  
-![image](./images/jenkins-upload.png)
+![Upload UI](./images/jenkins-upload.png "Upload UI")
  
  
 ## Linking Jenkins to DevOps Secrets Vault
@@ -82,11 +82,11 @@ In Jenkins, use these steps to add the newly created client credential:
 
 * Under **Credentials**, add new credentials.
  
-![image](./images/jenkins-add-credential.png)
+![Add Credential UI](./images/jenkins-add-credential.png "Add Credential UI")
  
 * Enter the vault URL, your tenant name, the clientId, and the clientSecret from the newly created client credential.
  
-![image](./images/jenkins-add-vault-credential.png)
+![Add Vault Credential UI](./images/jenkins-add-vault-credential.png "Add Vault Credential UI")
  
 * You can specify an ID or let Jenkins autogenerate the ID.
 
@@ -113,7 +113,7 @@ The resulting JSON Secret should look similar to:
     "password": "somepass1",
     "servername": "server01"
   },
-  "id": "3c679437-9162-4272-8aad-b3cb4ddef4cb",
+  "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "path": "resources:server01"
 }
 ```
@@ -134,11 +134,11 @@ To get credentials in a Freestyle build:
   * the Secret data field from which to get the value; in this case we are getting the value from the *password* field of our previously created Secret
 * In build steps, you can reference the environment variable as you normally would. For example, the shell script shown here will echo the *$MY_PASSWORD* environment variable.
  
-![image](./images/jenkins-build-step.png)
+![Build Step in Shell Script](./images/jenkins-build-step.png "Build Step in Shell Script")
  
 * The console output of the build should show the retrieved Secret password value of "somepass1" as expected.
  
-![image](./images/jenkins-build-output.png)
+![Build Step in Shell Script - Output](./images/jenkins-build-output.png "Build Step in Shell Script - Output")
  
 ## Jenkinsfile
 
@@ -171,11 +171,11 @@ node {
 }
 ```
 
-![image](./images/jenkins-pipeline.png)
+![Jenkins Pipeline](./images/jenkins-pipeline.png "Jenkins Pipeline")
  
 Running the pipeline, the output will be the password value of the Secret from the vault.
  
-![image](./images/jenkins-pipeline-output.png)
+![Jenkins Pipeline - Output](./images/jenkins-pipeline-output.png "Jenkins Pipeline - Output")
  
 As expected, the jenkinsfile outputs the password value from the Secret at *resources/server01*.
 

@@ -20,65 +20,36 @@ DSV records your choices in a **profile**. You can:
 * specify the default profile for commands
 * on a per command basis, specify the profile to be used
 
-You make these choices during setup, which you perform using the command: `thy init`
+## Setup
 
-## The Simplest Case: Setup with Default Settings
-
-The simplest possible case is to use `thy init` without flags. This will initialize DSV with default settings, so that you do not make any of the above choices and operate the CLI using a single, un-named profile.
-
-Run `thy init` to obtain such a default setup. DSV prompts for your tenant name.
+You make these choices during setup. Begin setup with the `thy init` command.
 
 ```BASH
 thy init
- Please enter tenant name: acme
 ```
 
-Specify the tenant name Thycotic provided when setting up your organization’s account.
+* **TIP:** The `--profile` flag allows you to set the name of the profile setup will create, for example:
 
-* Do not specify the full domain; use *acme* instead of *acme.secretsvaultcloud.com* because initialization will add the domain automatically.
-
-When you sign up for a trial and choose your DSV tenant name you are also prompted to create a Thycotic One user. By default the provisioning process links your Thycotic One account and your DSV tenant, so the initial admin you sign in with will be your Thycotic One username and password.
-
-```BASH
-Please enter username for tenant "acme":
- Please enter password:
-```
-
-Once DSV accepts these credentials, you are ready to begin using the DevOps Secrets Vault Command Line Interface to administer Secrets in your organization’s secure, Cloud-hosted Secrets vault.
-
-## The More Likely Case: Setup with Custom Settings
-
-Although setup with defaults would get you started, you probably want to specify the type of credentials store, the authentication type, and the cache strategy for Secrets.
-
-To configure DSV with your custom choices for these settings, use this command:
-
-```BASH
-thy init --advanced
-```
-
-When you use the `--advanced` flag, DSV presents you with a series of questions and choices.
-
-* **TIP:** The `--profile` flag allows you to set the name of the profile setup will create; you can use the `--profile` and `--advanced` flags at the same time. For example:
-
-  `thy init --advanced --profile [name]`
+  `thy init --profile [name]`
 
   This is useful if you decide later to have multiple profiles, because you won’t need to run this setup again to specify the profile name; you will only need to run setup to create the additional named profiles.
 
-All setups begin with DSV asking your tenant name and domain. Your domain is based on the server location was chosen during provisioning: United States, European Union, or Australia.
+DSV presents you with a series of questions and choices, beginning with your tenant name and domain.
 
 ```BASH
-thy init --advanced
+thy init
  Please enter tenant name: example
  Please choose domain:
         (1) secretsvaultcloud.com (default)
         (2) secretsvaultcloud.eu
         (3) secretsvaultcloud.com.au
 ```
-  
 
 Specify the tenant name Thycotic provided when setting up your organization’s account.
 
-* Remember, you need only enter your tenant name, for example, just *acme* not *acme.secretsvaultcloud.com*, because initialization adds the domain automatically.
+* You need only enter your tenant name, for example, just *acme* not *acme.secretsvaultcloud.com*, because initialization adds the domain automatically.
+
+Your domain is based on the server location was chosen during provisioning: United States, European Union, or Australia.
 
 Next, DSV prompts you about **credential storage**.
 
@@ -138,7 +109,9 @@ Note that in this context, *server* simply means the technical elements in the C
 
 * The last choice allows use of cached Secrets even when they have expired, *provided* the server cannot be reached. This offers the most resilience against disruptions, but may not comport with some organization’s security policies.
 
-Finally, you will be prompted for your username, password, and Thycotic One provider name. By default your Thycotic One authentication provider name should be **thy-one**.
+Finally, you will be prompted for your username, password, and Thycotic One provider name. When you sign up for a trial and choose your DSV tenant name you are also prompted to create a Thycotic One user. By default the provisioning process links your Thycotic One account and your DSV tenant, so the initial admin you sign in with will be your Thycotic One username and password.
+
+By default your Thycotic One authentication provider name should be **thy-one**.
 
 * Administrators can create local Users not tied to an external authentication system. When authenticating as such a User, leave the prompt for the Thycotic One provider name blank.
 
