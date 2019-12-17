@@ -42,6 +42,6 @@ The [Release Notes](release-notes.md) alert you to any changes or other consider
 
 [Quick Links](./quick-links/) lists for your convenience commonly used links related to DevOps Secrets Vault.
 
-The **Related docs** button (located at upper left, at the top of the left-side Navigation Panel) provides access to articles about the [Jenkins](/dsv-extension-jenkins) and [Kubernetes](/dsv-extension-kubernetes) extensions and the [DSV Java SDK](/dsv-sdk-java).
+The **RELATED DOCS** section at lower left in the Navigation Panel provides access to articles about the [Jenkins](/dsv-extension-jenkins) and [Kubernetes](/dsv-extension-kubernetes) extensions and the [DSV Java SDK](/dsv-sdk-java).
 
 Alongside this collection, Thycotic maintains a [DevOps Secrets Vault API Reference](https://dsv.thycotic.com/api).
