@@ -20,7 +20,7 @@ Kubernetes helps coordinate containerized applications across a cluster of machi
 
 The illustration shows an example of a Kubernetes Architecture implementation.
  
-![image](./images/dsv-kubernetes.png)
+![Example Kubernetes Architecture](./images/dsv-kubernetes.png "Example Kubernetes Architecture")
  
 In studying the diagram, it would be easy to mistakenly conclude that the Kubernetes Secrets Manager is being used to store the pods’ Secrets, which is not the case. The action of Kubernetes Secrets Manager here is to distribute TLS certificates to secure the connection between the DSV broker and sidecar agent, in cases where this is desirable. In most cases this would be unnecessary since the user cluster will typically be secured already.
 
@@ -53,34 +53,30 @@ When the broker is running, it watches for new pods coming online that execute w
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  namespace: default
-  name: dsv-service-pod-reader
+ name: dsv-service-pod-reader
 rules:
 - apiGroups: [""] # "" indicates the core API group
   resources: ["pods"]
   verbs: ["get", "watch", "list"]
- 
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: dsv-service-pod-reader-binding
+ name: dsv-service-pod-reader-binding
 roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: dsv-service-pod-reader
+ apiGroup: rbac.authorization.k8s.io
+ kind: ClusterRole
+ name: dsv-service-pod-reader
 subjects:
-  - kind: ServiceAccount
-    name: default
-    namespace: default
-  
+- kind: ServiceAccount
+  name: default
+  namespace: default
 apiVersion: v1
 kind: Secret
 metadata:
-  name: thycotic-keys
-  namespace: default
+ name: thycotic-keys
+ namespace: default
 type: Opaque
- 
-apiVersion: apps/v1beta2
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: dsv-broker
@@ -101,7 +97,7 @@ spec:
     spec:
       containers:
       - name: dsv-broker
-        image: <url_to_controller_image>:latest
+        image: quay.io/thycotic/devops-secrets-vault-broker:latest
         imagePullPolicy: IfNotPresent
         volumeMounts:
           - name: secretkey
@@ -116,13 +112,12 @@ spec:
           value: your_tenant_name
         - name: CLIENT_ID
           value: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-      - name: CLIENT_SECRET
+        - name: CLIENT_SECRET
           value: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-xxxxxxxxx
       volumes:
         - name: secretkey
           secret:
             secretName: thycotic-keys
- 
 kind: Service
 apiVersion: v1
 metadata:
@@ -134,7 +129,6 @@ spec:
   - protocol: TCP
     port: 80
     targetPort: 3000
- 
 kind: Service
 apiVersion: v1
 metadata:
@@ -152,7 +146,6 @@ spec:
     port: 443
     targetPort: 443
 ```
- 
 
 This file can also be used locally, for example:
 

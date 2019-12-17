@@ -1,8 +1,11 @@
 ﻿[title]: # (New This Month)
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (2105)
+[display]: # (none)
 
 # New This Month: November
+
+*Use this file only for months with extensive changes.*
 
 These changes and improvements to DSV became effective on Tuesday, November 19.
 

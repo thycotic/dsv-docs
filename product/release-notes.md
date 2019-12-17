@@ -1,6 +1,6 @@
 ﻿[title]: # (Release Notes)
 [tags]: # (DevOps Secrets Vault,DSV,)
-[priority]: # (2110)
+[priority]: # (1900)
 
 # Release Notes
 
@@ -8,34 +8,28 @@ Thycotic periodically updates DevOps Secrets Vault, such as to provide fixes and
 
 * However, users operate DSV through a Command Line Interface (CLI) provided by downloaded, locally installed, and OS-specific executables. These bear version numbers.
 * Thycotic periodically updates these OS-specific executables to deliver fixes, improvements, and feature additions, as needed to keep the customer-side CLI executables conformant with the Cloud-based DSV service offerings.
-* The version number will always be the same across the OS editions of the CLI executable; if a change resulting in a version number iteration only affects one of the OS editions, it will be noted, but all editions will still get the new version number.
-* You obtain these updated versions of the CLI executables by downloading them from [DevOps Secrets Vault Downloads](https://dsv.thycotic.com/downloads).
+* The version number will always be the same across the OS-specific editions of the CLI executable; if a change resulting in a version number iteration only affects one of the OS editions, such will be noted, but all editions will still get the new version number.
+* You obtain these updated versions of the CLI executables by downloading them from [DevOps Secrets Vault Downloads](https://dsv.thycotic.com/downloads). The CLI itself will notify you when a new version is available for download.
 * Generally, older versions of CLI executables will continue to work, but you will want to have the latest executables to benefit from fixes and obtain new features.
 
 This article tracks changes to DSV. Highlights of the most recent update appear first. The same information appears in the tables that follow. The first table covers the Cloud basis for DSV, and the second covers the OS-specific CLI executables and the API. In both tables, the most recent changes appear first.
 
-## November 2019 Release Notes Highlights
+## December 2019 Release Notes Highlights
 
-DSV now has a soft delete posture for most delete operations and offers increased availability and recoverability.
+The `thy init` command’s `--advanced` flag has been retired, with `thy init` now always stepping through each account initialization options. This creates a more consistent experience for users and better aligns with typical command usage.
 
-### Soft Delete
+The December release also countered a potential security risk identified in the audit log system, where in certain circumstances credential information could have been placed within audit logs.
 
-* When you delete a Secret, Role, User, Group, Policy, or Authentication Provider, as before it will no longer be usable.
-* However, with DSV’s new soft delete posture, you have 72 hours to use the new `restore` command to undelete the item.
-* After 72 hours, the item will no longer be retrievable.
-
-You can still perform a hard delete that precludes any restore operation.
-
-* Use the delete command’s `--force` flag to perform a hard delete.
-
-### Improved Availability and Recoverability
-
-Recent changes in DSV’s cloud architecture back uptime of 99.999 percent, with continuous backup enabling fail-over to a hot backup in under one minute. Updates to the EULA (your End User License Agreement) detail the new SLA for availability.
+Beginning with the December release, the DSV CLI executables monitor for the availability of updates and prompt you when an update is available for download.
 
 ## DSV Cloud Service: Change Log
 
 | **Update**             | **Notes**                                  |
 |------------------------|--------------------------------------------|
+| December 2019          | **improvement**: the `thy init` command no longer requires an `--advanced` flag, as it now always steps through key initialization settings |
+|                        | **improvement**: the DSV CLI executables will now prompt when a new version is available for download |
+|                        | **fixed**: a potential defect in the audit log system could have allowed credential information to be improperly included with log data |
+|                        |      |
 | November 2019          | **improvement**: after deleting a Secret, Role, User, Group, Policy, or Authentication Provider, the new `restore` command will undelete the item up to 72 hours later
 |                        | **improvement**: architectural changes back uptime of 99.999 percent; continuous backup enables hot backup fail-over in under a minute |
 |                        |      |
