@@ -65,7 +65,7 @@ Your next selection concerns the **type of authentication**.
 Please enter auth type:
         (1) Password (local user)(default)
         (2) Client Credential
-	(3) Thycotic One (federated)
+        (3) Thycotic One (federated)
         (4) AWS IAM (federated)
         (5) Azure (federated)
 ```
