@@ -4,7 +4,7 @@
 
 # Welcome to DevOps Secrets Vault (DSV) Technical Assistance
 
-This December, DSV changed the `thy init` command used to initialize accounts so that it always steps through all key options, producing a more consistent experience for users and better aligning with typical command usage. The December release also countered a potential security risk identified in the audit log system, and added automatic update availability notification.
+This December, DSV changed the `thy init` command used to initialize accounts so that it always steps through all key options, producing a more consistent experience for users and better aligning with typical command usage. The December release also added automatic update availability notification to the CLI executables, and corrected a defect wherein the CLI audit logs, queried for logs within a date range, would show logs if the start date were in the future and would show logs beyond the specified end date. 
 
 ---
 
