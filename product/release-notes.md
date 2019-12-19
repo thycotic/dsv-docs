@@ -16,9 +16,9 @@ This article tracks changes to DSV. Highlights of the most recent update appear 
 
 ## December 2019 Release Notes Highlights
 
-The `thy init` command’s `--advanced` flag has been retired, with `thy init` now always stepping through each account initialization options. This creates a more consistent experience for users and better aligns with typical command usage.
+The `thy init` command’s `--advanced` flag has been retired, with `thy init` now always stepping through each account initialization option. This creates a more consistent experience for users and better aligns with typical command usage.
 
-The December release also countered a potential security risk identified in the audit log system, where in certain circumstances credential information could have been placed within audit logs.
+The December release also corrected a defect wherein the CLI audit logs, queried for logs within a date range, would show logs if the start date were in the future and would show logs beyond the specified end date.
 
 Beginning with the December release, the DSV CLI executables monitor for the availability of updates and prompt you when an update is available for download.
 
@@ -28,7 +28,7 @@ Beginning with the December release, the DSV CLI executables monitor for the ava
 |------------------------|--------------------------------------------|
 | December 2019          | **improvement**: the `thy init` command no longer requires an `--advanced` flag, as it now always steps through key initialization settings |
 |                        | **improvement**: the DSV CLI executables will now prompt when a new version is available for download |
-|                        | **fixed**: a potential defect in the audit log system could have allowed credential information to be improperly included with log data |
+|                        | **fixed**: a defect in CLI audit log listing behavior would show listings even when the start date was in the future and would show listings later than the end date |
 |                        |      |
 | November 2019          | **improvement**: after deleting a Secret, Role, User, Group, Policy, or Authentication Provider, the new `restore` command will undelete the item up to 72 hours later
 |                        | **improvement**: architectural changes back uptime of 99.999 percent; continuous backup enables hot backup fail-over in under a minute |

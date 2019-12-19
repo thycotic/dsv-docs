@@ -24,16 +24,6 @@ DSV records your choices in a **profile**. You can:
 
 You make these choices during setup. Begin setup with the `thy init` command.
 
-```BASH
-thy init
-```
-
-* **TIP:** The `--profile` flag allows you to set the name of the profile setup will create, for example:
-
-  `thy init --profile [name]`
-
-  This is useful if you decide later to have multiple profiles, because you won’t need to run this setup again to specify the profile name; you will only need to run setup to create the additional named profiles.
-
 DSV presents you with a series of questions and choices, beginning with your tenant name and domain.
 
 ```BASH
@@ -49,7 +39,7 @@ Specify the tenant name Thycotic provided when setting up your organization’s 
 
 * You need only enter your tenant name, for example, just *acme* not *acme.secretsvaultcloud.com*, because initialization adds the domain automatically.
 
-Your domain is based on the server location was chosen during provisioning: United States, European Union, or Australia.
+Your domain is based on the server location that was chosen during provisioning: United States, European Union, or Australia.
 
 Next, DSV prompts you about **credential storage**.
 
@@ -73,19 +63,24 @@ Your next selection concerns the **type of authentication**.
 
 ```BASH
 Please enter auth type:
-        (1) Password (default)
+        (1) Password (local user)(default)
         (2) Client Credential
-        (3) AWS IAM (federated)
-        (4) Azure (federated)
+	(3) Thycotic One (federated)
+        (4) AWS IAM (federated)
+        (5) Azure (federated)
 ```
 
-Select *(1) Password (default)* to authenticate by username and password.
+Select *(1) Password (local user) (default)* to authenticate by username and password.
 
 Select *(2) Client Credential* to authenticate by Client ID and Client Secret authentication; this supports use of DSV commands by applications.
 
-Select *(3) AWS IAM (federated)* to authenticate as a trusted Identity Access Management Role or User.
+Select *(3) Thycotic One (federated)* to authenticate using Thycotic’s access manager.
 
-Select *(4) Azure (federated)* to authenticate as a trusted Azure Managed Service Identity (MSI).
+NOTE: The person who signed up for DevOps Secrets Vault is the *initial administrator* and is automatically setup using Thycotic One. This enables Thycotic to reset the password if it is ever lost. It is up to the customer to then decide if all other users are local or federated through one the available providers.
+
+Select *(4) AWS IAM (federated)* to authenticate as a trusted Identity Access Management Role or User.
+
+Select *(5) Azure (federated)* to authenticate as a trusted Azure Managed Service Identity (MSI).
 
 The [Authentication: General](../authent-gen/index.md) and [Authentication: Azure or AWS](../authent-azure-aws/index.md) articles provide details for each of these choices.
 
@@ -118,7 +113,7 @@ By default your Thycotic One authentication provider name should be **thy-one**.
 ```BASH
 Please enter username for tenant "acme":
  Please enter password:
- Thycotic One authentication provider name (leave blank for local Users): thy-one
+ Thycotic One authentication provider name (default thy-one): thy-one
 ```
 
 That completes setup. You can begin using the DevOps Secrets Vault Command Line Interface to administer Secrets in your organization’s secure Cloud-hosted Secrets vault.
