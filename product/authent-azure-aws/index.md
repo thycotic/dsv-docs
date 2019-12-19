@@ -157,14 +157,11 @@ When prompted for the authorization type, choose *AWS IAM (federated)*.
 
 ```BASH
 Please enter auth type:
-
-(1) Password (default)
-
-(2) Client Credential
-
-(3) AWS IAM (federated)
-
-(4) Azure (federated)
+       (1) Password (local user)(default)
+       (2) Client Credential
+       (3) Thycotic One (federated)
+       (4) AWS IAM (federated)
+       (5) Azure (federated)
 ```
 
 DSV will prompt for the specific AWS profile to use if you are authenticating using a non-default AWS profile.
@@ -298,14 +295,11 @@ When prompted for the authorization type, choose the *Azure (federated)* authent
 
 ```BASH
 Please enter auth type:
-
-(1) Password (default)
-
-(2) Client Credential
-
-(3) AWS IAM (federated)
-
-(4) Azure (federated)
+       (1) Password (local user)(default)
+       (2) Client Credential
+       (3) Thycotic One (federated)
+       (4) AWS IAM (federated)
+       (5) Azure (federated)
 ```
 
 Read an existing Secret to verify you can authenticate and access data.
@@ -369,14 +363,11 @@ When prompted for the authorization type, choose the *Azure (federated)* option.
 
 ```BASH
 Please enter auth type:
-
-(1) Password (default)
-
-(2) Client Credential
-
-(3) AWS IAM (federated)
-
-(4) Azure (federated)
+       (1) Password (local user)(default)
+       (2) Client Credential
+       (3) Thycotic One (federated)
+       (4) AWS IAM (federated)
+       (5) Azure (federated)
 ```
 
 Read an existing Secret to verify you are able to authenticate and access data.
