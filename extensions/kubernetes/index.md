@@ -53,30 +53,36 @@ When the broker is running, it watches for new pods coming online that execute w
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
- name: dsv-service-pod-reader
+  namespace: default
+  name: dsv-service-pod-reader-binding
 rules:
 - apiGroups: [""] # "" indicates the core API group
   resources: ["pods"]
   verbs: ["get", "watch", "list"]
+---
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
- name: dsv-service-pod-reader-binding
+  name: dsv-service-pod-reader-binding
 roleRef:
- apiGroup: rbac.authorization.k8s.io
- kind: ClusterRole
- name: dsv-service-pod-reader
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: dsv-service-pod-reader-binding
 subjects:
-- kind: ServiceAccount
-  name: default
-  namespace: default
+  - kind: ServiceAccount
+    name: default
+    namespace: default
+---
 apiVersion: v1
 kind: Secret
 metadata:
- name: thycotic-keys
- namespace: default
+  name: thycotic-keys
+  namespace: default
 type: Opaque
-apiVersion: apps/v1
+
+---
+
+apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
   name: dsv-broker
@@ -97,7 +103,7 @@ spec:
     spec:
       containers:
       - name: dsv-broker
-        image: quay.io/thycotic/devops-secrets-vault-broker:latest
+        image: 661058921700.dkr.ecr.us-east-1.amazonaws.com/bambe-controller:latest
         imagePullPolicy: IfNotPresent
         volumeMounts:
           - name: secretkey
@@ -107,17 +113,21 @@ spec:
         - name: REFRESH_TIME
           value: 5m
         - name: THY_API_URL
-          value: https://%s.secretsvaultcloud.com/v1
+          value: https://%s.devbambe.com/v1
         - name: TENANT
-          value: your_tenant_name
+          value: testtenant
         - name: CLIENT_ID
           value: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
         - name: CLIENT_SECRET
           value: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-xxxxxxxxx
+        - name: LOG_LEVEL
+          value: debug
       volumes:
         - name: secretkey
           secret:
             secretName: thycotic-keys
+
+---
 kind: Service
 apiVersion: v1
 metadata:
@@ -129,6 +139,7 @@ spec:
   - protocol: TCP
     port: 80
     targetPort: 3000
+---
 kind: Service
 apiVersion: v1
 metadata:
@@ -149,7 +160,7 @@ spec:
 
 This file can also be used locally, for example:
 
-*kubectl create -f broker.yml*
+`kubectl create -f broker.yml`
 
 ## Introduction to the Client
 
@@ -192,10 +203,9 @@ metadata:
   name: thycotic-keys
   namespace: default
 type: Opaque
-```
- 
 
-```yaml
+---
+
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
@@ -215,24 +225,26 @@ spec:
       labels:
         app: secret-example
       annotations:
-        dsv: your_tenant_name
+        dsv: testtenant
     spec:
       containers:
-      - name: your_application
-        image: <your_image_url>:latest
+      - name: bambe-example
+        image: 661058921700.dkr.ecr.us-east-1.amazonaws.com/bambe-example:latest
         imagePullPolicy: IfNotPresent
         volumeMounts:
         - name: client-volume
           mountPath: /var/secret/
 
-      - name: dsv-client
-        image: <url_to_client_image>:latest
+      - name: bambe-client
+        image: 661058921700.dkr.ecr.us-east-1.amazonaws.com/bambe-client:latest
         imagePullPolicy: IfNotPresent
         env:
         - name: REFRESH_TIME
           value: 5s
         - name: THY_SECRETS
           value: resources/us-east-1/server1
+        - name: LOG_LEVEL
+          value: error
         - name: POD_IP
           valueFrom:
             fieldRef:
