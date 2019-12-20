@@ -18,9 +18,10 @@ You come back here for the second half of setup, which involves downloading the 
 
 ## Download the Executable for Your OS
 
-After you have been provisioned, download the Command Line Interface executable files onto each of the workstations where you will operate DevOps Secrets Vault.
+After you have been provisioned, download the Command Line Interface executable files onto each of the workstations where you will operate DevOps Secrets Vault. 
 
-* Thycotic provides DSV executables for multiple platforms [here](https://dsv.thycotic.com/downloads).
+* Thycotic provides DSV CLI executables for multiple platforms [here](https://dsv.thycotic.com/downloads).
+* Once installed, these CLI executables periodically check the download site for updates and inform the user if an update is available.
 * Your organization may have standards and policies governing the installation of software, so be sure to speak with your IT staff before installing.
 
 ## Rename the Executable

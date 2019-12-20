@@ -15,7 +15,7 @@ On Windows, you must:
 * use `thy config read -be YAML` to read out the config
 * save it as a file
 * edit the file locally
-* use `thy config update --path {path to file} --data \@filename` to upload your work into the vault
+* use `thy config update --data @filename` to upload your work into the vault
 
 The initial config will look similar to this:
 
@@ -150,21 +150,18 @@ tenantName: company
 Next, on a machine with the [AWS CLI](https://aws.amazon.com/cli/) installed and configured with an AWS IAM user, download the DVS CLI executable appropriate to the OS of the machine, and initialize the CLI:
 
 ```BASH
-thy init --advanced
+thy init
 ```
 
 When prompted for the authorization type, choose *AWS IAM (federated)*.
 
 ```BASH
 Please enter auth type:
-
-(1) Password (default)
-
-(2) Client Credential
-
-(3) AWS IAM (federated)
-
-(4) Azure (federated)
+       (1) Password (local user)(default)
+       (2) Client Credential
+       (3) Thycotic One (federated)
+       (4) AWS IAM (federated)
+       (5) Azure (federated)
 ```
 
 DSV will prompt for the specific AWS profile to use if you are authenticating using a non-default AWS profile.
@@ -184,7 +181,7 @@ This example assumes that you:
 * have your own thy CLI configured locally with an admin account
 * created an IAM Role in the AWS Console
 * launched an EC2 instance using the IAM Role
-* [downloaded](https://dsv.thycotic.com/downloads) the thy CLI onto the EC2 instance
+* [downloaded](https://dsv.thycotic.com/downloads) the CLI onto the EC2 instance
 
 Create a corresponding Role in DSV with the external-id of the IAM Role’s ARN.
 
@@ -235,7 +232,7 @@ type: azure
 tenantName: company
 ```
 
-On the EC2 instance, configure the CLI by running `thy init --advanced` and choosing AWS IAM as the authentication type.
+On the EC2 instance, configure the CLI by running `thy init` and choosing AWS IAM as the authentication type.
 
 Once configured, you can read an existing Secret to verify the EC2 instance is able able to authenticate and access data.
 
@@ -291,21 +288,18 @@ tenantName: company
 On a VM in Azure that has the User MSI assigned as the identity, download the DVS CLI executable appropriate to the OS of the VM and initialize the CLI.
 
 ```BASH
-thy init --advanced
+thy init
 ```
 
 When prompted for the authorization type, choose the *Azure (federated)* authentication option.
 
 ```BASH
 Please enter auth type:
-
-(1) Password (default)
-
-(2) Client Credential
-
-(3) AWS IAM (federated)
-
-(4) Azure (federated)
+       (1) Password (local user)(default)
+       (2) Client Credential
+       (3) Thycotic One (federated)
+       (4) AWS IAM (federated)
+       (5) Azure (federated)
 ```
 
 Read an existing Secret to verify you can authenticate and access data.
@@ -362,21 +356,18 @@ tenantName: company
 On a VM in Azure that is part of the resource group and has a system-assigned MSI, download the DVS CLI executable appropriate to the OS of the VM and initialize the CLI.
 
 ```BASH
-thy init --advanced
+thy init
 ```
 
 When prompted for the authorization type, choose the *Azure (federated)* option.
 
 ```BASH
 Please enter auth type:
-
-(1) Password (default)
-
-(2) Client Credential
-
-(3) AWS IAM (federated)
-
-(4) Azure (federated)
+       (1) Password (local user)(default)
+       (2) Client Credential
+       (3) Thycotic One (federated)
+       (4) AWS IAM (federated)
+       (5) Azure (federated)
 ```
 
 Read an existing Secret to verify you are able to authenticate and access data.
