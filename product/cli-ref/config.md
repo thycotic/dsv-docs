@@ -98,7 +98,7 @@ thy config update --path us-east/server02 --data {\\"something\\":\\"value\\"}
 or
 
 ```BASH
-thy secret update --path us-east/server02 --data @configfilename.json
+thy config update --path us-east/server02 --data @configfilename.json
 ```
 
 ## Advanced: Add Authentication Providers

@@ -95,18 +95,18 @@ secretp@ssword
 Using the `--data`, `--attributes`, and `--desc` flags, respectively, you can update a Secret’s data, attributes, and description separately. For example:
 
 ```BASH
-thy secret update servers/us-east/server01 --data '{"host": "server01", “password”: “badpassword”,”username”: “admininistrator”}' --desc 'update description’  --attributes ‘{“attr”: “add one”}’
+thy secret update servers/us-east/server01 --data '{"host": "server01", "password": "badpassword","username": "admininistrator"}' --desc 'update description’  --attributes ‘{"attr": "add one"}’
 
 {
   "attributes": {
-       “attr”: “add one”
+       "attr": "add one"
 },
   "data": {
     "host": "server01",
     "password": "badpassword",
     "username": "administrator"
   },
-  “description”: “update description”,
+  "description": "update description",
   "id": "c5239a6c-422e-4f57-b3a6-5167656af852",
   "path": "servers:us-east:server01"
 }
