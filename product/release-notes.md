@@ -14,18 +14,24 @@ Thycotic periodically updates DevOps Secrets Vault, such as to provide fixes and
 
 This article tracks changes to DSV. Highlights of the most recent update appear first. The same information appears in the tables that follow. The first table covers the Cloud basis for DSV, and the second covers the OS-specific CLI executables and the API. In both tables, the most recent changes appear first.
 
-## December 2019 Release Notes Highlights
+## January 2020 Release Notes Highlights
 
-The `thy init` command’s `--advanced` flag has been retired, with `thy init` now always stepping through each account initialization option. This creates a more consistent experience for users and better aligns with typical command usage.
+For any Secret that has had more than one version, a new `rollback` command allows you to roll the Secret back to any of the earlier versions. The `rollback` command also works on Policies and Authentication Providers. Windows users now have the same ease of directly editing Secrets as Linux and MacOS users, with Notepad or another designated editor opening right from the command line.
 
-The December release also corrected a defect wherein the CLI audit logs, queried for logs within a date range, would show logs if the start date were in the future and would show logs beyond the specified end date.
+New and updated plug-ins support integrations with products such as Ansible, Chef and Puppet, enabling them to pull DSV Secrets, and new SDKs support integration with applications written in .NET, Go, Python,and Ruby.
 
-Beginning with the December release, the DSV CLI executables monitor for the availability of updates and prompt you when an update is available for download.
+The January release also adjusted the Kubernetes extension so that it does not verbosely report error conditions having no relevance to the performance of DSV with Kubernetes.
 
 ## DSV Cloud Service: Change Log
 
 | **Update**             | **Notes**                                  |
 |------------------------|--------------------------------------------|
+| January 2020           | **improvement**: the `rollback` command allows you to roll back Secrets (and Policies and Authentication Providers) to their earlier versions  |
+|                        | **improvement**: Windows users can now more easily edit Secrets, with Notepad or another designated editor opening right from the command line. |
+|                        | **fixed**: a defect in the Kiubernetes extension caused verbose error reporting on irrelevant conditions |
+|                        | **fixed**: a defect in the Kiubernetes extension caused verbose error reporting on irrelevant conditions |
+|                        | **new**": *we will enter one line here for each new integration / extension / plug-in*     |
+|                        |      |
 | December 2019          | **improvement**: the `thy init` command no longer requires an `--advanced` flag, as it now always steps through key initialization settings |
 |                        | **improvement**: the DSV CLI executables will now prompt when a new version is available for download |
 |                        | **fixed**: a defect in CLI audit log listing behavior would show listings even when the start date was in the future and would show listings later than the end date |

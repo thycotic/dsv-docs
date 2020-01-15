@@ -14,7 +14,7 @@ The configuration for DevOps Secrets Vault:
 | Command | Action                                                                                     |
 | ------- | ------------------------------------------------------------------------------------------ |
 | read    | view the current configuration                                                             |
-| edit    | modify the configuration in an OS-native text editor such as VI or nano (Linux shell only) |
+| edit    | modify the configuration in an OS-native text editor such as VI, nano, or Notepad          |
 | update  | upload a superseding configuration document                                                |
 
 ### Read
@@ -77,13 +77,6 @@ thy config edit --encoding YAML
 ```
 
 The editor directly updates the configuration in the vault when you save your work.
-
-Note: On Windows, you cannot use *edit* on the configuration. Instead, you must:
-
-* use `thy config read -be YAML` to read out the config
-* save it as a file
-* edit the file locally
-* use `thy config update --path {path to file} --data @filename` to upload your work into the vault, entirely overwriting the prior config
 
 ### Update
 
