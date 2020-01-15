@@ -230,7 +230,7 @@ Note that the rollback is non-destructive; technically, the command does not rol
 
 * If you used the `--version` flag to jump back three versions, you would not lose those three versions; they would remain in place, with the version from three back now being replicated into a new version.
 
-It is important to distinguish between the `rollback` featur, which relates to versions, and the `restore` feature, which relates to the `delete` feature and has nothing to do with versions.
+It is important to distinguish between the `rollback` feature, which relates to versions, and the `restore` feature, which relates to the `delete` feature and has nothing to do with versions.
 
 A deleted Secret can be restored up to 72 hours after it has been deleted, after which it cannot be restored. Rollback does not change that in any way, because it cannot operate on a deleted Secret.
 

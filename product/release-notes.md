@@ -16,7 +16,7 @@ This article tracks changes to DSV. Highlights of the most recent update appear 
 
 ## January 2020 Release Notes Highlights
 
-For any Secret that has had more than one version, a new `rollback` command allows you to roll the Secret back to any of the earlier versions. The `rollback` command also works on Policies and Authentication Providers. Windows users now have the same ease of directly editing Secrets as Linux and MacOS users, with Notepad or another designated editor opening right from the command line.
+For any Secret that has had more than one version, a new `rollback` command allows you to roll the Secret back to any of the earlier versions. The `rollback` command also works on Policies and Authentication Providers. Windows users now have the same ease of directly editing Secrets as Linux users, with Notepad or another designated editor opening right from the command line.
 
 New and updated plug-ins support integrations with products such as Ansible, Chef and Puppet, enabling them to pull DSV Secrets, and new SDKs support integration with applications written in .NET, Go, Python,and Ruby.
 
