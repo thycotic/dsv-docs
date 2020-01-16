@@ -19,10 +19,13 @@ When DSV has possession of Secrets outside the vault (that is, the CLI or API ha
 | search |search for Secrets |
 | describe | view Secret metadata only |
 | read | view a Secret's data |
-| edit | modify a Secret using the OS’s default command-line editor, such as **VI** or **nano** |
+| edit | modify a Secret using the OS’s default command-line editor, such as **VI**, **nano**, or **Notepad** |
 | update | modify a Secret, with `--data`, `--attributes` and `--desc` flags to modify selected portions only, and a Boolean `--overwrite` flag to control whether the `--data` flag’s content overwrites or merges with extant data object fields  |
 | delete | delete a Secret |
-  
+| restore | restore a Secret (if within 72 hours of deletion) |
+| rollback | for a Secret that has had more than one version, roll back to an earlier version |
+
+   
 ---
   
 ### Examples
@@ -159,9 +162,9 @@ As a well established computing technique of long standing, piping is not limite
 
 #### Edit
 
-Use *edit* to open the Secret data in the default text editor for bash, such as **vi** or **nano**.
+Use *edit* to open the Secret data in the default text editor for bash, such as **vi**, **nano**, or **Notepad**.
 
-* Saving in the editor updates the Secret in the vault.
+* Saving in the editor updates the Secret in the vault, except in the case of Notepad, in which case the update happens when you exit Notepad. Your interim saves are to the working copy.
 
 ```BASH
 thy secret edit --path us-east/server02
@@ -202,4 +205,34 @@ thy secret delete --path us-east/server02
 When you delete a Secret, it will no longer be usable. However, with the soft delete capacity of DSV, you have 72 hours to use the *restore* command to undelete the Secret. After 72 hours, the Secret will no longer be retrievable.
 
 Should you want to perform a hard delete, precluding any restore operation, you can use the *delete* command’s `--force` flag.
+
+#### Restore
+
+Up to 72 hours after you delete a Secret, you can restore it:
+
+```bash
+thy secret restore --path us-east/server02
+```
+
+Do not confuse `restore` with `rollback` because the two have no relation. While `restore` un-deletes a deleted Secret, restoring it to the condition it was in at the time of its deletion, `rollback` does not operate on deleted Secrets. It simply sets a Secret back to an earlier version of itself.
+
+#### Rollback
+
+A Secret that has had more than one version can be rolled back to an earlier version of itself:
+
+```bash
+thy secret rollback --path us-east/server02 --version 2
+```
+
+If you do not include the `--version` flag, the Secret will roll back to the last version before the present version. By serially issuing the rollback command without a version number, you could step back through the versions one at a time.
+
+Note that the rollback is non-destructive; technically, the command does not roll back so much as retrieve the indicated version and duplicate it as a new version, which becomes the current version.
+
+* If you used the `--version` flag to jump back three versions, you would not lose those three versions; they would remain in place, with the version from three back now being replicated into a new version.
+
+It is important to distinguish between the `rollback` feature, which relates to versions, and the `restore` feature, which relates to the `delete` feature and has nothing to do with versions.
+
+A deleted Secret can be restored up to 72 hours after it has been deleted, after which it cannot be restored. Rollback does not change that in any way, because it cannot operate on a deleted Secret.
+
+If a deleted Secret is restored, Rollback can operate on it just as it would any other Secret.
 
