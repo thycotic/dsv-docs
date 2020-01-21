@@ -208,7 +208,7 @@ Should you want to perform a hard delete, precluding any restore operation, you 
 
 #### Restore
 
-Up to 72 hours after you delete a Secret, you can restore it:
+Up to 72 hours after you delete a Secret (but not if you hard deleted it using the `--force` flag), you can restore it:
 
 ```bash
 thy secret restore --path us-east/server02
@@ -232,7 +232,7 @@ Note that the rollback is non-destructive; technically, the command does not rol
 
 It is important to distinguish between the `rollback` feature, which relates to versions, and the `restore` feature, which relates to the `delete` feature and has nothing to do with versions.
 
-A deleted Secret can be restored up to 72 hours after it has been deleted, after which it cannot be restored. Rollback does not change that in any way, because it cannot operate on a deleted Secret.
+A deleted Secret can be restored up to 72 hours after it has been deleted (if it was not hard deleted using the `--force` flag), after which it cannot be restored. Rollback does not change that in any way, because it cannot operate on a deleted Secret.
 
 If a deleted Secret is restored, Rollback can operate on it just as it would any other Secret.
 

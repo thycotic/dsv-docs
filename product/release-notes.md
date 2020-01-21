@@ -16,7 +16,7 @@ This article tracks changes to DSV. Highlights of the most recent update appear 
 
 ## January 2020 Release Notes Highlights
 
-For any Secret that has had more than one version, a new `rollback` command allows you to roll the Secret back to any of the earlier versions. The `rollback` command also works on Policies and Authentication Providers. Windows users now have the same ease of directly editing Secrets as Linux users, with Notepad or another designated editor opening right from the command line.
+For any Secret that has had more than one version, a new `rollback` command allows you to roll the Secret back to any of the earlier versions. The `rollback` command also works on Policies and Authentication Providers. Windows users now have the ease of editing Secrets in Notepad (or other designated editor) right from the command line.
 
 New and updated plug-ins support integrations with products such as Ansible, Chef and Puppet, enabling them to pull DSV Secrets, and new SDKs support integration with applications written in .NET, Go, Python,and Ruby.
 
@@ -29,8 +29,6 @@ The January release also adjusted the Kubernetes extension so that it does not v
 | January 2020           | **improvement**: the `rollback` command allows you to roll back Secrets (and Policies and Authentication Providers) to their earlier versions  |
 |                        | **improvement**: Windows users can now more easily edit Secrets, with Notepad or another designated editor opening right from the command line. |
 |                        | **fixed**: a defect in the Kiubernetes extension caused verbose error reporting on irrelevant conditions |
-|                        | **fixed**: a defect in the Kiubernetes extension caused verbose error reporting on irrelevant conditions |
-|                        | **new**": *we will enter one line here for each new integration / extension / plug-in*     |
 |                        |      |
 | December 2019          | **improvement**: the `thy init` command no longer requires an `--advanced` flag, as it now always steps through key initialization settings |
 |                        | **improvement**: the DSV CLI executables will now prompt when a new version is available for download |
