@@ -2,16 +2,16 @@
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (1810)
 
-## Secret
+# Secret
 
 Secrets are sensitive data protected in your vault. Many Secrets relate to authentication—such as passwords, SSH keys, and SSL certificates—but Secrets can be anything represented as a file on computer storage media.
 
 When DSV has possession of Secrets outside the vault (that is, the CLI or API has reproduced a Secret anywhere outside the vault), it keeps the Secrets encrypted and locked down in conformance to the specific permissions and policies in the config.
 
-### Commands that Act on Secrets
-  
----
-  
+## Commands that Act on Secrets
+
+![](./images/spacer.png)
+
 | Command | Action |
 | ----- | ----- |
 | bustcache | clear the Secret cache |
@@ -25,12 +25,11 @@ When DSV has possession of Secrets outside the vault (that is, the CLI or API ha
 | restore | restore a Secret (if within 72 hours of deletion) |
 | rollback | for a Secret that has had more than one version, roll back to an earlier version |
 
-   
----
-  
-### Examples
+![](./images/spacer.png)
 
-#### Bustcache
+## Examples
+
+### Bustcache
 
 The *bustcache* command clears the local cache, if present.
 
@@ -40,7 +39,7 @@ thy secret bustcache
 
 Note again here the syntax pattern in which an object of a command precedes the command: *secret* is the object of the command *bustcache*, so that the cache of Secrets will be ‘busted’ (cleared).
 
-#### Create
+### Create
 
 Secrets data passes into the *create* command as the value of its `--data` parameter. The parameter accepts JSON entered directly at the command line, or the path to a JSON file.
 
@@ -68,7 +67,7 @@ thy secret create --path us-east/server03 --data @../Secret.json
 thy secret create --path us-east/server02 --data '@../Secret.json'
 ```
 
-#### Search
+### Search
 
 You can search for Secrets by path.
 
@@ -100,7 +99,7 @@ Cursors may be lengthy:
 \thy-win-x64.exe secret search -q resources --limit 10 --cursor eyJpZCI6ImEwOTFjOWIzLWE4MmQtNGRiYy1hYThiLTYxMDY0NDZhZjA3MSIsInBhdGgiOiIiLCJ2ZXJzaW9uIjoidi1jdXJyZW50IiwidHlwZSI6IiIsImxhdGVzdCI6MH0=
 ```
 
-#### Describe
+### Describe
 
 Use *describe* to show only metadata; you will not see the actual Secret value.
 
@@ -108,7 +107,7 @@ Use *describe* to show only metadata; you will not see the actual Secret value.
 thy secret describe --path us-east/server02
 ```
 
-#### Read
+### Read
 
 Use *read* to get a Secret’s data. The `-b` flag beautifies the output, while the `-e` flag sets the output format to JSON or YAML and the `-o` flag (as commonly used) redirects the output to a file.
 
@@ -160,7 +159,7 @@ echo \$TEST
 
 As a well established computing technique of long standing, piping is not limited to Secrets. You can use piping to store any output—search results, configuration states, and more.
 
-#### Edit
+### Edit
 
 Use *edit* to open the Secret data in the default text editor for bash, such as **vi**, **nano**, or **Notepad**.
 
@@ -170,7 +169,7 @@ Use *edit* to open the Secret data in the default text editor for bash, such as 
 thy secret edit --path us-east/server02
 ```
 
-#### Update
+### Update
 
 Use *update* to change a Secret’s data. The command has several flags pertinent to Secrets:
 
@@ -194,7 +193,7 @@ or
 thy secret update --path us-east/server02 --data @secret.json
 ```
 
-#### Delete
+### Delete
 
 To *delete* a Secret simply specify the path.
 
@@ -206,9 +205,9 @@ When you delete a Secret, it will no longer be usable. However, with the soft de
 
 Should you want to perform a hard delete, precluding any restore operation, you can use the *delete* command’s `--force` flag.
 
-#### Restore
+### Restore
 
-Up to 72 hours after you delete a Secret, you can restore it:
+Up to 72 hours after you delete a Secret (but not if you hard deleted it using the `--force` flag), you can restore it:
 
 ```bash
 thy secret restore --path us-east/server02
@@ -216,7 +215,7 @@ thy secret restore --path us-east/server02
 
 Do not confuse `restore` with `rollback` because the two have no relation. While `restore` un-deletes a deleted Secret, restoring it to the condition it was in at the time of its deletion, `rollback` does not operate on deleted Secrets. It simply sets a Secret back to an earlier version of itself.
 
-#### Rollback
+### Rollback
 
 A Secret that has had more than one version can be rolled back to an earlier version of itself:
 
@@ -232,7 +231,7 @@ Note that the rollback is non-destructive; technically, the command does not rol
 
 It is important to distinguish between the `rollback` feature, which relates to versions, and the `restore` feature, which relates to the `delete` feature and has nothing to do with versions.
 
-A deleted Secret can be restored up to 72 hours after it has been deleted, after which it cannot be restored. Rollback does not change that in any way, because it cannot operate on a deleted Secret.
+A deleted Secret can be restored up to 72 hours after it has been deleted (if it was not hard deleted using the `--force` flag), after which it cannot be restored. Rollback does not change that in any way, because it cannot operate on a deleted Secret.
 
 If a deleted Secret is restored, Rollback can operate on it just as it would any other Secret.
 

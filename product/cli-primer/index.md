@@ -17,9 +17,9 @@ Like most Command Line Interface Applications, DevOps Secrets Vault combines—
 
 With few exceptions, CLI commands follow a simple syntax:
 
-  *thy* *object* *command* *flags and parameters*
+`thy` (`object`) (`command`)  (`flags and parameters`)
 
-For example, in *thy role create*, *role* is the object of the command *create*. In English, the command could be written as “the object is a Role, and the action to take is to create it.” You will observe this pattern throughout the CLI.
+For example, in `thy role create`, `role` is the object of the command `create`. In English, the command could be written as “the object is a Role, and the action to take is to create it.” You will observe this pattern throughout the CLI.
 
 Some parameters and flags apply only to some commands. DSV also includes output modifiers for filtering and formatting responses to commands.
 
@@ -37,18 +37,20 @@ The [JSON Data](./cli-primer#json_data) section later on this page provides exam
 
 | Commmand   | Syntax                                 | Definition                                                                                |
 | ---------- | -------------------------------------- | ----------------------------------------------------------------------------------------- |
-| auth       | auth                                   | authenticate to the vault or display the current access token                            |
+| auth       | auth                                   | authenticate to the vault or display the current access token                             |
 | cli-config | init                                   | manage DSV settings                                                                       |
 | client     | client (`<client-id> • --client-id`)   | manage client credentials for application vault access                                    |
-| config     | config                                 | manage the top level DSV app configuration document shared by all Users                  |
+| config     | config                                 | manage the top level DSV app configuration document shared by all Users                   |
 | eval       | eval                                   | check the value of a command line flag or variable                                        |
-| group      | group (`<group-name> • --group-name`)  | manage collections of Users uniformly by placing them in a managed Group                    |
+| group      | group (`<group-name> • --group-name`)  | manage collections of Users uniformly by placing them in a managed Group                  |
 | init       | cli-config init                        | initialize DSV on first run                                                               |
 | policy     | policy (`<path> • --path • -r`)        | manage policies on permissions for Secrets, Roles, Users, and other entities in the vault |
 | role       | role (`<name> • --name • -n`)          | manage Roles                                                                              |
 | secret     | secret (`<path> • --path • -r`)        | create, update, and retrieve Secrets from the vault                                       |
 | user       | user (`<username> • --username`)       | manage Users                                                                              |
 | whoami     | whoami                                 | display the currently authenticated User                                                  |
+
+![](./images/spacer.png)
 
 ## Parameters
 
@@ -229,3 +231,7 @@ Both of the preceding would create an environment variable named *MYSecret* that
 ```BASH
 echo $MYSecret
 ```
+
+![](./images/spacer.png)
+
+![](./images/spacer.png)

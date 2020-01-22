@@ -4,9 +4,9 @@
 
 # Welcome to DevOps Secrets Vault (DSV) Technical Assistance
 
-This January, Thycotic added a “rollback” capacity to DSV. If a Secret has had more than one version, you can roll it back to any of the earlier versions. Rollback also works on Policies and Authentication Providers. Additionally, Windows users now have the same ease of directly editing Secrets as Linux users, with Notepad or another designated editor opening right from the command line.
+This January, Thycotic added a “rollback” capacity to DSV. If a Secret has had more than one version, you can roll it back to any of the earlier versions. Rollback also works on Policies and Authentication Providers. Additionally, Windows users now have the ease of editing Secrets in Notepad or another designated editor right from the command line.
 
-New and updated plug-ins arrive this month, too—supporting integrations with products such as Ansible, Chef and Puppet, enabling them to pull DSV Secrets. Plus, new SDKs support integration with applications written in .NET, Go, Python,and Ruby. See the Navigation Panel’s Related Documents section (at lower left) to learn about the growing number of products you can integrate with DSV.
+New and updated plug-ins arrive this month, too—supporting integrations with products such as Ansible, Chef and Puppet, enabling them to pull DSV Secrets. Plus, new SDKs support integration with applications written in .NET, Go, Python,and Ruby. The Navigation Panel’s Related Documents section (at lower left) will cover the growing number of products you can integrate with DSV.
 
 The January release also adjusted the Kubernetes extension so that it does not verbosely report error conditions having no relevance to the performance of DSV with Kubernetes.
 
@@ -47,3 +47,8 @@ The [Release Notes](release-notes.md) alert you to any changes or other consider
 The **RELATED DOCS** section at lower left in the Navigation Panel provides access to articles about the [Jenkins](/dsv-extension-jenkins), [Kubernetes](/dsv-extension-kubernetes), and other extensions and the [DSV Java SDK](/dsv-sdk-java). Look to this section when you need information about integrating DSV with other products.
 
 Alongside this collection, Thycotic maintains a [DevOps Secrets Vault API Reference](https://dsv.thycotic.com/api).
+
+![](./images/spacer.png)
+
+![](./images/spacer.png)
+

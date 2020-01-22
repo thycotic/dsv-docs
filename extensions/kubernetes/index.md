@@ -19,13 +19,17 @@ Kubernetes helps coordinate containerized applications across a cluster of machi
 ## Architecture
 
 The illustration shows an example of a Kubernetes Architecture implementation.
- 
+
+![](./images/spacer.png)
+
 ![Example Kubernetes Architecture](./images/dsv-kubernetes.png "Example Kubernetes Architecture")
- 
+
+![](./images/spacer.png)
+
 In studying the diagram, it would be easy to mistakenly conclude that the Kubernetes Secrets Manager is being used to store the pods’ Secrets, which is not the case. The action of Kubernetes Secrets Manager here is to distribute TLS certificates to secure the connection between the DSV broker and sidecar agent, in cases where this is desirable. In most cases this would be unnecessary since the user cluster will typically be secured already.
 
-If Secrets were to be stored in Kubernetes Secrets Manager, they would be universally available in the cluster—which is contrary to the goal. Instead, with the DSV broker, and with the volume mount sharing depicted in the diagram, each pod sees only its own Secrets, and Secrets remain available as long as the pods are healthy.
- 
+If Secrets were to be stored in Kubernetes Secrets Manager, they would be universally available in the cluster—contrary to the goal. Instead, with the DSV broker, and with the volume mount sharing depicted in the diagram, each pod sees only its own Secrets, and Secrets remain available as long as the pods are healthy.
+
 # Description of Operations
 
 The example application uses a **broker** and client container deployment with volume mount sharing for pods to access the retrieved Secrets. This page includes an example of a *broker.yml* suitable for creation.
@@ -173,9 +177,9 @@ volumeMounts:
 - name: client-volume
     mountPath: /var/secret/
 ```
- 
+
 For the container running the DSV client, you should define the following as environment variables:
- 
+
 ```yaml
 env:
 - name: REFRESH_TIME
@@ -191,9 +195,9 @@ env:
     fieldRef:
         fieldPath: metadata.name
 ```
- 
+
 *THY_SECRETS* defines the path(s) of the Secrets the container uses. This is a list separated by spaces.
- 
+
 ### Example YAML
 
 ```yaml
@@ -267,4 +271,8 @@ spec:
         secret:
           secretName: thycotic-keys
 ```
+
+![](./images/spacer.png)
+
+![](./images/spacer.png)
 
