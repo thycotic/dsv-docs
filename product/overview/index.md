@@ -4,7 +4,7 @@
 
 # Overview
 
-DevOps Secrets Vault (DSV) offers a cross-platform, up to date solution for securing your organization’s Secrets (most commonly, credentials) in a Cloud-hosted vault, where your staff administer them using a Command Line Interface (CLI) and your applications access them programmatically by calls to a RESTful Application Programming Interface (API).
+DevOps Secrets Vault (DSV) offers a cross-platform, up to date solution for securing your organization’s Secrets (most commonly, credentials) in a Cloud-hosted Vault, where your staff administer them using a Command Line Interface (CLI) and your applications access them programmatically by calls to a RESTful Application Programming Interface (API).
 
 DSV is a back-office and developer tool. It meets your technical staff where they live—at the command line—and talks to your applications in the language they speak, through an API.
 
@@ -12,7 +12,7 @@ DevOps Secrets Vault allows faster automation of Secrets operations at higher vo
 
 ## Application Model
 
-Thycotic created DevOps Secrets Vault as a modern application rooted in the serverless architecture of Amazon Web Services (AWS) Lambda. In congruence with the Software-as-a-Service (SaaS) model, the Secrets vaults and the API reside in the Cloud, and Thycotic provisions each customer with a tenancy.
+Thycotic created DevOps Secrets Vault as a modern application rooted in the serverless architecture of Amazon Web Services (AWS) Lambda. In congruence with the Software-as-a-Service (SaaS) model, the Secrets Vaults and the API reside in the Cloud, and Thycotic provisions each customer with a tenancy.
 
 However, the CLI (Command Line Interface) must be considered core to the product as well, and this installs locally. The Thycotic website offers CLI executable downloads for Windows, Linux, and macOS in both 32 and 64-bit architectures.
 
@@ -40,7 +40,6 @@ DevOps Secrets Vault characteristics include:
 DSV extensions support its use with other tools, allowing them to authenticate to DevOps Secrets Vault and thereby enabling a centralized vault for all DevOps needs. Currently, Thycotic offers two extensions.
 
 * The [Jenkins](/dsv-extension-jenkins) extension supports shops using Jenkins for continuous integration.
-
 * The [Kubernetes](/dsv-extension-kubernetes) extension supports organizations using Kubernetes to manage containerized applications.
 
 Extensions expected in future DSV releases include Puppet, OpenShift, Chef, Ansible, and Salt, among others.
@@ -59,6 +58,6 @@ As detailed by [Obtain DSV](../obtain/index.md), Thycotic offers a feature-compl
 
 Thycotic also offers customers extra **Sandbox** tenancies for testing configurations and functionality before production deployment.
 
+![](./images/spacer.png)
 
-
-  
+![](./images/spacer.png)

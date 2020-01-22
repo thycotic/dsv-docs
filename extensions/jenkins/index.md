@@ -14,15 +14,19 @@ Download the [latest version of the Jenkins HPI extension](https://dsv.thycotic.
 
 In Jenkins, select **Manage Jenkins > Manage Plugins > Advanced**.
 
-Click **Browse**, locate the **devops-secrets-vault-jenkins.hpi** you downloaded, and bring it into Jenkins.
- 
- 
+Click **Browse**.
+
+Locate the **devops-secrets-vault-jenkins.hpi** you downloaded and bring it into Jenkins.
+
+![](./images/spacer.png)
+
 ![Upload UI](./images/jenkins-upload.png "Upload UI")
- 
- 
+
+![](./images/spacer.png)
+
 ## Linking Jenkins to DevOps Secrets Vault
 
-Jenkins must be able to query DSV to look up Secrets at build time. To enable this,  you configure a Jenkins credential to authenticate to your vault.
+Jenkins must be able to query DSV to look up Secrets at build time. To enable this, you configure a Jenkins credential to authenticate to your vault.
 
 ## Setup Client Credentials
 
@@ -35,11 +39,13 @@ Create a Role
 ```BASH
 thy role create --name jenkins --desc "grants access to build Secrets"
 ```
+
 Create a Client Credential
 
 ```BASH
 thy client create --role jenkins
 ```
+
 Save the *clientId* and *clientSecret* returned by this command. You will use these to grant Jenkins access to the vault.
 
 Add the Jenkins Role to a Permission Policy  
@@ -47,6 +53,7 @@ Add the Jenkins Role to a Permission Policy
 ```BASH
 thy config edit -e yaml
 ```
+
 Here is an example permission document granting the Jenkins Role read-only access to Secrets under the resources/path:
 
 ```yaml
@@ -81,13 +88,13 @@ permissionDocument:
 In Jenkins, use these steps to add the newly created client credential:
 
 * Under **Credentials**, add new credentials.
- 
-![Add Credential UI](./images/jenkins-add-credential.png "Add Credential UI")
- 
+
+  ![Add Credential UI](./images/jenkins-add-credential.png "Add Credential UI")
+
 * Enter the vault URL, your tenant name, the clientId, and the clientSecret from the newly created client credential.
- 
-![Add Vault Credential UI](./images/jenkins-add-vault-credential.png "Add Vault Credential UI")
- 
+
+  ![Add Vault Credential UI](./images/jenkins-add-vault-credential.png "Add Vault Credential UI")
+
 * You can specify an ID or let Jenkins autogenerate the ID.
 
 ## Create a Test Secret
@@ -99,11 +106,13 @@ We will create a test Secret at the path *resources/server01*:
 ```BASH
 thy secret create resources/server01 '{"servername":"server01","password":"somepass1"}'
 ```
+
 Read back the Secret to verify the data looks right:
 
 ```BASH
 thy secret read -be JSON resources/server01
 ```
+
 The resulting JSON Secret should look similar to:
 
 ```json
@@ -133,13 +142,13 @@ To get credentials in a Freestyle build:
   * the environment variable to which you want to bind the Secret value
   * the Secret data field from which to get the value; in this case we are getting the value from the *password* field of our previously created Secret
 * In build steps, you can reference the environment variable as you normally would. For example, the shell script shown here will echo the *$MY_PASSWORD* environment variable.
- 
+
 ![Build Step in Shell Script](./images/jenkins-build-step.png "Build Step in Shell Script")
- 
+
 * The console output of the build should show the retrieved Secret password value of "somepass1" as expected.
- 
-![Build Step in Shell Script - Output](./images/jenkins-build-output.png "Build Step in Shell Script - Output")
- 
+
+  ![Build Step in Shell Script - Output](./images/jenkins-build-output.png "Build Step in Shell Script - Output")
+
 ## Jenkinsfile
 
 In a pipeline, you can bind to the extension to get Secrets as environment variables.
@@ -172,11 +181,15 @@ node {
 ```
 
 ![Jenkins Pipeline](./images/jenkins-pipeline.png "Jenkins Pipeline")
- 
+
 Running the pipeline, the output will be the password value of the Secret from the vault.
- 
+
 ![Jenkins Pipeline - Output](./images/jenkins-pipeline-output.png "Jenkins Pipeline - Output")
- 
+
 As expected, the jenkinsfile outputs the password value from the Secret at *resources/server01*.
+
+![](./images/spacer.png)
+
+![](./images/spacer.png)
 
 

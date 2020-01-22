@@ -47,3 +47,8 @@ The [Release Notes](release-notes.md) alert you to any changes or other consider
 The **RELATED DOCS** section at lower left in the Navigation Panel provides access to articles about the [Jenkins](/dsv-extension-jenkins), [Kubernetes](/dsv-extension-kubernetes), and other extensions and the [DSV Java SDK](/dsv-sdk-java). Look to this section when you need information about integrating DSV with other products.
 
 Alongside this collection, Thycotic maintains a [DevOps Secrets Vault API Reference](https://dsv.thycotic.com/api).
+
+![](./images/spacer.png)
+
+![](./images/spacer.png)
+

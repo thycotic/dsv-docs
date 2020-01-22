@@ -4,7 +4,9 @@
 
 # Release Notes
 
-Thycotic periodically updates DevOps Secrets Vault, such as to provide fixes and improvements or to introduce additional features. As a Cloud application, DSV lacks version numbers, because updates become available to all users as they occur—the current version is always the only version available.
+Thycotic periodically updates DevOps Secrets Vault to provide fixes and improvements and introduce features.
+
+As a Cloud application, DSV lacks version numbers; the current version serves all users because it is always the only version available.
 
 * However, users operate DSV through a Command Line Interface (CLI) provided by downloaded, locally installed, and OS-specific executables. These bear version numbers.
 * Thycotic periodically updates these OS-specific executables to deliver fixes, improvements, and feature additions, as needed to keep the customer-side CLI executables conformant with the Cloud-based DSV service offerings.
@@ -16,7 +18,9 @@ This article tracks changes to DSV. Highlights of the most recent update appear 
 
 ## January 2020 Release Notes Highlights
 
-For any Secret that has had more than one version, a new `rollback` command allows you to roll the Secret back to any of the earlier versions. The `rollback` command also works on Policies and Authentication Providers. Windows users now have the ease of editing Secrets in Notepad (or other designated editor) right from the command line.
+For any Secret that has had more than one version, a new `rollback` command allows you to roll the Secret back to any of its earlier versions. The `rollback` command also works on Policies and Authentication Providers.
+
+Windows users now have the ease of editing Secrets in Notepad (or other designated editor) right from the command line.
 
 New and updated plug-ins support integrations with products such as Ansible, Chef and Puppet, enabling them to pull DSV Secrets, and new SDKs support integration with applications written in .NET, Go, Python,and Ruby.
 
@@ -27,7 +31,7 @@ The January release also adjusted the Kubernetes extension so that it does not v
 | **Update**             | **Notes**                                  |
 |------------------------|--------------------------------------------|
 | January 2020           | **improvement**: the `rollback` command allows you to roll back Secrets (and Policies and Authentication Providers) to their earlier versions  |
-|                        | **improvement**: Windows users can now more easily edit Secrets, with Notepad or another designated editor opening right from the command line. |
+|                        | **improvement**: Windows users can now more easily edit Secrets, with Notepad or another designated editor opening right from the command line |
 |                        | **fixed**: a defect in the Kiubernetes extension caused verbose error reporting on irrelevant conditions |
 |                        |      |
 | December 2019          | **improvement**: the `thy init` command no longer requires an `--advanced` flag, as it now always steps through key initialization settings |

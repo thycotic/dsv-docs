@@ -111,3 +111,7 @@ thy secret update servers/us-east/server01 --data '{"host": "server01", "passwor
   "path": "servers:us-east:server01"
 }
 ```
+
+![](./images/spacer.png)
+
+![](./images/spacer.png)

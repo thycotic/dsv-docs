@@ -53,6 +53,8 @@ A typical Policy looks like this:
 
 The syntax supports wildcards via the <.*> construct.
 
+![](./images/spacer.png)
+
 | **Element**        | **Definition**                                                                                                                                                                                                                                                                                                                                          |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | actions            | a list of possible actions on the resource including create, read, update, delete, list, share, and assign (regular expressions and list supported)                                                                                                                                                                                                                      |
@@ -62,22 +64,18 @@ The syntax supports wildcards via the <.*> construct.
 | id                 | system-generated unique identifier to track changes to a particular Policy                                                                                                                                                                                                                                                                              |
 | resources subjects | the resource path defining the targets to which the permissions apply; a resource path prefixes the entity type (Secrets, clients, Roles, Users, config, config:auth, config:policies, audit, system:log) to a colon delimited path to the resource, Users or entities to which the Policy enables authorization; prefixes include Users, Roles, Groups |
 
+![](./images/spacer.png)
+
 ## Policy Evaluation
 
 To correctly evaluate permission Policies, you must know the rules that apply to permissions.
 
 * Permissions are cumulative.
-
   * If there is a top level permission for the path secrets:servers:<.\*> that grants a User **write** access, then even if they are only granted **read** access at the resource path secrets:servers:webservers:<.\*>, they will still have write access due to the top level implicit match.
-
 * An explicit deny trumps an explicit or implicit allow.
-
 * Actions are explicit. A User assigned **update** and **read** will not automatically have **create** for the resource path.
-
 * The **list** action has a special behavior.
-
   * First, **list** (search) is global—it runs across all items of an entity, not limited to paths and sub-paths.
-
   * Second, to grant a User an ability to search entities via *list*, use the root of the entity if you want *list* to include other entities and actions within the same Policy. The root entity, for example, is secrets, with no other characters following.
 
 ## Policy Examples
@@ -182,4 +180,6 @@ resources:
 
 Now the developers can create Policies below the *secrets:servers:* path; for example, developer1 can create Policies for *secrets:servers:webservers* and developer2 can do the same at *secrets:servers:databases*.
 
+![](./images/spacer.png)
 
+![](./images/spacer.png)

@@ -21,6 +21,8 @@ Activities originate on customer premises in three ways:
 
 ![Architectural Summary View of DevOps Secrets Vault](./images/ha-dr-architecture-scaled.png "Architectural Summary View of DevOps Secrets Vault")
 
+![](./images/spacer.png)
+
 DevOps Secrets Vault leverages **AWS DynamoDB** global tables for data storage, with a configuration using automatic dual-region replication as a continuous backup mechanism.
 
 * Of the two AWS Regions used in this architecture, one serves as the primary application platform and the other as a hot stand-by.
@@ -110,6 +112,8 @@ The Thycotic SOC 2 Type II report contains an independent third-party assessment
 
 The report ties to the AICPA’s Trust Services Criteria (specifically the Security, Availability, and Confidentiality criteria) and issues annually in accordance with the AICPA’s AT Section 101 (Attest Engagements).
 
+![](./images/spacer.png)
 
+![](./images/spacer.png)
 
   

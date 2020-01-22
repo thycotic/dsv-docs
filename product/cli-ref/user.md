@@ -2,7 +2,7 @@
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (1820)
 
-## User
+# User
 
 For DSV, the term “user” refers to a security principal in the vault that can authenticate locally by a username and password or can authenticate through a federated provider such as Amazon Web Services or Amazon Resource Names.
 
@@ -12,9 +12,9 @@ When a User or Role ties to a third-party provider, the name will be the fully q
 
 The name qualifier format *provider name:local name* means for example that the _test-admin_ User will have the username _aws-dev:test-admin_ while the local User with username _test-admin_ will not have a qualifier, so its username will just be _test-admin_.
 
-### Commands that Act on Users
-  
----
+## Commands that Act on Users
+
+![](./images/spacer.png)
   
 | Command        | Action                         |
 | -------------- | ------------------------------ |
@@ -23,12 +23,13 @@ The name qualifier format *provider name:local name* means for example that the 
 | search         | find Users by username         |
 | read           | read a User’s details          |
 | delete         | delete a User from the vault   |
-  
----
-  
-### Examples
+| restore        | restore a deleted User (if within 72 hours of deletion and not hard deleted) |
 
-#### Changepassword
+![](./images/spacer.png)
+
+## Examples
+
+### Changepassword
 
 The *changepassword* command, effective for local Users only, initiates an elemental password change sequence:
 
@@ -49,20 +50,20 @@ With a local User, correct entry for the current password prompt, and valid, mat
 
 A Thycotic One Federated User must instead visit Thycotic One to change their password. Attempting to use the *changepassword* command within the CLI will fail.
 
-#### Create
+### Create
 
 The *create* command takes several `--parameters` that spec foundational aspects of the User record.
-  
----
-  
+
+![](./images/spacer.png)
+
 | Parameter       | Content |
 | --------------- | ------- |
 | `--username`    | local username; required; supports local authentication by username and password; need not match that used by a federated authentication provider (if present) |
 | `--password`    | password for local authentication by username and password |
 | `--provider`    | matches the *name* attribute of the authentication provider in the *settings* section of the config |
 | `--external-id` | identifier recognized by third-party federated authentication providers, such as AWS or ARN |
-  
----
+
+![](./images/spacer.png)
   
 Create a local User with username *_test-admin_* and password *_secret-password*:
 
@@ -76,7 +77,7 @@ Create a User account for login by the AWS *IAM _test-admin_* User, with the acc
 thy user create --username test-admin --external-id arn:aws:iam::00000000000:user/test-admin --provider aws-dev
 ```
 
-#### Search
+### Search
 
 The *search* command locates Users by searching on their usernames. It accepts as a `--query` parameter the username you provide, and searches for records with a matching username.
 
@@ -106,7 +107,7 @@ Output:
 
 ```
 
-#### Read
+### Read
 
 The *read* command retrieves and displays information without changing anything.
 
@@ -122,7 +123,7 @@ Provide a full local username and read the User’s details:
 thy user get --username test-admin
 ```
 
-#### Delete
+### Delete
 
 The *delete* command will remove records of both local Users and Users associated with third-party authentication providers. In both cases, you must provide the fully qualified username.
 
@@ -142,3 +143,14 @@ When you delete a User, it will no longer be usable. However, with the soft dele
 
 Should you want to perform a hard delete, precluding any restore operation, you can use the *delete* command’s `--force` flag.
 
+### Restore
+
+Up to 72 hours after you delete a User (but not if you hard deleted it using the `--force` flag), you can restore it:
+
+```bash
+thy user restore --username test-admin
+```
+
+![](./images/spacer.png)
+
+![](./images/spacer.png)

@@ -11,11 +11,17 @@ The configuration for DevOps Secrets Vault:
 
 ## Commands that Act on Configurations
 
+![](./images/spacer.png)
+
 | Command | Action                                                                                     |
 | ------- | ------------------------------------------------------------------------------------------ |
 | read    | view the current configuration                                                             |
 | edit    | modify the configuration in an OS-native text editor such as VI, nano, or Notepad          |
 | update  | upload a superseding configuration document                                                |
+| delete  | delete a configuration                                                                     |
+| restore | restore a deleted configuration (if within 72 hours of deletion and not hard deleted)      |
+
+![](./images/spacer.png)
 
 ### Read
 
@@ -141,4 +147,7 @@ Note that the account identifiers for third-party authentication are a top level
 
 See the [Authentication: AWS and Azure](../authent-azure-aws/) article for examples of using AWS and Azure for authentication.
 
+![](./images/spacer.png)
+
+![](./images/spacer.png)
 

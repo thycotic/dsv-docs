@@ -10,13 +10,6 @@ After reviewing the information in this section, you may want to edit your DSV c
 
 Use `thy config edit --encoding yaml` to open your configuration in the default editor (typically **VI**, **nano**, or **Notepad**). The editor directly updates the configuration in the vault when you save your work.
 
-On Windows, you must:
-
-* use `thy config read -be YAML` to read out the config
-* save it as a file
-* edit the file locally
-* use `thy config update --data @filename` to upload your work into the vault
-
 The initial config will look similar to this:
 
 ```yaml
@@ -43,6 +36,7 @@ clientSecret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 type: thycoticone
 tenantName: company
 ```
+
 You would modify the *settings* section using:
 
 * `thy config auth-provider create --name <name> --type <type> --{AWS or Azure flag} <AWS account ID or Azure tenant ID>`
@@ -375,6 +369,9 @@ Read an existing Secret to verify you are able to authenticate and access data.
 ```BASH
 thy secret read --path /servers/us-east/server01 -b
 ```
+![](./images/spacer.png)
+
+![](./images/spacer.png)
 
 
 
