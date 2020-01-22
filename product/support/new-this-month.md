@@ -19,4 +19,6 @@ Should you want to perform a hard delete, precluding any restore operation, you 
 
 Recent changes in DSV’s cloud architecture back uptime of 99.999 percent, with continuous backup enabling fail-over to a hot stand-by in under one minute. Updates to the EULA (your End User License Agreement) detail the new SLA for availability.
 
+![](./images/spacer.png)
 
+![](./images/spacer.png)

@@ -44,10 +44,10 @@ Add the location of the executable to your PATH environment variable so you can 
 
   Add the path to the *thy* executable—for example *C:\thycotic\cli*—to the PATH system variable.
 
-* For Linux or macOS, use *export* to modify the shell profile file, *~.profile* or *~.bash_profile* typically, so that it adds thy to the PATH on system startup:
+* For Linux or macOS use *export* to modify the shell profile file, *~.profile* or *~.bash_profile* typically, so that it adds thy to the PATH on system startup:
 
   *export PATH=~thycotic/cli:$PATH*
 
+![](./images/spacer.png)
 
-
-  
+![](./images/spacer.png)

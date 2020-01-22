@@ -2,26 +2,26 @@
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (1840)
 
-## Client
+# Client
 
 Client credentials enable applications to authenticate as the Role assigned to the client record.
 
-### Commands that Act on Clients
-  
+## Commands that Act on Clients
+
 ---
-  
+
 | Command | Action |
 | ----- | ----- |
 | create | create a User in the vault |
 | search | find clients by Role name |
 | read | read a client’s details |
 | delete | delete a User from the vault |
-  
----
-  
-### Examples
 
-#### Create
+---
+
+## Examples
+
+### Create
 
 The *create* command accepts as its `--role` parameter a fully qualified Role name, and creates a client credential assigned to that Role.
 
@@ -43,7 +43,7 @@ The output will include a *clientId* and *clientSecret* suitable for use during 
 
 > NOTE: The client Secret is available only when you create the client. If the Secret is lost, delete the client and create a new one.
 
-#### Search
+### Search
 
 The *search* command accepts as its `--query` parameter the name of a Role, and searches for clients having that Role.
 
@@ -57,7 +57,7 @@ or
 thy client search dev-role
 ```
 
-#### Read
+### Read
 
 The *read* command accepts a client ID as a parameter and returns the details for the given client. As with most commands, remember that you can apply flags to beautify, redirect, or reformat the returned material.
 
@@ -65,7 +65,7 @@ The *read* command accepts a client ID as a parameter and returns the details fo
 thy client read --client-id a59d37bf-4028-4eb9-9df4-6f1fea7d9298
 ```
 
-#### Delete
+### Delete
 
 The *delete* command accepts a client ID as a parameter and deletes from the vault the indicated client.
 
