@@ -49,6 +49,7 @@ Note that these authentication types, which are oriented to User accounts, shoul
 
 Authentication through Azure or AWS requires additional setup steps so that DSV has information about trusted Accounts, Users, and Roles and the permission policies applicable to each. The [Authentication: Azure or AWS](../authent-azure-aws/index.md) section covers this in detail.
 
+![](./images/spacer.png)
 
+![](./images/spacer.png)
 
-  

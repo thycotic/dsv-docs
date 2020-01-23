@@ -7,9 +7,9 @@
 A Group facilitate the application of the same policies to all members of a given set of Users.
 
 ## Commands that Act on Groups
-  
----
-  
+ 
+![](./images/spacer.png)
+
 | Command        | Action                         |
 | -------------- | ------------------------------ |
 | create         | create a Group in the vault    |
@@ -18,6 +18,9 @@ A Group facilitate the application of the same policies to all members of a give
 | update         | update a Group                 |
 | delete-members | remove members from a Group    |
 | delete         | delete a Group                 |
+| restore        | restore a Group (if within 72 hours of deletion and not hard deleted) |
+
+![](./images/spacer.png)
 
 ## Examples
 
@@ -129,4 +132,17 @@ thy group delete --group-name admins
 When you delete a Group, it will no longer be usable. However, with the soft delete capacity of DSV, you have 72 hours to use the *restore* command to undelete the Group. After 72 hours, the Group will no longer be retrievable.
 
 Should you want to perform a hard delete, precluding any restore operation, you can use the *delete* command’s `--force` flag.
+
+### Restore
+
+Up to 72 hours after you delete a Group (but not if you hard deleted it using the `--force` flag), you can restore it:
+
+```bash
+thy group restore --group-name admins
+```
+
+![](./images/spacer.png)
+
+![](./images/spacer.png)
+
 

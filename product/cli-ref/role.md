@@ -2,13 +2,14 @@
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (1830)
 
-## Role
+# Role
 
 With DSV, the term “role” describes a security principal in the vault that ties to third-party providers or client credentials for granting permissions.
 
-### Commands that Act on Roles
+## Commands that Act on Roles
 
- 
+![](./images/spacer.png)
+
 | Command | Action |
 | ----- | ----- |
 | create | create a Role in the vault |
@@ -16,15 +17,18 @@ With DSV, the term “role” describes a security principal in the vault that t
 | read | read a Role’s details |
 | update | upload a superseding Role |
 | delete | delete a Role from the vault |
+| restore | restore a deleted Role to the Vault (if within 72 hours of deletion and not hard deleted) |
 
- 
-### Examples
+![](./images/spacer.png)
 
-#### Create
+## Examples
+
+### Create
 
 The *create* command takes several `--parameters` that spec key aspects of the Role record.
 
- 
+![](./images/spacer.png)
+
 | Parameter | Content |
 | ----- | ----- |
 | `--desc` | description of the Role |
@@ -32,14 +36,15 @@ The *create* command takes several `--parameters` that spec key aspects of the R
 | `--provider` | matches the *name* attribute of the authentication provider in the *settings* section of the config |
 | `--external-id` | identifier recognized by third-party federated authentication providers, such as AWS or ARN |
 
- 
+![](./images/spacer.png)
+
 Create a local Role with the name *\_test-role\_*:
 
 ```BASH
 thy role create --name test-role
 ```
 
-#### Search
+### Search
 
 The *search* command locates Roles by searching on their Role names. It accepts as a *--query* parameter the Role name you provide, and searches for records with a matching Role name.
 
@@ -61,7 +66,7 @@ You can also specify the maximum number of search results per page (cursor) and 
 thy role search --query us-east/server02 --limit 2 --cursor eyJpZCI6ImZmZjZjODUxTJ2ZXJzaW9uIjo50IiwidHiJ9
 ```
 
-#### Read
+### Read
 
 The *read* command retrieves and displays information without changing anything.
 
@@ -71,7 +76,7 @@ Provide a Role name and read the Role’s details in beautified form:
 thy role read --name test-role -b
 ```
 
-#### Update
+### Update
 
 Use *update* to change a Role’s data.
 
@@ -83,7 +88,7 @@ Provide a Role name and update the Role to replace the description field’s val
 thy role update --name test-role --desc "a new description"
 ```
 
-#### Delete
+### Delete
 
 The *delete* command will remove Roles.
 
@@ -97,4 +102,15 @@ When you delete a Role, it will no longer be usable. However, with the soft dele
 
 Should you want to perform a hard delete, precluding any restore operation, you can use the *delete* command’s `--force` flag.
 
+### Restore
 
+Up to 72 hours after you delete a Role (but not if you hard deleted it using the `--force` flag), you can restore it:
+
+```bash
+thy role restore --name test-role
+```
+
+
+![](./images/spacer.png)
+
+![](./images/spacer.png)

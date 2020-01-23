@@ -11,11 +11,17 @@ The configuration for DevOps Secrets Vault:
 
 ## Commands that Act on Configurations
 
+![](./images/spacer.png)
+
 | Command | Action                                                                                     |
 | ------- | ------------------------------------------------------------------------------------------ |
 | read    | view the current configuration                                                             |
-| edit    | modify the configuration in an OS-native text editor such as VI or nano (Linux shell only) |
+| edit    | modify the configuration in an OS-native text editor such as VI, nano, or Notepad          |
 | update  | upload a superseding configuration document                                                |
+| delete  | delete a configuration                                                                     |
+| restore | restore a deleted configuration (if within 72 hours of deletion and not hard deleted)      |
+
+![](./images/spacer.png)
 
 ### Read
 
@@ -70,20 +76,13 @@ Thycotic recommends against changing the Default Admin Policy other than to add 
 
 * For adding and editing policies beyond the Default Admin Policy, see the [Policy](policy.md) article.
 
-Working on Linux or macOS, use *edit* to open your configuration in the OS’s default editor (typically **VI** or **nano**).
+Use *edit* to open your configuration in the OS’s default editor (typically **VI**, **nano**, or **Notepad**).
 
 ``` bash
 thy config edit --encoding YAML
 ```
 
 The editor directly updates the configuration in the vault when you save your work.
-
-Note: On Windows, you cannot use *edit* on the configuration. Instead, you must:
-
-* use `thy config read -be YAML` to read out the config
-* save it as a file
-* edit the file locally
-* use `thy config update --path {path to file} --data @filename` to upload your work into the vault, entirely overwriting the prior config
 
 ### Update
 
@@ -148,4 +147,7 @@ Note that the account identifiers for third-party authentication are a top level
 
 See the [Authentication: AWS and Azure](../authent-azure-aws/) article for examples of using AWS and Azure for authentication.
 
+![](./images/spacer.png)
+
+![](./images/spacer.png)
 
