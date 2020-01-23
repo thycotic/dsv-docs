@@ -97,11 +97,8 @@ Please enter cache strategy for Secrets:
 Note that in this context, *server* simply means the technical elements in the Cloud that collectively manifest as though a unitary entity, not a literal server.
 
 * DSV defaults to **never** caching Secrets. Every credential request requires an API call.
-
 * The second choice, **server then cache**, allows DSV to use a cached copy of the Secret in lieu of obtaining it directly from the vault. This can help blunt the impacts of problems affecting connectivity to the server.
-
 * **Cache then server** can substantially reduce Secrets-related network traffic and API calls while also reducing the load on the server, because once DSV accesses a Secret, it need not pull that Secret from the server again until the cached copy expires.
-
 * The last choice allows use of cached Secrets even when they have expired, *provided* the server cannot be reached. This offers the most resilience against disruptions, but may not comport with some organization’s security policies.
 
 Finally, you will be prompted for your username, password, and Thycotic One provider name. When you sign up for a trial and choose your DSV tenant name you are also prompted to create a Thycotic One user. By default the provisioning process links your Thycotic One account and your DSV tenant, so the initial admin you sign in with will be your Thycotic One username and password.
@@ -120,6 +117,9 @@ That completes setup. You can begin using the DevOps Secrets Vault Command Line 
 
 The [CLI Primer](../cli-primer/index.md), [CLI Examples](../cli-examples/index.md), and [CLI Reference](../cli-ref/index.md) articles will get you started.  
 
+![](./images/spacer.png)
+
+![](./images/spacer.png)
 
 
   

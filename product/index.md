@@ -4,7 +4,11 @@
 
 # Welcome to DevOps Secrets Vault (DSV) Technical Assistance
 
-This December, DSV changed the `thy init` command used to initialize accounts so that it always steps through all key options, producing a more consistent experience for users and better aligning with typical command usage. The December release also added automatic update availability notification to the CLI executables, and corrected a defect wherein the CLI audit logs, queried for logs within a date range, would show logs if the start date were in the future and would show logs beyond the specified end date. 
+This January, Thycotic added a “rollback” capacity to DSV. If a Secret has had more than one version, you can roll it back to any of the earlier versions. Rollback also works on Policies and Authentication Providers. Additionally, Windows users now have the ease of editing Secrets in Notepad or another designated editor right from the command line.
+
+New and updated plug-ins arrive this month, too—supporting integrations with products such as Ansible, Chef and Puppet, enabling them to pull DSV Secrets. Plus, new SDKs support integration with applications written in .NET, Go, Python,and Ruby. The Navigation Panel’s Related Documents section (at lower left) will cover the growing number of products you can integrate with DSV.
+
+The January release also adjusted the Kubernetes extension so that it does not verbosely report error conditions having no relevance to the performance of DSV with Kubernetes.
 
 ---
 
@@ -14,8 +18,6 @@ New user? Make sure you have done all your setup and configuration steps.
 
 The DevOps Secrets Vault service operates through two main components: a Cloud-hosted, API-driven vault that stores your Secrets, and a locally installed executable that gives you a Command Line Interface (CLI) for managing your Secrets through the API. Neither works without the other, so you must set up both before you can use DevOps Secrets Vault. Additionally, once you are up and running, you must configure for your authentication provider.
 
-The first several documents in this collection (as listed below, and in the Navigation Panel at left) will get you started.
-
 ---
 
 # About This Collection
@@ -23,7 +25,7 @@ The first several documents in this collection (as listed below, and in the Navi
 Thycotic created this collection of short-form technical materials to quickly and directly connect you with answers to your DSV questions. We aim to conserve your time by applying brevity and focus at every turn.
 
 * When you have a specific topic in mind, the search tool at upper right will be your quickest path to relevant articles.
-* For browsing, the Navigation Panel (menus at left) pulls together information supporting a solid grounding in DevOps Secrets Vault.
+* For browsing, the Navigation Panel on the left pulls together information supporting a solid grounding in DevOps Secrets Vault.
 
 See the [Overview](./overview/index.md) for a quick product orientation.
 
@@ -42,6 +44,11 @@ The [Release Notes](release-notes.md) alert you to any changes or other consider
 
 [Quick Links](./quick-links/) lists for your convenience commonly used links related to DevOps Secrets Vault.
 
-The **RELATED DOCS** section at lower left in the Navigation Panel provides access to articles about the [Jenkins](/dsv-extension-jenkins) and [Kubernetes](/dsv-extension-kubernetes) extensions and the [DSV Java SDK](/dsv-sdk-java).
+The **RELATED DOCS** section at lower left in the Navigation Panel provides access to articles about the [Jenkins](/dsv-extension-jenkins), [Kubernetes](/dsv-extension-kubernetes), and other extensions and the [DSV Java SDK](/dsv-sdk-java). Look to this section when you need information about integrating DSV with other products.
 
 Alongside this collection, Thycotic maintains a [DevOps Secrets Vault API Reference](https://dsv.thycotic.com/api).
+
+![](./images/spacer.png)
+
+![](./images/spacer.png)
+
