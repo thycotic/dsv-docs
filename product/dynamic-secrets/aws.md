@@ -50,7 +50,9 @@ In this example we will grant full access to the Code Deploy service, which will
 
 ### IAM Role
 
-In the AWS IAM console create a new Role for the IAM User to assume. The Role must have a trust relationship that allows the user to assume it. Substitute your AWS account id and IAM username in the below statement:
+In the AWS IAM console [create a new Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) for the IAM User to assume and assign it the `AWSCodeDeployReadOnlyAccess` AWS managed policy. When creating the IAM Role specify your AWS account id since this example will not assume roles across accounts.
+
+The Role must have a trust relationship that allows the user to assume it. Substitute your AWS account id and IAM username in the below statement:
 
 ```json
 {
@@ -205,7 +207,7 @@ except ClientError as e:
     print(e.response["Error"]["Code"])
 ```
 
-The result should look like
+The result should look something like this (depending on how many CodeDeploy apps exist)
 
 ```BASH
 ----list code deploy apps----
@@ -266,7 +268,7 @@ returns a result like:
       "linkType": "dynamic",
       "linkedSecret": "aws:base:api-account"
     },
-    "roleARn": "arn:aws:iam::aws:policy/AWSCodeDeployReadOnlyAccess",
+    "roleArn": "arn:aws:iam::000000000000:role/DynamicTestRole",
     "providerType": "assumeRole",
     "ttl": 1200
   },
