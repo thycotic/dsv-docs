@@ -6,6 +6,8 @@
 
 Thycotic offers the DSV Java SDK as pre-release software. The SDK does not come with documentation. Thycotic intends it for technically mature organizations interested in creating their own extensions to integrate DSV into their infrastructure.
 
+Enable applications written in Go, Python, Ruby, and .NET programming language to quickly integrate with DSV 
+
 Thycotic will provide documentation with an upcoming release of the SDK.
 
 ## Obtain
