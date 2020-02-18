@@ -70,13 +70,22 @@ The syntax supports wildcards via the <.*> construct.
 
 To correctly evaluate permission Policies, you must know the rules that apply to permissions.
 
+* Values for permission properties may optionally be specified using a regular expression enclosed in angle brackets `<>`. For example,
+a subject entry could be written as `["users:<bob|alice>"]`. Here, users `bob` and `alice` are specified. A longer alternative would be
+`["users": "bob", "users": "alice"]`.
 * Permissions are cumulative.
   * If there is a top level permission for the path secrets:servers:<.\*> that grants a User **write** access, then even if they are only granted **read** access at the resource path secrets:servers:webservers:<.\*>, they will still have write access due to the top level implicit match.
+* An `effect` must be specified and can either be `allow` or `deny`.
 * An explicit deny trumps an explicit or implicit allow.
-* Actions are explicit. A User assigned **update** and **read** will not automatically have **create** for the resource path.
+* At least one action must be listed in an array. Actions are explicit. A User assigned **update** and **read** will not automatically have **create** for the resource path.
+* For actions, the wildcard form `<.*>` replaces any other values, since it is an all-inclusive form.
+* Invalid actions are not allowed, unless there is a wildcard element. Valid actions are `share, delete, update, create, read, assign, list`.
 * The **list** action has a special behavior.
   * First, **list** (search) is global—it runs across all items of an entity, not limited to paths and sub-paths.
   * Second, to grant a User an ability to search entities via *list*, use the root of the entity if you want *list* to include other entities and actions within the same Policy. The root entity, for example, is secrets, with no other characters following.
+* At least one subject must be listed in an array. A prefix is required. For example, a valid subject is `"users:bob"`. Valid prefixes are [groups, roles, users].
+* A wildcard could be written as a standard `<.*>` form, but also as `.*` or `*` for convenience. The backend automatically converts it to `<.*>`.
+* Subjects and actions are automatically converted to lower case upon save.
 
 ## Policy Examples
 
@@ -143,7 +152,7 @@ resources:
 
 In the example below, *roles* is the entity for reading and searching (list action). In the **resources** section, *roles:dev-role-<.*>* is used for reading, while *roles* is used for searching.
 
-```yAML
+```yaml
 - id: xxxxxxxxxxxx
 description: Limited Role Policy.
 subjects:

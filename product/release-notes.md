@@ -1,6 +1,6 @@
 ﻿[title]: # (Release Notes)
 [tags]: # (DevOps Secrets Vault,DSV,)
-[priority]: # (1900)
+[priority]: # (2100)
 
 # Release Notes
 
@@ -14,22 +14,17 @@ As a Cloud application, DSV lacks version numbers; the current version serves al
 * You obtain these updated versions of the CLI executables by downloading them from [DevOps Secrets Vault Downloads](https://dsv.thycotic.com/downloads). The CLI itself will notify you when a new version is available for download.
 * Generally, older versions of CLI executables will continue to work, but you will want to have the latest executables to benefit from fixes and obtain new features.
 
-This article tracks changes to DSV. Highlights of the most recent update appear first. The same information appears in the tables that follow. The first table covers the Cloud basis for DSV, and the second covers the OS-specific CLI executables and the API. In both tables, the most recent changes appear first.
-
-## January 2020 Release Notes Highlights
-
-For any Secret that has had more than one version, a new `rollback` command allows you to roll the Secret back to any of its earlier versions. The `rollback` command also works on Policies and Authentication Providers.
-
-Windows users now have the ease of editing Secrets in Notepad (or other designated editor) right from the command line.
-
-New and updated plug-ins support integrations with products such as Ansible, Chef and Puppet, enabling them to pull DSV Secrets, and new SDKs support integration with applications written in .NET, Go, Python,and Ruby.
-
-The January release also adjusted the Kubernetes extension so that it does not verbosely report error conditions having no relevance to the performance of DSV with Kubernetes.
+This article tracks changes to DSV.
 
 ## DSV Cloud Service: Change Log
 
 | **Update**             | **Notes**                                  |
 |------------------------|--------------------------------------------|
+|February 2020           | **improvement**: protect against user lockout. When editing authentication providers, block any changes that locks the user out of the account. |
+|                        | **improvement**: policy error check. Prevent user error by checking new policies or policy edits for allowed commands. |
+|                        | **improvement**: audit search results now inclusive of the dates in a range (previously the first day was omitted). |
+|                        | **improvement**: consistent version listing. Removed the “v” in the version number when searching older versions to be consistent with other listings. |
+|                        | **new feature**: AWS Dynamic secrets. DevOps secrets Vault can use AWS Security Token Service (STS) to provide ephemeral AWS credentials. |
 | January 2020           | **improvement**: the `rollback` command allows you to roll back Secrets (and Policies and Authentication Providers) to their earlier versions  |
 |                        | **improvement**: Windows users can now more easily edit Secrets, with Notepad or another designated editor opening right from the command line |
 |                        | **fixed**: a defect in the Kiubernetes extension caused verbose error reporting on irrelevant conditions |

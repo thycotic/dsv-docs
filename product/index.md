@@ -4,14 +4,6 @@
 
 # Welcome to DevOps Secrets Vault (DSV) Technical Assistance
 
-This January, Thycotic added a “rollback” capacity to DSV. If a Secret has had more than one version, you can roll it back to any of the earlier versions. Rollback also works on Policies and Authentication Providers. Additionally, Windows users now have the ease of editing Secrets in Notepad or another designated editor right from the command line.
-
-New and updated plug-ins arrive this month, too—supporting integrations with products such as Ansible, Chef and Puppet, enabling them to pull DSV Secrets. Plus, new SDKs support integration with applications written in .NET, Go, Python,and Ruby. The Navigation Panel’s Related Documents section (at lower left) will cover the growing number of products you can integrate with DSV.
-
-The January release also adjusted the Kubernetes extension so that it does not verbosely report error conditions having no relevance to the performance of DSV with Kubernetes.
-
----
-
 New user? Make sure you have done all your setup and configuration steps.
 
 *If you have **already** signed up for a vault, installed the CLI executable, and configured for your authentication provider, you’re good to go. If you have not completed any of those steps, please note the following to get started.*
