@@ -1,6 +1,6 @@
 ﻿[title]: # (CLI Reference)
 [tags]: # (DevOps Secrets Vault,DSV,)
-[priority]: # (1800)
+[priority]: # (4000)
 
 # CLI Reference
 
@@ -10,6 +10,7 @@ CLI commands commonly act on these object types:
 
 * Secret
 * User
+* Policy
 * Group
 * Role
 * Client

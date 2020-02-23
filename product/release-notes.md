@@ -1,6 +1,6 @@
 ﻿[title]: # (Release Notes)
 [tags]: # (DevOps Secrets Vault,DSV,)
-[priority]: # (2100)
+[priority]: # (8000)
 
 # Release Notes
 
@@ -8,20 +8,18 @@ Thycotic periodically updates DevOps Secrets Vault to provide fixes and improvem
 
 As a Cloud application, DSV lacks version numbers; the current version serves all users because it is always the only version available.
 
-* However, users operate DSV through a Command Line Interface (CLI) provided by downloaded, locally installed, and OS-specific executables. These bear version numbers.
-* Thycotic periodically updates these OS-specific executables to deliver fixes, improvements, and feature additions, as needed to keep the customer-side CLI executables conformant with the Cloud-based DSV service offerings.
-* The version number will always be the same across the OS-specific editions of the CLI executable; if a change resulting in a version number iteration only affects one of the OS editions, such will be noted, but all editions will still get the new version number.
-* You obtain these updated versions of the CLI executables by downloading them from [DevOps Secrets Vault Downloads](https://dsv.thycotic.com/downloads). The CLI itself will notify you when a new version is available for download.
+The Command Line Interface (CLI) is locally installed using OS-specific executables. These bear version numbers to reflect updates.
+* The version number will always be the same across the OS-specific editions of the CLI executable.
+* You obtain these updated versions of the CLI executables by downloading them from [DevOps Secrets Vault Downloads](https://dsv.thycotic.com/downloads). 
+* The CLI itself will notify you when a new version is available for download.
 * Generally, older versions of CLI executables will continue to work, but you will want to have the latest executables to benefit from fixes and obtain new features.
 
-This article tracks changes to DSV.
 
 ## DSV Cloud Service: Change Log
 
 | **Update**             | **Notes**                                  |
 |------------------------|--------------------------------------------|
 |February 2020           | **improvement**: protect against user lockout. When editing authentication providers, block any changes that locks the user out of the account. |
-|                        | **improvement**: policy error check. Prevent user error by checking new policies or policy edits for allowed commands. |
 |                        | **improvement**: audit search results now inclusive of the dates in a range (previously the first day was omitted). |
 |                        | **improvement**: consistent version listing. Removed the “v” in the version number when searching older versions to be consistent with other listings. |
 |                        | **new feature**: AWS Dynamic secrets. DevOps secrets Vault can use AWS Security Token Service (STS) to provide ephemeral AWS credentials. |

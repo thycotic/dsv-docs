@@ -1,36 +1,25 @@
 ﻿[title]: # (AWS, Dynamic Secrets)
 [tags]: # (DevOps Secrets Vault,DSV,)
-[priority]: # (1910)
+[priority]: # (6100)
 
 # AWS Dynamic Secrets
 
-AWS Dynamic Secrets generate a temporary access key, secret key, and session token either through user federation or assuming a role. There are two options through the AWS STS service for providing temporary credentials. 
+AWS Dynamic Secrets generate a temporary access key, secret key, and session token. AWS security token service (STS) for provides either `federate` or `assumeRole`.  `federate` is ideal for assigning dynamic secrets from a single AWS account.  `assumeRole` allows cross account access in AWS, so a single set of credentials in DSV can grant access to multiple AWS accounts.
+
+These are the links to AWS documentation for each STS type:
 
 * [Federate](https://docs.aws.amazon.com/STS/latest/APIReference/API_GetFederationToken.html)
 * [Assume Role](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html)
 
-## AWS Attribute Options
+## AWS Federate
 
-Dynamic Secrets link to the base credentials via the attribute metadata. Options for AWS are as follows:
+### Setup the AWS IAM User
+For the `federate` example, create a new IAM User and note the access key and secret key.
 
+Assign a policy to the IAM user with `sts:GetFederationToken` permission as well as any other permissions the IAM user should have.  In this example, we assign the user full CodeDeploy rights.
 
-| Attribute                 | Description                                                                                       |
-| --------------            | ------------------------------                                                                    |
-| policyArn                 | AWS ARN of the policy to assign the federated user token. Can be customer or aws managed                      |
-| providerType              | valid values are: `federate` or `assumeRole`                                                      |
-| ttl                       | optional time to live in seconds of the generated token. If none is specified will default to 900 |
+> NOTE: When you get temporary tokens from AWS via `GetFederationToken` the resulting token's permissions will be the intersection of the IAM User and the policy ARN specified on the Dynamic Secret. In other words, the Dynamic Secret is only allowed the permissions that are in both the IAM policies and the Dynamic secret attached policy.
 
-
-## AWS Setup
-
-### IAM User
-For the below examples create a new IAM User and note the access key and secret key. 
-
-Assign a policy to the IAM use with `sts:GetFederationToken` and `sts:AssumeRole` permissions as well as any other permissions the Dynamic Secret credentials should have.
-
-> NOTE: When you get temporary tokens from AWS via `AssumeRole` or `GetFederationToken` the resulting token's permissions will be the intersection of the IAM User and either the policy ARN or role ARN specified on the Dynamic Secret. So a Dynamic Secret cannot have greater permissions than the IAM User has.
-
-In this example we will grant full access to the Code Deploy service, which will be scoped down for the federated user.
 
 ```json
 {
@@ -48,57 +37,12 @@ In this example we will grant full access to the Code Deploy service, which will
 }
 ```
 
-### IAM Role
 
-In the AWS IAM console [create a new Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) for the IAM User to assume and assign it the `AWSCodeDeployReadOnlyAccess` AWS managed policy. When creating the IAM Role specify your AWS account id since this example will not assume roles across accounts.
-
-The Role must have a trust relationship that allows the user to assume it. Substitute your AWS account id and IAM username in the below statement:
-
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": "arn:aws:iam::{accountid}:{iam-user}"
-      },
-      "Action": "sts:AssumeRole",
-      "Condition": {}
-    }
-  ]
-}
-```
-
-```json
-Once the Role is created you can add the `sts:AssumeRole` permission to the User's policy so it looks like:
-
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "sts:GetFederationToken",
-                "codedeploy:*"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "sts:AssumeRole"
-            ],
-            "Resource": "arn:aws:iam::{accountid}:role/{role-name}""
-        }
-    ]
-}
-```
 
 
 ### Create the Base Secret
 
-Next create a Secret in DSV with the access key, secret key, and region. 
+Next create a Secret in DSV with the AWS IAM user access key, secret key, and region.
 
 Create a file named `secret_root.json` substituting your values:
 
@@ -117,14 +61,18 @@ Create the Secret via the CLI at a path of your choosing:
 thy secret create --path aws/base/api-account --data @secret_root.json --attributes '{"type": "aws"}'
 ```
 
-## Federation Token
-
-
 ### Create the Dynamic Secret
 
-Now you need to create a Dynamic Secret, which points to the base Secret via its attributes. The Dynamic Secret doesn't have any data stored in it, data is only populated when you read the Secret.
+| Attribute                 | Description                                                         |
+| --------------            | ------------------------------                                      |
+| policyArn                 | AWS ARN of the policy to assign the federated user token. Can be customer or aws managed |
+| providerType              |  `federate`                       |
+| ttl                       | optional time to live in seconds of the generated token. If none is specified it will default to 900 |
 
-Create an attributes json file named `secret_attributes.json substituting your values.
+
+Now you need to create a Dynamic Secret, which points to the base Secret via its attributes. The Dynamic Secret doesn't have any data stored in it because data is only populated when you read the Secret.
+
+Create an attributes json file named `secret_attributes.json' substituting your values.
 
 
 ```json
@@ -222,15 +170,90 @@ AccessDeniedException
 
 
 
-## Assume Role
+## AWS Assume Role
 
-The primary reason to use `assumeRole` rather than `federate` is that it allows cross account access in AWS, so a single set of credentials in DSV can grant access to multiple AWS accounts.
+In this example, we assume the IAM user and the role that that user will assume are in separate AWS accounts.  This is not required, but then it might make more sense to use the `sts:Federated`approach.
 
+### Setup the AWS IAM user
+In the AWS account for the IAM user, create or modify an IAM user policy to include the `sts:AssumeRole` permissions as well as any other permissions the user should have.  In this example, we assign the user full `CodeDeploy` rights.
+
+>NOTE: For setting up, if you don't know the role account ID or name at this point, **Resources** could be set to all `*`, but best practices would be to come back and restrict the **Resources** to only the role once the name is known as shown here.
+
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "codedeploy:*"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "sts:AssumeRole"
+            ],
+            "Resource": "arn:aws:iam::{account id of role}:role/{role-name}""
+        }
+    ]
+}
+```
+### Setup the AWS IAM role
+In the AWS account with the role that is to be used, [create a new Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) or identify an existing one with the proper policies (not shown here). 
+>NOTE: The `sts:AssumeRole` token will have permissions that intersect between the IAM user policy(ies) and the role ploicy(ies) they assume.  In other words, the token can't have permissions enabled by both the user and role policies. 
+
+Additionally, this role must have a trust relationship setup between the IAM user in the first account and this role.  It might look like this:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::{account id of user}:{iam-user}"
+      },
+      "Action": "sts:AssumeRole",
+      "Condition": {}
+    }
+  ]
+}
+```
+### Create the Base Secret
+
+Next create a Secret in DSV with the AWS IAM user access key, secret key, and region.
+
+Create a file named `secret_root.json` substituting your values:
+
+```json
+{
+        "accessKey": "AIA2RAVTSMNW437LM",
+        "region": "us-east-1",
+        "secretKey": "SpN5Ipjvgepz0/q0ZNGmFhhLkUr+Uie5+D3CE"
+}
+```
+Create the Secret via the CLI at a path of your choosing:
+
+```BASH
+thy secret create --path aws/base/api-account --data @secret_root.json --attributes '{"type": "aws"}'
+```
+
+### Create the Dynamic Secret
+
+
+| Attribute                 | Description                                                                                       |
+| --------------            | ------------------------------                                                                    |
+| roleArn                 | AWS ARN of the role to assign the AssumeRole user token. Can be customer or aws managed |
+| providerType              | `assumeRole`                                                      |
+| ttl                       | optional time to live in seconds of the generated token. If none is specified will default to 900 |
 
 
 ### Create the Dynamic Secret
 
-Now you need to create a Dynamic Secret, which points to the base secret via its attributes. The Dynamic Secret doesn't have any data stored in it, data is only populated when you read the secret.
+Now you need to create a Dynamic Secret, which points to the base secret via its attributes. The Dynamic Secret doesn't have any data stored in it. Data is only populated when you read the secret.
 
 Create or update the attributes json file named `secret_attributes.json substituting the ARN of the role you created.
 
@@ -241,12 +264,12 @@ Create or update the attributes json file named `secret_attributes.json substitu
 		"linkType": "dynamic",
 		"linkedSecret": "aws:base:api-account"
 	},
-	"roleArn": "arn:aws:iam::{accountid}:role/{role-name}",
+	"roleArn": "arn:aws:iam::{account id of role}:role/{role-name}",
 	"providerType": "assumeRole",
 	"ttl": 1200
 }
 ```
-
+Now create the dynamic secret in the CLI using the josn above.
 ```BASH
 thy secret create --path dynamic/aws/assume-api --attributes @secret_attributes.json
 ```
@@ -268,7 +291,7 @@ returns a result like:
       "linkType": "dynamic",
       "linkedSecret": "aws:base:api-account"
     },
-    "roleArn": "arn:aws:iam::000000000000:role/DynamicTestRole",
+    "roleArn":  "arn:aws:iam::{account id of role}:role/{role-name}",
     "providerType": "assumeRole",
     "ttl": 1200
   },
@@ -288,5 +311,4 @@ returns a result like:
 
 ![](./images/spacer.png)
 
-
-
+![](./images/spacer.png)
