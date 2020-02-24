@@ -15,7 +15,6 @@ CLI commands commonly act on these object types:
 * Role
 * Client
 * Config
-* Policy
 
 This Reference complements the separately maintained DevOps Secrets Vault [API Reference](https://dsv.thycotic.com/api).
 
