@@ -2,9 +2,7 @@
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (3000)
 
-# CLI Primer
-
-## CLI Command Syntax
+# CLI Command Syntax
 
 With few exceptions, CLI commands follow a simple syntax:
 
@@ -19,12 +17,12 @@ For example, in `thy role create`, `role` is the object of the command `create`.
 | Object   | Syntax                                 | Definition                                                                                |
 | ---------- | -------------------------------------- | ----------------------------------------------------------------------------------------- |
 | auth       | auth                                   | authenticate to the vault or display the current access token                             |
-| cli-config | init                                   | manage the CLI authentication file                                                                    |
+| cli-config | cli-config                                  | manage the CLI authentication file                                                                    |
 | client     | client (`<client-id> • --client-id`)   | manage client credentials for application vault access                                    |
 | config     | config                                 | manage the top level configuration document for the admin policy and authentication providers              |
 | eval       | eval                                   | check the value of a command line flag or variable                                        |
 | group      | group (`<group-name> • --group-name`)  | manage collections of Users uniformly by placing them in a managed Group                  |
-| init       | cli-config init                        | initialize DSV on first run                                                               |
+| init       | cli-config init or init                       | initialize DSV on first run                                                               |
 | policy     | policy (`<path> • --path • -r`)        | manage policies on permissions for Secrets, Roles, Users, and other entities in the vault |
 | role       | role (`<name> • --name • -n`)          | manage Roles                                                                              |
 | secret     | secret (`<path> • --path • -r`)        | create, update, and retrieve Secrets from the vault                                       |
