@@ -13,6 +13,7 @@
 | [DSV CLI Executables Download Page](https://dsv.thycotic.com/downloads)                                                  |
 | [DSV API Documentation](https://dsv.thycotic.com/api)                                                                    |
 | [Thycotic Github Page (SDKs and Plug-ins)](https://github.com/thycotic)                                                  |
+
 ![](./images/spacer.png)
 
 ## Third-Party Downloads

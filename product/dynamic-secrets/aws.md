@@ -1,4 +1,4 @@
-﻿[title]: # (AWS, Dynamic Secrets)
+﻿[title]: # (AWS Dynamic Secrets)
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (6100)
 

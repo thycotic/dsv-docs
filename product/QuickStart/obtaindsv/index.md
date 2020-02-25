@@ -2,21 +2,18 @@
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (2100)
 
-# Obtain DevOps Secrets Vault
-
-Obtaining DevOps Secrets Vault requires only a few straightforward steps.
-
-## Sign Up with Thycotic for a Tenant
+# Sign Up with Thycotic for a Tenant
 
 Your **tenant** is your DevOps Secrets Vault cloud account and the rights to access it.
 
 * To sign up, visit Thycotic’s [DevOps Secrets Vault Home Page](https://thycotic.com/products/devops-secrets-vault-password-management/) and fill out and submit the **DevOps Secrets Vault Free** web form.
 * Signing up qualifies you for a free, feature-complete try-out version of DevOps Secrets Vault. You begin with the free version to get configured, and upgrade when you need more capacity than the free version’s 250 Secrets and 2500 API calls per month. This allows you to try and test the product before deciding to become a paid subscriber.
-* After you sign up, Thycotic emails you instructions for the first half of setup, which is in the Cloud. You will visit Thycotic One to select your region, choose your tenant name, consent to the license terms, and create your initial admin User account.
+* After you sign up, you will receive an email from Thycotic Sales and start with *Welcome to Devops Secrets Vault*.  There will be a hyperlink labeled "Cloud Portal" in the text of the email to click to get started.
+* You will visit Thycotic One to select your region, choose your tenant name, consent to the license terms, and create your initial admin User account.
 
-Come back here for the second half of setup, which involves downloading the CLI executable, initial configuration steps, and configuring for your authentication provider.
+Come back here for the second half of setup, which involves downloading the CLI executable.
 
-## Download the CLI Executable for Your OS
+# Download the CLI Executable for Your OS
 
 Download the Command Line Interface executable files onto each of the workstations where you will operate DevOps Secrets Vault. 
 
