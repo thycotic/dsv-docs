@@ -55,6 +55,8 @@ Outputs:
   "version": "0"
 }
 ```
+
+Files may also be used to enter attributes `--attributes` or a description `--desc`
 ### Direct Command
 
 Instead of using a file, the data can be entered as part of the command:
@@ -94,7 +96,7 @@ Outputs:
 
 ## Retrieve a Secret
 
-To retrieve a Secret use the Secret read command and specify the path to the Secret’s storage location.
+To retrieve a Secret use the Secret read command and specify the path to the Secret's storage location.
 
 ```BASH
 thy secret read --path /servers/us-east/server01
@@ -152,10 +154,10 @@ secretp@ssword
 
 ## Separately Update Attributes, Data, and Description
 
-Using the `--data`, `--attributes`, and `--desc` flags, respectively, you can update a Secret’s data, attributes, and description separately. For example:
+Using the `--data`, `--attributes`, and `--desc` flags, respectively, you can update a Secret's data, attributes, and description separately. For example:
 
 ```BASH
-thy secret update servers/us-east/server01 --data '{"host": "server01", "password": "badpassword","username": "admin"}' --desc 'update description’  --attributes ‘{"attr": "add one"}’
+thy secret update servers/us-east/server01 --data '{"host": "server01", "password": "badpassword","username": "admin"}' --desc 'update description'  --attributes '{"attr": "add one"}'
 ```
 ```json
 {

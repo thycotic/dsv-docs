@@ -1,6 +1,6 @@
 ﻿[title]: # (Authentication: Azure)
 [tags]: # (DevOps Secrets Vault,DSV,)
-[priority]: # (5300)
+[priority]: # (5400)
 
 # Authentication: Azure 
 
@@ -158,7 +158,7 @@ thy secret read --path <path to a secret>
 
 ## Azure Resource Group
 
-If you want to grant access to a set of VMs in a resource group that use a System assigned MSI rather than a User assigned MSI, you can create a Role that corresponds to the resource group’s resource ID.
+If you want to grant access to a set of VMs in a resource group that use a System assigned MSI rather than a User assigned MSI, you can create a Role that corresponds to the resource group's resource ID.
 
 ```BASH
 thy role create --name identity-rg  --external-id /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/build --provider azure-prod

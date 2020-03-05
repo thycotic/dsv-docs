@@ -2,7 +2,7 @@
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (5000)
 
-# Authentication: General
+# Authentication
 
 DSV supports several authentication methods.
 
