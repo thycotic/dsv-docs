@@ -2,12 +2,6 @@
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (9000)
 
----
-
-New to DevOps Secrets Vault? Go back to the [Getting Started](../index.md) page for the steps to obtain, install, and configure DSV.
-
----
-
 # Support
 
 Support options depend on license status, with paid licenses having more support channels.
@@ -18,7 +12,7 @@ If you have a free license, use this document collection to find information abo
 
 ## Paid Licenses
 
-Paid DSV subscribers have access to support by phone and email. You also can open a case in Thycotic’s support ticketing system, which promotes follow-through to issue resolution.
+Paid DSV subscribers have access to support by phone and email. You also can open a case in Thycotic's support ticketing system, which promotes follow-through to issue resolution.
 
 * Use the means you prefer, except for Severity 1 issues—for those, always use phone support.
 

@@ -1,4 +1,4 @@
-﻿[title]: # (Authentication: General)
+﻿[title]: # (Authentication)
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (5000)
 
