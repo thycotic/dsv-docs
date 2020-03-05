@@ -1,3 +1,7 @@
+[title]: # (Download the CLI)
+[tags]: # (DevOps Secrets Vault,DSV,)
+[priority]: # (2200)
+
 # Download the CLI Executable for Your OS
 
 Download the Command Line Interface executable files onto each of the workstations where you will operate DevOps Secrets Vault. 
@@ -17,7 +21,7 @@ Place the executable in the file directory location of your choice and note the 
 
 While not required, adding the location of the executable to your PATH environment variable enables you to invoke `thy` without specifying its path or having to pre-pend `.\`
 
-* For Windows, press the Windows key and type “edit environment variables”. Select the offered item.
+* For Windows, press the Windows key and type "edit environment variables". Select the offered item.
 
   In the Environment Variables dialog, under the System Variables section, select the Path and click edit.  
 

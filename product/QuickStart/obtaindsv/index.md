@@ -22,6 +22,8 @@ Your **tenant** is your DevOps Secrets Vault cloud account and the rights to acc
 |EU        | Frankfurt            | Ireland           | secretsvaultcloud.eu    |
 |US        | US-East              | US-West           | secretsvaultcloud.com   |
 
+![](./images/spacer.png)
+
 ![Select Region](./images/DSVEnvironment.png)
 
 * Next you are taken to Thycotic One to set a password.  
@@ -32,15 +34,15 @@ Your **tenant** is your DevOps Secrets Vault cloud account and the rights to acc
     * Thycotic One can be setup later to enable SSO to an identity provider of the customer's choice using OIDC.
     * Thycotic One can be setup later to enable 2FA when used as the identity provider. The options are TOTP (such as Google Authenticator) and SMS. 
 
-![Select Region](./images/DSVSetPassword.png)
+![Create Password](./images/DSVSetPassword.png)
 
 * Choose your tenant name.
 
-![Select Region](./images/DSVtenant.png)
+![Select Tenant](./images/DSVtenant.png)
 
 * Read and agree to the EULA and GDPR (if applicable)
 
-![Select Region](./images/DSVLicense.png)
+![EULA](./images/DSVLicense.png)
 
 * The tenant will be created.  The note on the screen says it can take up to 20 minutes, but is usually closer to 5 minutes.
 

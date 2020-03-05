@@ -1,6 +1,6 @@
 ﻿[title]: # (Secrets Examples)
 [tags]: # (DevOps Secrets Vault,DSV,)
-[priority]: # (2300)
+[priority]: # (2400)
 
 # CLI Secrets Examples
 

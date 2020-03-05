@@ -1,6 +1,6 @@
 ﻿[title]: # (Initialize the CLI)
 [tags]: # (DevOps Secrets Vault,DSV,)
-[priority]: # (2200)
+[priority]: # (2300)
 
 # Initialize the CLI
 
