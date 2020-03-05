@@ -1,4 +1,4 @@
-﻿[title]: # (CLI Commands and Syntax)
+﻿[title]: # (Commands and Syntax)
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (4100)
 

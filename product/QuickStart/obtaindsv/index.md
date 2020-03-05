@@ -12,7 +12,7 @@ Your **tenant** is your DevOps Secrets Vault cloud account and the rights to acc
 * A second email, also from Thycotic Sales, but with the subject, "DevOps Secrets Vault" will arrive.  
 * Click the hyperlink labeled "Cloud Portal" in the text of the email to click to get started.
 
-![DSV Get Started Email](./images/DSVCloudPortalemail.png)
+![DSV Get Started Email](./images/DSVCloudemail.png)
 
 * You will visit Thycotic Cloud Manager to select your region.  The three regions are independent for data sovereignty reasons (like GDPR).  All three provide geographical redundancy.
 
@@ -34,11 +34,11 @@ Your **tenant** is your DevOps Secrets Vault cloud account and the rights to acc
     * Thycotic One can be setup later to enable SSO to an identity provider of the customer's choice using OIDC.
     * Thycotic One can be setup later to enable 2FA when used as the identity provider. The options are TOTP (such as Google Authenticator) and SMS. 
 
-![Create Password](./images/DSVSetPassword.png)
+![Create Password](./images/DSVPassword.png)
 
 * Choose your tenant name.
 
-![Select Tenant](./images/DSVtenant.png)
+![Select Tenant](./images/DSVsettenant.png)
 
 * Read and agree to the EULA and GDPR (if applicable)
 
