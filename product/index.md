@@ -4,7 +4,7 @@
 
 # Overview
 
-Thycotic’s DevOps Secrets Vault is a high velocity vault that centralizes secrets management, enforces access, and provides automated logging trails.  This cloud-based solution is platform agnostic and designed to replace hard-coded credentials in applications, micro-services, DevOps tools, and robotic process automation. This vault ensures IT, DevOps and Security teams the speed and agility needed to stay competitive without sacrificing security.
+Thycotic's DevOps Secrets Vault is a high velocity vault that centralizes secrets management, enforces access, and provides automated logging trails.  This cloud-based solution is platform agnostic and designed to replace hard-coded credentials in applications, micro-services, DevOps tools, and robotic process automation. This vault ensures IT, DevOps and Security teams the speed and agility needed to stay competitive without sacrificing security.
 
 DevOps Secrets Vault is deployed as an API-as-a Service.  Organizations can sign-up and create their first secrets in minutes with no infrastructure to manage or maintain.
 
@@ -39,11 +39,9 @@ Thycotic offers a feature-complete, non-time-limited free version of DevOps Secr
 
 Signing up for the free version is the first step in getting a DevOps Secrets Vault tenant even if you plan to upgrade to a paid plan immediately.
 
-To get started with guided help, go to the [Quick Start](.\QuickStart\Quick.md) section.
+To get started with guided help, go to the [Quick Start](./QuickStart/index.md) section.
 
-If you don't need our help, sign up for the tenant here :  [DevOps Secrets Vault Free](https://thycotic.com/products/devops-secrets-vault-password-management/)
-
-And download the CLI here: [DevOps Secrest Vault CLI](https://dsv.thycotic.com/api)
+If you don't need our help, sign up for the tenant here :  [DevOps Secrets Vault Free](https://thycotic.com/products/devops-secrets-vault-password-management/) and download the CLI here: [DevOps Secrest Vault CLI](https://dsv.thycotic.com/api)
 
 ## API 
 

@@ -6,39 +6,45 @@
 
 Your **tenant** is your DevOps Secrets Vault cloud account and the rights to access it.
 
-* To sign up, visit Thycotic’s [DevOps Secrets Vault Home Page](https://thycotic.com/products/devops-secrets-vault-password-management/) and fill out and submit the **DevOps Secrets Vault Free** web form.
-* Signing up qualifies you for a free, feature-complete try-out version of DevOps Secrets Vault. You begin with the free version to get configured, and upgrade when you need more capacity than the free version’s 250 Secrets and 2500 API calls per month. This allows you to try and test the product before deciding to become a paid subscriber.
-* After you sign up, you will receive an email from Thycotic Sales and start with *Welcome to Devops Secrets Vault*.  There will be a hyperlink labeled "Cloud Portal" in the text of the email to click to get started.
-* You will visit Thycotic One to select your region, choose your tenant name, consent to the license terms, and create your initial admin User account.
+* To sign up, visit Thycotic's [DevOps Secrets Vault Home Page](https://thycotic.com/products/devops-secrets-vault-password-management/) and fill out and submit the **DevOps Secrets Vault Free** web form.
+* Signing up qualifies you for a free, feature-complete try-out version of DevOps Secrets Vault. You begin with the free version to get configured, and upgrade when you need more capacity than the free version's 250 Secrets and 2500 API calls per month.
+* An initial email from Thycotic Customer Support will arrive with the subject, "Welcome to the Thycotic Community!". There is a link to sign up for a Thycotic support account.  You can wait until you need support to sign up.  Also, if you already have a support account because of a previous Thycotic cloud subscription, then this can be ignored.
+* A second email, also from Thycotic Sales, but with the subject, "DevOps Secrets Vault" will arrive.  
+* Click the hyperlink labeled "Cloud Portal" in the text of the email to click to get started.
 
-Come back here for the second half of setup, which involves downloading the CLI executable.
+![DSV Get Started Email](./images/DSVCloudPortalemail.png)
 
-# Download the CLI Executable for Your OS
+* You will visit Thycotic Cloud Manager to select your region.  The three regions are independent for data sovereignty reasons (like GDPR).  All three provide geographical redundancy.
 
-Download the Command Line Interface executable files onto each of the workstations where you will operate DevOps Secrets Vault. 
+| Option   | Primary Region       | (Active standby)  | Base URL                |
+| -------- | ---------------------| ------------------|---------------          |
+|AU        | Sydney               | Singapore         | secretsvaultcloud.com.au    |
+|EU        | Frankfurt            | Ireland           | secretsvaultcloud.eu    |
+|US        | US-East              | US-West           | secretsvaultcloud.com   |
 
-* Thycotic provides DSV CLI executables for multiple platforms [here](https://dsv.thycotic.com/downloads).
-* Once installed, these CLI executables periodically check the download site for updates and inform the user if an update is available.
+![Select Region](./images/DSVEnvironment.png)
 
-## Rename the Executable
+* Next you are taken to Thycotic One to set a password.  
 
-The executable file name will reflect the OS and 32-bit or 64-bit architecture. Rename the executable to *thy* or *thy.exe* to simplify command entry.
+* NOTE: The person setting up the DevOps Secrets Vault tenant will be considered the *initial administrator* and Thycotic One will be established as that person's authentication provider.  This is to enable Thycotic to help in case the password is lost.  
 
-## Place the Executable
+    * It is up to the customer to set any future users as local or through Thycotic One, AWS, or Azure.
+    * Thycotic One can be setup later to enable SSO to an identity provider of the customer's choice using OIDC.
+    * Thycotic One can be setup later to enable 2FA when used as the identity provider. The options are TOTP (such as Google Authenticator) and SMS. 
 
-Place the executable in the file directory location of your choice and note the path.
+![Select Region](./images/DSVSetPassword.png)
 
-## Add the Executable Path to the PATH Environment Variable
+* Choose your tenant name.
 
-While not required, adding the location of the executable to your PATH environment variable enables you to invoke `thy` without specifying its path or having to pre-pend `./`
+![Select Region](./images/DSVtenant.png)
 
-* For Windows, press the Windows key and begin typing “edit the system environment variables.” Windows will almost immediately auto-complete this text and offer to open the Control Panel item used to edit environment variables.
+* Read and agree to the EULA and GDPR (if applicable)
 
-  Select the offered item. Windows will display the System Properties dialog. Use the Environment Variables button to reach the Environment Variables dialog.
+![Select Region](./images/DSVLicense.png)
 
-  Add the path to the *thy* executable—for example *C:\Users\name\—to the PATH system variable.
+* The tenant will be created.  The note on the screen says it can take up to 20 minutes, but is usually closer to 5 minutes.
 
-* For Linux or macOS use *export* to modify the shell profile file, *~.profile* or *~.bash_profile* typically, so that it adds thy to the PATH on system startup:  *export PATH=~thycotic/cli:$PATH*
+The next step is downloading the [CLI executable](../obtaincli/index.md).
 
 ![](./images/spacer.png)
 

@@ -23,7 +23,7 @@ thy init
  Please enter tenant name: example
 ```
 
-Specify the tenant name Thycotic provided when setting up your organization’s account.
+Specify the tenant name Thycotic provided when setting up your organization's account.
 
 >NOTE: You need only enter your tenant name, ie, just *example* not *example.secretsvaultcloud.com*, because the domain is set by region and that is covered in the next question:
 
@@ -71,7 +71,7 @@ Select *(1) Password (local user) (default)* to authenticate by username and pas
 
 Select *(2) Client Credential* to authenticate by Client ID and Client Secret authentication; this supports use of DSV commands by applications.
 
-Select *(3) Thycotic One (federated)* to authenticate using Thycotic’s access manager.
+Select *(3) Thycotic One (federated)* to authenticate using Thycotic's access manager.
 
 >NOTE: The person who signed up for DevOps Secrets Vault is the *initial administrator* and is automatically setup using Thycotic One. This enables Thycotic to reset the password if it is ever lost. It is up to the customer to then decide if all other users are local or federated through one the available providers.
 
@@ -110,7 +110,7 @@ Please enter password:
 Thycotic One authentication provider name (default thy-one): thy-one
 ```
 
-That completes setup. You can begin using the DevOps Secrets Vault Command Line Interface to administer Secrets in your organization’s secure Cloud-hosted Secrets vault.
+That completes setup. You can begin using the DevOps Secrets Vault Command Line Interface to [create your first secret](../secrets/index.md)
 
 ![](./images/spacer.png)
 

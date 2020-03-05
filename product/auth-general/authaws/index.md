@@ -1,6 +1,6 @@
 ﻿[title]: # (Authentication: AWS)
 [tags]: # (DevOps Secrets Vault,DSV,)
-[priority]: # (5100)
+[priority]: # (5200)
 
 # Authentication: AWS
 
@@ -170,7 +170,7 @@ This example assumes that you:
 * launched an EC2 instance using the IAM Role
 * [downloaded](https://dsv.thycotic.com/downloads) the CLI onto the EC2 instance
 
-Create a corresponding Role in DSV with the external-id of the IAM Role’s ARN.
+Create a corresponding Role in DSV with the external-id of the IAM Role's ARN.
 
 ```BASH
 thy role create --name test-role --external-id
