@@ -4,31 +4,30 @@
 
 # Azure Dynamic Secrets
 
-The Azure secrets engine dynamically generates Azure service principals along with role assignments.
+The Azure dynamic secrets dynamically generates temporary client id and client secret from dynamic service principal or existing application object.
 
-Each service principal is associated with a TTL. When the TTL expires, the service principal will be deleted.
+Each dynamic service principal is associated with a TTL.
 
-If an existing service principal is specified as part of the dynamic secret role, a new client secret will be dynamically generated instead of a new service principal. The client secret will be deleted when the ttl is expired.
+Alternatively you can set an existing service principal and a new client secret will be generated rather than a new service principal
 
 These are the links to Azure documentation on service principal:
 
 * [Service principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals)
-* [howto-create-service-principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
+* [Create Service Principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
 
 
 ## Azure Service principal 
 
 #### Authentication
 
-DSV must have sufficient permissions to read Azure role information and manage service principals. The individual parameters are described in the section below.
+DSV must have sufficient permissions to manage service principals. The individual parameters are described in the section below.
 
-The following Azure roles and Azure Active Directory permissions are required, regardless of which authentication method is used:
+The following permissions are required: 
 
 * "Owner" role for the subscription scope  
 * "Read and write all applications" permission in Azure Active Directory. 
 
-These permissions can be configured through the Azure Portal, CLI tool, or PowerShell. In your Azure subscription, ensure that your account has Microsoft.Authorization/*/Write access to assign an AD app to a role. This action is granted through the Owner role or User Access Administrator role. If your account is assigned to the Contributor role, you don't have adequate permission. You will receive an error when attempting to assign the service principal to a role.
-
+These permissions can be configured through the Azure Portal, CLI tool, or PowerShell. 
 
 
 #### Create the Base Secret
@@ -42,11 +41,7 @@ Creates the credentials required for the DSV to perform API calls to Azure. Thes
 `environment` (string:"") - The Azure environment. If not specified, DSV will use Azure Public Cloud.
 
 
-
-| method                 | path                                                         |
-| --------------         | ------------------------------                               | 
-| POST                 | /v1/secrets/azure/{secretpath}                                 |                                                      /
-
+Create a file named `secret_root.json` substituting your values:
 
 ```json
 {
@@ -54,24 +49,26 @@ Creates the credentials required for the DSV to perform API calls to Azure. Thes
     	"subscriptionId": "028b0a8e-84d2-4797-9071-456fe718248e",
 		"tenantId":       "s0kkfsld-569l-491f-err4-7f4d831987fd",
 		"clientId":       "f0b2cbb9-5782-42d5-8647-028b0a8e61f2",
-		"clientSecret":   "tMQ5ZEP?.sjfk5435jlKJSDedDKJDKJD@]"},
+		"clientSecret":   "tMQ5ZEP?.sjfk5435jlKJSDedDKJDKJD@]"
+    },
 	
-    "description": "azure root credential",
-    "attributes": {
-		 "type": "azure"
-    }
+    "description": "azure root credential"
 }
 ```
+Create the Secret via the CLI at a path of your choosing:
+
+```BASH
+thy secret create --path azure/base/api-account --data @secret_root.json --attributes '{"type": "azure"}'
+```
+
 #### Roles
-In DSV you can create service principal either from existing application object or dynamic service principal from Azure role with role-specific TTL. If an existing service principal is not provided, DSV configured Azure role will be assigned to a newly created service principal. 
+In DSV you can create service principal either from existing application object or dynamic service principal from Azure role with TTL. 
 
 
 #### Create the Dynamic Secret 
 Create a Dynamic Secret, which points to the base Secret via its attributes. The Dynamic Secret doesn't have any data stored in it because data is only populated when you read the Secret.
 
-| method                 | path                                                         |
-| --------------         | ------------------------------                               | 
-| POST                 | /v1/secrets/dynamic/azure/{secretpath}       
+     
 
 | Attribute                 | Description                                                         |
 | --------------            | ------------------------------                                      |
@@ -84,9 +81,10 @@ Create a Dynamic Secret, which points to the base Secret via its attributes. The
 
 
 
-
 #####  Static Service Principal 
 The `Application Object ID` must be set on the DSV if an existing service principal is to be used.
+
+Create an attributes json file named `secret_attributes.json' substituting your values
 
 ```json
 {
@@ -107,12 +105,12 @@ The `Application Object ID` must be set on the DSV if an existing service princi
 }
 ```
 
-CLI:   
-Create an attributes json file named `secret_attributes.json' substituting your values( like above example json).
-
+Create a new Dynamic Secret
+ 
 ```BASH
 thy secret create --path dynamic/azure/{secretpath} --attributes @secret_attributes.json
 ```
+
 
 Now anytime you read the Dynamic Secret, the data is populated with the temporary azure access credentials.
 
@@ -153,9 +151,11 @@ returns a result like:
 }
 ```
 
+
+
 #### Dynamic Service Principal
 
-If dynamic service principals are used, Azure roles must be configured on DSV. Azure roles may be specified using the role_name  (example "Reader"), or role_id ("/subscriptions/.../roleDefinitions/..."). 
+If dynamic service principals are used, Azure roles must be configured on DSV. Azure roles may be specified using the roleName (example "Reader"), or roleId(/subscriptions/{guid}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}). 
 
 Note: Creating service principal and assigning role in same request takes tens of seconds (over a minute has been seen), The calls have been broken down into two separate calls. In the first call the service principal will be returned along with the task id that fired in the background for role assignment. You can check the role assignment task with another API call.
 
@@ -164,6 +164,10 @@ Note: Creating service principal and assigning role in same request takes tens o
 | roleName                  | azure role name to be assigned to the generated service principal      
 | roleId                    |  azure role id to be assigned to the generated service principal
 | scope                     |  azure role name to be assigned to the generated service principal
+
+
+
+Create an attributes json file named `secret_attributes.json' substituting your values.
 
 ```json
 {
@@ -180,6 +184,13 @@ Note: Creating service principal and assigning role in same request takes tens o
 }
 
 ```
+
+Create a new Dynamic Secret
+ 
+```BASH
+thy secret create --path dynamic/azure/{secretpath} --attributes @secret_attributes.json
+```
+
 
 Now anytime you read the Dynamic Secret, the data is populated with the temporary azure access credentials.
 
@@ -234,13 +245,13 @@ Check the role assignment task status (use the `roleAssignmentTaskId` from above
 ```
 
 
-### Choosing between dynamic or existing service principals
+###Dynamic vs existing service principals
 
-If the Azure resources can be provided via the RBAC system and Azure roles defined in DSV then Dynamic service principal is preferred. This form of credential is completely decoupled from any other clients and gives audit granularity.
+If the Azure resources can be provided via the RBAC system and Azure roles defined in DSV then Dynamic service principal is preferred. Dynamic service principal decoupled from any other service principal and gives audit granularity.
 
 It has been observed that creating Dynamic Service Principals can take up to 2 minutes before fully provisioned on Azure. Also be aware that access to some Azure services are unable to be provided through the RBAC system. In these cases, an existing service principal can be set up with the necessary access, and DSV can create new client secret for this service principal. But Any changes to the service principal permissions affect all clients and Azure does not provide any logging with regard to which credential was used for an operation.
 
-An important limitation when using an existing service principal is that Azure limits the number of passwords for a single Application. An error will be returned if the object size is reached. This limit can be managed by reducing the role TTL.
+An limitation when using an existing service principal is that Azure limits the number of passwords for a single Application object. An error will be returned if the object size is reached. This limit can be managed by reducing the role TTL.
 
 
 
