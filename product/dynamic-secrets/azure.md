@@ -24,10 +24,10 @@ DSV must have sufficient permissions to read Azure role information and manage s
 
 The following Azure roles and Azure Active Directory permissions are required, regardless of which authentication method is used:
 
-"Owner" role for the subscription scope  
-"Read and write all applications" permission in azure active directory 
+* "Owner" role for the subscription scope  
+* "Read and write all applications" permission in Azure Active Directory. 
 
-These permissions can be configured through the Azure Portal, CLI tool, or PowerShell. In your Azure subscription, your account must have Microsoft.Authorization/*/Write access to assign an AD app to a role. This action is granted through the Owner role or User Access Administrator role. If your account is assigned to the Contributor role, you don't have adequate permission. You will receive an error when attempting to assign the service principal to a role.
+These permissions can be configured through the Azure Portal, CLI tool, or PowerShell. In your Azure subscription, ensure that your account has Microsoft.Authorization/*/Write access to assign an AD app to a role. This action is granted through the Owner role or User Access Administrator role. If your account is assigned to the Contributor role, you don't have adequate permission. You will receive an error when attempting to assign the service principal to a role.
 
 
 
@@ -82,8 +82,7 @@ Create a Dynamic Secret, which points to the base Secret via its attributes. The
 | appObjectId               | optional application Object ID for an existing service principal that will be used instead of creating dynamic service principals.
 | ttl                       | optional time to live in seconds of the generated token. If none is specified it will default to 900 |
 
-For CLI:  
-Create an attributes json file named `secret_attributes.json' substituting your values.
+
 
 
 #####  Static Service Principal 
@@ -108,7 +107,9 @@ The `Application Object ID` must be set on the DSV if an existing service princi
 }
 ```
 
-CLI:  
+CLI:   
+Create an attributes json file named `secret_attributes.json' substituting your values( like above example json).
+
 ```BASH
 thy secret create --path dynamic/azure/{secretpath} --attributes @secret_attributes.json
 ```
@@ -156,7 +157,7 @@ returns a result like:
 
 If dynamic service principals are used, Azure roles must be configured on DSV. Azure roles may be specified using the role_name  (example "Reader"), or role_id ("/subscriptions/.../roleDefinitions/..."). 
 
-Note:  Because creating service principal and assigning role in same request takes 10s of seconds (over a minute has been seen), The calls have been broken down into two separate calls. In the first call the service principal will be returned along with the task id that fired in the background for role assignment. You can check the role assignment task with another api call.
+Note: Creating service principal and assigning role in same request takes tens of seconds (over a minute has been seen), The calls have been broken down into two separate calls. In the first call the service principal will be returned along with the task id that fired in the background for role assignment. You can check the role assignment task with another API call.
 
 | role Attribute          | description                                                         |
 | --------------         | ------------------------------                               | 
@@ -235,9 +236,9 @@ Check the role assignment task status (use the `roleAssignmentTaskId` from above
 
 ### Choosing between dynamic or existing service principals
 
-If the Azure resources can be provided via the RBAC system and Azure roles defined in DSV  then  Dynamic service principal is preferred . This form of credential is completely decoupled from any other clients and gives audit granularity.
+If the Azure resources can be provided via the RBAC system and Azure roles defined in DSV then Dynamic service principal is preferred. This form of credential is completely decoupled from any other clients and gives audit granularity.
 
-However, Creating Dynamic service principals takes significant  amount of seconds(10s of seconds are common, and over a minute has been seen ) and also access to some Azure services cannot be provided with the RBAC system, . In these cases, an existing service principal can be set up with the necessary access, and DSV can create new client secret for this service principal. But Any changes to the service principal permissions affect all clients and Azure does not provide any logging with regard to which credential was used for an operation.
+It has been observed that creating Dynamic Service Principals can take up to 2 minutes before fully provisioned on Azure. Also be aware that access to some Azure services are unable to be provided through the RBAC system. In these cases, an existing service principal can be set up with the necessary access, and DSV can create new client secret for this service principal. But Any changes to the service principal permissions affect all clients and Azure does not provide any logging with regard to which credential was used for an operation.
 
 An important limitation when using an existing service principal is that Azure limits the number of passwords for a single Application. An error will be returned if the object size is reached. This limit can be managed by reducing the role TTL.
 
