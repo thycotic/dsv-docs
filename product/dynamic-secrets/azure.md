@@ -4,11 +4,7 @@
 
 # Azure Dynamic Secrets
 
-The Azure dynamic secrets dynamically generates temporary client id and client secret from dynamic service principal or existing application object.
-
-Each dynamic service principal is associated with a TTL.
-
-Alternatively you can set an existing service principal and a new client secret will be generated rather than a new service principal
+Azure Dynamic Secrets generate a temporary client id and client secret. Azure service principal is an identity created for use with applications, hosted services, and automated tools to access Azure resources. You can generate dynamic service principal with TTL or alternatively you can set an existing service principal and a new client secret will be generated rather than a new service principal
 
 These are the links to Azure documentation on service principal:
 
@@ -26,6 +22,8 @@ The following permissions are required:
 
 * "Owner" role for the subscription scope  
 * "Read and write all applications" permission in Azure Active Directory. 
+*  Your account must have Microsoft.Authorization/*/Write access to assign an active directory application to a role.
+
 
 These permissions can be configured through the Azure Portal, CLI tool, or PowerShell. 
 
