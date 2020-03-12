@@ -14,7 +14,7 @@ These are the links to azure documentation on service principal:
 
 ## Azure Service principal 
 
-#### Authentication
+### Authentication
 
 DSV must have sufficient permissions to manage service principals. The individual parameters are described in the section below.
 
