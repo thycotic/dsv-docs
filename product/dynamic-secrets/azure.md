@@ -1,6 +1,6 @@
 ﻿[title]: # (Azure Dynamic Secrets)
 [tags]: # (DevOps Secrets Vault,DSV,)
-[priority]: # (6100)
+[priority]: # (6200)
 
 # Azure Dynamic Secrets
 
@@ -40,24 +40,20 @@ Creates the credentials required for the DSV to perform API calls to Azure. Thes
 | client_secret                | (string:"") - The OAuth2 client secret to connect to Azure.
 | environment                 |  (string:"") - The Azure environment. If not specified, DSV will use Azure Public Cloud. |
 
-Create a file named `secret_root.json` substituting your values:
+Create a file named `secret_base.json` substituting your values:
 
 ```json
 {
-    "data": {
     	"subscriptionId": "028b0a8e-84d2-4797-9071-456fe718248e",
 		"tenantId":       "s0kkfsld-569l-491f-err4-7f4d831987fd",
 		"clientId":       "f0b2cbb9-5782-42d5-8647-028b0a8e61f2",
 		"clientSecret":   "tMQ5ZEP?.sjfk5435jlKJSDedDKJDKJD@]"
-    },
-	
-    "description": "azure root credential"
 }
 ```
 Create the Secret via the CLI at a path of your choosing:
 
 ```BASH
-thy secret create --path azure/base/api-account --data @secret_root.json --attributes '{"type": "azure"}'
+thy secret create --path azure/base/api-account --data '@secret_base.json' --attributes '{"type": "azure"}' --desc "azure base credential"
 ```
 
 #### Roles
@@ -87,27 +83,21 @@ Create an attributes json file named `secret_attributes.json' substituting your 
 
 ```json
 {
-  
-	
-    "description": "azure root credtial",
-    "attributes": {
-		"linkConfig": {
+	"linkConfig": {
 		"linkType": "dynamic",
 		"linkedSecret": "azure:base:api-account"
 	},
 	"roleName":       "Contributor",
 	"appId": "08cfa61b-56ec-46c7-9780-247cfac0ef0c", 
 	"appObjectId" : "69297292-8373-4e4b-8679-434439b57347",
-	"ttl": 360
-	
-    }
+	"ttl": 360  
 }
 ```
 
 `Create a new Dynamic Secret using cli`
  
 ```BASH
-thy secret create --path dynamic/azure/{secretpath} --attributes @secret_attributes.json
+thy secret create --path dynamic/azure/{secretpath} --attributes '@secret_attributes.json' --desc "azure dynamic credential"
 ```
 
 
@@ -170,8 +160,8 @@ Create an attributes json file named `secret_attributes.json' substituting your 
 
 ```json
 {
-    "attributes": {
-		 "linkConfig": {
+    
+	"linkConfig": {
 		"linkType": "dynamic",
 		"linkedSecret": "azure:base:api-account"
 	},
@@ -179,7 +169,7 @@ Create an attributes json file named `secret_attributes.json' substituting your 
 	"roleId":         "/subscriptions/5f74ce1f-84d2-4797-9071-456fe718248e/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
 	"scope":          "/subscriptions/5f74ce1f-84d2-4797-9071-456fe718248e/resourceGroups/dsv-secret-test",
 	"ttl": 36000
-    }
+    
 }
 
 ```
@@ -187,7 +177,7 @@ Create an attributes json file named `secret_attributes.json' substituting your 
 `Create a new Dynamic Secret using cli`
  
 ```BASH
-thy secret create --path dynamic/azure/{secretpath} --attributes @secret_attributes.json
+thy secret create --path dynamic/azure/{secretpath} --attributes '@secret_attributes.json' --desc "azure dynamic credential" 
 ```
 
 
