@@ -19,6 +19,15 @@ The Command Line Interface (CLI) is locally installed using OS-specific executab
 
 | **Update**             | **Notes**                                  |
 |------------------------|--------------------------------------------|
+|March 2020              | **new feature**: Azure Dynamic Secrets.  DSV can use Azure Service Principals to provide ephermal credentials|
+|                        | **new feature**: (API only) Ability to issue X.509 certificates
+|                        | **improvement**: Ability to retrieve auth settings by version          |
+|                        | **improvement**: Make help commmands available even if teh CLI config is missing
+|                        | **improvement**: Protect error check.  Protect against creating policy errors   |
+|                        | **improvement**: Ability to search for dynamic secrets given a base secret        |
+|                        | **improvement**: Improved error reporting for dynamic secrets         
+|                        | **fixed      **: A malformed policy could prevent reading all policies.      |
+|                        | 
 |February 2020           | **improvement**: protect against user lockout. When editing authentication providers, block any changes that locks the user out of the account. |
 |                        | **improvement**: audit search results now inclusive of the dates in a range (previously the first day was omitted). |
 |                        | **improvement**: consistent version listing. Removed the “v” in the version number when searching older versions to be consistent with other listings. |
