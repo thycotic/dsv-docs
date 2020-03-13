@@ -58,7 +58,7 @@ In DSV you can create dynamic Secrets from either an existing service principal 
 
 >If the Azure resources can be provided via the RBAC system and Azure roles defined in DSV then a temporary service principal is preferred. Temporary service principals are decoupled from any other service principal providing fine grained access and auditing.
 
->However, creating temporary service principals can take up to 2 minutes before fully provisioned on azure. Also be aware that access to some Azure services are unable to be provided through the RBAC system. In these cases, an existing service principal can be set up with the necessary access, and DSV can create new client secret for this service principal. But Any changes to the service principal permissions affect all clients and Azure does not provide any logging with regard to which credential was used for an operation.
+>However, creating temporary service principals can take up to 2 minutes before fully provisioned on azure. Also be aware that access to some Azure services are unable to be provided through the RBAC system. In these cases, an existing service principal can be set up with the necessary access, and DSV can create new client secret for this service principal. But any changes to the service principal permissions affect all clients and Azure does not provide any logging with regard to which credential was used for an operation.
 
 >A limitation when using an existing service principal is that Azure limits the number of passwords for a single Application object. An error will be returned if the object size is reached. This limit can be managed by reducing the role TTL.
 
@@ -105,7 +105,7 @@ Now anytime you read the dynamic Secret, the data is populated with the temporar
 thy secret read --path azure/dynamic/api-account
 ```
 
-returns a result like:
+Returns a result like:
 
 
 ```json
@@ -141,7 +141,7 @@ returns a result like:
 
 ## Dynamic Secret for a Temporary Service Principal 
 
-> Note: Creating service principal and assigning role in same request takes tens of seconds (over a minute has been seen), The command been broken down into two separate calls. In the first call the service principal will be returned along with the task id that fired in the background for role assignment. You will need to wait to use that temporary service principal or check via the Azure portal or via the DSV API (provided below)
+> Note: Creating service principal and assigning role in same request takes tens of seconds (over a minute has been seen), The command has been broken down into two separate calls. In the first call the service principal will be returned along with the task id that fired in the background for role assignment. You will need to wait to use that temporary service principal or check via the Azure portal or via the DSV API (provided below)
 
 | Attribute          | Description                                                         |
 | --------------         | ------------------------------                               | 
