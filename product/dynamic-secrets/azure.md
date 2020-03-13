@@ -12,7 +12,7 @@ These are the links to azure documentation on service principal:
 * [Create Service Principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
 
 
-In order for DSV to generate dynamic secrets, a base secret must first be created using a service principal that has permissions to manage other service principals.  Those permissions include:
+In order for DSV to generate dynamic Secrets, a base secret must first be created using a service principal that has permissions to manage other service principals.  Those permissions include:
 
 * "Owner" role for the subscription scope  
 * "Read and write all applications" permission in Azure Active Directory. 
@@ -52,7 +52,7 @@ thy secret create --path azure/base/api-account --data '@secret_base.json' --att
 ```
 
 ## Dynamic Secrets
-In DSV you can create dynamic secrets from either an existing service principal or create a temporary service principal. 
+In DSV you can create dynamic Secrets from either an existing service principal or create a temporary service principal. 
 
 >NOTE Temporary vs Existing Service Principals
 
@@ -64,7 +64,7 @@ In DSV you can create dynamic secrets from either an existing service principal 
 
 
 ## Dynamic Secret for an Existing Service Principal
-Create a Dynamic Secret that points to the base Secret via its attributes. The Dynamic Secret doesn't have any data stored in it because data is only populated when you read the Secret.
+Create a dynamic Secret that points to the base Secret via its attributes. The dynamic Secret doesn't have any data stored in it because data is only populated when you read the Secret.
 
      
 
@@ -75,7 +75,7 @@ Create a Dynamic Secret that points to the base Secret via its attributes. The D
 | appObjectId               | Application Object ID for an existing service principal             |
 | ttl                       | Optional time to live in seconds of the generated token. If none is specified it will default to 900 |
 
-
+![](./images/spacer.png)
 Create an attributes json file named `secret_attributes.json' substituting your values
 
 ```json
@@ -98,7 +98,7 @@ thy secret create --path azure/dynamic/api-account --attributes '@secret_attribu
 ```
 
 
-Now anytime you read the Dynamic Secret, the data is populated with the temporary azure access credentials.
+Now anytime you read the dynamic Secret, the data is populated with the temporary azure access credentials.
 
 
 ```BASH
@@ -143,7 +143,7 @@ returns a result like:
 
 If temporary service principals are used, Azure roles must be configured on DSV. Azure roles may be specified using the roleName (example "Reader"), or roleId(/subscriptions/{guid}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}). 
 
-> Note: Creating service principal and assigning role in same request takes tens of seconds (over a minute has been seen), The calls have been broken down into two separate calls. In the first call the service principal will be returned along with the task id that fired in the background for role assignment. You can check the role assignment task with another an API call.
+> Note: Creating service principal and assigning role in same request takes tens of seconds (over a minute has been seen), The command been broken down into two separate calls. In the first call the service principal will be returned along with the task id that fired in the background for role assignment. You will need to wait to use that temporary service principal or check via the Azure portal or via the DSV API (provided below)
 
 | Attribute          | Description                                                         |
 | --------------         | ------------------------------                               | 
@@ -179,7 +179,7 @@ thy secret create --path /azure/dynamic/api-account --attributes '@secret_attrib
 ```
 
 
-Now anytime you read the Dynamic Secret, the data is populated with the temporary azure access credentials.
+Now anytime you read the dynamic Secret, the data is populated with the temporary azure access credentials.
 
 ```json
 {
@@ -221,7 +221,8 @@ It takes some time for the temporary service principal to be created, so you can
 | method                 | path                                                         |
 | --------------         | ------------------------------                               | 
 | GET                 | /v1/task/status/{roleAssignmentId}      
-
+![](./images/spacer.png)
+Sample Response:
 ```json
 {
     "taskName": "azure_role_assignment",
