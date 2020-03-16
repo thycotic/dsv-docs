@@ -29,7 +29,7 @@ The base Secret holds the credentials required for DSV to perform API calls to A
 | --------------            | ------------------------------                                      |
 | subscription_id              | The subscription ID for the Azure Active Directory.   |
 | tenant_id                    | The tenant ID for Azure Active Directory.                  |
-| client_id                    |  The OAuth2 client ID to connect to Azure. 
+| client_id                    |  The OAuth2 client ID to connect to Azure. Azure might list it as Application (client) ID |
 | client_secret                |  The OAuth2 client secret to connect to Azure.
 | environment                 |  The Azure environment. If not specified, DSV will use Azure Public Cloud. |
 
@@ -54,13 +54,11 @@ thy secret create --path azure/base/api-account --data '@secret_base.json' --att
 ## Dynamic Secrets
 In DSV you can create dynamic Secrets from either an existing service principal or create a temporary service principal. 
 
->NOTE Temporary vs Existing Service Principals
+>NOTE Temporary vs Existing Service Principals:  Azure does not use these terms, but DSV can either use a service principal that you have already setup (existing)  or DSV can create a service principal on the fly (temporary).
 
->If the Azure resources can be provided via the RBAC system and Azure roles defined in DSV then a temporary service principal is preferred. Temporary service principals are decoupled from any other service principal providing fine grained access and auditing.
+>If the Azure resources can be provided via the RBAC system and Azure roles defined in DSV then a temporary service principal is preferred. Temporary service principals are decoupled from any other service principal providing fine grained access and auditing. However, creating temporary service principals can take up to 2 minutes before fully provisioned on azure. 
 
->However, creating temporary service principals can take up to 2 minutes before fully provisioned on azure. Also be aware that access to some Azure services are unable to be provided through the RBAC system. In these cases, an existing service principal can be set up with the necessary access, and DSV can create new client secret for this service principal. But any changes to the service principal permissions affect all clients and Azure does not provide any logging with regard to which credential was used for an operation.
-
->A limitation when using an existing service principal is that Azure limits the number of passwords for a single Application object. An error will be returned if the object size is reached. This limit can be managed by reducing the role TTL.
+>Some Azure services are unable to be provided through the RBAC system. In these cases, an existing service principal can be set up with the necessary access, and DSV can create new client secret for this service principal. Any changes to the service principal permissions affect all clients and Azure does not provide any logging with regard to which credential was used for an operation. Another limitation when using an existing service principal is that Azure limits the number of passwords for a single Application object. An error will be returned if the object size is reached. This limit can be managed by reducing the role TTL.
 
 
 ## Dynamic Secret for an Existing Service Principal
@@ -70,12 +68,13 @@ Create a dynamic Secret that points to the base Secret via its attributes. The d
 
 | Attribute                 | Description                                                         |
 | --------------            | ------------------------------                                      |
-| roleName                  | Azure role name to be assigned to the existing service principal    |
-| appId                     | Application  ID for an existing service principal                   |
+| roleName                  | Optional - Azure role name to be assigned to the existing service principal    |
+| appId                     | Application (client) ID for an existing service principal                   |
 | appObjectId               | Application Object ID for an existing service principal             |
 | ttl                       | Optional time to live in seconds of the generated token. If none is specified it will default to 900 |
 
 ![](./images/spacer.png)
+
 Create an attributes json file named `secret_attributes.json` substituting your values
 
 ```json
@@ -230,9 +229,6 @@ Sample Response:
     "createdAt": "2020-03-04T19:28:07.420285103Z"
 }
 ```
-
-
-
 
 
 ![](./images/spacer.png)
