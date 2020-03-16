@@ -39,10 +39,10 @@ Create a file named `secret_base.json` substituting your values:
 
 ```json
 {
-    	"subscriptionId": "028b0a8e-84d2-4797-9071-456fe718248e",
-		"tenantId":       "s0kkfsld-569l-491f-err4-7f4d831987fd",
-		"clientId":       "f0b2cbb9-5782-42d5-8647-028b0a8e61f2",
-		"clientSecret":   "tMQ5ZEP?.sjfk5435jlKJSDedDKJDKJD@]"
+    	"subscriptionId": "6ca2adeb-7b44-4c7f-93fc-2d5b9729a8c1",
+		"tenantId":       "11f54b31-ffb9-42b5-8fda-76c734a7796c",
+		"clientId":       "4d95b358-079d-4d6d-85c4-943c0f1d91cd",
+		"clientSecret":   "tMQ5ZEP?.sj46e15123ba3b5b]"
 }
 ```
 Create the base Secret via the CLI substituting a path of your choosing:
@@ -84,8 +84,8 @@ Create an attributes json file named `secret_attributes.json` substituting your 
 		"linkedSecret": "azure:base:api-account"
 	},
 	"roleName":       "Contributor",
-	"appId": "08cfa61b-56ec-46c7-9780-247cfac0ef0c", 
-	"appObjectId" : "69297292-8373-4e4b-8679-434439b57347",
+	"appId": "f81b3c6d-2ce9-47d4-ad2d-fef8390792a2", 
+	"appObjectId" : "5fe218ee-cb58-4089-ac9f-b1b68971ad73",
 	"ttl": 360  
 }
 ```
@@ -112,8 +112,8 @@ Returns a result like:
     "id": "6e7de928-5027-4afb-bbff-b3ee59f9c24f",
     "path": "dynamic:azure:sp-static",
     "attributes": {
-        "appId": "08cfa61b-56ec-46c7-9780-247cfac0ef0c",
-        "appObjectId": "69297292-8373-4e4b-8679-434439b57347",
+        "appId": "f81b3c6d-2ce9-47d4-ad2d-fef8390792a2",
+        "appObjectId": "5fe218ee-cb58-4089-ac9f-b1b68971ad73",
         "linkConfig": {
             "linkType": "dynamic",
             "linkedSecret": "azure:base:api-account"
@@ -122,12 +122,12 @@ Returns a result like:
         "ttl": 360
     },
     "data": {
-        "appObjectId": "69297292-8373-4e4b-8679-434439b57347",
-        "client_id": "08cfa61b-56ec-46c7-9780-247cfac0ef0c",
-        "client_secret": "fec113b7-2d41-434c-a42f-d252c37aa2ab",
+        "appObjectId": "5fe218ee-cb58-4089-ac9f-b1b68971ad73",
+        "client_id": "f81b3c6d-2ce9-47d4-ad2d-fef8390792a2",
+        "client_secret": "bfe6ac86-3671-4fd9-8f76-8f2e0f22495d",
         "role": "Contributor",
-        "subscription_id": "5f74ce1f-84d2-4797-9071-456fe718248e",
-        "tenant_id": "00fb18e9-208a-491f-afb0-7f4d831987fd",
+        "subscription_id": "6ca2adeb-7b44-4c7f-93fc-2d5b9729a8c1",
+        "tenant_id": "11f54b31-ffb9-42b5-8fda-76c734a7796c",
         "ttl": 360
     },
     "created": "2020-02-24T16:42:34Z",
@@ -162,7 +162,7 @@ Create an attributes json file named `secret_attributes.json` substituting your 
 	},
 	"roleName":       "Contributor",
 	"roleId":         "/subscriptions/<Azure Subscription ID>/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
-	"scope":          "/subscriptions/<Azure Subscription ID>/resourceGroups/dsv-secret-test",
+	"scope":          "/subscriptions/<Azure Subscription ID>/resourceGroups/<resource group name>",
 	"ttl": 36000
     
 }
@@ -187,23 +187,23 @@ Now anytime you read the dynamic Secret, the data is populated with the temporar
             "linkType": "dynamic",
             "linkedSecret": "azure:base:api-account"
         },
-        "roleId": "/subscriptions/5f74ce1f-84d2-4797-9071-456fe718248e/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
+        "roleId": "/subscriptions/6ca2adeb-7b44-4c7f-93fc-2d5b9729a8c1/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
         "roleName": "Contributor",
-        "scope": "/subscriptions/5f74ce1f-84d2-4797-9071-456fe718248e/resourceGroups/dsv-secret-test",
+        "scope": "/subscriptions/6ca2adeb-7b44-4c7f-93fc-2d5b9729a8c1/resourceGroups/dsv-resource-group",
         "ttl": 36000
     },
-    "description": "azure root credtial",
+    "description": "azure root credential",
     "data": {
         "appObjectId": "e463477c-7d90-4743-92f2-c7f44ede8ec9",
-        "client_id": "105bf8e9-df73-4870-aeb9-ec0a467cc3d3",
-        "client_secret": "36eb10b4-b1e7-4f7b-9c9d-f18691ef95ad",
+        "client_id": "945d25cb-7697-4648-b574-e8a660154269",
+        "client_secret": "ce1d072d-449d-4052-9a81-0d7ef982f7a4",
         "role": "Contributor",
-        "roleAssignmentId": "/subscriptions/5f74ce1f-84d2-4797-9071-456fe718248e/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
+        "roleAssignmentId": "/subscriptions/6ca2adeb-7b44-4c7f-93fc-2d5b9729a8c1/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
         "roleAssignmentStatus": "created",
         "roleAssignmentTaskId": "task_3da0a37c-0a1c-4ebd-8829-dbe7b988b36f",
         "spObjectId": "1782611c-99c2-418b-b672-783e3cf8bd14",
-        "subscription_id": "5f74ce1f-84d2-4797-9071-456fe718248e",
-        "tenant_id": "00fb18e9-208a-491f-afb0-7f4d831987fd",
+        "subscription_id": "6ca2adeb-7b44-4c7f-93fc-2d5b9729a8c1",
+        "tenant_id": "11f54b31-ffb9-42b5-8fda-76c734a7796c",
         "ttl": 36000
     },
     "created": "2020-02-12T20:57:44Z",
@@ -217,7 +217,7 @@ It takes some time for the temporary service principal to be created, so you can
 
 | method                 | path                                                         |
 | --------------         | ------------------------------                               | 
-| GET                 | /v1/task/status/{roleAssignmentId}      |
+| GET                 | /v1/task/status/{roleAssignmentTaskId}      |
 
 ![](./images/spacer.png)
 
