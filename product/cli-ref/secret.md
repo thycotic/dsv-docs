@@ -1,6 +1,6 @@
 ﻿[title]: # (Secret)
 [tags]: # (DevOps Secrets Vault,DSV,)
-[priority]: # (1810)
+[priority]: # (4200)
 
 # Secret
 
@@ -19,8 +19,8 @@ When DSV has possession of Secrets outside the vault (that is, the CLI or API ha
 | search |search for Secrets |
 | describe | view Secret metadata only |
 | read | view a Secret's data |
-| edit | modify a Secret using the OS’s default command-line editor, such as **VI**, **nano**, or **Notepad** |
-| update | modify a Secret, with `--data`, `--attributes` and `--desc` flags to modify selected portions only, and a Boolean `--overwrite` flag to control whether the `--data` flag’s content overwrites or merges with extant data object fields  |
+| edit | modify a Secret using the OS's default command-line editor, such as **VI**, **nano**, or **Notepad** |
+| update | modify a Secret, with `--data`, `--attributes` and `--desc` flags to modify selected portions only, and a Boolean `--overwrite` flag to control whether the `--data` flag's content overwrites or merges with extant data object fields  |
 | delete | delete a Secret |
 | restore | restore a Secret (if within 72 hours of deletion) |
 | rollback | for a Secret that has had more than one version, roll back to an earlier version |
@@ -37,7 +37,7 @@ The *bustcache* command clears the local cache, if present.
 thy secret bustcache
 ```
 
-Note again here the syntax pattern in which an object of a command precedes the command: *secret* is the object of the command *bustcache*, so that the cache of Secrets will be ‘busted’ (cleared).
+Note again here the syntax pattern in which an object of a command precedes the command: *secret* is the object of the command *bustcache*, so that the cache of Secrets will be 'busted' (cleared).
 
 ### Create
 
@@ -47,7 +47,7 @@ Secrets data passes into the *create* command as the value of its `--data` param
 thy secret create --path us-east/server02 --data {\"password\":\"Secret\"}
 ```
 
-If the `--data` parameter’s value will be the path to a JSON file, DSV syntax requires an `@` character immediately preceding the first character of the path. The parameter accepts abolute and relative path strings.
+If the `--data` parameter's value will be the path to a JSON file, DSV syntax requires an `@` character immediately preceding the first character of the path. The parameter accepts abolute and relative path strings.
 
 ``` bash
 thy secret create --path us-east/server03 --data @/home/user/Secret.json
@@ -90,7 +90,7 @@ For a search where there are more results than returned in the first set, the AP
 For example, if the command `thy secret search -q admin --limit 10` matched 12 Secrets with admin in the name, the CLI would return the first 10 plus a cursor. To obtain the next two results, you would use this command:
 
 ```BASH
-thy secret search -q admin -limit 10 --cursor AFSDFSD...DKFJLSDJ=
+thy secret search -q admin --limit 10 --cursor AFSDFSD...DKFJLSDJ=
 ```
 
 Cursors may be lengthy:
@@ -109,7 +109,7 @@ thy secret describe --path us-east/server02
 
 ### Read
 
-Use *read* to get a Secret’s data. The `-b` flag beautifies the output, while the `-e` flag sets the output format to JSON or YAML and the `-o` flag (as commonly used) redirects the output to a file.
+Use *read* to get a Secret's data. The `-b` flag beautifies the output, while the `-e` flag sets the output format to JSON or YAML and the `-o` flag (as commonly used) redirects the output to a file.
 
 ``` bash
 thy secret read --path us-east/server02 -b -e yaml
@@ -171,10 +171,10 @@ thy secret edit --path us-east/server02
 
 ### Update
 
-Use *update* to change a Secret’s data. The command has several flags pertinent to Secrets:
+Use *update* to change a Secret's data. The command has several flags pertinent to Secrets:
 
 * the `--data` flag allows you to only update the data portion of the Secret
-  * the Boolean `--overwrite` flag controls whether the `--data` flag’s content overwrites or merges with extant data object fields
+  * the Boolean `--overwrite` flag controls whether the `--data` flag's content overwrites or merges with extant data object fields
   * the data object accepts as many fields as you choose
 * the `--attributes` flag allows you to only update the attributes of the Secret
 * the `--desc` flag allows you to only update the description of the Secret
@@ -203,7 +203,7 @@ thy secret delete --path us-east/server02
 
 When you delete a Secret, it will no longer be usable. However, with the soft delete capacity of DSV, you have 72 hours to use the *restore* command to undelete the Secret. After 72 hours, the Secret will no longer be retrievable.
 
-Should you want to perform a hard delete, precluding any restore operation, you can use the *delete* command’s `--force` flag.
+Should you want to perform a hard delete, precluding any restore operation, you can use the *delete* command's `--force` flag.
 
 ### Restore
 

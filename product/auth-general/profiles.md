@@ -1,8 +1,8 @@
-﻿[title]: # (Using Multiple Profiles)
+[title]: # (Profiles)
 [tags]: # (DevOps Secrets Vault,DSV,)
-[priority]: # (1310)
+[priority]: # (5100)
 
-# Using Multiple Profiles
+# Profiles
 
 On initial configuration, your DevOps Secrets Vault config will have just one profile with the choices you specified for credentials storage, authentication type, and cache strategy for Secrets.
 

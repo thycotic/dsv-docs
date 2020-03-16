@@ -1,10 +1,10 @@
-﻿[title]: # (Authentication: General)
+﻿[title]: # (Authentication)
 [tags]: # (DevOps Secrets Vault,DSV,)
-[priority]: # (1400)
+[priority]: # (5000)
 
-# Authentication: General
+# Authentication
 
-As noted in [Setup DevOps Secrets Vault](../setup/index.md), DSV supports several authentication methods, potentially easing cloud deployments by tapping in-place authentication providers such as AWS and Azure.
+DSV supports several authentication methods.
 
 ## Password
 
@@ -39,15 +39,10 @@ See the [Roles](../cli-ref/role.md) portion of the CLI Reference for more inform
 
 Besides ThycoticOne, DevOps Secrets Vault works with third party authentication providers, including:
 
-**AWS IAM**: DSV uses the current AWS profile to generate a signed request which the vault validates against AWS. You can use this with EC2 instances and with a Lambda that is assigned an IAM Role or an IAM User account.
+**AWS IAM**: DSV uses the current AWS profile to generate a signed request which the vault validates against AWS. You can use this with EC2 instances and with a Lambda that is assigned an IAM Role or an IAM User account. See [Authentication: AWS](./authaws/index.md)
 
-**Azure MSI**: DSV uses the assigned Azure Managed Service Identity (MSI).
+**Azure MSI**: DSV uses the assigned Azure Managed Service Identity (MSI).  See [Authentication: Azure](./authazure/index.md)
 
-*Google Cloud Platform*: DSV does not yet accept authentication provided by the Google Cloud Platform, but Thycotic expects to include support for this in an upcoming DSV release.
-
-Note that these authentication types, which are oriented to User accounts, should not be confused with the REST API authentication that powers DSV itself. DSV’s RESTful architecture allows it to interact with the vault API over HTTP; to authenticate for these interactions, DSV uses an authorization token obtained by a call to the API. Scripts and applications that will include direct REST calls can similarly obtain a token for use with the calls using the CLI *auth* command.
-
-Authentication through Azure or AWS requires additional setup steps so that DSV has information about trusted Accounts, Users, and Roles and the permission policies applicable to each. The [Authentication: Azure or AWS](../authent-azure-aws/index.md) section covers this in detail.
 
 ![](./images/spacer.png)
 
