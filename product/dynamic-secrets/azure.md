@@ -68,7 +68,7 @@ Create a dynamic Secret that points to the base Secret via its attributes. The d
 
 | Attribute                 | Description                                                         |
 | --------------            | ------------------------------                                      |
-| roleName                  | Optional - Azure role name to be assigned to the existing service principal    |
+| roleName                  | Optional for informational purposes - Azure role name to be assigned to the existing service principal.  Does not change existing principal's role    |
 | appId                     | Application (client) ID for an existing service principal                   |
 | appObjectId               | Application Object ID for an existing service principal             |
 | ttl                       | Optional time to live in seconds of the generated token. If none is specified it will default to 900 |
@@ -144,7 +144,7 @@ Returns a result like:
 
 | Attribute          | Description                                                         |
 | --------------         | ------------------------------                               | 
-| roleName                  | Azure role name to be assigned to the temporary service principal      
+| roleName                  | Optional for informational purposes - Azure role name to be assigned to the temporary service principal.  DSV uses role ID to assign.      
 | roleId                    |  Azure role id to be assigned to the temporary service principal
 | scope                     |  Azure role name to be assigned to the temporary service principal
 | ttl                       | Optional time to live in seconds of the generated token. If none is specified it will default to 900. |
@@ -217,8 +217,10 @@ It takes some time for the temporary service principal to be created, so you can
 
 | method                 | path                                                         |
 | --------------         | ------------------------------                               | 
-| GET                 | /v1/task/status/{roleAssignmentId}      
+| GET                 | /v1/task/status/{roleAssignmentId}      |
+
 ![](./images/spacer.png)
+
 Sample Response:
 ```json
 {
