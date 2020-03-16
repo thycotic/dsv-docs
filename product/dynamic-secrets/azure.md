@@ -54,11 +54,11 @@ thy secret create --path azure/base/api-account --data '@secret_base.json' --att
 ## Dynamic Secrets
 In DSV you can create dynamic Secrets from either an existing service principal or create a temporary service principal. 
 
->NOTE Temporary vs Existing Service Principals:  Azure does not use these terms, but DSV can either use a service principal that you have already setup (existing)  or DSV can create a service principal on the fly (temporary).
+>NOTE Temporary vs Existing Service Principals:  Azure does not use these terms, but DSV can either use a service principal that you have already setup (existing)  or DSV can create a service principal on the fly (temporary) through Azure's role-based access control (RBAC).
 
->If the Azure resources can be provided via the RBAC system and Azure roles defined in DSV then a temporary service principal is preferred. Temporary service principals are decoupled from any other service principal providing fine grained access and auditing. However, creating temporary service principals can take up to 2 minutes before fully provisioned on azure. 
+>If possible, a temporary service principal is preferred. Temporary service principals are independent from other service principals and provide fine grained access and auditing. However, creating temporary service principals can take up to 2 minutes before fully provisioned on Azure. 
 
->Some Azure services are unable to be provided through the RBAC system. In these cases, an existing service principal can be set up with the necessary access, and DSV can create new client secret for this service principal. Any changes to the service principal permissions affect all clients and Azure does not provide any logging with regard to which credential was used for an operation. Another limitation when using an existing service principal is that Azure limits the number of passwords for a single Application object. An error will be returned if the object size is reached. This limit can be managed by reducing the role TTL.
+>Use of an existing service principal is required in some cases when Azure services are not accessible through Azure RBAC. In these cases, an existing service principal can be set up with the necessary access and DSV can create a new client secret for this service principal each time the dynamic secret is read.  One issue with this might be that Azure limits the number of passwords for a given Application object, but this can be managed by reducing the secret TTL. Also keep in-mind that Azure does not log actions related to each secret, so auditing is not a clean as with temporary service principals. 
 
 
 ## Dynamic Secret for an Existing Service Principal
