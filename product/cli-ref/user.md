@@ -1,10 +1,10 @@
 ﻿[title]: # (User)
 [tags]: # (DevOps Secrets Vault,DSV,)
-[priority]: # (1820)
+[priority]: # (4300)
 
 # User
 
-For DSV, the term “user” refers to a security principal in the vault that can authenticate locally by a username and password or can authenticate through a federated provider such as Amazon Web Services or Amazon Resource Names.
+For DSV, the term "user" refers to a security principal in the vault that can authenticate locally by a username and password or can authenticate through a federated provider such as Amazon Web Services or Amazon Resource Names.
 
 ### Understanding Qualified Usernames
 
@@ -18,10 +18,10 @@ The name qualifier format *provider name:local name* means for example that the 
   
 | Command        | Action                         |
 | -------------- | ------------------------------ |
-| changepassword | change a local User’s password |
+| changepassword | change a local User's password |
 | create         | create a User in the vault     |
 | search         | find Users by username         |
-| read           | read a User’s details          |
+| read           | read a User's details          |
 | delete         | delete a User from the vault   |
 | restore        | restore a deleted User (if within 72 hours of deletion and not hard deleted) |
 
@@ -111,13 +111,13 @@ Output:
 
 The *read* command retrieves and displays information without changing anything.
 
-Provide a fully qualified username and read the User’s details:
+Provide a fully qualified username and read the User's details:
 
 ```BASH
 thy user read --username aws-dev:test-admin
 ```
 
-Provide a full local username and read the User’s details:
+Provide a full local username and read the User's details:
 
 ```BASH
 thy user get --username test-admin
@@ -141,7 +141,7 @@ thy user delete --username test-admin
 
 When you delete a User, it will no longer be usable. However, with the soft delete capacity of DSV, you have 72 hours to use the *restore* command to undelete the User. After 72 hours, the User will no longer be retrievable.
 
-Should you want to perform a hard delete, precluding any restore operation, you can use the *delete* command’s `--force` flag.
+Should you want to perform a hard delete, precluding any restore operation, you can use the *delete* command's `--force` flag.
 
 ### Restore
 
