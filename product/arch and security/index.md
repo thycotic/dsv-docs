@@ -1,67 +1,50 @@
 ﻿[title]: # (Architecture and Security)
 [tags]: # (DevOps Secrets Vault,DSV,)
-[priority]: # (1110)
+[priority]: # (7000)
 
 # Architecture and Security
 
-DevOps Secrets Vault operates through two main components:
-
-* on the customer premises: locally installed, OS-specific Command Line Interface executables on workstations used to operate DevOps Secrets Vault
-* in the Cloud: a Secrets vault created as a tenant, in keeping with DSV as a multi-tenancy SaaS delivered by redundant AWS instances
-
-DSV supports the Thycotic One, AWS, and Azure Cloud authentication providers.
-
-Activities originate on customer premises in three ways:
-
-* a command entered manually using the CLI
-* a command issued by a running shell script or application
-* an API call by an application
-
-**Architectural Summary View: DevOps Secrets Vault**
 
 ![Architectural Summary View of DevOps Secrets Vault](./images/ha-dr-architecture-scaled.png "Architectural Summary View of DevOps Secrets Vault")
 
 ![](./images/spacer.png)
 
-DevOps Secrets Vault leverages **AWS DynamoDB** global tables for data storage, with a configuration using automatic dual-region replication as a continuous backup mechanism.
+Users authenticate locally or by a Thycotic One, Amazon AWS, or Microsoft Azure authentication provider. 
 
-* Of the two AWS Regions used in this architecture, one serves as the primary application platform and the other as a hot stand-by.
-* Thycotic monitors both regions via **AWS Route 53** so that if the primary platform fails, client traffic automatically routes to the hot stand-by in under one minute.
+Within the DSV application platform, the API Gateway receives API calls, obtains the responses, and relays them to the caller using HTTPS GET, PUT, POST and other methods common to the REST architecture. The Authorizer uses OAuth to handle API Gateway authorization.
 
-Users authenticate by a ThycoticOne, Amazon AWS, or Microsoft Azure authentication provider. Within the DSV application platform, the API Gateway receives API calls, obtains the responses, and relays them to the caller using HTTP GET, PUT, POST and other methods common to the REST architectural style. The Authorizer uses OAuth to handle API Gateway authorization.
+The Vault Application hosts the core DSV functionality and auto-scales to demand.
 
-The Vault Application hosts the core DSV functionality, essentially a set of AWS Lambda serverless commands. Lambda auto-scales to demand.
-
-Extensive logging enables strong audit trails and protections, while encryption protects Secrets in the vault and anywhere data is at rest.
+Extensive logging enables strong audit trails and protections, while encryption protects Secrets at-rest an in-transit
 
 ## Availability
-
-Thycotic architected DSV to support 99.999% uptime. Consult your EULA (End User License Agreement) for details.
+Thycotic architected DSV to support 5-nines (99.999%) uptime. 
 
 ## Business Continuity and Disaster Recovery
 
-For the DSV application, the broadest scale of consequence for a disaster would be equivalent to an AWS region failing. The dual-region architecture mitigates this risk, providing switch-over to the hot stand-by within one minute should the primary platform become impaired for any reason, whether a disaster or other cause.
+DevOps Secrets Vault leverages AWS DynamoDB global tables for data storage, with a configuration using automatic dual-region replication as a continuous backup mechanism.
+
+* Of the two AWS Regions used in this architecture, one serves as the primary application platform and the other as a hot stand-by.
+* Thycotic monitors both regions via AWS Route 53 so that if the primary platform fails, client traffic automatically routes to the hot stand-by in under one minute.
 
 ## Confidentiality
 
-In discussing confidentiality, we must interpret the term against the different states in which data exists.
-
 ### Data at Rest
 
-Information *about* customers in DynamoDB, and application activity and related logs stored in S3 and sometimes in Elasticsearch during analysis, will always be encrypted when at rest via AWS KMS. If the hardware for those resources were stolen, no breach would occur, since the data is encrypted.
+Information about customers in DynamoDB, application activity and related logs stored in S3 and sometimes in Elasticsearch during analysis, will always be encrypted transparently.
 
-Customer Secret data is further encrypted by the application with a customer specific key managed by Thycotic. This helps ensure that if data were exposed, either via a breach in the Amazon Web Services APIs or an application vulnerability that granted read access to a tenant database, the Secret data would remain encrypted.
+Customer Secret data is further encrypted by the application with a customer specific key in AWS KMS.
 
 ### Data in Transit
 
-DSV establishes the https connection using the TLS 1.2 protocols. For server-side authentication, DSV relies on Amazon-issued digital certificates.
+DSV establishes the HTTPS connection using the TLS 1.2 protocols. For server-side authentication, DSV relies on Amazon-issued digital certificates.
 
 ## Client Authentication
 
 DSV provides five methods for client authentication:
 
-* username/password
-* Thycotic One
+* Username/password (local)
+* Username/password (Thycotic One)
 * Client ID
 * AWS IAM
 * Microsoft MSI
@@ -70,11 +53,11 @@ Authentication grants an access token with a one-hour time-to-live (TTL). When t
 
 The username/password authentication method uses a refresh token good for 48 hours. The refresh token renews along with each new access token, so the 48 hours counts relative to the last access token’s time of issuance. If the refresh token expires, DSV requires re-authentication.
 
-Username/password could also link to Thycotic1 for authentication. This allows the initial User to reset the password if needed.
+The initial administrator (the one who signs up for a tenant) is always setup with Thycotic One to enable Thycotic support.
 
 ## Integrity Checks
 
-Both code signing and token signing further secure the DSV service.
+Both code signing and token signing are used to ensure integrity.
 
 ### CLI Code Signing
 
@@ -106,9 +89,9 @@ In GDPR terms, Thycotic customers are the data controllers, and Thycotic is the 
 
 Thycotic conducts a Privacy Impact Assessment (PIA) annually to verify continued conformance to GDPR principles.
 
-### Third Party GDPR Conformance Assessment 
+### Third Party SOC 2 Conformance Assessment 
 
-The Thycotic SOC 2 Type II report contains an independent third-party assessment of our control environment for conformance to applicable GDPR criteria.
+The Thycotic SOC 2 Type II report contains an independent third-party assessment of our control environment.  The report is available upon request with an NDA.
 
 The report ties to the AICPA’s Trust Services Criteria (specifically the Security, Availability, and Confidentiality criteria) and issues annually in accordance with the AICPA’s AT Section 101 (Attest Engagements).
 

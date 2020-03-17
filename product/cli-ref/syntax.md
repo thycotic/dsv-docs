@@ -1,53 +1,32 @@
-﻿[title]: # (CLI Primer)
+﻿[title]: # (Commands and Syntax)
 [tags]: # (DevOps Secrets Vault,DSV,)
-[priority]: # (1600)
+[priority]: # (4100)
 
-# CLI Primer
-
-Like most Command Line Interface Applications, DevOps Secrets Vault combines—
-
-* a base collection of commands,
-* the objects on which the commands perform actions,
-* the parameters that modify those actions, and
-* options flags
-
-—to deliver a task-focused toolset.
-
-## CLI Command Syntax
+# CLI Command Syntax
 
 With few exceptions, CLI commands follow a simple syntax:
 
 `thy` (`object`) (`command`)  (`flags and parameters`)
 
-For example, in `thy role create`, `role` is the object of the command `create`. In English, the command could be written as “the object is a Role, and the action to take is to create it.” You will observe this pattern throughout the CLI.
+For example, in `thy role create`, `role` is the object of the command `create`. Some parameters and flags apply only to some commands. DSV also includes output modifiers for filtering and formatting responses to commands.
 
-Some parameters and flags apply only to some commands. DSV also includes output modifiers for filtering and formatting responses to commands.
+![](./images/spacer.png)
 
-## OS Differences on Slash-Escaping Special Characters
+## Objects
 
-JSON parameter formatting varies in minor ways depending on the OS and shell program. Basically:
-
-* CMD.EXE and PowerShell require that double quote (") marks within the JSON be escaped with a backslash (\\)
-* CMD.EXE requires the JSON overall to be enclosed in double quote (") marks; Powershell, with single quote (') marks.
-* Linux accepts JSON without internal character escapes, requiring only that the JSON be enclosed by single quote (') marks.
-
-The [JSON Data](./cli-primer#json_data) section later on this page provides examples.
-
-## Commands
-
-| Commmand   | Syntax                                 | Definition                                                                                |
+| Object   | Syntax                                 | Definition                                                                                |
 | ---------- | -------------------------------------- | ----------------------------------------------------------------------------------------- |
 | auth       | auth                                   | authenticate to the vault or display the current access token                             |
-| cli-config | init                                   | manage DSV settings                                                                       |
-| client     | client (`<client-id> • --client-id`)   | manage client credentials for application vault access                                    |
-| config     | config                                 | manage the top level DSV app configuration document shared by all Users                   |
+| cli-config | cli-config                                  | manage the CLI authentication file                                                                    |
+| client     | client (`<client-id> * --client-id`)   | manage client credentials for application vault access                                    |
+| config     | config                                 | manage the top level configuration document for the admin policy and authentication providers              |
 | eval       | eval                                   | check the value of a command line flag or variable                                        |
-| group      | group (`<group-name> • --group-name`)  | manage collections of Users uniformly by placing them in a managed Group                  |
-| init       | cli-config init                        | initialize DSV on first run                                                               |
-| policy     | policy (`<path> • --path • -r`)        | manage policies on permissions for Secrets, Roles, Users, and other entities in the vault |
-| role       | role (`<name> • --name • -n`)          | manage Roles                                                                              |
-| secret     | secret (`<path> • --path • -r`)        | create, update, and retrieve Secrets from the vault                                       |
-| user       | user (`<username> • --username`)       | manage Users                                                                              |
+| group      | group (`<group-name> * --group-name`)  | manage collections of Users uniformly by placing them in a managed Group                  |
+| init       | cli-config init or init                       | initialize DSV on first run                                                               |
+| policy     | policy (`<path> * --path * -r`)        | manage policies on permissions for Secrets, Roles, Users, and other entities in the vault |
+| role       | role (`<name> * --name * -n`)          | manage Roles                                                                              |
+| secret     | secret (`<path> * --path * -r`)        | create, update, and retrieve Secrets from the vault                                       |
+| user       | user (`<username> * --username`)       | manage Users                                                                              |
 | whoami     | whoami                                 | display the currently authenticated User                                                  |
 
 ![](./images/spacer.png)
@@ -83,7 +62,7 @@ Some parameters are simple Boolean flags controlling whether or not something ap
 thy secret read --path example/bash-json --beautify
 ```
 
-### JSON Data
+### JSON Data and OS-Specific Syntax
 
 In some cases the parameter expects JSON. For example, the `--data` parameter on a `thy secret create` command expects JSON data.
 
@@ -105,7 +84,7 @@ PS C:> thy secret create --path example/ps-json --data '{\"password\":\"powershe
 C:> thy secret create --path example/cmd-json --data "{\"password\":\"cmd-secret\"}"
 ```
 
-### File Path
+### File Path and OS-Specific Syntax
 
 Passing JSON as a parameter remains practical only as long as the JSON remains short. Instead of passing JSON as a parameter, you can pass it as a file, using the @ prefix to specify the path to the file.
 
