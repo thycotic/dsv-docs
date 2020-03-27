@@ -4,7 +4,7 @@
 
 # Dynamic Secrets
 
-Dynamic Secrets are Secrets where temporary credentials are generated when the secret is read. This is opposed to a standard Secret where the credentials remain the same until changed by a user. They can be used when you need to provide credentials to a resource, like AWS, but the access should expire after a set period of time.
+Dynamic Secrets are Secrets where temporary credentials are generated when the secret is read. This is opposed to a standard Secret where the credentials remain the same until changed by a user. They can be used when you need to provide credentials to a user or resource, like a configuration tool, but the access should expire after a set period of time.
 
 Supported Types:
 * AWS
@@ -13,10 +13,15 @@ Supported Types:
 ## Linking
 
 A Dynamic Secret is linked to another Secret, which contains the actual credentials used to generate temporary access keys. The linking is done through the `attributes` section in the Secret JSON.
+![](./images/spacer.png)
 
+![](./images/DynamicSecretLinking.png)
+
+![](./images/spacer.png)
 For example the following Secret `temp-api` has no data, but is linked to a different AWS IAM Secret that contains the access and secret key information. The `linkConfig` defines the type of linking and the linked Secret path.
 
 ![](./images/spacer.png)
+
 
 | Attribute                 | Description                                                                                       |
 | --------------            | ------------------------------                                                                    |
