@@ -12,7 +12,7 @@ Supported Types:
 
 ## Linking
 
-A Dynamic Secret is linked to another Secret, which contains the actual credentials used to generate temporary access keys. 
+A Dynamic Secret is linked to a Base Secret, which contains the actual credentials used to generate temporary access keys. 
 ![](./images/spacer.png)
 
 ![](./images/DynamicSecretLinking.png)
