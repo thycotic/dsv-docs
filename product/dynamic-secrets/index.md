@@ -12,13 +12,13 @@ Supported Types:
 
 ## Linking
 
-A Dynamic Secret is linked to another Secret, which contains the actual credentials used to generate temporary access keys. The linking is done through the `attributes` section in the Secret JSON.
+A Dynamic Secret is linked to another Secret, which contains the actual credentials used to generate temporary access keys. 
 ![](./images/spacer.png)
 
 ![](./images/DynamicSecretLinking.png)
 
 ![](./images/spacer.png)
-For example the following Secret `temp-api` has no data, but is linked to a different AWS IAM Secret that contains the access and secret key information. The `linkConfig` defines the type of linking and the linked Secret path.
+The linking is done through the `attributes` section in the Secret JSON.  For example the following Secret `temp-api` has no data, but is linked to a different AWS IAM Secret that contains the access and secret key information. The `linkConfig` defines the type of linking and the linked Secret path.
 
 ![](./images/spacer.png)
 
