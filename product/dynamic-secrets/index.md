@@ -8,6 +8,7 @@ Dynamic Secrets are Secrets where temporary credentials are generated when the s
 
 Supported Types:
 * AWS
+* Azure
 
 ## Linking
 
