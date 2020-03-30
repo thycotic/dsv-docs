@@ -64,6 +64,7 @@ These are the links to azure documentation on service principal:
 ![](./images/spacer.png)
 
 13. Navigate to **Home > Subscriptions** and take note of the **Subscription ID** that you will be using.  This is the `subscriptionId` in the DSV Base Secret.
+
 ![](./images/spacer.png)
 
 ![](./images/subscription.png)
@@ -76,3 +77,8 @@ These are the links to azure documentation on service principal:
 17. In the **Select** field, enter the application name or Application (client) ID saved previously and select it so that it shows up under **Selected Members** below.
 18.  Click **Save**
 
+![](./images/spacer.png)
+
+![](./images/roleassignment.png)
+
+![](./images/spacer.png)
