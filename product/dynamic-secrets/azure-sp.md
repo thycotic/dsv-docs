@@ -2,7 +2,7 @@
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (6210)
 
-# Creating an Azure Service Principal
+# Azure Service Principal
 
 This is a step-by-step guide to creating an Azure service principal with the priviledges necessary to enable Azure credential generation.
 
@@ -13,7 +13,7 @@ These are the links to azure documentation on service principal:
 * [Service principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals)
 * [Create Service Principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
 
-## Creatig a Service Principal for the DSV Base Secret
+## Creating a Service Principal for the DSV Base Secret
 
 1. Go to the [Microsoft Azure portal](https://portal.azure.com) and login.
 2. Go to **Azure Active Directory** 
