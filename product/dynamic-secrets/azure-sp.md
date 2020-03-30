@@ -49,6 +49,7 @@ These are the links to azure documentation on service principal:
 
 ![](./images/spacer.png)
 11. Select **Add permisssions** at the bottom of the page.  This takes you back to the API Permissions page.  Notice that the Application permissions have warnings that those permissions are not yet granted.  
+
 12. Click **Grant admin consent for Default Directory** and then **Yes**  This step can be easy to miss.
  ![](./images/spacer.png)
 
@@ -62,8 +63,12 @@ These are the links to azure documentation on service principal:
 
 ![](./images/spacer.png)
 14. Click into the **Subscription ID** then **Access control (IAM)** then **Add** in the **Add role assignment** box on the right.
+
 15. Select **Owner** in the **Role** dropdown.
+
 16. Select **Azure AD user, group, or service principal** in the **Assign access to** dropdown.
+
 17. In the **Select** field, enter the application name or Application (client) ID saved previously and select it so that it shows up under **Selected Members** below.
+
 18.  Click **Save**
 
