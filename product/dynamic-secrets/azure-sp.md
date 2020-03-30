@@ -24,9 +24,10 @@ These are the links to azure documentation on service principal:
 ![](./images/applicationIDs.png)
 
 ![](./images/spacer.png)
-5. Select **Certifications & secrets** then **New client secret**.  Enter a description and how when it should expire.  Click **Add**.
 
+5. Select **Certifications & secrets** then **New client secret**.  Enter a description and when it should expire.  Click **Add**.
 6. Take note of the newly genereated secret which will be the `clientSecret` parameter in the DSV Base Secret.
+
 ![](./images/spacer.png)
 
 ![](./images/clientsecret.png)
