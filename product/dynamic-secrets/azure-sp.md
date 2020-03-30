@@ -25,6 +25,7 @@ These are the links to azure documentation on service principal:
 
 ![](./images/spacer.png)
 5. Select **Certifications & secrets** then **New client secret**.  Enter a description and how when it should expire.  Click **Add**.
+
 6. Take note of the newly genereated secret which will be the `clientSecret` parameter in the DSV Base Secret.
 ![](./images/spacer.png)
 
@@ -32,7 +33,9 @@ These are the links to azure documentation on service principal:
 
 ![](./images/spacer.png)
 7. Select **API permissions** and then **Add a permission**.
+
 8. Under Supported Legacy APIs, select **Azure Active Directory Graph**.
+
 9. Select **Delegated permissions**, expand the **User** accordian, and then check the **User.Read** box.
 ![](./images/spacer.png)
 
@@ -45,8 +48,7 @@ These are the links to azure documentation on service principal:
 ![](./images/application.png)
 
 ![](./images/spacer.png)
-10. Select **Application**.
-11. Selecte **Add permisssions** at the bottom of the page.  This takes you back to the API Permissions page.  Notice that the Application permissions have warnings that those permissions are not yet granted.  
+11. Select **Add permisssions** at the bottom of the page.  This takes you back to the API Permissions page.  Notice that the Application permissions have warnings that those permissions are not yet granted.  
 12. Click **Grant admin consent for Default Directory** and then **Yes**  This step can be easy to miss.
  ![](./images/spacer.png)
 
@@ -61,7 +63,7 @@ These are the links to azure documentation on service principal:
 ![](./images/spacer.png)
 14. Click into the **Subscription ID** then **Access control (IAM)** then **Add** in the **Add role assignment** box on the right.
 15. Select **Owner** in the **Role** dropdown.
-16. Select **Azure AD user, group, or service principal** int he **Assign access to** dropdown.
+16. Select **Azure AD user, group, or service principal** in the **Assign access to** dropdown.
 17. In the **Select** field, enter the application name or Application (client) ID saved previously and select it so that it shows up under **Selected Members** below.
 18.  Click **Save**
 
