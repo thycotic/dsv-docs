@@ -24,7 +24,7 @@ These are the links to azure documentation on service principal:
 ![](./images/applicationIDs.png)
 
 ![](./images/spacer.png)
-5. Select **Certifications & secrets** then **New client secret**.  Enter a description and how when it should expire.  Click **Add**
+5. Select **Certifications & secrets** then **New client secret**.  Enter a description and how when it should expire.  Click **Add**.
 6. Take note of the newly genereated secret which will be the `clientSecret` parameter in the DSV Base Secret.
 ![](./images/spacer.png)
 
@@ -39,7 +39,7 @@ These are the links to azure documentation on service principal:
 ![](./images/delegated.png)
 
 ![](./images/spacer.png)
-10.  Select **Application permissions** and expand the **Application** and **Directory** accordians.  Check the Application.ReadWrite.All and Directory-ReadWrite.All** boxes
+10.  Select **Application permissions** and expand the **Application** and **Directory** accordians.  Check the **Application.ReadWrite.All** and **Directory-ReadWrite.All** boxes
 ![](./images/spacer.png)
 
 ![](./images/application.png)
@@ -59,7 +59,7 @@ These are the links to azure documentation on service principal:
 ![](./images/subscription.png)
 
 ![](./images/spacer.png)
-14. Click into the **Subscription ID** then **Access control (IAM)** then **Add** in the **Add role assignment box on the right.
+14. Click into the **Subscription ID** then **Access control (IAM)** then **Add** in the **Add role assignment** box on the right.
 15. Select **Owner** in the **Role** dropdown.
 16. Select **Azure AD user, group, or service principal** int he **Assign access to** dropdown.
 17. In the **Select** field, enter the application name or Application (client) ID saved previously and select it so that it shows up under **Selected Members** below.
