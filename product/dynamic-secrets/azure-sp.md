@@ -16,8 +16,8 @@ These are the links to azure documentation on service principal:
 ## Creating a Service Principal for the DSV Base Secret
 
 1. Go to the [Microsoft Azure portal](https://portal.azure.com) and login.
-2. Go to **Azure Active Directory** 
-3. Click **App registrations** then **New registration**.  Enter an application name and then click **Register**
+2. Go to **Azure Active Directory**.
+3. Click **App registrations** then **New registration**.  Enter an application name and then click **Register**.
 4. Take note of the **Application (client) ID** and **Directory (tenant) ID**.  They are the DSV Base secret `clientId` and `tenantId` parameters respectively.
 
 ![](./images/spacer.png)
@@ -45,7 +45,7 @@ These are the links to azure documentation on service principal:
 
 ![](./images/spacer.png)
 
-10.  Select **Application permissions** and expand the **Application** and **Directory** accordians.  Check the **Application.ReadWrite.All** and **Directory-ReadWrite.All** boxes
+10.  Select **Application permissions** and expand the **Application** and **Directory** accordians.  Check the **Application.ReadWrite.All** and **Directory-ReadWrite.All** boxes.
 
 ![](./images/spacer.png)
 
@@ -55,7 +55,7 @@ These are the links to azure documentation on service principal:
 
 11. Select **Add permisssions** at the bottom of the page.  This takes you back to the API Permissions page.  Notice that the Application permissions have warnings that those permissions are not yet granted.  
 
-12. Click **Grant admin consent for Default Directory** and then **Yes**  This step can be easy to miss.
+12. Click **Grant admin consent for Default Directory** and then **Yes**.  This step can be easy to miss.
 
 ![](./images/spacer.png)
 
