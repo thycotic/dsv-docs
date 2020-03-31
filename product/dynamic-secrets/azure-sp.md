@@ -82,3 +82,31 @@ These are the links to azure documentation on service principal:
 ![](./images/roleassignment.png)
 
 ![](./images/spacer.png)
+
+## Creating a Service Principal for a DSV Dynamic Secret
+
+In the [Azure Dynamic Secrets](azure.md) section, we discuss DSV using an "existing service principal" vs DSV creating a "temporary service principal.  This is guidance on creating an existing service principal in the Azure portal.  In the case of the temporary service principal, no guidance in Azure is needed because DSV creates them.
+
+1. Go to the [Microsoft Azure portal](https://portal.azure.com) and login.
+2. Go to **Azure Active Directory**.
+3. Click **App registrations** then **New registration**.  Enter an application name and then click **Register**.
+4. Take note of the **Application (client) ID** and **Object ID**.  They are the DSV Dynamic Secret `appId` and `appObjectId` parameters respectively.
+
+![](./images/spacer.png)
+
+![](./images/appobjectid.png)
+
+![](./images/spacer.png)
+
+5. Navigate to **Home > Subscriptions** 
+6. Click into the **Subscription ID** that you are using and then **Access control (IAM)** then **Add** in the **Add role assignment** box on the right.
+7. Select **Role** dropdown, select the role you wish to provide.  In this example, we will use **Contributor**.
+8. Select **Azure AD user, group, or service principal** in the **Assign access to** dropdown.
+9. In the **Select** field, enter the application name or Application (client) ID saved previously and select it so that it shows up under **Selected Members** below.
+10.  Click **Save**
+
+![](./images/spacer.png)
+
+![](./images/roleassign2.png)
+
+![](./images/spacer.png)
