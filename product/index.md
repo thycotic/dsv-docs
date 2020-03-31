@@ -41,7 +41,7 @@ Signing up for the free version is the first step in getting a DevOps Secrets Va
 
 To get started with guided help, go to the [Quick Start](./QuickStart/index.md) section.
 
-If you don't need our help, sign up for the tenant here :  [DevOps Secrets Vault Free](https://thycotic.com/products/devops-secrets-vault-password-management/) and download the CLI here: [DevOps Secrets Vault CLI](https://dsv.thycotic.com/downloads)
+When you are ready to begin your trial, head here to sign-up for a free tenant:  [DevOps Secrets Vault Free](https://thycotic.com/products/devops-secrets-vault-password-management/) and download the CLI here: [DevOps Secrets Vault CLI](https://dsv.thycotic.com/downloads)
 
 ## API 
 
