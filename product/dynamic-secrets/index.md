@@ -46,7 +46,9 @@ The linking is done through the `attributes` section in the Secret JSON.  For ex
 }
 ```
 
+## Search for linked Secrets
 
+To get a list of all dynamic secrets linked to a base secret, issue the command `thy secret search --query <base secret path> --search-links`
 
 ![](./images/spacer.png)
 
