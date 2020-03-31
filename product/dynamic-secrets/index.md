@@ -4,7 +4,7 @@
 
 # Dynamic Secrets
 
-Dynamic Secrets are Secrets where temporary credentials are generated when the secret is read. This is opposed to a standard Secret where the credentials remain the same until changed by a user. They can be used when you need to provide credentials to a user or resource, like a configuration tool, but the access should expire after a set period of time.
+Dynamic Secrets are automatically generated at the time of request. This differs from the standard Secret store read request where the credentials remain the same until changed by a user. They can be used when you need to provide credentials to a user or resource, like a configuration tool, but the access should expire after a set period of time.
 
 Supported Types:
 * AWS
@@ -12,7 +12,7 @@ Supported Types:
 
 ## Linking
 
-A Dynamic Secret is linked to a Base Secret, which contains the actual credentials used to generate temporary access keys. 
+In order for Dynamic Secrets to be generated, they rely on a Base Secret stored in DSV that contains the provider's credentials that are used to automatically generate the ephemeral access keys.
 ![](./images/spacer.png)
 
 ![](./images/DynamicSecretLinking.png)
