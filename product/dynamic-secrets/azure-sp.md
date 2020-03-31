@@ -4,13 +4,13 @@
 
 # Azure Service Principal
 
-This is a step-by-step guide to creating an Azure service principal with the priviledges necessary to enable Azure credential generation.
+This is a step-by-step guide to creating an Azure service principal with the privileges necessary to enable Azure credential generation.
 
 An Azure service principal is an identity created for use with applications, hosted services, and automated tools to access Azure resources. 
 
 These are the links to azure documentation on service principal:
 
-* [Service principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals)
+* [Service Principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals)
 * [Create Service Principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
 
 ## Creating a Service Principal for the DSV Base Secret
@@ -37,7 +37,7 @@ These are the links to azure documentation on service principal:
 
 7. Select **API permissions** and then **Add a permission**.
 8. Under Supported Legacy APIs, select **Azure Active Directory Graph**.
-9. Select **Delegated permissions**, expand the **User** accordian, and then check the **User.Read** box.
+9. Select **Delegated permissions**, expand the **User** accordion, and then check the **User.Read** box.
 
 ![](./images/spacer.png)
 
@@ -45,7 +45,7 @@ These are the links to azure documentation on service principal:
 
 ![](./images/spacer.png)
 
-10.  Select **Application permissions** and expand the **Application** and **Directory** accordians.  Check the **Application.ReadWrite.All** and **Directory-ReadWrite.All** boxes.
+10.  Select **Application permissions** and expand the **Application** and **Directory** accordions.  Check the **Application.ReadWrite.All** and **Directory.ReadWrite.All** boxes.
 
 ![](./images/spacer.png)
 
@@ -85,7 +85,7 @@ These are the links to azure documentation on service principal:
 
 ## Creating a Service Principal for a DSV Dynamic Secret
 
-In the [Azure Dynamic Secrets](azure.md) section, we discuss DSV using an "existing service principal" vs DSV creating a "temporary service principal.  This is guidance on creating an existing service principal in the Azure portal.  In the case of the temporary service principal, no guidance in Azure is needed because DSV creates them.
+In the [Azure Dynamic Secrets](azure.md) section, we discuss DSV using an "existing service principal" vs DSV creating a "temporary service principal".  This is guidance on creating an existing service principal in the Azure portal.  In the case of the temporary service principal, no guidance in Azure is needed because DSV creates them.
 
 1. Go to the [Microsoft Azure portal](https://portal.azure.com) and login.
 2. Go to **Azure Active Directory**.
