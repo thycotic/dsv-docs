@@ -4,13 +4,7 @@
 
 # Azure Dynamic Secrets
 
-An Azure service principal is an identity created for use with applications, hosted services, and automated tools to access Azure resources. 
-
-These are the links to azure documentation on service principal:
-
-* [Service principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals)
-* [Create Service Principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
-
+DevOps Secrets Vault relies on Azure service principals to provide Dynamic Secrets.  
 
 In order for DSV to generate dynamic Secrets, a base secret must first be created using a service principal that has permissions to manage other service principals.  Those permissions include:
 
@@ -18,7 +12,7 @@ In order for DSV to generate dynamic Secrets, a base secret must first be create
 * "Read and write all applications" permission in Azure Active Directory. 
 *  Your account must have Microsoft.Authorization/*/Write access to assign an active directory application to a role.
 
-These permissions can be configured through the Azure Portal, CLI tool, or PowerShell. 
+These permissions can be configured through the Azure Portal, CLI tool, or PowerShell. A guide to setting up the Azure service principals in the Azure portal is provided in the [Azure Service Principal](azure-sp.md) section.
 
 
 ## Create the Base Secret
