@@ -1,4 +1,4 @@
-thy pki[title]: # (Certificate Authority)
+[title]: # (Certificate Authority)
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (6700)
 
@@ -54,6 +54,8 @@ Begin certificate-----
 
 ## Generate and Sign a Leaf Certificate
 
+The command to generate a leaf certificate and private key is ```thy pki leaf```
+
 | Flag             | Description                                                         |
 | --------------            | ------------------------------                                      |
 | common-name                | Required - The domain name that this certificate will use|
@@ -67,6 +69,16 @@ Begin certificate-----
 | organization               | Optional|
 
 ## Sign a Certificate Given a Certificate Signing Request (CSR)
+
+The command for honoring a certificate signing request is `thy pki sign`
+
+As an example, create a file with this certificate signing request and name it cert.pem
+
+```PEM
+Begin CSR-----
+
+```
+
 
 | Flag                 | Description                                                         |
 | --------------            | ------------------------------                                      |
