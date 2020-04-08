@@ -20,9 +20,9 @@ In the GCP Console Home page, go to your project, hover **IAM & Admin**, and the
 
 ![](./images/spacer.png)
 
-At the top, click **CREATE SERVICE ACCOUNT**.  Enter an account name.  We will use `dsv-svc` in this example.  Click **CREATE**
+At the top, click **CREATE SERVICE ACCOUNT**.  Enter an account name.  We will use `dsv-svc` in this example.  Click **CREATE**.
 
-In the next step, click the dropdown arrow in the **Select a role** box, then type `service account key admin` in the filter and select **Service Account Key Admin**.  Then click **Continue**.
+In the second step, click the dropdown arrow in the **Select a role** box, then type `service account key admin` in the filter and select **Service Account Key Admin**.  Then click **Continue**.
 
 ![](./images/spacer.png)
 
@@ -30,6 +30,13 @@ In the next step, click the dropdown arrow in the **Select a role** box, then ty
 
 ![](./images/spacer.png)
 
+In the third step, click **CREATE KEY** and when the option to generate a file slides in from the right, select **json** and click **CREATE**.  A file will be downloaded that will have all the information needed to setup the DSV authentication provider.
+
+![](./images/spacer.png)
+
+![](./images/privatekey.png)
+
+![](./images/spacer.png)
 
 
 The Goolge API for IAM must be enabled.  To do this in the Google Console, go to the relevant project and on the left nav, hover **APIs & Services ** then select **Library**.  In the search, type **Identity and Access** and in the results, select the **Identity and Access Management (IAM) API**.  Click **Enable**.
