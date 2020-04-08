@@ -57,9 +57,7 @@ In the search, type **Identity and Access** and in the results, select the **Ide
 
 Go back to the terminal (Devops Secrets Vault CLI)
 
-Use `thy config read --encoding yaml` to see your current configuration.
-
-The initial config will look similar to this:
+Use `thy config read --encoding yaml` to see your current configuration.  The initial config will look similar to this:
 
 ```yaml
 permissionDocument:
@@ -87,7 +85,7 @@ tenantName: company
 ```
 
 
-Setup the DSV authentication provider.  Create a json file named `auth-gcp.txt' with the following format, substituting your DSV service account values.
+Setup the DSV authentication provider.  Create a json file named `auth-gcp.txt` with the following format, substituting the `dsv-svc` service account values in the json file you downloaded from the GCP console.
 
 ```json
 {
