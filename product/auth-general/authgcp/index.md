@@ -41,7 +41,7 @@ In the third step, click **CREATE KEY** and when the option to generate a file s
 ![](./images/spacer.png)
 
 
-The Goolge API for IAM must be enabled.  To do this in the Google Console, go to the relevant project and on the left nav, hover **APIs & Services ** then select **Library**.
+The Goolge API for IAM must be enabled.  To do this in the Google Console, go to the relevant project and on the left nav, hover **APIs & Services** then select **Library**.
 
 ![](./images/spacer.png)
 
