@@ -4,7 +4,7 @@
 
 # Authentication Google Cloud Platform (GCP)
 
-DevOps Secrets Vault provides two ways to authentication using GCP.  One is through a Google service account and the other is through Google Compute Engine (GCE) metadata. 
+DevOps Secrets Vault provides two ways to authenticate using GCP.  One is through a Google service account and the other is through Google Compute Engine (GCE) metadata. 
 
 ## Google Service Account Authentication
 
