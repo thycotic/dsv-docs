@@ -20,7 +20,9 @@ In the GCP Console Home page, go to your project, hover **IAM & Admin**, and the
 
 ![](./images/spacer.png)
 
-At the top, click **CREATE SERVICE ACCOUNT**.  Enter an account name.  We will use `dsv-svc` in this example.  Click **CREATE**.
+At the top, click **CREATE SERVICE ACCOUNT**.  
+
+For the first step, enter an account name.  We will use `dsv-svc` in this example.  Click **CREATE**.
 
 In the second step, click the dropdown arrow in the **Select a role** box, then type `service account key admin` in the filter and select **Service Account Key Admin**.  Then click **Continue**.
 
