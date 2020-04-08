@@ -55,6 +55,7 @@ In the search, type **Identity and Access** and in the results, select the **Ide
 
 ![](./images/spacer.png)
 
+Go back to the terminal (Devops Secrets Vault CLI)
 
 Use `thy config read --encoding yaml` to see your current configuration.
 
