@@ -40,6 +40,11 @@ In the third step, click **CREATE KEY** and when the option to generate a file s
 
 
 The Goolge API for IAM must be enabled.  To do this in the Google Console, go to the relevant project and on the left nav, hover **APIs & Services ** then select **Library**.  In the search, type **Identity and Access** and in the results, select the **Identity and Access Management (IAM) API**.  Click **Enable**.
+![](./images/spacer.png)
+
+![](./images/iamapi.png)
+
+![](./images/spacer.png)
 
 Use `thy config read --encoding yaml` to see your current configuration.
 
