@@ -235,10 +235,12 @@ meta: null
 resources:
 - <.*>
 subjects:
-- users:<thy-one:admin@company.com|gcloud:gce-test>
+- users:<thy-one:admin@company.com|gcloud:gcp-test>
 ```
 
-In the CLI, run `thy init` filling out the proper values and selecting (6) GCP (federated) when prompted.
+You may need to give yourself permissions to run the "thy" binary and it is also easier if you set the path.
+
+In the CLI, run `thy init` filling out the desired values and selecting (6) GCP (federated) when prompted for the auth type.
 
 ```BASH
 Please enter auth type:
@@ -277,7 +279,7 @@ It is further assumed that the **Compute Engine default service account** is use
 
 To find the **Compute Engine default service account** email, from the GCP Console Home, hover **IAM** and then click **Service account**
 
-The namw will say "Compute Engine default service account.  Copy and store the email for later.
+The name will say "Compute Engine default service account.  Copy and store the email for later.
 
 ![](./images/spacer.png)
 
@@ -337,12 +339,65 @@ tenantName: company
 
 ### DSV GCE Metadata Service Account/DSV User Mapping
 
-Run `thy user create --username gce-test --provider gcloud-gce --external-id {default compute service account email}` where the 
+Run `thy user create --username gce-test --provider gcloud-gce --external-id {default compute service account email}` using the default service account email we saved earlier.
 
+```json
+{
+  "created": "2020-04-09T12:59:44Z",
+  "createdBy": "users:thy-one:admin@company.com",
+  "externalId": "2XXXXXXXXXX3-compute@developer.gserviceaccount.com",
+  "id": "19709b4e-2a13-4164-a930-81997b568036",
+  "lastModified": "2020-04-09T12:59:44Z",
+  "lastModifiedBy": "users:thy-one:admin@company.com",
+  "provider": "gcloud-gce",
+  "userName": "gce-test",
+  "version": "0"
+}
+```
+After creating the User, modify the config to give that User access to the default administrator permission policy.
+
+> NOTE: Adding a User to the admin policy is not security best practices.  This is for example purposes only.  Ideally,  you would create a separate policy for this AWS user with restricted access.   For details on limiting access through policies, see the [Policy](../product/cli-ref/policy.md) section.
+
+```BASH
+thy config edit --encoding yaml
+```
+
+Add *gce-test* as a User subject to the **Default Admin Policy**. Third party accounts must be prefixed with the provider name; in this case, the fully qualified username would be *glcoud-gce:gce-test*.
+
+(Only the Admin policy is shown from the config file)
+
+```yaml
+description: Default Admin Policy
+effect: allow
+id: xxxxxxxxxxxxxxxxxxxx
+meta: null
+resources:
+- <.*>
+subjects:
+- users:<thy-one:admin@company.com|gcloud-gce:gce-test>
+```
 
 ### GCE Authentication
 
 SSH into the GCE and download the latest DSV CLI from this website [DSV CLI](https://dsv.thycotic.com/downloads)
 
 For example, `curl https://dsv.thycotic.com/downloads/cli/1.8.0/thy-linux-x64 -o thy`
+
+You may need to give yourself permissions to run the "thy" binary and it is also easier if you set the path.
+
+Run `thy init` filling out the desired values and selecting (6) GCP (federated) when prompted for the auth type.
+
+```BASH
+Please enter auth type:
+       (1) Password (local user)(default)
+       (2) Client Credential
+       (3) Thycotic One (federated)
+       (4) AWS IAM (federated)
+       (5) Azure (federated)
+	(6) GCP (federated)
+```
+
+Run 'thy auth' to verify authentication.  A token will be displayed.
+
+Run `thy secret read <path to any secret>` to verify secret access. 
 
