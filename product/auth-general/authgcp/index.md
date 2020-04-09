@@ -247,3 +247,7 @@ Please enter auth type:
 
 ```
 
+Run 'thy auth' to verify authentication.  A token will be displayed.
+
+Run `thy secret read <path to any secret>` to verify secret access. 
+
