@@ -8,9 +8,9 @@ DevOps Secrets Vault provides two ways to authenticate using GCP.  One is throug
 
 ## Google Service Account Authentication
 
-To setup GCP authentication in DSV, a GCP service account must be provided that DSV can use as the authentication provider.  This service account must be assigned to the project you are working in, have the role **Service Account Key Admin** so that it can issue and manage service account tokens, and a key must be generated.
+To setup GCP authentication using service accounts in DSV, a GCP service account must be provided that DSV can use as the authentication provider.  This service account must be assigned to the project you are working in, have the role **Service Account Key Admin** so that it can issue and manage service account tokens, and a key must be generated.
 
-These steps can be done programmitically, but we will use the GCP Console.
+These steps can be done programatically, but we will use the GCP Console.
 
 In the GCP Console Home page, go to your project, hover **IAM & Admin**, and then click **Service Accounts**.  
 
@@ -87,7 +87,7 @@ tenantName: company
 ```
 
 
-Setup the DSV authentication provider.  Create a json file named `auth-gcp.txt` with the following format, substituting the `dsv-svc` service account values in the json file you downloaded from the GCP console.
+Setup the DSV authentication provider.  Create a json file named `auth-gcp.txt` with the following format, substituting the `dsv-svc` service account values in the key file you downloaded from the GCP console.
 
 ```json
 {
@@ -171,7 +171,7 @@ type: gcp
 tenantName: company
 ```
 
-Now the service account that is going to access DSV is required.  For this example, we will name this account `client-svc' The setup in GCP is the same as the DSV account except that when the role is assigned, it must be **Service Account Token Creator** so that this account can request tokens.  Also, after generating the key, make sure to save the file to the local machine that will access DSV and note the location.
+Now the service account that is going to access DSV is required.  For this example, we will name this account `client-svc` The setup in GCP is the same as above for the `dsv-svc` account except that when the role is assigned, it must be **Service Account Token Creator** so that this account can request tokens.  Also, after generating the key, make sure to save the file to the local machine that will access DSV and note the location.
 
 In the DSV CLI, create a user called `gcp-test` referring to the `client-svc` service account with `gcloud` as the authentication provider using `thy user create --username gcp-test --provider gcloud --externalid client-svc@myfirstproject-273119.iam.gserviceaccount.com`
 
@@ -198,7 +198,52 @@ In the DSV CLI, create a user called `gcp-test` referring to the `client-svc` se
 ```
 Set an environmental variable named GOOGLE_APPLICATION_CREDENTIALS to the path of the key file for `client-svc` that was just downloaded.
 
-n the CLI, run `thy init` filling out the proper values and selecting (6) GCP (federated) when prompted.
+In Linux or Mac, this might look like:
+```bash
+export GOOGLE_APPLICATION_CREDENTIALS="/home/user/Downloads/[FILE_NAME].json"
+```
+Windows Powershell
+```PC
+$env:GOOGLE_APPLICATION_CREDENTIALS="C:\Users\username\Downloads\[FILE_NAME].json"
+```
+Windows Command Line
+```CMD
+set GOOGLE_APPLICATION_CREDENTIALS="C:\Users\username\Downloads\[FILE_NAME].json"
+```
 
+After creating the User, modify the config to give that User access to the default administrator permission policy.
 
+> NOTE: Adding a user to the admin policy is not security best practices.  This is for example purposes only.  Ideally,  you would create a separate policy for this AWS user with restricted access.   For details on limiting access through policies, see the [Policy](../product/cli-ref/policy.md) section.
+
+```BASH
+thy config edit --encoding yaml
+```
+
+Add *gcp-test* as a User subject to the **Default Admin Policy**. Third party accounts must be prefixed with the provider name; in this case, the fully qualified username would be *glcoud:gcp-test*.
+
+(Only the Admin policy is shown from the config file)
+
+```yaml
+description: Default Admin Policy
+effect: allow
+id: xxxxxxxxxxxxxxxxxxxx
+meta: null
+resources:
+- <.*>
+subjects:
+- users:<thy-one:admin@company.com|gcloud:gce-test>
+```
+
+In the CLI, run `thy init` filling out the proper values and selecting (6) GCP (federated) when prompted.
+
+```BASH
+Please enter auth type:
+       (1) Password (local user)(default)
+       (2) Client Credential
+       (3) Thycotic One (federated)
+       (4) AWS IAM (federated)
+       (5) Azure (federated)
+	(6) GCP (federated)
+
+```
 
