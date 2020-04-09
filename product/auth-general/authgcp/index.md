@@ -12,6 +12,8 @@ To setup GCP authentication using service accounts in DSV, a GCP service account
 
 These steps can be done programatically, but we will use the GCP Console.
 
+### GCP Service Account Setup
+
 In the GCP Console Home page, go to your project, hover **IAM & Admin**, and then click **Service Accounts**.  
 
 ![](./images/spacer.png)
@@ -56,6 +58,8 @@ In the search, type `Identity and Access` and in the results, select the **Ident
 ![](./images/iamapienable.png)
 
 ![](./images/spacer.png)
+
+### DSV Authentication Provider Setup 
 
 Go back to the terminal (Devops Secrets Vault CLI)
 
@@ -170,6 +174,7 @@ type: service_account
 type: gcp
 tenantName: company
 ```
+### DSV Service Account/User Setup
 
 Now the service account that is going to access DSV is required.  For this example, we will name this account `client-svc` The setup in GCP is the same as above for the `dsv-svc` account except that when the role is assigned, it must be **Service Account Token Creator** so that this account can request tokens.  Also, after generating the key, make sure to save the file to the local machine that will access DSV and note the location.
 
@@ -250,4 +255,24 @@ Please enter auth type:
 Run 'thy auth' to verify authentication.  A token will be displayed.
 
 Run `thy secret read <path to any secret>` to verify secret access. 
+
+## Google Compute Engine (GCE) Metadata Authentication 
+The idea behind GCE Metadata authentication is to enable a GCE instance to gain access to DevOps Secrets Vault.
+
+In this example we assume you create a Linux Google Compute Instance and have the Google Compute Engine API enabled.
+
+![](./images/spacer.png)
+
+![](./images/gcpapienabled.png)
+
+![](./images/spacer.png)
+
+It is further assumed that the **Compute Engine default service account** is used.  However, you can assign a different service account the Compute instance if desired.
+
+![](./images/spacer.png)
+
+![](./images/defaultsvc.png)
+
+![](./images/spacer.png)
+
 
