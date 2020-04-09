@@ -133,7 +133,6 @@ baseUri: https://login.thycotic.com/
 clientId: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 clientSecret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 type: thycoticone
-tenantName: company
 - ID: bq4ce17cj2bc72qun8vg
 name: gcloud
 properties:
@@ -174,7 +173,7 @@ type: service_account
 type: gcp
 tenantName: company
 ```
-### DSV Service Account/User Setup
+### DSV Service Account/User Mapping
 
 Now the service account that is going to access DSV is required.  For this example, we will name this account `client-svc` The setup in GCP is the same as above for the `dsv-svc` account except that when the role is assigned, it must be **Service Account Token Creator** so that this account can request tokens.  Also, after generating the key, make sure to save the file to the local machine that will access DSV and note the location.
 
@@ -257,6 +256,7 @@ Run 'thy auth' to verify authentication.  A token will be displayed.
 Run `thy secret read <path to any secret>` to verify secret access. 
 
 ## Google Compute Engine (GCE) Metadata Authentication 
+
 The idea behind GCE Metadata authentication is to enable a GCE instance to gain access to DevOps Secrets Vault.
 
 In this example we assume you create a Linux Google Compute Instance and have the Google Compute Engine API enabled.
@@ -267,7 +267,7 @@ In this example we assume you create a Linux Google Compute Instance and have th
 
 ![](./images/spacer.png)
 
-It is further assumed that the **Compute Engine default service account** is used.  However, you can assign a different service account the Compute instance if desired.
+It is further assumed that the **Compute Engine default service account** is used.  However, you can assign a different service account to the Compute instance if desired.
 
 ![](./images/spacer.png)
 
@@ -275,4 +275,74 @@ It is further assumed that the **Compute Engine default service account** is use
 
 ![](./images/spacer.png)
 
+To find the **Compute Engine default service account** email, from the GCP Console Home, hover **IAM** and then click **Service account**
+
+The namw will say "Compute Engine default service account.  Copy and store the email for later.
+
+![](./images/spacer.png)
+
+![](./images/defaultsvcaccount.png)
+
+![](./images/spacer.png)
+
+### DSV GCE Authentication Provider setup
+
+Using any computer with Admin DSV access, we now want to setup the DSV Authentication Provider
+
+Create a files called 'auth-gcp.txt'in the following format and substituting your ProjectID.
+
+```json
+{
+"name": "gcloud-gce",
+"type": "gcp",
+"properties": {
+	  "ProjectId": "myfirstproject-273119"
+	}
+}
+```
+
+Run `thy config auth-provider create --data @auth-gcp.txt` to implement the Authentication Provider.
+
+Checking the config file, `thy config read -e yaml` we see the Authencation Provider established with the name *gcloud-gce* and typ *gcp*
+
+```yaml 
+permissionDocument:
+- actions:
+- <.*>
+conditions: {}
+description: Default Admin Policy
+effect: allow
+id: xxxxxxxxxxxxxxxxxxxx
+meta: null
+resources:
+- <.*>
+subjects:
+- users:<thy-one:admin@company.com>
+settings:
+authentication:
+- ID: xxxxxxxxxxxxxxxxxxxx
+name: thy-one
+properties:
+baseUri: https://login.thycotic.com/
+clientId: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+clientSecret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+type: thycoticone
+- ID: bq71e5co19js72ppv140
+name: gcloud-gce
+properties:
+projectId: myfirstproject-273119
+type: gcp
+tenantName: company
+```
+
+### DSV GCE Metadata Service Account/DSV User Mapping
+
+Run `thy user create --username gce-test --provider gcloud-gce --external-id {default compute service account email}` where the 
+
+
+### GCE Authentication
+
+SSH into the GCE and download the latest DSV CLI from this website [DSV CLI](https://dsv.thycotic.com/downloads)
+
+For example, `curl https://dsv.thycotic.com/downloads/cli/1.8.0/thy-linux-x64 -o thy`
 
