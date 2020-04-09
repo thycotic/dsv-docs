@@ -220,7 +220,7 @@ After creating the User, modify the `config` to give that User access to the def
 > NOTE: Adding a User to the admin policy is not security best practices.  This is for example purposes only.  Ideally,  you would create a separate policy for this AWS user with restricted access.   For details on limiting access through policies, see the [Policy](../product/cli-ref/policy.md) section.
 
 ```BASH
-thy config edit --encoding yaml
+thy config edit
 ```
 
 Add *gcp-test* as a User to the **Default Admin Policy**. Third party accounts must be prefixed with the provider name; in this case, the fully qualified username would be *glcoud:gcp-test*.
@@ -360,7 +360,7 @@ After creating the User, modify the config to give that User access to the defau
 > NOTE: Adding a User to the admin policy is not security best practices.  This is for example purposes only.  Ideally,  you would create a separate policy for this AWS user with restricted access.   For details on limiting access through policies, see the [Policy](../product/cli-ref/policy.md) section.
 
 ```BASH
-thy config edit --encoding yaml
+thy config edit
 ```
 
 Add *gce-test* as a User to the **Default Admin Policy**. Third party accounts must be prefixed with the provider name; in this case, the fully qualified username would be *glcoud-gce:gce-test*.
