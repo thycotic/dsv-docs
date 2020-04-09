@@ -280,7 +280,7 @@ It is further assumed that the **Compute Engine default service account** is use
 
 To find the **Compute Engine default service account** email, from the GCP Console Home, hover **IAM** and then click **Service account**
 
-The name will say "Compute Engine default service account.  Copy and store the email for later.
+The name will say "Compute Engine default service account".  Copy and store the email for later.
 
 ![](./images/spacer.png)
 
