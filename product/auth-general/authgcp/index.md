@@ -292,7 +292,7 @@ The name will say "Compute Engine default service account".  Copy and store the 
 
 Using any computer with Admin DSV access, we now want to setup the DSV Authentication Provider
 
-Create a files called 'auth-gcp.txt'in the following format and substituting your ProjectID.
+Create a file named 'auth-gcp.txt' in the following format and substituting your ProjectID.
 
 ```json
 {
