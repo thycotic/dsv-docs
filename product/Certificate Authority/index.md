@@ -23,7 +23,8 @@ The command to generate a self-signed root certificate and private key is ```thy
 | email                      | Optional|
 | organization               | Optional|
 
-```bash pki generate-root --rootcapath myroot --domains google.org,golang.org --common-name thycotic.com --organization Thycotic --country US --state DC --locality Washington --maxttl 1000```
+```bash 
+pki generate-root --rootcapath myroot --domains google.org,golang.org --common-name thycotic.com --organization Thycotic --country US --state DC --locality Washington --maxttl 1000```
 
 ## Register (Import) a Signing Certificate 
 
