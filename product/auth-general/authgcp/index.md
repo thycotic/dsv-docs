@@ -263,7 +263,7 @@ In this example we assume you create a Linux Google Compute Instance and have th
 
 ![](./images/spacer.png)
 
-![](./images/gcpapienabled.png)
+![](./images/gceapienabled.png)
 
 ![](./images/spacer.png)
 
