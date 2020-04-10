@@ -217,7 +217,7 @@ set GOOGLE_APPLICATION_CREDENTIALS="C:\Users\username\Downloads\[FILE_NAME].json
 
 After creating the User, modify the `config` to give that User access to the default administrator permission policy.
 
-> NOTE: Adding a User to the admin policy is not security best practices.  This is for example purposes only.  Ideally,  you would create a separate policy for this AWS user with restricted access.   For details on limiting access through policies, see the [Policy](../product/cli-ref/policy.md) section.
+> NOTE: Adding a User to the admin policy is not security best practices.  This is for example purposes only.  Ideally,  you would create a separate policy for this GCP service account with restricted access.   For details on limiting access through policies, see the [Policy](../product/cli-ref/policy.md) section.
 
 ```BASH
 thy config edit
@@ -238,9 +238,7 @@ subjects:
 - users:<thy-one:admin@company.com|gcloud:gcp-test>
 ```
 
-You may need to give yourself permissions to run the "thy" binary and it is also easier if you set the path.
-
-In the CLI, run `thy init` filling out the desired values and selecting **6** GCP (federated) when prompted for the auth type.
+Run `thy init` filling out the desired values and selecting **6** GCP (federated) when prompted for the auth type.
 
 ```BASH
 Please enter auth type:
@@ -357,7 +355,7 @@ Run `thy user create --username gce-test --provider gcloud-gce --external-id {de
 ```
 After creating the User, modify the config to give that User access to the default administrator permission policy.
 
-> NOTE: Adding a User to the admin policy is not security best practices.  This is for example purposes only.  Ideally,  you would create a separate policy for this AWS user with restricted access.   For details on limiting access through policies, see the [Policy](../product/cli-ref/policy.md) section.
+> NOTE: Adding a User to the admin policy is not security best practices.  This is for example purposes only.  Ideally,  you would create a separate policy for this GCP service account with restricted access.   For details on limiting access through policies, see the [Policy](../product/cli-ref/policy.md) section.
 
 ```BASH
 thy config edit
