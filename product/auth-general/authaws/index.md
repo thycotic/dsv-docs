@@ -149,6 +149,7 @@ Please enter auth type:
        (3) Thycotic One (federated)
        (4) AWS IAM (federated)
        (5) Azure (federated)
+       (6) GCP (federated)
 ```
 
 DSV will prompt for the specific AWS profile to use if you are authenticating using a non-default AWS profile.
