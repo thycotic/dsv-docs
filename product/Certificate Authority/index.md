@@ -154,7 +154,8 @@ The command to generate a leaf certificate and private key is ```thy pki leaf```
 
 For this example, we will request a leaf certificate for *bar.com* and use the imported signing certificate above stored at `/ca/registeredroot`
 
-`thy pki leaf --rootcapath /ca/registeredroot --common-name bar.com --organization FooBar, Inc --country US --state CA --locality 'San Francisco' --ttl 24'
+`thy pki leaf --rootcapath /ca/registeredroot --common-name bar.com --organization FooBar, Inc --country US --state CA --locality 'San Francisco' --ttl 24`
+
 
 A signed certificate and private key is returned in base64 encoding
 ```Bash
