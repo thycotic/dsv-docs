@@ -19,6 +19,13 @@ The Command Line Interface (CLI) is locally installed using OS-specific executab
 
 | **Update**             | **Notes**                                  |
 |------------------------|--------------------------------------------|
+|April 2020              |**new feature** Google Cloud Platform Authentication using service accounts and GCE metadata|
+|                        |**new feature** X.509 Certificate Issuance.  Certificate signing capablilties.
+|                        |**improvement**: Azure dynamic secret role validation  |
+|                        |**improvement**: Azure dynamic secret temporary service principal cleanup. (deletes expired service principals in Azure MSI) |
+|                        |**improvement**: Dynamic secrets easier to edit     |
+|                        |**fixed** CLI encryption key works if store path is in a non-default location.    |
+|                        |**fixed** Client tokens used even if already logged in.     |
 |March 2020              | **new feature**: Azure Dynamic Secrets.  DSV can use Azure Service Principals to provide ephermal credentials|
 |                        | **new feature**: (API only) Ability to issue X.509 certificates
 |                        | **improvement**: Ability to retrieve auth settings by version          |
@@ -34,7 +41,7 @@ The Command Line Interface (CLI) is locally installed using OS-specific executab
 |                        | **new feature**: AWS Dynamic secrets. DevOps secrets Vault can use AWS Security Token Service (STS) to provide ephemeral AWS credentials. |
 | January 2020           | **improvement**: the `rollback` command allows you to roll back Secrets (and Policies and Authentication Providers) to their earlier versions  |
 |                        | **improvement**: Windows users can now more easily edit Secrets, with Notepad or another designated editor opening right from the command line |
-|                        | **fixed**: a defect in the Kiubernetes extension caused verbose error reporting on irrelevant conditions |
+|                        | **fixed**: a defect in the Kubernetes extension caused verbose error reporting on irrelevant conditions |
 |                        |      |
 | December 2019          | **improvement**: the `thy init` command no longer requires an `--advanced` flag, as it now always steps through key initialization settings |
 |                        | **improvement**: the DSV CLI executables will now prompt when a new version is available for download |
