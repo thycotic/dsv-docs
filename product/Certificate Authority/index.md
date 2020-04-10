@@ -25,7 +25,7 @@ The command to generate a self-signed root certificate and private key is `thy p
 | email                      | Optional|
 | organization               | Optional|
 
-This command generates a root certificate named foobar.com and corresponding private key for signing leaf certificates with the common name foo.org and/or bar.org.  They are saved in the secret path, /ca/myroot, that is referenced when a leaf certificate is generated and/or signed.
+This command generates a root certificate named *foobar.com* and corresponding private key for signing leaf certificates with the common name *foo.org* and/or *bar.org*.  They are saved in the secret path, `/ca/myroot`, that is referenced when a leaf certificate is generated and/or signed.
 
 ```bash 
 thy pki generate-root --rootcapath /ca/myroot --domains foo.org,bar.org --common-name foobar.com --organization FooBar,Inc --country US --state IA --locality Boone --maxttl 1000
@@ -71,7 +71,7 @@ The command to register a signing certificate and private key generated outside 
 
 
 
-As an example, create a file with this certificate and name it cert.pem
+As an example, create a file with this certificate and name it `cert.pem`
 
 ```PEM
 -----BEGIN CERTIFICATE-----
@@ -97,7 +97,7 @@ WH9GJr9PiLD+gG6rxOZRrXt6gx1XOoK6REj1W5wMaxeS2+SKOHGPhaRE+z1xXC9z
 Qx0dZF6QQRIK4MNGZ2mg1y3F
 -----END CERTIFICATE-----
 ```
-Create a file with this corresponding private key and name it key.pem
+Create a file with this corresponding private key and name it `key.pem`
 
 ```PEM
 -----BEGIN RSA PRIVATE KEY-----
@@ -129,7 +129,7 @@ q10bc+NezxCPQd+dBNBgFbcWpWvYPDfte2u6G94G8OqiOXczwu7Z3iI6puukV4Uy
 -----END RSA PRIVATE KEY-----
 
 ```
-This command saves this signing certificate and key at the secret path /ca/registeredroot and enables it to sign leaf certs for foo.com and/or bar.com domains (common name).
+This command saves this signing certificate and key at the secret path `/ca/registeredroot` and enables it to sign leaf certs for *foo.com* and/or *bar.com* domains (common name).
 
 ```bash
 thy pki register --certpath @cert.pem --privkeypath @key.pem --rootcapath /ca/registeredroot --domains foo.com,bar.com --maxttl 900
