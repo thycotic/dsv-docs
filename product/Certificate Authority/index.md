@@ -5,7 +5,7 @@
 # Certificate Issuance
 DevOps Secrets Vault provides the ability to generate and sign leaf (end-entity) certificates or to create and sign a certificate from a certificate signing request (CSR).
 
-All certificates assume **RSA 2048** key-pairs.
+All certificates assume **RSA 2048** key-pairs and **SHA-256 Hashing**
 
 A signing certificate is required and it may be generated in DSV or imported from an outside Certificate Authority (CA).  This documentation will often refer to the signing certificate as the "root" certificate.  However, in the case of a signing certificate being imported from an outside CA, best practices would be to use an intermediate certificate as the DSV signing certificate. 
 
@@ -25,7 +25,7 @@ The command to generate a self-signed root certificate and private key is `thy p
 | email                      | Optional|
 | organization               | Optional|
 
-This command generates a root certificate and corresponding private key for signing leaf certificates with the common name foo.org and/or bar.org.  They are saved in the secret path, /ca/myroot, that is referenced when a leaf certificate is generated and/or signed.
+This command generates a root certificate named foobar.com and corresponding private key for signing leaf certificates with the common name foo.org or bar.org.  They are saved in the secret path, /ca/myroot, that is referenced when a leaf certificate is generated and/or signed.
 
 ```bash 
 thy pki generate-root --rootcapath /ca/myroot --domains foo.org,bar.org --common-name foobar.com --organization FooBar,Inc --country US --state IA --locality Boone --maxttl 1000
@@ -63,11 +63,11 @@ The command to register a signing certificate and private key generated outside 
 
 | Flag                      | Description                                                                   |
 | --------------            | ------------------------------                                                |
-| certpath                  | Required - Path to a PEM file containing the signing certificate              |
-| privkeypath               | Required - Path to a PEM file containing the signing certificate private key  |
-| rootcapath                | Required - Path and name of a secret that will contain the signing certificate|
-| domains                   | Required - List of domains that this signing certificate is allowed to sign leaf certificates|
-| maxttl                    | Required - Maximum time to live in hours for a leaf cert signed with this signing certificate.  If this is set further out in time than the expiration date of the certificate that is being registered, then there will be an error.  For example, if this signign certifcate has an expiration date next week, the maxTTL maximium number is 189 hours.|
+| certpath                  | Required - Path to a PEM file containing the signing certificate.              |
+| privkeypath               | Required - Path to a PEM file containing the signing certificate private key.  |
+| rootcapath                | Required - Path and name of a secret that will contain the signing certificate.|
+| domains                   | Required - List of domains that this signing certificate is allowed to sign leaf certificates.|
+| maxttl                    | Required - Maximum time to live in hours for a leaf cert signed with this signing certificate.  If this is set further out in time than the expiration date of the certificate that is being registered, then there will be an error.  For example, if this signing certifcate has an expiration date next week, the maxTTL maximium number is 189 hours.|
 
 
 
@@ -75,56 +75,57 @@ As an example, create a file with this certificate and name it cert.pem
 
 ```PEM
 -----BEGIN CERTIFICATE-----
-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
+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
+Qx0dZF6QQRIK4MNGZ2mg1y3F
 -----END CERTIFICATE-----
 ```
 Create a file with this corresponding private key and name it key.pem
 
 ```PEM
 -----BEGIN RSA PRIVATE KEY-----
-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
+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
 -----END RSA PRIVATE KEY-----
 
 ```
@@ -140,31 +141,58 @@ The command to generate a leaf certificate and private key is ```thy pki leaf```
 
 | Flag             | Description                                                         |
 | --------------            | ------------------------------                                      |
-| common-name                | Required - The domain name that this certificate will use|
-| rootcapath                 | Required - Path and name of a secret that will contain the signing certificate              |
-| ttl                        | Optional - Time to live in hours.  If not specified, then the maxttl of the signing certificate will be used|
-| rootcapath                 | Optional - Path and name of a secret that will contain this leaf certificate and private key.  If not specified, then DSV will not store the leaf certificate and private key and there will be no way to retrive those after they are generated           |
-| country                    | Optional|
-| state                      | Optional|
-| locality                   | Optional|
-| email                      | Optional|
-| organization               | Optional|
+| common-name                | Required - The domain name that this certificate will use.  This must match a domain in the signing certificate's list.|
+| rootcapath                 | Required - Path and name of a secret that will contain the signing certificate.  It does not matter if the signing certificate was generated by DSV or imported.             |
+| ttl                        | Optional - Time to live in hours.  If not specified, then the maxttl of the signing certificate will be used.|
+| rootcapath                 | Optional - Path and name of a secret that will contain this leaf certificate and private key.  If not specified, then DSV will not store the leaf certificate and private key and there will be no way to retrive them after the initial stdout is deleted.          |
+| country                    | Optional.|
+| state                      | Optional.|
+| locality                   | Optional.|
+| email                      | Optional.|
+| organization               | Optional.|
 
 ## Sign a Certificate Given a Certificate Signing Request (CSR)
 
 The command for honoring a certificate signing request is `thy pki sign`
 
-As an example, create a file with this certificate signing request and name it cert.pem
 
-```PEM
-Begin CSR-----
-
-```
-
+>NOTE: The common name for the certificate in the CSR must match a domain in the signing certificate's list.   
 
 | Flag                 | Description                                                         |
 | --------------            | ------------------------------                                      |
-| csrpath                   | Required - Path to a PEM file containing the certificate signing request|
-| rootpath                  | Required - Path and name of a secret that will contain the signing certificate              |
-| subjectaltnames           | Optional - List of alternative domains 
-| ttl                       | Optional - Time to live in hours.  If not specified, then the maxttl of the signing certificate will be used|
+| csrpath                   | Required - Path to a PEM file containing the certificate signing request.|
+| rootpath                  | Required - Path and name of a secret that will contain the signing certificate. It does not matter if the signing certificate was generated by DSV or imported               |
+| subjectaltnames           | Optional - List of alternative domains.  They must match a domain in the signing certificate's list.
+| ttl                       | Optional - Time to live in hours.  If not specified, then the maxttl of the signing certificate will be used.|
+
+As an example, create a file with this certificate signing request and name it `internalSite.csr`.  It is requesting the common name of *foo.org* so we will sign it with the sample root certificate we generated at the top of this page.
+
+```PEM
+-----BEGIN CERTIFICATE REQUEST-----
+MIIClDCCAXwCAQAwTzELMAkGA1UEBhMCVVMxCzAJBgNVBAgMAklMMSEwHwYDVQQK
+DBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQxEDAOBgNVBAMMB2Zvby5vcmcwggEi
+MA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDcmthlMQcfWwZmKZr1G7aYuTLb
+j/hCTIlGEhGDcp0elAEnzWGLdFUsbIMdb7ZlO/SEJLb9cVHGgcf9U67s9+1hqUPY
+/xwCbHJ7JYfLHZm3XHT5oA2QUmMNqwZlh/YTwUDUr9NYslTZOUm4y6smzfO5TVOC
+Z9SFETi3ZfPsknQQ3EEmPso2yJU0yqxHkgozm2bYOItd1ySEOM4R0JLQEBSgLLo4
+QLtxJJZiKKVvuhGZ7SZUcXft4RxBq41uv1YyffWeZYa0b/h7hcb7Gj+pnaI/1PWm
+vxdkW6cXnpAmL5k0PXlfQARGkBkUFyF3DQGDfT41UfSHE9qWi0gA6wfhXvCFAgMB
+AAGgADANBgkqhkiG9w0BAQsFAAOCAQEAmL2JDxGpKmIU60uMUsQXtylObyyIMW0q
+bmmqrfccfxdV/WNLLOrm/8g0Rp/eWwAGkQY8tZJnlN+BPK6yFpx1TYW6z2aPGTUT
+TgKnaheDWnpCPLkRJRqEIHYe9B+vFvEJXl1lU7pA4FGIsNV+1R2TTG4nBp8Nx7Ng
+LWCFT4m90R39wCxXEJMoUOIii8mfeaFwlZstyb/pAPuQoWYebOMCTHxJsxRsr/w9
+PBJsTPM+USH1xTUTtbEgY4SGFG7C+SYluFHj9c5hhH40TPv0NH9cmMHxSsbNKbou
+wmq9DFjzRXDVjAMLb2fsbBBpQ7/aT30pJWr9jAX0/FH1Ymg2aIK89w==
+-----END CERTIFICATE REQUEST-----
+
+`thy pki sign --rootcapath /ca/myroot --csrpath @internalSite.csr --ttl 24`
+
+```
+The signed certificate comes back in base64 encoding
+
+```Bash
+{
+  "certificate": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURZakNDQWtxZ0F3SUJBZ0lFRm1OYmV6QU5CZ2txaGtpRzl3MEJBUXNGQURCaE1Rc3dDUVlEVlFRR0V3SlYKVXpFTE1Ba0dBMVVFQ0JNQ1NVRXhEakFNQmdOVkJBY1RCVUp2YjI1bE1STXdFUVlEVlFRS0V3cEdiMjlDWVhJcwpTVzVqTVFrd0J3WURWUVFMRXdBeEZUQVRCZ05WQkFNVERIUm9lV052ZEdsakxtTnZiVEFlRncweU1EQTBNVEF3Ck1qRTROVGxhRncweU1EQTBNVEV3TWpFNE5UbGFNRTh4Q3pBSkJnTlZCQVlUQWxWVE1Rc3dDUVlEVlFRSUV3SkoKVERFaE1COEdBMVVFQ2hNWVNXNTBaWEp1WlhRZ1YybGtaMmwwY3lCUWRIa2dUSFJrTVJBd0RnWURWUVFERXdkbQpiMjh1YjNKbk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBM0pyWVpURUhIMXNHClppbWE5UnUybUxreTI0LzRRa3lKUmhJUmczS2RIcFFCSjgxaGkzUlZMR3lESFcrMlpUdjBoQ1MyL1hGUnhvSEgKL1ZPdTdQZnRZYWxEMlA4Y0FteHlleVdIeXgyWnQxeDArYUFOa0ZKakRhc0daWWYyRThGQTFLL1RXTEpVMlRsSgp1TXVySnMzenVVMVRnbWZVaFJFNHQyWHo3SkowRU54QkpqN0tOc2lWTk1xc1I1SUtNNXRtMkRpTFhkY2toRGpPCkVkQ1MwQkFVb0N5Nk9FQzdjU1NXWWlpbGI3b1JtZTBtVkhGMzdlRWNRYXVOYnI5V01uMzFubVdHdEcvNGU0WEcKK3hvL3FaMmlQOVQxcHI4WFpGdW5GNTZRSmkrWk5EMTVYMEFFUnBBWkZCY2hkdzBCZzMwK05WSDBoeFBhbG90SQpBT3NINFY3d2hRSURBUUFCb3pRd01qQU9CZ05WSFE4QkFmOEVCQU1DQjRBd0V3WURWUjBsQkF3d0NnWUlLd1lCCkJRVUhBd0l3Q3dZRFZSMFJCQVF3QW9JQU1BMEdDU3FHU0liM0RRRUJDd1VBQTRJQkFRQkh1b2FwSk05VTVUa0IKcU5Pb0hVMnJ3UmxjOUpRRmc5OTd3Y0UxU0dKbUNKTUd0ZkJMajZRRk80RnFJZGU5Qk90N2o0bnZwQUduYXNmaQpzbzBWa09tK1dyZUpuRXJiL0dMK0RpMExKbGxSZHduYWJtY2NXTFVkNm5EWWxGYjZLdEdmU3dYQWJyTTh5VVZjCmdqdU1odUl5d1ExOHR1UEFTWGFrWjUwU2VyOFd4Q3dUMlgvRDhVaGhXR1Ercno5aFV0ZHpUdU5COUdVb21PaGUKb0lXZGxHVVlpcm9sQS9GQk9nWjZCT2gxVnQ4S3lFN0VLRjZJdU1wM3kvc2szcGVMUmpUL0dIK0JxRW5PNmhzZwpia3NOcTNGSWROYmNlTExlV3dLWW1ZUEdQYWFuSnZ3NnZWN3MzRlQ0TUhUaUFtVTRkbTRkZVAvNzRpZXVvTXlXCnNpZTdESkoxCi0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K"
+}
+```
+
