@@ -202,7 +202,6 @@ wmq9DFjzRXDVjAMLb2fsbBBpQ7/aT30pJWr9jAX0/FH1Ymg2aIK89w==
 
 `thy pki sign --rootcapath /ca/myroot --csrpath @internalSite.csr --ttl 24`
 
-```
 The signed certificate comes back in base64 encoding
 
 ```Bash
