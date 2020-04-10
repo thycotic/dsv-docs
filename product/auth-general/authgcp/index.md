@@ -177,7 +177,7 @@ tenantName: company
 
 Now the service account that is going to access DSV is required.  For this example, we will name this account `client-svc` The setup in GCP is the same as above for the `dsv-svc` account except that when the role is assigned, it must be **Service Account Token Creator** so that this account can request tokens.  Also, after generating the key, make sure to save the file to the local machine that will access DSV and note the location.
 
-In the DSV CLI, create a User called `gcp-test` referring to the `client-svc` service account with `gcloud` as the authentication provider using `thy user create --username gcp-test --provider gcloud --externalid client-svc@myfirstproject-273119.iam.gserviceaccount.com`
+In the DSV CLI, create a User called `gcp-test` referring to the `client-svc` service account with `gcloud` as the authentication provider using `thy user create --username gcp-test --provider gcloud --external-id client-svc@myfirstproject-273119.iam.gserviceaccount.com`
 
 
 ```json
