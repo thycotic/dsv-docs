@@ -68,7 +68,7 @@ In the search, type `Identity and Access` and in the results, select the **Ident
 
 ### DSV Authentication Provider Setup 
 
-Go back to the terminal (Devops Secrets Vault CLI)
+Go back to the terminal (DevOps Secrets Vault CLI)
 
 Use `thy config read --encoding yaml` to see your current configuration.  The initial config will look similar to this:
 
@@ -230,7 +230,7 @@ After creating the User, modify the `config` to give that User access to the def
 thy config edit
 ```
 
-Add *gcp-test* as a User to the **Default Admin Policy**. Third party accounts must be prefixed with the provider name; in this case, the fully qualified username would be *glcoud:gcp-test*.
+Add *gcloud:gcp-test* as a User to the **Default Admin Policy**. Third party accounts must be prefixed with the provider name; in this case, the fully qualified username would be *glcoud:gcp-test*.
 
 (Only the Admin policy is shown from the config file)
 
@@ -267,7 +267,7 @@ Run `thy secret read <path to any secret>` to verify secret access.
 
 The idea behind GCE Metadata authentication is to enable a GCE instance to gain access to DevOps Secrets Vault.
 
-In this example we assume you create a Linux Google Compute Instance and have the Google Compute Engine API enabled.
+In this example we assume you have created a Linux Google Compute Instance and have the Google Compute Engine API enabled.
 
 ![](./images/spacer.png)
 
@@ -283,7 +283,7 @@ It is further assumed that the **Compute Engine default service account** is use
 
 ![](./images/spacer.png)
 
-To find the **Compute Engine default service account** email, from the GCP Console Home, hover **IAM** and then click **Service account**
+To find the **Compute Engine default service account** email, from the GCP Console Home, hover **IAM** and then click **Service Accounts**
 
 The name will say "Compute Engine default service account".  Copy and store the email for later.
 
@@ -311,7 +311,7 @@ Create a file named 'auth-gcp.txt' in the following format and substituting your
 
 Run `thy config auth-provider create --data @auth-gcp.txt` to implement the Authentication Provider.
 
-Checking the config file, `thy config read -e yaml` we see the Authencation Provider established with the name *gcloud-gce* and typ *gcp*
+Checking the config file, `thy config read -e yaml` we see the Authentication Provider established with the name *gcloud-gce* and typ *gcp*
 
 ```yaml 
 permissionDocument:
@@ -368,7 +368,7 @@ After creating the User, modify the config to give that User access to the defau
 thy config edit
 ```
 
-Add *gce-test* as a User to the **Default Admin Policy**. Third party accounts must be prefixed with the provider name; in this case, the fully qualified username would be *glcoud-gce:gce-test*.
+Add *gcloud:gce-test* as a User to the **Default Admin Policy**. Third party accounts must be prefixed with the provider name; in this case, the fully qualified username would be *glcoud-gce:gce-test*.
 
 (Only the Admin policy is shown from the config file)
 
