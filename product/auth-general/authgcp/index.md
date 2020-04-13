@@ -10,7 +10,7 @@ DevOps Secrets Vault provides two ways to authenticate using GCP.  One is throug
 
 To setup GCP authentication using service accounts in DSV, a GCP service account must be provided that DSV can use as the authentication provider.  This service account must be assigned to the project you are working in, have the role **Service Account Key Admin** so that it can issue and manage service account tokens, and a key must be generated.
 
-These steps can be done programatically, but we will use the GCP Console.
+These steps can be done programmatically, but we will use the GCP Console.
 
 ### GCP Service Account Setup
 
@@ -25,6 +25,13 @@ In the GCP Console Home page, go to your project, hover **IAM & Admin**, and the
 At the top, click **CREATE SERVICE ACCOUNT**.  
 
 For the first step, enter an account name.  We will use `dsv-svc` in this example.  Click **CREATE**.
+
+![](./images/spacer.png)
+
+![](./images/createsvcacct.png)
+
+![](./images/spacer.png)
+
 
 In the second step, click the dropdown arrow in the **Select a role** box, then type `service account key admin` in the filter and select **Service Account Key Admin**.  Then click **Continue**.
 
