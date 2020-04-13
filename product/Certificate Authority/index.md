@@ -25,14 +25,14 @@ The command to generate a self-signed root certificate and private key is `thy p
 | email                      | Optional|
 | organization               | Optional|
 
-This command generates a root certificate named *foobar.com* and corresponding private key for signing leaf certificates with the common name *foo.org* and/or *bar.org*.  They are saved in the secret path, `/ca/myroot`, that is referenced when a leaf certificate is generated and/or signed.
+This command generates a root certificate named *foobar.com* and corresponding private key for signing leaf certificates with the common name *foo.org* and/or *bar.org*.  They are saved in the secret path, `ca/myroot`, that is referenced when a leaf certificate is generated and/or signed.
 
 ```bash 
-thy pki generate-root --rootcapath /ca/myroot --domains foo.org,bar.org --common-name foobar.com --organization FooBar,Inc --country US --state IA --locality Boone --maxttl 1000
+thy pki generate-root --rootcapath ca/myroot --domains foo.org,bar.org --common-name foobar.com --organization FooBar,Inc --country US --state IA --locality Boone --maxttl 1000
 ```
 The output from the above command only shows the certificate and is base64 encoded.
 
-To retrive the root certificate and private key, run `thy secret read --path /ca/myroot`
+To retrive the root certificate and private key, run `thy secret read --path ca/myroot`
 
 ```json
 {
@@ -129,10 +129,10 @@ q10bc+NezxCPQd+dBNBgFbcWpWvYPDfte2u6G94G8OqiOXczwu7Z3iI6puukV4Uy
 -----END RSA PRIVATE KEY-----
 
 ```
-This command saves this signing certificate and key at the secret path `/ca/registeredroot` and enables it to sign leaf certs for *foo.com* and/or *bar.com* domains (common name).
+This command saves this signing certificate and key at the secret path `ca/registeredroot` and enables it to sign leaf certs for *foo.com* and/or *bar.com* domains (common name).
 
 ```bash
-thy pki register --certpath @cert.pem --privkeypath @key.pem --rootcapath /ca/registeredroot --domains foo.com,bar.com --maxttl 900
+thy pki register --certpath @cert.pem --privkeypath @key.pem --rootcapath ca/registeredroot --domains foo.com,bar.com --maxttl 900
 ```
 
 ## Generate and Sign a Leaf Certificate
@@ -152,9 +152,9 @@ The command to generate a leaf certificate and private key is ```thy pki leaf```
 | organization               | Optional.|
 
 
-For this example, we will request a leaf certificate for *bar.com* and use the imported signing certificate above stored at `/ca/registeredroot`
+For this example, we will request a leaf certificate for *bar.com* and use the imported signing certificate above stored at `ca/registeredroot`
 
-`thy pki leaf --rootcapath /ca/registeredroot --common-name bar.com --organization FooBar, Inc --country US --state CA --locality 'San Francisco' --ttl 24`
+`thy pki leaf --rootcapath ca/registeredroot --common-name bar.com --organization FooBar, Inc --country US --state CA --locality 'San Francisco' --ttl 24`
 
 
 A signed certificate and private key is returned in base64 encoding
@@ -200,7 +200,7 @@ wmq9DFjzRXDVjAMLb2fsbBBpQ7/aT30pJWr9jAX0/FH1Ymg2aIK89w==
 -----END CERTIFICATE REQUEST-----
 ```
 
-`thy pki sign --rootcapath /ca/myroot --csrpath @internalSite.csr --ttl 24`
+`thy pki sign --rootcapath ca/myroot --csrpath @internalSite.csr --ttl 24`
 
 The signed certificate comes back in base64 encoding
 
