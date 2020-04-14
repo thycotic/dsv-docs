@@ -17,8 +17,9 @@ DevOps Secrets Vault is deployed as an API-as-a Service.  Organizations can sign
 * Local caching (with the CLI)
 * Sandbox tenant available for testing before deployment to production
 * Cloud authentication
-    * AWS
-    * Azure
+    * Amazon Web Services (AWS)
+    * Microsoft Azure
+    * Google Cloud Platform (GCP)
 * SDK support
     * Java
     * Go
