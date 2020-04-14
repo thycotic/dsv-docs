@@ -21,11 +21,11 @@ The base Secret holds the credentials required for DSV to perform API calls to A
 
 | Attribute                 | Description                                                         |
 | --------------            | ------------------------------                                      |
-| subscription_id              | The subscription ID for the Azure Active Directory.   |
-| tenant_id                    | The tenant ID for Azure Active Directory.                  |
-| client_id                    |  The OAuth2 client ID to connect to Azure. Azure might list it as Application (client) ID |
-| client_secret                |  The OAuth2 client secret to connect to Azure.
-| environment                 |  The Azure environment. If not specified, DSV will use Azure Public Cloud. |
+| subscription_id              | Required - The subscription ID holding the resources you wish to access using Azure Active Directory.   |
+| tenant_id                    | Required - The tenant ID for Azure Active Directory. Azure lists it in places as "Directory (tenant) ID"                  |
+| client_id                    |  Required - The OAuth2 client ID to connect to Azure. Azure lists it in places as "Application (client) ID" |
+| client_secret                |  Required - The OAuth2 client secret to connect to Azure.
+| environment                 |  Optional - The Azure environment. If not specified, DSV will use Azure Public Cloud. |
 
 ![](./images/spacer.png)
 
@@ -62,10 +62,10 @@ Create a dynamic Secret that points to the base Secret via its attributes. The d
 
 | Attribute                 | Description                                                         |
 | --------------            | ------------------------------                                      |
-| roleName                  | Optional for informational purposes - Azure role name to be assigned to the existing service principal.  Does not change existing principal's role    |
-| appId                     | Application (client) ID for an existing service principal                   |
-| appObjectId               | Application Object ID for an existing service principal             |
-| ttl                       | Optional time to live in seconds of the generated token. If none is specified it will default to 900 |
+| roleName                  | Optional- Azure role name to be assigned to the existing service principal.  Does not change existing principal's role    |
+| appId                     | Required - Application (client) ID for an existing service principal                   |
+| appObjectId               | Required - Application Object ID for an existing service principal             |
+| ttl                       | Optional - Time to live in seconds of the generated token. If none is specified it will default to 900 |
 
 ![](./images/spacer.png)
 
@@ -138,10 +138,10 @@ Returns a result like:
 
 | Attribute          | Description                                                         |
 | --------------         | ------------------------------                               | 
-| roleName                  | Optional for informational purposes - Azure role name to be assigned to the temporary service principal.  DSV uses role ID to assign.      
-| roleId                    |  Azure role id to be assigned to the temporary service principal
-| scope                     |  Azure role name to be assigned to the temporary service principal
-| ttl                       | Optional time to live in seconds of the generated token. If none is specified it will default to 900. |
+| roleName                  | Optional - If no "roleID" is assigned, DSV will try to look-up the built-in Azure role by this name.      
+| roleId                    | Optional - Azure role id to be assigned to the temporary service principal.  If not defined, then DSV will attempt to look up the Azure built-in role by "roleName".   However, role ID takes precedence.  One of roleName or roleID required.
+| scope                     | Required - Azure resource group to be assigned to the temporary service principal
+| ttl                       | Optional - Time to live in seconds of the generated token. If none is specified it will default to 900. |
 
 >Note:  Azure built-in role names and IDs can be found [here](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles)
 

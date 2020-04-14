@@ -148,6 +148,7 @@ Please enter auth type:
        (3) Thycotic One (federated)
        (4) AWS IAM (federated)
        (5) Azure (federated)
+       (6) GCP (federated)
 ```
 
 Read an existing Secret to verify you can authenticate and access data.
@@ -220,6 +221,7 @@ Please enter auth type:
        (3) Thycotic One (federated)
        (4) AWS IAM (federated)
        (5) Azure (federated)
+       (6) GCP (federated)
 ```
 
 Read an existing Secret to verify you are able to authenticate and access data.

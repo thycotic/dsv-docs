@@ -43,6 +43,7 @@ Besides ThycoticOne, DevOps Secrets Vault works with third party authentication 
 
 **Azure MSI**: DSV uses the assigned Azure Managed Service Identity (MSI).  See [Authentication: Azure](./authazure/index.md)
 
+**GCP Service Accounts**: DSV uses GCP's service accounts to enable secrets access to just about anything that can be assigned a service account.  Google Compute Engines (GCE) may also be assigned service accounts and authenticated through GCE metadata.  See [Authentication: Azure](./authgcp/index.md)
 
 ![](./images/spacer.png)
 
