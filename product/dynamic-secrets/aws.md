@@ -269,7 +269,7 @@ Create or update the attributes json file named `secret_attributes.json substitu
 	"ttl": 1200
 }
 ```
-Now create the dynamic secret in the CLI using the josn above.
+Now create the dynamic secret in the CLI using the json above.
 ```BASH
 thy secret create --path dynamic/aws/assume-api --attributes @secret_attributes.json
 ```
