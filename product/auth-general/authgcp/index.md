@@ -698,4 +698,4 @@ Copy the EXTERNAL-IP for my-app and paste in your browser. You should a get DSV 
 
 ![](./images/gckdsvtoken.png)
 
-At this point you are successfully logged into DSV from GKE.  If you parse the DSV token [here](jwt.io) you should see the username ```gcloud-gce:dsv-gce``` to comfirm
+At this point you are successfully logged into DSV from GKE.  If you parse the DSV token [jwt.io website](https://jwt.io/) you should see the username ```gcloud-gce:dsv-gce``` to comfirm
