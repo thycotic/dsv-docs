@@ -1,4 +1,4 @@
-﻿[title]: # (Authentication: AWS)
+﻿[title]: # (Authentication: OIDC)
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (5700)
 
