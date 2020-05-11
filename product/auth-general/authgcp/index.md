@@ -544,6 +544,8 @@ func hello(w http.ResponseWriter, r *http.Request) {
 
 now let us create docker image and push to GCP
 
+Note: make sure your service account has ``storage.objectViewer`` role to pull the image from GCP registry.
+
 ```bash
 chmod +x main.go
 cat > Dockerfile
@@ -562,7 +564,7 @@ CMD ["./hello-app"]
 ```bash
 chmod +x Dockerfile
 docker build -t gcr.io/${PROJECT_ID}/hello-app:v1 .   
-docker push gcr.io/${PROJECT_ID}/hello-app:v4
+docker push gcr.io/${PROJECT_ID}/hello-app:v1
 ```
 The docker image is in GCP registry , let us create our kubernetes deployment 
 
@@ -604,6 +606,10 @@ spec:
 ```bash
   chmod +x  k8.yml
   kubectl apply -f k8.yml
+  
+  #Make sure the pod is in running status
+  kubectl get pod  
+
 
   kubectl expose deployment my-app --type=LoadBalancer --port 80 --target-port 8080
   kubectl get service
