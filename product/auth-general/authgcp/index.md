@@ -556,18 +556,19 @@ func hello(w http.ResponseWriter, r *http.Request) {
 }
 
 ```
-Use <cntl-c> to escape out
+Use <cntl-c> to escape out.  Then give yourself executable privileges.
 
 ```bash
 chmod +x main.go
 ```
 
-Now create the docker image and push to GCP
+Now create the docker image.
 
 ```bash
-
 cat > Dockerfile
 ```
+Copy the commands below in.  
+
 ```dockerfile
 FROM golang:1.13-alpine
 ADD . /go/src/hello-app
@@ -578,19 +579,22 @@ COPY --from=0 /go/bin/hello-app .
 ENV PORT 8080
 CMD ["./hello-app"]
 ```
-
+Use <cntl-c> to escape out.  Then give yourself executable privileges.
 
 ```bash
 chmod +x Dockerfile
+```
+Run these commands to build and push the app to GKE.  Substitute your `project ID` in.
+
 docker build -t gcr.io/{PROJECT_ID}/hello-app:v1 .   
 docker push gcr.io/{PROJECT_ID}/hello-app:v1
 ```
-The docker image is in GCP registry , let us create our kubernetes deployment 
+The docker image is in GCP registry, so now create the kubernetes deployment 
 
 ```bash
 cat > k8.yml
 ```
-change your `project id` and paste the following 
+Substitute your `project id` and paste the following:
 
 ```yaml
 apiVersion: apps/v1
@@ -621,28 +625,39 @@ spec:
           hostPath:
             path: /etc/ssl/certs
 ```
+Use <cntl-c> to escape out.  Then give yourself executable privileges.
 
 ```bash
-  chmod +x  k8.yml
-  kubectl apply -f k8.yml
-  
-  #Make sure the pod is in running status
-  kubectl get pod  
-
-
-  kubectl expose deployment my-app --type=LoadBalancer --port 80 --target-port 8080
-  kubectl get service
+chmod +x  k8.yml
 ```
-you should see 
+And deploy:
+
+```bash
+kubectl apply -f k8.yml
+```
+Make sure the pod is in running status
+```bash
+kubectl get pod  
+```
+
+Now expose the app to the internet:
+
+```bash
+kubectl expose deployment my-app --type=LoadBalancer --port 80 --target-port 8080
+kubectl get service
+```
+You should see 
 
 ![](./images/k8servicepending.png)
 
-retry `kubectl get service` until you see ip address in EXTERNAL-IP
+It will take a while for the <pending> to turn to an IP address
+
+Retry `kubectl get service` until you see IP address in EXTERNAL-IP
 
 ![](./images/k8exteranlip.png)
 
-copy EXTERNAL-IP and paste in your browser,  you get  DSV token 
+Copy the EXTERNAL-IP for my-app and paste in your browser. You should get DSV token 
 
 ![](./images/gckdsvtoken.png)
 
-at this point you are successfully  login to DSV from GKE 
+At this point you are successfully logged into DSV from GKE 
