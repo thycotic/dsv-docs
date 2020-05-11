@@ -408,3 +408,222 @@ Run `thy auth` to verify authentication.  A token will be displayed.
 
 Run `thy secret read <path to any secret>` to verify secret access. 
 
+### GKE Authentication
+Let us deploy simple app in GKE that consumes dsv APIS. 
+Once you create and configure your service account in  dsv like the above steps, follow the following steps to deploy  your app and start using DSV from  GKE
+###Steps 
+
+Create your node pool  with your service account from  GCP console 
+
+![](./images/gkenodepool.png)
+
+Or you can use bash
+
+ ```gcloud container node-pools create  dsv-test-pool --service-account=youraccount@prjectid.iam.gserviceaccount.com --cluster=cluster-1 --zone us-central1-c```
+
+once node created, let us create and deploy quick go based hell app in this cluster node  
+
+Open terminal and follow the following steps 
+```bash
+mkdir hello-app
+cd hello-app
+cat >  main.go
+```
+Change the `tenant_url` to your test tenant  url like(https://tenant.domain.com) then copy and paste following code  
+
+```go
+
+package main
+
+import (
+	"bytes"
+	"encoding/json"
+	"fmt"
+	"io/ioutil"
+	"log"
+	"net/http"
+	"os"
+)
+
+func main() {
+	mux := http.NewServeMux()
+	mux.HandleFunc("/", hello)
+
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+
+	log.Printf("Server listening on port %s", port)
+	log.Fatal(http.ListenAndServe(":"+port, mux))
+}
+
+func hello(w http.ResponseWriter, r *http.Request) {
+	log.Printf("Serving request: %s", r.URL.Path)
+
+	fmt.Println("-----------computeMetadata-----------")
+
+	client := &http.Client{}
+	req, err := http.NewRequest("GET", "http://metadata.google.internal/computeMetadata/v1/project/project-id", nil)
+	if err != nil{
+		fmt.Fprintf(w, "Error creating Metadata Request: %s\n", err.Error())
+		return
+	}
+	req.Header.Add("Metadata-Flavor", `Google`)
+	resp, err := client.Do(req)
+	if err != nil{
+		fmt.Fprintf(w, "Error creating Metadata : %s\n", err.Error())
+		return
+	}
+
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil{
+		fmt.Fprintf(w, "Error parsing body computeMetadata: %s\n",  err.Error())
+		return
+	} else{
+		fmt.Fprintf(w, "Response computeMetadata: %s\n", string(body))
+	}
+
+
+
+	fmt.Println("-----------computeMetadata-service-accounts-----------")
+
+	tenant_url := "your tenant url"
+	client2 := &http.Client{
+	}
+	req2, err := http.NewRequest("GET", "http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/identity", nil)
+	if err != nil{
+		fmt.Fprintf(w, "Error creating service-accounts Metadata Request: %s\n", err.Error())
+		return
+	}
+	req2.Header.Add("Metadata-Flavor", `Google`)
+	q := req2.URL.Query()
+	q.Add("audience", tenant_url)
+	q.Add("format", "full")
+	req2.URL.RawQuery = q.Encode()
+	resp2, err := client2.Do(req2)
+	if err != nil{
+		fmt.Fprintf(w, "Error creating service-accounts Metadata : %s\n", err.Error())
+		return
+	}
+
+	body2, err := ioutil.ReadAll(resp2.Body)
+	if err != nil{
+		fmt.Fprintf(w, "Error parsing body service-accounts computeMetadata: %s\n",  err.Error())
+		return
+	} else{
+		fmt.Fprintf(w, "Response service-accounts computeMetadata: %s\n", string(body2))
+	}
+
+
+	fmt.Println("-----------DSV-----------")
+
+	reqBody, _ := json.Marshal(map[string]string{
+		"grant_type" : "gcp",
+		"jwt" : string(body2),
+	})
+
+	dsvResp, err := http.Post(tenant_url+"/v1/token","application/json", bytes.NewBuffer(reqBody))
+	if err != nil || dsvResp == nil{
+		if err!= nil {
+			fmt.Fprintf(w, "Error creating dsv Request: %s\n", err.Error())
+		}
+		return
+	}
+
+	dsvBody, err := ioutil.ReadAll(dsvResp.Body)
+	if err != nil{
+		fmt.Fprintf(w, "Error parsing body dsv: %s\n",  err.Error())
+	} else{
+		fmt.Fprintf(w, "Response from DSV: %s\n", string(dsvBody))
+	}
+}
+
+```
+
+
+now let us create docker image and push to GCP
+
+Note: make sure your service account has ``storage.objectViewer`` role to pull the image from GCP registry.
+
+```bash
+chmod +x main.go
+cat > Dockerfile
+```
+```dockerfile
+FROM golang:1.13-alpine
+ADD . /go/src/hello-app
+RUN go install hello-app
+
+FROM alpine:latest
+COPY --from=0 /go/bin/hello-app .
+ENV PORT 8080
+CMD ["./hello-app"]
+```
+
+```bash
+chmod +x Dockerfile
+docker build -t gcr.io/${PROJECT_ID}/hello-app:v1 .   
+docker push gcr.io/${PROJECT_ID}/hello-app:v1
+```
+The docker image is in GCP registry , let us create our kubernetes deployment 
+
+```bash
+cat > k8.yml
+```
+change your `project id` and paste the following 
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+  labels:
+    app: my-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      name: my-app
+      labels:
+        app: my-app
+    spec:
+      containers:
+        - name: my-app
+          image: gcr.io/{YOUR_PROJECT_ID}/hello-app:v1
+          volumeMounts:
+            - name: certs
+              mountPath: /etc/ssl/certs
+      volumes:
+        - name: certs
+          hostPath:
+            path: /etc/ssl/certs
+```
+
+```bash
+  chmod +x  k8.yml
+  kubectl apply -f k8.yml
+  
+  #Make sure the pod is in running status
+  kubectl get pod  
+
+
+  kubectl expose deployment my-app --type=LoadBalancer --port 80 --target-port 8080
+  kubectl get service
+```
+you should see 
+
+![](./images/k8servicepending.png)
+
+retry `kubectl get service` until you see ip address in EXTERNAL-IP
+
+![](./images/k8exteranlip.png)
+
+copy EXTERNAL-IP and paste in your browser,  you get  DSV token 
+
+![](./images/gckdsvtoken.png)
+
+at this point you are successfully  login to DSV from GKE 
