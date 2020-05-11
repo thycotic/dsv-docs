@@ -277,6 +277,8 @@ In this example we assume you have created a Linux Google Compute Instance and h
 
 It is further assumed that the **Compute Engine default service account** is used.  However, you can assign a different service account to the Compute instance if desired.
 
+> NOTE: Using the GCE default service account is generally not best practices because it is defaulted to every GCE that is created, violating the idea of least privileges. This is for illustration purposes. 
+
 ![](./images/spacer.png)
 
 ![](./images/defaultsvc.png)
@@ -401,6 +403,7 @@ Please enter auth type:
        (4) AWS IAM (federated)
        (5) Azure (federated)       
        (6) GCP (federated)
+	   (7) OIDC (Federated)
        
 ```
 
@@ -408,28 +411,41 @@ Run `thy auth` to verify authentication.  A token will be displayed.
 
 Run `thy secret read <path to any secret>` to verify secret access. 
 
-### GKE Authentication
-Let us deploy simple app in GKE that consumes dsv APIS. 
-Once you create and configure your service account in  dsv like the above steps, follow the following steps to deploy  your app and start using DSV from  GKE
-###Steps 
+## Googke Kuberntes Engine (GKE) Authentication
 
-Create your node pool  with your service account from  GCP console 
+It follows that if you can have a GCE (aka a virtual server) authenticate to DSV, that there would be a similar way to do that with a Google Kubenetes Engine (GKE) node.  
 
-![](./images/gkenodepool.png)
+Here is an example where we deploy simple app in GKE that is able to authenticate to DSV.
 
-Or you can use bash
+In the GCE example above, we used the **Compute Engine default service account**. Here we suggest you create a service account with at least the ``storage.objectViewer`` role for the project which will enable the ability to pull an image from GCP registry.  In this example, we created a service account named ```dsv-gce```
 
- ```gcloud container node-pools create  dsv-test-pool --service-account=youraccount@prjectid.iam.gserviceaccount.com --cluster=cluster-1 --zone us-central1-c```
+From the **GCP Home** page, in the left menu, hover **Kubernetes Engine** and select **Clusters**.  Then **Create Cluster**.  If this is the first one, then GCP will enable the GKE API for you. 
 
-once node created, let us create and deploy quick go based hell app in this cluster node  
+When the form comes up, the default values can be used with the exception of the service account.  To change this, in the left nav, select **default-pool** then **Security** where you will select the service account ```dsv-gce``` just mentioned.
 
-Open terminal and follow the following steps 
+Click **Create**.  It takes a few minutes for the cluster to be built.
+
+![](./images/cluster.png)
+
+
+### Hello-App
+
+Now create and deploy this Go-based hello app in this cluster node.
+
+We will use the built-in GCP Cloud shell to connect since it comes with Docker, Kubectl, and connectivity to GCP all setup. It even has a nice editor for the files we will create. To do this, go to the **Kubernetes Engine** then **Clusters** page.  From the list, there is a **Connect** button that opens a modal pop-up. In the modal, select **Run in Cloud Shell** 
+
+![](./images/cluster.png)
+![](./images/spacer.png)
+
+
+A terminal opens in the browser.  Run the following steps:
+
 ```bash
 mkdir hello-app
 cd hello-app
 cat >  main.go
 ```
-Change the `tenant_url` to your test tenant  url like(https://tenant.domain.com) then copy and paste following code  
+Now you can copy the code below into the terminal, but subsitute the `tenant_url` to your URL, which will look something like ```https://mycompany.secretsvaultcloud.com```
 
 ```go
 
@@ -488,7 +504,7 @@ func hello(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Println("-----------computeMetadata-service-accounts-----------")
 
-	tenant_url := "your tenant url"
+	tenant_url := "{tenant url}"
 	client2 := &http.Client{
 	}
 	req2, err := http.NewRequest("GET", "http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/identity", nil)
@@ -540,14 +556,16 @@ func hello(w http.ResponseWriter, r *http.Request) {
 }
 
 ```
-
-
-now let us create docker image and push to GCP
-
-Note: make sure your service account has ``storage.objectViewer`` role to pull the image from GCP registry.
+Use <cntl-c> to escape out
 
 ```bash
 chmod +x main.go
+```
+
+Now create the docker image and push to GCP
+
+```bash
+
 cat > Dockerfile
 ```
 ```dockerfile
@@ -561,10 +579,11 @@ ENV PORT 8080
 CMD ["./hello-app"]
 ```
 
+
 ```bash
 chmod +x Dockerfile
-docker build -t gcr.io/${PROJECT_ID}/hello-app:v1 .   
-docker push gcr.io/${PROJECT_ID}/hello-app:v1
+docker build -t gcr.io/{PROJECT_ID}/hello-app:v1 .   
+docker push gcr.io/{PROJECT_ID}/hello-app:v1
 ```
 The docker image is in GCP registry , let us create our kubernetes deployment 
 
