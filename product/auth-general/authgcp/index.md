@@ -434,7 +434,7 @@ Now create and deploy this Go-based hello app in this cluster node.
 
 We will use the built-in GCP Cloud shell to connect since it comes with Docker, Kubectl, and connectivity to GCP all setup. It even has a nice editor for the files we will create. To do this, go to the **Kubernetes Engine** then **Clusters** page.  From the list, there is a **Connect** button that opens a modal pop-up. In the modal, select **Run in Cloud Shell** 
 
-![](./images/cluster.png)
+![](./images/cloudshell.png)
 ![](./images/spacer.png)
 
 
