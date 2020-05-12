@@ -277,6 +277,8 @@ In this example we assume you have created a Linux Google Compute Instance and h
 
 It is further assumed that the **Compute Engine default service account** is used.  However, you can assign a different service account to the Compute instance if desired.
 
+> NOTE: Using the GCE default service account is generally not best practices because it is defaulted to every GCE that is created, violating the idea of least privileges. This is for illustration purposes. 
+
 ![](./images/spacer.png)
 
 ![](./images/defaultsvc.png)
@@ -401,6 +403,7 @@ Please enter auth type:
        (4) AWS IAM (federated)
        (5) Azure (federated)       
        (6) GCP (federated)
+	   (7) OIDC (Federated)
        
 ```
 
@@ -408,28 +411,77 @@ Run `thy auth` to verify authentication.  A token will be displayed.
 
 Run `thy secret read <path to any secret>` to verify secret access. 
 
-### GKE Authentication
-Let us deploy simple app in GKE that consumes dsv APIS. 
-Once you create and configure your service account in  dsv like the above steps, follow the following steps to deploy  your app and start using DSV from  GKE
-###Steps 
+## Googke Kuberntes Engine (GKE) Authentication
 
-Create your node pool  with your service account from  GCP console 
+It follows that if you can have a GCE (aka a virtual server) authenticate to DSV, that there would be a similar way to do that with a Google Kubenetes Engine (GKE) node.  
 
-![](./images/gkenodepool.png)
+Here is an example where we deploy simple app in GKE that is able to authenticate to DSV.
 
-Or you can use bash
+In the GCE example above, we used the **Compute Engine default service account**. Here we suggest you create a service account with at least the ``storage.objectViewer`` role for the project which will enable the ability to pull an image from GCP registry.  In this example, we created a service account named ```dsv-gce```
 
- ```gcloud container node-pools create  dsv-test-pool --service-account=youraccount@prjectid.iam.gserviceaccount.com --cluster=cluster-1 --zone us-central1-c```
+### DSV Authentication provider
 
-once node created, let us create and deploy quick go based hell app in this cluster node  
+Using any computer with Admin DSV access, we now want to setup the DSV Authentication Provider
 
-Open terminal and follow the following steps 
+Create a file named 'auth-gcp.txt' in the following format and substituting your GCP <ProjectID>.
+
+```json
+{
+"name": "gcloud-gce",
+"type": "gcp",
+"properties": {
+	  "ProjectId": "myfirstproject-273119"
+	}
+}
+```
+Run `thy config auth-provider create --data @auth-gcp.txt` to implement the Authentication Provider.
+
+### DSV User mapped to the GKE service account
+
+Run `thy user create --username gce-test --provider gcloud-gce --external-id {dsv-gce service account email}` using the default service account email we saved earlier.  You will get a response like this:
+
+```json
+{
+  "created": "2020-04-09T12:59:44Z",
+  "createdBy": "users:thy-one:admin@company.com",
+  "externalId": "dsv-gce@gcp-project-id.iam.gserviceaccount.com",
+  "id": "19709b4e-2a13-4164-a930-81997b568036",
+  "lastModified": "2020-04-09T12:59:44Z",
+  "lastModifiedBy": "users:thy-one:admin@company.com",
+  "provider": "gcloud-gce",
+  "userName": "gce-test",
+  "version": "0"
+}
+```
+### Back to GCP to setup a GKE cluster
+
+From the **GCP Home** page, in the left menu, hover **Kubernetes Engine** and select **Clusters**.  Then **Create Cluster**.  If this is the first one, then GCP will enable the GKE API for you. 
+
+When the form comes up, the default values can be used with the exception of the service account.  To change this, in the left nav, select **default-pool** then **Security** where you will select the service account ```dsv-gce``` just mentioned.
+
+Click **Create**.  It takes a few minutes for the cluster to be built.
+
+![](./images/cluster.png)
+
+
+### Hello-App
+
+Now create and deploy this Go-based hello app in this cluster node.
+
+We will use the built-in GCP Cloud shell to connect since it comes with Docker, Kubectl, and connectivity to GCP all setup. It even has a nice editor for the files we will create. To do this, go to the **Kubernetes Engine** then **Clusters** page.  From the list, there is a **Connect** button that opens a modal pop-up. In the modal, select **Run in Cloud Shell** 
+
+![](./images/cloudshell.png)
+![](./images/spacer.png)
+
+
+A terminal opens in the browser.  Run the following steps:
+
 ```bash
 mkdir hello-app
 cd hello-app
 cat >  main.go
 ```
-Change the `tenant_url` to your test tenant  url like(https://tenant.domain.com) then copy and paste following code  
+Now you can copy the code below into the terminal, but subsitute the `tenant_url` to your URL, which will look something like ```https://mycompany.secretsvaultcloud.com```
 
 ```go
 
@@ -488,7 +540,7 @@ func hello(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Println("-----------computeMetadata-service-accounts-----------")
 
-	tenant_url := "your tenant url"
+	tenant_url := "{tenant url}"
 	client2 := &http.Client{
 	}
 	req2, err := http.NewRequest("GET", "http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/identity", nil)
@@ -540,17 +592,20 @@ func hello(w http.ResponseWriter, r *http.Request) {
 }
 
 ```
-
-
-now let us create docker image and push to GCP
-
-Note: make sure your service account has ``storage.objectViewer`` role to pull the image from GCP registry.
+Use <cntl-c> to escape out.  Then provide executable privileges.
 
 ```bash
 chmod +x main.go
+```
+
+Now create the docker file.
+
+```bash
 cat > Dockerfile
 ```
-```dockerfile
+Copy the commands below in.  
+
+```yaml
 FROM golang:1.13-alpine
 ADD . /go/src/hello-app
 RUN go install hello-app
@@ -560,18 +615,23 @@ COPY --from=0 /go/bin/hello-app .
 ENV PORT 8080
 CMD ["./hello-app"]
 ```
+Use <cntl-c> to escape out.  Then provide executable privileges.
 
 ```bash
 chmod +x Dockerfile
-docker build -t gcr.io/${PROJECT_ID}/hello-app:v1 .   
-docker push gcr.io/${PROJECT_ID}/hello-app:v1
 ```
-The docker image is in GCP registry , let us create our kubernetes deployment 
+Run these commands to build and push the app to GKE.  Substitute your `project ID` in.
+
+```bash
+docker build -t gcr.io/{PROJECT_ID}/hello-app:v1 .   
+docker push gcr.io/{PROJECT_ID}/hello-app:v1
+```
+The docker image is in GCP registry, so now create the kubernetes deployment 
 
 ```bash
 cat > k8.yml
 ```
-change your `project id` and paste the following 
+Substitute your `project id` and paste the following:
 
 ```yaml
 apiVersion: apps/v1
@@ -593,7 +653,7 @@ spec:
     spec:
       containers:
         - name: my-app
-          image: gcr.io/{YOUR_PROJECT_ID}/hello-app:v1
+          image: gcr.io/{PROJECT_ID}/hello-app:v1
           volumeMounts:
             - name: certs
               mountPath: /etc/ssl/certs
@@ -602,28 +662,40 @@ spec:
           hostPath:
             path: /etc/ssl/certs
 ```
+Use <cntl-c> to escape out.  Then provide executable privileges.
 
 ```bash
-  chmod +x  k8.yml
-  kubectl apply -f k8.yml
-  
-  #Make sure the pod is in running status
-  kubectl get pod  
-
-
-  kubectl expose deployment my-app --type=LoadBalancer --port 80 --target-port 8080
-  kubectl get service
+chmod +x  k8.yml
 ```
-you should see 
+And deploy:
+
+```bash
+kubectl apply -f k8.yml
+```
+Make sure the pod is in running status
+
+```bash
+kubectl get pod  
+```
+
+Now expose the app to the internet:
+
+```bash
+kubectl expose deployment my-app --type=LoadBalancer --port 80 --target-port 8080
+kubectl get service
+```
+You should see 
 
 ![](./images/k8servicepending.png)
 
-retry `kubectl get service` until you see ip address in EXTERNAL-IP
+It will take a few minutes for the <pending> to turn to an IP address
+
+Retry `kubectl get service` until you see IP address in EXTERNAL-IP
 
 ![](./images/k8exteranlip.png)
 
-copy EXTERNAL-IP and paste in your browser,  you get  DSV token 
+Copy the EXTERNAL-IP for my-app and paste in your browser. You should a get DSV token 
 
 ![](./images/gckdsvtoken.png)
 
-at this point you are successfully  login to DSV from GKE 
+At this point you are successfully logged into DSV from GKE.  There are two tokens, the first one is the GKE metadata tokne.  The second one is the DSV authentication token.  If you parse the DSV token at the [jwt.io website](https://jwt.io/) you should see the username ```gcloud-gce:gce-test``` to comfirm

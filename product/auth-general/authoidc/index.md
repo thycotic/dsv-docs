@@ -1,4 +1,4 @@
-﻿[title]: # (Authentication: AWS)
+﻿[title]: # (Authentication: OIDC)
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (5700)
 
@@ -44,7 +44,7 @@ The steps are:
 
 This example uses the Google Cloud Identity service, but the process should be similar for other auth providers.
 
-Sign into the [cloud manager portal](portal.thycotic.com) and go to Manage->Teams and click on Organizations for your DSV team.
+Sign into the [cloud manager portal](https://portal.thycotic.com) and go to Manage->Teams and click on Organizations for your DSV team.
 
 Click "Auth Providers" and then click the "New" button to create an external auth provider. Copy the Callback URL field. 
 

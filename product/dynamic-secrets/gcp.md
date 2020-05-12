@@ -55,6 +55,7 @@ thy secret create --path gcp/base/svc-account --data @secret_root.json --attribu
 | scopes                    | Array of GCP OAuth 2.0 [scopes](https://developers.google.com/identity/protocols/oauth2/scopes) for the dynamic token                                                    |
 | providerType              |  `token`                                                            |
 
+![](./images/spacer.png)
 
 Now you need to create a Dynamic Secret, which points to the base Secret via its attributes. The Dynamic Secret doesn't have any data stored in it because data is only populated when you read the Secret.
 
@@ -131,6 +132,11 @@ In this example, rather than generating an OAuth token we will generate a new ke
 
 >To help avoid this ensure that you keep ttl's relatively low for service account keys to ensure they get cleaned up. You can also create multiple service accounts with the same permissions in GCP and then create a base secret for each one to help spread the number of keys across service accounts.
 
+### Create the Base Secret
+
+For this example, we will reuse the base secret from above.  If you haven't done this already, then follow those directions to create the base secret now.
+
+
 ### Create the Dynamic Secret
 
 
@@ -139,8 +145,9 @@ In this example, rather than generating an OAuth token we will generate a new ke
 | providerType              | `serviceKey`                                              |
 | ttl                       | required time to live in seconds of the generated token.  |
 
+![](./images/spacer.png)
 
-Create or update the attributes json file named `secret_attributes.json changing the provider type to `serviceKey`
+Create or update the attributes json file named `secret_attributes.json` changing the provider type to `serviceKey` and replacing the 
 
 
 ```json
@@ -203,7 +210,7 @@ returns a result like:
 }
 ```
 
-Copy the inner JSON of `privateKeyData` into a file and name it svc-account.json. Then using the `gcloud` CLI run `gcloud auth activate-service-account svc-account.json` to test the generated key is valid.
+Copy the inner JSON of `privateKeyData` into a file and name it svc-account.json. Then using the gcloud CLI run `gcloud auth activate-service-account --key-file svc-account.json` to test the generated key is valid.  If so, you will get a reply similar to 'Activated service account credentials for: [service account email]'
 
 After the ttl expires you can check the keys on the service account and they will be removed. Note that there may be some delay between when the ttl expires and when the key is removed from the service account.
 
