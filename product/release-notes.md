@@ -19,20 +19,20 @@ The Command Line Interface (CLI) is locally installed using OS-specific executab
 
 | **Update**             | **Notes**                                  |
 |------------------------|--------------------------------------------|
-|May 2020                |**new feature** Google Cloud Platform (GCP) Dynamic secrets.  DSV can issue ephemeral secrets for GCP service accounts|
-|                        |**new feature** OIDC Support.  Thycotic One can connect to any IDP provider that supports OIDC and in-turn those users can authenticate to DSV.|
-|                        |**improvement** If a base secret has a dynamic secret linked to it, it errors on attempt to delete it.|
-|                        |**improvement** New flag for singing a leaf certificate that includes the singing certificate for the trust chain| 
-|                        |**fixed      ** Groups with 3rd party auth fixed|
-|                        |**fixed      ** Client permission check|
-|                        |**fixed      ** Restore user with 3rd party auth|
-|April 2020              |**new feature** Google Cloud Platform Authentication using service accounts and GCE metadata|
-|                        |**new feature** X.509 Certificate Issuance.  Certificate signing capablilties.
-|                        |**improvement**: Azure dynamic secret role validation  |
-|                        |**improvement**: Azure dynamic secret temporary service principal cleanup. (deletes expired service principals in Azure MSI) |
-|                        |**improvement**: Dynamic secrets easier to edit     |
-|                        |**fixed** CLI encryption key works if store path is in a non-default location.    |
-|                        |**fixed** Client tokens used even if already logged in.     |
+|May 2020                | **new feature**: Google Cloud Platform (GCP) Dynamic secrets.  DSV can issue ephemeral secrets for GCP service accounts|
+|                        | **new feature**: OIDC Support.  Thycotic One can connect to any IDP provider that supports OIDC and in-turn those users can authenticate to DSV.|
+|                        | **improvement**: If a base secret has a dynamic secret linked to it, it errors on attempt to delete it.|
+|                        | **improvement**: New flag for singing a leaf certificate that includes the singing certificate for the trust chain| 
+|                        | **fixed**: Groups with 3rd party auth fixed|
+|                        | **fixed**: Client permission check|
+|                        | **fixed**: Restore user with 3rd party auth|
+|April 2020              | **new feature**: Google Cloud Platform Authentication using service accounts and GCE metadata|
+|                        | **new feature**: X.509 Certificate Issuance.  Certificate signing capablilties.
+|                        | **improvement**: Azure dynamic secret role validation  |
+|                        | **improvement**: Azure dynamic secret temporary service principal cleanup. (deletes expired service principals in Azure MSI) |
+|                        | **improvement**: Dynamic secrets easier to edit     |
+|                        | **fixed**      :CLI encryption key works if store path is in a non-default location.    |
+|                        | **fixed**      :Client tokens used even if already logged in.     |
 |March 2020              | **new feature**: Azure Dynamic Secrets.  DSV can use Azure Service Principals to provide ephermal credentials|
 |                        | **new feature**: (API only) Ability to issue X.509 certificates
 |                        | **improvement**: Ability to retrieve auth settings by version          |
