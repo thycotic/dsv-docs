@@ -6,6 +6,8 @@
 
 Support options depend on license status, with paid licenses having more support channels.
 
+>**Note**: Also see our [Support Services Guide](https://thycotic.my.salesforce.com/sfc/p/#37000000KAUl/a/1G000000TU6g/_z6_M8tD_6.x3JB2LOI8q20vzWkkiLhKbFv0Wec9Fw0) for complete details about our support policy. This page provides a high-level summary of portions of that guide.
+
 ## Free Licenses
 
 If you have a free license, use this document collection to find information about DSV and how to use it.
