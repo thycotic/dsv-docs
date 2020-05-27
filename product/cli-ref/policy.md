@@ -74,7 +74,7 @@ a subject entry could be written as `["users:<bob|alice>"]`. Here, users `bob` a
 `["users": "bob", "users": "alice"]`.
 * Permissions are cumulative.
   * If there is a top level permission for the path secrets:servers:<.\*> that grants a User **write** access, then even if they are only granted **read** access at the resource path secrets:servers:webservers:<.\*>, they will still have write access due to the top level implicit match.
-* An `effect` must be specified and can either be `allow` or `deny`.
+* `effect` can either be `allow` or `deny`. If not specified, it defaults to `allow`
 * An explicit deny trumps an explicit or implicit allow.
 * At least one action must be listed in an array. Actions are explicit. A User assigned **update** and **read** will not automatically have **create** for the resource path.
 * For actions, the wildcard form `<.*>` replaces any other values, since it is an all-inclusive form.  A wildcard could be written as a standard `<.*>` form, but also as `.*` or `*` for convenience. The backend automatically converts it to `<.*>`.
@@ -109,7 +109,7 @@ resources:
 - secrets:servers:us-east-1:<.*>
 ```
 
-The second Policy adds an explicit *deny* with a more specific path to deny access at the more privileged level, as in the following example.
+The second Policy adds an explicit *deny* with a more specific path to deny access at a level lower (*secrets:servers:us-east-1:production*), as in the following example.
 
 ```yaml
 path: secrets:servers:us-east-1
