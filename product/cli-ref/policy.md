@@ -109,7 +109,7 @@ resources:
 - secrets:servers:us-east-1:<.*>
 ```
 
-The second Policy adds an explicit *deny* with a more specific path to deny access at a level lower (*secrets:servers:us-east-1:production*), as in the following example.
+The second Policy adds a specific path at a level lower (*secrets:servers:us-east-1:production*) to explicitly *deny* access to *developer1@thycotic.com*, as in the following example.
 
 ```yaml
 path: secrets:servers:us-east-1
