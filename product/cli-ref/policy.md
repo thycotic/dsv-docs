@@ -63,7 +63,7 @@ The syntax supports wildcards via the <.*> construct.
 | effect             | whether the Policy is allowing or preventing access; valid values are allow and deny                                                                                                                                                                    |
 | id                 | system-generated unique identifier to track changes to a particular Policy                                                                                                                                                                              |
 | resources          | the resource path defining the targets to which the permissions apply; a resource path prefixes the entity type (Secrets, clients, Roles, Users, config, config:auth, config:policies, audit, system:log) to a colon delimited path to the resource.    |
-| subjects           |Users or entities to which the Policy enables authorization; prefixes include Users, Roles, Groups                                                                                                                                                       |
+| subjects           | the Policy provides authorization to these entiries.  Includes Users, Roles, and Groups                                                                                                                                                       |
 
 ![](./images/spacer.png)
 
@@ -95,6 +95,8 @@ a subject entry could be written as `["users:<bob|alice>"]`. Here, users `bob` a
 **Case:** Subjects need access to Secrets for an environment, but that logical environment contains a more restricted area.
 
 **Solution:** Two Policies. The first provides the Subjects (*developer1@thycotic.com|developer2@thycotic.com*) general access to the Secrets resources at the path *secrets:servers:us-east-1:<.*>*.
+
+The direct command to create this policy is `thy policy create --path secrets:servers:us-east-1 --actions <.*> --desc 'Developer Policy' --subjects 'users:<developer1@thycotic.com|developer2@thycotic.com>' --effect allow`  With the trickiest part being to remember the "secrets" prefix on the path.
 
 ```yaml
 path: secrets:servers:us-east-1
