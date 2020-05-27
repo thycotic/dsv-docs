@@ -79,13 +79,12 @@ a subject entry could be written as `["users:<bob|alice>"]`. Here, users `bob` a
 * An `effect` must be specified and can either be `allow` or `deny`.
 * An explicit deny trumps an explicit or implicit allow.
 * At least one action must be listed in an array. Actions are explicit. A User assigned **update** and **read** will not automatically have **create** for the resource path.
-* For actions, the wildcard form `<.*>` replaces any other values, since it is an all-inclusive form.
+* For actions, the wildcard form `<.*>` replaces any other values, since it is an all-inclusive form.  A wildcard could be written as a standard `<.*>` form, but also as `.*` or `*` for convenience. The backend automatically converts it to `<.*>`.
 * Invalid actions are not allowed, unless there is a wildcard element. Valid actions are `share, delete, update, create, read, assign, list`.
 * The **list** action has a special behavior.
   * First, **list** (search) is global—it runs across all items of an entity, not limited to paths and sub-paths.
   * Second, to grant a User an ability to search entities via *list*, use the root of the entity if you want *list* to include other entities and actions within the same Policy. The root entity, for example, is secrets, with no other characters following.
 * At least one subject must be listed in an array. A prefix is required. For example, a valid subject is `"users:bob"`. Valid prefixes are [groups, roles, users].
-* A wildcard could be written as a standard `<.*>` form, but also as `.*` or `*` for convenience. The backend automatically converts it to `<.*>`.
 * Subjects and actions are automatically converted to lower case upon save.
 
 ## Policy Examples
