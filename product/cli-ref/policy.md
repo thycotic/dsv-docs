@@ -95,7 +95,7 @@ a subject entry could be written as `["users:<bob|alice>"]`. Here, users `bob` a
 
 **Solution:** Two Policies. The first provides the Subjects (*developer1@thycotic.com|developer2@thycotic.com*) general access to the Secrets resources at the path *secrets:servers:us-east-1:<.*>*.
 
-The direct command to create this policy is `thy policy create --path secrets:servers:us-east-1 --actions <.*> --desc 'Developer Policy' --subjects 'users:<developer1@thycotic.com|developer2@thycotic.com>' --effect allow`  With the trickiest part being to remember the "secrets" prefix on the path.
+The direct command to create this policy is `thy policy create --path secrets:servers:us-east-1 --actions '<.*>' --desc 'Developer Policy' --subjects 'users:<developer1@thycotic.com|developer2@thycotic.com>' --effect allow`  With the trickiest part being to remember the "secrets" prefix on the path.
 
 ```yaml
 path: secrets:servers:us-east-1
