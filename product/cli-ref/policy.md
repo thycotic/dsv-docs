@@ -51,8 +51,6 @@ A typical Policy looks like this:
 }
 ```
 
-The syntax supports wildcards via the <.*> construct.
-
 ![](./images/spacer.png)
 
 | **Element**        | **Definition**                                                                                                                                                                                                                                          |
