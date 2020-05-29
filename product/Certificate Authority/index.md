@@ -7,7 +7,7 @@ DevOps Secrets Vault provides the ability to generate and sign leaf (end-entity)
 
 All certificates assume **RSA 2048** key-pairs and **SHA-256 Hashing**
 
-A signing certificate is required and it may be generated in DSV or imported from an outside Certificate Authority (CA).  This documentation will often refer to the signing certificate as the "root" certificate.  However, in the case of a signing certificate being imported from an outside CA, best practices would be to use an intermediate certificate as the DSV signing certificate. 
+A signing certificate is required and it may be generated in DSV or imported from an outside Certificate Authority (CA).  This documentation will often refer to the signing certificate as the "root" certificate.  However, in the case of a signing certificate being imported from an outside CA, best practices would be to use an intermediate certificate as the DSV signing certificate.
 
 ## Generate a Signing Certificate
 
@@ -25,10 +25,10 @@ The command to generate a self-signed root certificate and private key is `thy p
 | email                      | Optional|
 | organization               | Optional|
 
-This command generates a root certificate named *foobar.com* and corresponding private key for signing leaf certificates with the common name *foo.org* and/or *bar.org*.  They are saved in the secret path, `ca/myroot`, that is referenced when a leaf certificate is generated and/or signed.
+This command generates a root certificate named *foobar.org* and corresponding private key for signing leaf certificates with the common name *foo.org* and/or *bar.org*.  They are saved in the secret path, `ca/myroot`, that is referenced when a leaf certificate is generated and/or signed.
 
-```bash 
-thy pki generate-root --rootcapath ca/myroot --domains foo.org,bar.org --common-name foobar.com --organization FooBar,Inc --country US --state IA --locality Boone --maxttl 1000
+```bash
+thy pki generate-root --rootcapath ca/myroot --domains foo.org,bar.org --common-name foobar.org --organization FooBar,Inc --country US --state IA --locality Boone --maxttl 1000
 ```
 The output from the above command only shows the certificate and is base64 encoded.
 
@@ -57,7 +57,7 @@ To retrive the root certificate and private key, run `thy secret read --path ca/
 ```
 
 
-## Register (Import) a Signing Certificate 
+## Register (Import) a Signing Certificate
 
 The command to register a signing certificate and private key generated outside of DevOps Secrets Vault is ```thy pki register```
 
@@ -129,10 +129,10 @@ q10bc+NezxCPQd+dBNBgFbcWpWvYPDfte2u6G94G8OqiOXczwu7Z3iI6puukV4Uy
 -----END RSA PRIVATE KEY-----
 
 ```
-This command saves this signing certificate and key at the secret path `ca/registeredroot` and enables it to sign leaf certs for *foo.com* and/or *bar.com* domains (common name).
+This command saves this signing certificate and key at the secret path `ca/myroot` and enables it to sign leaf certs for *foo.org* and/or *bar.org* domains (common name).
 
 ```bash
-thy pki register --certpath @cert.pem --privkeypath @key.pem --rootcapath ca/registeredroot --domains foo.com,bar.com --maxttl 900
+thy pki register --certpath @cert.pem --privkeypath @key.pem --rootcapath ca/myroot --domains foo.org,bar.org --maxttl 900
 ```
 
 ## Generate and Sign a Leaf Certificate
@@ -152,9 +152,9 @@ The command to generate a leaf certificate and private key is ```thy pki leaf```
 | organization               | Optional.|
 
 
-For this example, we will request a leaf certificate for *bar.com* and use the imported signing certificate above stored at `ca/registeredroot`
+For this example, we will request a leaf certificate for *bar.org* and use the imported signing certificate above stored at `ca/myroot`
 
-`thy pki leaf --rootcapath ca/registeredroot --common-name bar.com --organization FooBar, Inc --country US --state CA --locality 'San Francisco' --ttl 24`
+`thy pki leaf --rootcapath ca/myroot --common-name bar.org --organization FooBar, Inc --country US --state CA --locality 'San Francisco' --ttl 24`
 
 
 A signed certificate and private key is returned in base64 encoding
@@ -170,7 +170,7 @@ A signed certificate and private key is returned in base64 encoding
 The command for honoring a certificate signing request is `thy pki sign`
 
 
->NOTE: The common name for the certificate in the CSR must match a domain in the signing certificate's list.   
+>NOTE: The common name for the certificate in the CSR must match a domain in the signing certificate's list.
 
 | Flag                 | Description                                                         |
 | --------------            | ------------------------------                                      |
