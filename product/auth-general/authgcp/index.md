@@ -411,11 +411,11 @@ Run `thy auth` to verify authentication.  A token will be displayed.
 
 Run `thy secret read <path to any secret>` to verify secret access. 
 
-## Googke Kuberntes Engine (GKE) Authentication
+## Google Kubernetes Engine (GKE) Authentication
 
-It follows that if you can have a GCE (aka a virtual server) authenticate to DSV, that there would be a similar way to do that with a Google Kubenetes Engine (GKE) node.  
+It follows that if you can have a GCE (aka a virtual server) authenticate to DSV, that there would be a similar way to do that with a Google Kubernetes Engine (GKE) node.  
 
-Here is an example where we deploy simple app in GKE that is able to authenticate to DSV.
+Here is an example where we deploy a simple app in GKE that is able to authenticate to DSV.
 
 In the GCE example above, we used the **Compute Engine default service account**. Here we suggest you create a service account with at least the ``storage.objectViewer`` role for the project which will enable the ability to pull an image from GCP registry.  In this example, we created a service account named ```dsv-gce```
 
@@ -455,7 +455,7 @@ Run `thy user create --username gce-test --provider gcloud-gce --external-id {ds
 ```
 ### Back to GCP to setup a GKE cluster
 
-From the **GCP Home** page, in the left menu, hover **Kubernetes Engine** and select **Clusters**.  Then **Create Cluster**.  If this is the first one, then GCP will enable the GKE API for you. 
+From the **GCP Home** page, in the left menu, hover over **Kubernetes Engine** and select **Clusters**.  Then **Create Cluster**.  If this is the first one, then GCP will enable the GKE API for you. 
 
 When the form comes up, the default values can be used with the exception of the service account.  To change this, in the left nav, select **default-pool** then **Security** where you will select the service account ```dsv-gce``` just mentioned.
 
@@ -481,7 +481,7 @@ mkdir hello-app
 cd hello-app
 cat >  main.go
 ```
-Now you can copy the code below into the terminal, but subsitute the `tenant_url` to your URL, which will look something like ```https://mycompany.secretsvaultcloud.com```
+Now you can copy the code below into the terminal, but substitute the `tenant_url` to your URL, which will look something like ```https://mycompany.secretsvaultcloud.com```
 
 ```go
 
@@ -698,4 +698,4 @@ Copy the EXTERNAL-IP for my-app and paste in your browser. You should a get DSV 
 
 ![](./images/gckdsvtoken.png)
 
-At this point you are successfully logged into DSV from GKE.  There are two tokens, the first one is the GKE metadata tokne.  The second one is the DSV authentication token.  If you parse the DSV token at the [jwt.io website](https://jwt.io/) you should see the username ```gcloud-gce:gce-test``` to comfirm
+At this point you are successfully logged into DSV from GKE.  There are two tokens, the first one is the GKE metadata token.  The second one is the DSV authentication token.  If you parse the DSV token at the [jwt.io website](https://jwt.io/) you should see the username ```gcloud-gce:gce-test``` to confirm.
