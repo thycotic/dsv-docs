@@ -3,7 +3,7 @@
 [priority]: # (8000)
 
 ###Audits:  
-DSV captures audits of activities and persist them for future use. If the User want to ship their audits to third party, they can configure endpoints and DSV will send to configured endpoints near real time.
+DSV captures audits of activities and persists them for future use. If the User wants to ship their audits to third party, they can configure endpoints and DSV will send to configured endpoints near real time.
 Please see below the supported output format and transport. 
 
 Audit Fields: 
@@ -26,7 +26,7 @@ message |  Additional details | "login succeeded"
 ### Logging Format 
 
 ####Syslog
-Syslog messages must be in RFC 5424-compliant form. DSV will truncated messages over 64KB in length.
+Syslog messages must be in RFC 5424-compliant form. DSV will truncate messages over 64KB in length.
   
 ######Mapping 
 
@@ -56,14 +56,16 @@ Create siem config in CLI and follow the work flow
 ```bash
 thy siem create
 ```
-name:           required    
-siemType:       required, allowed values: syslog   
-host:           required, url   
-port:           required, numeric     
-protocol:       required, allowed values: tcp, udp, http, https, tls      
-authMethod:     required, allowed values: token   
-auth:           required   
-loggingFormat:  required, allowed values: rfc5424   
+| Option | Description |
+| ------:| -----------:|
+name |        required   | 
+siemType |       required, allowed values: syslog   |
+host |         required, url   |
+port |          required, numeric    | 
+protocol  |     required, allowed values: tcp, udp, http, https, tls      |
+authMethod |    required, allowed values: token   
+auth |       required   |
+loggingFormat |  required, allowed values: rfc5424   | 
 
 ######Sample Values 
 
@@ -118,14 +120,16 @@ Create siem config in CLI and follow the work flow
 ```bash
 thy siem create
 ```
-name:           required    
-siemType:       required, allowed values: cef   
-host:           required, url   
-port:           required, numeric     
-protocol:       required, allowed values: tcp, udp, http, https, tls      
-authMethod:     required, allowed values: token   
-auth:           required   
-loggingFormat:  required, allowed values: cef   
+| Option | Description |
+| ------:| -----------:|
+name |        required   | 
+siemType |       required, allowed values: cef   |
+host |         required, url   |
+port |          required, numeric    | 
+protocol  |     required, allowed values: tcp, udp, http, https, tls      |
+authMethod |    required, allowed values: token   
+auth |       required   |
+loggingFormat |  required, allowed values: cef   |
 
 ######Sample Values 
 ```json
@@ -142,7 +146,7 @@ loggingFormat:  required, allowed values: cef
 
 ```
 
-###Json
+###JSON
 DSV will send raw json audit via configure transport 
 
 ######Sample json  output
@@ -156,14 +160,16 @@ Create siem config in CLI and follow the work flow
 ```bash
 thy siem create
 ```
-name:           required    
-siemType:       required, allowed values: json   
-host:           required, url   
-port:           required, numeric     
-protocol:       required, allowed values: tcp, udp, http, https, tls      
-authMethod:     required, allowed values: token   
-auth:           required   
-loggingFormat:  required, allowed values: json   
+| Option | Description |
+| ------:| -----------:|
+name |        required   | 
+siemType |       required, allowed values: json   |
+host |         required, url   |
+port |          required, numeric    | 
+protocol  |     required, allowed values: tcp, udp, http, https, tls      |
+authMethod |    required, allowed values: token   
+auth |       required   |
+loggingFormat |  required, allowed values: json   |
 
 ######Sample Values 
 ```json
@@ -181,7 +187,7 @@ loggingFormat:  required, allowed values: json
 ```
 
 ## Transport Supported:
-#### DSV Support the following  Transport protocol   
+#### DSV Supports the following  Transport protocol   
 Transport-level security (TLS) 1.2 over TCP,
 TCP, UDP, HTTP and HTTPS.
 
