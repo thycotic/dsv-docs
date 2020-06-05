@@ -75,7 +75,7 @@ Select *(2) Client Credential* to authenticate by Client ID and Client Secret au
 
 Select *(3) Thycotic One (federated)* to authenticate using Thycotic's access manager.
 
->NOTE: The person who signed up for DevOps Secrets Vault is the *initial administrator* and is automatically setup using Thycotic One. If this is you, then select this option.  This enables Thycotic you to reset the password if it is ever lost and setup up 2FA. It is up to the customer to then decide if all other users are local or federated through one the available providers.
+>NOTE: The person who signed up for DevOps Secrets Vault is the *initial administrator* and is automatically setup using Thycotic One. If this is you, then select this option.  This enables you to reset the password if it is ever lost and/or setup up 2FA if desired. It is up to the customer to then decide if all other users are local or federated through one the available providers.
 
 Select *(4) AWS IAM (federated)* to authenticate as a trusted Identity Access Management Role or User.
 
