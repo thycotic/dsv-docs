@@ -158,7 +158,7 @@ Sample JSON output
 ```json
 {\"action\":\"POST\",\"created\":\"2020-06-02T17:52:30.841020649Z\",\"id\":\"b40e07d3-6fb9-41e8-9816-356de992b8fa\",\"ipaddress\":\"75.188.210.58\",\"message\":\"login succeeded\",\"path\":\"token\",\"principal\":\"users:user\",\"principalItemId\":\"f18b5bda-51ea-4bfa-b272-80b12e43b676\",\"status\":\"\",\"tenant\":\"tenat\",\"tenantName\":\"tenantName\"}
 ```
-###Configure Syslog 
+###Configure JSON
 
 To start a SIEM configuration workflow, use the command:
  
