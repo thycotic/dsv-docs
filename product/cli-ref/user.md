@@ -65,7 +65,7 @@ The *create* command takes several `--parameters` that spec foundational aspects
 
 ![](./images/spacer.png)
   
-Create a local User with username *_test-admin_* and password *_secret-password*:
+Create a local User with username *test-admin* and password *secret-password*:
 
 ```BASH
 thy user create --username test-admin --password secret-password
