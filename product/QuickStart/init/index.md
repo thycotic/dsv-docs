@@ -14,7 +14,7 @@ DSV CLI initialization presents you with a series of questions and choices. If y
 
 ## "thy init"
 
-Begin setup with the `thy init` command.
+Begin setup with the `thy init` command.  This will start a workflow:
 
 
 
@@ -65,6 +65,8 @@ Please enter auth type:
         (3) Thycotic One (federated)
         (4) AWS IAM (federated)
         (5) Azure (federated)
+        (6) GCP (federated)
+        (7) OIDC (federated)
 ```
 
 Select *(1) Password (local user) (default)* to authenticate by username and password.
@@ -78,6 +80,10 @@ Select *(3) Thycotic One (federated)* to authenticate using Thycotic's access ma
 Select *(4) AWS IAM (federated)* to authenticate as a trusted Identity Access Management Role or User.
 
 Select *(5) Azure (federated)* to authenticate as a trusted Azure Managed Service Identity (MSI).
+
+Select *(6) GCP (federated)* to authenticate as a trusted Google Service Account.
+
+Select *(7) OIDC (federated)* to authenticate through Thycotic One to an external IDP using the OIDC protocol.
 
 Next, the initialization process will prompt about the **cache strategy for Secrets**. The choice here depends on your specific set of concerns around security, network connectivity, performance, and systems availability.
 
