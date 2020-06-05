@@ -20,8 +20,8 @@ The Command Line Interface (CLI) is locally installed using OS-specific executab
 | **Update**             | **Notes**                                  |
 |------------------------|--------------------------------------------|
 |June 2020               | **CLI Version**: 1.10|
-|                        | **improvement**: SIEM connectors.  Support Syslog, CEF, and JSON log formatting on TLS,TCP, UDP, HTTP, and HTTPS transport protocols.|
-|                        | **improvement**: Introduced CLI workflows to PKI, SIEM, Policy, and Auth-provider commands for simplified human navigation.|
+|                        | **new feature**: SIEM connectors.  Support Syslog, CEF, and JSON log formatting on TLS,TCP, UDP, HTTP, and HTTPS transport protocols.|
+|                        | **new feature**: Introduced CLI workflows to PKI, SIEM, Policy, and Auth-provider commands for simplified human navigation.|
 |                        | **improvement**: Additional Secrets search capabilities. Enabled search for Secrets on any attribute, path, or description.|
 |                        | **improvement**: Provide the ability to add a CRL URL to a signing certificate.  |
 |                        | **fixed**: CLI version check fixed regardless of the update cache|
