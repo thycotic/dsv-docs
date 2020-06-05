@@ -34,7 +34,7 @@ Specify the tenant name Thycotic provided when setting up your organization's ac
         (3) secretsvaultcloud.com.au
 ```
 
-Your domain is based on the server location that was chosen during provisioning: United States, European Union, or Australia, respectively.
+Your domain is based on the server location that was chosen during provisioning: United States, European Union, or Australia/Asia, respectively.
 
 >NOTE: In all of these selections with numbered choices, the first choice is marked *(default)* because that is the selection if you simply hit "enter" without entering a number.
 
@@ -75,7 +75,7 @@ Select *(2) Client Credential* to authenticate by Client ID and Client Secret au
 
 Select *(3) Thycotic One (federated)* to authenticate using Thycotic's access manager.
 
->NOTE: The person who signed up for DevOps Secrets Vault is the *initial administrator* and is automatically setup using Thycotic One. This enables Thycotic to reset the password if it is ever lost. It is up to the customer to then decide if all other users are local or federated through one the available providers.
+>NOTE: The person who signed up for DevOps Secrets Vault is the *initial administrator* and is automatically setup using Thycotic One. If this is you, then select this option.  This enables Thycotic you to reset the password if it is ever lost and setup up 2FA. It is up to the customer to then decide if all other users are local or federated through one the available providers.
 
 Select *(4) AWS IAM (federated)* to authenticate as a trusted Identity Access Management Role or User.
 
@@ -103,7 +103,7 @@ Select *(2) Server then cache* to make an API call every time, but if not access
 
 Select *(3) Cache then server* to use the cached Secret unless it has expired, in which case an API call is made.
 
-Select *(4) Cache then server, but...* to use ached Secrets if they have not expired. If the cached secret has expired, an API call is made for the Secret.  If the API call fails, then use the expired cached Secret.
+Select *(4) Cache then server, but...* If the cached Secret has expired, an API call is made for the Secret.  If the API call fails, then use the expired cached Secret.
 
 Finally, you will be prompted for your credentials and authentication provider.  
 * For the initial administrator, they will be the username and password that you setup in Thycotic One during the sign-up, with the username often your email address.  The authentication provider will be the default, **thy-one**
