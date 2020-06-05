@@ -26,14 +26,16 @@ The Command Line Interface (CLI) is locally installed using OS-specific executab
 |                        | **improvement**: Provide the ability to add a CRL URL to a signing certificate.  |
 |                        | **fixed**: CLI version check fixed regardless of the update cache|
 |                        | **fixed**: Group membership evaluted for policy updates. |
-|May 2020                | **new feature**: Google Cloud Platform (GCP) Dynamic secrets.  DSV can issue ephemeral secrets for GCP service accounts|
+|May 2020                | **CLI Version**: 1.9|
+|                        | **new feature**: Google Cloud Platform (GCP) Dynamic secrets.  DSV can issue ephemeral secrets for GCP service accounts|
 |                        | **new feature**: OIDC Support.  Thycotic One can connect to any IDP provider that supports OIDC and in-turn those users can authenticate to DSV.|
 |                        | **improvement**: If a base secret has a dynamic secret linked to it, it errors on attempt to delete it.|
 |                        | **improvement**: New flag for singing a leaf certificate that includes the singing certificate for the trust chain| 
 |                        | **fixed**: Groups with 3rd party auth fixed|
 |                        | **fixed**: Client permission check|
 |                        | **fixed**: Restore user with 3rd party auth|
-|April 2020              | **new feature**: Google Cloud Platform Authentication using service accounts and GCE metadata|
+|April 2020              | **CLI Version**: 1.8|
+|                        | **new feature**: Google Cloud Platform Authentication using service accounts and GCE metadata|
 |                        | **new feature**: X.509 Certificate Issuance.  Certificate signing capablilties.
 |                        | **improvement**: Azure dynamic secret role validation  |
 |                        | **improvement**: Azure dynamic secret temporary service principal cleanup. (deletes expired service principals in Azure MSI) |
