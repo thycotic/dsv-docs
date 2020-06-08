@@ -37,8 +37,6 @@ For all OIDC authentication providers you will need to get their provider URL, c
 
 To get your callback URL:
 
-![](./images/spacer.png)
-
 1. Sign into the [cloud manager portal](https://portal.thycotic.com) and go to Manage->Teams and click on Organizations for your team.
 2. Click on **Auth Providers** and then click the **New** button. This will open a dialog up. 
 3. Give it a name and copy the Callback URL provided. Do not save or cancel, you will be coming back to fill out the rest of the fields.
