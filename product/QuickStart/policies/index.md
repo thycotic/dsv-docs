@@ -73,6 +73,6 @@ permissionDocument:
 version: "0"
 ```
 
-Now local@company.com has access to everything at `servers:us-east` and below, including `servers:us-east:production`.  Howerver, thycoticoneuser@company.com only has access to the secrets at `servers:us-east` and not at `servers:us-east:production`
+Now local@company.com has access to everything at `servers:us-east` and below, including `servers:us-east:production`.  However, thycoticoneuser@company.com only has access to the secrets at `servers:us-east` and not at `servers:us-east:production`
 
 This is the end of the quick-start guide, but for more on policies see [CLI Reference/Policy](../cli-ref/policy.md) in this documentation.
