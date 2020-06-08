@@ -6,11 +6,9 @@
 
 ### Configure Auth Providers
 
-This example uses the Google Cloud Identity service, but the process should be similar for other auth providers.
+This example uses the Google Cloud Identity service.
 
-Sign into the [cloud manager portal](https://portal.thycotic.com) and go to Manage->Teams and click on Organizations for your DSV team.
-
-Click "Auth Providers" and then click the "New" button to create an external auth provider. Copy the Callback URL field. 
+Get the callback URL from Thycotic One following the directions at [Authentication:OIDC](./index.md)
 
 1. Go to the [Google Cloud API Console](https://console.cloud.google.com/apis/dashboard) and select a project if needed.
 
