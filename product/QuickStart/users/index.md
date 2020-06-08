@@ -45,4 +45,4 @@ Please enter auth type:
 
 The local user will select *(1)* and enter their username and password.  The Thycotic One user will select *(3)* and enter their email, Thycotic One password, and for the provider name (simply hit <enter> to default to *thy-one*).
 
-At this point, the users are created and able to authenticate to DSV, however, they will not have permission to access anything yet because DSV defaults to *deny all*.  In the next step, the admin will create policies granting permission to these users.
+At this point, the users are created and able to authenticate to DSV (they can comfirm with the command `thy auth` and get a token), however, they will not have permission to access anything yet because DSV defaults to *deny all*.  In the next step, the admin will create policies granting permission to these users.
