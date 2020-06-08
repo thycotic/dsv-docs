@@ -1,4 +1,4 @@
-[title]: # (OIDC: Providers)
+[title]: # (Azure AD Example)
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (5750)
 
