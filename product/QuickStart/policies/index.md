@@ -14,8 +14,8 @@ local@company.com *and* thycoticoneuser@company.com
 
 The admin has to create a policy for the Users to get access to the Secrets.  Here is a sample CLI command:
 
-```bash
-thy policy create --path secrets:servers:us-east --actions '<.*>' --desc 'Developer Policy' --subjects 'users:<local@company.com|thy-one:thycoticoneuser@company.com>' --effect allow
+```
+thy policy create --path secrets:servers:us-east --actions '<.*>' --desc 'Allow Policy' --subjects 'users:<local@company.com|thy-one:thycoticoneuser@company.com>' --effect 'allow'
 ```
 
 Where 
@@ -30,5 +30,28 @@ Where
 
 *effect* is allow
 
-The resulting policy will look like this:
+The resulting policy will look like this if you read it using the command `thy policy read secrets:servers:us-east -e yaml`
+
+```bash
+path: secrets:servers:us-east
+permissionDocument:
+- actions:
+  - <.*>
+  conditions: {}
+  description: Allow Policy
+  effect: allow
+  id: xxxxxxxxxxxxxxxxxxxx
+  meta: null
+  resources:
+  - secrets:servers:us-east:<.*>
+  subjects:
+  - users:<local@company.com|thy-one:thycoticoneuser@company.com>
+version: "0"
+```
+
+This policy will now enable both Users (local@company.com and thycoticoneuser@company.com) to gain full access to all secrets located at the path `servers:us-east` and below.
+
+If we decided that the *thycoticoneuser@company.com* should no longer have access to the secrets at `servers:us-east:production` we can write another policy to deny that access.  The command would look like this: 
+
+`thy policy create --path secrets:servers:us-east:production --actions '<.*>' --desc 'Deny Policy' --subjects 'users:<thy-one:thycoticoneuser@company.com>' --effect 'deny'`
 
