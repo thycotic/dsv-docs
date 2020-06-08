@@ -8,7 +8,7 @@ With the first Secrets created, the next step is to create Users or Roles that w
 
 For this quick-start guide, we will create two users - a local User and a Thycotin One User.  
 
-First, a local DSV User, designated with their email address `local@company.com` (though the email address is not required).   
+First, a local DSV User, designated with their email address `local@company.com`.  For lcoal users, an email address is not required.
 
 ```BASH
 thy user create --username local@company.com --password BadP@ssword
@@ -21,3 +21,6 @@ thy user create --username thyoneuser@company.com --provider thy-one
 ```
 
 The user will receive an email with a link to both confirm their email address and setup a password.
+
+![Thy-One Email](./images/thyoneemail.png)
+
