@@ -32,3 +32,17 @@ The process is here [Initializing the CLI for the first time](./init/index.md)
 
 When they get to the **Please enter auth type:** 
 
+```BASH
+Please enter auth type:
+        (1) Password (local user)(default)
+        (2) Client Credential
+        (3) Thycotic One (federated)
+        (4) AWS IAM (federated)
+        (5) Azure (federated)
+        (6) GCP (federated)
+        (7) OIDC (federated)
+```
+
+The local user will select *(1)* and enter their username and password.  The Thycotic One user will select *(3)* and enter their email, Thycotic One password, and for the provider name (simply hit <enter> to default to *thy-one*).
+
+At this point, the users are created and able to authenticate to DSV, however, they will not have permission to access anything yet because DSV defaults to *deny all*.  In the next step, the admin will create policies granting permission to these users.
