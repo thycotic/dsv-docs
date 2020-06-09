@@ -255,6 +255,7 @@ Please enter auth type:
        (4) AWS IAM (federated)
        (5) Azure (federated)       
        (6) GCP (federated)
+	   (7) OIDC (federated)
        
 
 ```
