@@ -19,14 +19,24 @@ The Command Line Interface (CLI) is locally installed using OS-specific executab
 
 | **Update**             | **Notes**                                  |
 |------------------------|--------------------------------------------|
-|May 2020                | **new feature**: Google Cloud Platform (GCP) Dynamic secrets.  DSV can issue ephemeral secrets for GCP service accounts|
+|June 2020               | **CLI Version**: 1.10|
+|                        | **new feature**: SIEM endpoints.  Support Syslog, CEF, and JSON log formatting on TLS,TCP, UDP, HTTP, and HTTPS transport protocols.|
+|                        | **new feature**: Introduced CLI workflows to PKI, SIEM, Policy, and Auth-provider commands for simplified human navigation.|
+|                        | **improvement**: Additional Secrets search capabilities. Enabled search for Secrets on any attribute, path, or description.|
+|                        | **improvement**: Provide the ability to add a CRL URL to a signing certificate.  |
+|                        | **fixed**: CLI version check fixed regardless of the update cache|
+|                        | **fixed**: Group membership evaluted for policy updates. |
+|                        | **update**: Deprecated "settings" attribute on the Configuration document will be removed next release. All auth provider management should go through the config/auth endpoint |
+|May 2020                | **CLI Version**: 1.9|
+|                        | **new feature**: Google Cloud Platform (GCP) Dynamic secrets.  DSV can issue ephemeral secrets for GCP service accounts|
 |                        | **new feature**: OIDC Support.  Thycotic One can connect to any IDP provider that supports OIDC and in-turn those users can authenticate to DSV.|
 |                        | **improvement**: If a base secret has a dynamic secret linked to it, it errors on attempt to delete it.|
 |                        | **improvement**: New flag for singing a leaf certificate that includes the singing certificate for the trust chain| 
 |                        | **fixed**: Groups with 3rd party auth fixed|
 |                        | **fixed**: Client permission check|
 |                        | **fixed**: Restore user with 3rd party auth|
-|April 2020              | **new feature**: Google Cloud Platform Authentication using service accounts and GCE metadata|
+|April 2020              | **CLI Version**: 1.8|
+|                        | **new feature**: Google Cloud Platform Authentication using service accounts and GCE metadata|
 |                        | **new feature**: X.509 Certificate Issuance.  Certificate signing capablilties.
 |                        | **improvement**: Azure dynamic secret role validation  |
 |                        | **improvement**: Azure dynamic secret temporary service principal cleanup. (deletes expired service principals in Azure MSI) |
@@ -77,12 +87,5 @@ The Command Line Interface (CLI) is locally installed using OS-specific executab
 | July 2019              | first General Availability of the service  |
  
 
-## DSV CLI Executables for Windows, Linux, and macOS: Version History
 
-| **Version** | **Date**   | **Notes**  |
-|-------------|------------|------------|
-| 1.0.1       | 2019.08.15 | **fixed**: issue where the CLI returned an error when the stored refresh token had been invalidated and the current cached access token was expired |
-|             |            | **improved**: when you upload a config document from a file via the *config update* command, the updated config from the Cloud is now saved back to the local file; this ensures the return to the User of any auto-generated IDs for the permission policies and settings |
-|             |            | **fixed**: initialization issues with Windows Credential Manager and Linux Pass storage |
-| 1.0.0       | 2019.07.23 | first General Availability of the service |
 

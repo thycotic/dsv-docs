@@ -150,6 +150,7 @@ Please enter auth type:
        (4) AWS IAM (federated)
        (5) Azure (federated)
        (6) GCP (federated)
+       (7) OIDC (federated)
 ```
 
 DSV will prompt for the specific AWS profile to use if you are authenticating using a non-default AWS profile.

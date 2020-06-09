@@ -37,8 +37,6 @@ The *bustcache* command clears the local cache, if present.
 thy secret bustcache
 ```
 
-Note again here the syntax pattern in which an object of a command precedes the command: *secret* is the object of the command *bustcache*, so that the cache of Secrets will be 'busted' (cleared).
-
 ### Create
 
 Secrets data passes into the *create* command as the value of its `--data` parameter. The parameter accepts JSON entered directly at the command line, or the path to a JSON file.
@@ -69,21 +67,40 @@ thy secret create --path us-east/server02 --data '@../Secret.json'
 
 ### Search
 
-You can search for Secrets by path.
+You can search for Secrets by path or attribute
+
+Some examples
 
 ``` bash
-thy secret search --query us-east/server02
+thy secret search server
+
+thy secret search --query server
+
+thy secret search -q aws:base:secret --search-links
+
+thy secret search --query aws --search-field attributes.type
+
+thy secret search --query 900 --search-field attributes.ttl --search-type number
+
+thy secret search --query production --search-field attributes.stage --search-comparison equal
 ```
 
-Or simply:
+flags
 
-``` bash
-thy secret search us-east/server02
-```
+`--query`, `-q`                Query of secrets to fetch (required)
 
-The `--limit` parameter allows you to set the maximum number of search results that will display per page (cursor).
+`--limit`                      Set the maximum number of search results that will display per page (cursor)
 
-The `--cursor` parameter accepts the element used to get the next page of results.
+`--cursor`                     Accepts the element used to get the next page of results
+
+`--search-comparison`          Specify the operator for advanced field searching, can be 'contains', 'equal', or 'begins_with' Defaults to 'contains' (optional)
+
+`--search-field`               Advanced search on a secret field such as 'attribute.type' or 'description'.  Defaults to 'path'. (optional)
+
+`--search-links`               Find secrets that link to the secret path in the query (optional)
+
+`--search-type`                Specify the value type for advanced field searching, can be 'number' or 'string'. Defaults to 'string' (optional)
+
 
 For a search where there are more results than returned in the first set, the API returns a cursor—a large piece of text. You pass that back to get the next set of results.
 

@@ -9,3 +9,5 @@ In this guide, we cover
 * [Downloading the Command Line Interface (CLI) tool](./obtaincli/index.md)
 * [Initializing the CLI for the first time](./init/index.md)
 * [Creating and retrieving your first secret](./secrets/index.md)
+* [Creating Users](./users/index.md)
+* [Provide access with policies](./policies/index.md)
