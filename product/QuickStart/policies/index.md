@@ -2,7 +2,7 @@
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (2600)
 
-#Set Policy - Provide Users Access to Secrets
+# Set Policy - Provide Users Access to Secrets
 
 Assuming we have two secrets, each located at:
 
