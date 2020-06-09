@@ -26,6 +26,7 @@ The Command Line Interface (CLI) is locally installed using OS-specific executab
 |                        | **improvement**: Provide the ability to add a CRL URL to a signing certificate.  |
 |                        | **fixed**: CLI version check fixed regardless of the update cache|
 |                        | **fixed**: Group membership evaluted for policy updates. |
+|                        | **update**: Deprecated "settings" attribute on the Configuration document will be removed next release. All auth provider management should go through the config/auth endpoint |
 |May 2020                | **CLI Version**: 1.9|
 |                        | **new feature**: Google Cloud Platform (GCP) Dynamic secrets.  DSV can issue ephemeral secrets for GCP service accounts|
 |                        | **new feature**: OIDC Support.  Thycotic One can connect to any IDP provider that supports OIDC and in-turn those users can authenticate to DSV.|
