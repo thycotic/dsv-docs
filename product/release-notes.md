@@ -1,6 +1,6 @@
 ﻿[title]: # (Release Notes)
 [tags]: # (DevOps Secrets Vault,DSV,)
-[priority]: # (8000)
+[priority]: # (9000)
 
 # Release Notes
 
