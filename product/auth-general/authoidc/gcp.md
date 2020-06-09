@@ -24,7 +24,7 @@ This example uses the Google Cloud Identity service.
 
 ![](./images/spacer.png)
 
-6. Save and copy the client id and client secret from the dialog into the credentials create dialog in cloud manager. Your **Provider URL** in cloud manager should be set to `https://accounts.google.com`
+6. Save and copy the client id and client secret from the dialog into the credentials create dialog in Cloud Manager. Your **Provider URL** in cloud manager should be set to `https://accounts.google.com`
 
 ![](./images/spacer.png)
 
