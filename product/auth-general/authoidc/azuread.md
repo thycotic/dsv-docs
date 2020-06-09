@@ -1,32 +1,11 @@
-[title]: # (OIDC: Providers)
+[title]: # (Azure AD Example)
 [tags]: # (DevOps Secrets Vault,DSV,)
-[priority]: # (5750)
+[priority]: # (5720)
 
-# OIDC Providers
 
-Any OIDC compliant authentication provider should be configurable to work with Thycotic One and DevOps Secrets Vault. Documented integrations are below.
+# Azure AD OIDC Example
 
-## Common Steps
-
-For all OIDC authentication providers you will need to get their provider URL, client id, and client secret. You will need to set in the authentication provider the callback URL that it will redirect to once authentication is complete.  
-
-To get your callback URL:
-
-![](./images/spacer.png)
-
-1. Sign into the [cloud manager portal](https://portal.thycotic.com) and go to Manage->Teams and click on Organizations for your team.
-2. Click on **Auth Providers** and then click the **New** button. This will open a dialog up. 
-3. Give it a name and copy the Callback URL provided. Do not save or cancel, you will be coming back to fill out the rest of the fields.
-
-![](./images/spacer.png)
-
-![](./images/azure-ad-cmsetup.png)
-
-![](./images/spacer.png)
-
-## Azure AD
-
-1. Get a Callback URL as described above.
+1. Get the callback URL from Thycotic One following the directions at [Authentication:OIDC](./index.md)
 2. In your azure portal go to **Azure Active Directory** and then go to the App Registrations.
 3. Click **New Registration**
 4. Give your app a name and add the Callback URL from Thycotic One as the Redirect URI.

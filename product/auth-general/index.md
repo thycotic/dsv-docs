@@ -45,6 +45,8 @@ Besides ThycoticOne, DevOps Secrets Vault works with third party authentication 
 
 **GCP Service Accounts**: DSV uses GCP's service accounts to enable secrets access to just about anything that can be assigned a service account.  Google Compute Engines (GCE) may also be assigned service accounts and authenticated through GCE metadata.  See [Authentication: Azure](./authgcp/index.md)
 
+**OIDC Provider** DSV connects to Thycotic One, which in-turn may connect to any OIDC provider.  See [Authentication: OIDC](./authoidc/index.md)
+
 ![](./images/spacer.png)
 
 ![](./images/spacer.png)

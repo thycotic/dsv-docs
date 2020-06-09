@@ -19,6 +19,7 @@ The command to generate a self-signed root certificate and private key is `thy p
 | rootcapath                 | Required - Path and name of a secret that will contain the signing certificate               |
 | domains                    | Required - List of domains that this signing certificate is allowed to sign leaf certificates|
 | maxttl                     | Required - Maximum time to live in hours for a leaf cert signed with this signing certificate.  This also sets the expiration date (time) of this root certificate|
+| crl                        | Optional| URL where customer-supported certificate revocation list (CRL) resides |
 | country                    | Optional|
 | state                      | Optional|
 | locality                   | Optional|
@@ -68,6 +69,7 @@ The command to register a signing certificate and private key generated outside 
 | rootcapath                | Required - Path and name of a secret that will contain the signing certificate.|
 | domains                   | Required - List of domains that this signing certificate is allowed to sign leaf certificates.|
 | maxttl                    | Required - Maximum time to live in hours for a leaf cert signed with this signing certificate.  If this is set further out in time than the expiration date of the certificate that is being registered, then there will be an error.  For example, if this signing certifcate has an expiration date next week, the maxTTL maximium number is 189 hours.|
+| crl                       | Optional - URL where customer-supported certificate revocation list (CRL) resides |
 
 
 
