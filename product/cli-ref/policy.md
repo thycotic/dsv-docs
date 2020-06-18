@@ -55,7 +55,7 @@ A typical Policy looks like this:
 
 | **Element**        | **Definition**                                                                                                                                                                                                                                          |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| actions            | a list of possible actions on the resource including create, read, update, delete, list, share, and assign (regular expressions and list supported)                                                                                                     |
+| actions            | a list of possible actions on the resource including create, read, update, delete, list, and assign (regular expressions and list supported)                                                                                                     |
 | conditions         | an optional CIDR range to lock down access to a specific IP range                                                                                                                                                                                       |
 | description        | human friendly description of the Policy intent                                                                                                                                                                                                         |
 | effect             | whether the Policy is allowing or preventing access; valid values are allow and deny                                                                                                                                                                    |
@@ -78,11 +78,11 @@ a subject entry could be written as `["users:<bob|alice>"]`. Here, users `bob` a
 * An explicit deny trumps an explicit or implicit allow.
 * At least one action must be listed in an array. Actions are explicit. A User assigned **update** and **read** will not automatically have **create** for the resource path.
 * For actions, the wildcard form `<.*>` replaces any other values, since it is an all-inclusive form.  A wildcard could be written as a standard `<.*>` form, but also as `.*` or `*` for convenience. The backend automatically converts it to `<.*>`.
-* Invalid actions are not allowed, unless there is a wildcard element. Valid actions are `share, delete, update, create, read, assign, list`.
+* Invalid actions are not allowed, unless there is a wildcard element. Valid actions are `create, read, update, delete, assign, list`.
 * The **list** action has a special behavior.
   * First, **list** (search) is global—it runs across all items of an entity, not limited to paths and sub-paths.
   * Second, to grant a User an ability to search entities via *list*, use the root of the entity if you want *list* to include other entities and actions within the same Policy. The root entity, for example, is secrets, with no other characters following.
-* At least one subject must be listed in an array. A prefix is required. For example, a valid subject is `"users:bob"`. Valid prefixes are [groups, roles, users].
+* At least one subject must be listed in an array. A prefix is required. For example, a valid subject is `"users:bob"`. Valid prefixes are `groups, roles, users`.
 * Subjects and actions are automatically converted to lower case upon save.
 
 ## Policy Examples
