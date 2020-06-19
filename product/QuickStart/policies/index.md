@@ -36,7 +36,7 @@ thy group add-members --group-name firstgroup --data '{"memberNames":["local@com
 The admin has to create a policy for the Group to get access to the Secrets.  Here is a sample CLI command:
 
 ```bash
-thy policy create --path secrets:servers:us-east --actions '<.*>' --desc 'Allow Policy' --subjects 'groups:firstgroup' --effect 'allow'
+thy policy create --path secrets:servers:us-east --actions '<.*>' --desc 'Allow Policy' --subjects groups:firstgroup --effect allow
 ```
 
 Where 
@@ -76,7 +76,7 @@ This policy will now enable both Users (local@company.com and thycoticoneuser@co
 
 If we decided that the *thycoticoneuser@company.com* should no longer have access to the secrets at `servers:us-east:production` we can write another policy to deny that access.  The command would look like this: 
 
-`thy policy create --path secrets:servers:us-east:production --actions '<.*>' --desc 'Deny Policy' --subjects 'users:<thy-one:thycoticoneuser@company.com>' --effect 'deny'`
+`thy policy create --path secrets:servers:us-east:production --actions '<.*>' --desc 'Deny Policy' --subjects 'users:<thy-one:thycoticoneuser@company.com>' --effect deny`
 
 The resulting policy will look like this if you read it using the command `thy policy read secrets:servers:us-east:production -e yaml`
 
