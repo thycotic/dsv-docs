@@ -10,20 +10,6 @@ With few exceptions, CLI commands follow a simple syntax:
 
 For example, in `thy role create`, `role` is the object of the command `create`. Some parameters and flags apply only to some commands. DSV also includes output modifiers for filtering and formatting responses to commands.
 
-## Workflows for Creating or Updating Objects
-  
-For many objects, if the command is `create` or `update`, then adding no flags will start a workflow. 
-
-A workflow is a series of questions that guides the user through the creation or update process.  Workflow supported objects include:
-
-* thy init (This command is only done with a workflow)
-* thy config auth-provider 
-* thy policy
-* thy siem
-* thy pki
-
-If the object doesn't support a workflow, then the flag `--help` is assumed
-
 ## Objects
 
 | Object   | Syntax                                 | Definition                                                                                |
@@ -43,7 +29,20 @@ If the object doesn't support a workflow, then the flag `--help` is assumed
 | user       | user (`<username> * --username`)       | manage Users                                                                              |
 | whoami     | whoami                                 | display the currently authenticated User                                                  |
 
-![](./images/spacer.png)
+
+## Workflows for Creating or Updating Objects
+  
+For many objects, if the command is `create` or `update`, then adding no flags will start a workflow. 
+
+A workflow is a series of questions that guides the user through the creation or update process.  Workflow supported objects include:
+
+* thy init (This command is only done with a workflow)
+* thy config auth-provider 
+* thy policy
+* thy siem
+* thy pki
+
+If the object doesn't support a workflow, then the flag `--help` is assumed
 
 ## Parameters
 
