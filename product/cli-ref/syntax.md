@@ -10,7 +10,19 @@ With few exceptions, CLI commands follow a simple syntax:
 
 For example, in `thy role create`, `role` is the object of the command `create`. Some parameters and flags apply only to some commands. DSV also includes output modifiers for filtering and formatting responses to commands.
 
-![](./images/spacer.png)
+## Workflows for Creating or Updating Objects
+  
+For many objects, if the command is `create` or `update`, then adding no flags will start a workflow. 
+
+A workflow is a series of questions that guides the user through the creation or update process.  Workflow supported objects include:
+
+* thy init (This command is only done with a workflow)
+* thy config auth-provider 
+* thy policy
+* thy siem
+* thy pki
+
+If the object doesn't support a workflow, then the flag `--help` is assumed
 
 ## Objects
 
@@ -23,9 +35,11 @@ For example, in `thy role create`, `role` is the object of the command `create`.
 | eval       | eval                                   | check the value of a command line flag or variable                                        |
 | group      | group (`<group-name> * --group-name`)  | manage collections of Users uniformly by placing them in a managed Group                  |
 | init       | cli-config init or init                       | initialize DSV on first run                                                               |
-| policy     | policy (`<path> * --path * -r`)        | manage policies on permissions for Secrets, Roles, Users, and other entities in the vault |
+| pki        | pki                                    | manage certificate issuance                                                               |
+|policy     | policy (`<path> * --path * -r`)        | manage policies on permissions for Secrets, Roles, Users, and other entities in the vault |
 | role       | role (`<name> * --name * -n`)          | manage Roles                                                                              |
 | secret     | secret (`<path> * --path * -r`)        | create, update, and retrieve Secrets from the vault                                       |
+| siem       | siem                                   | manage endpoints for pushing audit logs                                                   | 
 | user       | user (`<username> * --username`)       | manage Users                                                                              |
 | whoami     | whoami                                 | display the currently authenticated User                                                  |
 
@@ -42,10 +56,10 @@ Parameters can be:
 
 ### Strings
 
-Most commands take strings as parameters, quoted or unquoted. For example, the username needs quote marks but the password does not. Both are valid string parameter values.
+Most commands take strings as parameters, quoted or unquoted. For example, the username uses quotes but the password does not. Both are valid string parameter values.
 
 ```BASH
-thy user create --username "admin1" --password password2
+thy user create --username "admin1" --password BadP@ssword
 ```
 
 If a string value has spaces, it must be wrapped in quotes. For example, when creating a Role, the description should be quoted.
