@@ -7,7 +7,7 @@
 The configuration for DevOps Secrets Vault:
 
 * defines the Default Admin Policy
-* contains settings for third-party authentication providers including Thycotic One, AWS or Azure
+* contains settings for third-party authentication providers including Thycotic One, AWS, Azure, or GCP.
 
 ## Commands that Act on Configurations
 
@@ -72,9 +72,11 @@ thy-one
 
 ### Edit
 
-Thycotic recommends against changing the Default Admin Policy other than to add a User.
+>NOTE: Thycotic recommends against changing the Default Admin Policy other than to add a User as a back-up admin.  Even then, best practices would be to create a separate policy for specific access for Users.
 
-* For adding and editing policies beyond the Default Admin Policy, see the [Policy](policy.md) article.
+>NOTE: For adding and editing policies beyond the Default Admin Policy, see the [Policy](policy.md) article.
+
+>NOTE: Thycotic recommends against changing the Thycotic One provider because it provides for the initial User and any others you add that federate to Thycotic One. However, you can add providers.
 
 Use *edit* to open your configuration in the OS’s default editor (typically **VI**, **nano**, or **Notepad**).
 
@@ -100,13 +102,9 @@ or
 thy config update --path us-east/server02 --data @configfilename.json
 ```
 
-## Advanced: Add Authentication Providers
+### Add an Authentication Provider
 
-Thycotic recommends against changing the Thycotic One provider because it provides for the initial User and any others you add that federate to Thycotic One. However, you can add providers.
-
-### Add AWS as a Provider
-
-To add AWS as an authentication provider, use:
+The general command is:
 
 ```BASH
 thy config auth-provider create --name <name> --type <type> --<properties>
@@ -114,38 +112,19 @@ thy config auth-provider create --name <name> --type <type> --<properties>
 
 in which:
 
-* name is the friendly name used in DSV to reference this policy
-* type is the authentication provider type; valid values are aws azure and thycoticone
+* name is the friendly name used in DSV to reference this provider.  It is separate from `type` because it allows multiple auth providers of the same type (for example several AWS accounts).
+* type is the authentication provider type; valid values are aws, azure, gcp and thycoticone
 * properties are configuration settings specific to the authentication provider
-* the flag for AWS is *--aws-account-id*
-* the flag for Azure is *--azure-tenant-id*
+    * AWS flag is *--aws-account-id*
+    * Azure flag is *--azure-tenant-id*
+    * GCP using the GCE metadata server is *--???
+    * GCP using a service account requires multiple flags.  *--???
+    * Thycotic One requires three flags *--baseURI*, *--clientID*, and *--clientSecret* 
 
-### Azure Example
-
-To add Azure as an authentication provider, use:
-
-```BASH
-thy config auth-provider create --name azure-prod --type azure --azure-tenant-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-```
-
-```yaml
-{
-"created": "2019-09-30T23:20:06Z",
-"createdBy": "users:thy-one:admin@company.com",
-"id": "xxxxxxxxxxxxxxx",
-"lastModified": "2019-09-30T23:20:06Z",
-"lastModifiedBy": "users:thy-one:admin@company.com",
-"name": "azure-prod",
-"properties": {
-"tenantId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-},
-"type": "azure",
-"version": "0"
-```
 
 Note that the account identifiers for third-party authentication are a top level setting that allow you or other Users to authorize specific security principals within that account. They do not automatically grant access to any User or Role within the provider.
 
-See the [Authentication: AWS and Azure](../authent-azure-aws/) article for examples of using AWS and Azure for authentication.
+See the Authentication section for examples of using AWS, Azure, and GCP for authentication.
 
 ![](./images/spacer.png)
 
