@@ -197,6 +197,7 @@ Now the developers can create Policies below the *secrets:servers:* path; for ex
 
 **Solution:** Under the Resource Entity, Secrets, enable the Group named "admins".
 
+```Bash
 {
  "created": "2020-06-02T19:55:32Z",
   "createdBy": "users:thy-one:admin@company.com",
@@ -218,8 +219,8 @@ Now the developers can create Policies below the *secrets:servers:* path; for ex
  ],
   "version": "0"
 }
-
-> Note: Searching secrets only enables the users to see the path, but not the actual data in the secret.
+```
+> Note: Searching secrets only enables the users to see the path, but not the actual data in the secret.  That would require Read access at the proper path.
 
 ![](./images/spacer.png)
 
