@@ -54,9 +54,9 @@ If your current user, such as your initial admin already exists in all places, t
 
 1. In the DSV CLI run `thy user create --username useremail@company.com --provider thy-one`
 
-2. This creates a user record in DSV and syncs it to Thycotic One. The User will get an email with a link to establish thier password.  
+2. This creates a user record in DSV and syncs it to Thycotic One. The User will get an email with a link to establish their password.  
 
-3. In Cloud Manager, you can see your users by clicking on the **Users** link.
+3. In the [cloud manager portal](https://portal.thycotic.com), you can see your users by logging in and clicking on the **Users** link.
 
 ## Logging In
 
