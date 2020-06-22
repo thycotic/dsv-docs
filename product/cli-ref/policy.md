@@ -148,6 +148,37 @@ resources:
 - roles:dev-role-<.*>
 ```
 
+### Enable a Group to search Secrets
+
+**Case:** Allow a Group to search secrets
+
+**Solution:** Under the Resource entity, Secrets, enable the Group named "admins".
+
+```Bash
+{
+ "created": "2020-06-02T19:55:32Z",
+  "createdBy": "users:thy-one:admin@company.com",
+  "id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "lastModified": "2020-06-03T17:38:28Z",
+  "lastModifiedBy": "users:thy-one:admin@company.com",
+  "path": "secrets",
+  "permissionDocument": [
+   {
+     "actions": ["list"],
+      "conditions": {},
+      "description": "",
+      "effect": "allow",
+      "id": "whatever",
+      "meta": null,
+      "resources": ["secrets"],
+      "subjects": ["groups:admins"]
+   }
+ ],
+  "version": "0"
+}
+```
+> Note: Searching secrets only enables the users to see the path, but not the actual data in the secret.  That would require Read access at the proper path.
+
 ### Allow Users to List Specific Entities
 
 **Case:** A User needs to read and list entities within a Policy.
@@ -193,37 +224,6 @@ resources:
 
 Now the developers can create Policies below the *secrets:servers:* path; for example, developer1 can create Policies for *secrets:servers:webservers* and developer2 can do the same at *secrets:servers:databases*.
 
-
-### Enable Users to search Secrets
-
-**Case:** Allow a Group to search secrets
-
-**Solution:** Under the Resource Entity, Secrets, enable the Group named "admins".
-
-```Bash
-{
- "created": "2020-06-02T19:55:32Z",
-  "createdBy": "users:thy-one:admin@company.com",
-  "id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-  "lastModified": "2020-06-03T17:38:28Z",
-  "lastModifiedBy": "users:thy-one:admin@company.com",
-  "path": "secrets",
-  "permissionDocument": [
-   {
-     "actions": ["list"],
-      "conditions": {},
-      "description": "",
-      "effect": "allow",
-      "id": "whatever",
-      "meta": null,
-      "resources": ["secrets"],
-      "subjects": ["groups:admins"]
-   }
- ],
-  "version": "0"
-}
-```
-> Note: Searching secrets only enables the users to see the path, but not the actual data in the secret.  That would require Read access at the proper path.
 
 ![](./images/spacer.png)
 
