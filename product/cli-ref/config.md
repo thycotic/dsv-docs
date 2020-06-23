@@ -117,14 +117,12 @@ in which:
 * properties are configuration settings specific to the authentication provider
     * AWS flag is *--aws-account-id*
     * Azure flag is *--azure-tenant-id*
-    * GCP using the GCE metadata server is *--???
-    * GCP using a service account requires multiple flags.  *--???
     * Thycotic One requires three flags *--baseURI*, *--clientID*, and *--clientSecret* 
+    * GCP has two options for federation, GCE metadata and service accounts.  Flags are not provided for these so a file is required.
 
+>Note: The account identifiers for third-party authentication are a top level setting that allow you or other Users to authorize specific security principals within that account. They do not automatically grant access to any User or Role within the provider.
 
-Note that the account identifiers for third-party authentication are a top level setting that allow you or other Users to authorize specific security principals within that account. They do not automatically grant access to any User or Role within the provider.
-
-See the Authentication section for examples of using AWS, Azure, and GCP for authentication.
+See the Authentication section for examples of using AWS, Azure, GCP, and Thycotic One for authentication.
 
 ![](./images/spacer.png)
 
