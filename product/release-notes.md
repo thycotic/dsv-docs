@@ -24,7 +24,7 @@ The Command Line Interface (CLI) is locally installed using OS-specific executab
 |                        | **new feature**: CLI now contains workflows for Users, Groups, and Roles.|
 |                        | **improvement**: Policy update help information and examples.|
 |                        | **improvement**: Added IDs and status information to audit records.|
-|                        | **improvement**: Standarize on the use of colons for policies instead of slashes|
+|                        | **improvement**: Standarized on the use of colons for policies instead of slashes|
 |                        | **fixed**: Enhancements to auth providers.|
 |                        | **fixed**: Group memeberships are not evaluated for policy updates.|
 |                        | **fixed**: Group member sometimes returned code 500 (internal server error) on deletion attempt.|
