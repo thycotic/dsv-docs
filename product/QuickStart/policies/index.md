@@ -2,7 +2,7 @@
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (2600)
 
-# Set Policy - Provide Users Access to Secrets
+# Provide Users Access to Secrets
 
 Assuming we have two secrets, each located at:
 
@@ -12,16 +12,38 @@ And two users:
 
 local@company.com *and* thycoticoneuser@company.com
 
-The admin has to create a policy for the Users to get access to the Secrets.  Here is a sample CLI command:
+Our goal will be to create policy to allow:
+* both users access to servers:us-east:server01
+* local@company.com to have access to servers:us-east:production:server01
+* thycoticoneuser@company.com to be denied access to servers:us-east:production:server01
 
-`thy policy create --path secrets:servers:us-east --actions '<.*>' --desc 'Allow Policy' --subjects 'users:<local@company.com|thy-one:thycoticoneuser@company.com>' --effect 'allow'
-`
+## Create a Group
+
+Optionally, we can put these Users in a Group with two commands.  The first command creates the group:
+
+```bash
+thy group create --groupname firstgroup
+```
+
+The second command puts the Users in the Group
+
+```bash
+thy group add-members --group-name firstgroup --data '{"memberNames":["local@company.com","thy-one:thycoticoneuser@company.com"]}'
+```
+
+## Create Policy for Allow Access
+
+The admin has to create a policy for the Group to get access to the Secrets.  Here is a sample CLI command:
+
+```bash
+thy policy create --path secrets:servers:us-east --actions '<.*>' --desc 'Allow Policy' --subjects groups:firstgroup --effect allow
+```
 
 Where 
 *path* starts with **secrets:** followed by the secret path.
 >NOTE: That *resources* is not specified separately, but will default to the path and everything below it, so in this case `secrets:servers:us-east:<.*>`
 
-*actions* is a wildcard, so full create, read, update, delete, list, share, and assign access is allowed.
+*actions* is a wildcard, so full `create, read, update, delete, list, assign` is allowed.
 
 *subjects* are the Users that are getting access to the secrets.  
 
@@ -31,7 +53,7 @@ Where
 
 The resulting policy will look like this if you read it using the command `thy policy read secrets:servers:us-east -e yaml`
 
-```bash
+```yaml
 path: secrets:servers:us-east
 permissionDocument:
 - actions:
@@ -44,15 +66,17 @@ permissionDocument:
   resources:
   - secrets:servers:us-east:<.*>
   subjects:
-  - users:<local@company.com|thy-one:thycoticoneuser@company.com>
+  - groups:firstgroup
 version: "0"
 ```
 
 This policy will now enable both Users (local@company.com and thycoticoneuser@company.com) to gain full access to all secrets located at the path `servers:us-east` and below.
 
+## Create Policy for Deny Access
+
 If we decided that the *thycoticoneuser@company.com* should no longer have access to the secrets at `servers:us-east:production` we can write another policy to deny that access.  The command would look like this: 
 
-`thy policy create --path secrets:servers:us-east:production --actions '<.*>' --desc 'Deny Policy' --subjects 'users:<thy-one:thycoticoneuser@company.com>' --effect 'deny'`
+`thy policy create --path secrets:servers:us-east:production --actions '<.*>' --desc 'Deny Policy' --subjects 'users:<thy-one:thycoticoneuser@company.com>' --effect deny`
 
 The resulting policy will look like this if you read it using the command `thy policy read secrets:servers:us-east:production -e yaml`
 

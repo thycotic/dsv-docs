@@ -55,7 +55,7 @@ A typical Policy looks like this:
 
 | **Element**        | **Definition**                                                                                                                                                                                                                                          |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| actions            | a list of possible actions on the resource including create, read, update, delete, list, share, and assign (regular expressions and list supported)                                                                                                     |
+| actions            | a list of possible actions on the resource including create, read, update, delete, list, and assign (regular expressions and list supported)                                                                                                     |
 | conditions         | an optional CIDR range to lock down access to a specific IP range                                                                                                                                                                                       |
 | description        | human friendly description of the Policy intent                                                                                                                                                                                                         |
 | effect             | whether the Policy is allowing or preventing access; valid values are allow and deny                                                                                                                                                                    |
@@ -78,14 +78,18 @@ a subject entry could be written as `["users:<bob|alice>"]`. Here, users `bob` a
 * An explicit deny trumps an explicit or implicit allow.
 * At least one action must be listed in an array. Actions are explicit. A User assigned **update** and **read** will not automatically have **create** for the resource path.
 * For actions, the wildcard form `<.*>` replaces any other values, since it is an all-inclusive form.  A wildcard could be written as a standard `<.*>` form, but also as `.*` or `*` for convenience. The backend automatically converts it to `<.*>`.
-* Invalid actions are not allowed, unless there is a wildcard element. Valid actions are `share, delete, update, create, read, assign, list`.
+* Invalid actions are not allowed, unless there is a wildcard element. Valid actions are `create, read, update, delete, assign, list`.
 * The **list** action has a special behavior.
-  * First, **list** (search) is global—it runs across all items of an entity, not limited to paths and sub-paths.
+  * First, **list** (search) is global—it runs across all items of an entity (any of the resources like Useres, Roles, Groups, etc), not limited to paths and sub-paths.
   * Second, to grant a User an ability to search entities via *list*, use the root of the entity if you want *list* to include other entities and actions within the same Policy. The root entity, for example, is secrets, with no other characters following.
-* At least one subject must be listed in an array. A prefix is required. For example, a valid subject is `"users:bob"`. Valid prefixes are [groups, roles, users].
+  * See the example on Search
+* At least one subject must be listed in an array. A prefix is required. For example, a valid subject is `"users:bob"`. Valid prefixes are `groups, roles, users`.
 * Subjects and actions are automatically converted to lower case upon save.
 
 ## Policy Examples
+
+When creating or updating a Policy, a workflow can be started using `thy policy create` or `thy policy update` without flags.  This will start step-by-step quesitons to guide you though the process.  However, in the following examples, the direct command will be shown.
+
 
 ### Deny Access at a Lower Level
 
@@ -144,6 +148,37 @@ resources:
 - roles:dev-role-<.*>
 ```
 
+### Enable a Group to search Secrets
+
+**Case:** Allow a Group to search secrets
+
+**Solution:** Under the Resource entity, Secrets, enable the Group named "admins".
+
+```Bash
+{
+ "created": "2020-06-02T19:55:32Z",
+  "createdBy": "users:thy-one:admin@company.com",
+  "id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "lastModified": "2020-06-03T17:38:28Z",
+  "lastModifiedBy": "users:thy-one:admin@company.com",
+  "path": "secrets",
+  "permissionDocument": [
+   {
+     "actions": ["list"],
+      "conditions": {},
+      "description": "",
+      "effect": "allow",
+      "id": "whatever",
+      "meta": null,
+      "resources": ["secrets"],
+      "subjects": ["groups:admins"]
+   }
+ ],
+  "version": "0"
+}
+```
+> Note: Searching secrets only enables the users to see the path, but not the actual data in the secret.  That would require Read access at the proper path.
+
 ### Allow Users to List Specific Entities
 
 **Case:** A User needs to read and list entities within a Policy.
@@ -188,6 +223,7 @@ resources:
 ```
 
 Now the developers can create Policies below the *secrets:servers:* path; for example, developer1 can create Policies for *secrets:servers:webservers* and developer2 can do the same at *secrets:servers:databases*.
+
 
 ![](./images/spacer.png)
 
