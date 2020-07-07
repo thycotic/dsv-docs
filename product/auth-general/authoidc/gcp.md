@@ -4,7 +4,7 @@
 
 ## Google Identity Provider Example
 
-### Configure Auth Providers
+## Configure Auth Providers
 
 This example uses the Google Cloud Identity service.
 
@@ -46,17 +46,19 @@ This example uses the Google Cloud Identity service.
 
 
 
-### Creating a User
+## Creating a User in Thycotic One and DSV
 
-In order to login using OIDC, the user must exist in both the external provider, Thycotic One, and in DSV.
+In order to login using OIDC, the user must exist in the external provider, Thycotic One, and in DSV. 
 
-If your current user, such as your initial admin already exists in all places, then skip this section. If you want to add another user do the following steps:
+If your current user, such as your initial admin already exists in all places, then skip this section. If you want to add another user to Thycotic One and DSV simultaneously, do the following steps:
 
-1. In the DSV CLI run `thy user create --username test-user-email@test.com --provider thy-one`
+1. In the DSV CLI run `thy user create --username useremail@company.com --provider thy-one`
 
-2. This creates a user record in DSV and syncs it to Thycotic One. You can see your users by clicking on the **Users** link from the organization in cloud manager.
+2. This creates a user record in DSV and syncs it to Thycotic One. The User will get an email with a link to establish their password.  
 
-### Logging In
+3. In the [cloud manager portal](https://portal.thycotic.com), you can see your users by logging in and clicking on the **Users** link.
+
+## Logging In
 
 
 Initialize the CLI:

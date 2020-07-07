@@ -19,6 +19,15 @@ The Command Line Interface (CLI) is locally installed using OS-specific executab
 
 | **Update**             | **Notes**                                  |
 |------------------------|--------------------------------------------|
+|July 2020               | **CLI Version**: 1.11|
+|                        | **new feature**: SSH public key generation and SSH Certificate signing/storage was added.|
+|                        | **new feature**: CLI now contains workflows for Users, Groups, and Roles.|
+|                        | **improvement**: Policy update help information and examples.|
+|                        | **improvement**: Added IDs and status information to audit records.|
+|                        | **improvement**: Standarized on the use of colons for policies instead of slashes|
+|                        | **fixed**: Enhancements to auth providers.|
+|                        | **fixed**: Group memeberships are not evaluated for policy updates.|
+|                        | **fixed**: Group member sometimes returned code 500 (internal server error) on deletion attempt.|
 |June 2020               | **CLI Version**: 1.10|
 |                        | **new feature**: SIEM endpoints.  Support Syslog, CEF, and JSON log formatting on TLS,TCP, UDP, HTTP, and HTTPS transport protocols.|
 |                        | **new feature**: Introduced CLI workflows to PKI, SIEM, Policy, and Auth-provider commands for simplified human navigation.|

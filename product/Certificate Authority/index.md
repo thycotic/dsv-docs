@@ -9,6 +9,8 @@ All certificates assume **RSA 2048** key-pairs and **SHA-256 Hashing**
 
 A signing certificate is required and it may be generated in DSV or imported from an outside Certificate Authority (CA).  This documentation will often refer to the signing certificate as the "root" certificate.  However, in the case of a signing certificate being imported from an outside CA, best practices would be to use an intermediate certificate as the DSV signing certificate.
 
+All the `thy pki <action>` commands start a workflow if no flags are added.  However, `--help (or -h)` can be used for help.  In these examples we provide the direct commands.
+
 ## Generate a Signing Certificate
 
 The command to generate a self-signed root certificate and private key is `thy pki generate-root`
