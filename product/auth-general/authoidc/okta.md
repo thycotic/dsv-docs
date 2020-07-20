@@ -6,4 +6,5 @@
 
 This example uses Okta as a OIDC identity provider.
 
-1. Get the callbcak URL from Thycotic's cloud manager portal at 
+1. Get the callbcak URL from Thycotic's cloud manager portal following the directions at [Authentication:OIDC](./index.md)
+2. 
