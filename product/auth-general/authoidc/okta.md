@@ -6,6 +6,8 @@
 
 This example uses Okta as a OIDC identity provider.
 
+##Okta OIDC connection
+
 1. Get the callback URL from Thycotic's cloud manager portal following the directions at [Authentication:OIDC](./index.md)
 2. Login to your Okta Admin console. 
 3. From the top menu bar, select **Applications**
@@ -37,3 +39,13 @@ This example uses Okta as a OIDC identity provider.
 
 ![](./images/spacer.png)
 
+##Add Okta Users and Groups to the DSV Application
+
+11. In second menu bar from the top, click **Assignments**
+12. Click **Assign** and when it drops down add users and/or groups that will use DevOps Secrets Vault.
+
+![](./images/spacer.png)
+
+![](./images/oktaddusers.png)
+
+![](./images/spacer.png)
