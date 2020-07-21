@@ -62,9 +62,25 @@ This example uses Okta as a OIDC identity provider.
 
 ## Finish the Connection on the Thycotic One side
 
-14. Go back to the Thycotic Cloud Manger Portal.  Fill-in a Description, the issuer/provider URL from step 11, and teh CLient ID and Client Secret from step 10.
+14. Go back to the Thycotic Cloud Manger Portal.  Fill-in a Description and the issuer/provider URL from step 11.
+15. Fill-in the Client ID and Client Secret from step 10.
+16. Check the **Enable** box.
+17. Click **Save**
+
 ![](./images/spacer.png)
 
 ![](./images/toneprovider.png)
+
+![](./images/spacer.png)
+
+18. Click **Back to Organizations**
+19. Click **Credentials**
+20. Click **Edit** and a window will pop-up
+21. To the right of "Post-Login Redirect URIs" click the **+** and a new empty box will appear.  In this new box, type "http://localhost:8072/callback" (without quotes).
+>Note: If you have already added this call back for another auth provider, then it should still be there so you can skip this step.
+
+![](./images/spacer.png)
+
+![](./images/tonecredentials.png)
 
 ![](./images/spacer.png)
