@@ -77,7 +77,7 @@ This example uses Okta as a OIDC identity provider.
 19. Click **Credentials**
 20. Click **Edit** and a window will pop-up
 21. To the right of "Post-Login Redirect URIs" click the **+** and a new empty box will appear.  In this new box, type "http://localhost:8072/callback" (without quotes).
->Note: If you have already added this call back for another auth provider, then it should still be there so you can skip this step.
+>Note: If you have already added this call back for another auth provider, then it should still be there so you can skip these last steps (18-21).
 
 ![](./images/spacer.png)
 
