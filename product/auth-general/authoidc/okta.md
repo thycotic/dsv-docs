@@ -62,7 +62,7 @@ This example uses Okta as a OIDC identity provider.
 
 ## Finish the Connection on the Thycotic One side
 
-14. Go back to the Thycotic Cloud Manger Portal.  Fill-in a Description and the issuer/provider URL from step 11.
+14. Go back to the Thycotic Cloud Manger Portal where we started.  Fill-in a Description and the issuer/provider URL from step 11.
 15. Fill-in the Client ID and Client Secret from step 10.
 16. Check the **Enable** box.
 17. Click **Save**
