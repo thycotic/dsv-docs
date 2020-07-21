@@ -10,7 +10,7 @@ This example uses Okta as a OIDC identity provider.
 2. Login to your Okta Admin console. 
 3. From the top, select **Applications**
 4. Select **Add Apliction**
-5. Select **Create New App**.  A wizard will open
+5. Select **Create New App**.  A window will open
 6. For platform, select **Web** from the dropdown and the **OpenID Connect** radio button.  Click **Create**
 
 ![](./images/spacer.png)
@@ -20,3 +20,9 @@ This example uses Okta as a OIDC identity provider.
 ![](./images/spacer.png)
 
 7. On the resulting screen, provide an **Application name** and optional logo.  Enter the Thycotic callback URL in the box labeled **Login redirect URIs**.  Click **Save**.
+
+![](./images/spacer.png)
+
+![](./images/oktaoidcsetup.png)
+
+![](./images/spacer.png)
