@@ -51,8 +51,8 @@ This example uses Okta as a OIDC identity provider.
 
 ##Add Okta Users and Groups to the DSV Application
 
-In second menu bar from the top, click **Assignments**
-12. Click **Assign** and when it drops down add users and/or groups that will use DevOps Secrets Vault. Of course, you can always come back and add/remove people as needed.
+12. In second menu bar from the top, click **Assignments**
+13. Click **Assign** and when it drops down add users and/or groups that will use DevOps Secrets Vault. Of course, you can always come back and add/remove people as needed.
 
 ![](./images/spacer.png)
 
@@ -62,3 +62,9 @@ In second menu bar from the top, click **Assignments**
 
 ## Finish the Connection on the Thycotic One side
 
+14. Go back to the Thycotic Cloud Manger Portal.  Fill-in a Description, the issuer/provider URL from step 11, and teh CLient ID and Client Secret from step 10.
+![](./images/spacer.png)
+
+![](./images/toneprovider.png)
+
+![](./images/spacer.png)
