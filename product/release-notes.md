@@ -19,6 +19,7 @@ The Command Line Interface (CLI) is locally installed using OS-specific executab
 
 | **Update**             | **Notes**                                  |
 |------------------------|--------------------------------------------|
+|July 2020 (Update 1)    | **fixed**: Enforce case insensitivity on subjects returned in JWT record.|
 |July 2020               | **CLI Version**: 1.11|
 |                        | **new feature**: SSH public key generation and SSH Certificate signing/storage was added.|
 |                        | **new feature**: CLI now contains workflows for Users, Groups, and Roles.|
