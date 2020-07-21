@@ -8,9 +8,9 @@ This example uses Okta as a OIDC identity provider.
 
 1. Get the callback URL from Thycotic's cloud manager portal following the directions at [Authentication:OIDC](./index.md)
 2. Login to your Okta Admin console. 
-3. From the top, select **Applications**
+3. From the top menu bar, select **Applications**
 4. Select **Add Apliction**
-5. Select **Create New App**.  A window will open
+5. At the top right, select **Create New App**.  A window will open
 6. For platform, select **Web** from the dropdown and the **OpenID Connect** radio button.  Click **Create**
 
 ![](./images/spacer.png)
@@ -26,3 +26,14 @@ This example uses Okta as a OIDC identity provider.
 ![](./images/oktaoidcsetup.png)
 
 ![](./images/spacer.png)
+
+8. To the right of General Settings click **Edit**.  Check the **Implicit (Hybrid)** box and it will expand.  Then check **Allow ID Token with Implicit grant type**.
+9. In the **Initiate login URI** Okta defaults to copying the Login Redirect URI, so highlight that box and copy "https://portal.thycotic.com" (without quotes) in.  Click **Save**
+10. Copy the Client ID and Client secret for entry into the Thycotic Cloud portal
+
+![](./images/spacer.png)
+
+![](./images/oktaoidcurls.png)
+
+![](./images/spacer.png)
+
