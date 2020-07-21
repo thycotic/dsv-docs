@@ -46,6 +46,6 @@ This example uses Okta as a OIDC identity provider.
 
 ![](./images/spacer.png)
 
-![](./images/oktaddusers.png)
+![](./images/oktaaddusers.png)
 
 ![](./images/spacer.png)
