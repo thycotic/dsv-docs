@@ -8,10 +8,10 @@ This example uses Okta as a OIDC identity provider.
 
 ##Okta OIDC connection
 
-1. Get the callback URL from Thycotic's cloud manager portal following the directions at [Authentication:OIDC](./index.md)
+1. Get the callback URL from Thycotic's Cloud Manager portal following the directions at [Authentication:OIDC](./index.md)
 2. Login to your Okta Admin console. 
 3. From the top menu bar, select **Applications**
-4. Select **Add Apliction**
+4. Select **Add Appliction**
 5. At the top right, select **Create New App**.  A window will open
 6. For platform, select **Web** from the dropdown and the **OpenID Connect** radio button.  Click **Create**
 
@@ -39,7 +39,7 @@ This example uses Okta as a OIDC identity provider.
 
 ![](./images/spacer.png)
 
-##Retrive the Issuer URL
+##Retrieve the Issuer URL
 
 11. In the second menu bar from the top, click **Sign On**  and in the third box down, titled "OpenID Connect ID Token", take note of the URL by **Issuer** for entry into the Thycotic Cloud portal.  It will generally be something like `https://company.okta.com` or `https://company.oktapreview.com`
 
