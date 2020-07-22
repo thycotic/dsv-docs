@@ -30,7 +30,7 @@ This example uses Okta as a OIDC identity provider.
 ![](./images/spacer.png)
 
 8. To the right of General Settings click **Edit**.  Check the **Implicit (Hybrid)** box and it will expand.  Then check **Allow ID Token with Implicit grant type**.
-9. In the **Initiate login URI** Okta defaults to copying the Login Redirect URI, so highlight that box and copy "https://portal.thycotic.com" (without quotes) in.  Click **Save**
+9. In the **Initiate login URI** Okta defaults to copying the Login Redirect URI, so highlight that box and copy `https://portal.thycotic.com` in.  Click **Save**
 10. Copy the Client ID and Client secret for entry into the Thycotic Cloud portal
 
 ![](./images/spacer.png)
@@ -41,7 +41,7 @@ This example uses Okta as a OIDC identity provider.
 
 ##Retrive the Issuer URL
 
-11. In the second menu bar from the top, click **Sign On**  and in the third box down, titled "OpenID Connect ID Token", take note of the URL by **Issuer** for entry into the Thycotic Cloud portal.  It will generally be something like "https://company.okta.com" or "https://company.oktapreview.com"
+11. In the second menu bar from the top, click **Sign On**  and in the third box down, titled "OpenID Connect ID Token", take note of the URL by **Issuer** for entry into the Thycotic Cloud portal.  It will generally be something like `https://company.okta.com` or `https://company.oktapreview.com`
 
 ![](./images/spacer.png)
 
@@ -76,7 +76,7 @@ This example uses Okta as a OIDC identity provider.
 18. Click **Back to Organizations**
 19. Click **Credentials**
 20. Click **Edit** and a window will pop-up
-21. To the right of "Post-Login Redirect URIs" click the **+** and a new empty box will appear.  In this new box, type "http://localhost:8072/callback" (without quotes).
+21. To the right of "Post-Login Redirect URIs" click the **+** and a new empty box will appear.  In this new box, type `http://localhost:8072/callback`.
 >Note: If you have already added this call back for another auth provider, then it should still be there so you can skip these last steps (18-21).
 
 ![](./images/spacer.png)
