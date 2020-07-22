@@ -1,3 +1,7 @@
+[title]: # (SSH Keys and Certificates)
+[tags]: # (DevOps Secrets Vault,DSV,)
+[priority]: # (6710)
+
 # SSH Key Issuance
 
 In addition to allowing users to generate TLS certificates, DSV provides an ability to generate SSH-2 compatible public keys (currently only RSA supported) and SSH-2 certificates.
