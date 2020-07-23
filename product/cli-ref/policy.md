@@ -28,30 +28,36 @@ thy policy search –query secrets/databases
 A typical Policy looks like this:
 
 ```yaml
-{
-"created": "2019-09-24T18:12:26Z",
-"createdBy": "users:thy-one:admin@company.com",
-"id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-"lastModified": "2019-09-24T20:13:53Z",
-"lastModifiedBy": "users:thy-one:admin@company.com",
-"path": "secrets:servers:us-west",
-"permissionDocument": [
-{
-"actions": ["read"],
-"conditions": {},
-"description": "",
-"effect": "allow",
-"id": "xxxxxxxxxxxxxxxxxxxx",
-"meta": null,
-"resources": ["secrets:servers:us-west:<.*>"],
-"subjects": ["groups:west admins"]
-}
-],
-"version": "5"
-}
+created: '2019-09-24T18:12:26Z'
+createdBy: users:thy-one:admin@company.com
+id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+lastModified: '2019-09-24T20:13:53Z'
+lastModifiedBy: users:thy-one:admin@company.com
+path: secrets:servers:us-west
+permissionDocument:
+- actions:
+  - read
+  conditions: {}
+  description: ''
+  effect: allow
+  id: xxxxxxxxxxxxxxxxxxxx
+  meta: 
+  resources:
+  - secrets:servers:us-west:<.*>
+  subjects:
+  - groups:west admins
+version: '5'
 ```
 
 ![](./images/spacer.png)
+
+A policy contains a list of permissions which define access to resource paths. The policy itself has a top level path which is the identifier of the policy as well. The policy path is used to validate the resource paths in the permission documents. This allows administrators to delegate user ownership of policies without allowing self elevation through modifying the policy to a higher level path.
+
+For example, the policy above has a path of `secrets:servers:us-west`. Permissions can be created for resources paths like `secrets:servers:us-west`, `secrets:servers:us-west:<.*>`, or `secrets:servers:us-west:prod:<.*>`. A permission document cannot be created on the policy to allow users to manage users, i.e. with a resource path of `users:<*>`. Because the policy path must be the root of any resource paths in its permission documents.
+
+The one exception is policy delegation. An admin can create a policy and add a resource path for `config:policies:secrets:servers:us-west` to allow users to manage the policy. An example of this is [below](###delegate-policy-authority) 
+
+The permission document has the following elements:
 
 | **Element**        | **Definition**                                                                                                                                                                                                                                          |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -60,7 +66,7 @@ A typical Policy looks like this:
 | description        | human friendly description of the Policy intent                                                                                                                                                                                                         |
 | effect             | whether the Policy is allowing or preventing access; valid values are allow and deny                                                                                                                                                                    |
 | id                 | system-generated unique identifier to track changes to a particular Policy                                                                                                                                                                              |
-| resources          | the resource path defining the targets to which the permissions apply; a resource path prefixes the entity type (Secrets, clients, Roles, Users, config, config:auth, config:policies, audit, system:log) to a colon delimited path to the resource.    |
+| resources          | the resource path defining the targets to which the permissions apply; a resource path prefixes the entity type (secrets, clients, roles, users, config, config:auth, config:policies, audit, system:log) to a colon delimited path to the resource.    |
 | subjects           | the Policy provides authorization to these entiries.  Includes Users, Roles, and Groups                                                                                                                                                       |
 
 ![](./images/spacer.png)
@@ -100,6 +106,11 @@ When creating or updating a Policy, a workflow can be started using `thy policy 
 The direct command to create this policy is `thy policy create --path secrets:servers:us-east-1 --actions '<.*>' --desc 'Developer Policy' --subjects 'users:<developer1@thycotic.com|developer2@thycotic.com>' --effect allow`  With the trickiest part being to remember the "secrets" prefix on the path.
 
 ```yaml
+created: '2020-06-24T18:12:26Z'
+createdBy: users:thy-one:admin@company.com
+id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+lastModified: '2020-07-16T20:13:53Z'
+lastModifiedBy: users:thy-one:admin@company.com
 path: secrets:servers:us-east-1
 permissionDocument:
 - id: xxxxxxxxxxxx
@@ -115,8 +126,15 @@ resources:
 
 The second Policy adds a specific path at a level lower (*secrets:servers:us-east-1:production*) to explicitly *deny* access to *developer1@thycotic.com*, as in the following example.
 
+The command to create this policy is ``thy policy create --path secrets:servers:us-east-1:production --actions '<.*>' --desc 'Developer Deny Policy' --subjects 'users:<developer1@thycotic.com>' --effect deny`
+
 ```yaml
-path: secrets:servers:us-east-1
+created: '2020-06-24T18:12:26Z'
+createdBy: users:thy-one:admin@company.com
+id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+lastModified: '2020-07-16T20:13:53Z'
+lastModifiedBy: users:thy-one:admin@company.com
+path: secrets:servers:us-east-1:production
 permissionDocument:
 - id: xxxxxxxxxxxx
 description: Developer Deny Policy.
@@ -135,14 +153,23 @@ resources:
 
 **Solution:** Use a naming convention when creating Roles and specify a prefix with a wildcard to only allow Users to assign Roles that match the naming convention, as modeled in the following example.
 
+The command to run this is `thy policy create roles:dev-role --subjects users:developer@thycotic.com,roles:onboarding-role --desc 'Role Assignment' --resources 'roles:dev-role-<.*>' --actions assign`
+
 ```yaml
-- id: erji23829828
+created: '2020-06-24T18:12:26Z'
+createdBy: users:thy-one:admin@company.com
+id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+lastModified: '2020-07-16T20:13:53Z'
+lastModifiedBy: users:thy-one:admin@company.com
+path: roles:dev-role
+permissionDocument:
+- id: xxxxxxxxxxxx
 description: Limited Role Assignment Policy.
-subjects
+subjects:
 - users:developer@thycotic.com
 - roles:onboarding-role
 actions:
-- "<assign>"
+- assign
 effect: allow
 resources:
 - roles:dev-role-<.*>
@@ -154,51 +181,64 @@ resources:
 
 **Solution:** Under the Resource entity, Secrets, enable the Group named "admins".
 
-```Bash
-{
- "created": "2020-06-02T19:55:32Z",
-  "createdBy": "users:thy-one:admin@company.com",
-  "id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-  "lastModified": "2020-06-03T17:38:28Z",
-  "lastModifiedBy": "users:thy-one:admin@company.com",
-  "path": "secrets",
-  "permissionDocument": [
-   {
-     "actions": ["list"],
-      "conditions": {},
-      "description": "",
-      "effect": "allow",
-      "id": "whatever",
-      "meta": null,
-      "resources": ["secrets"],
-      "subjects": ["groups:admins"]
-   }
- ],
-  "version": "0"
-}
+The command to create this policy is `thy policy create secrets --subjects groups:admins --desc 'secret search' --resources secrets --actions list`
+
+```yaml
+created: '2020-06-24T18:12:26Z'
+createdBy: users:thy-one:admin@company.com
+id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+lastModified: '2020-07-16T20:13:53Z'
+lastModifiedBy: users:thy-one:admin@company.com
+path: secrets
+permissionDocument:
+- actions:
+  - list
+  conditions: {}
+  description: secret search
+  effect: allow
+  id: xxxxxxxxxxxx
+  meta: null
+  resources:
+  - secrets
+  subjects:
+  - groups:admins
+version: "0"
 ```
 > Note: Searching secrets only enables the users to see the path, but not the actual data in the secret.  That would require Read access at the proper path.
 
 ### Allow Users to List Specific Entities
 
-**Case:** A User needs to read and list entities within a Policy.
+**Case:** A User needs to search across all items but only needs full read access on specific ones
 
 **Solution:** Add a list action and the root of the entity used for searching.
 
 In the example below, *roles* is the entity for reading and searching (list action). In the **resources** section, *roles:dev-role-<.*>* is used for reading, while *roles* is used for searching.
 
+The command to create this policy is `thy policy create roles --subjects users:developer@thycotic.com,roles:onboarding-role --desc 'Role Searching' --resources 'roles:dev-role-<.*>,roles' --actions read,list`
+
 ```yaml
-- id: xxxxxxxxxxxx
-description: Limited Role Policy.
-subjects:
-- users:developer@thycotic.com
-- roles:onboarding-role
-actions:
-- "<read|list>"
-effect: allow
-resources:
-- roles:dev-role-<.*>
-- roles
+created: '2020-06-24T18:12:26Z'
+createdBy: users:thy-one:admin@company.com
+id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+lastModified: '2020-07-16T20:13:53Z'
+lastModifiedBy: users:thy-one:admin@company.com
+path: roles
+permissionDocument:
+- actions:
+  - read
+  - list
+  conditions: {}
+  description: Role Searching
+  effect: allow
+  id: xxxxxxxxxxxx
+  meta: null
+  resources:
+  - roles:dev-role-<.*>
+  - roles
+  subjects:
+  - users:developer@thycotic.com
+  - roles:onboarding-role
+version: "0"
 ```
 
 The syntax of the latter is important. In general, the root form of an entity has no * after the entity name, or anything besides the name.
@@ -209,21 +249,126 @@ The syntax of the latter is important. In general, the root form of an entity ha
 
 **Solution:** Under Resources, add config:policies followed by the resource path.
 
+The command to create this policy is `thy policy create secrets:servers --actions create,read,update,delete --resources 'secrets:servers:<.*>,config:policies:secrets:servers:<.*>' --subjects 'users:<developer1@thycotic.com|developer2@thycotic.com>'`
+
 ```yaml
-- id: xxxxxxxxxxxx
-description: Delegate sub-domains.
-subjects:
-- - users:<developer1@thycotic.com|developer2@thycotic.com>
-actions:
-- "<create|read|delete|update>"
-effect: allow
-resources:
-- secrets:servers:<.*>
-- config:policies:secrets:servers:<.*>
+created: '2020-06-24T18:12:26Z'
+createdBy: users:thy-one:admin@company.com
+id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+lastModified: '2020-07-16T20:13:53Z'
+lastModifiedBy: users:thy-one:admin@company.com
+path: secrets:servers
+permissionDocument:
+- actions:
+  - create
+  - read
+  - update
+  - delete
+  conditions: {}
+  description: ""
+  effect: allow
+  id: xxxxxxxxxxxx
+  meta: nullb 
+  resources:
+  - secrets:servers:<.*>
+  - config:policies:secrets:servers:<.*>
+  subjects:
+  - users:<developer1@thycotic.com|developer2@thycotic.com>
+version: "0"
 ```
 
 Now the developers can create Policies below the *secrets:servers:* path; for example, developer1 can create Policies for *secrets:servers:webservers* and developer2 can do the same at *secrets:servers:databases*.
 
+### Read Audits
+
+**Case:** A user needs to be able to read audit records
+
+**Solution:** Add a policy for the audit resource path
+
+The command to create this policy is `thy policy create audit --actions list --resources audit --subjects users:developer1@thycotic.com` 
+
+```yaml
+created: '2020-06-24T18:12:26Z'
+createdBy: users:thy-one:admin@company.com
+id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+lastModified: '2020-07-16T20:13:53Z'
+lastModifiedBy: users:thy-one:admin@company.com
+path: audit
+permissionDocument:
+- actions:
+  - list
+  conditions: {}
+  description: ""
+  effect: allow
+  id: xxxxxxxxxxxx
+  meta: null
+  resources:
+  - audit
+  subjects:
+  - users:developer1@thycotic.com
+version: "0"
+```
+
+### Read System Logs
+
+**Case:** A user needs to be able to read the application log messages
+
+**Solution:** Add a policy for the system:log resource path
+
+The command to create this policy is `thy policy create system:log --actions list --resources system:log --subjects users:developer1@thycotic.com` 
+
+```yaml
+created: '2020-06-24T18:12:26Z'
+createdBy: users:thy-one:admin@company.com
+id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+lastModified: '2020-07-16T20:13:53Z'
+lastModifiedBy: users:thy-one:admin@company.com
+path: system:log
+permissionDocument:
+- actions:
+  - list
+  conditions: {}
+  description: ""
+  effect: allow
+  id: xxxxxxxxxxxx
+  meta: null
+  resources:
+  - system:log
+  subjects:
+  - users:developer1@thycotic.com
+version: "0"
+```
+
+### Manage An Auth Provider
+
+**Case:** A user needs to update a single auth provider
+
+**Solution:** Add a policy for the config:auth provider path
+
+The command to create this policy is `thy policy create config:auth:gcp-dev --actions read,update --resources config:auth:gcp-dev --subjects users:developer1@thycotic.com` 
+
+```yaml
+created: '2020-06-24T18:12:26Z'
+createdBy: users:thy-one:admin@company.com
+id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+lastModified: '2020-07-16T20:13:53Z'
+lastModifiedBy: users:thy-one:admin@company.com
+path: config:auth:gcp-dev
+permissionDocument:
+- actions:
+  - read
+  - update
+  conditions: {}
+  description: ""
+  effect: allow
+  id: xxxxxxxxxxxx
+  meta: null
+  resources:
+  - config:auth:gcp-dev
+  subjects:
+  - users:developer1@thycotic.com
+version: "0"
+```
 
 ![](./images/spacer.png)
 
