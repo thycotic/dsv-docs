@@ -9,7 +9,7 @@ Home provides Users with a separate space to store Secrets.  No Users can access
 Even the Admin does not have access by default, though they can give themselves access for "breakglass" purposes. 
 
 Home follows the familiar syntax:
-`thy home (command) (flags and parameters)`  with the commands being `create, read, delete, update, describe, search`
+`thy home (command) (flags and parameters)`  with the commands being `create, read, delete, update, describe, search`  The difference between `read` and `describe` is that read shows both data and metadate, while describe only shows metadata.
 
 ## Examples
 
