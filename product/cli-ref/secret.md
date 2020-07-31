@@ -45,7 +45,7 @@ Secrets data passes into the *create* command as the value of its `--data` param
 thy secret create --path us-east/server02 --data {\"password\":\"Secret\"}
 ```
 
-If the `--data` parameter's value will be the path to a JSON file, DSV syntax requires an `@` character immediately preceding the first character of the path. The parameter accepts abolute and relative path strings.
+If the `--data` parameter's value will be the path to a JSON file, DSV syntax requires an `@` character immediately preceding the first character of the path. The parameter accepts absolute and relative path strings.
 
 ``` bash
 thy secret create --path us-east/server03 --data @/home/user/Secret.json
