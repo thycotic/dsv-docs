@@ -4,7 +4,7 @@
 
 # Home Vault Beta
 
-Home provides Users with a separate space to store Secrets.  No Users can access another User's Home vault.  As soon as a User is created in DSV, they are given access to thier own Home vault.  No Policy has to be created to enable it.
+Home provides Users with a separate space to store Secrets.  No Users can access another User's Home vault.  As soon as a User is created in DSV, they are given access to their own Home vault.  No Policy has to be created to enable it.
 
 Even the Admin does not have access by default, though they can give themselves access for "breakglass" purposes. 
 
@@ -56,9 +56,12 @@ thy home create secret2 --data @/home/user/secret.json
 ```cmd
 thy home create secret2 --data @../secret.json
 ```
+### Read
 
 
->Note The Home feature is in Beta version currenlty, so some functionality is missing.  Additionally, we my make breaking changes while in Beta.
+
+
+>Note The Home feature is in Beta version currently, so some functionality is missing.  Additionally, we my make breaking changes while in Beta.
 
 Commands such as edit, getbyversion, restore, and rollback are not enabled yet.  
 
