@@ -28,10 +28,10 @@ In this section we will
 To read out the current config, which contains the Admin policies
 
 ```BASH
-thy config read -e yaml
+thy config read
 ```
 
-In this command the *e* flag specifies YAML (the default option being JSON).
+>Note: In this command the `--encoding yaml` flag could be used to provide the output in YAML format.
 
 In response, you should see a block of YAML code containing the Default Admin Policy and the authentication configuration for Thycotic One, similar to this.
 
