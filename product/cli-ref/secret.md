@@ -65,6 +65,63 @@ thy secret create --path us-east/server03 --data @../Secret.json
 thy secret create --path us-east/server02 --data '@../Secret.json'
 ```
 
+### Update
+
+*update* is similar to *create* but operates on an existing secret.  When using *update* for other commands like policy or auth-providers, it is an all or nothing change.  ie, for those if you want to change only one field, you have to updae all of them.  However, for Secrets, it is possible to update only one field and not change the others.
+
+If you have this secret:
+
+``` bash
+{
+  "attributes": {
+    "attr": "add one"
+  },
+  "created": "2019-09-20T16:12:57Z",
+  "createdBy": "users:thy-one:dsvtest9519@mailinator.com",
+  "data": {
+    "host": "server01",
+    "password": "badpassword"
+  },
+  "description": "update description",
+  "id": "c893b4f8-9425-4fa4-acbf-2806d6f1fa82",
+  "lastModified": "2020-01-17T15:43:27Z",
+  "lastModifiedBy": "users:thy-one:dsvtest9519@mailinator.com",
+  "path": "servers:us-east:server01",
+  "version": "12"
+}
+```
+This Bash command will only change the value for *host* in the data section.
+
+``` bash
+thy secret update servers/us-east/server01 --data '{\"host\":\"unknown\"}'
+```
+
+``` bash
+{
+  "attributes": {
+    "attr": "add one"
+  },
+  "created": "2019-09-20T16:12:57Z",
+  "createdBy": "users:thy-one:dsvtest9519@mailinator.com",
+  "data": {
+    "host": "unknown",
+    "password": "badpassword"
+  },
+  "description": "update description",
+  "id": "c893b4f8-9425-4fa4-acbf-2806d6f1fa82",
+  "lastModified": "2020-08-03T17:58:29Z",
+  "lastModifiedBy": "users:thy-one:dsvtest9519@mailinator.com",
+  "path": "servers:us-east:server01",
+  "version": "13"
+}
+```
+
+The flag `--overwrite`, if added to the above command would wipe-out the description and any other data KV pairs. So this flag requires caution.
+
+``` bash
+thy secret update servers/us-east/server01 --data '{\"host\":\"unknown\"}' --overwrite
+```
+
 ### Search
 
 You can search for Secrets by path or attribute
