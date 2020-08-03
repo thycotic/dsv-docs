@@ -67,7 +67,7 @@ thy secret create --path us-east/server02 --data '@../Secret.json'
 
 ### Update
 
-*update* is similar to *create* but operates on an existing secret.  When using *update* for other commands like policy or auth-providers, it is an all or nothing change.  ie, for those if you want to change only one field, you have to updae all of them.  However, for Secrets, it is possible to update only one field and not change the others.
+*update* is similar to *create* but operates on an existing secret.  When using *update* for other commands like policy or auth-providers, it is an all or nothing change.  ie, for those if you want to change only one field, you have to update all of them.  However, for Secrets, it is possible to update only one field and not change the others.
 
 If you have this secret:
 
