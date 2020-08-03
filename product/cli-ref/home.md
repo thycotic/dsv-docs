@@ -39,7 +39,7 @@ thy home create secret2 --data @../secret.json
 Powershell examples
 
 ```PowerShell
-PS C:> thy home create --path secret1 '{\"username\":\"administrator\",\"password\":\"powershell-secret\"}'
+PS C:> thy home create --path secret1 --data '{\"username\":\"administrator\",\"password\":\"powershell-secret\"}'
 ```
 
 ```PowerShell
@@ -52,7 +52,7 @@ thy home create secret2 --data '@../secret.json'
 CMD Examples
 
 ```cmd
-PS C:> thy home create secret1 "{\"username\":\"administrator\",\"password\":\"cmd-secret\"}"
+PS C:> thy home create secret1 --data "{\"username\":\"administrator\",\"password\":\"cmd-secret\"}"
 ```
 
 ```cmd
@@ -70,7 +70,7 @@ The `--desc` flag can be used to add a simple string.  If the string has any spa
 As a Bash example:
 
 ```BASH
-thy home create secret1 --attributes '{"priority":"high"}'  --desc "Covert Secret"
+thy home create secret1 --attributes '{"priority":"high"}'  --desc "Covert Secret" --data '{"username":"administrator","password":"bash-secret"}'
 ```
 
 ### Update
