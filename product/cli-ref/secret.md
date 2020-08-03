@@ -77,7 +77,7 @@ If you have this secret:
     "attr": "add one"
   },
   "created": "2019-09-20T16:12:57Z",
-  "createdBy": "users:thy-one:dsvtest9519@mailinator.com",
+  "createdBy": "users:thy-one:admin@company.com",
   "data": {
     "host": "server01",
     "password": "badpassword"
@@ -85,7 +85,7 @@ If you have this secret:
   "description": "update description",
   "id": "c893b4f8-9425-4fa4-acbf-2806d6f1fa82",
   "lastModified": "2020-01-17T15:43:27Z",
-  "lastModifiedBy": "users:thy-one:dsvtest9519@mailinator.com",
+  "lastModifiedBy": "users:thy-one:admin@company.com",
   "path": "servers:us-east:server01",
   "version": "12"
 }
@@ -102,7 +102,7 @@ thy secret update servers/us-east/server01 --data '{\"host\":\"unknown\"}'
     "attr": "add one"
   },
   "created": "2019-09-20T16:12:57Z",
-  "createdBy": "users:thy-one:dsvtest9519@mailinator.com",
+  "createdBy": "users:thy-one:admin@company.com",
   "data": {
     "host": "unknown",
     "password": "badpassword"
@@ -110,7 +110,7 @@ thy secret update servers/us-east/server01 --data '{\"host\":\"unknown\"}'
   "description": "update description",
   "id": "c893b4f8-9425-4fa4-acbf-2806d6f1fa82",
   "lastModified": "2020-08-03T17:58:29Z",
-  "lastModifiedBy": "users:thy-one:dsvtest9519@mailinator.com",
+  "lastModifiedBy": "users:thy-one:admin@company.com",
   "path": "servers:us-east:server01",
   "version": "13"
 }
