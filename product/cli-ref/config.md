@@ -137,6 +137,24 @@ To see a list of all Auth-providers:
 ```BASH
 thy config auth-provider search
 ```
+Initially, your tenant will only have a Thycotic One connection
+
+```Bash
+    {
+      "created": "2019-09-18T18:38:49Z",
+      "createdBy": "",
+      "id": "bm17jee33m1c72u313u0",
+      "lastModified": "2020-05-10T02:25:04Z",
+      "lastModifiedBy": "users:admin@company.com",
+      "name": "thy-one",
+      "properties": {
+        "baseUri": "https://thycotic-one-sscdev-dev-eastus-web01.azurewebsites.net",
+        "clientId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "clientSecret": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      },
+      "type": "thycoticone",
+      "version": "1"
+    },
 
 ![](./images/spacer.png)
 
