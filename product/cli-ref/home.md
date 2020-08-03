@@ -169,13 +169,13 @@ Some examples
 ``` bash
 thy home search server
 
-thy secret search --query server
+thy home search --query server
 
-thy secret search --query aws --search-field attributes.type
+thy home search --query aws --search-field attributes.type
 
-thy secret search --query 900 --search-field attributes.ttl --search-type number
+thy home search --query 900 --search-field attributes.ttl --search-type number
 
-thy secret search --query production --search-field attributes.stage --search-comparison equal
+thy home search --query production --search-field attributes.stage --search-comparison equal
 ```
 
 flags
@@ -214,7 +214,7 @@ Use `edit` to open the Secret data in the default text editor for bash, such as 
 * Saving in the editor updates the Secret in the vault, except in the case of Notepad, in which case the update happens when you save and then exit Notepad. Your interim saves are to the working copy.
 
 ```BASH
-thy secret edit --path us-east/server02
+thy home edit --path us-east/server02
 ```
 
 ### Delete
