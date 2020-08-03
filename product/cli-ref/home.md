@@ -52,7 +52,7 @@ thy home create secret2 --data '@../secret.json'
 CMD Examples
 
 ```cmd
-PS C:> thy home create --path secret1 "{\"username\":\"administrator\",\"password\":\"cmd-secret\"}"
+PS C:> thy home create secret1 "{\"username\":\"administrator\",\"password\":\"cmd-secret\"}"
 ```
 
 ```cmd
