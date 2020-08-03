@@ -33,7 +33,7 @@ thy config read
 
 >Note: In this command the `--encoding yaml` flag could be used to provide the output in YAML format.
 
-In response, you should see a block of code containing the Default Admin Policy and the authentication configuration for Thycotic One, similar to this.
+In response, you should see a block of code containing the Default Admin Policy, similar to this.
 
 ```Bash
 {
@@ -124,7 +124,9 @@ in which:
     * AWS flag is *--aws-account-id*
     * Azure flag is *--azure-tenant-id*
     * Thycotic One requires three flags *--baseURI*, *--clientID*, and *--clientSecret* 
-    * GCP has two options for federation, GCE metadata and service accounts.  Flags are not provided for these so a file is required.
+    * GCP has two options for federation, GCE metadata and service accounts.
+        * For GCE metadata, use *--gcp-projcet-id*
+        * Flags are not provided for a service account so a file is required.
 
 >Note: The account identifiers for third-party authentication are a top level setting that allow you or other Users to authorize specific security principals within that account. They do not automatically grant access to any User or Role within the provider.
 
