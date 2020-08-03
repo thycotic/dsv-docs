@@ -33,7 +33,7 @@ thy config read
 
 >Note: In this command the `--encoding yaml` flag could be used to provide the output in YAML format.
 
-In response, you should see a block of YAML code containing the Default Admin Policy and the authentication configuration for Thycotic One, similar to this.
+In response, you should see a block of code containing the Default Admin Policy and the authentication configuration for Thycotic One, similar to this.
 
 ```Bash
 {
