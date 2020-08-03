@@ -15,7 +15,7 @@ Even the Admin does not have access by default, though they can give themselves 
 
 
 Home follows the familiar syntax:
-`thy home (command) (flags and parameters)`  with the commands being `create, read, delete, update, describe, search`  The difference between `read` and `describe` is that read shows both data and metadata, while describe only shows metadata.
+`thy home (command) (flags and parameters)`  with the commands being `create, read, delete, update, describe, edit, search`  The difference between `read` and `describe` is that read shows both data and metadata, while describe only shows metadata.
 
 ## Examples
 
@@ -130,7 +130,6 @@ The flag `--overwrite`, if added to the above command would wipe-out the descrip
 thy home update secret1 --data '{\"host\":\"unknown\"}' --overwrite
 ```
 
-
 ### Read
 
 The `read` command shows both the Secret data and metadata.
@@ -162,4 +161,71 @@ thy home describe secret1
 ```
 
 ### Search
+
+You can search for Secrets by path or attribute
+
+Some examples
+
+``` bash
+thy home search server
+
+thy secret search --query server
+
+thy secret search --query aws --search-field attributes.type
+
+thy secret search --query 900 --search-field attributes.ttl --search-type number
+
+thy secret search --query production --search-field attributes.stage --search-comparison equal
+```
+
+flags
+
+`--query`, `-q`                Query of secrets to fetch (required)
+
+`--limit`                      Set the maximum number of search results that will display per page (cursor)
+
+`--cursor`                     Accepts the element used to get the next page of results
+
+`--search-comparison`          Specify the operator for advanced field searching, can be 'contains', 'equal', or 'begins_with' Defaults to 'contains' (optional)
+
+`--search-field`               Advanced search on a secret field such as 'attribute.type' or 'description'.  Defaults to 'path'. (optional)
+
+`--search-type`                Specify the value type for advanced field searching, can be 'number' or 'string'. Defaults to 'string' (optional)
+
+
+For a search where there are more results than returned in the first set, the API returns a cursor—a large piece of text. You pass that back to get the next set of results.
+
+For example, if the command `thy secret search -q admin --limit 10` matched 12 Secrets with admin in the name, the CLI would return the first 10 plus a cursor. To obtain the next two results, you would use this command:
+
+```BASH
+thy secret search -q admin --limit 10 --cursor AFSDFSD...DKFJLSDJ=
+```
+
+Cursors may be lengthy:
+
+```BASH
+thy secret search -q resources --limit 10 --cursor eyJpZCI6ImEwOTFjOWIzLWE4MmQtNGRiYy1hYThiLTYxMDY0NDZhZjA3MSIsInBhdGgiOiIiLCJ2ZXJzaW9uIjoidi1jdXJyZW50IiwidHlwZSI6IiIsImxhdGVzdCI6MH0=
+```
+
+### Edit
+
+Use `edit` to open the Secret data in the default text editor for bash, such as **vi**, **nano**, or **Notepad**.
+
+* Saving in the editor updates the Secret in the vault, except in the case of Notepad, in which case the update happens when you save and then exit Notepad. Your interim saves are to the working copy.
+
+```BASH
+thy secret edit --path us-east/server02
+```
+
+### Delete
+
+To `delete` a Hame value, simply specify its name.
+
+``` bash
+thy home delete secret1
+```
+
+When you delete a Secret, it will no longer be usable. However, with the soft delete capacity of DSV, you have 72 hours to use the *restore* command to undelete the Secret. After 72 hours, the Secret will no longer be retrievable.
+
+Should you want to perform a hard delete, precluding any restore operation, you can use the *delete* command's `--force` flag.
 
