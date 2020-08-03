@@ -209,31 +209,25 @@ thy secret describe --path us-east/server02
 
 ### Read
 
-Use *read* to get a Secret's data. The `-b` flag beautifies the output, while the `-e` flag sets the output format to JSON or YAML and the `-o` flag (as commonly used) redirects the output to a file.
-
-``` bash
-thy secret read --path us-east/server02 -b -e yaml
-```
-
-Output:
-
-```yaml
-attributes: null
-data:
-  password: Secret
-id: 3f15f2a5-f76a-4f43-911c-d8b4f1cc2290
-path: us-east:server02
-```
-
-The `--filter` or `-f` flag supports filtering to isolate a specific data attribute, for example:
+The `read` command shows both the Secret data and metadata.
 
 ```BASH
-thy secret read --path us-east/server02 -f data.password
+thy secret read --path us-east/server02 
 ```
 
-Output:
+Flags 
 
-*Secret*
+`--encoding` or `-e` converts the output to JSON (default) or YAML. 
+
+`--out` or `-o` can send the read response to stdout (default), the clipboard (clip), or a file (file:<filename>)
+
+`--filter` or `-f` filters to a specific KV pair.  So data.password would only output the password value.
+
+This example would send the password value only to the clipboard.
+
+```BASH
+thy secret read secret2 -o clip -f data.password
+```
 
 > TIP: Although the `-o` flag allows redirection of output to files, it does not support directly assigning the output to an environmental variable. However, you can use piping to achieve that outcome.
 
