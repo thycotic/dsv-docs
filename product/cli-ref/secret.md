@@ -39,30 +39,56 @@ thy secret bustcache
 
 ### Create
 
-Secrets data passes into the *create* command as the value of its `--data` parameter. The parameter accepts JSON entered directly at the command line, or the path to a JSON file.
+The `create` command uses the `--data` flag to pass data into the secret.  This flag accepts JSON entered directly into the command line or by a path (absolute or relative) to a JSON file.
 
-``` bash
-thy secret create --path us-east/server02 --data {\"password\":\"Secret\"}
+Bash examples 
+
+```BASH
+thy secret create --path us-east/server02 --data '{"username":"administrator","password":"bash-secret"}'
 ```
 
-If the `--data` parameter's value will be the path to a JSON file, DSV syntax requires an `@` character immediately preceding the first character of the path. The parameter accepts absolute and relative path strings.
-
-``` bash
-thy secret create --path us-east/server03 --data @/home/user/Secret.json
+```BASH
+thy secret create --path us-east/server02 --data @/home/user/secret.json
 ```
 
-``` powershell
-thy secret create --path us-east/server02 --data '@/home/user/Secret.json'
+```BASH
+thy secret create --path us-east/server02 --data @../secret.json
+```
+Powershell examples
+
+```PowerShell
+PS C:> thy secret create --path us-east/server02 --data '{\"username\":\"administrator\",\"password\":\"powershell-secret\"}'
 ```
 
-Using a file in the parent directory:
-
-``` bash
-thy secret create --path us-east/server03 --data @../Secret.json
+```PowerShell
+thy secret create --path us-east/server02 --data '@/home/user/secret.json'
 ```
 
-``` powershell
-thy secret create --path us-east/server02 --data '@../Secret.json'
+```PowerShell
+thy secret create --path us-east/server02 --data '@../secret.json'
+```
+CMD Examples
+
+```cmd
+PS C:> thy secret create --path us-east/server02 --data "{\"username\":\"administrator\",\"password\":\"cmd-secret\"}"
+```
+
+```cmd
+thy home secret --path us-east/server02 --data @/home/user/secret.json
+```
+
+```cmd
+thy home secret --path us-east/server02 --data @../secret.json
+```
+
+The `--attributes` flag can be used to add user-defined metadata in the same way that data is added.
+
+The `--desc` flag can be used to add a simple string.  If the string has any spaces, then it should be enclosed in double quotes.
+
+As a Bash example:
+
+```BASH
+thy secret create --path us-east/server02 --attributes '{"priority":"high"}'  --desc "Covert Secret" --data '{"username":"administrator","password":"bash-secret"}'
 ```
 
 ### Update
