@@ -29,6 +29,7 @@ For example, in `thy role create`, `role` is the object of the command `create`.
 | user       | user (`<username> * --username`)       | manage Users                                                                              |
 | whoami     | whoami                                 | display the currently authenticated User                                                  |
 
+![](./images/spacer.png)
 
 ## Workflows for Creating or Updating Objects
   
