@@ -19,6 +19,13 @@ The Command Line Interface (CLI) is locally installed using OS-specific executab
 
 | **Update**             | **Notes**                                  |
 |------------------------|--------------------------------------------|
+|August 2020             | **CLI Version**: 1.12|
+|                        | **new feature**: Home Vault Beta.  Users get their own secret space without needing a policy.|
+|                        | **improvement**: Global flags defined|
+|                        | **improvement**: Policy update help information and examples.|
+|                        | **improvement**: Improved auth-provider help|
+|                        | **improvement**: Pre-validation for SIEM endpoints|
+|                        | **fixed**: Added Metadata to Groups|
 |July 2020 (Update 1)    | **fixed**: Enforce case insensitivity on subjects returned in JWT record.|
 |July 2020               | **CLI Version**: 1.11|
 |                        | **new feature**: SSH public key generation and SSH Certificate signing/storage was added.|

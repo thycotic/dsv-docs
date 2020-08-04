@@ -39,30 +39,113 @@ thy secret bustcache
 
 ### Create
 
-Secrets data passes into the *create* command as the value of its `--data` parameter. The parameter accepts JSON entered directly at the command line, or the path to a JSON file.
+The `create` command uses the `--data` flag to pass data into the secret.  This flag accepts JSON entered directly into the command line or by a path (absolute or relative) to a JSON file.
+
+Bash examples 
+
+```BASH
+thy secret create --path us-east/server02 --data '{"username":"administrator","password":"bash-secret"}'
+```
+
+```BASH
+thy secret create --path us-east/server02 --data @/home/user/secret.json
+```
+
+```BASH
+thy secret create --path us-east/server02 --data @../secret.json
+```
+Powershell examples
+
+```PowerShell
+PS C:> thy secret create --path us-east/server02 --data '{\"username\":\"administrator\",\"password\":\"powershell-secret\"}'
+```
+
+```PowerShell
+thy secret create --path us-east/server02 --data '@/home/user/secret.json'
+```
+
+```PowerShell
+thy secret create --path us-east/server02 --data '@../secret.json'
+```
+CMD Examples
+
+```cmd
+PS C:> thy secret create --path us-east/server02 --data "{\"username\":\"administrator\",\"password\":\"cmd-secret\"}"
+```
+
+```cmd
+thy home secret --path us-east/server02 --data @/home/user/secret.json
+```
+
+```cmd
+thy home secret --path us-east/server02 --data @../secret.json
+```
+
+The `--attributes` flag can be used to add user-defined metadata in the same way that data is added.
+
+The `--desc` flag can be used to add a simple string.  If the string has any spaces, then it should be enclosed in double quotes.
+
+As a Bash example:
+
+```BASH
+thy secret create --path us-east/server02 --attributes '{"priority":"high"}'  --desc "Covert Secret" --data '{"username":"administrator","password":"bash-secret"}'
+```
+
+### Update
+
+*update* is similar to *create* but operates on an existing secret.  When using *update* for other commands like policy or auth-providers, it is an all or nothing change.  ie, for those if you want to change only one field, you have to update all of them.  However, for Secrets, it is possible to update only one field and not change the others.
+
+If you have this secret:
 
 ``` bash
-thy secret create --path us-east/server02 --data {\"password\":\"Secret\"}
+{
+  "attributes": {
+    "attr": "add one"
+  },
+  "created": "2019-09-20T16:12:57Z",
+  "createdBy": "users:thy-one:admin@company.com",
+  "data": {
+    "host": "server01",
+    "password": "badpassword"
+  },
+  "description": "update description",
+  "id": "c893b4f8-9425-4fa4-acbf-2806d6f1fa82",
+  "lastModified": "2020-01-17T15:43:27Z",
+  "lastModifiedBy": "users:thy-one:admin@company.com",
+  "path": "servers:us-east:server01",
+  "version": "12"
+}
 ```
-
-If the `--data` parameter's value will be the path to a JSON file, DSV syntax requires an `@` character immediately preceding the first character of the path. The parameter accepts abolute and relative path strings.
+This Bash command will only change the value for *host* in the data section.
 
 ``` bash
-thy secret create --path us-east/server03 --data @/home/user/Secret.json
+thy secret update servers/us-east/server01 --data '{\"host\":\"unknown\"}'
 ```
-
-``` powershell
-thy secret create --path us-east/server02 --data '@/home/user/Secret.json'
-```
-
-Using a file in the parent directory:
 
 ``` bash
-thy secret create --path us-east/server03 --data @../Secret.json
+{
+  "attributes": {
+    "attr": "add one"
+  },
+  "created": "2019-09-20T16:12:57Z",
+  "createdBy": "users:thy-one:admin@company.com",
+  "data": {
+    "host": "unknown",
+    "password": "badpassword"
+  },
+  "description": "update description",
+  "id": "c893b4f8-9425-4fa4-acbf-2806d6f1fa82",
+  "lastModified": "2020-08-03T17:58:29Z",
+  "lastModifiedBy": "users:thy-one:admin@company.com",
+  "path": "servers:us-east:server01",
+  "version": "13"
+}
 ```
 
-``` powershell
-thy secret create --path us-east/server02 --data '@../Secret.json'
+The flag `--overwrite`, if added to the above command would wipe-out the description and any other data KV pairs. So this flag requires caution.
+
+``` bash
+thy secret update servers/us-east/server01 --data '{\"host\":\"unknown\"}' --overwrite
 ```
 
 ### Search
@@ -113,7 +196,7 @@ thy secret search -q admin --limit 10 --cursor AFSDFSD...DKFJLSDJ=
 Cursors may be lengthy:
 
 ```BASH
-\thy-win-x64.exe secret search -q resources --limit 10 --cursor eyJpZCI6ImEwOTFjOWIzLWE4MmQtNGRiYy1hYThiLTYxMDY0NDZhZjA3MSIsInBhdGgiOiIiLCJ2ZXJzaW9uIjoidi1jdXJyZW50IiwidHlwZSI6IiIsImxhdGVzdCI6MH0=
+thy secret search -q resources --limit 10 --cursor eyJpZCI6ImEwOTFjOWIzLWE4MmQtNGRiYy1hYThiLTYxMDY0NDZhZjA3MSIsInBhdGgiOiIiLCJ2ZXJzaW9uIjoidi1jdXJyZW50IiwidHlwZSI6IiIsImxhdGVzdCI6MH0=
 ```
 
 ### Describe
@@ -126,31 +209,25 @@ thy secret describe --path us-east/server02
 
 ### Read
 
-Use *read* to get a Secret's data. The `-b` flag beautifies the output, while the `-e` flag sets the output format to JSON or YAML and the `-o` flag (as commonly used) redirects the output to a file.
-
-``` bash
-thy secret read --path us-east/server02 -b -e yaml
-```
-
-Output:
-
-```yaml
-attributes: null
-data:
-  password: Secret
-id: 3f15f2a5-f76a-4f43-911c-d8b4f1cc2290
-path: us-east:server02
-```
-
-The `--filter` or `-f` flag supports filtering to isolate a specific data attribute, for example:
+The `read` command shows both the Secret data and metadata.
 
 ```BASH
-thy secret read --path us-east/server02 -f data.password
+thy secret read --path us-east/server02 
 ```
 
-Output:
+Flags 
 
-*Secret*
+`--encoding` or `-e` converts the output to JSON (default) or YAML. 
+
+`--out` or `-o` can send the read response to stdout (default), the clipboard (clip), or a file (file:<filename>)
+
+`--filter` or `-f` filters to a specific KV pair.  So data.password would only output the password value.
+
+This example would send the password value only to the clipboard.
+
+```BASH
+thy secret read secret2 -o clip -f data.password
+```
 
 > TIP: Although the `-o` flag allows redirection of output to files, it does not support directly assigning the output to an environmental variable. However, you can use piping to achieve that outcome.
 
