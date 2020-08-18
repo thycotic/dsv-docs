@@ -42,6 +42,9 @@ A workflow is a series of questions that guides the user through the creation or
 * thy policy
 * thy siem
 * thy pki
+* thy user
+* thy group
+* thy role
 
 If the object doesn't support a workflow, then the flag `--help` is assumed
 
