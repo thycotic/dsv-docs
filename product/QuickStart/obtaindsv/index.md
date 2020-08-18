@@ -9,7 +9,7 @@ Your **tenant** is your DevOps Secrets Vault cloud account and the rights to acc
 * To sign up, visit Thycotic's [DevOps Secrets Vault Home Page](https://thycotic.com/products/devops-secrets-vault-password-management/) and fill out and submit the **DevOps Secrets Vault Free** web form.
 * Signing up qualifies you for a free, feature-complete try-out version of DevOps Secrets Vault. You begin with the free version to get configured, and upgrade when you need more capacity than the free version's 250 Secrets and 2500 API calls per month.
 * An initial email from Thycotic Customer Support will arrive with the subject, "Welcome to the Thycotic Community!". There is a link to sign up for a Thycotic support account.  You can wait until you need support to sign up.  Also, if you already have a support account because of a previous Thycotic cloud subscription, then this can be ignored.
-* A second email, also from Thycotic Sales, but with the subject, "DevOps Secrets Vault" will arrive.  
+* A second email, this time from Thycotic Sales, with the subject "DevOps Secrets Vault" will arrive.  
 * Click the hyperlink labeled "Cloud Portal" in the text of the email to click to get started.
 
 ![DSV Get Started Email](./images/DSVCloudemail.png)
@@ -30,7 +30,7 @@ Your **tenant** is your DevOps Secrets Vault cloud account and the rights to acc
 
 * NOTE: The person setting up the DevOps Secrets Vault tenant will be considered the *initial administrator* and Thycotic One will be established as that person's authentication provider.  This is to enable Thycotic to help in case the password is lost.  
 
-    * It is up to the customer to set any future users as local or through Thycotic One, AWS, or Azure.
+    * It is up to the customer to set any future users as local or through Thycotic One, AWS, Azure or GCP.
     * Thycotic One can be setup later to enable SSO to an identity provider of the customer's choice using OIDC.
     * Thycotic One can be setup later to enable 2FA when used as the identity provider. The options are TOTP (such as Google Authenticator) and SMS. 
 
