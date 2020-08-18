@@ -154,9 +154,12 @@ The filter modifier relies on a lightweight, flexible command line JSON processo
 
 The following code block illustrates:
 
-```JSON
-thy secret read --path resources/server01/mysql -b
 
+`thy secret read --path resources/server01/mysql -b` 
+
+Outputs:
+
+```JSON
 {
   "attributes": {
     "tag1": "this is a tag"
@@ -174,11 +177,13 @@ thy secret read --path resources/server01/mysql -b
   "path": "resources:server01:mysql",
   "version": "1"
 }
-
-thy secret read --path resources/server01/mysql --filter data.password
-
-root-password
 ```
+
+`thy secret read --path resources/server01/mysql --filter data.password` 
+
+Outputs:
+
+`root-password`
 
 The command without the filter produced the entire Secret, while the command with the filter read out only the password value.
 
