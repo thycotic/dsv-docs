@@ -5,33 +5,23 @@
 # Authentication: Azure 
 
 
-Use `thy config read --encoding yaml` to see your current configuration.
+Use `thy config auth-provider search -e yaml` to see all of your current authentication providers.
 
-The initial config will look similar to this:
+Initially, the only authentication provider is Thycotic One, similar to this:
 
 ```yaml
-permissionDocument:
-- actions:
-- <.*>
-conditions: {}
-description: Default Admin Policy
-effect: allow
+created: "2019-11-11T20:29:20Z"
+createdBy: users:thy-one:admin@company.com
 id: xxxxxxxxxxxxxxxxxxxx
-meta: null
-resources:
-- <.*>
-subjects:
-- users:<thy-one:admin@company.com>
-settings:
-authentication:
-- ID: xxxxxxxxxxxxxxxxxxxx
+lastModified: "2020-05-18T03:58:15Z"
+lastModifiedBy: users:thy-one:admin@company.com
 name: thy-one
 properties:
-baseUri: https://login.thycotic.com/
-clientId: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-clientSecret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ baseUri: https://login.thycotic.com/
+ clientId: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ clientSecret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 type: thycoticone
-tenantName: company
+version: "0"
 ```
 
 ## Azure Authentication Provider
@@ -48,40 +38,21 @@ where:
 
 To view the resulting addition to the config file, you would use:
 
-```BASH
-thy config read -be yaml
-```
+`thy config auth-provider <name> read -e yaml` where the example name we will use here is azure-prod
 
 The readout would look similar to this:
 
 ```yaml
-permissionDocument:
-- actions:
-- <.*>
-conditions: {}
-description: Default Admin Policy
-effect: allow
-id: xxxxxxxxxxxxxxxxxxxxx
-meta: null
-resources:
-- <.*>
-subjects:
-- users:<thy-one:admin@company.com>
-settings:
-authentication:
-- ID: xxxxxxxxxxxxxxxxxx
-name: thy-one
-properties:
-baseUri: https://login.thycotic.com/
-clientId: xxxxxxxx-xxxxxxxxx-xxxx-xxxxxxxxxxxx
-clientSecret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-type: thycoticone
-- ID: xxxxxxxxxxxxxxxxxxxxx
+created: "2019-11-12T18:34:49Z"
+createdBy: users:thy-one:admin@company.com
+-id: xxxxxxxxxxxxxxxxxxxxx
+lastModified: "2020-05-18T03:58:15Z"
+lastModifiedBy: users:thy-one:admin@company.com
 name: azure-prod
 properties:
-tenantId: xxxxxxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+ tenantId: xxxxxxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 type: azure
-tenantName: company
+version: "0"
 ```
 
 ## Azure User Assigned MSI Example
@@ -104,34 +75,19 @@ Modify the config to give that User access to the default administrator permissi
 Add the User as a subject to the **Default Admin Policy**. Third party accounts must be prefixed with the provider name; in this case the fully qualified username will be *azure-prod:test-api*.
 
 ```yaml
-permissionDocument:
+<snip>
 - actions:
-- <.*>
-conditions: {}
-description: Default Admin Policy
-effect: allow
-id: xxxxxxxxxxxxxxxxxxxx
-meta: null
-resources:
-- <.*>
-subjects:
-- users:<azure-prod:test-api|admin@company.com>
-settings:
-authentication:
-- ID: xxxxxxxxxxxxxxxxxx
-name: thy-one
-properties:
-baseUri: https://login.thycotic.com/
-clientId: xxxxxxxx-xxxxxxxxx-xxxx-xxxxxxxxxxxx
-clientSecret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-type: thycoticone
-- ID: xxxxxxxxxxxxxxxxxxxx
-name: azure-prod
-properties:
-tenantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-type: azure
-tenantName: company
-```
+ - <.*>
+ conditions: {}
+ description: Default Admin Policy
+ effect: allow
+ id: xxxxxxxxxxxxxxxxxxxx
+ meta: null
+ resources:
+ - <.*>
+ subjects:
+ - users:<azure-prod:test-api|admin@company.com>
+<snip
 
 On a VM in Azure that has the User MSI assigned as the identity, download the DVS CLI executable appropriate to the OS of the VM and initialize the CLI.
 
@@ -177,35 +133,20 @@ thy config edit --encoding yaml
 Add the User as a subject to the **Default Admin Policy**. Third party accounts must be prefixed with the provider name; in this case the fully qualified Role name will be *azure-prod:identity-rg*.
 
 ```yaml
-permissionDocument:
+<snip>
 - actions:
-- <.*>
-conditions: {}
-description: Default Admin Policy
-effect: allow
-id: bgn8gjei66jc7148d9i0
-meta: null
-resources:
-- <.*>
-subjects:
-- users:<azure-prod:test-api|admin@company.com>
-- roles:azure-prod:identity-rg
-settings:
-authentication:
-- ID: xxxxxxxxxxxxxxxxxx
-name: thy-one
-properties:
-baseUri: https://login.thycotic.com/
-clientId: xxxxxxxx-xxxxxxxxx-xxxx-xxxxxxxxxxxx
-clientSecret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-type: thycoticone
-- ID: xxxxxxxxxxxxxxxxxxxx
-name: azure-prod
-properties:
-tenantId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-type: azure
-tenantName: company
-```
+ - <.*>
+ conditions: {}
+ description: Default Admin Policy
+ effect: allow
+ id: bgn8gjei66jc7148d9i0
+ meta: null
+ resources:
+ - <.*>
+ subjects:
+ - users:<azure-prod:test-api|admin@company.com>
+ - roles:<azure-prod:identity-rg>
+<snip
 
 On a VM in Azure that is part of the resource group and has a system-assigned MSI, download the DVS CLI executable appropriate to the OS of the VM and initialize the CLI.
 
