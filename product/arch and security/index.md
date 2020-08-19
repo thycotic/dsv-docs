@@ -9,7 +9,7 @@
 
 ![](./images/spacer.png)
 
-Users authenticate locally or by a Thycotic One, Amazon AWS, or Microsoft Azure authentication provider. 
+Users authenticate locally or by a Thycotic One, Amazon AWS, Microsoft Azure, or Google Cloud Platform authentication provider. 
 
 Within the DSV application platform, the API Gateway receives API calls, obtains the responses, and relays them to the caller using HTTPS GET, PUT, POST and other methods common to the REST architecture. The Authorizer uses OAuth to handle API Gateway authorization.
 
