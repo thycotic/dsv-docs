@@ -155,6 +155,7 @@ Initially, your tenant will only have a Thycotic One connection
       "type": "thycoticone",
       "version": "1"
     },
+```
 
 ![](./images/spacer.png)
 
