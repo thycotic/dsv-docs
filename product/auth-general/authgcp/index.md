@@ -72,6 +72,8 @@ Go back to the terminal (DevOps Secrets Vault CLI)
 
 Use `thy config auth-provider search -e yaml` to see all of your current authentication providers.
 
+Initially, the only authentication provider is Thycotic One, similar to this:
+
 ```yaml
 created: "2019-11-11T20:29:20Z"
 createdBy: users:thy-one:admin@company.com
