@@ -70,31 +70,21 @@ In the search, type `Identity and Access` and in the results, select the **Ident
 
 Go back to the terminal (DevOps Secrets Vault CLI)
 
-Use `thy config read --encoding yaml` to see your current configuration.  The initial config will look similar to this:
+Use `thy config auth-provider search -e yaml` to see all of your current authentication providers.
 
 ```yaml
-permissionDocument:
-- actions:
-- <.*>
-conditions: {}
-description: Default Admin Policy
-effect: allow
+created: "2019-11-11T20:29:20Z"
+createdBy: users:thy-one:admin@company.com
 id: xxxxxxxxxxxxxxxxxxxx
-meta: null
-resources:
-- <.*>
-subjects:
-- users:<thy-one:admin@company.com>
-settings:
-authentication:
-- ID: xxxxxxxxxxxxxxxxxxxx
+lastModified: "2020-05-18T03:58:15Z"
+lastModifiedBy: users:thy-one:admin@company.com
 name: thy-one
 properties:
-baseUri: https://login.thycotic.com/
-clientId: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-clientSecret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ baseUri: https://login.thycotic.com/
+ clientId: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ clientSecret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 type: thycoticone
-tenantName: company
+version: "0"
 ```
 
 
@@ -116,34 +106,17 @@ Setup the DSV authentication provider.  Create a json file named `auth-gcp.txt` 
 ```
 In the DSV CLI, run `thy config auth-provider create --data @auth-gcp.txt` to create the GCP authentication provider.
 
-Now `thy config read --encoding yaml` should include the GCP provider named *gcloud*.
+`thy config auth-provider <name> read -e yaml` where the example name we will use here is gcloud
 
 ```yaml
-permissionDocument:
-- actions:
-- <.*>
-conditions: {}
-description: Default Admin Policy
-effect: allow
-id: xxxxxxxxxxxxxxxxxxxx
-meta: null
-resources:
-- <.*>
-subjects:
-- users:<thy-one:admin@company.com>
-settings:
-authentication:
-- ID: xxxxxxxxxxxxxxxxxxxx
-name: thy-one
-properties:
-baseUri: https://login.thycotic.com/
-clientId: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-clientSecret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-type: thycoticone
-- ID: bq4ce17cj2bc72qun8vg
+created: "2019-11-12T18:34:49Z"
+createdBy: users:thy-one:admin@company.com
+id: bq4ce17cj2bc72qun8vg
+lastModified: "2020-05-18T03:58:15Z"
+lastModifiedBy: users:thy-one:admin@company.com
 name: gcloud
 properties:
-clientEmail: dsv-svc@myfirstproject-273119.iam.gserviceaccount.com
+clientEmail: dsv-svc@myfirstproject-xxxxxx.iam.gserviceaccount.com
 privateKey: |
 -----BEGIN PRIVATE KEY-----
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -174,11 +147,10 @@ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 XXXXXXXXXXXXXXXXXXXXXXXX=
 -----END PRIVATE KEY-----
 privateKeyId: 9xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx3
-projectId: myfirstproject-273119
+projectId: myfirstproject-xxxxxx
 tokenUri: https://oauth2.googleapis.com/token
 type: service_account
 type: gcp
-tenantName: company
 ```
 ### DSV Service Account/User Mapping
 
@@ -194,7 +166,7 @@ In the DSV CLI, create a User called `gcp-test` referring to the `client-svc` se
     {
       "created": "2020-04-04T17:56:33Z",
       "createdBy": "users:thy-one:admin@company.com",
-      "externalId": "client-svc@myfirstproject-273119.iam.gserviceaccount.com",
+      "externalId": "client-svc@myfirstproject-xxxxxx.iam.gserviceaccount.com",
       "id": "d6a8e1e5-5554-4fc8-a4ca-1c1a653f9095",
       "lastModified": "2020-04-04T17:56:33Z",
       "lastModifiedBy": "users:thy-one:admin@company.com",
@@ -232,17 +204,21 @@ thy config edit
 
 Add *gcloud:gcp-test* as a User to the **Default Admin Policy**. Third party accounts must be prefixed with the provider name; in this case, the fully qualified username would be *glcoud:gcp-test*.
 
-(Only the Admin policy is shown from the config file)
 
 ```yaml
-description: Default Admin Policy
-effect: allow
-id: xxxxxxxxxxxxxxxxxxxx
-meta: null
-resources:
-- <.*>
-subjects:
-- users:<thy-one:admin@company.com|gcloud:gcp-test>
+<snip>
+- actions:
+ - <.*>
+ conditions: {}
+ description: Default Admin Policy
+ effect: allow
+ id: xxxxxxxxxxxxxxxxxxxx
+ meta: null
+ resources:
+ - <.*>
+ subjects:
+ - users:<gcloud:gcp-test|admin@company.com>
+<snip>
 ```
 
 Run `thy init` filling out the desired values and selecting **6** GCP (federated) when prompted for the auth type.
@@ -314,36 +290,31 @@ Create a file named 'auth-gcp.txt' in the following format and substituting your
 
 Run `thy config auth-provider create --data @auth-gcp.txt` to implement the Authentication Provider.
 
-Checking the config file, `thy config read -e yaml` we see the Authentication Provider established with the name *gcloud-gce* and typ *gcp*
+To view the resulting addition to the config file, you would use:
+
+`thy config auth-provider <name> read -e yaml` where the example name we will use here is *gcloud-gce*
 
 ```yaml 
-permissionDocument:
-- actions:
-- <.*>
-conditions: {}
-description: Default Admin Policy
-effect: allow
-id: xxxxxxxxxxxxxxxxxxxx
-meta: null
-resources:
-- <.*>
-subjects:
-- users:<thy-one:admin@company.com>
-settings:
-authentication:
-- ID: xxxxxxxxxxxxxxxxxxxx
-name: thy-one
-properties:
-baseUri: https://login.thycotic.com/
-clientId: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-clientSecret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-type: thycoticone
+
 - ID: bq71e5co19js72ppv140
 name: gcloud-gce
 properties:
 projectId: myfirstproject-273119
 type: gcp
 tenantName: company
+```
+
+```yaml
+created: "2019-11-12T18:34:49Z"
+createdBy: users:thy-one:admin@company.com
+id: xxxxxxxxxxxxxxxxxxxx
+lastModified: "2020-05-18T03:58:15Z"
+lastModifiedBy: users:thy-one:admin@company.com
+name: gcloud-gce
+properties:
+projectId: myfirstproject-xxxxxx
+type: gcp
+version: "0"
 ```
 
 ### DSV GCE Metadata Service Account/DSV User Mapping
@@ -373,18 +344,28 @@ thy config edit
 
 Add *gcloud:gce-test* as a User to the **Default Admin Policy**. Third party accounts must be prefixed with the provider name; in this case, the fully qualified username would be *glcoud-gce:gce-test*.
 
-(Only the Admin policy is shown from the config file)
+> NOTE: Adding a user to the admin policy is not security best practices.  This is for example purposes only.  Ideally,  you would create a separate policy for this AWS user with restricted access.   For details on limiting access through policies, see the [Policy](../product/cli-ref/policy.md) section.
+
+```BASH
+thy config edit -e yaml
+```
 
 ```yaml
-description: Default Admin Policy
-effect: allow
-id: xxxxxxxxxxxxxxxxxxxx
-meta: null
-resources:
-- <.*>
-subjects:
-- users:<thy-one:admin@company.com|gcloud-gce:gce-test>
+<snip>
+- actions:
+ - <.*>
+ conditions: {}
+ description: Default Admin Policy
+ effect: allow
+ id: xxxxxxxxxxxxxxxxxxxx
+ meta: null
+ resources:
+ - <.*>
+ subjects:
+ - users:<gcloud-gce:gce-test|admin@company.com>
+<snip>
 ```
+
 
 ### GCE Authentication
 
