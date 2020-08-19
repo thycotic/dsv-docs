@@ -75,7 +75,7 @@ All arguments are required:
 
 This will return an SSH-2 signed certificate. DSV saves the certificate in the leaf secret data. Users can copy the certificate and save in a file or download it later:
 
-`thy secret myleaf -f data.sshCertificate > leav.priv-cert.pub`
+`thy secret myleaf -f data.sshCertificate > leaf.priv-cert.pub`
 
 Now it is possible to try to authenticate. Users use the same `ssh` command and pass the same private key. The SSH certificate is also submitted automatically behind the scenes by `ssh`. The command tries to find the certificate in the same directory where the leaf private key is. For this reason, the certificate file must be named in a certain way:
 `[private key]-cert.pub`

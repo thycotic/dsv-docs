@@ -5,33 +5,23 @@
 # Authentication: AWS
 
 
-Use `thy config read --encoding yaml` to see your current configuration.
+Use `thy config auth-provider search -e yaml` to see all of your current authentication providers.
 
-The initial config will look similar to this:
+Initially, the only authentication provider is Thycotic One, similar to this:
 
 ```yaml
-permissionDocument:
-- actions:
-- <.*>
-conditions: {}
-description: Default Admin Policy
-effect: allow
+created: "2019-11-11T20:29:20Z"
+createdBy: users:thy-one:admin@company.com
 id: xxxxxxxxxxxxxxxxxxxx
-meta: null
-resources:
-- <.*>
-subjects:
-- users:<thy-one:admin@company.com>
-settings:
-authentication:
-- ID: xxxxxxxxxxxxxxxxxxxx
+lastModified: "2020-05-18T03:58:15Z"
+lastModifiedBy: users:thy-one:admin@company.com
 name: thy-one
 properties:
-baseUri: https://login.thycotic.com/
-clientId: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-clientSecret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ baseUri: https://login.thycotic.com/
+ clientId: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ clientSecret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 type: thycoticone
-tenantName: company
+version: "0"
 ```
 ## AWS Authentication Provider 
 
@@ -48,40 +38,21 @@ in which:
 
 To view the resulting addition to the config file, you would use:
 
-```BASH
-thy config read -be yaml
-```
+`thy config auth-provider <name> read -e yaml` where the example name we will use here is aws-dev
 
 The readout would look similar to this:
 
 ```yaml
-permissionDocument:
-- actions:
-- <.*>
-conditions: {}
-description: Default Admin Policy
-effect: allow
-id: xxxxxxxxxxxxxxxxxxxxx
-meta: null
-resources:
-- <.*>
-subjects:
-- users:<thy-one:admin@company.com>
-settings:
-authentication:
-- ID: xxxxxxxxxxxxxxxxxx
-name: thy-one
-properties:
-baseUri: https://login.thycotic.com/
-clientId: xxxxxxxx-xxxxxxxxx-xxxx-xxxxxxxxxxxx
-clientSecret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-type: thycoticone
-- ID: xxxxxxxxxxxxxxxxxxx
+created: "2019-11-12T18:34:49Z"
+createdBy: users:thy-one:admin@company.com
+id: xxxxxxxxxxxxxxxxxxxx
+lastModified: "2020-05-18T03:58:15Z"
+lastModifiedBy: users:thy-one:admin@company.com
 name: aws-dev
 properties:
-accountId: "xxxxxxxxx"
+  accountId: "xxxxxxxxxxxx"
 type: aws
-tenantName: company
+version: "0"
 ```
 
 
@@ -99,39 +70,25 @@ After creating the User, modify the config to give that User access to the defau
 > NOTE: Adding a user to the admin policy is not security best practices.  This is for example purposes only.  Ideally,  you would create a separate policy for this AWS user with restricted access.   For details on limiting access through policies, see the [Policy](../product/cli-ref/policy.md) section.
 
 ```BASH
-thy config edit --encoding yaml
+thy config edit -e yaml
 ```
 
 Add *test-admin* as a User subject to the **Default Admin Policy**. Third party accounts must be prefixed with the provider name; in this case, the fully qualified username would be *aws-dev:test-admin*.
 
 ```yaml
-permissionDocument:
+<snip>
 - actions:
-- <.*>
-conditions: {}
-description: Default Admin Policy
-effect: allow
-id: xxxxxxxxxxxxxxxxxxxx
-meta: null
-resources:
-- <.*>
-subjects:
-- users:<aws-dev:test-admin|admin@company.com>
-settings:
-authentication:
-- ID: xxxxxxxxxxxxxxxxxx
-name: thy-one
-properties:
-baseUri: https://login.thycotic.com/
-clientId: xxxxxxxx-xxxxxxxxx-xxxx-xxxxxxxxxxxx
-clientSecret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-type: thycoticone
-- ID: xxxxxxxxxxxxxxxxxxxx
-name: aws-dev
-properties:
-accountid: xxxxxxxxxxx
-type: aws
-tenantName: company
+ - <.*>
+ conditions: {}
+ description: Default Admin Policy
+ effect: allow
+ id: xxxxxxxxxxxxxxxxxxxx
+ meta: null
+ resources:
+ - <.*>
+ subjects:
+ - users:<aws-dev:test-admin|admin@company.com>
+<snip>
 ```
 
 Next, on a machine with the [AWS CLI](https://aws.amazon.com/cli/) installed and configured with an AWS IAM user, download the DVS CLI executable appropriate to the OS of the machine, and initialize the CLI:
@@ -190,39 +147,28 @@ You should see a result similar to this:
 }
 ```
 
-Add the Role *aws-dev:test-role* to the **Default Admin Policy** in your vault config to grant the new Role admin access.
+Add the Role *aws-dev:test-role* to the **Default Admin Policy** in your vault config to grant the new Role admin access.  
 
 > NOTE: Adding a role to the admin policy is not security best practices.  This is for example purposes only.  Ideally,  you would create a separate policy for this AWS role with restricted access.   For details on limiting access through policies, see the [Policy](../product/cli-ref/policy.md) section.
 
+
+Use the command `thy config edit -e yaml`
+
 ```yaml
-permissionDocument:
+<snip>
 - actions:
-- <.*>
-conditions: {}
-description: Default Admin Policy
-effect: allow
-id: bgn8gjei66jc7148d9i0
-meta: null
-resources:
-- <.*>
-subjects:
-- users:<aws-dev:test-admin|admin@company.com>
-- roles:<aws-dev:test-role>
-settings:
-authentication:
-- ID: xxxxxxxxxxxxxxxxxx
-name: thy-one
-properties:
-baseUri: https://login.thycotic.com/
-clientId: xxxxxxxx-xxxxxxxxx-xxxx-xxxxxxxxxxxx
-clientSecret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-type: thycoticone
-- ID: xxxxxxxxxxxxxxxxxxxx
-name: aws-dev
-properties:
-accountid: xxxxxxxxxxx
-type: aws
-tenantName: company
+ - <.*>
+ conditions: {}
+ description: Default Admin Policy
+ effect: allow
+ id: bgn8gjei66jc7148d9i0
+ meta: null
+ resources:
+ - <.*>
+ subjects:
+ - users:<aws-dev:test-admin|admin@company.com>
+ - roles:<aws-dev:test-role>
+<snip>
 ```
 
 On the EC2 instance, configure the CLI by running `thy init` and choosing AWS IAM as the authentication type.

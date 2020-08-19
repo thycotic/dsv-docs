@@ -9,21 +9,11 @@ DevOps Secrets Vault permissions are foundational for proper operation and secur
 
 To get a json encoded list of all Policies, use:
 
-```BASH
-thy policy search
-```
+`thy policy search`
 
 You can add a query item to search Policies by path:
 
-```BASH
-thy policy search secrets/databases
-```
-
-or
-
-```BASH
-thy policy search –query secrets/databases
-```
+`thy policy search secrets/database` or `thy policy search --query secrets/databases`
 
 A typical Policy looks like this:
 
