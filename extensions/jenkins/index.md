@@ -127,7 +127,7 @@ You are sent back to the Jenkins -> Configuration page.  By *Default Client Secr
 
 By *Default Vault Tenant*, enter your DSV tenent  (If your URL is company.secretsvaultcloud.com, then the tenent is *company*)
 
-By The *Environmental Variable Prefix* you will find that *DSV_* is there by default.  This is automatically pre-pended to the name of the environmental varible that you assign later.  This is to help avoid using reserved Jenkins names.   You can make delete or change this as required.
+By The *Environmental Variable Prefix* you will find that *DSV_* is there by default.  This is automatically pre-pended to the name of the environmental varible that you assign later.  This is to help avoid using reserved Jenkins names.   You can delete or change this as required.
 
 If you are using the European Union or Asia-PAC URL, then click **Advanced**.  Here you will replace *com* with *eu* or *com.au* to accomodate the different URL - ie company.secretsvaultcloud.eu or company.secretsvaultcloud.com.au
 
@@ -140,7 +140,7 @@ At the bottom of the page, click **Save**
 
 ## Freestyle Build
 
-Back at the Jenkins home page, select a **New item**, enter a name, and then select **Freestyle project** and click ***OK**
+Back at the Jenkins home page, select a **New item**, enter a name, and then select **Freestyle project** and click **OK**
 
 Under **Build Environment**, mark the **Use Thycotic Light DevOps Secrets Vault Secrets** checkbox active.
 * Enter the secret path, in the example above, it would be *resources/server01* 
