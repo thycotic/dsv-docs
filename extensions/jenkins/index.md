@@ -67,7 +67,7 @@ To use Secrets from the vault in the Jenkins build pipelines, we need a Secret f
 We will create a test Secret at the path *resources/server01*:
 
 ```BASH
-thy secret create resources/server01 '{"servername":"server01","password":"somepass1"}'
+thy secret create resources/server01 '{"servername":"server01","password":"newpassword"}'
 ```
 
 Read back the Secret to verify the data looks right:
@@ -82,7 +82,7 @@ The resulting JSON Secret should look similar to:
 {
   "attributes": null,
   "data": {
-    "password": "somepass1",
+    "password": "newpassword",
     "servername": "server01"
   },
   "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
@@ -156,7 +156,7 @@ In build steps, you can reference the environment variable as you normally would
 
 ![Build Step in Shell Script](./images/jenkins-build-step.png "Build Step in Shell Script")
 
-* The console output of the build should show the retrieved Secret password value of "somepass1" as expected.
+* The console output of the build should show the retrieved Secret password value of "newpassword" as expected.
 
   ![Build Step in Shell Script - Output](./images/jenkins-build-output.png "Build Step in Shell Script - Output")
 
