@@ -101,15 +101,38 @@ In the *Upload Plugin* section, click **Browse**.
 
 Locate the **dsv-jenkins.hpi** you downloaded, select it, then click **Upload**.
 
-![](./images/spacer.png)
-
 ![Upload UI](./images/jenkins-upload.png "Upload UI")
 
 ![](./images/spacer.png)
 
 ## Configure the Plugin
 
-Got to **Manage Jenkins** then **Configure System** and scroll down to the section titled *Thycotic DevOps Secrets Vault*
+Go to **Manage Jenkins** then **Configure System** and scroll down to the section titled *Thycotic DevOps Secrets Vault*
+
+![Configure UI](./images/jenkins-configure.png)
+
+By *Default Client Secret* click **Add**, then **Jenkins**
+
+By *Kind*, from the dropdown select **DevOps Secrets Vault Client Secret**
+
+Now enter the *Client ID* and *Client Secret* that was created in DSV earlier.
+
+Optionally enter an *ID* and/or *Description*
+
+![Configure Client](./images/jenkins-client-entry.png)
+
+Click **Add**
+
+You are sent back to the Jenkins -> Configuration page.  By *Default Client Secret* in the drop down select the client you just added.
+
+By *Default Vault Tenant*, enter your DSV tenent  (If your URL is company.secretsvaultcloud.com, then the tenent is *company*)
+
+By The *Environmental Variable Prefix* you will find that *DSV_* is there by default.  This is automatically pre-pended to the name of the environmental varible that you assign later.  This is to help avoid using reserved Jenkins names.   You can make delete or change this as required.
+
+If you are using the European Union or Asia-PAC URL, then click **Advanced**.  Here you will replace *com* with *eu* or *com.au* to accomodate the different URL - ie company.secretsvaultcloud.eu or company.secretsvaultcloud.com.au
+
+
+![](./images/spacer.png)
 
 ## Add Newly Created Client Credential in Jenkins
 
