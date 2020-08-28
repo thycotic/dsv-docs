@@ -4,19 +4,19 @@
 
 # Jenkins Extension for DevOps Secrets Vault 
 
-The Jenkins extension allows builds to retrieve Secrets from the vault at runtime. It can bind Secrets to environment variables through a build step, or by reference in a **jenkinsfile**.
+The Jenkins extension allows builds to retrieve Secrets from the vault at runtime. It can bind Secrets to environment variables through a build step.
 
 ## Obtain
 
-Download the [latest version of the Jenkins HPI extension](https://dsv.thycotic.com/downloads/jenkins/devops-secrets-vault-jenkins.hpi).
+Download the [latest version of the Jenkins HPI extension](https://github.com/thycotic/dsv-jenkins-plugin).
 
 ## Install
 
 In Jenkins, select **Manage Jenkins > Manage Plugins > Advanced**.
 
-Click **Browse**.
+In the *Upload Plugin* section, click **Browse**.
 
-Locate the **devops-secrets-vault-jenkins.hpi** you downloaded and bring it into Jenkins.
+Locate the **dsv-jenkins.hpi** you downloaded, select it, then click **Upload**.
 
 ![](./images/spacer.png)
 
@@ -149,44 +149,7 @@ To get credentials in a Freestyle build:
 
   ![Build Step in Shell Script - Output](./images/jenkins-build-output.png "Build Step in Shell Script - Output")
 
-## Jenkinsfile
 
-In a pipeline, you can bind to the extension to get Secrets as environment variables.
-
-The Secret referenced is the same one created above, so the field value pulled from *password* on the Secret would be **somepass1**. 
-
-Set the pipeline script to the following, replacing the *key*, *secret path*, and *thycoticCredentialId* with your values.
-
-```groovy
-node {
-    // define the env variables
-    def secretValues = [
-        [$class: 'ThycoticSecretValue', key: 'password', envVar: 'secret']
-    ]
-
-    // define the path to the secret
-    def secrets = [
-        [$class: 'ThycoticSecret', path: 'resources/server01', secretValues: secretValues]
-    ]
-
-    // set the jenkins credentialid used to connect to the vault
-    def configuration = [$class: 'VaultLightConfiguration',
-                       thycoticCredentialId: 'vault-jenkins']
-
-    // instantiate the build wrapper to access the populated environment variables
-    wrap([$class: 'ThycoticVaultBuildWrapper', configuration: configuration, thycoticVaultSecrets: secrets]) {
-        echo "my secret is $secret"
-    }
-}
-```
-
-![Jenkins Pipeline](./images/jenkins-pipeline.png "Jenkins Pipeline")
-
-Running the pipeline, the output will be the password value of the Secret from the vault.
-
-![Jenkins Pipeline - Output](./images/jenkins-pipeline-output.png "Jenkins Pipeline - Output")
-
-As expected, the jenkinsfile outputs the password value from the Secret at *resources/server01*.
 
 ![](./images/spacer.png)
 
