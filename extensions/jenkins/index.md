@@ -89,7 +89,7 @@ The resulting JSON Secret should look similar to:
   "path": "resources:server01"
 }
 ```
-## Obtain the Jenkins HPI
+## Jenkins
 
 Download the [latest version of the Jenkins HPI extension](https://github.com/thycotic/dsv-jenkins-plugin).
 
