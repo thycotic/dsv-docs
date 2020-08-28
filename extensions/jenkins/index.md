@@ -29,11 +29,11 @@ Save the *clientId* and *clientSecret* returned by this command. You will use th
 Create (or add to) a Permission Policy that will grant the Jenkins Role access to the secret Jenkins requires.  As an example for creating the policy:
 
 ```BASH
-thy policy create --path secrets:resources:path --actions read --subjects 'roles:jenkins' --desc "Jenkins Access"
+thy policy create --path secrets:resources: --actions read --subjects 'roles:jenkins' --desc "Jenkins Access"
 ```
 
 ```BASH
-thy policy read --path secrets:resources:path -e yaml
+thy policy read --path secrets:resources: -e yaml
 ```
 
 Would show:
@@ -44,7 +44,7 @@ createdBy: users:thy-one:admin@company.com
 id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 lastModified: "2020-08-28T15:50:17Z"
 lastModifiedBy: users:thy-one:admin@company.com
-path: secrets:resources:path
+path: secrets:resources
 permissionDocument:
 - actions:
   - read
@@ -54,7 +54,7 @@ permissionDocument:
   id: xxxxxxxxxxxxxxxxxxxx
   meta: null
   resources:
-  - secrets:resources:path:<.*>
+  - secrets:resources:<.*>
   subjects:
   - roles:jenkins
 version: "0"
@@ -143,7 +143,7 @@ At the bottom of the page, click **Save**
 Back at the Jenkins home page, select a **New item**, enter a name, and then select **Freestyle project** and click ***OK**
 
 Under **Build Environment**, mark the **Use Thycotic Light DevOps Secrets Vault Secrets** checkbox active.
-* Enter the secret path, in the example above, it would be *resources/path* 
+* Enter the secret path, in the example above, it would be *resources/server01* 
 * the environment variable to which you want to bind the Secret value
 * the Secret data field from which to get the value; in this case we are getting the value from the *password* field of our previously created Secret
 
