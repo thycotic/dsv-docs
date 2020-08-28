@@ -131,38 +131,30 @@ By The *Environmental Variable Prefix* you will find that *DSV_* is there by def
 
 If you are using the European Union or Asia-PAC URL, then click **Advanced**.  Here you will replace *com* with *eu* or *com.au* to accomodate the different URL - ie company.secretsvaultcloud.eu or company.secretsvaultcloud.com.au
 
+![Defaults](./images/jenkins-defaults.png)
+
+At the bottom of the page, click **Save** 
 
 ![](./images/spacer.png)
 
-## Add Newly Created Client Credential in Jenkins
-
-In Jenkins, use these steps to add the newly created client credential:
-
-* Under **Credentials**, add new credentials.
-
-  ![Add Credential UI](./images/jenkins-add-credential.png "Add Credential UI")
-
-* Enter the vault URL, your tenant name, the clientId, and the clientSecret from the newly created client credential.
-
-  ![Add Vault Credential UI](./images/jenkins-add-vault-credential.png "Add Vault Credential UI")
-
-* You can specify an ID or let Jenkins autogenerate the ID.
-
-During our Jenkins builds, the extension will pull the *password* value of *somepass1* from the *data* property in the Secret.
 
 ## Freestyle Build
 
-If you prefer not to modify an existing build, create a new item in Jenkins and select **Freestyle project**.
+Back at the Jenkins home page, select a **New item**, enter a name, and then select **Freestyle project** and click ***OK**
 
-To get credentials in a Freestyle build:
-
-* Under **Build Environment**, mark the **Thycotic Light Vault Plugin** checkbox active.
-* Choose the credential previously created. This will authenticate to the vault to get Secrets.
-* Add a Secret and enter:
-  * the path to the Secret in the vault
+* Under **Build Environment**, mark the **Use Thycotic Light DevOps Secrets Vault Secrets** checkbox active.
+  * Enter the secret path, in the example above, it would be *resources/path* 
   * the environment variable to which you want to bind the Secret value
   * the Secret data field from which to get the value; in this case we are getting the value from the *password* field of our previously created Secret
-* In build steps, you can reference the environment variable as you normally would. For example, the shell script shown here will echo the *$MY_PASSWORD* environment variable.
+*
+
+* Notice that you can:
+  * Can add additional fields from the secret if needed.
+  * That the default client credentials and tenant are set here, but if you click the box, then you can enter different values for either.
+  * Add additional secrets
+*
+
+* In build steps, you can reference the environment variable as you normally would, but remember that we might prepend a value, with the default being *DSV_* . For example, the shell script shown here will echo the *$MY_PASSWORD* environment variable.
 
 ![Build Step in Shell Script](./images/jenkins-build-step.png "Build Step in Shell Script")
 
