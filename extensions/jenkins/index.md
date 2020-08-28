@@ -111,7 +111,7 @@ Go to **Manage Jenkins** then **Configure System** and scroll down to the sectio
 
 ![Configure UI](./images/jenkins-configure.png)
 
-By *Default Client Secret* click **Add**, then **Jenkins**
+By *Default Client Secret* click **Add**, then **Jenkins** a new screen is presented.
 
 By *Kind*, from the dropdown select **DevOps Secrets Vault Client Secret**
 
