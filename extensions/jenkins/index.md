@@ -6,35 +6,13 @@
 
 The Jenkins extension allows builds to retrieve Secrets from the vault at runtime. It can bind Secrets to environment variables through a build step.
 
-## Obtain
-
-Download the [latest version of the Jenkins HPI extension](https://github.com/thycotic/dsv-jenkins-plugin).
-
-## Install
-
-In Jenkins, select **Manage Jenkins > Manage Plugins > Advanced**.
-
-In the *Upload Plugin* section, click **Browse**.
-
-Locate the **dsv-jenkins.hpi** you downloaded, select it, then click **Upload**.
-
-![](./images/spacer.png)
-
-![Upload UI](./images/jenkins-upload.png "Upload UI")
-
-![](./images/spacer.png)
-
-## Linking Jenkins to DevOps Secrets Vault
-
-Jenkins must be able to query DSV to look up Secrets at build time. To enable this, you configure a Jenkins credential to authenticate to your vault.
-
-## Setup Client Credentials
+## DevOps Secrets Vault Setup
 
 Use the DSV CLI to create a new client credential linked to a Role that has read permissions on Secrets Jenkins will need. 
 
-### Example Commands for Bash
+### Create a Role, Client Credentials, and Jenkins Policy.
 
-Create a Role  
+Create a Role
 
 ```BASH
 thy role create --name jenkins --desc "grants access to build Secrets"
@@ -48,56 +26,41 @@ thy client create --role jenkins
 
 Save the *clientId* and *clientSecret* returned by this command. You will use these to grant Jenkins access to the vault.
 
-Add the Jenkins Role to a Permission Policy  
+Create (or add to) a Permission Policy that will grant the Jenkins Role access to the secret Jenkins requires.  As an example for creating the policy:
 
 ```BASH
-thy config edit -e yaml
+thy policy create --path secrets:resources:path --actions read --subjects 'roles:jenkins' --desc "Jenkins Access"
 ```
 
-Here is an example permission document granting the Jenkins Role read-only access to Secrets under the resources/path:
+```BASH
+thy policy read --path secrets:resources:path -e yaml
+```
+
+Would show:
 
 ```yaml
+created: "2020-08-28T15:50:17Z"
+createdBy: users:thy-one:admin@company.com
+id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+lastModified: "2020-08-28T15:50:17Z"
+lastModifiedBy: users:thy-one:admin@company.com
+path: secrets:resources:path
 permissionDocument:
-- actions:
-  - <.*>
-  conditions: {}
-  description: Default Admin Policy
-  effect: allow
-  id: bh516go6kkdc714ojvs0
-  meta: null
-  resources:
-  - <.*>
-  subjects:
-  - users:<admin>
-  - roles:<administrators>
 - actions:
   - read
   conditions: {}
-  description: Read Policy
+  description: Jenkins Access
   effect: allow
-  id: bhm0hnv5725c72kbcv0g
+  id: xxxxxxxxxxxxxxxxxxxx
   meta: null
   resources:
-  - secrets:resources:<.*>
+  - secrets:resources:path:<.*>
   subjects:
-  - roles:<jenkins>
+  - roles:jenkins
+version: "0"
 ```
 
-## Add Newly Created Client Credential in Jenkins
-
-In Jenkins, use these steps to add the newly created client credential:
-
-* Under **Credentials**, add new credentials.
-
-  ![Add Credential UI](./images/jenkins-add-credential.png "Add Credential UI")
-
-* Enter the vault URL, your tenant name, the clientId, and the clientSecret from the newly created client credential.
-
-  ![Add Vault Credential UI](./images/jenkins-add-vault-credential.png "Add Vault Credential UI")
-
-* You can specify an ID or let Jenkins autogenerate the ID.
-
-## Create a Test Secret
+### Create a Test Secret
 
 To use Secrets from the vault in the Jenkins build pipelines, we need a Secret for the Jenkins Role to access. Note that in the configuration above, the Jenkins Role has access to read anything under *resources*. 
 
@@ -126,6 +89,41 @@ The resulting JSON Secret should look similar to:
   "path": "resources:server01"
 }
 ```
+## Obtain the Jenkins HPI
+
+Download the [latest version of the Jenkins HPI extension](https://github.com/thycotic/dsv-jenkins-plugin).
+
+## Install
+
+In Jenkins, select **Manage Jenkins > Manage Plugins > Advanced**.
+
+In the *Upload Plugin* section, click **Browse**.
+
+Locate the **dsv-jenkins.hpi** you downloaded, select it, then click **Upload**.
+
+![](./images/spacer.png)
+
+![Upload UI](./images/jenkins-upload.png "Upload UI")
+
+![](./images/spacer.png)
+
+## Configure the Plugin
+
+Got to **Manage Jenkins** then **Configure System** and scroll down to the section titled *Thycotic DevOps Secrets Vault*
+
+## Add Newly Created Client Credential in Jenkins
+
+In Jenkins, use these steps to add the newly created client credential:
+
+* Under **Credentials**, add new credentials.
+
+  ![Add Credential UI](./images/jenkins-add-credential.png "Add Credential UI")
+
+* Enter the vault URL, your tenant name, the clientId, and the clientSecret from the newly created client credential.
+
+  ![Add Vault Credential UI](./images/jenkins-add-vault-credential.png "Add Vault Credential UI")
+
+* You can specify an ID or let Jenkins autogenerate the ID.
 
 During our Jenkins builds, the extension will pull the *password* value of *somepass1* from the *data* property in the Secret.
 
