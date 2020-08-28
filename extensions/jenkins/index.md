@@ -144,15 +144,15 @@ Back at the Jenkins home page, select a **New item**, enter a name, and then sel
 
 Under **Build Environment**, mark the **Use Thycotic Light DevOps Secrets Vault Secrets** checkbox active.
 * Enter the secret path, in the example above, it would be *resources/server01* 
-* the environment variable to which you want to bind the Secret value
-* the Secret data field from which to get the value; in this case we are getting the value from the *password* field of our previously created Secret
+* The environment variable to which you want to bind the Secret value
+* The Secret data field from which to get the value; in this case we are getting the value from the *password* field of our previously created Secret
 
 Notice that you can:
 * Can add additional fields from the secret if needed.
 * That the default client credentials and tenant are set here, but if you click the box, then you can enter different values for either.
 * Add additional secrets
 
-In build steps, you can reference the environment variable as you normally would, but remember that we might prepend a value, with the default being *DSV_* . For example, the shell script shown here will echo the *$MY_PASSWORD* environment variable.
+In build steps, you can reference the environment variable as you normally would, but remember that we might prepend a value, with the default being *DSV_* . For example, the shell script shown here will echo the *$DSV_MY_PASSWORD* environment variable.
 
 ![Build Step in Shell Script](./images/jenkins-build-step.png "Build Step in Shell Script")
 
