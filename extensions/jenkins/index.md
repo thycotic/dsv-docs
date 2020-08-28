@@ -123,7 +123,7 @@ Optionally enter an *ID* and/or *Description*
 
 Click **Add**
 
-You are sent back to the Jenkins -> Configuration page.  By *Default Client Secret* in the drop down select the client you just added.
+You are sent back to the Jenkins -> Configuration page.  By *Default Client Secret* in the drop down select the client ID of the credentials you just added.
 
 By *Default Vault Tenant*, enter your DSV tenent  (If your URL is company.secretsvaultcloud.com, then the tenent is *company*)
 
