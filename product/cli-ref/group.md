@@ -29,7 +29,7 @@ A Group facilitate the application of the same policies to all members of a give
 This example command would create a Group named **admins** from a file **data.json** containing *{"groupName": "admins"}* (or same with single-quote marks, for Powershell) and located in the **tmp** folder:
 
 ```BASH
-thy group create --data @/tmp/data.json
+dsv group create --data @/tmp/data.json
 
 {
   "groupName": "admins",
@@ -42,7 +42,7 @@ thy group create --data @/tmp/data.json
 This example would create a Group without referencing a file:
 
 ```BASH
-thy group create -data {"groupName": "admins"} 
+dsv group create -data {"groupName": "admins"} 
 {
   "groupName": "admins",
   "id": "2ce6754d-afbc-43a9-bfd4-3b7ec61170a0",
@@ -54,7 +54,7 @@ thy group create -data {"groupName": "admins"}
 Note that in Powershell, single quotes are required and double quotes escaped, like this:
 
 ```BASH
-thy group  create --data  '{\"groupName\": \"admins\"}'
+dsv group  create --data  '{\"groupName\": \"admins\"}'
 ```
 
 #### Find Group Membership
@@ -62,7 +62,7 @@ thy group  create --data  '{\"groupName\": \"admins\"}'
 To see what Groups the user Billy belongs to, you would use:
 
 ```BASH
-thy user groups --username billy
+dsv user groups --username billy
 {
   "groups": [
     {
@@ -78,7 +78,7 @@ thy user groups --username billy
 Add members to a Group similarly to this example, wherein the file *newmember.json* contains: *{"memberNames": [ "billy",”larry’]}*
 
 ```BASH
-thy group add-members --group-name admins --data '@/tmp/newmember.json
+dsv group add-members --group-name admins --data '@/tmp/newmember.json
 
 {
   "memberNames": ["billy", "larry"]
@@ -90,7 +90,7 @@ thy group add-members --group-name admins --data '@/tmp/newmember.json
 This example demonstrates how to read a Group:
 
 ```BASH
-thy group read --group-name admins
+dsv group read --group-name admins
 {
   "groupName": "admins",
   "id": "2dc756d6-ba71-44e9-94e9-f822e0f7ca3f",
@@ -104,7 +104,7 @@ thy group read --group-name admins
 This example would assign the **admins** Group to an existing policy at the path *secrets:servers:us-west*:
 
 ```BASH
-thy policy update --actions "<.*>" --subjects groups:admins --path secrets/servers/us-west
+dsv policy update --actions "<.*>" --subjects groups:admins --path secrets/servers/us-west
 ```
 
 Note that you can designate paths with either of the colon : or forward slash / characters.
@@ -114,7 +114,7 @@ Note that you can designate paths with either of the colon : or forward slash / 
 To remove members from a Group, follow this example, wherein *deletemembers.json* contains: *{"memberNames": ["billy"]}*
 
 ```BASH
-thy group delete-members --group-name admins --data @/tmp/deletemembers.json
+dsv group delete-members --group-name admins --data @/tmp/deletemembers.json
 <no response>
 ```
 
@@ -125,7 +125,7 @@ Note that this does not delete the user objects that were members. It simply mak
 To delete a Group, you would follow this example:
 
 ```BASH
-thy group delete --group-name admins
+dsv group delete --group-name admins
 <no response>
 ```
 
@@ -138,7 +138,7 @@ Should you want to perform a hard delete, precluding any restore operation, you 
 Up to 72 hours after you delete a Group (but not if you hard deleted it using the `--force` flag), you can restore it:
 
 ```bash
-thy group restore --group-name admins
+dsv group restore --group-name admins
 ```
 
 ![](./images/spacer.png)
