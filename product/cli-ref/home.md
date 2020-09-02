@@ -15,7 +15,7 @@ Even the Admin does not have access by default, though they can give themselves 
 
 
 Home follows the familiar syntax:
-`thy home (command) (flags and parameters)`  with the commands being `create, read, delete, update, describe, edit, search`  The difference between `read` and `describe` is that read shows both data and metadata, while describe only shows metadata.
+`dsv home (command) (flags and parameters)`  with the commands being `create, read, delete, update, describe, edit, search`  The difference between `read` and `describe` is that read shows both data and metadata, while describe only shows metadata.
 
 ## Examples
 
@@ -26,41 +26,41 @@ The `create` command uses the `--data` flag to pass data into the secret.  This 
 Bash examples 
 
 ```BASH
-thy home create secret1 --data '{"username":"administrator","password":"bash-secret"}'
+dsv home create secret1 --data '{"username":"administrator","password":"bash-secret"}'
 ```
 
 ```BASH
-thy home create secret2 --data @/home/user/secret.json
+dsv home create secret2 --data @/home/user/secret.json
 ```
 
 ```BASH
-thy home create secret2 --data @../secret.json
+dsv home create secret2 --data @../secret.json
 ```
 Powershell examples
 
 ```PowerShell
-PS C:> thy home create --path secret1 --data '{\"username\":\"administrator\",\"password\":\"powershell-secret\"}'
+PS C:> dsv home create --path secret1 --data '{\"username\":\"administrator\",\"password\":\"powershell-secret\"}'
 ```
 
 ```PowerShell
-thy home create secret2 --data '@/home/user/secret.json'
+dsv home create secret2 --data '@/home/user/secret.json'
 ```
 
 ```PowerShell
-thy home create secret2 --data '@../secret.json'
+dsv home create secret2 --data '@../secret.json'
 ```
 CMD Examples
 
 ```cmd
-PS C:> thy home create secret1 --data "{\"username\":\"administrator\",\"password\":\"cmd-secret\"}"
+PS C:> dsv home create secret1 --data "{\"username\":\"administrator\",\"password\":\"cmd-secret\"}"
 ```
 
 ```cmd
-thy home create secret2 --data @/home/user/secret.json
+dsv home create secret2 --data @/home/user/secret.json
 ```
 
 ```cmd
-thy home create secret2 --data @../secret.json
+dsv home create secret2 --data @../secret.json
 ```
 
 The `--attributes` flag can be used to add user-defined metadata in the same way that data is added.
@@ -70,7 +70,7 @@ The `--desc` flag can be used to add a simple string.  If the string has any spa
 As a Bash example:
 
 ```BASH
-thy home create secret1 --attributes '{"priority":"high"}'  --desc "Covert Secret" --data '{"username":"administrator","password":"bash-secret"}'
+dsv home create secret1 --attributes '{"priority":"high"}'  --desc "Covert Secret" --data '{"username":"administrator","password":"bash-secret"}'
 ```
 
 ### Update
@@ -93,7 +93,7 @@ If you have this Home value:
   "description": "update description",
   "id": "c893b4f8-9425-4fa4-acbf-2806d6f1fa82",
   "lastModified": "2020-01-17T15:43:27Z",
-  "lastModifiedBy": "users:thy-one:admin@company.com",
+  "lastModifiedBy": "users:dsv-one:admin@company.com",
   "path": "users:user@company.com:secret1",
   "version": "12"
 }
@@ -101,7 +101,7 @@ If you have this Home value:
 This Bash command will only change the value for *host* in the data section.
 
 ``` bash
-thy home update secret1 --data '{\"host\":\"unknown\"}'
+dsv home update secret1 --data '{\"host\":\"unknown\"}'
 ```
 
 ``` bash
@@ -127,7 +127,7 @@ thy home update secret1 --data '{\"host\":\"unknown\"}'
 The flag `--overwrite`, if added to the above command would wipe-out the description and any other data KV pairs. So this flag requires caution.
 
 ``` bash
-thy home update secret1 --data '{\"host\":\"unknown\"}' --overwrite
+dsv home update secret1 --data '{\"host\":\"unknown\"}' --overwrite
 ```
 
 ### Read
@@ -135,7 +135,7 @@ thy home update secret1 --data '{\"host\":\"unknown\"}' --overwrite
 The `read` command shows both the Secret data and metadata.
 
 ```BASH
-thy home read secret1 
+dsv home read secret1 
 ```
 
 Flags 
@@ -149,7 +149,7 @@ Flags
 This example would send the password value only to the clipboard.
 
 ```BASH
-thy home read secret2 -o clip -f data.password
+dsv home read secret2 -o clip -f data.password
 ```
 
 ### Describe
@@ -157,7 +157,7 @@ thy home read secret2 -o clip -f data.password
 The command `describe` only shows the metadata of a Home value
 
 ```BASH
-thy home describe secret1 
+dsv home describe secret1 
 ```
 
 ### Search
@@ -167,15 +167,15 @@ You can search for Secrets by path or attribute
 Some examples
 
 ``` bash
-thy home search server
+dsv home search server
 
-thy home search --query server
+dsv home search --query server
 
-thy home search --query aws --search-field attributes.type
+dsv home search --query aws --search-field attributes.type
 
-thy home search --query 900 --search-field attributes.ttl --search-type number
+dsv home search --query 900 --search-field attributes.ttl --search-type number
 
-thy home search --query production --search-field attributes.stage --search-comparison equal
+dsv home search --query production --search-field attributes.stage --search-comparison equal
 ```
 
 flags
@@ -195,16 +195,16 @@ flags
 
 For a search where there are more results than returned in the first set, the API returns a cursor—a large piece of text. You pass that back to get the next set of results.
 
-For example, if the command `thy secret search -q admin --limit 10` matched 12 Secrets with admin in the name, the CLI would return the first 10 plus a cursor. To obtain the next two results, you would use this command:
+For example, if the command `dsv secret search -q admin --limit 10` matched 12 Secrets with admin in the name, the CLI would return the first 10 plus a cursor. To obtain the next two results, you would use this command:
 
 ```BASH
-thy secret search -q admin --limit 10 --cursor AFSDFSD...DKFJLSDJ=
+dsv secret search -q admin --limit 10 --cursor AFSDFSD...DKFJLSDJ=
 ```
 
 Cursors may be lengthy:
 
 ```BASH
-thy secret search -q resources --limit 10 --cursor eyJpZCI6ImEwOTFjOWIzLWE4MmQtNGRiYy1hYThiLTYxMDY0NDZhZjA3MSIsInBhdGgiOiIiLCJ2ZXJzaW9uIjoidi1jdXJyZW50IiwidHlwZSI6IiIsImxhdGVzdCI6MH0=
+dsv secret search -q resources --limit 10 --cursor eyJpZCI6ImEwOTFjOWIzLWE4MmQtNGRiYy1hYThiLTYxMDY0NDZhZjA3MSIsInBhdGgiOiIiLCJ2ZXJzaW9uIjoidi1jdXJyZW50IiwidHlwZSI6IiIsImxhdGVzdCI6MH0=
 ```
 
 ### Edit
@@ -214,7 +214,7 @@ Use `edit` to open the Secret data in the default text editor for bash, such as 
 * Saving in the editor updates the Secret in the vault, except in the case of Notepad, in which case the update happens when you save and then exit Notepad. Your interim saves are to the working copy.
 
 ```BASH
-thy home edit --path us-east/server02
+dsv home edit --path us-east/server02
 ```
 
 ### Delete
@@ -222,7 +222,7 @@ thy home edit --path us-east/server02
 To `delete` a Hame value, simply specify its name.
 
 ``` bash
-thy home delete secret1
+dsv home delete secret1
 ```
 
 When you delete a Secret, it will no longer be usable. However, with the soft delete capacity of DSV, you have 72 hours to use the *restore* command to undelete the Secret. After 72 hours, the Secret will no longer be retrievable.
