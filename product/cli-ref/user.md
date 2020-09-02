@@ -34,7 +34,7 @@ The name qualifier format *provider name:local name* means for example that the 
 The *changepassword* command, effective for local Users only, initiates an elemental password change sequence:
 
 ```BASH
-thy auth changepassword
+dsv auth changepassword
 
 Please enter your current password:
 *************
@@ -68,13 +68,13 @@ The *create* command takes several `--parameters` that spec foundational aspects
 Create a local User with username *test-admin* and password *secret-password*:
 
 ```BASH
-thy user create --username test-admin --password secret-password
+dsv user create --username test-admin --password secret-password
 ```
 
 Create a User account for login by the AWS *IAM _test-admin_* User, with the account tied to an *_aws-dev_* account in the configuration:
 
 ```BASH
-thy user create --username test-admin --external-id arn:aws:iam::00000000000:user/test-admin --provider aws-dev
+dsv user create --username test-admin --external-id arn:aws:iam::00000000000:user/test-admin --provider aws-dev
 ```
 
 ### Search
@@ -82,7 +82,7 @@ thy user create --username test-admin --external-id arn:aws:iam::00000000000:use
 The *search* command locates Users by searching on their usernames. It accepts as a `--query` parameter the username you provide, and searches for records with a matching username.
 
 ```BASH
-thy user search --query test-admin
+dsv user search --query test-admin
 ```
 
 Output:
@@ -114,13 +114,13 @@ The *read* command retrieves and displays information without changing anything.
 Provide a fully qualified username and read the User's details:
 
 ```BASH
-thy user read --username aws-dev:test-admin
+dsv user read --username aws-dev:test-admin
 ```
 
 Provide a full local username and read the User's details:
 
 ```BASH
-thy user get --username test-admin
+dsv user get --username test-admin
 ```
 
 ### Delete
@@ -130,13 +130,13 @@ The *delete* command will remove records of both local Users and Users associate
 Delete a third-party User identified by a fully qualified name:
 
 ```BASH
-thy user delete --username aws-dev:test-admin
+dsv user delete --username aws-dev:test-admin
 ```
 
 Delete a local User identified by the full local username:
 
 ```BASH
-thy user delete --username test-admin
+dsv user delete --username test-admin
 ```
 
 When you delete a User, it will no longer be usable. However, with the soft delete capacity of DSV, you have 72 hours to use the *restore* command to undelete the User. After 72 hours, the User will no longer be retrievable.
@@ -148,7 +148,7 @@ Should you want to perform a hard delete, precluding any restore operation, you 
 Up to 72 hours after you delete a User (but not if you hard deleted it using the `--force` flag), you can restore it:
 
 ```bash
-thy user restore --username test-admin
+dsv user restore --username test-admin
 ```
 
 ![](./images/spacer.png)
