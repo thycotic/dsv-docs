@@ -26,7 +26,7 @@ Client credentials enable applications to authenticate as the Role assigned to t
 The *create* command accepts as its `--role` parameter a fully qualified Role name, and creates a client credential assigned to that Role.
 
 ```BASH
-thy client create --role app-role
+dsv client create --role app-role
 ```
 
 The output will include a *clientId* and *clientSecret* suitable for use during CLI installation, or within REST calls to authenticate as the Role assigned to the *clientId*.
@@ -48,13 +48,13 @@ The output will include a *clientId* and *clientSecret* suitable for use during 
 The *search* command accepts as its `--query` parameter the name of a Role, and searches for clients having that Role.
 
 ```BASH
-thy client search --query dev-role
+dsv client search --query dev-role
 ```
 
 or
 
 ```BASH
-thy client search dev-role
+dsv client search dev-role
 ```
 
 ### Read
@@ -62,7 +62,7 @@ thy client search dev-role
 The *read* command accepts a client ID as a parameter and returns the details for the given client. As with most commands, remember that you can apply flags to beautify, redirect, or reformat the returned material.
 
 ```BASH
-thy client read --client-id a59d37bf-4028-4eb9-9df4-6f1fea7d9298
+dsv client read --client-id a59d37bf-4028-4eb9-9df4-6f1fea7d9298
 ```
 
 ### Delete
@@ -70,7 +70,7 @@ thy client read --client-id a59d37bf-4028-4eb9-9df4-6f1fea7d9298
 The *delete* command accepts a client ID as a parameter and deletes from the vault the indicated client.
 
 ```BASH
-thy client delete --client-id a59d37bf-4028-4eb9-9df4-6f1fea7d9298
+dsv client delete --client-id a59d37bf-4028-4eb9-9df4-6f1fea7d9298
 ```
 
 When you delete a Client, it will no longer be usable. However, with the soft delete capacity of DSV, you have 72 hours to use the *restore* command to undelete the Client. After 72 hours, the Client will no longer be retrievable.
