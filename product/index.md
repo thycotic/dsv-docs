@@ -23,13 +23,13 @@ DevOps Secrets Vault is deployed as an API-as-a Service.  Organizations can sign
 * SDK support
     * [Java](https://github.com/thycotic/dsv-sdk-java)
     * [Go](https://github.com/thycotic/dsv-sdk-go)
-    * [Python] (https://github.com/thycotic/python-dsv-sdk)
+    * [Python](https://github.com/thycotic/python-dsv-sdk)
     * [.NET Core](https://github.com/thycotic/dsv-netcore-sdk)
 * DevOps Tools Support (Plugins)
     * [Jenkins](https://github.com/thycotic/dsv-jenkins-plugin)
     * [Terraform] (https://github.com/thycotic/dsv-k8s)
     * [Kubernetes](https://github.com/thycotic/dsv-k8s)
-    * [Ansible] (https://github.com/thycotic/dsv-ansible-lookup-plugin)
+    * [Ansible](https://github.com/thycotic/dsv-ansible-lookup-plugin)
 * Robotic Process Automation
     * [UIPath](https://github.com/thycotic/uipath-orchestrator-dsv)
     * [Automation Anywhere](https://docs.thycotic.com/dsv-extension-automation-anywhere/)
