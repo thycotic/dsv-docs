@@ -2,15 +2,13 @@
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (4900)
 
-# Home Vault Beta
+# Home Vault
 
 Home provides Users with a separate space to store secrets.  No Users can access another User's Home values.  As soon as a User is created in DSV, they are given access to their own Home vault without an explicit policy granting access.
 
 The Home value will list a path like "users:<username>:<secretname>"  DSV will determine which username based on whomever authenticated.  So if joesmith@company.com authenticates, then a creates a Home value, that vaule will be in Joe Smith's Home vault.
 
 Even the Admin does not have access by default, though they can give themselves access for "breakglass" purposes. If the admin is given access to read users' Home values, it can only be done through the API in the Beta version.
-
->Note The Home feature is in Beta version currently, so some functionality is missing and we my make breaking changes while in Beta. Commands such as edit, getbyversion, restore, and rollback are not enabled yet.  
 
 
 
@@ -229,3 +227,25 @@ When you delete a Secret, it will no longer be usable. However, with the soft de
 
 Should you want to perform a hard delete, precluding any restore operation, you can use the *delete* command's `--force` flag.
 
+### Restore
+
+The `delete` command is a soft delete for about 72 hours before the delete become permanent.  During that time, the secret can be brought back using the `restore` command.
+
+``` bash
+dsv home restore secret1
+```
+
+## GetByVersion
+
+Past versions of the secret can be observed using the `getbyversion` command
+
+``` bash
+dsv home getbyversion secret1
+```
+
+### Rollback
+To return a secret to a past version, use the `rollback` command
+
+``` bash
+dsv home rollback secret1
+```
