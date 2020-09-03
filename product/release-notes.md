@@ -20,6 +20,7 @@ The Command Line Interface (CLI) is locally installed using OS-specific executab
 | **Update**             | **Notes**                                  |
 |------------------------|--------------------------------------------|
 |September 2020          | **CLI Version**: 1.13|
+|                        | **improvement**: CLI name changed from "thy" to "dsv" in downloads and documentation for all commands|
 |                        | **new feature**: Home Vault GA.  Completed Roles, GetByVersion, Rollback, Restore, Policy for giving others access. |
 |                        | **improvement**: Wizards for Groups will not allow invalid Users|
 |                        | **improvement**: Wizards for Users look for Auth provider and act accordingly rather than ask for a passwrod first|
