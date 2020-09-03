@@ -31,10 +31,10 @@ The name qualifier format *provider name:local name* means for example that the 
 
 ### Changepassword
 
-The *changepassword* command, effective for local Users only, initiates an elemental password change sequence:
+The *change-password* command, effective for local Users only, initiates an elemental password change sequence:
 
 ```BASH
-dsv auth changepassword
+dsv auth change-password
 
 Please enter your current password:
 *************
