@@ -22,13 +22,13 @@ Our goal will be to create policy to allow:
 Optionally, we can put these Users in a Group with two commands.  The first command creates the group:
 
 ```bash
-thy group create --groupname firstgroup
+dsv group create --groupname firstgroup
 ```
 
 The second command puts the Users in the Group
 
 ```bash
-thy group add-members --group-name firstgroup --data '{"memberNames":["local@company.com","thy-one:thycoticoneuser@company.com"]}'
+dsv group add-members --group-name firstgroup --data '{"memberNames":["local@company.com","thy-one:thycoticoneuser@company.com"]}'
 ```
 
 ## Create Policy for Allow Access
@@ -36,7 +36,7 @@ thy group add-members --group-name firstgroup --data '{"memberNames":["local@com
 The admin has to create a policy for the Group to get access to the Secrets.  Here is a sample CLI command:
 
 ```bash
-thy policy create --path secrets:servers:us-east --actions '<.*>' --desc 'Allow Policy' --subjects groups:firstgroup --effect allow
+dsv policy create --path secrets:servers:us-east --actions '<.*>' --desc 'Allow Policy' --subjects groups:firstgroup --effect allow
 ```
 
 Where 
@@ -51,7 +51,7 @@ Where
 
 *effect* is allow
 
-The resulting policy will look like this if you read it using the command `thy policy read secrets:servers:us-east -e yaml`
+The resulting policy will look like this if you read it using the command `dsv policy read secrets:servers:us-east -e yaml`
 
 ```yaml
 path: secrets:servers:us-east
@@ -76,9 +76,9 @@ This policy will now enable both Users (local@company.com and thycoticoneuser@co
 
 If we decided that the *thycoticoneuser@company.com* should no longer have access to the secrets at `servers:us-east:production` we can write another policy to deny that access.  The command would look like this: 
 
-`thy policy create --path secrets:servers:us-east:production --actions '<.*>' --desc 'Deny Policy' --subjects 'users:<thy-one:thycoticoneuser@company.com>' --effect deny`
+`dsv policy create --path secrets:servers:us-east:production --actions '<.*>' --desc 'Deny Policy' --subjects 'users:<thy-one:thycoticoneuser@company.com>' --effect deny`
 
-The resulting policy will look like this if you read it using the command `thy policy read secrets:servers:us-east:production -e yaml`
+The resulting policy will look like this if you read it using the command `dsv policy read secrets:servers:us-east:production -e yaml`
 
 ```bash
 path: secrets:servers:us-east:production
