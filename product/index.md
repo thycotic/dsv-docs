@@ -32,6 +32,8 @@ DevOps Secrets Vault is deployed as an API-as-a Service.  Organizations can sign
     * Ansible
 * Robotic Process Automation
     * UIPath
+    * Automation Anywhere
+    * Blue Prism
 * SOC II Compliance - report available upon request
 
 ## Free Version and Quickstart
