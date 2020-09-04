@@ -74,7 +74,7 @@ In keeping with best practices, you should set up a less privileged User policy 
 
 The first section of the Admin policy with the description "Default Admin Permission" is what allows the Admin full rights to everything in DSV.
 
-The second section with the description "Default Deny Home Permissions" denies the Admin permission to access the Home (Beta) feature where users have a place for their own secrets.  If required, the Admin can remove his/her name and then get access to he Home secrets (API only in Beta)
+The second section with the description "Default Deny Home Permissions" denies the Admin permission to access the Home feature where users have a place for their own secrets.  If required, the Admin can remove his/her name and then get access to he Home secrets (API only in Beta)
 
 ### Edit
 
