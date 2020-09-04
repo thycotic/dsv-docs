@@ -2,7 +2,7 @@
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (4800)
 
-# Policy and Auth Providers
+# Admin Policy and Auth Providers
 
 In this section we will
 
@@ -99,7 +99,7 @@ Use *update* to change a config by uploading JSON data.
 The value of the `--data` parameter for *update* accepts JSON entered directly at the command line, or the path to a JSON file.
 
 ```BASH
-dsv config update --path us-east/server02 --data {\\"something\\":\\"value\\"}
+dsv config update --path us-east/server02 --data '{"something":"value"}'
 ```
 
 or
@@ -107,6 +107,16 @@ or
 ```BASH
 dsv config update --path us-east/server02 --data @configfilename.json
 ```
+
+### Grant Admin Access Rights to All Home Vaults
+
+If it is rquired that the Admin have access to all individual Home vaults, then edit the Home Vault Permissions and change the *effect* field to "allow"
+
+``` bash
+dsv config edit --encoding YAML
+```
+
+The editor will open the OS default editor and you can modify the *effect* field.
 
 ### Add an Authentication Provider
 
