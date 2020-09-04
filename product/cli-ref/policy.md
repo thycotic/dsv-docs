@@ -165,6 +165,23 @@ resources:
 - roles:dev-role-<.*>
 ```
 
+### Allow User2 Access to User1's Home Vault
+
+**Case**  User2 need access to a secrets space (folder) in User1's Home Vault
+
+**Solution:** Have an Admim create a policy that enables access.  In this example, we assume User1 has a secret in their home vault at:  databases/mongo/primary and wants to give User2 read rights to anything under *databases*, but not their entire Home vault
+
+The command the Admin will run to create the policy would be:
+
+```bash
+dsv policy create --path home:users:user1:databases --actions '<read>' --desc 'User2 to access User1 Home/databases' --subjects 'users:User2' --effect allow 
+```
+Notice the path starts with home:users:<username>
+
+When User1 is authenticated and needs to access the secret the command would be `dsv home read databases/mongo/primary'
+
+When User2 is authenticated and needs to access the secret the command would be  `dsv home read users:User1/databases/mongo/primary'
+
 ### Enable a Group to search Secrets
 
 **Case:** Allow a Group to search secrets
