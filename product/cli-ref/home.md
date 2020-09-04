@@ -217,7 +217,7 @@ dsv home edit --path us-east/server02
 
 ### Delete
 
-To `delete` a Hame value, simply specify its name.
+To `delete` a Home value, simply specify its name.
 
 ``` bash
 dsv home delete secret1
@@ -229,7 +229,7 @@ Should you want to perform a hard delete, precluding any restore operation, you 
 
 ### Restore
 
-The `delete` command is a soft delete for about 72 hours before the delete become permanent.  During that time, the secret can be brought back using the `restore` command.
+The `delete` command is a soft delete for about 72 hours before the delete become permanent.  During that time, the secret can be brought back using the `restore` command.  After the ~72 hours, the secret is permanently deleted and can't be restored.
 
 ``` bash
 dsv home restore secret1
@@ -237,15 +237,16 @@ dsv home restore secret1
 
 ## GetByVersion
 
-Past versions of the secret can be observed using the `getbyversion` command
+The `--version` flag determines how many past versions are displayed along with the current version.
 
 ``` bash
-dsv home getbyversion secret1
+dsv home secret1 --version 3
 ```
 
+
 ### Rollback
-To return a secret to a past version, use the `rollback` command
+To return a secret to a past version, use the `rollback` command and a `--version` flag to determine which version to return to.  The original version is 0.
 
 ``` bash
-dsv home rollback secret1
+dsv home rollback secret1 --version 2
 ```
