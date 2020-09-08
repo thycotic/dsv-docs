@@ -52,7 +52,7 @@ In order to login using OIDC, the user must exist in the external provider, Thyc
 
 If your current user, such as your initial admin already exists in all places, then skip this section. If you want to add another user to Thycotic One and DSV simultaneously, do the following steps:
 
-1. In the DSV CLI run `thy user create --username useremail@company.com --provider thy-one`
+1. In the DSV CLI run `dsv user create --username useremail@company.com --provider thy-one`
 
 2. This creates a user record in DSV and syncs it to Thycotic One. The User will get an email with a link to establish their password.  
 
@@ -64,10 +64,10 @@ If your current user, such as your initial admin already exists in all places, t
 Initialize the CLI:
 
 ```BASH
-thy init
+dsv init
 ```
 
-Add a new profile if you want to retain your default `thy` profile.
+Add a new profile if you want to retain your default `dsv` profile.
 
 When prompted for the authorization type, choose *OIDC (federated)*.
 
@@ -91,7 +91,7 @@ Login using your Google credentials and your browser will redirect to `http://lo
 Verify the login by running (omit the --profile flag if you overwrote your config): 
 
 ```BASH
-thy auth --profile profilename
+dsv auth --profile profilename
 ```
 
 ![](./images/spacer.png)

@@ -5,7 +5,7 @@
 # Authentication: Azure 
 
 
-Use `thy config auth-provider search -e yaml` to see all of your current authentication providers.
+Use `dsv config auth-provider search -e yaml` to see all of your current authentication providers.
 
 Initially, the only authentication provider is Thycotic One, similar to this:
 
@@ -28,7 +28,7 @@ version: "0"
 
 To add an Azure account to act as an authentication provider:
 
-* `thy config auth-provider create --name <name> --type azure --azure-tenant-id <Azure tenant ID>`
+* `dsv config auth-provider create --name <name> --type azure --azure-tenant-id <Azure tenant ID>`
 
 where:
 
@@ -38,7 +38,7 @@ where:
 
 To view the resulting addition to the config file, you would use:
 
-`thy config auth-provider <name> read -e yaml` where the example name we will use here is azure-prod
+`dsv config auth-provider <name> read -e yaml` where the example name we will use here is azure-prod
 
 The readout would look similar to this:
 
@@ -62,7 +62,7 @@ First you will need to configure the User that corresponds to an [Azure User Ass
 The username is a friendly name within DSV. It does not have to match the MSI username, but the provider must match the resource id of the MSI in Azure.
 
 ```BASH
-thy user create --username test-api --provider azure-prod --external-id
+dsv user create --username test-api --provider azure-prod --external-id
 /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/build/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-api
 ```
 
@@ -70,7 +70,7 @@ Modify the config to give that User access to the default administrator permissi
 
 > NOTE: Adding a user to the admin policy is not security best practices.  This is for example purposes only.  Ideally,  you would create a separate policy for this Azure user with restricted access.   For details on limiting access through policies, see the [Policy](../product/cli-ref/policy.md) section.
 
-`thy config edit --encoding yaml`
+`dsv config edit --encoding yaml`
 
 Add the User as a subject to the **Default Admin Policy**. Third party accounts must be prefixed with the provider name; in this case the fully qualified username will be *azure-prod:test-api*.
 
@@ -92,7 +92,7 @@ Add the User as a subject to the **Default Admin Policy**. Third party accounts 
 On a VM in Azure that has the User MSI assigned as the identity, download the DVS CLI executable appropriate to the OS of the VM and initialize the CLI.
 
 ```BASH
-thy init
+dsv init
 ```
 
 When prompted for the authorization type, choose the *Azure (federated)* authentication option.
@@ -111,7 +111,7 @@ Please enter auth type:
 Read an existing Secret to verify you can authenticate and access data.
 
 ```BASH
-thy secret read --path <path to a secret>
+dsv secret read --path <path to a secret>
 ```
 
 ## Azure Resource Group
@@ -119,7 +119,7 @@ thy secret read --path <path to a secret>
 If you want to grant access to a set of VMs in a resource group that use a System assigned MSI rather than a User assigned MSI, you can create a Role that corresponds to the resource group's resource ID.
 
 ```BASH
-thy role create --name identity-rg  --external-id /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/build --provider azure-prod
+dsv role create --name identity-rg  --external-id /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/build --provider azure-prod
 ```
 
 Modify the config to give that Role access to the default administrator permission policy. 
@@ -127,7 +127,7 @@ Modify the config to give that Role access to the default administrator permissi
 > NOTE: Adding a role to the admin policy is not security best practices.  This is for example purposes only.  Ideally,  you would create a separate policy for this Azure role with restricted access.   For details on limiting access through policies, see the [Policy](../product/cli-ref/policy.md) section.
 
 ```BASH
-thy config edit --encoding yaml
+dsv config edit --encoding yaml
 ```
 
 Add the User as a subject to the **Default Admin Policy**. Third party accounts must be prefixed with the provider name; in this case the fully qualified Role name will be *azure-prod:identity-rg*.
@@ -151,7 +151,7 @@ Add the User as a subject to the **Default Admin Policy**. Third party accounts 
 On a VM in Azure that is part of the resource group and has a system-assigned MSI, download the DVS CLI executable appropriate to the OS of the VM and initialize the CLI.
 
 ```BASH
-thy init
+dsv init
 ```
 
 When prompted for the authorization type, choose the *Azure (federated)* option.
@@ -169,7 +169,7 @@ Please enter auth type:
 Read an existing Secret to verify you are able to authenticate and access data.
 
 ```BASH
-thy secret read --path <path to a secret>
+dsv secret read --path <path to a secret>
 ```
 
 ![](./images/spacer.png)

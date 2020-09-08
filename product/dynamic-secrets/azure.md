@@ -42,7 +42,7 @@ Create a file named `secret_base.json` substituting your values:
 Create the base Secret via the CLI substituting a path of your choosing:
 
 ```BASH
-thy secret create --path azure/base/api-account --data '@secret_base.json' --attributes '{"type": "azure"}' --desc "azure base credential"
+dsv secret create --path azure/base/api-account --data '@secret_base.json' --attributes '{"type": "azure"}' --desc "azure base credential"
 ```
 
 ## Dynamic Secrets
@@ -87,7 +87,7 @@ Create an attributes json file named `secret_attributes.json` substituting your 
 Create the dynamic Secret via the CLI substituting the path of your choosing.
  
 ```BASH
-thy secret create --path azure/dynamic/api-account --attributes '@secret_attributes.json' --desc "azure dynamic credential"
+dsv secret create --path azure/dynamic/api-account --attributes '@secret_attributes.json' --desc "azure dynamic credential"
 ```
 
 
@@ -95,7 +95,7 @@ Now anytime you read the dynamic Secret, the data is populated with the temporar
 
 
 ```BASH
-thy secret read --path azure/dynamic/api-account
+dsv secret read --path azure/dynamic/api-account
 ```
 
 Returns a result like:
@@ -166,7 +166,7 @@ Create an attributes json file named `secret_attributes.json` substituting your 
 Create a new Dynamic Secret via the CLI substituting the path of your choosing.
  
 ```BASH
-thy secret create --path /azure/dynamic/api-account --attributes '@secret_attributes.json' --desc "azure dynamic credential" 
+dsv secret create --path /azure/dynamic/api-account --attributes '@secret_attributes.json' --desc "azure dynamic credential" 
 ```
 
 

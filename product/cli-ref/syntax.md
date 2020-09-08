@@ -6,9 +6,9 @@
 
 With few exceptions, CLI commands follow a simple syntax:
 
-`thy` (`object`) (`command`)  (`flags and parameters`)
+`dsv` (`object`) (`command`)  (`flags and parameters`)
 
-For example, in `thy role create`, `role` is the object of the command `create`. Some parameters and flags apply only to some commands. DSV also includes output modifiers for filtering and formatting responses to commands.
+For example, in `dsv role create`, `role` is the object of the command `create`. Some parameters and flags apply only to some commands. DSV also includes output modifiers for filtering and formatting responses to commands.
 
 ## Objects
 
@@ -37,14 +37,14 @@ For many objects, if the command is `create` or `update`, then adding no flags w
 
 A workflow is a series of questions that guides the user through the creation or update process.  Workflow supported objects include:
 
-* thy init (This command is only done with a workflow)
-* thy config auth-provider 
-* thy policy
-* thy siem
-* thy pki
-* thy user
-* thy group
-* thy role
+* dsv init (This command is only done with a workflow)
+* dsv config auth-provider 
+* dsv policy
+* dsv siem
+* dsv pki
+* dsv user
+* dsv group
+* dsv role
 
 If the object doesn't support a workflow, then the flag `--help` is assumed
 
@@ -62,13 +62,13 @@ Parameters can be:
 Most commands take strings as parameters, quoted or unquoted. For example, the username uses quotes but the password does not. Both are valid string parameter values.
 
 ```BASH
-thy user create --username "admin1" --password BadP@ssword
+dsv user create --username "admin1" --password BadP@ssword
 ```
 
 If a string value has spaces, it must be wrapped in quotes. For example, when creating a Role, the description should be quoted.
 
 ```BASH
-thy role create --name test-role --desc "a test role"
+dsv role create --name test-role --desc "a test role"
 ```
 
 ### Boolean
@@ -76,12 +76,12 @@ thy role create --name test-role --desc "a test role"
 Some parameters are simple Boolean flags controlling whether or not something applies, for example, whether to beautify the JSON output of a Secret read.
 
 ```BASH
-thy secret read --path example/bash-json --beautify
+dsv secret read --path example/bash-json --beautify
 ```
 
 ### JSON Data and OS-Specific Syntax
 
-In some cases the parameter expects JSON. For example, the `--data` parameter on a `thy secret create` command expects JSON data.
+In some cases the parameter expects JSON. For example, the `--data` parameter on a `dsv secret create` command expects JSON data.
 
 JSON parameter formatting depends on the OS and shell program.
 
@@ -90,15 +90,15 @@ JSON parameter formatting depends on the OS and shell program.
 * cmd.exe: wrap the JSON in a double quote (") and inside the JSON escape each double quote (") with a backslash (\\)
 
 ```BASH
-thy secret create --path example/bash-json --data '{"password":"bash-secret"}'
+dsv secret create --path example/bash-json --data '{"password":"bash-secret"}'
 ```
 
 ```PowerShell
-PS C:> thy secret create --path example/ps-json --data '{\"password\":\"powershell-secret\"}'
+PS C:> dsv secret create --path example/ps-json --data '{\"password\":\"powershell-secret\"}'
 ```
 
 ```cmd
-C:> thy secret create --path example/cmd-json --data "{\"password\":\"cmd-secret\"}"
+C:> dsv secret create --path example/cmd-json --data "{\"password\":\"cmd-secret\"}"
 ```
 
 ### File Path and OS-Specific Syntax
@@ -108,15 +108,15 @@ Passing JSON as a parameter remains practical only as long as the JSON remains s
 For instance, here the command is to create a Secret using a local file named secret.json. The examples show the minor variations among operating systems and shells.
 
 ```BASH
-thy secret create --path example/bash-json --data @secret.json
+dsv secret create --path example/bash-json --data @secret.json
 ```
 
 ```PowerShell
-PS C:> thy secret create --path example/ps-json --data '@secret.json'
+PS C:> dsv secret create --path example/ps-json --data '@secret.json'
 ```
 
 ```cmd
-C:> thy secret create --path example/cmd-json --data @secret.json
+C:> dsv secret create --path example/cmd-json --data @secret.json
 ```
 
 For passing a file as data, only Powershell requires the file path and name to be wrapped in quote marks, in this case single-quote marks.
@@ -133,7 +133,7 @@ DSV offers global flags that combine with most commands to format or redirect ou
 ## Encoding and Beautify
 
 ```BASH
-thy secret read --path /servers/us-east/server01 -be yaml
+dsv secret read --path /servers/us-east/server01 -be yaml
 ```
 
 Outputs:
@@ -155,7 +155,7 @@ The filter modifier relies on a lightweight, flexible command line JSON processo
 The following code block illustrates:
 
 
-`thy secret read --path resources/server01/mysql -b` 
+`dsv secret read --path resources/server01/mysql -b` 
 
 Outputs:
 
@@ -179,7 +179,7 @@ Outputs:
 }
 ```
 
-`thy secret read --path resources/server01/mysql --filter data.password` 
+`dsv secret read --path resources/server01/mysql --filter data.password` 
 
 Outputs:
 
@@ -192,7 +192,7 @@ The command without the filter produced the entire Secret, while the command wit
 The *-o* modifier allows output to be redirected to a file.
 
 ```cmd
-thy secret read --path /servers/us-east/server01 -b -o file:Secret.json
+dsv secret read --path /servers/us-east/server01 -b -o file:Secret.json
 \$ nano Secret.json
 ```
 
@@ -220,11 +220,11 @@ Output piping takes advantage of a common coding practice in which the value of 
 As an example, you can save any DSV CLI output into an environment variable by piping the output from the standard output into an environment variable.
 
 ```BASH
-export MYSecret=$(thy secret read --path Secret1)
+export MYSecret=$(dsv secret read --path Secret1)
 ```
 
 ```powershell
-$MYSecret=thy secret read --path Secret1
+$MYSecret=dsv secret read --path Secret1
 ```
 
 Both of the preceding would create an environment variable named *MYSecret* that would store the Secret data. To view the data you would use:

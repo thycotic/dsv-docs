@@ -34,7 +34,7 @@ When DSV has possession of Secrets outside the vault (that is, the CLI or API ha
 The *bustcache* command clears the local cache, if present.
 
 ``` bash
-thy secret bustcache
+dsv secret bustcache
 ```
 
 ### Create
@@ -44,41 +44,41 @@ The `create` command uses the `--data` flag to pass data into the secret.  This 
 Bash examples 
 
 ```BASH
-thy secret create --path us-east/server02 --data '{"username":"administrator","password":"bash-secret"}'
+dsv secret create --path us-east/server02 --data '{"username":"administrator","password":"bash-secret"}'
 ```
 
 ```BASH
-thy secret create --path us-east/server02 --data @/home/user/secret.json
+dsv secret create --path us-east/server02 --data @/home/user/secret.json
 ```
 
 ```BASH
-thy secret create --path us-east/server02 --data @../secret.json
+dsv secret create --path us-east/server02 --data @../secret.json
 ```
 Powershell examples
 
 ```PowerShell
-PS C:> thy secret create --path us-east/server02 --data '{\"username\":\"administrator\",\"password\":\"powershell-secret\"}'
+PS C:> dsv secret create --path us-east/server02 --data '{\"username\":\"administrator\",\"password\":\"powershell-secret\"}'
 ```
 
 ```PowerShell
-thy secret create --path us-east/server02 --data '@/home/user/secret.json'
+dsv secret create --path us-east/server02 --data '@/home/user/secret.json'
 ```
 
 ```PowerShell
-thy secret create --path us-east/server02 --data '@../secret.json'
+dsv secret create --path us-east/server02 --data '@../secret.json'
 ```
 CMD Examples
 
 ```cmd
-PS C:> thy secret create --path us-east/server02 --data "{\"username\":\"administrator\",\"password\":\"cmd-secret\"}"
+PS C:> dsv secret create --path us-east/server02 --data "{\"username\":\"administrator\",\"password\":\"cmd-secret\"}"
 ```
 
 ```cmd
-thy home secret --path us-east/server02 --data @/home/user/secret.json
+dsv home secret --path us-east/server02 --data @/home/user/secret.json
 ```
 
 ```cmd
-thy home secret --path us-east/server02 --data @../secret.json
+dsv home secret --path us-east/server02 --data @../secret.json
 ```
 
 The `--attributes` flag can be used to add user-defined metadata in the same way that data is added.
@@ -88,7 +88,7 @@ The `--desc` flag can be used to add a simple string.  If the string has any spa
 As a Bash example:
 
 ```BASH
-thy secret create --path us-east/server02 --attributes '{"priority":"high"}'  --desc "Covert Secret" --data '{"username":"administrator","password":"bash-secret"}'
+dsv secret create --path us-east/server02 --attributes '{"priority":"high"}'  --desc "Covert Secret" --data '{"username":"administrator","password":"bash-secret"}'
 ```
 
 ### Update
@@ -119,7 +119,7 @@ If you have this secret:
 This Bash command will only change the value for *host* in the data section.
 
 ``` bash
-thy secret update servers/us-east/server01 --data '{\"host\":\"unknown\"}'
+dsv secret update servers/us-east/server01 --data '{\"host\":\"unknown\"}'
 ```
 
 ``` bash
@@ -145,7 +145,7 @@ thy secret update servers/us-east/server01 --data '{\"host\":\"unknown\"}'
 The flag `--overwrite`, if added to the above command would wipe-out the description and any other data KV pairs. So this flag requires caution.
 
 ``` bash
-thy secret update servers/us-east/server01 --data '{\"host\":\"unknown\"}' --overwrite
+dsv secret update servers/us-east/server01 --data '{\"host\":\"unknown\"}' --overwrite
 ```
 
 ### Search
@@ -155,17 +155,17 @@ You can search for Secrets by path or attribute
 Some examples
 
 ``` bash
-thy secret search server
+dsv secret search server
 
-thy secret search --query server
+dsv secret search --query server
 
-thy secret search -q aws:base:secret --search-links
+dsv secret search -q aws:base:secret --search-links
 
-thy secret search --query aws --search-field attributes.type
+dsv secret search --query aws --search-field attributes.type
 
-thy secret search --query 900 --search-field attributes.ttl --search-type number
+dsv secret search --query 900 --search-field attributes.ttl --search-type number
 
-thy secret search --query production --search-field attributes.stage --search-comparison equal
+dsv secret search --query production --search-field attributes.stage --search-comparison equal
 ```
 
 flags
@@ -187,16 +187,16 @@ flags
 
 For a search where there are more results than returned in the first set, the API returns a cursor—a large piece of text. You pass that back to get the next set of results.
 
-For example, if the command `thy secret search -q admin --limit 10` matched 12 Secrets with admin in the name, the CLI would return the first 10 plus a cursor. To obtain the next two results, you would use this command:
+For example, if the command `dsv secret search -q admin --limit 10` matched 12 Secrets with admin in the name, the CLI would return the first 10 plus a cursor. To obtain the next two results, you would use this command:
 
 ```BASH
-thy secret search -q admin --limit 10 --cursor AFSDFSD...DKFJLSDJ=
+dsv secret search -q admin --limit 10 --cursor AFSDFSD...DKFJLSDJ=
 ```
 
 Cursors may be lengthy:
 
 ```BASH
-thy secret search -q resources --limit 10 --cursor eyJpZCI6ImEwOTFjOWIzLWE4MmQtNGRiYy1hYThiLTYxMDY0NDZhZjA3MSIsInBhdGgiOiIiLCJ2ZXJzaW9uIjoidi1jdXJyZW50IiwidHlwZSI6IiIsImxhdGVzdCI6MH0=
+dsv secret search -q resources --limit 10 --cursor eyJpZCI6ImEwOTFjOWIzLWE4MmQtNGRiYy1hYThiLTYxMDY0NDZhZjA3MSIsInBhdGgiOiIiLCJ2ZXJzaW9uIjoidi1jdXJyZW50IiwidHlwZSI6IiIsImxhdGVzdCI6MH0=
 ```
 
 ### Describe
@@ -204,7 +204,7 @@ thy secret search -q resources --limit 10 --cursor eyJpZCI6ImEwOTFjOWIzLWE4MmQtN
 Use *describe* to show only metadata; you will not see the actual Secret value.
 
 ``` bash
-thy secret describe --path us-east/server02
+dsv secret describe --path us-east/server02
 ```
 
 ### Read
@@ -212,7 +212,7 @@ thy secret describe --path us-east/server02
 The `read` command shows both the Secret data and metadata.
 
 ```BASH
-thy secret read --path us-east/server02 
+dsv secret read --path us-east/server02 
 ```
 
 Flags 
@@ -226,7 +226,7 @@ Flags
 This example would send the password value only to the clipboard.
 
 ```BASH
-thy secret read secret2 -o clip -f data.password
+dsv secret read secret2 -o clip -f data.password
 ```
 
 > TIP: Although the `-o` flag allows redirection of output to files, it does not support directly assigning the output to an environmental variable. However, you can use piping to achieve that outcome.
@@ -234,13 +234,13 @@ thy secret read secret2 -o clip -f data.password
 **Piping** refers to passing to a command a parameter value that is itself a command, or assigning to a variable a value that is a command. In effect, piping means assigning as a value the means to obtain the value, rather than the value itself.
 
 ```BASH
-export TEST=\$(thy secret read --path us-east/server02)
+export TEST=\$(dsv secret read --path us-east/server02)
 ```
 
 or
 
 ```BASH
-\$TEST=thy secret read --path us-east/server02
+\$TEST=dsv secret read --path us-east/server02
 ```
 
 Both examples use piping to assign to the variable *TEST* the value contained in the Secret, by making the `secret read` command a parameter within a larger command or statement.
@@ -260,7 +260,7 @@ Use *edit* to open the Secret data in the default text editor for bash, such as 
 * Saving in the editor updates the Secret in the vault, except in the case of Notepad, in which case the update happens when you exit Notepad. Your interim saves are to the working copy.
 
 ```BASH
-thy secret edit --path us-east/server02
+dsv secret edit --path us-east/server02
 ```
 
 ### Update
@@ -278,13 +278,13 @@ The `--overwrite` flag applies only at the field level; it does not allow you to
 As with *create*, for the value of the `--data` parameter `update` accepts JSON entered directly at the command line, or the path to a JSON file.
 
 ```BASH
-thy secret update --path us-east/server02 --data {\\"password\\":\\"Secret2\\"}
+dsv secret update --path us-east/server02 --data {\\"password\\":\\"Secret2\\"}
 ```
 
 or
 
 ```BASH
-thy secret update --path us-east/server02 --data @secret.json
+dsv secret update --path us-east/server02 --data @secret.json
 ```
 
 ### Delete
@@ -292,7 +292,7 @@ thy secret update --path us-east/server02 --data @secret.json
 To *delete* a Secret simply specify the path.
 
 ``` bash
-thy secret delete --path us-east/server02
+dsv secret delete --path us-east/server02
 ```
 
 When you delete a Secret, it will no longer be usable. However, with the soft delete capacity of DSV, you have 72 hours to use the *restore* command to undelete the Secret. After 72 hours, the Secret will no longer be retrievable.
@@ -304,7 +304,7 @@ Should you want to perform a hard delete, precluding any restore operation, you 
 Up to 72 hours after you delete a Secret (but not if you hard deleted it using the `--force` flag), you can restore it:
 
 ```bash
-thy secret restore --path us-east/server02
+dsv secret restore --path us-east/server02
 ```
 
 Do not confuse `restore` with `rollback` because the two have no relation. While `restore` un-deletes a deleted Secret, restoring it to the condition it was in at the time of its deletion, `rollback` does not operate on deleted Secrets. It simply sets a Secret back to an earlier version of itself.
@@ -314,7 +314,7 @@ Do not confuse `restore` with `rollback` because the two have no relation. While
 A Secret that has had more than one version can be rolled back to an earlier version of itself:
 
 ```bash
-thy secret rollback --path us-east/server02 --version 2
+dsv secret rollback --path us-east/server02 --version 2
 ```
 
 If you do not include the `--version` flag, the Secret will roll back to the last version before the present version. By serially issuing the rollback command without a version number, you could step back through the versions one at a time.

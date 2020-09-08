@@ -25,15 +25,15 @@ Create the Secret and specify the path to its storage location:
 
 Linux:
 ```BASH
-thy secret create --path servers:us-east:server01 --data @secret.json
+dsv secret create --path servers:us-east:server01 --data @secret.json
 ```
 Powershell:
 ```PowerShell
-thy secret create --path servers:us-east:server01 --data '@secret.json'
+dsv secret create --path servers:us-east:server01 --data '@secret.json'
 ```
 CMD:
 ```cmd
-thy secret create --path servers:us-east:server01 --data @secret.json
+dsv secret create --path servers:us-east:server01 --data @secret.json
 ```
 Outputs:
 
@@ -63,15 +63,15 @@ Instead of using a file, the data can be entered as part of the command:
 
 Linux:
 ```BASH
-thy secret create --path servers:us-east:server01 --data '{"host":"server01","username":"administrator","password":"secretp@sssword"}'
+dsv secret create --path servers:us-east:server01 --data '{"host":"server01","username":"administrator","password":"secretp@sssword"}'
 ```
 Powershell:
 ```PowerShell
-thy secret create --path servers:us-east:server01 --data '{\"host\":\"server01\",\"username\":\"administrator\",\"password\":\"secretp@sssword\"}'
+dsv secret create --path servers:us-east:server01 --data '{\"host\":\"server01\",\"username\":\"administrator\",\"password\":\"secretp@sssword\"}'
 ```
 CMD:
 ```cmd
-thy secret create --path servers:us-east:server01 --data "{\"host\":\"server01\",\"username\":\"administrator\",\"password\":\"secretp@sssword\"}"
+dsv secret create --path servers:us-east:server01 --data "{\"host\":\"server01\",\"username\":\"administrator\",\"password\":\"secretp@sssword\"}"
 ```
 Outputs:
 
@@ -99,7 +99,7 @@ Outputs:
 To retrieve a Secret use the Secret read command and specify the path to the Secret's storage location.
 
 ```BASH
-thy secret read --path /servers/us-east/server01
+dsv secret read --path /servers/us-east/server01
 ```
 
 Output defaults to JSON:
@@ -124,7 +124,7 @@ Output defaults to JSON:
 ```
 If you would like the output to be in YAML:
 ```BASH
-thy secret read --path /servers/us-east/server01 -e yaml
+dsv secret read --path /servers/us-east/server01 -e yaml
 ```
 Outputs:
 ```yaml
@@ -148,7 +148,7 @@ version: "0"
 When you need to locate a specific field in a JSON output, use a JSON filter. An example use case is writing scripts that need to obtain a password but lack the capacity to efficiently parse JSON.
 
 ```BASH
-thy secret read --path /servers/us-east/server01 -bf data.password
+dsv secret read --path /servers/us-east/server01 -bf data.password
 secretp@ssword
 ```
 
@@ -157,7 +157,7 @@ secretp@ssword
 Using the `--data`, `--attributes`, and `--desc` flags, respectively, you can update a Secret's data, attributes, and description separately. For example:
 
 ```BASH
-thy secret update servers/us-east/server01 --data '{"host": "server01", "password": "badpassword","username": "admin"}' --desc 'update description'  --attributes '{"attr": "add one"}'
+dsv secret update servers/us-east/server01 --data '{"host": "server01", "password": "badpassword","username": "admin"}' --desc 'update description'  --attributes '{"attr": "add one"}'
 ```
 ```json
 {
