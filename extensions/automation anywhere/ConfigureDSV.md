@@ -14,13 +14,13 @@ Use the DSV CLI to create a new client credential linked to a Role that has read
 Create a Role  
 
 ```BASH
-thy role create --name AABot --desc "grants access to AA"
+dsv role create --name AABot --desc "grants access to AA"
 ```
 
 Create a Client Credential
 
 ```BASH
-thy client create --role AABot
+dsv client create --role AABot
 ```
 
 Save the *clientId* and *clientSecret* returned by this command. You will use these to grant bot access to the vault.
@@ -28,7 +28,7 @@ Save the *clientId* and *clientSecret* returned by this command. You will use th
 Add the AABot Role to a Permission Policy  
 
 ```BASH
-thy config edit -e yaml
+dsv config edit -e yaml
 ```
 
 Here is an example permission document granting the AABot Role read-only access to Secrets under the accounts/path:
@@ -67,13 +67,13 @@ To use Secrets from the vault in the Automation Anywhere build pipelines, we nee
 We will create a test Secret at the path *accounts/aa*:
 
 ```BASH
-thy secret create accounts/aa '{"username":"aabot01","password":"testpassword"}'
+dsv secret create accounts/aa '{"username":"aabot01","password":"testpassword"}'
 ```
 
 Read back the Secret to verify the data looks right:
 
 ```BASH
-thy secret read -be JSON accounts/aa
+dsv secret read -be JSON accounts/aa
 ```
 
 The resulting JSON Secret should look similar to:
