@@ -17,21 +17,23 @@ DevOps Secrets Vault is deployed as an API-as-a Service.  Organizations can sign
 * Local caching (with the CLI)
 * Sandbox tenant available for testing before deployment to production
 * Cloud authentication
-    * Amazon Web Services (AWS)
-    * Microsoft Azure
-    * Google Cloud Platform (GCP)
+    * [Amazon Web Services (AWS)](./auth-general/authaws/index.md)
+    * [Microsoft Azure](./auth-general/authazure/index.md)
+    * [Google Cloud Platform (GCP)](./auth-general/authgcp/index.md)
 * SDK support
-    * Java
-    * Go
-    * Python
-    * .NET
+    * [Java](https://github.com/thycotic/dsv-sdk-java)
+    * [Go](https://github.com/thycotic/dsv-sdk-go)
+    * [Python](https://github.com/thycotic/python-dsv-sdk)
+    * [.NET Core](https://github.com/thycotic/dsv-netcore-sdk)
 * DevOps Tools Support (Plugins)
-    * Jenkins
-    * Terraform
-    * Kubernetes
-    * Ansible
+    * [Jenkins](https://github.com/thycotic/dsv-jenkins-plugin)
+    * [Terraform](https://github.com/thycotic/dsv-k8s)
+    * [Kubernetes](https://github.com/thycotic/dsv-k8s)
+    * [Ansible](https://github.com/thycotic/dsv-ansible-lookup-plugin)
 * Robotic Process Automation
-    * UIPath
+    * [UIPath](https://github.com/thycotic/uipath-orchestrator-dsv)
+    * [Automation Anywhere](https://docs.thycotic.com/dsv-extension-automation-anywhere/)
+    * [Blue Prism](https://docs.thycotic.com/dsv-extension-blue-prism/)
 * SOC II Compliance - report available upon request
 
 ## Free Version and Quickstart

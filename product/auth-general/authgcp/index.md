@@ -70,7 +70,7 @@ In the search, type `Identity and Access` and in the results, select the **Ident
 
 Go back to the terminal (DevOps Secrets Vault CLI)
 
-Use `thy config auth-provider search -e yaml` to see all of your current authentication providers.
+Use `dsv config auth-provider search -e yaml` to see all of your current authentication providers.
 
 Initially, the only authentication provider is Thycotic One, similar to this:
 
@@ -106,9 +106,9 @@ Setup the DSV authentication provider.  Create a json file named `auth-gcp.txt` 
 	}
 }
 ```
-In the DSV CLI, run `thy config auth-provider create --data @auth-gcp.txt` to create the GCP authentication provider.
+In the DSV CLI, run `dsv config auth-provider create --data @auth-gcp.txt` to create the GCP authentication provider.
 
-`thy config auth-provider <name> read -e yaml` where the example name we will use here is gcloud
+`dsv config auth-provider <name> read -e yaml` where the example name we will use here is gcloud
 
 ```yaml
 created: "2019-11-12T18:34:49Z"
@@ -158,7 +158,7 @@ type: gcp
 
 Now the service account that is going to access DSV is required.  For this example, we will name this account `client-svc` The setup in GCP is the same as above for the `dsv-svc` account except that when the role is assigned, it must be **Service Account Token Creator** so that this account can request tokens.  Also, after generating the key, make sure to save the file to the local machine that will access DSV and note the location.
 
-In the DSV CLI, create a User called `gcp-test` referring to the `client-svc` service account with `gcloud` as the authentication provider using `thy user create --username gcp-test --provider gcloud --external-id client-svc@myfirstproject-273119.iam.gserviceaccount.com`
+In the DSV CLI, create a User called `gcp-test` referring to the `client-svc` service account with `gcloud` as the authentication provider using `dsv user create --username gcp-test --provider gcloud --external-id client-svc@myfirstproject-273119.iam.gserviceaccount.com`
 
 
 ```json
@@ -201,7 +201,7 @@ After creating the User, modify the `config` to give that User access to the def
 > NOTE: Adding a User to the admin policy is not security best practices.  This is for example purposes only.  Ideally,  you would create a separate policy for this GCP service account with restricted access.   For details on limiting access through policies, see the [Policy](../product/cli-ref/policy.md) section.
 
 ```BASH
-thy config edit
+dsv config edit
 ```
 
 Add *gcloud:gcp-test* as a User to the **Default Admin Policy**. Third party accounts must be prefixed with the provider name; in this case, the fully qualified username would be *glcoud:gcp-test*.
@@ -223,7 +223,7 @@ Add *gcloud:gcp-test* as a User to the **Default Admin Policy**. Third party acc
 <snip>
 ```
 
-Run `thy init` filling out the desired values and selecting **6** GCP (federated) when prompted for the auth type.
+Run `dsv init` filling out the desired values and selecting **6** GCP (federated) when prompted for the auth type.
 
 ```BASH
 Please enter auth type:
@@ -238,9 +238,9 @@ Please enter auth type:
 
 ```
 
-Run `thy auth` to verify authentication.  A token will be displayed.
+Run `dsv auth` to verify authentication.  A token will be displayed.
 
-Run `thy secret read <path to any secret>` to verify secret access. 
+Run `dsv secret read <path to any secret>` to verify secret access. 
 
 ## Google Compute Engine (GCE) Metadata Authentication 
 
@@ -290,11 +290,11 @@ Create a file named 'auth-gcp.txt' in the following format and substituting your
 }
 ```
 
-Run `thy config auth-provider create --data @auth-gcp.txt` to implement the Authentication Provider.
+Run `dsv config auth-provider create --data @auth-gcp.txt` to implement the Authentication Provider.
 
 To view the resulting addition to the config file, you would use:
 
-`thy config auth-provider <name> read -e yaml` where the example name we will use here is *gcloud-gce*
+`dsv config auth-provider <name> read -e yaml` where the example name we will use here is *gcloud-gce*
 
 ```yaml 
 
@@ -321,7 +321,7 @@ version: "0"
 
 ### DSV GCE Metadata Service Account/DSV User Mapping
 
-Run `thy user create --username gce-test --provider gcloud-gce --external-id {default compute service account email}` using the default service account email we saved earlier.
+Run `dsv user create --username gce-test --provider gcloud-gce --external-id {default compute service account email}` using the default service account email we saved earlier.
 
 ```json
 {
@@ -341,7 +341,7 @@ After creating the User, modify the config to give that User access to the defau
 > NOTE: Adding a User to the admin policy is not security best practices.  This is for example purposes only.  Ideally,  you would create a separate policy for this GCP service account with restricted access.   For details on limiting access through policies, see the [Policy](../product/cli-ref/policy.md) section.
 
 ```BASH
-thy config edit
+dsv config edit
 ```
 
 Add *gcloud:gce-test* as a User to the **Default Admin Policy**. Third party accounts must be prefixed with the provider name; in this case, the fully qualified username would be *glcoud-gce:gce-test*.
@@ -349,7 +349,7 @@ Add *gcloud:gce-test* as a User to the **Default Admin Policy**. Third party acc
 > NOTE: Adding a user to the admin policy is not security best practices.  This is for example purposes only.  Ideally,  you would create a separate policy for this AWS user with restricted access.   For details on limiting access through policies, see the [Policy](../product/cli-ref/policy.md) section.
 
 ```BASH
-thy config edit -e yaml
+dsv config edit -e yaml
 ```
 
 ```yaml
@@ -373,11 +373,11 @@ thy config edit -e yaml
 
 SSH into the GCE and download the latest DSV CLI from this website [DSV CLI](https://dsv.thycotic.com/downloads)
 
-For example, `curl https://dsv.thycotic.com/downloads/cli/1.8.0/thy-linux-x64 -o thy`
+For example, `curl https://dsv.thycotic.com/downloads/cli/1.8.0/thy-linux-x64 -o dsv`
 
-You may need to give yourself permissions to run the "thy" binary and it is also easier if you set the path.
+You may need to give yourself permissions to run the "dsv" binary and it is also easier if you set the path.
 
-Run `thy init` filling out the desired values and selecting **6** GCP (federated) when prompted for the auth type.
+Run `dsv init` filling out the desired values and selecting **6** GCP (federated) when prompted for the auth type.
 
 ```BASH
 Please enter auth type:
@@ -391,9 +391,9 @@ Please enter auth type:
        
 ```
 
-Run `thy auth` to verify authentication.  A token will be displayed.
+Run `dsv auth` to verify authentication.  A token will be displayed.
 
-Run `thy secret read <path to any secret>` to verify secret access. 
+Run `dsv secret read <path to any secret>` to verify secret access. 
 
 ## Google Kubernetes Engine (GKE) Authentication
 
@@ -418,11 +418,11 @@ Create a file named 'auth-gcp.txt' in the following format and substituting your
 	}
 }
 ```
-Run `thy config auth-provider create --data @auth-gcp.txt` to implement the Authentication Provider.
+Run `dsv config auth-provider create --data @auth-gcp.txt` to implement the Authentication Provider.
 
 ### DSV User mapped to the GKE service account
 
-Run `thy user create --username gce-test --provider gcloud-gce --external-id {dsv-gce service account email}` using the default service account email we saved earlier.  You will get a response like this:
+Run `dsv user create --username gce-test --provider gcloud-gce --external-id {dsv-gce service account email}` using the default service account email we saved earlier.  You will get a response like this:
 
 ```json
 {

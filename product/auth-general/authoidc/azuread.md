@@ -29,7 +29,7 @@
 ![](./images/spacer.png)
 
 11. Go back to the open dialog in Thycotic One and enter the Application ID for the Client ID, the generated secret for Client Secret, and fill in the Provider URL and click **Save**
-12. When you sign into thycotic one again you should now see an option for logging in with Azure AD. 
+12. When you sign into Thycotic one again you should now see an option for logging in with Azure AD. 
 
 ![](./images/spacer.png)
 
