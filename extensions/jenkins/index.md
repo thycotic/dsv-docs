@@ -4,37 +4,15 @@
 
 # Jenkins Extension for DevOps Secrets Vault 
 
-The Jenkins extension allows builds to retrieve Secrets from the vault at runtime. It can bind Secrets to environment variables through a build step, or by reference in a **jenkinsfile**.
+The Jenkins extension allows builds to retrieve Secrets from the vault at runtime. It can bind Secrets to environment variables through a build step.
 
-## Obtain
-
-Download the [latest version of the Jenkins HPI extension](https://dsv.thycotic.com/downloads/jenkins/devops-secrets-vault-jenkins.hpi).
-
-## Install
-
-In Jenkins, select **Manage Jenkins > Manage Plugins > Advanced**.
-
-Click **Browse**.
-
-Locate the **devops-secrets-vault-jenkins.hpi** you downloaded and bring it into Jenkins.
-
-![](./images/spacer.png)
-
-![Upload UI](./images/jenkins-upload.png "Upload UI")
-
-![](./images/spacer.png)
-
-## Linking Jenkins to DevOps Secrets Vault
-
-Jenkins must be able to query DSV to look up Secrets at build time. To enable this, you configure a Jenkins credential to authenticate to your vault.
-
-## Setup Client Credentials
+## DevOps Secrets Vault Setup
 
 Use the DSV CLI to create a new client credential linked to a Role that has read permissions on Secrets Jenkins will need. 
 
-### Example Commands for Bash
+### Create a Role, Client Credentials, and Jenkins Policy.
 
-Create a Role  
+Create a Role
 
 ```BASH
 thy role create --name jenkins --desc "grants access to build Secrets"
@@ -48,63 +26,48 @@ thy client create --role jenkins
 
 Save the *clientId* and *clientSecret* returned by this command. You will use these to grant Jenkins access to the vault.
 
-Add the Jenkins Role to a Permission Policy  
+Create (or add to) a Permission Policy that will grant the Jenkins Role access to the secret Jenkins requires.  As an example for creating the policy:
 
 ```BASH
-thy config edit -e yaml
+thy policy create --path secrets:resources: --actions read --subjects 'roles:jenkins' --desc "Jenkins Access"
 ```
 
-Here is an example permission document granting the Jenkins Role read-only access to Secrets under the resources/path:
+```BASH
+thy policy read --path secrets:resources: -e yaml
+```
+
+Would show:
 
 ```yaml
+created: "2020-08-28T15:50:17Z"
+createdBy: users:thy-one:admin@company.com
+id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+lastModified: "2020-08-28T15:50:17Z"
+lastModifiedBy: users:thy-one:admin@company.com
+path: secrets:resources
 permissionDocument:
-- actions:
-  - <.*>
-  conditions: {}
-  description: Default Admin Policy
-  effect: allow
-  id: bh516go6kkdc714ojvs0
-  meta: null
-  resources:
-  - <.*>
-  subjects:
-  - users:<admin>
-  - roles:<administrators>
 - actions:
   - read
   conditions: {}
-  description: Read Policy
+  description: Jenkins Access
   effect: allow
-  id: bhm0hnv5725c72kbcv0g
+  id: xxxxxxxxxxxxxxxxxxxx
   meta: null
   resources:
   - secrets:resources:<.*>
   subjects:
-  - roles:<jenkins>
+  - roles:jenkins
+version: "0"
 ```
 
-## Add Newly Created Client Credential in Jenkins
-
-In Jenkins, use these steps to add the newly created client credential:
-
-* Under **Credentials**, add new credentials.
-
-  ![Add Credential UI](./images/jenkins-add-credential.png "Add Credential UI")
-
-* Enter the vault URL, your tenant name, the clientId, and the clientSecret from the newly created client credential.
-
-  ![Add Vault Credential UI](./images/jenkins-add-vault-credential.png "Add Vault Credential UI")
-
-* You can specify an ID or let Jenkins autogenerate the ID.
-
-## Create a Test Secret
+### Create a Test Secret
 
 To use Secrets from the vault in the Jenkins build pipelines, we need a Secret for the Jenkins Role to access. Note that in the configuration above, the Jenkins Role has access to read anything under *resources*. 
 
 We will create a test Secret at the path *resources/server01*:
 
 ```BASH
-thy secret create resources/server01 '{"servername":"server01","password":"somepass1"}'
+thy secret create resources/server01 '{"servername":"server01","password":"newpassword"}'
 ```
 
 Read back the Secret to verify the data looks right:
@@ -119,74 +82,85 @@ The resulting JSON Secret should look similar to:
 {
   "attributes": null,
   "data": {
-    "password": "somepass1",
+    "password": "newpassword",
     "servername": "server01"
   },
   "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "path": "resources:server01"
 }
 ```
+## Jenkins
 
-During our Jenkins builds, the extension will pull the *password* value of *somepass1* from the *data* property in the Secret.
+Download the [latest version of the Jenkins HPI extension](https://github.com/thycotic/dsv-jenkins-plugin).
+
+## Install
+
+In Jenkins, select **Manage Jenkins > Manage Plugins > Advanced**.
+
+In the *Upload Plugin* section, click **Browse**.
+
+Locate the **dsv-jenkins.hpi** you downloaded, select it, then click **Upload**.
+
+![Upload UI](./images/jenkins-upload.png "Upload UI")
+
+![](./images/spacer.png)
+
+## Configure the Plugin
+
+Go to **Manage Jenkins** then **Configure System** and scroll down to the section titled *Thycotic DevOps Secrets Vault*
+
+![Configure UI](./images/jenkins-configure.png)
+
+By *Default Client Secret* click **Add**, then **Jenkins** a new screen is presented.
+
+By *Kind*, from the dropdown select **DevOps Secrets Vault Client Secret**
+
+Now enter the *Client ID* and *Client Secret* that was created in DSV earlier.
+
+Optionally enter an *ID* and/or *Description*
+
+![Configure Client](./images/jenkins-client-entry.png)
+
+Click **Add**
+
+You are sent back to the Jenkins -> Configuration page.  By *Default Client Secret* in the drop down select the client ID of the credentials you just added.
+
+By *Default Vault Tenant*, enter your DSV tenent  (If your URL is company.secretsvaultcloud.com, then the tenent is *company*)
+
+By The *Environmental Variable Prefix* you will find that *DSV_* is there by default.  This is automatically pre-pended to the name of the environmental varible that you assign later.  This is to help avoid using reserved Jenkins names.   You can delete or change this as required.
+
+If you are using the European Union or Asia-PAC URL, then click **Advanced**.  Here you will replace *com* with *eu* or *com.au* to accomodate the different URL - ie company.secretsvaultcloud.eu or company.secretsvaultcloud.com.au
+
+![Defaults](./images/jenkins-defaults.png)
+
+At the bottom of the page, click **Save** 
+
+![](./images/spacer.png)
+
 
 ## Freestyle Build
 
-If you prefer not to modify an existing build, create a new item in Jenkins and select **Freestyle project**.
+Back at the Jenkins home page, select a **New item**, enter a name, and then select **Freestyle project** and click **OK**
 
-To get credentials in a Freestyle build:
+Under **Build Environment**, mark the **Use Thycotic Light DevOps Secrets Vault Secrets** checkbox active.
+* Enter the secret path, in the example above, it would be *resources/server01* 
+* The environment variable to which you want to bind the Secret value
+* The Secret data field from which to get the value; in this case we are getting the value from the *password* field of our previously created Secret
 
-* Under **Build Environment**, mark the **Thycotic Light Vault Plugin** checkbox active.
-* Choose the credential previously created. This will authenticate to the vault to get Secrets.
-* Add a Secret and enter:
-  * the path to the Secret in the vault
-  * the environment variable to which you want to bind the Secret value
-  * the Secret data field from which to get the value; in this case we are getting the value from the *password* field of our previously created Secret
-* In build steps, you can reference the environment variable as you normally would. For example, the shell script shown here will echo the *$MY_PASSWORD* environment variable.
+Notice that you can:
+* Can add additional fields from the secret if needed.
+* That the default client credentials and tenant are set here, but if you click the box, then you can enter different values for either.
+* Add additional secrets
+
+In build steps, you can reference the environment variable as you normally would, but remember that we might prepend a value, with the default being *DSV_* . For example, the shell script shown here will echo the *$DSV_MY_PASSWORD* environment variable.
 
 ![Build Step in Shell Script](./images/jenkins-build-step.png "Build Step in Shell Script")
 
-* The console output of the build should show the retrieved Secret password value of "somepass1" as expected.
+* The console output of the build should show the retrieved Secret password value of "newpassword" as expected.
 
   ![Build Step in Shell Script - Output](./images/jenkins-build-output.png "Build Step in Shell Script - Output")
 
-## Jenkinsfile
 
-In a pipeline, you can bind to the extension to get Secrets as environment variables.
-
-The Secret referenced is the same one created above, so the field value pulled from *password* on the Secret would be **somepass1**. 
-
-Set the pipeline script to the following, replacing the *key*, *secret path*, and *thycoticCredentialId* with your values.
-
-```groovy
-node {
-    // define the env variables
-    def secretValues = [
-        [$class: 'ThycoticSecretValue', key: 'password', envVar: 'secret']
-    ]
-
-    // define the path to the secret
-    def secrets = [
-        [$class: 'ThycoticSecret', path: 'resources/server01', secretValues: secretValues]
-    ]
-
-    // set the jenkins credentialid used to connect to the vault
-    def configuration = [$class: 'VaultLightConfiguration',
-                       thycoticCredentialId: 'vault-jenkins']
-
-    // instantiate the build wrapper to access the populated environment variables
-    wrap([$class: 'ThycoticVaultBuildWrapper', configuration: configuration, thycoticVaultSecrets: secrets]) {
-        echo "my secret is $secret"
-    }
-}
-```
-
-![Jenkins Pipeline](./images/jenkins-pipeline.png "Jenkins Pipeline")
-
-Running the pipeline, the output will be the password value of the Secret from the vault.
-
-![Jenkins Pipeline - Output](./images/jenkins-pipeline-output.png "Jenkins Pipeline - Output")
-
-As expected, the jenkinsfile outputs the password value from the Secret at *resources/server01*.
 
 ![](./images/spacer.png)
 

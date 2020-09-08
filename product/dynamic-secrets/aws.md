@@ -58,7 +58,7 @@ Create a file named `secret_root.json` substituting your values:
 Create the Secret via the CLI at a path of your choosing:
 
 ```BASH
-thy secret create --path aws/base/api-account --data @secret_root.json --attributes '{"type": "aws"}'
+dsv secret create --path aws/base/api-account --data @secret_root.json --attributes '{"type": "aws"}'
 ```
 
 ### Create the Dynamic Secret
@@ -90,14 +90,14 @@ Create an attributes json file named `secret_attributes.json' substituting your 
 Create a new Dynamic Secret
 
 ```BASH
-thy secret create --path dynamic/aws/federate-api --attributes @secret_attributes.json
+dsv secret create --path dynamic/aws/federate-api --attributes @secret_attributes.json
 ```
 
 Now anytime you read the Dynamic Secret, the data is populated with the temporary AWS access credentials.
 
 
 ```BASH
-thy secret read --path dynamic/aws/federate-api
+dsv secret read --path dynamic/aws/federate-api
 ```
 
 returns a result like:
@@ -238,7 +238,7 @@ Create a file named `secret_root.json` substituting your values:
 Create the Secret via the CLI at a path of your choosing:
 
 ```BASH
-thy secret create --path aws/base/api-account --data @secret_root.json --attributes '{"type": "aws"}'
+dsv secret create --path aws/base/api-account --data @secret_root.json --attributes '{"type": "aws"}'
 ```
 
 ### Create the Dynamic Secret
@@ -271,14 +271,14 @@ Create or update the attributes json file named `secret_attributes.json substitu
 ```
 Now create the dynamic secret in the CLI using the json above.
 ```BASH
-thy secret create --path dynamic/aws/assume-api --attributes @secret_attributes.json
+dsv secret create --path dynamic/aws/assume-api --attributes @secret_attributes.json
 ```
 
 Now anytime you read the Dynamic Secret, the data is populated with the temporary AWS access credentials.
 
 
 ```BASH
-thy secret read --path dynamic/aws/assume-api
+dsv secret read --path dynamic/aws/assume-api
 ```
 
 returns a result like:

@@ -55,7 +55,7 @@ Sample syslog output
 To start a SIEM configuration workflow, use the command:
 
 ```bash
-thy siem create
+dsv siem create
 ```
 
 | Option | Description |
@@ -119,7 +119,7 @@ CEF:0|thycotic|dsv|-|b40e07d3-6fb9-41e8-9816-356de992b8fa|POST|0|{action:POST,cr
 To start a SIEM configuration workflow, use the command:
  
 ```bash
-thy siem create
+dsv siem create
 ```
 
 | Option | Description |
@@ -163,7 +163,7 @@ Sample JSON output
 To start a SIEM configuration workflow, use the command:
  
 ```bash
-thy siem create
+dsv siem create
 ```
 
 | Option | Description |

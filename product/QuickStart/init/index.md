@@ -12,14 +12,14 @@ DSV CLI initialization presents you with a series of questions and choices. If y
 * local or federated user, and if federated, which authentication provider
 * credentials - username or access key, password or secret key as examples
 
-## "thy init"
+## "dsv init"
 
-Begin setup with the `thy init` command.  This will start a workflow:
+Begin setup with the `dsv init` command.  This will start a workflow:
 
 
 
 ```BASH
-thy init
+dsv init
  Please enter tenant name: example
 ```
 

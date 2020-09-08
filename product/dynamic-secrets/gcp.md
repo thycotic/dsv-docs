@@ -44,7 +44,7 @@ Create a file named `secret_root.json` substituting your values from the service
 Create the Secret via the CLI at a path of your choosing:
 
 ```BASH
-thy secret create --path gcp/base/svc-account --data @secret_root.json --attributes '{"type": "gcp"}'
+dsv secret create --path gcp/base/svc-account --data @secret_root.json --attributes '{"type": "gcp"}'
 ```
 
 ## OAuth Access Token
@@ -78,14 +78,14 @@ Create an attributes json file named `secret_attributes.json' substituting your 
 Create a new Dynamic Secret
 
 ```BASH
-thy secret create --path dynamic/gcp/token --attributes @secret_attributes.json
+dsv secret create --path dynamic/gcp/token --attributes @secret_attributes.json
 ```
 
 Now anytime you read the Dynamic Secret, the data is populated with the a temporary access token that is valid for 1 hour.
 
 
 ```BASH
-thy secret read --path dynamic/gcp/token
+dsv secret read --path dynamic/gcp/token
 ```
 
 returns a result like:
@@ -163,14 +163,14 @@ Create or update the attributes json file named `secret_attributes.json` changin
 Now create the dynamic secret in the CLI using the json above.
 
 ```BASH
-thy secret create --path dynamic/gcp/secret-svc-key --attributes @secret_attributes.json
+dsv secret create --path dynamic/gcp/secret-svc-key --attributes @secret_attributes.json
 ```
 
 Now anytime you read the Dynamic Secret, the data is populated with the GCP service key.
 
 
 ```BASH
-thy secret read --path dynamic/gcp/secret-svc-key
+dsv secret read --path dynamic/gcp/secret-svc-key
 ```
 
 returns a result like:
