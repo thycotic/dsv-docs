@@ -19,6 +19,18 @@ The Command Line Interface (CLI) is locally installed using OS-specific executab
 
 | **Update**             | **Notes**                                  |
 |------------------------|--------------------------------------------|
+|September 2020          | **CLI Version**: 1.13|
+|                        | **improvement**: CLI name changed from "thy" to "dsv" in downloads and documentation for all commands|
+|                        | **new feature**: Home Vault GA.  Completed Roles, GetByVersion, Rollback, Restore, Policy for giving others access. |
+|                        | **improvement**: Wizards for Groups will not allow invalid Users|
+|                        | **improvement**: Wizards for Users look for Auth provider and act accordingly rather than ask for a passwrod first|
+|                        | **improvement**: secrets arrtibutes can be updated wihtout affecting other fields|
+|                        | **improvement**: Thycotic One users not sent sign-up emails by default.  Can change this setting|
+|                        | **improvement**: whoami command provides more information for cloud auth providers|
+|                        | **improvement**: Group names can't have spaces|
+|                        | **improvement**: Roles with Auth providers must include an external ID|
+|August 2020 (Update 1)  | **CLI Version**: 1.12.1                    |
+|                        | **fixed**: CLI update check                |
 |August 2020             | **CLI Version**: 1.12|
 |                        | **new feature**: Home Vault Beta.  Users get their own secret space without needing a policy.|
 |                        | **improvement**: Global flags defined|
@@ -29,7 +41,7 @@ The Command Line Interface (CLI) is locally installed using OS-specific executab
 |July 2020 (Update 1)    | **fixed**: Enforce case insensitivity on subjects returned in JWT record.|
 |July 2020               | **CLI Version**: 1.11|
 |                        | **new feature**: SSH public key generation and SSH Certificate signing/storage was added.|
-|                        | **new feature**: CLI now contains workflows for Users, Groups, and Roles.|
+|                        | **new feature**: CLI now contains wizards for Users, Groups, and Roles.|
 |                        | **improvement**: Policy update help information and examples.|
 |                        | **improvement**: Added IDs and status information to audit records.|
 |                        | **improvement**: Standarized on the use of colons for policies instead of slashes|
@@ -38,7 +50,7 @@ The Command Line Interface (CLI) is locally installed using OS-specific executab
 |                        | **fixed**: Group member sometimes returned code 500 (internal server error) on deletion attempt.|
 |June 2020               | **CLI Version**: 1.10|
 |                        | **new feature**: SIEM endpoints.  Support Syslog, CEF, and JSON log formatting on TLS,TCP, UDP, HTTP, and HTTPS transport protocols.|
-|                        | **new feature**: Introduced CLI workflows to PKI, SIEM, Policy, and Auth-provider commands for simplified human navigation.|
+|                        | **new feature**: Introduced CLI wizards to PKI, SIEM, Policy, and Auth-provider commands for simplified human navigation.|
 |                        | **improvement**: Additional Secrets search capabilities. Enabled search for Secrets on any attribute, path, or description.|
 |                        | **improvement**: Provide the ability to add a CRL URL to a signing certificate.  |
 |                        | **fixed**: CLI version check fixed regardless of the update cache|

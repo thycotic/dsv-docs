@@ -2,7 +2,7 @@
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (4800)
 
-# Policy and Auth Providers
+# Admin Policy and Auth Providers
 
 In this section we will
 
@@ -28,7 +28,7 @@ In this section we will
 To read out the current config, which contains the Admin policies
 
 ```BASH
-thy config read
+dsv config read
 ```
 
 >Note: In this command the `--encoding yaml` flag could be used to provide the output in YAML format.
@@ -68,13 +68,13 @@ In response, you should see a block of code containing the Default Admin Policy,
 }
 ```
 
-The initial User possesses full administrator rights and is federated through Thycotic One.  This is indicated by the `thy-one` prefix on the users's email. This enables self-service password reset through Thycotic One.
+The initial User possesses full administrator rights and is federated through Thycotic One.  This is indicated by the `dsv-one` prefix on the users's email. This enables self-service password reset through Thycotic One.
 
 In keeping with best practices, you should set up a less privileged User policy for routine use. The highly privileged initial Admin account should be used only when a task requires its privileges.
 
 The first section of the Admin policy with the description "Default Admin Permission" is what allows the Admin full rights to everything in DSV.
 
-The second section with the description "Default Deny Home Permissions" denies the Admin permission to access the Home (Beta) feature where users have a place for their own secrets.  If required, the Admin can remove his/her name and then get access to he Home secrets (API only in Beta)
+The second section with the description "Default Deny Home Permissions" denies the Admin permission to access the Home feature where users have a place for their own secrets.  If required, the Admin can remove his/her name and then get access to he Home secrets (API only in Beta)
 
 ### Edit
 
@@ -87,7 +87,7 @@ The second section with the description "Default Deny Home Permissions" denies t
 Use *edit* to open your configuration in the OS’s default editor (typically **VI**, **nano**, or **Notepad**).
 
 ``` bash
-thy config edit --encoding YAML
+dsv config edit --encoding YAML
 ```
 
 The editor directly updates the configuration in the vault when you save your work.
@@ -99,21 +99,31 @@ Use *update* to change a config by uploading JSON data.
 The value of the `--data` parameter for *update* accepts JSON entered directly at the command line, or the path to a JSON file.
 
 ```BASH
-thy config update --path us-east/server02 --data {\\"something\\":\\"value\\"}
+dsv config update --path us-east/server02 --data '{"something":"value"}'
 ```
 
 or
 
 ```BASH
-thy config update --path us-east/server02 --data @configfilename.json
+dsv config update --path us-east/server02 --data @configfilename.json
 ```
+
+### Grant Admin Access Rights to All Home Vaults
+
+If it is rquired that the Admin have access to all individual Home vaults, then edit the Home Vault Permissions and change the *effect* field to "allow"
+
+``` bash
+dsv config edit --encoding YAML
+```
+
+The editor will open the OS default editor and you can modify the *effect* field.
 
 ### Add an Authentication Provider
 
 The general command is:
 
 ```BASH
-thy config auth-provider create --name <name> --type <type> --<properties>
+dsv config auth-provider create --name <name> --type <type> --<properties>
 ```
 
 in which:
@@ -135,7 +145,7 @@ See the Authentication section for examples of using AWS, Azure, GCP, and Thycot
 To see a list of all Auth-providers:
 
 ```BASH
-thy config auth-provider search
+dsv config auth-provider search
 ```
 Initially, your tenant will only have a Thycotic One connection
 

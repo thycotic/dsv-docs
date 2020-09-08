@@ -12,16 +12,16 @@ However, DSV supports creating other profiles, potentially with different creden
 
 DSV syntax gives you two ways to add a profile to the config.
 
-* Run `thy init` and type `add` or `a` at the prompt. Then enter the name of a new profile.
+* Run `dsv init` and type `add` or `a` at the prompt. Then enter the name of a new profile.
 
-* To do it with one command, run `thy init --profile [name]`.
+* To do it with one command, run `dsv init --profile [name]`.
 
 ## See the Config Contents
 
 If you want to verify the profile has been added, output the updated config contents:
 
 ```BASH
-thy cli-config read
+dsv cli-config read
 ```
 
 ## Using an Alternate Profile for a Specific CLI Action
@@ -29,7 +29,7 @@ thy cli-config read
 For a config with more than one profile, the profile used by default for any command will be the first profile created. However, you can override the default by specifying the profile to be used for a  command as a parameter:
 
 ```BASH
-thy secret read --path mySecret --profile developer
+dsv secret read --path mySecret --profile developer
 ```
 
 So commanded, the CLI will try to auth as the User specified in the *developer* profile and attempt to read the Secret as that User.

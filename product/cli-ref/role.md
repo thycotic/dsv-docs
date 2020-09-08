@@ -41,7 +41,7 @@ The *create* command takes several `--parameters` that spec key aspects of the R
 Create a local Role with the name *\_test-role\_*:
 
 ```BASH
-thy role create --name test-role
+dsv role create --name test-role
 ```
 
 ### Search
@@ -51,19 +51,19 @@ The *search* command locates Roles by searching on their Role names. It accepts 
 Search for a Role named *\_dev-admin\_*:
 
 ```BASH
-thy role search --query dev-admin
+dsv role search --query dev-admin
 ```
 
 Or simply:
 
 ```BASH
-thy role search devadmin
+dsv role search devadmin
 ```
 
 You can also specify the maximum number of search results per page (cursor) and a cursor to get the next batch of results.
 
 ```BASH
-thy role search --query us-east/server02 --limit 2 --cursor eyJpZCI6ImZmZjZjODUxTJ2ZXJzaW9uIjo50IiwidHiJ9
+dsv role search --query us-east/server02 --limit 2 --cursor eyJpZCI6ImZmZjZjODUxTJ2ZXJzaW9uIjo50IiwidHiJ9
 ```
 
 ### Read
@@ -73,7 +73,7 @@ The *read* command retrieves and displays information without changing anything.
 Provide a Role name and read the Role’s details in beautified form:
 
 ```BASH
-thy role read --name test-role -b
+dsv role read --name test-role -b
 ```
 
 ### Update
@@ -85,7 +85,7 @@ Use *update* to change a Role’s data.
 Provide a Role name and update the Role to replace the description field’s value:
 
 ```BASH
-thy role update --name test-role --desc "a new description"
+dsv role update --name test-role --desc "a new description"
 ```
 
 ### Delete
@@ -95,7 +95,7 @@ The *delete* command will remove Roles.
 Provide a Role name and delete the Role:
 
 ```BASH
-thy role delete --name test-role
+dsv role delete --name test-role
 ```
 
 When you delete a Role, it will no longer be usable. However, with the soft delete capacity of DSV, you have 72 hours to use the *restore* command to undelete the Role. After 72 hours, the Role will no longer be retrievable.
@@ -107,7 +107,7 @@ Should you want to perform a hard delete, precluding any restore operation, you 
 Up to 72 hours after you delete a Role (but not if you hard deleted it using the `--force` flag), you can restore it:
 
 ```bash
-thy role restore --name test-role
+dsv role restore --name test-role
 ```
 
 

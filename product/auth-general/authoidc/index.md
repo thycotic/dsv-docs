@@ -5,7 +5,7 @@
 # Authentication: OIDC
 
 
-Use `thy config auth-provider search --encoding yaml` to see your current authentication settings.
+Use `dsv config auth-provider search --encoding yaml` to see your current authentication settings.
 
 The initial auth settings after your tenant is provisioned should look like this:
 
