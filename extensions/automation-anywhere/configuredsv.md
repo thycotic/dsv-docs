@@ -1,7 +1,7 @@
-[title]: # (Automation Anywhere, Configure DSV)
-[tags]: # (DevOps Secrets Vault,DSV)
+[title]: # (Configure DSV)
+[tags]: # (automation anywhere,DSV)
 [priority]: # (2)
-
+# Configure DSV
 
 Bot Automation Anywhere must be able to query DSV to look up Secrets at build time. To enable this, you configure a bot credential to authenticate to your vault.
 
@@ -92,4 +92,4 @@ The resulting JSON Secret should look similar to:
 
 During our Automation Anywhere builds, the extension will pull the *password* value of *testpassword* from the *data* property in the Secret.
 
-More detailed documentation can be studied [DevOps Secret Vault](https://docs.thycotic.com/dsv/1.0.0)
+Refer to [DevOps Secret Vault](https://docs.thycotic.com/dsv/1.0.0) for detailed DSV documentation.

@@ -1,7 +1,6 @@
 ﻿[title]: # (Jenkins)
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (100000)
-
 # Jenkins Extension for DevOps Secrets Vault 
 
 The Jenkins extension allows builds to retrieve Secrets from the vault at runtime. It can bind Secrets to environment variables through a build step.
@@ -137,7 +136,6 @@ At the bottom of the page, click **Save**
 
 ![](./images/spacer.png)
 
-
 ## Freestyle Build
 
 Back at the Jenkins home page, select a **New item**, enter a name, and then select **Freestyle project** and click **OK**
@@ -152,7 +150,7 @@ Notice that you can:
 * That the default client credentials and tenant are set here, but if you click the box, then you can enter different values for either.
 * Add additional secrets
 
-In build steps, you can reference the environment variable as you normally would, but remember that we might prepend a value, with the default being *DSV_* . For example, the shell script shown here will echo the *$DSV_MY_PASSWORD* environment variable.
+In build steps, you can reference the environment variable as you normally would, but remember that we might prepend a value, with the default being *DSV_*. For example, the shell script shown here will echo the *$DSV_MY_PASSWORD* environment variable.
 
 ![Build Step in Shell Script](./images/jenkins-build-step.png "Build Step in Shell Script")
 
@@ -160,10 +158,6 @@ In build steps, you can reference the environment variable as you normally would
 
   ![Build Step in Shell Script - Output](./images/jenkins-build-output.png "Build Step in Shell Script - Output")
 
-
-
 ![](./images/spacer.png)
 
 ![](./images/spacer.png)
-
-
