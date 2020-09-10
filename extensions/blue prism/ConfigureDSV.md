@@ -1,7 +1,6 @@
-[title]: # (Blue Prism, Configure DSV)
-[tags]: # (DevOps Secrets Vault,DSV)
+[title]: # (Configure DSV)
+[tags]: # (blue prism,DSV)
 [priority]: # (2)
-
 # Configure DevOps Secret Vault
 
 Bot Blue Prism must be able to query DevOps Secret Value to look up Secrets at build time. To enable this, you configure a bot credential to authenticate to your vault.

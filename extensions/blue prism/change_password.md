@@ -1,15 +1,13 @@
-[title]: # (Change password)
-[tags]: # (introduction)
+[title]: # (Change Password)
+[tags]: # (blue prism,dsv)
 [priority]: # (3)
-[display]: # (none)
-
 # Use case: change password for service account
 
 For implementation this task usage visual business object [Login Agent](https://usermanual.wiki/Pdf/Blue20Prism20User20Guide2020Login20Agent.779174028/view)
 
 When executing an automated process on a Blue Prism Runtime Resource, it is necessary for the Runtime Resource to be listening on a device which is logged in and not locked.  This allows the process to operate under the context of that user and provides access to all of the local applications and network resources that it may need.
 
-Login Agent provides a mechanism that is intended to assist with automating the logging of a device into Windows such that the main Blue Prism RuntimeResource can be started.Thisis includes:
+Login Agent provides a mechanism that is intended to assist with automating the logging of a device into Windows such that the main Blue Prism RuntimeResource can be started. This includes:
 
 - Configuring the Login Agent service with appropriate information to launch a Login Agent Runtime Resource.
 
