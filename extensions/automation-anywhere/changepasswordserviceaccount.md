@@ -9,7 +9,7 @@ For change password in AA client used REST API build-in Automation Anywhere [Aut
 
 To accomplish this task, we will use the ``GetDataField`` method from metabot ``ThycoticDSV``.
 
-![Task](Images/ChangePassword.png)
+![Task](images/ChangePassword.png)
 
 For the work of this taskbot there will be an interactive input of the following data:
 
