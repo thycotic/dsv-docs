@@ -11,13 +11,13 @@ Login Agent provides a mechanism that is intended to assist with automating the 
 
 - Configuring the Login Agent service with appropriate information to launch a Login Agent Runtime Resource.
 
-- A Login Agent Runtime Resource being started automatically when a device is powered on (or rebooted) that connects to the appropiate Blue Prism environment.
+- A Login Agent Runtime Resource being started automatically when a device is powered on (or rebooted) that connects to the appropriate Blue Prism environment.
 
 - The Login Agent Runtime Resource being instructed (manually or via a schedule) to Log in.
 
 - The Login Agent securely retrieving the appropriate credential from the database and using this to authenticate with Windows.
 
-  **Input params**
+## Input Params
 
 > ``<path>`` path secret for DSV value ``string``
 >
@@ -41,7 +41,7 @@ Let's consider in more detail:
 
 - If successful, then exit the read loop, throwing exception.
 
-- Read all params from credential, username, password, expirate date, status.
+- Read all params from credential, username, password, expire date, status.
 
 - Get data from DSV by input path parameter
 
@@ -53,4 +53,4 @@ Let's consider in more detail:
 
 ## Scheme
 
-![UpdatePasswordServiceAccount](Images/UpdateServiceAccount.png)
+![UpdatePasswordServiceAccount](images/UpdateServiceAccount.png)
