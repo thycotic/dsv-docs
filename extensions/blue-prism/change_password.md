@@ -53,4 +53,4 @@ Let's consider in more detail:
 
 ## Scheme
 
-![UpdatePasswordServiceAccount](Images/UpdateServiceAccount.png)
+![UpdatePasswordServiceAccount](images/UpdateServiceAccount.png)
