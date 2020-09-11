@@ -1,7 +1,6 @@
 ﻿[title]: # (Kubernetes)
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (100100)
-
 # Kubernetes
 
 The Kubernetes extension to DevOps Secrets Vault consists of several images available from Docker. These illustrate how to build containers incorporating DevOps Secrets Vault functionality. To obtain these images, at your Docker command line, use *docker pull* commands for each image:
@@ -275,4 +274,3 @@ spec:
 ![](./images/spacer.png)
 
 ![](./images/spacer.png)
-
