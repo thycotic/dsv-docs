@@ -16,3 +16,20 @@ Users can create engines as other entities (like, roles, users) in DSV. DSV orga
 Using the API, users first create a pool, then an engine assigned to that pool. An engine can only be assigned to one pool. A pool can contain many engines.
 
 An engine is designed to be a long-running process that completes tasks on demand and automatically in the background.
+
+##### List of environment variables for engine Docker container
+- ENGINE_NAME
+- DSV_POOL
+- DSV_TENANT
+- DSV_URL
+- DSV_TOKEN
+- DSV_PRIVATE_KEY
+- DSV_ENDPOINT
+
+#### Running the dsv-engine binary directly
+
+The container encapsulates the operations of the dsv-engine binary, which is a client-side CLI program to register and run an engine.
+It exposes two commands: `register` and `run`.
+Standard help is displayed with `dsv-engine register -h` and `dsv-engine run -h`.
+
+

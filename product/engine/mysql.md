@@ -54,6 +54,9 @@ In the `linkConfig`, be sure to specify the path of the root secret as the value
 The `grantPermissions` object specifies the permissions assigned by MySQL to the new user account. The `ttl` specifies the number
 of seconds for which the new account will exist before the engine automatically deletes it.
 
+The attributes may also include an optional `userPrefix` key whose value is a string prepended to all MySQL account usernames
+created from the dynamic secret.
+
 ### Engine and MySQL setup
 
 First, ensure you have a pool created in your tenant. Use the API to create a pool specified in the dynamic secret attributes.
@@ -69,18 +72,18 @@ To start an engine in a container, pull the appropriate image and run a containe
 environment variables you provide to the new container.
 If you had created a pool, but not engine, you can register a new engine and start it in one step:
 
-`docker run -e ENGINE_NAME=engine1 -e DSV_POOL=pool1 -e DSV_TENANT=max -e DSV_URL=secretsvaultcloud.com -e DSV_TOKEN=eyJhbGcxNjAKadw dsv-engine`
+`docker run -e ENGINE_NAME=engine1 -e DSV_POOL=pool1 -e DSV_TENANT=bob -e DSV_URL=secretsvaultcloud.com -e DSV_TOKEN=eyJhbGcxNjAKadw dsv-engine`
 
 You should see the private key and other information about the new engine displayed once it has been registered,
 and the container has been started. Store the private key and other information securely.
 
 If you already have a registered engine and want to run it in the container, then provide a different set of environment variables:
 
-`docker run --name eng --rm -e ENGINE_NAME=engine1 -e DSV_ENDPOINT=max.ws.devbambe.com -e DSV_PRIVATE_KEY=LS0tLS1CRUiBSkFURS` dsv-engine
+`docker run --name eng --rm -e ENGINE_NAME=engine1 -e DSV_ENDPOINT=bob.ws.secretsvaultcloud.com -e DSV_PRIVATE_KEY=LS0tLS1CRUiBSkFURS` dsv-engine
 
 In either case, on successful engine start, you should a message saying that the engine is ready and waiting for messages.
 
-### Sending an engine a MySQL task
+### Sending a MySQL task to an engine
 
 Read the MySQL dynamic secret. A randomly chosen engine in a pool of engines should receive the task and perform it.
 The engine attempts to create a MySQL account and reports back success or failure. On success, the user also receives
