@@ -79,7 +79,7 @@ Should you want to perform a hard delete, precluding any restore operation, you 
 
 ### Bootstrapping
 
-There will be times when machines or applications will require access to DSV to get started, but you can't (or don't want) to hardcode the client secret.  In this case, we can create the client ID and get a one-time usee URL.  When the URL is accessed, then the corresponding client secret will be created and returned.  The URL will no longer be valid after the initial use, so if the intended machine or application gets a "url already used" then there should be an larm to investigate.
+There will be times when machines or applications will require access to DSV to get started, but you can't (or don't want) to hardcode the client secret.  In this case, we can create the client ID and get a one-time use URL.  When the URL is accessed, then the corresponding client secret will be created and returned.  The URL will no longer be valid after the initial use, so if the intended machine or application gets an error "url already used" then there should be an alarm to investigate.
 
  First create the Client ID and URL:
 
