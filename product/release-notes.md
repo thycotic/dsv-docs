@@ -19,6 +19,9 @@ The Command Line Interface (CLI) is locally installed using OS-specific executab
 
 | **Update**             | **Notes**                                  |
 |------------------------|--------------------------------------------|
+|October 2020            | **CLI Version**: 1.14|
+|                        | **improvement**: Added the DSV Engine.  This agent is installed on the customer network for access while limiting the need to open the firewall.  Initially for database dynamic secrets, but in the future will be used for password rotation, authentication, or other needs.|
+|                        | **improvement**: Bootstrapped client credentials.  When creating client credentials, a one-time use URL can be created so that the new machine or application can retrieve the Client Secret.|
 |September 2020          | **CLI Version**: 1.13|
 |                        | **improvement**: CLI name changed from "thy" to "dsv" in downloads and documentation for all commands|
 |                        | **new feature**: Home Vault GA.  Completed Roles, GetByVersion, Rollback, Restore, Policy for giving others access. |
