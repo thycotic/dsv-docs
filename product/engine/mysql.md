@@ -4,7 +4,7 @@
 
 ### Dynamic Secret Setup
 
-First, create a root secret containing the credentials of the MySQL account that will be responsible for creating new
+First, create a base secret containing the credentials of the MySQL account that will be responsible for creating new
 MySQL accounts on a given MySQL server.
 
 The secret could look like the following:
@@ -59,29 +59,12 @@ created from the dynamic secret.
 
 ### Engine and MySQL setup
 
-First, ensure you have a pool created in your tenant. Use the API to create a pool specified in the dynamic secret attributes.
+First, ensure you have a pool created in your tenant. Use the [DSV API](https://dsv.thycotic.com/api/index.html) to create a pool specified in the dynamic secret attributes.
 Second, create at least one engine in the pool. You can either use the API or run the `dsv-engine` container providing all
 the necessary environment variables.
 
 If the MySQL server, for which you plan to create accounts, is not managed by you, then you do not need to do anything.
 If, however, you're testing locally, you can start a MySQL server locally with Docker or regular installation.
-
-### Starting an engine
-
-To start an engine in a container, pull the appropriate image and run a container from it. The result will depend on the
-environment variables you provide to the new container.
-If you had created a pool, but not engine, you can register a new engine and start it in one step:
-
-`docker run -e ENGINE_NAME=engine1 -e DSV_POOL=pool1 -e DSV_TENANT=bob -e DSV_URL=secretsvaultcloud.com -e DSV_TOKEN=eyJhbGcxNjAKadw dsv-engine`
-
-You should see the private key and other information about the new engine displayed once it has been registered,
-and the container has been started. Store the private key and other information securely.
-
-If you already have a registered engine and want to run it in the container, then provide a different set of environment variables:
-
-`docker run --name eng --rm -e ENGINE_NAME=engine1 -e DSV_ENDPOINT=bob.ws.secretsvaultcloud.com -e DSV_PRIVATE_KEY=LS0tLS1CRUiBSkFURS` dsv-engine
-
-In either case, on successful engine start, you should a message saying that the engine is ready and waiting for messages.
 
 ### Sending a MySQL task to an engine
 
