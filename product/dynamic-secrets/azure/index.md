@@ -1,1 +1,3 @@
-|September 2020          | **CLI Version**: 1.13|
+[title]: # (Azure Service Principal)
+[tags]: # (DevOps Secrets Vault,DSV,)
+[priority]: # (6210)
