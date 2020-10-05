@@ -104,24 +104,24 @@ The result will look something like this:
 "urlTTL": 3600
 ```
 
-Then the machine or application can access that urlpath for the Client Secret.  For Example:
+Then the machine or application can access that urlpath for the Client Secret.  For Example, using CURL (or Invoke-RestMethod for Powershell):
 
 ```bash
 curl https://company.secrestvaultcloud.com/v1/clients/bootstrap/5f1761dd-95ac-479f-a386-f9c379055b04
 ```
 
-With a result 
+With a result containing the Client Secret:
 
 ```bash
 "id":"2f375a20-a670-4843-8b78-502649bc668e",
 "clientId":"5f1761dd-95ac-479f-a386-f9c379055b04",
 "clientSecret":"r_jqAZz6zs_Toqidv-Paz8wWe9OoP9HyjzRan7t7bc4",
-"role":"jenkins",
+"role":"bootstraptest",
 "url":true,
 "accessed":"2020-09-29T13:45:21Z",
 "created":"2020-09-29T13:39:31Z",
 "createdBy":"users:admin@company.com"
 ```
 
-If the URL is accessed a second time, then the response will be: `"code":400,"message":"url has already used"`
+If the URL is accessed a second time, then the response will contain: `"code":400,"message":"url has already used"`
 
