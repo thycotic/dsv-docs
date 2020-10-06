@@ -1,4 +1,7 @@
 [title]: # (MySQL Dynamic Secrets)
+[tags]: # (DevOps Secrets Vault,DSV,)
+[priority]: # (5600)[title]: # (Engine)
+
 
 # MySQL Dynamic Secrets for Engine
 
@@ -24,7 +27,7 @@ The secret could look like the following:
 }
 ```
 
-The path, as with all secrets, is arbitrary, as is the description. To mark a secret as a MySQL root secret, ensure
+The path is arbitrary, as is the description, of all secrets. To mark a secret as a MySQL root secret, ensure
 its attributes contain a key `type` with a value of `mysql`. All fields in the `data` object are required.
 
 Second, create a new dynamic secret linked to the root secret. The secret could look like the following:
