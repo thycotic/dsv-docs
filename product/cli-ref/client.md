@@ -77,7 +77,51 @@ When you delete a Client, it will no longer be usable. However, with the soft de
 
 Should you want to perform a hard delete, precluding any restore operation, you can use the *delete* command’s `--force` flag.
 
+### Bootstrapping
 
-  
+There will be times when machines or applications will require access to DSV to get started, but you can't (or don't want) to hardcode the client secret.  In this case, we can create the client ID and get a one-time use URL.  When the URL is accessed, then the corresponding client secret will be created and returned.  The URL will no longer be valid after the initial use, so if the intended machine or application gets an error "url already used" then there should be an alarm to investigate.
 
-  
+ First create the Client ID and URL:
+
+ ```bash
+ dsv client create --role <role> --url true --url-ttl <ttl in seconds> 
+ ```
+
+ Where "role" is a Role created earlier and is attached to a Policy to provide the proper peermissions.
+ "--url" is the flag that tells DSV to create a one-time use URL instead of a Client Secret right now.
+ "--url-ttl" is the time to live of the URL in sseconds.  If it is not accessed in that timeframe, then it will become invalid.
+
+The result will look something like this:
+
+```bash
+"clientId": "5f1761dd-95ac-479f-a386-f9c379055b04", 
+"created": "2020-09-29T13:39:31Z", 
+"createdBy": "users:admin@company.com", 
+"id": "2f375a20-a670-4843-8b78-502649bc668e", 
+"role": "bootstraptest", 
+"url": true, 
+"urlPath": "https://company.secrestvaultcloud.com/v1/clients/bootstrap/5f1761dd-95ac-479f-a386-f9c379055b04", 
+"urlTTL": 3600
+```
+
+Then the machine or application can access that urlpath for the Client Secret.  For Example, using CURL (or Invoke-RestMethod for Powershell):
+
+```bash
+curl https://company.secrestvaultcloud.com/v1/clients/bootstrap/5f1761dd-95ac-479f-a386-f9c379055b04
+```
+
+With a result containing the Client Secret:
+
+```bash
+"id":"2f375a20-a670-4843-8b78-502649bc668e",
+"clientId":"5f1761dd-95ac-479f-a386-f9c379055b04",
+"clientSecret":"r_jqAZz6zs_Toqidv-Paz8wWe9OoP9HyjzRan7t7bc4",
+"role":"bootstraptest",
+"url":true,
+"accessed":"2020-09-29T13:45:21Z",
+"created":"2020-09-29T13:39:31Z",
+"createdBy":"users:admin@company.com"
+```
+
+If the URL is accessed a second time, then the response will contain: `"code":400,"message":"url has already used"`
+
