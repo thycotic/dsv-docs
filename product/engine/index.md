@@ -20,7 +20,7 @@ An engine is designed to be a long-running process that completes tasks on deman
 ### Registering a pool and an engine
 
 Users can create engines as other entities (like roles, users) in DSV. DSV organizes engines in pools, so an engine must be assigned to an existing pools.
-Using the [DSV API](https://dsv.thycotic.com/api/index.html), users first create a pool, then an engine assigned to that pool. An engine can only be assigned to one pool. A pool can contain many engines.
+Using the [DSV API](https://dsv.thycotic.com/api/index.html#tag/Pools), users first create a pool, then an engine assigned to that pool. An engine can only be assigned to one pool. A pool can contain many engines.
 
 
 ### Starting an engine
