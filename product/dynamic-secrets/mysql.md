@@ -3,9 +3,14 @@
 [priority]: # (6400)
 
 
-# MySQL Dynamic Secrets for Engine
+# MySQL Dynamic Secrets 
+Database Dynamic Secrets are similar to IaaS Dynamic Secrets in that the idea is to provide temporary credentials for very specific uses.  The possible damage done by leaked credentials is severly limited to due to granular policies and short time-to-live.  However, IaaS platforms provide mechanisms for ephemeral credentials with fine-grained policies, and most databases do not.  Therefore, DSV provides a way to provide ephemeral credentails by creating and deleteing users in a just-in-time manner.
 
-### Dynamic Secret Setup
+
+## DSV Engine Required
+MySQL Dynamic
+
+## Dynamic Secret Setup
 
 First, create a base secret containing the credentials of the MySQL account that will be responsible for creating new
 MySQL accounts on a given MySQL server.
@@ -60,16 +65,8 @@ of seconds for which the new account will exist before the engine automatically 
 The attributes may also include an optional `userPrefix` key whose value is a string prepended to all MySQL account usernames
 created from the dynamic secret.
 
-### Engine and MySQL setup
 
-First, ensure you have a pool created in your tenant. Use the [DSV API](https://dsv.thycotic.com/api/index.html) to create a pool specified in the dynamic secret attributes.
-Second, create at least one engine in the pool. You can either use the API or run the `dsv-engine` container providing all
-the necessary environment variables.
-
-If the MySQL server, for which you plan to create accounts, is not managed by you, then you do not need to do anything.
-If, however, you're testing locally, you can start a MySQL server locally with Docker or regular installation.
-
-### Sending a MySQL task to an engine
+## Sending a MySQL task to an engine
 
 Read the MySQL dynamic secret. A randomly chosen engine in a pool of engines should receive the task and perform it.
 The engine attempts to create a MySQL account and reports back success or failure. On success, the user also receives
