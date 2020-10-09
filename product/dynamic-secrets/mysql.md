@@ -9,7 +9,7 @@ Database Dynamic Secrets are similar to IaaS Dynamic Secrets in that the idea is
 ![](./images/mysql.png)
 
 ## DSV Engine Required
-MySQL Dynamic Secrets requires the deployment of the DSV Engine.  See the instructions here
+MySQL Dynamic Secrets requires the deployment of the DSV Engine.  See the instructions [DSV Engine](../engine/index.md)
 
 ## Dynamic Secret Setup
 
