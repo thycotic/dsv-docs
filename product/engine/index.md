@@ -1,26 +1,25 @@
-[title]: # (Engine)
+[title]: # (DSV Engine)
 [tags]: # (DevOps Secrets Vault,DSV,)
-[priority]: # (5500)[title]: # (Engine)
+[priority]: # (6500)
 
-# Engine
+# DSV Engine
 
 An engine is an agent performing tasks on any remote machine. After deployment, the agent opens a real-time two-way communication channel with the main DSV
 API. Users of the API can send the agent tasks to complete, and the agent, having completed a task or failed, reports back to the caller.
 
-One such task is, for example, creating a temporary MySQL account.
-This involves reading a dynamic secret of type MySQL. Reading a previously created secret prompts the API to send a message describing
-a task to engine. The task is to create a MySQL account on a given MySQL server (it can be located anywhere). As with dynamic secrets of other types,
-the API creates the temporary credentials (username, password, etc.). With MySQL dynamic secrets, the API also sends them to engine. The running engine receives
-them and creates a new MySQL account on the server. Assuming the engine succeeded, the engine reports back to the API, and the caller gets the new working credentials
-in the API response.
-
-
 An engine is designed to be a long-running process that completes tasks on demand and automatically in the background.
+
+The initial use of the DSV Engine will be to support database dynamic secrets.  In this use-case, a user or application will request access to a database.  DSV will have a "base" secret that gives DSV access to the database and permisson to create users along with permissions and credentials.  DSV will provide those new credentials to the user or application for use.  Then when the TTL expires, DSV will go back to the database and delete that user.  This provides just-in-time access and eliminates the need for credential rotation.
+
+Future uses of the DSV Engine will include additional authentication methods and password rotation.
+
+# Customer Firewall 
+The DSV Engine uses secure websockets (wss) on port 443 TCP outbound.  Since most users will already have this port open for web access, they will not need to make firewall changes.
 
 ### Registering a pool and an engine
 
 Users can create engines as other entities (like roles, users) in DSV. DSV organizes engines in pools, so an engine must be assigned to an existing pools.
-Using the [DSV API](https://dsv.thycotic.com/api/index.html), users first create a pool, then an engine assigned to that pool. An engine can only be assigned to one pool. A pool can contain many engines.
+Using the [DSV API](https://dsv.thycotic.com/api/index.html#tag/Pools), users first create a pool, then an engine assigned to that pool. An engine can only be assigned to one pool. A pool can contain many engines.
 
 
 ### Starting an engine
