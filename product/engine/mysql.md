@@ -1,6 +1,6 @@
 [title]: # (MySQL Dynamic Secrets)
 [tags]: # (DevOps Secrets Vault,DSV,)
-[priority]: # (5600)[title]: # (Engine)
+[priority]: # (5600)
 
 
 # MySQL Dynamic Secrets for Engine
