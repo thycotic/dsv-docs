@@ -9,11 +9,11 @@ Database Dynamic Secrets are similar to IaaS Dynamic Secrets in that the idea is
 ![](./images/mysql.png)
 
 ## DSV Engine Required
-MySQL Dynamic Secrets requires the deployment of the DSV Engine.  See the instructions [DSV Engine](../engine/index.md)
+MySQL Dynamic Secrets requires the deployment of the DSV Engine.  See the instructions at [DSV Engine](../engine/index.md)
 
 ## Dynamic Secret Setup
 
-First, create a base secret containing the credentials of the MySQL account that will be responsible for creating new
+In the CLI, create a base secret containing the credentials of the MySQL account that will be responsible for creating new
 MySQL accounts on a given MySQL server.
 
 The secret could look like the following:
@@ -36,7 +36,7 @@ The secret could look like the following:
 The path is arbitrary, as is the description, of all secrets. To mark a secret as a MySQL root secret, ensure
 its attributes contain a key `type` with a value of `mysql`. All fields in the `data` object are required.
 
-Second, create a new dynamic secret linked to the root secret. The secret could look like the following:
+Then create a new dynamic secret linked to the root secret. The secret could look like the following:
 ```
 {
     "path": "db:mysql:dyn1",
@@ -56,7 +56,7 @@ Second, create a new dynamic secret linked to the root secret. The secret could 
 }
 ```
 
-The path is arbitrary. There is no secret data. All the necessary information is in the attributes, where all the fields are required.
+The path is arbitrary. There is no secret data when creating the dynamic secret. All the necessary information is in the attributes, where all the fields are required.
 In the `linkConfig`, be sure to specify the path of the root secret as the value of the `linkedSecret` key. The value of 
 `linkType` is always `dynamic` for dynamic secrets.
 
