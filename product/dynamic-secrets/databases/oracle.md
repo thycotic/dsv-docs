@@ -31,7 +31,7 @@ To create Dynamic Secrets for Oracle:
 
     >**Note**: This host URL is for an Oracle server running in AWS RDS. To use a local server, adjust the host and username.
 
-1. **Create a new dynamic secret linked to the root secret in the following format.**
+1. **Create a new dynamic secret.** The dynamic secret will be linked to the root secret. Use the following format:
 
 ```json
     {

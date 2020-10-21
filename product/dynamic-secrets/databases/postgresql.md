@@ -32,7 +32,7 @@ To create Dynamic Secrets for PostgreSQL:
     }
     ```
 
-1. **Create a new dynamic secret linked to the root secret in the following format.**
+1. **Create a new dynamic secret.** The dynamic secret will be linked to the root secret. Use the following format:
 
 ```json
 {

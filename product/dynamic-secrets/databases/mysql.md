@@ -6,6 +6,8 @@
 
 ## Dynamic Secret Setup
 
+To create Dynamic Secrets for MySQL
+
 1. **Create a Base Secret**
 
     In the CLI, create a base secret containing the credentials of the MySQL account that will be responsible for creating new MySQL accounts on a given MySQL server. You must mark the secret as an MySQL root secret by including **`type`** with a value of **`mysql`**. All fields in the **`data`** object are required.
@@ -28,7 +30,8 @@
     }
     ```
 
-1. **Create a new dynamic secret linked to the root secret in the following format.**
+1. **Create a new dynamic secret.** The dynamic secret will be linked to the root secret. Use the following format:
+
 ```json
 {
     "path": "db:mysql:dyn1",
