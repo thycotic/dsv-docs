@@ -6,31 +6,30 @@
 
 ## Dynamic Secret Setup
 
-In the CLI, create a base secret containing the credentials of the MySQL account that will be responsible for creating new
-MySQL accounts on a given MySQL server.
+1. **Create a Base Secret**
 
-The secret could look like the following:
-```
-{
-    "path": "db:mysql:root",
-    "attributes": {
-        "type": "mysql"
-    },
-    "description": "mysql root credentials",
-    "data": {
-        "host": "database-1.cjqpjhgsaz53.us-east-1.rds.amazonaws.com",
-        "password": "P@ssword!",
-        "port": 3306,
-        "username": "admin"
+    In the CLI, create a base secret containing the credentials of the MySQL account that will be responsible for creating new MySQL accounts on a given MySQL server. You must mark the secret as an MySQL root secret by including **`type`** with a value of **`mysql`**. All fields in the **`data`** object are required.
+
+    The secret could look like the following:
+
+    ```json
+    {
+        "path": "db:mysql:root",
+        "attributes": {
+            "type": "mysql"
+        },
+        "description": "mysql root credentials",
+        "data": {
+            "host": "database-1.cjqpjhgsaz53.us-east-1.rds.amazonaws.com",
+            "password": "P@ssword!",
+            "port": 3306,
+            "username": "admin"
+        }
     }
-}
-```
+    ```
 
-The path is arbitrary, as is the description, of all secrets. To mark a secret as a MySQL root secret, ensure
-its attributes contain a key `type` with a value of `mysql`. All fields in the `data` object are required.
-
-Then create a new dynamic secret linked to the root secret. The secret could look like the following:
-```
+1. **Create a new dynamic secret linked to the root secret in the following format.**
+```json
 {
     "path": "db:mysql:dyn1",
     "attributes": {
@@ -48,16 +47,13 @@ Then create a new dynamic secret linked to the root secret. The secret could loo
     "data": {},
 }
 ```
+ * In the **`linkConfig`**, be sure to specify the path of the root secret as the value of the **`linkedSecret`** key.
+* The value of **`linkType`** is always **`dynamic`** for dynamic secrets.
+* The **`grantPermissions`** object specifies the permissions assigned by MySQL to the new user account.
+* **`ttl`** specifies the number of seconds for which the new account will exist before the engine automatically deletes it.
+* The attributes may also include an optional **`userPrefix`** key whose value is a string prepended to all MySQL account usernames created from the dynamic secret.
 
-The path is arbitrary. There is no secret data when creating the dynamic secret. All the necessary information is in the attributes, where all the fields are required.
-In the `linkConfig`, be sure to specify the path of the root secret as the value of the `linkedSecret` key. The value of `linkType` is always `dynamic` for dynamic secrets.
-
-The `grantPermissions` object specifies the permissions assigned by MySQL to the new user account. The `ttl` specifies the number
-of seconds for which the new account will exist before the engine automatically deletes it.
-
-The attributes may also include an optional `userPrefix` key whose value is a string prepended to all MySQL account usernames
-created from the dynamic secret.
-
+>**NOTE**: There is no secret data when creating the dynamic secret.
 
 ## Sending a MySQL task to an engine
 
@@ -65,3 +61,7 @@ Read the MySQL dynamic secret. A randomly chosen engine in a pool of engines sho
 The engine attempts to create a MySQL account and reports back success or failure. On success, the user also receives
 the new working credentials. As long as there is at least one running engine in a given pool, some engine will receive a
 MySQL account revocation task and delete the account once its TTL expires.
+
+## Third Party Reference
+
+For server configuration details, refer to [MySQL Database Documentation](https://dev.mysql.com/doc/)
