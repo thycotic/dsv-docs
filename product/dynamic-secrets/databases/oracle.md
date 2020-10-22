@@ -2,11 +2,37 @@
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (6420)
 
-# Oracle Dynamic Secret Setup
+# Oracle Dynamic Secrets
+Before creating a Dynamic Secret for Oracle, the DSV Engine must be installed.
+
+## Oracle Engine Requirements:
+
+The Oracle database must have **Oracle Instant Client** installed before running the dsv-engine. DSV only supports the **linux-x64** binary distribution. For other platforms, use docker the distribution.
+
+### Running the Oracle Engine
+
+To run the DSV Engine with install Oracle Instant Client 
+
+1. Install oracle client (https://www.oracle.com/database/technologies/instant-client/downloads.html )
+1. Register the engine:
+    ```dsv-engine-linux-x64-oracle register --engineName engine01 --secretsvaultcloud.com --tenant acme --userToken <your jwt>```
+1. Run the Engine:
+    ```Engine run dsv-engine run```
+
+### Docker Setup - PULL from ECR
+
+To run the DSV Engine using Docker
+
+1. Login to AWS ECR ```aws ecr get-login --region us-east-1```
+1. Login to Docker.
+1. Pull the Engine: ```docker pull 661058921700.dkr.ecr.us-east-1.amazonaws.com/dsv-engine-oracle:latest```
+1. Run the Engine: ```run --env ENGINE_NAME=myengine --env DSV_POOL=pool1 --env DSV_TENANT=mal --env DSV_URL=devbambe.com --env DSV_TOKEN=<jwt> 661058921700.dkr.ecr.us-east-1.amazonaws.com/dsv-engine-oracle-dev:latest```
+
+## Oracle Dynamic Secret Setup
 
 To create a dynamic secret in Oracle, first create a base secret.
 
-## **Create a Base Secret**
+### **Create a Base Secret**
 
 In the CLI, create a base secret containing the credentials of the Oracle account that will be responsible for creating new Oracle accounts on a given Oracle server. You must mark the secret as an Oracle root secret by including **`type`** with a value of **`oracle`**. All fields in the **`data`** object are required.
 
@@ -27,7 +53,7 @@ The secret could look like the following:
 }
 ```
 
-## **Create a new dynamic secret.** 
+### **Create a new dynamic secret.** 
 
 The dynamic secret will be linked to the root secret. Example:
 
@@ -77,29 +103,6 @@ The dynamic secret will be linked to the root secret. Example:
 </td>
 </tr>
 </table>
-
-## Oracle engine requirements:
-
-The Oracle database must have **Oracle Instant Client** installed before running the dsv-engine. DSV only supports the **linux-x64** binary distribution. For other platforms, use docker the distribution.
-
-### Running the Oracle Engine
-
-To run the DSV Engine with install Oracle Instant Client 
-
-1. Install oracle client (https://www.oracle.com/database/technologies/instant-client/downloads.html )
-1. Register the engine:
-    ```dsv-engine-linux-x64-oracle register --engineName engine01 --secretsvaultcloud.com --tenant acme --userToken <your jwt>```
-1. Run the Engine:
-    ```Engine run dsv-engine run```
-
-## Docker Setup - PULL from ECR
-
-To run the DSV Engine using Docker
-
-1. Login to AWS ECR ```aws ecr get-login --region us-east-1```
-1. Login to Docker.
-1. Pull the Engine: ```docker pull 661058921700.dkr.ecr.us-east-1.amazonaws.com/dsv-engine-oracle:latest```
-1. Run the Engine: ```run --env ENGINE_NAME=myengine --env DSV_POOL=pool1 --env DSV_TENANT=mal --env DSV_URL=devbambe.com --env DSV_TOKEN=<jwt> 661058921700.dkr.ecr.us-east-1.amazonaws.com/dsv-engine-oracle-dev:latest```
 
 ## Sending an Oracle Task to Engine
 
