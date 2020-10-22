@@ -32,6 +32,14 @@ To create Dynamic Secrets for MySQL
 
 1. **Create a new dynamic secret.** The dynamic secret will be linked to the root secret. Use the following format:
 
+<table>
+<tr>
+<th> Dynamic Secret
+<th> Guide
+</tr>
+<tr style="vertical-align:top">
+<td>
+
 ```json
 {
     "path": "db:mysql:dyn1",
@@ -50,13 +58,25 @@ To create Dynamic Secrets for MySQL
     "data": {},
 }
 ```
- * In the **`linkConfig`**, be sure to specify the path of the root secret as the value of the **`linkedSecret`** key.
-* The value of **`linkType`** is always **`dynamic`** for dynamic secrets.
-* The **`grantPermissions`** object specifies the permissions assigned by MySQL to the new user account.
-* **`ttl`** specifies the number of seconds for which the new account will exist before the engine automatically deletes it.
-* The attributes may also include an optional **`userPrefix`** key whose value is a string prepended to all MySQL account usernames created from the dynamic secret.
 
->**NOTE**: There is no secret data when creating the dynamic secret.
+</td>
+<td>
+
+1. **`grantPermissions`**: Specifies the permissions assigned by MySQL to the new user account. 
+    * `what`: Defines the database access permissions the user will have in MySQL. Permissions may include `CONNECT`, `CREATE`, `SELECT`, or other SQL statements.
+    * `where`: Defines the location within the database for permissions to apply. 
+
+1. **`linkType`** is always **`dynamic`** for dynamic secrets.
+1. **`linkedSecret`** should be the path of the root secret.
+1. **`pool`**: Designates the Engine pool that DSV will use to generate dynamic secrets.
+1. **`ttl`**: Specifies the number of seconds for which the new account will exist before the engine automatically deletes it. **NOTE**: `ttl` must be set **above 900**. 
+1. **`userPrefix`** An optional key whose value is a string prepended to all MySQL account usernames created from the dynamic secret.
+1. **`data`**: This field remains blank for dynamic secrets.
+
+</td>
+</tr>
+</table>
+
 
 ## Sending a MySQL task to an engine
 

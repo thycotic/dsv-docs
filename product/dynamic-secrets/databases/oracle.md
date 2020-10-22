@@ -90,13 +90,13 @@ The dynamic secret will be linked to the root secret. Example:
 
 1. **`grantPermissions`**: Specifies the permissions assigned by Oracle to the new user account. 
     * `what`: Defines the database access permissions the user will have in Oracle. Permissions may include `CONNECT`, `CREATE`, `SELECT`, or other SQL statements.
-    * `where`: Defines the location within the database for permissions to apply. For `object` privileges, this field should designate t.he object (ie: ADMIN.EMPLOYEE) 
+    * `where`: Defines the location within the database for permissions to apply. For `object` privileges, this field should designate the object (ie: ADMIN.EMPLOYEE).
     * `type`: Defines the object permissions within Oracle. Use `system`, `role`, or `object` to grant privileges.
 
 1. **`linkType`** is always **`dynamic`** for dynamic secrets.
 1. **`linkedSecret`** should be the path of the root secret.
 1. **`pool`**: Designates the Engine pool that DSV will use to generate dynamic secrets.
-1. **`ttl`**: Specifies the number of seconds for which the new account will exist before the engine automatically deletes it.
+1. **`ttl`**: Specifies the number of seconds for which the new account will exist before the engine automatically deletes it. **NOTE**: `ttl` must be set **above 900**. 
 1. **`userPrefix`** An optional key whose value is a string prepended to all Oracle account usernames created from the dynamic secret.
 1. **`data`**: This field remains blank for dynamic secrets.
 
