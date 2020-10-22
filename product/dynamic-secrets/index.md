@@ -7,9 +7,13 @@
 Dynamic Secrets are automatically generated at the time of request. This differs from the standard Secret store read request where the credentials remain the same until changed by a user. They can be used when you need to provide credentials to a user or resource, like a configuration tool, but the access should expire after a set period of time.
 
 Supported Types:
-* AWS
-* Azure
-* GCP
+* [AWS](aws.md)
+* [Azure](azure/index.md)
+* [GCP](gcp.md)
+* [Databases](databases/index.md)
+    * [MySQL](databases/mysql.md)
+    * [Oracle](databases/oracle.md)
+    * [PostgreSQL](databases/postgresql.md)
 
 ## Linking
 
