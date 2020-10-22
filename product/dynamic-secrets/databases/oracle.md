@@ -15,17 +15,17 @@ To run the DSV Engine with install Oracle Instant Client
 
 1. Install oracle client (https://www.oracle.com/database/technologies/instant-client/downloads.html )
 1. Register the engine:
-    ```dsv-engine-linux-x64-oracle register --engineName engine01 --secretsvaultcloud.com --tenant acme --userToken <your jwt>```
+    **```dsv-engine-linux-x64-oracle register --engineName engine01 --secretsvaultcloud.com --tenant acme --userToken <your jwt>```**
 1. Run the Engine:
-    ```Engine run dsv-engine run```
+    **```Engine run dsv-engine run```**
 
 ### Docker Setup - PULL from ECR
 
 To run the DSV Engine using Docker
 
-1. Login to AWS ECR ```aws ecr get-login --region us-east-1```
+1. Login to AWS ECR: **```aws ecr get-login --region us-east-1```**
 1. Login to Docker.
-1. Pull the Engine: ```docker pull 661058921700.dkr.ecr.us-east-1.amazonaws.com/dsv-engine-oracle:latest```
+1. Pull the Engine: **```docker pull 661058921700.dkr.ecr.us-east-1.amazonaws.com/dsv-engine-oracle:latest```**
 1. Run the Engine:
 
 ```CLI
