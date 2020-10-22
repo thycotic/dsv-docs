@@ -26,7 +26,11 @@ To run the DSV Engine using Docker
 1. Login to AWS ECR ```aws ecr get-login --region us-east-1```
 1. Login to Docker.
 1. Pull the Engine: ```docker pull 661058921700.dkr.ecr.us-east-1.amazonaws.com/dsv-engine-oracle:latest```
-1. Run the Engine: ```run --env ENGINE_NAME=myengine --env DSV_POOL=pool1 --env DSV_TENANT=mal --env DSV_URL=devbambe.com --env DSV_TOKEN=<jwt> 661058921700.dkr.ecr.us-east-1.amazonaws.com/dsv-engine-oracle-dev:latest```
+1. Run the Engine:
+
+```CLI
+run --env ENGINE_NAME=myengine --env DSV_POOL=pool1 --env DSV_TENANT=mal --env DSV_URL=devbambe.com --env DSV_TOKEN=<jwt> 661058921700.dkr.ecr.us-east-1.amazonaws.com/dsv-engine-oracle-dev:latest
+```
 
 ## Oracle Dynamic Secret Setup
 
