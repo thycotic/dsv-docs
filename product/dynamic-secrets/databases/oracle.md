@@ -2,36 +2,44 @@
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (6420)
 
-# Oracle Dynamic Secrets
+# Oracle Dynamic Secret Setup
 
-## Dynamic Secret Setup
+To create a dynamic secret in Oracle, first create a base secret.
 
-To create Dynamic Secrets for Oracle:
+## **Create a Base Secret**
 
-1. **Create a Base Secret**
+In the CLI, create a base secret containing the credentials of the Oracle account that will be responsible for creating new Oracle accounts on a given Oracle server. You must mark the secret as an Oracle root secret by including **`type`** with a value of **`oracle`**. All fields in the **`data`** object are required.
 
-    In the CLI, create a base secret containing the credentials of the Oracle account that will be responsible for creating new Oracle accounts on a given Oracle server. You must mark the secret as an Oracle root secret by including **`type`** with a value of **`oracle`**. All fields in the **`data`** object are required.
+The secret could look like the following:
 
-    The secret could look like the following:
-
-    ```json
+```json
     {
         "path": "db:oracle:root",
         "data": {
         	"password": "p@ssword!",
-    		"username":       "admin",
-    		"host":       "database-3.cjqoldqpaz53.us-east-1.rds.amazonaws.com",
+    		"username": "admin",
+    		"host":     "database-3.cjqoldqpaz53.us-east-1.rds.amazonaws.com",
 	    	"servicename": "ORCL",
     		"port":   1521},
         "description": "oracle root credential",
         "attributes": {
 		 "type": "oracle"
     }
-    ```
+```
 
-    >**Note**: This host URL is for an Oracle server running in AWS RDS. To use a local server, adjust the host and username.
+>**Note**: This host URL is for an Oracle server running in AWS RDS. To use a local server, adjust the host and username.
 
-1. **Create a new dynamic secret.** The dynamic secret will be linked to the root secret. Use the following format:
+## **Create a new dynamic secret.** 
+
+The dynamic secret will be linked to the root secret. Example:
+
+<table>
+<tr>
+<th> Dynamic Secret
+<th> Guide
+</tr>
+<tr style="vertical-align:top">
+<td>
 
 ```json
     {
@@ -53,13 +61,24 @@ To create Dynamic Secrets for Oracle:
     }
 ```
 
- * In the **`linkConfig`**, be sure to specify the path of the root secret as the value of the **`linkedSecret`** key.
-* The value of **`linkType`** is always **`dynamic`** for dynamic secrets.
-* The **`grantPermissions`** object specifies the permissions assigned by Oracle to the new user account.
-* **`ttl`** specifies the number of seconds for which the new account will exist before the engine automatically deletes it.
-* The attributes may also include an optional **`userPrefix`** key whose value is a string prepended to all Oracle account usernames created from the dynamic secret.
+</td>
+<td>
 
->**NOTE**: There is no secret data when creating the dynamic secret.
+1. **`grantPermissions`**: Specifies the permissions assigned by Oracle to the new user account. 
+    * `what`: Defines the database access permissions the user will have in Oracle. Permissions may include `CONNECT`, `CREATE`, `SELECT`, or other SQL statements.
+    * `where`: Defines the location within the database for permissions to apply.
+    * `type`: Defines the object permissions within Oracle. 
+
+1. **`linkType`** is always **`dynamic`** for dynamic secrets.
+1. **`linkedSecret`** should be the path of the root secret.
+1. **`pool`**: Designates the Engine pool that DSV will use to generate dynamic secrets.
+1. **`ttl`**: Specifies the number of seconds for which the new account will exist before the engine automatically deletes it.
+1. **`userPrefix`** An optional key whose value is a string prepended to all Oracle account usernames created from the dynamic secret.
+1. **`data`**: This field remains blank for dynamic secrets.
+
+</td>
+</tr>
+</table>
 
 ## Sending an Oracle Task to Engine
 
