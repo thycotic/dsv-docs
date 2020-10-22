@@ -14,20 +14,18 @@ The secret could look like the following:
 
 ```json
     {
-        "path": "db:oracle:root",
         "data": {
-        	"password": "p@ssword!",
-    		"username": "admin",
-    		"host":     "database-3.cjqoldqpaz53.us-east-1.rds.amazonaws.com",
-	    	"servicename": "ORCL",
-    		"port":   1521},
+        	"password": "your password",
+    		    "username": "your username",
+    		    "host":     "host",
+	    	    "servicename": "servicename",
+    		    "port":   1521},
         "description": "oracle root credential",
         "attributes": {
 		 "type": "oracle"
     }
+}
 ```
-
->**Note**: This host URL is for an Oracle server running in AWS RDS. To use a local server, adjust the host and username.
 
 ## **Create a new dynamic secret.** 
 
@@ -66,8 +64,8 @@ The dynamic secret will be linked to the root secret. Example:
 
 1. **`grantPermissions`**: Specifies the permissions assigned by Oracle to the new user account. 
     * `what`: Defines the database access permissions the user will have in Oracle. Permissions may include `CONNECT`, `CREATE`, `SELECT`, or other SQL statements.
-    * `where`: Defines the location within the database for permissions to apply.
-    * `type`: Defines the object permissions within Oracle. 
+    * `where`: Defines the location within the database for permissions to apply. For `object` privileges, this field should designate t.he object (ie: ADMIN.EMPLOYEE) 
+    * `type`: Defines the object permissions within Oracle. Use `system`, `role`, or `object` to grant privileges.
 
 1. **`linkType`** is always **`dynamic`** for dynamic secrets.
 1. **`linkedSecret`** should be the path of the root secret.
@@ -79,6 +77,29 @@ The dynamic secret will be linked to the root secret. Example:
 </td>
 </tr>
 </table>
+
+## Oracle engine requirements:
+
+The Oracle database must have **Oracle Instant Client** installed before running the dsv-engine. DSV only supports the **linux-x64** binary distribution. For other platforms, use docker the distribution.
+
+### Running the Oracle Engine
+
+To run the DSV Engine with install Oracle Instant Client 
+
+1. Install oracle client (https://www.oracle.com/database/technologies/instant-client/downloads.html )
+1. Register the engine:
+    ```dsv-engine-linux-x64-oracle register --engineName engine01 --secretsvaultcloud.com --tenant acme --userToken <your jwt>```
+1. Run the Engine:
+    ```Engine run dsv-engine run```
+
+## Docker Setup - PULL from ECR
+
+To run the DSV Engine using Docker
+
+1. Login to AWS ECR ```aws ecr get-login --region us-east-1```
+1. Login to Docker.
+1. Pull the Engine: ```docker pull 661058921700.dkr.ecr.us-east-1.amazonaws.com/dsv-engine-oracle:latest```
+1. Run the Engine: ```run --env ENGINE_NAME=myengine --env DSV_POOL=pool1 --env DSV_TENANT=mal --env DSV_URL=devbambe.com --env DSV_TOKEN=<jwt> 661058921700.dkr.ecr.us-east-1.amazonaws.com/dsv-engine-oracle-dev:latest```
 
 ## Sending an Oracle Task to Engine
 
