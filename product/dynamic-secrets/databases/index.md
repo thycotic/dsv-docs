@@ -9,4 +9,4 @@ Both Database Dynamic Secrets and IaaS Dynamic Secrets provide temporary credent
 ![architecture](../images/mysql.png "Database Architecture")
 
 ## DSV Engine Required
-Database Dynamic Secrets require the deployment of the DSV Engine.  See the instructions at [DSV Engine](../engine/index.md).
+Database Dynamic Secrets require the deployment of the DSV Engine.  See the instructions at [DSV Engine](../../engine/index.md).
