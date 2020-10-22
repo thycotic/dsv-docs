@@ -67,8 +67,9 @@ dsv secret create --path aws/base/api-account --data @secret_root.json --attribu
 | --------------            | ------------------------------                                      |
 | policyArn                 | AWS ARN of the policy to assign the federated user token. Can be customer or aws managed |
 | providerType              |  `federate`                       |
-| ttl                       | optional time to live in seconds of the generated token. If none is specified it will default to 900 |
+| ttl                       | optional time to live in seconds of the generated token. If none is specified it will default to the minimum of 900 |
 
+>NOTE: If the TTL is set to less than 900 seconds, AWS will fail to create the token.
 
 Now you need to create a Dynamic Secret, which points to the base Secret via its attributes. The Dynamic Secret doesn't have any data stored in it because data is only populated when you read the Secret.
 
