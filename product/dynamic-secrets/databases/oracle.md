@@ -11,7 +11,7 @@ The Oracle database must have **Oracle Instant Client** installed before running
 
 ### Running the Oracle Engine
 
-To run the DSV Engine with install Oracle Instant Client 
+To run the DSV Engine with Oracle Instant Client 
 
 1. Install oracle client (https://www.oracle.com/database/technologies/instant-client/downloads.html )
 1. Register the engine:

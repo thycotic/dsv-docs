@@ -13,6 +13,7 @@ To get your **tenant**:
 1. After submitting the form, you receive an e-mail from Thycotic Customer Support with the subject, **"Welcome to the Thycotic Community!"**.
     * There is a link to sign up for a Thycotic support account. You can wait until you need support to sign up. If you already have a support account because of a previous Thycotic cloud subscription, use your existing account for support.
 1. A second email, this time from Thycotic Sales, arrives with the subject **"DevOps Secrets Vault"**. 
+    
     ![DSV Get Started Email](./images/DSVCloudemail.png)
     
 1. Click the hyperlink labeled **"Cloud Portal"** in the text of the email to click to get started.
