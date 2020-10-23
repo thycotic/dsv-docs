@@ -12,7 +12,7 @@ DSV CLI initialization presents you with a series of questions and choices. If y
 * local or federated user, and if federated, which authentication provider.
 * credentials - username or access key, password, or secret key.
 
-## "dsv init"
+## CLI Setup
 
 <table>
 <tr style="vertical-align:top">
@@ -20,11 +20,13 @@ DSV CLI initialization presents you with a series of questions and choices. If y
 
 1. Begin setup with the `dsv init` command. This will start a workflow.
 </td>
-<td>
+
+<td width=30%>
 
 ```BASH
 dsv init
 ```
+
 </td>
 </tr>
 <tr style="vertical-align:top">
@@ -33,7 +35,7 @@ dsv init
 2. Enter your tenant name. The tenant name was provided to the initial administrator by Thycotic when you set up your account.
     >**NOTE:** You need only enter your tenant name, ie, just *example* not *example.secretsvaultcloud.com*, because the domain is set by region and that is covered in the next question:
 </td>
-<td>
+<td width=30%>
 
 ```BASH
 Please enter your tenant name: 
@@ -47,7 +49,7 @@ Please enter your tenant name:
 3. Select the domain. Your domain is based on the server location that was chosen during provisioning: US, EU, or AU.
     >**NOTE:** In all of these selections with numbered choices, the first choice is marked *(default)* because that is the selection if you simply hit "enter" without entering a number.
 </td>
-<td>
+<td width=30%>
 
 ```BASH
 Please choose domain:
@@ -61,14 +63,14 @@ Please choose domain:
 <tr style="vertical-align:top">
 <td>
 
-4. Next, DSV prompts you about **credential storage**. Select 
+4. Next, DSV prompts you about **credential storage**. 
     * Select *(1) File store (default)* to keep the credentials in a configuration file. If you select this, DSV prompts for the storage location.
     * Select *(2) None (no caching)* to avoid storing the credentials. With this option active, DSV requires authentication with every command.
     * Select *(3) Pass (linux only)* to use [Linux pass](https://www.passwordstore.org/) for encrypted storage.
     * Select *(4) Windows Credential Manager (windows only)* to use [Windows Credential Manager](https://support.microsoft.com/en-us/help/4026814/windows-accessing-credential-manager) to store credentials.
 
 </td>
-<td>
+<td width=30%>
 
 ```BASH
     Please enter store type:
@@ -94,7 +96,7 @@ Please choose domain:
     * Select *(7) OIDC (federated)* to authenticate through Thycotic One to an external IDP using the OIDC protocol.
 
 </td>
-<td>
+<td width=30%>
 
 ```BASH
     Please enter auth type:
@@ -119,7 +121,7 @@ Please choose domain:
     * Select *(3) Cache then server* to use the cached Secret unless it has expired, in which case an API call is made.
     * Select *(4) Cache then server, but...* If the cached Secret has expired, an API call is made for the Secret.  If the API call fails, then use the expired cached Secret.
 </td>
-<td>
+<td width=30%>
 
 ```BASH
     Please enter cache strategy for Secrets:
@@ -135,11 +137,19 @@ Please choose domain:
 <td>
 
 7. Finally, you will be prompted for your credentials and authentication provider.  
-* For the initial administrator, they will be the username and password that you setup in Thycotic One during the sign-up, with the username often your email address.  The authentication provider will be the default, **thy-one**
-* Local users will not need to specify an authentication provider.
+    * For the initial administrator, they will be the username and password that you setup in Thycotic One during the sign-up, with the username often your email address.  The authentication provider will be the default, **thy-one**.
+    * Local users will not need to specify an authentication provider.
 
 </td>
-<td>
+<td width=30%>
+
+```BASH
+    Please enter username for tenant "example": admin@company.com
+    Please enter password:   *********
+    Thycotic One authentication provider name (default thy-one): thy-one
+```
+
+</td>
 </table>
 
 That completes setup. You can begin using the DevOps Secrets Vault Command Line Interface to [create your first secret](../secrets/index.md)
