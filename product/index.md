@@ -4,9 +4,12 @@
 
 # Overview
 
+## Product
 Thycotic's DevOps Secrets Vault is a high velocity vault that centralizes secrets management, enforces access, and provides automated logging trails.  This cloud-based solution is platform agnostic and designed to replace hard-coded credentials in applications, micro-services, DevOps tools, and robotic process automation. This vault ensures IT, DevOps and Security teams the speed and agility needed to stay competitive without sacrificing security.
 
 DevOps Secrets Vault is deployed as an API-as-a Service.  Organizations can sign-up and create their first secrets in minutes with no infrastructure to manage or maintain.
+
+## Key Features
 
 * Command line interface (CLI) for Windows, Mac, and Linux/Unix
 * RESTful Application programming interface (API)
