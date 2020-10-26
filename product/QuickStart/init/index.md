@@ -14,14 +14,16 @@ DSV CLI initialization presents you with a series of questions and choices. If y
 
 ## CLI Setup
 
-<table>
+
+<table style="width:100%">
 <tr style="vertical-align:top">
-<td>
+
+<td style="width:70%">
 
 1. Begin setup with the `dsv init` command. This will start a workflow.
 </td>
 
-<td width=30%>
+<td style="width:30%">
 
 ```BASH
 dsv init
@@ -30,7 +32,7 @@ dsv init
 </td>
 </tr>
 <tr style="vertical-align:top">
-<td>
+<td width="70%">
 
 2. Enter your tenant name. The tenant name was provided to the initial administrator by Thycotic when you set up your account.
     >**NOTE:** You need only enter your tenant name, ie, just *example* not *example.secretsvaultcloud.com*, because the domain is set by region and that is covered in the next question:
