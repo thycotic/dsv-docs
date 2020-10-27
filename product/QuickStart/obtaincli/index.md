@@ -6,7 +6,9 @@
 
 1. Download the Command Line Interface executable files onto each of the workstations where you will operate DevOps Secrets Vault. 
     * Thycotic provides DSV CLI executables for multiple platforms [here](https://dsv.thycotic.com/downloads).
+
     * Once installed, these CLI executables periodically check the download site for updates and inform the user if an update is available.
+
 1. The executable file name will reflect the OS and 32-bit or 64-bit architecture. Rename the executable to **dsv** or **dsv.exe** to simplify command entry.
 1. Place the executable in the file directory location of your choice and note the path.
 1. (Optional) Add the Executable Path to the PATH Environment Variable. Adding the location of the executable to your PATH environment variable enables you to invoke `dsv` without specifying its path or having to pre-pend `.\`

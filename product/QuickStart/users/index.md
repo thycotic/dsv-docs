@@ -8,27 +8,35 @@ With the first Secrets created, the next step is to create Users or Roles that w
 
 For this quick-start guide, as the intial admin, we will create two users - a local User and a Thycotic One User.  
 
-First, a local DSV User, designated with their email address `local@company.com` will be created.  For local users, an email address is not required.
+## Local Users
 
-```BASH
-dsv user create --username local@company.com --password BadP@ssword
-```
+1. Create a user using **```dsv user create```**.
+1. Use **```--username user@yourorganization.com --password userpassword```** to assign credentials.
+    >**Note**: For local users, the email address serves only as the username.
 
-Second, a Thycotic One User will be created in DSV.  Here a valid email address is required as the username.
+    *Example*:
+    ```BASH
+    dsv user create --username user@yourorganization.com --password userpassword
+    ```
 
-```BASH
-dsv user create --username thyoneuser@company.com --provider thy-one
-```
+## Thycotic One User
 
-The user will receive an email with a link to both confirm their email address and setup a password.
+1. Create a user using **```dsv user create```**.
+1. Use **```--username thyoneuser@yourorganization.com --provider thy-one```** to assign credentials.
+    
+    *Example*:
+    ```BASH
+    dsv user create --username thyoneuser@yourorganization.com --provider thy-one
+    ```
+1. The user will receive an email with a link to both confirm their email address and setup a password.
 
-![Thy-One Email](./images/thyoneemail.png)
+    ![Thy-One Email](./images/thyoneemail.png)
 
-Once the Thycotic One User clicks that link and sets a password, they will be ready to authenticate to DSV.
+1. Once the Thycotic One User follows the link and sets a password, they will be ready to authenticate to DSV.
 
 # Local User and Thycotic One User Authentication
 
-The local and Thycotic One users can then, on their own machines, download the CLI and start the `thy init` process.  The admin will have to provide the local user with their password, and both of them with the DSV tenant name and domain (region).
+The local and Thycotic One users can then, on their own machines, download the CLI and start the `dsv init` process.  The admin will have to provide the local user with their password, and both of them with the DSV tenant name and domain (region).
 
 The process is here [Initializing the CLI for the first time](./init/index.md)
 
