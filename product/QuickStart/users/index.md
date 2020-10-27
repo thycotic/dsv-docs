@@ -12,7 +12,7 @@ For this quick-start guide, as the intial admin, we will create two users - a lo
 
 * Create a user and assign credentials using the following format:
 
-    **```dsv user create --username user@yourorganization.com --password userpassword```**
+    **```dsv user create --username local@company.com --password userpassword```**
 
     >**Note**: For local users, the email address serves only as the username.
 
