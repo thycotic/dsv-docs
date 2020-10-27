@@ -11,13 +11,13 @@ For this quick-start guide, as the intial admin, we will create two users - a lo
 First, a local DSV User, designated with their email address `local@company.com` will be created.  For local users, an email address is not required.
 
 ```BASH
-thy user create --username local@company.com --password BadP@ssword
+dsv user create --username local@company.com --password BadP@ssword
 ```
 
 Second, a Thycotic One User will be created in DSV.  Here a valid email address is required as the username.
 
 ```BASH
-thy user create --username thyoneuser@company.com --provider thy-one
+dsv user create --username thyoneuser@company.com --provider thy-one
 ```
 
 The user will receive an email with a link to both confirm their email address and setup a password.
@@ -50,7 +50,7 @@ The local user will select *(1)* and enter their username and password.  The Thy
 The local user should change their password immediately as a best pratice because the admin knows it and had to transfer it to them somehow.  The command is:
 
 ```bash
-thy auth changepassword
+dsv auth changepassword
 ```
 
 At this point, the users are created and able to authenticate to DSV (they can comfirm with the command `thy auth` and get a token), however, they will not have permission to access anything yet because DSV defaults to *deny all*.  In the next step, the admin will create policies granting permission to these users.
