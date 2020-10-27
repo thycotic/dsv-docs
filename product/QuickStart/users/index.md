@@ -48,10 +48,10 @@ Please enter auth type:
 
 The local user will select *(1)* and enter their username and password.  The Thycotic One user will select *(3)* and enter their email, Thycotic One password, and for the provider name simply hit `enter` to default to *thy-one*.
 
-The local user should change their password immediately as a best pratice because the admin knows it and had to transfer it to them somehow.  The command is:
+The local user should change their password immediately as a best practice because the admin knows it and had to transfer it to them somehow.  The command is:
 
 ```bash
 dsv auth changepassword
 ```
 
-At this point, the users are created and able to authenticate to DSV (they can comfirm with the command `thy auth` and get a token), however, they will not have permission to access anything yet because DSV defaults to *deny all*.  In the next step, the admin will create policies granting permission to these users.
+At this point, the users are created and able to authenticate to DSV (they can confirm with the command `dsv auth` and get a token), however, they will not have permission to access anything yet because DSV defaults to *deny all*.  In the next step, the admin will create policies granting permission to these users.
