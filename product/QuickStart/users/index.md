@@ -10,24 +10,17 @@ For this quick-start guide, as the intial admin, we will create two users - a lo
 
 ## Local Users
 
-1. Create a user using **```dsv user create```**.
-1. Use **```--username user@yourorganization.com --password userpassword```** to assign credentials.
-    >**Note**: For local users, the email address serves only as the username.
+* Create a user and assign credentials using the following format:
 
-    *Example*:
-    ```BASH
-    dsv user create --username user@yourorganization.com --password userpassword
-    ```
+    **```dsv user create --username user@yourorganization.com --password userpassword```**
+
+    >**Note**: For local users, the email address serves only as the username.
 
 ## Thycotic One User
 
-1. Create a user using **```dsv user create```**.
-1. Use **```--username thyoneuser@yourorganization.com --provider thy-one```** to assign credentials.
+1. Create a user and assign credentials using the following format:
     
-    *Example*:
-    ```BASH
-    dsv user create --username thyoneuser@yourorganization.com --provider thy-one
-    ```
+    **```dsv user create --username thyoneuser@yourorganization.com --provider thy-one```** 
 1. The user will receive an email with a link to both confirm their email address and setup a password.
 
     ![Thy-One Email](./images/thyoneemail.png)
