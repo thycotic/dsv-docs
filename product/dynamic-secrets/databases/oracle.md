@@ -73,7 +73,7 @@ The dynamic secret will be linked to the root secret. The **grantPermissions** f
 
 ```json
     {
-        "description": "oracle role dynamic credential",
+        "description": "oracle system dynamic credential",
         "attributes": {
             "grantPermissions": {
             "what": "CONNECT",
@@ -169,7 +169,7 @@ The dynamic secret will be linked to the root secret. The **grantPermissions** f
 
 ```json
 {
-    "description": "oracle role dynamic credential",
+    "description": "oracle object dynamic credential",
     "attributes": {
         "grantPermissions":{
         "what" : "SELECT",
