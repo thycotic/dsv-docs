@@ -7,7 +7,7 @@ Before creating a Dynamic Secret for Oracle, the DSV Engine must be installed.
 
 ## Oracle Engine Requirements:
 
-The Oracle database must have **Oracle Instant Client** installed before running the dsv-engine. DSV only supports the **linux-x64** binary distribution. For other platforms, use docker the distribution.
+The Oracle database must have **Oracle Instant Client** installed before running the dsv-engine. DSV only supports the **linux-x64** binary distribution. For other platforms, use docker distribution.
 
 ### Running the Oracle Engine
 
@@ -59,11 +59,13 @@ In the CLI, create a base secret containing the credentials of the account that 
 
 ### **Create a new dynamic secret.** 
 
-The dynamic secret will be linked to the root secret. Example:
+The dynamic secret will be linked to the root secret. The **grantPermissions** field will change depending on the privileges the secret is granting.
+
+#### Dynamic Secret Examples
 
 <table>
 <tr>
-<th> Dynamic Secret
+<th> System Privilege Dynamic Secret
 <th> Guide
 </tr>
 <tr style="vertical-align:top">
@@ -71,7 +73,7 @@ The dynamic secret will be linked to the root secret. Example:
 
 ```json
     {
-        "path": "db:oracle:dyn1",
+        "description": "oracle role dynamic credential",
         "attributes": {
             "grantPermissions": {
             "what": "CONNECT",
@@ -94,8 +96,104 @@ The dynamic secret will be linked to the root secret. Example:
 
 1. **`grantPermissions`**: Specifies the permissions assigned by Oracle to the new user account. 
     * `what`: Defines the database access permissions the user will have in Oracle. Permissions may include `CONNECT`, `CREATE`, `SELECT`, or other SQL statements.
-    * `where`: Defines the location within the database for permissions to apply. For `object` privileges, this field should designate the object (ie: ADMIN.EMPLOYEE).
-    * `type`: Defines the object permissions within Oracle. Use `system`, `role`, or `object` to grant privileges.
+    * `where`: Defines the location within the database for `object` permissions to apply. For `system` and `role` secrets, the field should be "none".
+    * `type`: Defines the object permissions within Oracle. Use `system` to grant system privileges.
+
+1. **`linkType`** is always **`dynamic`** for dynamic secrets.
+1. **`linkedSecret`** should be the path of the root secret.
+1. **`pool`**: Designates the Engine pool that DSV will use to generate dynamic secrets.
+1. **`ttl`**: Specifies the number of seconds for which the new account will exist before the engine automatically deletes it. 
+    > **NOTE**: `ttl` must be set **above 900**. 
+1. **`userPrefix`** An optional key whose value is a string prepended to all Oracle account usernames created from the dynamic secret.
+1. **`data`**: This field remains blank for dynamic secrets.
+
+</td>
+</tr>
+</table>
+
+<table>
+<tr>
+<th> Role Privilege Dynamic Secret
+<th> Guide
+</tr>
+<tr style="vertical-align:top">
+<td>
+
+```json
+{
+    "description": "oracle role dynamic credential",
+    "attributes": {
+        "grantPermissions":{
+        "what" : "oraclerole",
+        "where": "none",
+        "type": "role"
+       },
+        "linkConfig": {
+          "linkType": "dynamic",
+          "linkedSecret": "oracle:base:awsroot"
+       },
+   "pool": "pool1",
+   
+   "ttl": 900
+    }
+}
+```
+
+</td>
+<td>
+
+1. **`grantPermissions`**: Specifies the permissions assigned by Oracle to the new user account. 
+    * `what`: Defines the Role access the user will have in Oracle. Set this as the predefined `role name`.
+    * `where`: Defines the location within the database for `object` permissions to apply. For `system` and `role` secrets, the field should be "none".
+    * `type`: Defines the object permissions within Oracle. Use `role` to grant role privileges.
+
+1. **`linkType`** is always **`dynamic`** for dynamic secrets.
+1. **`linkedSecret`** should be the path of the root secret.
+1. **`pool`**: Designates the Engine pool that DSV will use to generate dynamic secrets.
+1. **`ttl`**: Specifies the number of seconds for which the new account will exist before the engine automatically deletes it. 
+    > **NOTE**: `ttl` must be set **above 900**. 
+1. **`userPrefix`** An optional key whose value is a string prepended to all Oracle account usernames created from the dynamic secret.
+1. **`data`**: This field remains blank for dynamic secrets.
+
+</td>
+</tr>
+</table>
+
+<table>
+<tr>
+<th> Object Privilege Dynamic Secret
+<th> Guide
+</tr>
+<tr style="vertical-align:top">
+<td>
+
+```json
+{
+    "description": "oracle role dynamic credential",
+    "attributes": {
+        "grantPermissions":{
+        "what" : "SELECT",
+        "where": "ADMIN.EMPLOYEE",
+        "type": "object"
+       },
+        "linkConfig": {
+          "linkType": "dynamic",
+          "linkedSecret": "oracle:base:awsroot"
+       },
+   "pool": "pool1",
+   
+   "ttl": 900
+    }
+}
+```
+
+</td>
+<td>
+
+1. **`grantPermissions`**: Specifies the permissions assigned by Oracle to the new user account. 
+    * `what`: Defines the database access permissions the user will have in Oracle. Permissions may include `CONNECT`, `CREATE`, `SELECT`, or other SQL statements.
+    * `where`: Defines the object within Oracle for which the user will have privileges. The example secret will allow the user to select the "ADMIN.EMPLOYEE" object within Oracle.
+    * `type`: Defines the object permissions within Oracle. Use `object` to grant object privileges.
 
 1. **`linkType`** is always **`dynamic`** for dynamic secrets.
 1. **`linkedSecret`** should be the path of the root secret.

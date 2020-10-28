@@ -22,10 +22,10 @@ To create Dynamic Secrets for MySQL
         },
         "description": "mysql root credentials",
         "data": {
-            "host": "database-1.cjqpjhgsaz53.us-east-1.rds.amazonaws.com",
-            "password": "P@ssword!",
+            "host": "yourhost.name",
+            "password": "yourpassword",
             "port": 3306,
-            "username": "admin"
+            "username": "yourname"
         }
     }
     ```

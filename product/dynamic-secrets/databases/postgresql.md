@@ -22,7 +22,7 @@ To create Dynamic Secrets for PostgreSQL:
       },
      "data": {
         "database": "postgres",
-        "host": "database-2.cjqoldqpaz53.us-east-1.rds.amazonaws.com",
+        "host": "your.host",
         "password": "myp@ssword",
         "port": 5432,
         "username": "postgres"
