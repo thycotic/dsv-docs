@@ -30,7 +30,7 @@ DevOps Secrets Vault is deployed as an API-as-a Service.  Organizations can sign
     * [.NET Core](https://github.com/thycotic/dsv-netcore-sdk)
 * DevOps Tools Support (Plugins)
     * [Jenkins](https://github.com/thycotic/dsv-jenkins-plugin)
-    * [Terraform](https://github.com/thycotic/dsv-k8s)
+    * [Terraform](https://github.com/thycotic/terraform-provider-dsv)
     * [Kubernetes](https://github.com/thycotic/dsv-k8s)
     * [Ansible](https://github.com/thycotic/dsv-ansible-lookup-plugin)
 * Robotic Process Automation

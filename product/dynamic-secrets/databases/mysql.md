@@ -70,7 +70,7 @@ To create Dynamic Secrets for MySQL
 1. **`linkedSecret`** should be the path of the root secret.
 1. **`pool`**: Designates the Engine pool that DSV will use to generate dynamic secrets.
 1. **`ttl`**: Specifies the number of seconds for which the new account will exist before the engine automatically deletes it.
-    > **NOTE**: `ttl` must be set **above 900**. 
+    > **NOTE**: `ttl` must be set at or **above 900**. 
 1. **`userPrefix`** An optional key whose value is a string prepended to all MySQL account usernames created from the dynamic secret.
 1. **`data`**: This field remains blank for dynamic secrets.
 

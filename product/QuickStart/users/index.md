@@ -6,32 +6,21 @@
 
 With the first Secrets created, the next step is to create Users or Roles that will access those secrets.
 
-For this quick-start guide, as the intial admin, we will create two users - a local User and a Thycotic One User.  
+For this quick-start guide, as the intial admin, we will create a local User. To use other authentication methods, see [authentication](../../auth-general/index.md).
 
-## Local Users
+## Create Local Users
 
-* Create a user and assign credentials using the following format:
+Create a user and assign credentials using the following format:
 
-    **```dsv user create --username local@company.com --password userpassword```**
+**```dsv user create --username local@company.com --password userpassword```**
 
-    >**Note**: For local users, the email address serves only as the username.
+>**Note**: For local users, the email address serves only as the username.
 
-## Thycotic One User
+## Local User Authentication
 
-1. Create a user and assign credentials using the following format:
-    
-    **```dsv user create --username thyoneuser@yourorganization.com --provider thy-one```** 
-1. The user will receive an email with a link to both confirm their email address and setup a password.
+The local user can then, on their own machines, download the CLI and start the `dsv init` process. The admin will have to provide the user with their password, DSV tenant name, and domain (region).
 
-    ![Thy-One Email](./images/thyoneemail.png)
-
-1. Once the Thycotic One User follows the link and sets a password, they will be ready to authenticate to DSV.
-
-# Local User and Thycotic One User Authentication
-
-The local and Thycotic One users can then, on their own machines, download the CLI and start the `dsv init` process.  The admin will have to provide the local user with their password, and both of them with the DSV tenant name and domain (region).
-
-The process is here [Initializing the CLI for the first time](./init/index.md)
+The process is here: [Initializing the CLI for the first time](../init/index.md)
 
 When they get to the **Please enter auth type:** 
 
@@ -46,12 +35,10 @@ Please enter auth type:
         (7) OIDC (federated)
 ```
 
-The local user will select *(1)* and enter their username and password.  The Thycotic One user will select *(3)* and enter their email, Thycotic One password, and for the provider name simply hit `enter` to default to *thy-one*.
-
-The local user should change their password immediately as a best practice because the admin knows it and had to transfer it to them somehow.  The command is:
+The user will select *(1)* and enter their username and password. The user should change their password immediately as a best practice. The command to change the password is:
 
 ```bash
 dsv auth changepassword
 ```
 
-At this point, the users are created and able to authenticate to DSV (they can confirm with the command `dsv auth` and get a token), however, they will not have permission to access anything yet because DSV defaults to *deny all*.  In the next step, the admin will create policies granting permission to these users.
+At this point, the users are created and able to authenticate to DSV (they can confirm with the command `dsv auth` and get a token), however, they will not have permission to access anything yet because DSV defaults to *deny all*.  In the next step, the admin will create [policies](../policies/index.md) granting permission to these users.
