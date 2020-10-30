@@ -28,6 +28,8 @@ To start a DSV Engine, perform the following actions. **Note:** the example uses
 |4. **Register** the Engine. The private key can be retrieved using the `dsv whoami` command.| `dsv engine register --endpoint example.endpoint.com --engine-name exampleengine --private key exampleprivatekey`|
 |5. (Optional) **Ping** the Engine to ensure connectivity.| `dsv engine ping --name exampleengine`|
 
+<br>
+
 <!--### Registering a pool and an engine
 
 Users can create engines as other entities (like roles, users) in DSV. DSV organizes engines in pools, so an engine must be assigned to an existing pools.
