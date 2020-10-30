@@ -21,12 +21,12 @@ The DSV Engine uses secure websockets (wss) on port 443 TCP outbound.  Since mos
 To start a DSV Engine, perform the following actions. **Note:** the example uses the placeholders 'examplepool' and 'exampleengine', replace these with the correct engine and pool names for your organization.
 
 |Guide|CLI|
-|---|---|
+|-----|------|
 |1. Create an **Engine pool**.| `dsv engine create --name examplepool`|
-|2. Create an **Engine** and assign it to the pool. **Note**: An Engine can only be assigned to one pool.| `dsv engine create --name exampleengine --name examplepool`|
-|3. Install the **DSV Engine Binaries**.| https://dsv.thycotic.com/downloads|
-|4. **Register** the Engine. The private key can be retrieved using the `dsv whoami` command.| `dsv engine register --endpoint example.endpoint.com --engine-name exampleengine --private key exampleprivatekey`|
-|5. (Optional) **Ping** the Engine to ensure connectivity.| `dsv engine ping --name exampleengine`|
+|2. Create an **Engine** and assign it to the pool. Save the private key for Engine registration. **Note**: An Engine can only be assigned to one pool.| `dsv engine create --name exampleengine --pool-name examplepool`|
+|3. Install the **dsv-engine Binary**. The example uses **dsv-engine** as the program name. *If you use the same name, make sure to include the dash when performing the next steps.*| https://dsv.thycotic.com/downloads|
+|4. **Register** the Engine.| `dsv-engine run --endpoint example.endpoint.com --engine-name exampleengine --private-key exampleprivatekey`|
+|5. (Optional) **Ping** the Engine to ensure connectivity.| `dsv-engine ping --name exampleengine`|
 
 <br>
 
