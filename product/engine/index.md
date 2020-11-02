@@ -18,7 +18,8 @@ The DSV Engine uses secure websockets (wss) on port 443 TCP outbound.  Since mos
 
 ## Starting an Engine
 
-To start a DSV Engine, perform the following actions. **Note:** the example uses the placeholders 'examplepool' and 'exampleengine', replace these with the correct engine and pool names for your organization.
+To start a DSV Engine, perform the following actions. 
+> **Note:** the example uses the placeholders 'examplepool' and 'exampleengine', replace these with the correct engine and pool names for your organization.
 
 |Guide|CLI|
 |-----|------|
@@ -42,14 +43,18 @@ To start an engine in a container, pull the appropriate image and run a containe
 environment variables you provide to the new container.
 If you had created a pool, but not engine, you can register a new engine and start it in one step:
 
-`docker run -e ENGINE_NAME=engine1 -e DSV_POOL=pool1 -e DSV_TENANT=bob -e DSV_URL=secretsvaultcloud.com -e DSV_TOKEN=eyJhbGcxNjAKadw dsv-engine`
+```CLI
+docker run -e ENGINE_NAME=engine1 -e DSV_POOL=pool1 -e DSV_TENANT=bob -e DSV_URL=secretsvaultcloud.com -e DSV_TOKEN=eyJhbGcxNjAKadw dsv-engine
+```
 
 You should see the private key and other information about the new engine displayed once it has been registered,
 and the container has been started. Store the private key and other information securely.
 
 If you already have a registered engine and want to run it in the container, then provide a different set of environment variables:
 
-`docker run --name eng --rm -e ENGINE_NAME=engine1 -e DSV_ENDPOINT=bob.ws.secretsvaultcloud.com -e DSV_PRIVATE_KEY=LS0tLS1CRUiBSkFURS` dsv-engine
+```CLI
+docker run --name eng --rm -e ENGINE_NAME=engine1 -e DSV_ENDPOINT=bob.ws.secretsvaultcloud.com -e DSV_PRIVATE_KEY=LS0tLS1CRUiBSkFURS` dsv-engine
+```
 
 In either case, on successful engine start, you should a message saying that the engine is ready and waiting for messages.
 

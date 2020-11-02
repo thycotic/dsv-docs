@@ -18,7 +18,7 @@ Create a user and assign credentials using the following format:
 
 ## Local User Authentication
 
-The local user can then, on their own machines, download the CLI and start the `dsv init` process. The admin will have to provide the user with their password, DSV tenant name, and domain (region).
+The local user can then, on their own machine, download the CLI and start the `dsv init` process. The admin will have to provide the user with their password, DSV tenant name, and domain (region).
 
 The process is here: [Initializing the CLI for the first time](../init/index.md)
 

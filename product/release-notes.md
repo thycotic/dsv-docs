@@ -4,7 +4,7 @@
 
 # Release Notes
 
-Thycotic periodically updates DevOps Secrets Vault to provide fixes and improvements and introduce features.
+DevOps Secrets Vault is regularly updated to provide improvements and introduce features.
 
 As a Cloud application, DSV lacks version numbers; the current version serves all users because it is always the only version available.
 
@@ -19,7 +19,7 @@ The Command Line Interface (CLI) is locally installed using OS-specific executab
 
 | **Update**             | **Notes**                                  |
 |------------------------|--------------------------------------------|
-|November 2020           |**CLI Version**: 1.15                       |
+|November 2020           |**CLI Version**: 1.15.0                      |
 |                        |**new feature**: Added dynamic secret support for PostgreSQL and Oracle databases.|
 |                        |**improvement**: Engines and pools can now be manipulated via the `engine` and `pool` commands.|
 |October 2020            | **CLI Version**: 1.14|
