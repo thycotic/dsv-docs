@@ -3,7 +3,8 @@
 [priority]: # (6420)
 
 # Oracle Dynamic Secrets
-Before creating a Dynamic Secret for Oracle, the DSV Engine must be installed.
+
+Once you have installed the [**DSV Engine**](../../engine/index.md), you can use DSV to create Dynamic Secrets.
 
 ## Oracle Engine Requirements:
 

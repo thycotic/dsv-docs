@@ -4,6 +4,8 @@
 
 # PostgreSQL Dynamic Secrets
 
+Once you have installed the [**DSV Engine**](../../engine/index.md), you can use DSV to create Dynamic Secrets.
+
 ## Dynamic Secret Setup
 
 To create Dynamic Secrets for PostgreSQL:
