@@ -22,7 +22,7 @@ To start a DSV Engine, perform the following actions. The example uses the place
 > **Note:** Setting up the Engine with **Oracle** Databases has separate requirements. See the [Oracle](../dynamic-secrets/databases/oracle.md) page for instructions.
 
 |Guide|CLI|
-|-----|------|
+|-------------------------|------|
 |1. Create an **Engine pool**.| `dsv pool create --name examplepool`|
 |2. Create an **Engine** and assign it to the pool. ***Notes:** The create command will return a private key and endpoint. **Make sure to save the private key for Engine registration. It cannot be retrieved later.** An Engine can only be assigned to one pool.*| `dsv engine create --name exampleengine --pool-name examplepool`|
 |3. Install the **dsv-engine Binary**. The example uses **dsv-engine** as the program name. *If you use the same name, make sure to include the dash when performing registration in step 4.*| https://dsv.thycotic.com/downloads|
