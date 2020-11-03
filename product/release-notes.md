@@ -20,9 +20,11 @@ The Command Line Interface (CLI) is locally installed using OS-specific executab
 | **Update**             | **Notes**                                  |
 |------------------------|--------------------------------------------|
 |November 2020           |**CLI Version**: 1.15.0                      |
+|                        |**Engine Version**: 1.1                     |
 |                        |**new feature**: Added dynamic secret support for PostgreSQL and Oracle databases.|
 |                        |**improvement**: Engines and pools can now be manipulated via the `engine` and `pool` commands.|
 |October 2020            | **CLI Version**: 1.14|
+|                        | **Engine Version**: 1.0|
 |                        | **new feature**: Added the DSV Engine.  This agent is installed on the customer network for access while limiting the need to open the firewall.  Initially for database dynamic secrets, but in the future will be used for password rotation, authentication, or other needs.|
 |                        | **new feature**: Bootstrapped client credentials.  When creating client credentials, a one-time use URL can be created so that the new machine or application can retrieve the Client Secret.|
 |September 2020          | **CLI Version**: 1.13|

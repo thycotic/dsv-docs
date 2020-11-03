@@ -4,8 +4,6 @@
 
 # Oracle Dynamic Secrets
 
-Once you have installed the [**DSV Engine**](../../engine/index.md), you can use DSV to create Dynamic Secrets.
-
 ## Oracle Engine Requirements:
 
 The Oracle database must have **Oracle Instant Client** installed before running the dsv-engine. DSV only supports the **linux-x64** binary distribution. For other platforms, use docker distribution.
