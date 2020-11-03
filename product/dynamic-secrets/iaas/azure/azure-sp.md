@@ -20,9 +20,9 @@ These are the links to azure documentation on service principal:
 3. Click **App registrations** then **New registration**.  Enter an application name and then click **Register**.
 4. Take note of the **Application (client) ID** and **Directory (tenant) ID**.  They are the DSV Base secret `clientId` and `tenantId` parameters respectively.
 
-![](../images/spacer/.png)
+![](..//images/spacer/.png)
 
-![](../images/applicationIDs.png)
+![](../../images/applicationIDs.png)
 
 ![](../images/spacer.png)
 
@@ -31,7 +31,7 @@ These are the links to azure documentation on service principal:
 
 ![](../images/spacer.png)
 
-![](../images/clientsecret.png)
+![](../../images/clientsecret.png)
 
 ![](../images/spacer.png)
 
@@ -41,7 +41,7 @@ These are the links to azure documentation on service principal:
 
 ![](../images/spacer.png)
 
-![](../images/delegated.png)
+![](../../images/delegated.png)
 
 ![](../images/spacer.png)
 
@@ -49,7 +49,7 @@ These are the links to azure documentation on service principal:
 
 ![](../images/spacer.png)
 
-![](../images/application.png)
+![](../../images/application.png)
 
 ![](../images/spacer.png)
 
@@ -59,7 +59,7 @@ These are the links to azure documentation on service principal:
 
 ![](../images/spacer.png)
 
-![](../images/grantpermission.png)
+![](../../images/grantpermission.png)
 
 ![](../images/spacer.png)
 
@@ -67,7 +67,7 @@ These are the links to azure documentation on service principal:
 
 ![](../images/spacer.png)
 
-![](../images/subscription.png)
+![](../../images/subscription.png)
 
 ![](../images/spacer.png)
 
@@ -79,7 +79,7 @@ These are the links to azure documentation on service principal:
 
 ![](../images/spacer.png)
 
-![](../images/roleassignment.png)
+![](../../images/roleassignment.png)
 
 ![](../images/spacer.png)
 
@@ -94,7 +94,7 @@ In the [Azure Dynamic Secrets](azure.md) section, we discuss DSV using an "exist
 
 ![](../images/spacer.png)
 
-![](../images/appobjectid.png)
+![](../../images/appobjectid.png)
 
 ![](../images/spacer.png)
 
@@ -107,6 +107,6 @@ In the [Azure Dynamic Secrets](azure.md) section, we discuss DSV using an "exist
 
 ![](../images/spacer.png)
 
-![](../images/roleassign2.png)
+![](../../images/roleassign2.png)
 
 ![](../images/spacer.png)
