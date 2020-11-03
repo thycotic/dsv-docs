@@ -4,7 +4,7 @@
 
 # Release Notes
 
-Thycotic periodically updates DevOps Secrets Vault to provide fixes and improvements and introduce features.
+DevOps Secrets Vault is regularly updated to provide improvements and introduce features.
 
 As a Cloud application, DSV lacks version numbers; the current version serves all users because it is always the only version available.
 
@@ -19,15 +19,20 @@ The Command Line Interface (CLI) is locally installed using OS-specific executab
 
 | **Update**             | **Notes**                                  |
 |------------------------|--------------------------------------------|
+|November 2020           |**CLI Version**: 1.15.0                      |
+|                        |**Engine Version**: 1.1                     |
+|                        |**new feature**: Added dynamic secret support for PostgreSQL and Oracle databases.|
+|                        |**improvement**: Engines and pools can now be manipulated via the `engine` and `pool` commands.|
 |October 2020            | **CLI Version**: 1.14|
+|                        | **Engine Version**: 1.0|
 |                        | **new feature**: Added the DSV Engine.  This agent is installed on the customer network for access while limiting the need to open the firewall.  Initially for database dynamic secrets, but in the future will be used for password rotation, authentication, or other needs.|
 |                        | **new feature**: Bootstrapped client credentials.  When creating client credentials, a one-time use URL can be created so that the new machine or application can retrieve the Client Secret.|
 |September 2020          | **CLI Version**: 1.13|
 |                        | **improvement**: CLI name changed from "thy" to "dsv" in downloads and documentation for all commands|
 |                        | **new feature**: Home Vault GA.  Completed Roles, GetByVersion, Rollback, Restore, Policy for giving others access. |
 |                        | **improvement**: Wizards for Groups will not allow invalid Users|
-|                        | **improvement**: Wizards for Users look for Auth provider and act accordingly rather than ask for a passwrod first|
-|                        | **improvement**: secrets arrtibutes can be updated wihtout affecting other fields|
+|                        | **improvement**: Wizards for Users look for Auth provider and act accordingly rather than ask for a password first|
+|                        | **improvement**: secrets attributes can be updated without affecting other fields|
 |                        | **improvement**: Thycotic One users not sent sign-up emails by default.  Can change this setting|
 |                        | **improvement**: whoami command provides more information for cloud auth providers|
 |                        | **improvement**: Group names can't have spaces|
@@ -47,9 +52,9 @@ The Command Line Interface (CLI) is locally installed using OS-specific executab
 |                        | **new feature**: CLI now contains wizards for Users, Groups, and Roles.|
 |                        | **improvement**: Policy update help information and examples.|
 |                        | **improvement**: Added IDs and status information to audit records.|
-|                        | **improvement**: Standarized on the use of colons for policies instead of slashes|
+|                        | **improvement**: Standardized on the use of colons for policies instead of slashes|
 |                        | **fixed**: Enhancements to auth providers.|
-|                        | **fixed**: Group memeberships are not evaluated for policy updates.|
+|                        | **fixed**: Group memberships are not evaluated for policy updates.|
 |                        | **fixed**: Group member sometimes returned code 500 (internal server error) on deletion attempt.|
 |June 2020               | **CLI Version**: 1.10|
 |                        | **new feature**: SIEM endpoints.  Support Syslog, CEF, and JSON log formatting on TLS,TCP, UDP, HTTP, and HTTPS transport protocols.|
@@ -57,7 +62,7 @@ The Command Line Interface (CLI) is locally installed using OS-specific executab
 |                        | **improvement**: Additional Secrets search capabilities. Enabled search for Secrets on any attribute, path, or description.|
 |                        | **improvement**: Provide the ability to add a CRL URL to a signing certificate.  |
 |                        | **fixed**: CLI version check fixed regardless of the update cache|
-|                        | **fixed**: Group membership evaluted for policy updates. |
+|                        | **fixed**: Group membership evaluated for policy updates. |
 |                        | **update**: Deprecated "settings" attribute on the Configuration document will be removed next release. All auth provider management should go through the config/auth endpoint |
 |May 2020                | **CLI Version**: 1.9|
 |                        | **new feature**: Google Cloud Platform (GCP) Dynamic secrets.  DSV can issue ephemeral secrets for GCP service accounts|
@@ -78,7 +83,7 @@ The Command Line Interface (CLI) is locally installed using OS-specific executab
 |March 2020              | **new feature**: Azure Dynamic Secrets.  DSV can use Azure Service Principals to provide ephermal credentials|
 |                        | **new feature**: (API only) Ability to issue X.509 certificates
 |                        | **improvement**: Ability to retrieve auth settings by version          |
-|                        | **improvement**: Make help commmands available even if teh CLI config is missing
+|                        | **improvement**: Make help commands available even if the CLI config is missing
 |                        | **improvement**: Protect error check.  Protect against creating policy errors   |
 |                        | **improvement**: Ability to search for dynamic secrets given a base secret        |
 |                        | **improvement**: Improved error reporting for dynamic secrets         
