@@ -26,7 +26,7 @@ To start a DSV Engine, perform the following actions. The example uses the place
 |1. Create an **Engine pool**.| `dsv pool create --name examplepool`|
 |2. Create an **Engine** and assign it to the pool. **Notes:** The create command will return a private key and endpoint. **Make sure to save the private key for Engine registration. It cannot be retrieved later.** An Engine can only be assigned to one pool.| `dsv engine create --name exampleengine --pool-name examplepool`|
 |3. Install the **dsv-engine Binary**. The example uses **dsv-engine** as the program name. *If you use the same name, make sure to include the dash when performing registration in step 4.*| https://dsv.thycotic.com/downloads|
-|4. **Register** the Engine.| `dsv-engine run --endpoint <tenantname>.qa.ws.secretsvaultcloud.com --engine-name exampleengine --private-key exampleprivatekey`|
+|4. **Register** the Engine.| `dsv-engine run --endpoint <tenantname>.qa.ws.secretsvaultcloud.com` `--engine-name exampleengine --private-key exampleprivatekey`|
 |5. (Optional) **Ping** the Engine to ensure connectivity.| `dsv engine ping --name exampleengine`|
 |6. (Optional) For support using the Engine Binary, use the built-in CLI help commands.| `dsv-engine register -h` and `dsv-engine run -h`|
 
