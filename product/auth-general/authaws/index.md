@@ -131,8 +131,7 @@ This example assumes that you:
 Create a corresponding Role in DSV with the external-id of the IAM Role's ARN.
 
 ```BASH
-dsv role create --name test-role --external-id
-arn:aws:iam::xxxxxxxxxxx:role/testlogin --provider aws-dev
+dsv role create --name test-role --external-id arn:aws:iam::xxxxxxxxxxx:role/testlogin --provider aws-dev
 ```
 
 You should see a result similar to this:
