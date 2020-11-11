@@ -61,8 +61,7 @@ version: "0"
 When you create a User in AWS, remember that the username serves as a friendly name within DSV. It does not have to match the Identity Access Management (IAM) username, but the provider must match the provider name previously configured.
 
 ```BASH
-dsv user create --username test-admin --external-id
-arn:aws:iam::xxxxxxxxxxx:user/test-admin --provider aws-dev
+dsv user create --username test-admin --external-id arn:aws:iam::xxxxxxxxxxx:user/test-admin --provider aws-dev
 ```
 
 After creating the User, modify the config to give that User access to the default administrator permission policy.
