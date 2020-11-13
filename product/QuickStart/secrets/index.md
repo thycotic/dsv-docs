@@ -148,9 +148,9 @@ version: "0"
 When you need to locate a specific field in a JSON output, use a JSON filter. An example use case is writing scripts that need to obtain a password but lack the capacity to efficiently parse JSON.
 
 ```BASH
-dsv secret read --path /servers/us-east/server01 -bf data.password
-secretp@ssword
+dsv secret read --path /servers/us-east/server01 -bf data.password 
 ```
+Would return just the password.
 
 ## Separately Update Attributes, Data, and Description
 
