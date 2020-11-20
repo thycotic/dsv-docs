@@ -21,10 +21,10 @@ The base Secret holds the credentials required for DSV to perform API calls to A
 
 | Attribute                 | Description                                                         |
 | --------------            | ------------------------------                                      |
-| subscription_id              | Required - The subscription ID holding the resources you wish to access using Azure Active Directory.   |
-| tenant_id                    | Required - The tenant ID for Azure Active Directory. Azure lists it in places as "Directory (tenant) ID"                  |
-| client_id                    |  Required - The OAuth2 client ID to connect to Azure. Azure lists it in places as "Application (client) ID" |
-| client_secret                |  Required - The OAuth2 client secret to connect to Azure.
+| subscriptionId              | Required - The subscription ID holding the resources you wish to access using Azure Active Directory.   |
+| tenantId                    | Required - The tenant ID for Azure Active Directory. Azure lists it in places as "Directory (tenant) ID"                  |
+| clientId                    |  Required - The OAuth2 client ID to connect to Azure. Azure lists it in places as "Application (client) ID" |
+| clientSecret                |  Required - The OAuth2 client secret to connect to Azure.
 | environment                 |  Optional - The Azure environment. If not specified, DSV will use Azure Public Cloud. |
 
 ![](./images/spacer.png)
@@ -103,11 +103,11 @@ Returns a result like:
 
 ```json
 {
-    "id": "6e7de928-5027-4afb-bbff-b3ee59f9c24f",
+    "id": "yourId",
     "path": "dynamic:azure:sp-static",
     "attributes": {
-        "appId": "f81b3c6d-2ce9-47d4-ad2d-fef8390792a2",
-        "appObjectId": "5fe218ee-cb58-4089-ac9f-b1b68971ad73",
+        "appId": "yourpaddId",
+        "appObjectId": "yourappObjectId",
         "linkConfig": {
             "linkType": "dynamic",
             "linkedSecret": "azure:base:api-account"
@@ -116,12 +116,12 @@ Returns a result like:
         "ttl": 360
     },
     "data": {
-        "appObjectId": "5fe218ee-cb58-4089-ac9f-b1b68971ad73",
-        "client_id": "f81b3c6d-2ce9-47d4-ad2d-fef8390792a2",
-        "client_secret": "bfe6ac86-3671-4fd9-8f76-8f2e0f22495d",
+        "appObjectId": "yourappObjectId",
+        "clientId": "yourclientId",
+        "client_secret": "yoursecret",
         "role": "Contributor",
-        "subscription_id": "6ca2adeb-7b44-4c7f-93fc-2d5b9729a8c1",
-        "tenant_id": "11f54b31-ffb9-42b5-8fda-76c734a7796c",
+        "subscriptionId": "yoursubscriptionId",
+        "tenantId": "yourtenantId",
         "ttl": 360
     },
     "created": "2020-02-24T16:42:34Z",
@@ -174,7 +174,7 @@ Now anytime you read the dynamic Secret, the data is populated with the temporar
 
 ```json
 {
-    "id": "27a405c6-14b4-4d4b-b566-9fe23f1012c2",
+    "id": "yourId",
     "path": "dynamic:azure:ac-api",
     "attributes": {
         "linkConfig": {
@@ -189,15 +189,15 @@ Now anytime you read the dynamic Secret, the data is populated with the temporar
     "description": "azure root credential",
     "data": {
         "appObjectId": "e463477c-7d90-4743-92f2-c7f44ede8ec9",
-        "client_id": "945d25cb-7697-4648-b574-e8a660154269",
-        "client_secret": "ce1d072d-449d-4052-9a81-0d7ef982f7a4",
-        "role": "Contributor",
-        "roleAssignmentId": "/subscriptions/6ca2adeb-7b44-4c7f-93fc-2d5b9729a8c1/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
+        "clientId": "945d25cb-7697-4648-b574-e8a660154269",
+        "clientSecret": "yoursecret",
+        "roleName": "Contributor",
+        "roleId": "youroleId",
         "roleAssignmentStatus": "created",
         "roleAssignmentTaskId": "task_3da0a37c-0a1c-4ebd-8829-dbe7b988b36f",
-        "spObjectId": "1782611c-99c2-418b-b672-783e3cf8bd14",
-        "subscription_id": "6ca2adeb-7b44-4c7f-93fc-2d5b9729a8c1",
-        "tenant_id": "11f54b31-ffb9-42b5-8fda-76c734a7796c",
+        "servicePrincipleId": "1782611c-99c2-418b-b672-783e3cf8bd14",
+        "subscriptionId": "6ca2adeb-7b44-4c7f-93fc-2d5b9729a8c1",
+        "tenantId": "11f54b31-ffb9-42b5-8fda-76c734a7796c",
         "ttl": 36000
     },
     "created": "2020-02-12T20:57:44Z",

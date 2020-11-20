@@ -107,7 +107,7 @@ returns a result like:
     },
     "description": "gcp dynamic token secret",
     "data": {
-        "access_token": "ya29.c.Ko8ByAfMsL-...JbFloC6tOiUCOM6vXn7YNhZA",
+        "access_token": "youraccesstoken",
         "expiry": "2020-04-26T22:04:32.3897188Z",
         "ttl": 3600
     }
