@@ -58,8 +58,7 @@ In DSV you can create dynamic Secrets from either an existing service principal 
 ## Dynamic Secret for an Existing Service Principal
 Create a dynamic Secret that points to the base Secret via its attributes. **The dynamic Secret does not have any data stored in it because data is only populated when you read the Secret.**
 
-     
-**Attribute Guide**
+
 | Attribute                 | Description                                                         |
 | --------------            | ------------------------------                                      |
 | roleName                  | Optional- Azure role name to be assigned to the existing service principal.  Does not change existing principal's role    |
@@ -80,7 +79,7 @@ Create a dynamic Secret that points to the base Secret via its attributes. **The
     	"roleName":       "Contributor",
     	"appId": "f81b3c6d-2ce9-47d4-ad2d-fef8390792a2", 
     	"appObjectId" : "5fe218ee-cb58-4089-ac9f-b1b68971ad73",
-    	"ttl": 360  
+    	"ttl": 900  
     }
     ```
 1. Create the dynamic Secret via the CLI substituting the path of your choosing.
@@ -99,23 +98,23 @@ Will return the result:
     "id": "yourId",
     "path": "dynamic:azure:sp-static",
     "attributes": {
-        "appId": "yourpaddId",
+        "clientId": "yourpaddId",
         "appObjectId": "yourappObjectId",
         "linkConfig": {
             "linkType": "dynamic",
             "linkedSecret": "azure:base:api-account"
         },
         "roleName": "Contributor",
-        "ttl": 360
+        "ttl": 900
     },
     "data": {
         "appObjectId": "yourappObjectId",
         "clientId": "yourclientId",
-        "client_secret": "yoursecret",
+        "clientsecret": "yoursecret",
         "role": "Contributor",
         "subscriptionId": "yoursubscriptionId",
         "tenantId": "yourtenantId",
-        "ttl": 360
+        "ttl": 900
     },
     "created": "2020-02-24T16:42:34Z",
     "lastModified": "2020-03-04T19:21:04Z",
@@ -126,7 +125,7 @@ Will return the result:
 ## Dynamic Secret for a Temporary Service Principal 
 
 > Note: Creating service principal and assigning role in same request takes tens of seconds (over a minute has been seen), The command has been broken down into two separate calls. In the first call the service principal will be returned along with the task id that fired in the background for role assignment. You will need to wait to use that temporary service principal or check via the Azure portal or via the DSV API (provided below)
-
+ 
 | Attribute          | Description                                                         |
 | --------------         | ------------------------------                               | 
 | roleName                  | Optional - If no "roleID" is assigned, DSV will try to look-up the built-in Azure role by this name.      

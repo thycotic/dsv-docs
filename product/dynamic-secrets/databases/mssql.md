@@ -15,6 +15,7 @@ Once you have installed the [**DSV Engine**](../../engine/index.md), you can use
     *Example Base Secret*:
 
     ```json
+    {
         "attributes": {
         "type": "mssql"
       },
@@ -24,8 +25,10 @@ Once you have installed the [**DSV Engine**](../../engine/index.md), you can use
         "port": 1433,
         "server": "localhost",
         "username": "yourusername"
-      },
+      }
+    }
     ```
+
 1. **Create a new dynamic secret.** The dynamic secret will be linked to the root secret. Use the following format:
 
 <table>
