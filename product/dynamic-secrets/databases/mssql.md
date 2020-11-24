@@ -80,4 +80,4 @@ Read the MSSQL dynamic secret. A randomly chosen engine in the engine pool shoul
 
 ## Third Party Reference
 
-For contained server configuration details, refer to [MSSQL Database Documentation](https://docs.microsoft.com/en-us/sql/relational-databases/databases/contained-databases?view=sql-server-ver15)
+For contained server configuration details, refer to [MSSQL Database Documentation](https://docs.microsoft.com/en-us/sql/relational-databases/databases/contained-databases?view=sql-server-ver15) 
