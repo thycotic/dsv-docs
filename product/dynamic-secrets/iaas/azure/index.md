@@ -99,7 +99,7 @@ Will return the result:
     "id": "yourId",
     "path": "dynamic:azure:sp-static",
     "attributes": {
-        "appId": "yourpaddId",
+        "clientId": "yourclientId",
         "appObjectId": "yourappObjectId",
         "linkConfig": {
             "linkType": "dynamic",
@@ -111,7 +111,7 @@ Will return the result:
     "data": {
         "appObjectId": "yourappObjectId",
         "clientId": "yourclientId",
-        "client_secret": "yoursecret",
+        "clientsecret": "yoursecret",
         "role": "Contributor",
         "subscriptionId": "yoursubscriptionId",
         "tenantId": "yourtenantId",
