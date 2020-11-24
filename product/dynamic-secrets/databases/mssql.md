@@ -26,8 +26,6 @@ Once you have installed the [**DSV Engine**](../../engine/index.md), you can use
         "username": "yourusername"
       },
     ```
-
-
 1. **Create a new dynamic secret.** The dynamic secret will be linked to the root secret. Use the following format:
 
 <table>
