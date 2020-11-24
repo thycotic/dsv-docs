@@ -15,6 +15,7 @@ Once you have installed the [**DSV Engine**](../../engine/index.md), you can use
     *Example Base Secret*:
 
     ```json
+    {
         "attributes": {
         "type": "mssql"
       },
@@ -24,8 +25,10 @@ Once you have installed the [**DSV Engine**](../../engine/index.md), you can use
         "port": 1433,
         "server": "localhost",
         "username": "yourusername"
-      },
+      }
+    }
     ```
+
 1. **Create a new dynamic secret.** The dynamic secret will be linked to the root secret. Use the following format:
 
 <table>
@@ -37,10 +40,11 @@ Once you have installed the [**DSV Engine**](../../engine/index.md), you can use
 <td>
 
 ```json
+{
  "attributes": {
     "grantPermissions": {
       "what": "SELECT",
-      "where": "products"
+      "where": "exampletable"
     },
     "linkConfig": {
       "linkType": "dynamic",
@@ -49,7 +53,8 @@ Once you have installed the [**DSV Engine**](../../engine/index.md), you can use
     "pool": "pool1",
     "ttl": 900,
     "userPrefix": "test"
-  },
+  }
+}
 ```
 
 </td>
@@ -78,4 +83,4 @@ Read the MSSQL dynamic secret. A randomly chosen engine in the engine pool shoul
 
 ## Third Party Reference
 
-For contained server configuration details, refer to [MSSQL Database Documentation](https://docs.microsoft.com/en-us/sql/relational-databases/databases/contained-databases?view=sql-server-ver15)
+For contained server configuration details, refer to [MSSQL Database Documentation](https://docs.microsoft.com/en-us/sql/relational-databases/databases/contained-databases?view=sql-server-ver15) 
