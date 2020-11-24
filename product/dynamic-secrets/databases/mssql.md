@@ -26,8 +26,6 @@ Once you have installed the [**DSV Engine**](../../engine/index.md), you can use
         "username": "yourusername"
       },
     ```
-
-
 1. **Create a new dynamic secret.** The dynamic secret will be linked to the root secret. Use the following format:
 
 <table>
@@ -39,10 +37,11 @@ Once you have installed the [**DSV Engine**](../../engine/index.md), you can use
 <td>
 
 ```json
+{
  "attributes": {
     "grantPermissions": {
       "what": "SELECT",
-      "where": "products"
+      "where": "exampletable"
     },
     "linkConfig": {
       "linkType": "dynamic",
@@ -51,7 +50,8 @@ Once you have installed the [**DSV Engine**](../../engine/index.md), you can use
     "pool": "pool1",
     "ttl": 900,
     "userPrefix": "test"
-  },
+  }
+}
 ```
 
 </td>
