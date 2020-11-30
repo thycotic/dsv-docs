@@ -4,13 +4,15 @@
 
 # Microsoft SQL Dynamic Secrets
 
-Once you have installed the [**DSV Engine**](../../engine/index.md), you can use DSV to create Dynamic Secrets. DSV currently supports **contained** MSSQL databases. 
+Once you have installed the [**DSV Engine**](../../engine/index.md), you can use DSV to create Dynamic Secrets. DSV currently supports **contained** MSSQL databases. DSV does not currently support **traditional** MSSQL databases.
 
 ## Dynamic Secret Setup
 
 1. **Create a Base Secret**
 
     In the CLI, create a base secret containing the credentials of the MSSQL account that will be responsible for creating new accounts on a given server. You must mark the secret as a MSSQL root secret by including **`type`** with a value of **`mssql`**. All fields in the **`data`** object are required.
+
+    >**Note**: Port is an integer and does not require quotations.
 
     *Example Base Secret*:
 
@@ -25,9 +27,10 @@ Once you have installed the [**DSV Engine**](../../engine/index.md), you can use
         "port": 1433,
         "server": "localhost",
         "username": "yourusername"
-      },
+      }
     }
     ```
+
 1. **Create a new dynamic secret.** The dynamic secret will be linked to the root secret. Use the following format:
 
 <table>
@@ -82,4 +85,4 @@ Read the MSSQL dynamic secret. A randomly chosen engine in the engine pool shoul
 
 ## Third Party Reference
 
-For contained server configuration details, refer to [MSSQL Database Documentation](https://docs.microsoft.com/en-us/sql/relational-databases/databases/contained-databases?view=sql-server-ver15)
+For contained server configuration details, refer to [MSSQL Database Documentation](https://docs.microsoft.com/en-us/sql/relational-databases/databases/contained-databases?view=sql-server-ver15) 

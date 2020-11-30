@@ -14,9 +14,11 @@ IaaS Dynamic Secrets
 * [GCP](iaas/gcp.md)
 
 [Database](databases/index.md) Dynamic Secrets
+* [MSSQL](databases/mssql.md)
 * [MySQL](databases/mysql.md)
 * [Oracle](databases/oracle.md)
 * [PostgreSQL](databases/postgresql.md)
+
 
 ## Linking
 
