@@ -43,6 +43,14 @@ The output will include a *clientId* and *clientSecret* suitable for use during 
 
 > NOTE: The client Secret is available only when you create the client. If the Secret is lost, delete the client and create a new one.
 
+#### Ephemeral Credentials
+
+Client credentials can be made temporary by using the `--uses` and `--ttl` flags.
+
+**`--uses`** determines the number of times the client credential can be read. If set to 0, it can be used infinitely. Uses defaults to 0.
+
+**`--ttl`** determines long until the client credential expires. If set to 0, it can be used indefinitely. Ttl defaults to 0.
+
 ### Search
 
 The *search* command accepts as its `--query` parameter the name of a Role, and searches for clients having that Role.
@@ -90,6 +98,8 @@ There will be times when machines or applications will require access to DSV to 
  Where "role" is a Role created earlier and is attached to a Policy to provide the proper peermissions.
  "--url" is the flag that tells DSV to create a one-time use URL instead of a Client Secret right now.
  "--url-ttl" is the time to live of the URL in sseconds.  If it is not accessed in that timeframe, then it will become invalid.
+
+>**NOTE**: If a TTL is set for both the URL and the underlying client credentials, then the timer for the client credentials will not start until the URL is accessed.
 
 The result will look something like this:
 
