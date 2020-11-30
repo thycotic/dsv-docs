@@ -14,6 +14,8 @@ To create Dynamic Secrets for PostgreSQL:
 
     In the CLI, create a base secret containing the credentials of the PostgreSQL account that will be responsible for creating new accounts on a given server. You must mark the secret as a PostgreSQL root secret by including **`type`** with a value of **`postgres`**. All fields in the **`data`** object are required.
 
+    >**Note**: Port is an integer and does not require quotations.
+
     *Example Base Secret*:
 
     ```json

@@ -22,6 +22,11 @@ The Command Line Interface (CLI) is locally installed using OS-specific executab
 |December 2020           |**CLI Version**: 1.16.0|
 |                        |**Engine Version**: 1.2|
 |                        |**new feature**: Added dynamic secret support for contained MSSQL databases.|
+|                        |**new feature**: Added ephemeral client credentials. Credentials can be limited using the `--uses` and `--ttl` flags.|
+|                        |**improvement**: Passwords can no longer be reused, increasing security.|
+|                        |**improvement**: DSV APIs now limit the number of invalid login attempts, increasing security.|
+|                        |**improvement**: Azure dynamic secrets now use consistent naming conventions between the base and dynamic secret.|
+|                        |**improvement**: strictTransportHeader is present in requests.|
 |November 2020           |**CLI Version**: 1.15.0                      |
 |                        |**Engine Version**: 1.1                     |
 |                        |**new feature**: Added dynamic secret support for PostgreSQL and Oracle databases.|
