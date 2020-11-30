@@ -58,8 +58,6 @@ In DSV you can create dynamic Secrets from either an existing service principal 
 ## Dynamic Secret for an Existing Service Principal
 Create a dynamic Secret that points to the base Secret via its attributes. **The dynamic Secret does not have any data stored in it because data is only populated when you read the Secret.**
 
-     
-**Attribute Guide**
 | Attribute                 | Description                                                         |
 | --------------            | ------------------------------                                      |
 | roleName                  | Optional- Azure role name to be assigned to the existing service principal.  Does not change existing principal's role    |
