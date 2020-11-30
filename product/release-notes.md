@@ -19,6 +19,9 @@ The Command Line Interface (CLI) is locally installed using OS-specific executab
 
 | **Update**             | **Notes**                                  |
 |------------------------|--------------------------------------------|
+|December 2020           |**CLI Version**: 1.16.0|
+|                        |**Engine Version**: 1.2|
+|                        |**new feature**: Added dynamic secret support for contained MSSQL databases.|
 |November 2020           |**CLI Version**: 1.15.0                      |
 |                        |**Engine Version**: 1.1                     |
 |                        |**new feature**: Added dynamic secret support for PostgreSQL and Oracle databases.|
