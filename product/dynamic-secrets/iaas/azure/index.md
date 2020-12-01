@@ -33,7 +33,7 @@ Create a file named `secret_base.json` substituting your values:
 
 ```json
 {
-    	"subscriptionId": "yourusbscriptionId",
+    	"subscriptionId": "yoursubscriptionId",
 		"tenantId":       "yourtenantId",
 		"clientId":       "yourclientId",
 		"clientSecret":   "yoursecret"
