@@ -38,6 +38,7 @@ To create a dynamic secret in Oracle, first create a base secret.
 ### **Create a Base Secret**
 
 In the CLI, create a base secret containing the credentials of the account that will be responsible for creating new accounts on a given server. You must mark the secret as an Oracle root secret by including **`type`** with a value of **`oracle`**. All fields in the **`data`** object are required.
+>**Note**: Port is an integer and does not require quotations.
 
 *Example Base Secret*:
 
