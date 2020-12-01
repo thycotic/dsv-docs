@@ -21,10 +21,10 @@ The base Secret holds the credentials required for DSV to perform API calls to A
 
 | Attribute                 | Description                                                         |
 | --------------            | ------------------------------                                      |
-| subscription_id              | Required - The subscription ID holding the resources you wish to access using Azure Active Directory.   |
-| tenant_id                    | Required - The tenant ID for Azure Active Directory. Azure lists it in places as "Directory (tenant) ID"                  |
-| client_id                    |  Required - The OAuth2 client ID to connect to Azure. Azure lists it in places as "Application (client) ID" |
-| client_secret                |  Required - The OAuth2 client secret to connect to Azure.
+| subscriptionId              | Required - The subscription ID holding the resources you wish to access using Azure Active Directory.   |
+| tenantId                    | Required - The tenant ID for Azure Active Directory. Azure lists it in places as "Directory (tenant) ID"                  |
+| clientId                    |  Required - The OAuth2 client ID to connect to Azure. Azure lists it in places as "Application (client) ID" |
+| clientSecret                |  Required - The OAuth2 client secret to connect to Azure.
 | environment                 |  Optional - The Azure environment. If not specified, DSV will use Azure Public Cloud. |
 
 ![](./images/spacer.png)
@@ -33,10 +33,10 @@ Create a file named `secret_base.json` substituting your values:
 
 ```json
 {
-    	"subscriptionId": "6ca2adeb-7b44-4c7f-93fc-2d5b9729a8c1",
-		"tenantId":       "11f54b31-ffb9-42b5-8fda-76c734a7796c",
-		"clientId":       "4d95b358-079d-4d6d-85c4-943c0f1d91cd",
-		"clientSecret":   "tMQ5ZEP?.sj46e15123ba3b5b]"
+    	"subscriptionId": "yoursubscriptionId",
+		"tenantId":       "yourtenantId",
+		"clientId":       "yourclientId",
+		"clientSecret":   "yoursecret"
 }
 ```
 Create the base Secret via the CLI substituting a path of your choosing:
@@ -56,9 +56,8 @@ In DSV you can create dynamic Secrets from either an existing service principal 
 
 
 ## Dynamic Secret for an Existing Service Principal
-Create a dynamic Secret that points to the base Secret via its attributes. The dynamic Secret doesn't have any data stored in it because data is only populated when you read the Secret.
+Create a dynamic Secret that points to the base Secret via its attributes. **The dynamic Secret does not have any data stored in it because data is only populated when you read the Secret.**
 
-     
 
 | Attribute                 | Description                                                         |
 | --------------            | ------------------------------                                      |
@@ -69,60 +68,53 @@ Create a dynamic Secret that points to the base Secret via its attributes. The d
 
 ![](./images/spacer.png)
 
-Create an attributes json file named `secret_attributes.json` substituting your values
+1. Create an attributes json file named `secret_attributes.json` substituting your values
 
-```json
-{
-	"linkConfig": {
-		"linkType": "dynamic",
-		"linkedSecret": "azure:base:api-account"
-	},
-	"roleName":       "Contributor",
-	"appId": "f81b3c6d-2ce9-47d4-ad2d-fef8390792a2", 
-	"appObjectId" : "5fe218ee-cb58-4089-ac9f-b1b68971ad73",
-	"ttl": 360  
-}
-```
-
-Create the dynamic Secret via the CLI substituting the path of your choosing.
+    ```json
+    {
+    	"linkConfig": {
+    		"linkType": "dynamic",
+    		"linkedSecret": "azure:base:api-account"
+    	},
+    	"roleName":       "Contributor",
+    	"appId": "f81b3c6d-2ce9-47d4-ad2d-fef8390792a2", 
+    	"appObjectId" : "5fe218ee-cb58-4089-ac9f-b1b68971ad73",
+    	"ttl": 900  
+    }
+    ```
+1. Create the dynamic Secret via the CLI substituting the path of your choosing.
  
-```BASH
-dsv secret create --path azure/dynamic/api-account --attributes '@secret_attributes.json' --desc "azure dynamic credential"
-```
-
-
-Now anytime you read the dynamic Secret, the data is populated with the temporary Azure access credentials.
-
-
-```BASH
-dsv secret read --path azure/dynamic/api-account
-```
-
-Returns a result like:
-
+    ```BASH
+    dsv secret create --path azure/dynamic/api-account --attributes '@secret_attributes.json' --desc "azure dynamic credential"
+    ```
+1. Now anytime you read the dynamic Secret, the data is populated with the temporary Azure access credentials. The input
+    ```BASH
+    dsv secret read --path azure/dynamic/api-account
+    ```
+Will return the result:
 
 ```json
 {
-    "id": "6e7de928-5027-4afb-bbff-b3ee59f9c24f",
+    "id": "yourId",
     "path": "dynamic:azure:sp-static",
     "attributes": {
-        "appId": "f81b3c6d-2ce9-47d4-ad2d-fef8390792a2",
-        "appObjectId": "5fe218ee-cb58-4089-ac9f-b1b68971ad73",
+        "clientId": "yourpaddId",
+        "appObjectId": "yourappObjectId",
         "linkConfig": {
             "linkType": "dynamic",
             "linkedSecret": "azure:base:api-account"
         },
         "roleName": "Contributor",
-        "ttl": 360
+        "ttl": 900
     },
     "data": {
-        "appObjectId": "5fe218ee-cb58-4089-ac9f-b1b68971ad73",
-        "client_id": "f81b3c6d-2ce9-47d4-ad2d-fef8390792a2",
-        "client_secret": "bfe6ac86-3671-4fd9-8f76-8f2e0f22495d",
+        "appObjectId": "yourappObjectId",
+        "clientId": "yourclientId",
+        "clientsecret": "yoursecret",
         "role": "Contributor",
-        "subscription_id": "6ca2adeb-7b44-4c7f-93fc-2d5b9729a8c1",
-        "tenant_id": "11f54b31-ffb9-42b5-8fda-76c734a7796c",
-        "ttl": 360
+        "subscriptionId": "yoursubscriptionId",
+        "tenantId": "yourtenantId",
+        "ttl": 900
     },
     "created": "2020-02-24T16:42:34Z",
     "lastModified": "2020-03-04T19:21:04Z",
@@ -130,12 +122,10 @@ Returns a result like:
 }
 ```
 
-
-
 ## Dynamic Secret for a Temporary Service Principal 
 
 > Note: Creating service principal and assigning role in same request takes tens of seconds (over a minute has been seen), The command has been broken down into two separate calls. In the first call the service principal will be returned along with the task id that fired in the background for role assignment. You will need to wait to use that temporary service principal or check via the Azure portal or via the DSV API (provided below)
-
+ 
 | Attribute          | Description                                                         |
 | --------------         | ------------------------------                               | 
 | roleName                  | Optional - If no "roleID" is assigned, DSV will try to look-up the built-in Azure role by this name.      
@@ -145,7 +135,7 @@ Returns a result like:
 
 >Note:  Azure built-in role names and IDs can be found [here](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles)
 
-Create an attributes json file named `secret_attributes.json` substituting your values.
+1. Create an attributes json file named `secret_attributes.json` substituting your values.
 
 ```json
 {
@@ -162,19 +152,16 @@ Create an attributes json file named `secret_attributes.json` substituting your 
 }
 
 ```
-
-Create a new Dynamic Secret via the CLI substituting the path of your choosing.
+2. Create a new Dynamic Secret via the CLI substituting the path of your choosing.
  
 ```BASH
 dsv secret create --path /azure/dynamic/api-account --attributes '@secret_attributes.json' --desc "azure dynamic credential" 
 ```
-
-
-Now anytime you read the dynamic Secret, the data is populated with the temporary azure access credentials.
+3. Now anytime you read the dynamic Secret, the data is populated with the temporary azure access credentials.
 
 ```json
 {
-    "id": "27a405c6-14b4-4d4b-b566-9fe23f1012c2",
+    "id": "yourId",
     "path": "dynamic:azure:ac-api",
     "attributes": {
         "linkConfig": {
@@ -189,15 +176,15 @@ Now anytime you read the dynamic Secret, the data is populated with the temporar
     "description": "azure root credential",
     "data": {
         "appObjectId": "e463477c-7d90-4743-92f2-c7f44ede8ec9",
-        "client_id": "945d25cb-7697-4648-b574-e8a660154269",
-        "client_secret": "ce1d072d-449d-4052-9a81-0d7ef982f7a4",
-        "role": "Contributor",
-        "roleAssignmentId": "/subscriptions/6ca2adeb-7b44-4c7f-93fc-2d5b9729a8c1/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
+        "clientId": "945d25cb-7697-4648-b574-e8a660154269",
+        "clientSecret": "yoursecret",
+        "roleName": "Contributor",
+        "roleId": "youroleId",
         "roleAssignmentStatus": "created",
         "roleAssignmentTaskId": "task_3da0a37c-0a1c-4ebd-8829-dbe7b988b36f",
-        "spObjectId": "1782611c-99c2-418b-b672-783e3cf8bd14",
-        "subscription_id": "6ca2adeb-7b44-4c7f-93fc-2d5b9729a8c1",
-        "tenant_id": "11f54b31-ffb9-42b5-8fda-76c734a7796c",
+        "servicePrincipleId": "1782611c-99c2-418b-b672-783e3cf8bd14",
+        "subscriptionId": "6ca2adeb-7b44-4c7f-93fc-2d5b9729a8c1",
+        "tenantId": "11f54b31-ffb9-42b5-8fda-76c734a7796c",
         "ttl": 36000
     },
     "created": "2020-02-12T20:57:44Z",
@@ -206,7 +193,7 @@ Now anytime you read the dynamic Secret, the data is populated with the temporar
 }
 ```
 
-It takes some time for the temporary service principal to be created, so you can check using the Azure portal for the new service principal or use the DSV API: 
+4. It takes some time for the temporary service principal to be created, so you can check using the Azure portal for the new service principal or use the DSV API: 
 > Use the `roleAssignmentTaskId` from above response
 
 | method                 | path                                                         |
