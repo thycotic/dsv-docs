@@ -8,15 +8,11 @@
 
 ### Linux Video Guide
 
-<iframe width="420" height="315"
-src="https://vimeo.com/490936730/4257cd4aa0">
-</iframe>
+<iframe src="https://player.https://vimeo.com/490936730/4257cd4aa0" width="{video_width}" height="{video_height}" frameborder="0" title="{video_title}" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 ### Windows Video Guide
 
-<iframe width="420" height="315"
-src="https://vimeo.com/490936839/62ba250183">
-</iframe>
+<iframe src="https://player.https://vimeo.com/490936839/62ba250183" width="{video_width}" height="{video_height}" frameborder="0" title="{video_title}" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 ## Step-by-step Guide
 
