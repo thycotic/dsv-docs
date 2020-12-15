@@ -184,7 +184,3 @@ dsv secret update servers/us-east/server01 --data '{"host": "server01", "passwor
   "version": "1"
 }
 ```
-
-![](./images/spacer.png)
-
-![](./images/spacer.png)
