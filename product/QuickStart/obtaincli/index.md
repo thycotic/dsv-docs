@@ -4,6 +4,22 @@
 
 # Configuring the CLI
 
+## Video Guide
+
+### Linux Video Guide
+
+<iframe width="420" height="315"
+src="https://vimeo.com/490936730/4257cd4aa0">
+</iframe>
+
+### Windows Video Guide
+
+<iframe width="420" height="315"
+src="https://vimeo.com/490936839/62ba250183">
+</iframe>
+
+## Step-by-step Guide
+
 1. **Download the Command Line Interface** executable files onto each of the workstations where you will operate DevOps Secrets Vault. 
     * Thycotic provides DSV CLI executables for multiple platforms [here](https://dsv.thycotic.com/downloads).
 
