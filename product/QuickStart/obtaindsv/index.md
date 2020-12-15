@@ -4,6 +4,11 @@
 
 # Sign Up with Thycotic for a Tenant
 
+## Video Guide
+
+<iframe src="https://player.vimeo.com/video/490936975/" width="640" height="360" frameborder="0" title="{video_title}" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+## Tenant Setup Guide
 Your **tenant** is your DevOps Secrets Vault cloud account and the rights to access it.
 To get your **tenant**:
 
