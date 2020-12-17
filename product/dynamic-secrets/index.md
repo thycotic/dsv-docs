@@ -36,7 +36,7 @@ The linking is done through the `attributes` section in the Secret JSON.  For ex
 
 | Attribute                 | Description                                                                                       |
 | --------------            | ------------------------------                                                                    |
-| linkConfig                | link type and path to the linked Secret.                                                          |
+| linkConfig                | Link type and path to the linked Secret.                                                          |
 | linkConfig.linkType       | The only valid value is "dynamic"                                                                 |
 | linkConfig.linkedSecret   | Secret path to the base credential                                                                |
 
