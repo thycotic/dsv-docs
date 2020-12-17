@@ -5,6 +5,11 @@
 # CLI Secrets Examples
 
 ## Create a Secret
+
+### Video Guide
+
+<iframe src="https://player.vimeo.com/video/490936887/" width="640" height="360" frameborder="0" title="{video_title}" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
 ### Using a file
 
 Here is an example of JSON that could be made a Secret. The JSON is arbitrary, so you can set any number of fields (key-value pairs).  
@@ -179,7 +184,3 @@ dsv secret update servers/us-east/server01 --data '{"host": "server01", "passwor
   "version": "1"
 }
 ```
-
-![](./images/spacer.png)
-
-![](./images/spacer.png)

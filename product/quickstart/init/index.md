@@ -13,7 +13,11 @@ DSV CLI initialization presents you with a series of prompts and options. If you
 * local or federated user, and if federated, which authentication provider.
 * credentials - username or access key, password, or secret key.
 
-## CLI Setup
+## Video Guide
+
+<iframe src="https://player.vimeo.com/video/490936892/" width="640" height="360" frameborder="0" title="{video_title}" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+## CLI Setup Guide
 
 
 <table>
