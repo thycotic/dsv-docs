@@ -10,13 +10,13 @@
 
 * And two users:
 
-    local@company.com *and* thycoticoneuser@company.com
+    developer1@company.com *and* developer2@company.com
 
 You can create a policy to allow:
 
   * both users access to servers:us-east:server01
-  * local@company.com to **have access** to servers:us-east:production:server01
-  * thycoticoneuser@company.com to be **denied access** to servers:us-east:production:server01
+  * developer1@company.com to **have access** to servers:us-east:production:server01
+  * developer2@company.com to be **denied access** to servers:us-east:production:server01
 
 ## Create a Group
 
@@ -30,7 +30,7 @@ Optionally, we can put these Users in a Group with two commands.
 * The second command puts the Users in the Group
 
   ```bash
-  dsv group add-members --group-name firstgroup --data '{"memberNames":["local@company.com","thy-one:thycoticoneuser@company.com"]}'
+  dsv group add-members --group-name firstgroup --data '{"memberNames":["developer1@company.com","developer2@company.com"]}'
   ```
 
 ## Create Policy to Allow Access
@@ -44,11 +44,9 @@ The admin has to create a policy for the Group to get access to the Secrets.  He
 * ***path*** starts with **secrets:** followed by the secret path.
     >NOTE: *resources* is not specified separately, but will default to the path and everything below it, so in this case `secrets:servers:us-east:<.*>`
 
-* ***actions*** is a wildcard, so full `create, read, update, delete, list, assign` are allowed.
+* ***actions*** is a wildcard, so full `create, read, update, delete` are allowed.
 
 * ***subjects*** are the Users that are getting access to the secrets.  
-
-    >Note:  The local user does not need a prefix, but any federated users, in this case Thycotic One, refers to the name of the auth provider.  The default auth-provider name for Thycotic One in DSV is **thy-one**.
 
 * ***effect*** will either allow or deny access. 
 
@@ -71,14 +69,14 @@ The admin has to create a policy for the Group to get access to the Secrets.  He
     version: "0"
     ```
 
-* This policy will now enable both Users (local@company.com and thycoticoneuser@company.com) to gain full access to all secrets located at the path `servers:us-east` and below.
+* This policy will now enable both Users (developer1@company.com and developer2@company.com) to gain full access to all secrets located at the path `servers:us-east` and below.
 
 ## Create Policy to Deny Access
 
-If we decide that the *thycoticoneuser@company.com* should no longer have access to the secrets at `servers:us-east:production`, we can write another policy to deny access. The command would look like this:
+If we decide that the *developer2@company.com* should no longer have access to the secrets at `servers:us-east:production`, we can write another policy to deny access. The command would look like this:
 
 ```bash
-dsv policy create --path secrets:servers:us-east:production --actions '<.*>' --desc 'Deny Policy' --subjects 'users:<thy-one:thycoticoneuser@company.com>' --effect deny`
+dsv policy create --path secrets:servers:us-east:production --actions '<.*>' --desc 'Deny Policy' --subjects 'users:<developer2@company.com>' --effect deny`
 ```
 
 Use the command **`dsv policy read secrets:servers:us-east:production -e yaml`** to view the resulting policy:
@@ -96,10 +94,10 @@ permissionDocument:
   resources:
   - secrets:servers:us-east:production:<.*>
   subjects:
-  - users:<thy-one:thycoticoneuser@company.com>
+  - users:<developer2@company.com>
 version: "0"
 ```
 
-Now local@company.com has access to everything at `servers:us-east` and below, including `servers:us-east:production`.  However, thycoticoneuser@company.com only has access to the secrets at `servers:us-east` and not at `servers:us-east:production`
+Now developer1@company.com has access to everything at `servers:us-east` and below, including `servers:us-east:production`.  However, developer2@company.com only has access to the secrets at `servers:us-east` and not at `servers:us-east:production`
 
 This is the end of the quick-start guide, but for more on policies see [CLI Reference/Policy](../cli-ref/policy.md) in this documentation.

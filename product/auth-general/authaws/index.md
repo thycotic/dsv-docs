@@ -61,8 +61,7 @@ version: "0"
 When you create a User in AWS, remember that the username serves as a friendly name within DSV. It does not have to match the Identity Access Management (IAM) username, but the provider must match the provider name previously configured.
 
 ```BASH
-dsv user create --username test-admin --external-id
-arn:aws:iam::xxxxxxxxxxx:user/test-admin --provider aws-dev
+dsv user create --username test-admin --external-id arn:aws:iam::xxxxxxxxxxx:user/test-admin --provider aws-dev
 ```
 
 After creating the User, modify the config to give that User access to the default administrator permission policy.
@@ -132,8 +131,7 @@ This example assumes that you:
 Create a corresponding Role in DSV with the external-id of the IAM Role's ARN.
 
 ```BASH
-dsv role create --name test-role --external-id
-arn:aws:iam::xxxxxxxxxxx:role/testlogin --provider aws-dev
+dsv role create --name test-role --external-id arn:aws:iam::xxxxxxxxxxx:role/testlogin --provider aws-dev
 ```
 
 You should see a result similar to this:

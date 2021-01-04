@@ -62,8 +62,7 @@ First you will need to configure the User that corresponds to an [Azure User Ass
 The username is a friendly name within DSV. It does not have to match the MSI username, but the provider must match the resource id of the MSI in Azure.
 
 ```BASH
-dsv user create --username test-api --provider azure-prod --external-id
-/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/build/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-api
+dsv user create --username test-api --provider azure-prod --external-id /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/build/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-api
 ```
 
 Modify the config to give that User access to the default administrator permission policy. 
@@ -87,7 +86,8 @@ Add the User as a subject to the **Default Admin Policy**. Third party accounts 
  - <.*>
  subjects:
  - users:<azure-prod:test-api|admin@company.com>
-<snip
+<snip>
+```
 
 On a VM in Azure that has the User MSI assigned as the identity, download the DVS CLI executable appropriate to the OS of the VM and initialize the CLI.
 
@@ -146,7 +146,8 @@ Add the User as a subject to the **Default Admin Policy**. Third party accounts 
  subjects:
  - users:<azure-prod:test-api|admin@company.com>
  - roles:<azure-prod:identity-rg>
-<snip
+<snip>
+```
 
 On a VM in Azure that is part of the resource group and has a system-assigned MSI, download the DVS CLI executable appropriate to the OS of the VM and initialize the CLI.
 
