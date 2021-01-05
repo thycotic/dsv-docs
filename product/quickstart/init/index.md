@@ -15,11 +15,8 @@ DSV CLI initialization presents you with a series of prompts and options. If you
 
 ## Video Guide
 
-<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< jg.dev
-<iframe src="https://player.vimeo.com/video/490936892/" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-========================================================================
 <iframe src="https://player.vimeo.com/video/490936892/" width="640" height="360" frameborder="0" title="Initialize the CLI" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> jg.dev.januaryreleasenotes
+
 
 ## CLI Setup Guide
 
