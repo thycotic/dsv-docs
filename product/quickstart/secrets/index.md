@@ -5,6 +5,11 @@
 # CLI Secrets Examples
 
 ## Create a Secret
+
+### Video Guide
+
+<iframe src="https://player.vimeo.com/video/490936887/" width="640" height="360" frameborder="0" title="{video_title}" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
 ### Using a file
 
 Here is an example of JSON that could be made a Secret. The JSON is arbitrary, so you can set any number of fields (key-value pairs).  
@@ -148,9 +153,9 @@ version: "0"
 When you need to locate a specific field in a JSON output, use a JSON filter. An example use case is writing scripts that need to obtain a password but lack the capacity to efficiently parse JSON.
 
 ```BASH
-dsv secret read --path /servers/us-east/server01 -bf data.password
-secretp@ssword
+dsv secret read --path /servers/us-east/server01 -bf data.password 
 ```
+Would return just the password.
 
 ## Separately Update Attributes, Data, and Description
 
