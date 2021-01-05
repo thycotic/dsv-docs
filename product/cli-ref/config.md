@@ -1,5 +1,5 @@
 ﻿[title]: # (Admin Policy and Auth Provider)
-[tags]: # (DevOps Secrets Vault,DSV,)
+[tags]: # (DevOps Secrets Vault,DSV,authorization,config)
 [priority]: # (4800)
 
 # Admin Policy and Auth Providers
@@ -118,9 +118,11 @@ dsv config edit --encoding YAML
 
 The editor will open the OS default editor and you can modify the *effect* field.
 
-### Add an Authentication Provider
+### Authentication Providers
 
-The general command is:
+#### Add an Authentication Provider 
+
+The general command to add an Authentication Provider is:
 
 ```BASH
 dsv config auth-provider create --name <name> --type <type> --<properties>
@@ -160,12 +162,19 @@ Initially, your tenant will only have a Thycotic One connection
       "properties": {
         "baseUri": "https://thycotic-one-sscdev-dev-eastus-web01.azurewebsites.net",
         "clientId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        "clientSecret": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        "clientSecret": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "sendWelcomeEmail":false
       },
       "type": "thycoticone",
       "version": "1"
     },
 ```
+
+#### Edit an Authentication Provider
+
+Make changes to an authentication provider using the `edit` command and the name (path) of the authentication provider:
+
+`dsv config auth-provider edit <name>`
 
 ![](./images/spacer.png)
 

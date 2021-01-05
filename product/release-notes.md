@@ -19,6 +19,15 @@ The Command Line Interface (CLI) is locally installed using OS-specific executab
 
 | **Update**             | **Notes**                                  |
 |------------------------|--------------------------------------------|
+|January 2021            |**CLI Version**: 1.17.0|
+|                        |**Engine Version**: 1.3|
+|                        |**new feature**: Added `sendWelcomeEmail` property. When a user is created using Thycotic One for authentication, setting `sendWelcomeEmail` to `true` will send a new login email to the user.|
+|                        |**new feature**: Added ability to modify authentication provider details using the `edit` subcommand.|
+|                        |**improvement**: After account lockout from failed authentication, the CLI now displays the time remaining until reauthentication is available.|
+|                        |**improvement**: Updated dsv-engine validation and API error messages for clarity.|
+|                        |**fixed**: When querying log data, the correct dates will display.|
+|                        |**fixed**: Client credential `URL` value no longer switches with search.|
+|                        |**fixed**: External ID is no longer required for Thycotic One users.|
 |December 2020           |**CLI Version**: 1.16.0|
 |                        |**Engine Version**: 1.2|
 |                        |**new feature**: Added dynamic secret support for contained MSSQL databases.|
