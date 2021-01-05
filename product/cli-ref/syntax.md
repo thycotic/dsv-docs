@@ -18,10 +18,12 @@ For example, in `dsv role create`, `role` is the object of the command `create`.
 | cli-config | cli-config                                  | manage the CLI authentication file                                                                    |
 | client     | client (`<client-id> * --client-id`)   | manage client credentials for application vault access                                    |
 | config     | config                                 | manage the top level configuration document for the admin policy and authentication providers              |
+| engine     | engine                                 | create, delete, read, and ping engines                                                    |
 | eval       | eval                                   | check the value of a command line flag or variable                                        |
 | group      | group (`<group-name> * --group-name`)  | manage collections of Users uniformly by placing them in a managed Group                  |
 | init       | cli-config init or init                       | initialize DSV on first run                                                               |
 | pki        | pki                                    | manage certificate issuance                                                               |
+|pool        | pool                                | create, delete, and read engine pools                                                        |
 |policy     | policy (`<path> * --path * -r`)        | manage policies on permissions for Secrets, Roles, Users, and other entities in the vault |
 | role       | role (`<name> * --name * -n`)          | manage Roles                                                                              |
 | secret     | secret (`<path> * --path * -r`)        | create, update, and retrieve Secrets from the vault                                       |

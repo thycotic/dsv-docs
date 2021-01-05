@@ -48,9 +48,9 @@ Create a file named `secret_root.json` substituting your values:
 
 ```json
 {
-        "accessKey": "AIA2RAVTSMNW437LM",
+        "accessKey": "youraccesskey",
         "region": "us-east-1",
-        "secretKey": "SpN5Ipjvgepz0/q0ZNGmFhhLkUr+Uie5+D3CE"
+        "secretKey": "yoursecretkey"
 }
 
 ```
@@ -116,14 +116,14 @@ returns a result like:
     "ttl": 1200
   },
   "data": {
-    "accessKey": "ASIAZTRAVTSMN5P6P",
+    "accessKey": "youraccesskey",
     "expiration": "2020-02-06T18:49:17Z",
-    "secretKey": "Is5L79Y1LgtOistJv+x0yVZ2/KLPWUUsUUj",
-    "sessionToken": "FwIv...Zggfj+6nbiT9IOrEw==",
+    "secretKey": "yoursecretkey",
+    "sessionToken": "yoursessiontoken",
     "ttl": 1200
   },
   "description": "",
-  "id": "db38e569-5d7f-4ad8-954c-ac846d528947",
+  "id": "yourId",
   "version": "0"
 }
 ```
@@ -136,9 +136,9 @@ import json
 from botocore.exceptions import ClientError
 
 sess = boto3.Session(
-    aws_access_key_id="ASIAZTRAVTSMN5P6P",
-    aws_secret_access_key="Is5L79Y1LgtOistJv+x0yVZ2/KLPWUUsUUj",
-    aws_session_token="FwIv...Ay93XTqVBGyeuodcw=="
+    aws_access_key_id="accesskeyid",
+    aws_secret_access_key="secretaccesskey",
+    aws_session_token="yoursessiontoken"
 )
 
 client = sess.client("codedeploy")
@@ -231,9 +231,9 @@ Create a file named `secret_root.json` substituting your values:
 
 ```json
 {
-        "accessKey": "AIA2RAVTSMNW437LM",
+        "accessKey": "youraccesskey",
         "region": "us-east-1",
-        "secretKey": "SpN5Ipjvgepz0/q0ZNGmFhhLkUr+Uie5+D3CE"
+        "secretKey": "secretkey"
 }
 ```
 Create the Secret via the CLI at a path of your choosing:
@@ -297,14 +297,14 @@ returns a result like:
     "ttl": 1200
   },
   "data": {
-    "accessKey": "ASIAZTRAVBIVK5SLU",
+    "accessKey": "youraccesskey",
     "expiration": "2020-02-06T18:49:17Z",
-    "secretKey": "Xh/xqw5Ipjvgepz0i6un+ZUUsUUj",
-    "sessionToken": "FwIv...Zggfj+TexEiLtE3h1R1UvllXCHzk5==",
+    "secretKey": "yoursecretkey",
+    "sessionToken": "yoursessiontoken",
     "ttl": 1200
   },
   "description": "",
-  "id": "34fb64d7-18da-453d-9487-3d1c082ba372",
+  "id": "yourid",
   "version": "0"
 }
 ```

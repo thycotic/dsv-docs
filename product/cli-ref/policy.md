@@ -13,7 +13,7 @@ To get a json encoded list of all Policies, use:
 
 You can add a query item to search Policies by path:
 
-`dsv policy search secrets/database` or `dsv policy search --query secrets/databases`
+`dsv policy search secrets/database` **or** `dsv policy search --query secrets/databases`
 
 A typical Policy looks like this:
 
@@ -93,7 +93,11 @@ When creating or updating a Policy, a workflow can be started using `dsv policy 
 
 **Solution:** Two Policies. The first provides the Subjects (*developer1@thycotic.com|developer2@thycotic.com*) general access to the Secrets resources at the path *secrets:servers:us-east-1:<.*>*.
 
-The direct command to create this policy is `dsv policy create --path secrets:servers:us-east-1 --actions '<.*>' --desc 'Developer Policy' --subjects 'users:<developer1@thycotic.com|developer2@thycotic.com>' --effect allow`  With the trickiest part being to remember the "secrets" prefix on the path.
+The direct command to create this policy is 
+```CLI
+dsv policy create --path secrets:servers:us-east-1 --actions '<.*>' --desc 'Developer Policy' --subjects 'users:<developer1@thycotic.com|developer2@thycotic.com>' --effect allow  
+```
+With the trickiest part being to remember the "secrets" prefix on the path.
 
 ```yaml
 created: '2020-06-24T18:12:26Z'
@@ -116,7 +120,10 @@ resources:
 
 The second Policy adds a specific path at a level lower (*secrets:servers:us-east-1:production*) to explicitly *deny* access to *developer1@thycotic.com*, as in the following example.
 
-The command to create this policy is ``dsv policy create --path secrets:servers:us-east-1:production --actions '<.*>' --desc 'Developer Deny Policy' --subjects 'users:<developer1@thycotic.com>' --effect deny`
+The command to create this policy is 
+```CLI
+dsv policy create --path secrets:servers:us-east-1:production --actions '<.*>' --desc 'Developer Deny Policy' --subjects 'users:<developer1@thycotic.com>' --effect deny
+```
 
 ```yaml
 created: '2020-06-24T18:12:26Z'
@@ -143,7 +150,10 @@ resources:
 
 **Solution:** Use a naming convention when creating Roles and specify a prefix with a wildcard to only allow Users to assign Roles that match the naming convention, as modeled in the following example.
 
-The command to run this is `dsv policy create roles:dev-role --subjects users:developer@thycotic.com,roles:onboarding-role --desc 'Role Assignment' --resources 'roles:dev-role-<.*>' --actions assign`
+The command to run this is 
+```CLI
+dsv policy create roles:dev-role --subjects users:developer@thycotic.com,roles:onboarding-role --desc 'Role Assignment' --resources 'roles:dev-role-<.*>' --actions assign
+```
 
 ```yaml
 created: '2020-06-24T18:12:26Z'
@@ -188,7 +198,11 @@ When User2 is authenticated and needs to access the secret the command would be 
 
 **Solution:** Under the Resource entity, Secrets, enable the Group named "admins".
 
-The command to create this policy is `dsv policy create secrets --subjects groups:admins --desc 'secret search' --resources secrets --actions list`
+The command to create this policy is 
+
+```CLI
+dsv policy create secrets --subjects groups:admins --desc 'secret search' --resources secrets --actions list
+```
 
 ```yaml
 created: '2020-06-24T18:12:26Z'
@@ -221,7 +235,10 @@ version: "0"
 
 In the example below, *roles* is the entity for reading and searching (list action). In the **resources** section, *roles:dev-role-<.*>* is used for reading, while *roles* is used for searching.
 
-The command to create this policy is `dsv policy create roles --subjects users:developer@thycotic.com,roles:onboarding-role --desc 'Role Searching' --resources 'roles:dev-role-<.*>,roles' --actions read,list`
+The command to create this policy is 
+```CLI
+dsv policy create roles --subjects users:developer@thycotic.com,roles:onboarding-role --desc 'Role Searching' --resources 'roles:dev-role-<.*>,roles' --actions read,list
+```
 
 ```yaml
 created: '2020-06-24T18:12:26Z'
@@ -256,7 +273,10 @@ The syntax of the latter is important. In general, the root form of an entity ha
 
 **Solution:** Under Resources, add config:policies followed by the resource path.
 
-The command to create this policy is `dsv policy create secrets:servers --actions create,read,update,delete --resources 'secrets:servers:<.*>,config:policies:secrets:servers:<.*>' --subjects 'users:<developer1@thycotic.com|developer2@thycotic.com>'`
+The command to create this policy is 
+```CLI
+dsv policy create secrets:servers --actions create,read,update,delete --resources 'secrets:servers:<.*>,config:policies:secrets:servers:<.*>' --subjects 'users:<developer1@thycotic.com|developer2@thycotic.com>'
+```
 
 ```yaml
 created: '2020-06-24T18:12:26Z'
@@ -292,7 +312,10 @@ Now the developers can create Policies below the *secrets:servers:* path; for ex
 
 **Solution:** Add a policy for the audit resource path
 
-The command to create this policy is `dsv policy create audit --actions list --resources audit --subjects users:developer1@thycotic.com` 
+The command to create this policy is 
+```CLI
+dsv policy create audit --actions list --resources audit --subjects users:developer1@thycotic.com
+```
 
 ```yaml
 created: '2020-06-24T18:12:26Z'
@@ -322,7 +345,10 @@ version: "0"
 
 **Solution:** Add a policy for the system:log resource path
 
-The command to create this policy is `dsv policy create system:log --actions list --resources system:log --subjects users:developer1@thycotic.com` 
+The command to create this policy is 
+```CLI
+dsv policy create system:log --actions list --resources system:log --subjects users:developer1@thycotic.com
+```
 
 ```yaml
 created: '2020-06-24T18:12:26Z'
@@ -352,7 +378,10 @@ version: "0"
 
 **Solution:** Add a policy for the config:auth provider path
 
-The command to create this policy is `dsv policy create config:auth:gcp-dev --actions read,update --resources config:auth:gcp-dev --subjects users:developer1@thycotic.com` 
+The command to create this policy is 
+```CLI
+dsv policy create config:auth:gcp-dev --actions read,update --resources config:auth:gcp-dev --subjects users:developer1@thycotic.com
+```
 
 ```yaml
 created: '2020-06-24T18:12:26Z'

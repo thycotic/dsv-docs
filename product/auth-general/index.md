@@ -35,6 +35,21 @@ Routine activities associated with the client credentials authentication method 
 
 See the [Roles](../cli-ref/role.md) portion of the CLI Reference for more information.
 
+## Thycotic One Authentication
+
+Users can authenticate into DSV using a Thycotic One account. To add a User with Thycotic One authentication:
+
+>**Note**: Thycotic One authentication provides the option of sending a welcome email directly to new users with a link to create their login. To enable welcome emails, use the `dsv config auth-provider update` command and set the `sendWelcomeEmail` value to `true`.
+
+1. Create a user and assign credentials using the following format:
+    
+    **```dsv user create --username thyoneuser@yourorganization.com --provider thy-one```** 
+1. If you have set `sendWelcomeEmail` to `true` in your auth-provider configuration, the user will receive an email with a link to both confirm their email address and setup a password. 
+
+    ![Thy-One Email](./images/thyoneemail.png)
+
+1. Once the Thycotic One User follows the link and sets a password, they will be ready to authenticate to DSV.
+
 ## Third Party Authentication
 
 Besides ThycoticOne, DevOps Secrets Vault works with third party authentication providers, including:
