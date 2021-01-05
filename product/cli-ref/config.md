@@ -162,7 +162,8 @@ Initially, your tenant will only have a Thycotic One connection
       "properties": {
         "baseUri": "https://thycotic-one-sscdev-dev-eastus-web01.azurewebsites.net",
         "clientId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        "clientSecret": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        "clientSecret": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "sendWelcomeEmail":false
       },
       "type": "thycoticone",
       "version": "1"
