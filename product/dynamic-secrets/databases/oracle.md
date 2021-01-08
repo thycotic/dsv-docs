@@ -63,13 +63,7 @@ The dynamic secret will be linked to the root secret. The **grantPermissions** f
 
 #### Dynamic Secret Examples
 
-<table>
-<tr>
-<th> System Privilege Dynamic Secret
-<th> Guide
-</tr>
-<tr style="vertical-align:top">
-<td>
+**System Privilege Dynamic Secret Example**
 
 ```json
     {
@@ -91,8 +85,7 @@ The dynamic secret will be linked to the root secret. The **grantPermissions** f
     }
 ```
 
-</td>
-<td>
+**System Privilege Dynamic Secret Guide**
 
 1. **`grantPermissions`**: Specifies the permissions assigned by Oracle to the new user account. 
     * `what`: Defines the database access permissions the user will have in Oracle. Permissions may include `CONNECT`, `CREATE`, `SELECT`, or other SQL statements.
@@ -107,17 +100,8 @@ The dynamic secret will be linked to the root secret. The **grantPermissions** f
 1. **`userPrefix`** An optional key whose value is a string prepended to all Oracle account usernames created from the dynamic secret.
 1. **`data`**: This field remains blank for dynamic secrets.
 
-</td>
-</tr>
-</table>
 
-<table>
-<tr>
-<th> Role Privilege Dynamic Secret
-<th> Guide
-</tr>
-<tr style="vertical-align:top">
-<td>
+**Role Privilege Dynamic Secret Example**
 
 ```json
 {
@@ -139,8 +123,7 @@ The dynamic secret will be linked to the root secret. The **grantPermissions** f
 }
 ```
 
-</td>
-<td>
+**Role Privilege Dynamic Secret Guide**
 
 1. **`grantPermissions`**: Specifies the permissions assigned by Oracle to the new user account. 
     * `what`: Defines the Role access the user will have in Oracle. Set this as the predefined `role name`.
@@ -155,17 +138,7 @@ The dynamic secret will be linked to the root secret. The **grantPermissions** f
 1. **`userPrefix`** An optional key whose value is a string prepended to all Oracle account usernames created from the dynamic secret.
 1. **`data`**: This field remains blank for dynamic secrets.
 
-</td>
-</tr>
-</table>
-
-<table>
-<tr>
-<th> Object Privilege Dynamic Secret
-<th> Guide
-</tr>
-<tr style="vertical-align:top">
-<td>
+**Object Privilege Dynamic Secret Example**
 
 ```json
 {
@@ -187,8 +160,7 @@ The dynamic secret will be linked to the root secret. The **grantPermissions** f
 }
 ```
 
-</td>
-<td>
+**Object Privilege Dynamic Secret Guide**
 
 1. **`grantPermissions`**: Specifies the permissions assigned by Oracle to the new user account. 
     * `what`: Defines the database access permissions the user will have in Oracle. Permissions may include `CONNECT`, `CREATE`, `SELECT`, or other SQL statements.
