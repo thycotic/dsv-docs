@@ -33,13 +33,7 @@ Once you have installed the [**DSV Engine**](../../engine/index.md), you can use
 
 1. **Create a new dynamic secret.** The dynamic secret will be linked to the root secret. Use the following format:
 
-<table>
-<tr>
-<th> Dynamic Secret
-<th> Guide
-</tr>
-<tr style="vertical-align:top">
-<td>
+**Dynamic Secret Example**
 
 ```json
 {
@@ -58,9 +52,7 @@ Once you have installed the [**DSV Engine**](../../engine/index.md), you can use
   }
 }
 ```
-
-</td>
-<td>
+**Dynamic Secret Guide**
 
 1. **`grantPermissions`**: Specifies the permissions assigned by MSSQL to the new user account. 
     * `what`: Defines the database access permissions the user will have in MSSQL. Permissions may include `CONNECT`, `CREATE`, `SELECT`, or other SQL statements.

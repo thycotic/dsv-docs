@@ -38,13 +38,7 @@ To create Dynamic Secrets for PostgreSQL:
 
 1. **Create a new dynamic secret.** The dynamic secret will be linked to the root secret. Use the following format:
 
-<table>
-<tr>
-<th> Dynamic Secret
-<th> Guide
-</tr>
-<tr style="vertical-align:top">
-<td>
+**Dynamic Secret Example**
 
 ```json
     {
@@ -65,8 +59,7 @@ To create Dynamic Secrets for PostgreSQL:
     }
 ```
 
-</td>
-<td>
+**Dyanmic Secret Guide**
 
 1. **`grantPermissions`**: Specifies the permissions assigned by PostgreSQL to the new user account. 
     * `what`: Defines the database access permissions the user will have in PostgreSQL. Permissions may include `CONNECT`, `CREATE`, `SELECT`, or other SQL statements.
@@ -79,10 +72,6 @@ To create Dynamic Secrets for PostgreSQL:
     > **NOTE**: `ttl` must be set at or **above 900**. 
 1. **`userPrefix`** An optional key whose value is a string prepended to all PostgreSQL account usernames created from the dynamic secret.
 1. **`data`**: This field remains blank for dynamic secrets.
-
-</td>
-</tr>
-</table>
 
 ## Sending a PostgreSQL Task to Engine
 

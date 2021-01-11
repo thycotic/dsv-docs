@@ -36,13 +36,7 @@ To create Dynamic Secrets for MySQL
 
 1. **Create a new dynamic secret.** The dynamic secret will be linked to the root secret. Use the following format:
 
-<table>
-<tr>
-<th> Dynamic Secret
-<th> Guide
-</tr>
-<tr style="vertical-align:top">
-<td>
+**Dynamic Secret Example**
 
 ```json
 {
@@ -63,8 +57,7 @@ To create Dynamic Secrets for MySQL
 }
 ```
 
-</td>
-<td>
+**Dynamic Secret Guide**
 
 1. **`grantPermissions`**: Specifies the permissions assigned by MySQL to the new user account. 
     * `what`: Defines the database access permissions the user will have in MySQL. Permissions may include `CONNECT`, `CREATE`, `SELECT`, or other SQL statements.
