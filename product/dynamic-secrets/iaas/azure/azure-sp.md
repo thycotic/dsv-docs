@@ -85,7 +85,7 @@ These are the links to azure documentation on service principal:
 
 ## Creating a Service Principal for a DSV Dynamic Secret
 
-In the [Azure Dynamic Secrets](azure.md) section, we discuss DSV using an "existing service principal" vs DSV creating a "temporary service principal".  This is guidance on creating an existing service principal in the Azure portal.  In the case of the temporary service principal, no guidance in Azure is needed because DSV creates them.
+In the [Azure Dynamic Secrets](index.md) section, we discuss DSV using an "existing service principal" vs DSV creating a "temporary service principal".  This is guidance on creating an existing service principal in the Azure portal.  In the case of the temporary service principal, no guidance in Azure is needed because DSV creates them.
 
 1. Go to the [Microsoft Azure portal](https://portal.azure.com) and login.
 2. Go to **Azure Active Directory**.
