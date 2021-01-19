@@ -29,7 +29,7 @@ An Azure service principal is an identity created for use with applications, hos
 7. Select **API permissions** and then **Add a permission**.
 9. Under Microsoft Graph,  APIs Select **Delegated permissions**, expand the **Application** accordion, and then check the **Application.Read.All**  **Application.ReadWrite.All** boxes.
    ![](../../../images/spacer.png)
-    ![](../../../images/msgraphRequestapi.png) 
+    ![](../../../images/msgraphrequestapi.png) 
     ![](../../../images/spacer.png)
     ![](../../../images/msgraphdelegatedpermissions.png)
     ![](../../../images/spacer.png)
@@ -38,14 +38,14 @@ An Azure service principal is an identity created for use with applications, hos
 **Application.Read.All**  **Application.ReadWrite.All** **Application.ReadWrite.OwnedBy** boxes.
 
     ![](../../../images/spacer.png)
-    ![](../../../images/msgraphPermissions.png)
+    ![](../../../images/msgraphpermissions.png)
     ![](../../../images/spacer.png)
     
 10. Under Microsoft Graph APIs, Select **Application Permissions**, expand the **AppRoleAssignment** accordion, and then check the 
 **AppRoleAssignment.ReadWrite.All** boxes.
 
     ![](../../../images/spacer.png)
-    ![](../../../images/approleAssignmets.png)
+    ![](../../../images/approleassignments.png)
     ![](../../../images/spacer.png)
 
 11. Select **Add permisssions** at the bottom of the page.  This takes you back to the API Permissions page.  Notice that the Application permissions have warnings that those permissions are not yet granted.     
@@ -58,7 +58,7 @@ An Azure service principal is an identity created for use with applications, hos
 13. The final api permission should look like
 
     ![](../../../images/spacer.png)
-    ![](../../../images/msgraphPermission.png)
+    ![](../../../images/msgraphpermission.png)
     ![](../../../images/spacer.png)
 
 14. Navigate to **Home > Subscriptions** and take note of the **Subscription ID** that you will be using.  This is the `subscriptionId` in the DSV Base Secret.

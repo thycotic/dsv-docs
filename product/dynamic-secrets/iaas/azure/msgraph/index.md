@@ -20,7 +20,7 @@ Create a file named `secret_base.json` substituting your values:
 
 ```json
 {
-    	"subscriptionId": "yourusbscriptionId",
+    	"subscriptionId": "yoursubscriptionId",
 		"tenantId":       "yourtenantId",
 		"clientId":       "yourclientId",
 		"clientSecret":   "yoursecret"
@@ -44,7 +44,7 @@ dsv secret create --path azure/base/api-account --data '@secret_base.json' --att
 
 ```json
 {
-    "description": "azure root credtial",
+    "description": "azure root credential",
     "attributes": {
 		 "linkConfig": {
 		"linkType": "dynamic",
