@@ -6,7 +6,9 @@
 
 ## Video Guide
 
-<iframe src="https://player.vimeo.com/video/490936975/" width="640" height="360" frameborder="0" title="{video_title}" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<div style="padding:56.25% 0 0 0;position:relative;">
+<iframe src="https://player.vimeo.com/video/490936975/" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" title="{video_title}" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</div><script src="https://player.vimeo.com/api/player.js"></script>
 
 ## Tenant Setup Guide
 Your **tenant** is your DevOps Secrets Vault cloud account and the rights to access it.
