@@ -25,7 +25,7 @@ There are three methods for creating and starting an engine:
 * Using the CLI and DSV-Engine Program **separately**. This option allows creation of an engine and engine pool in the CLI before running the engine using the dsv-engine program.
 
 >**NOTES:** 
-> 1. The first time an engine is created, a matching configuration file called **.dsv-engine-config.yml** will also be created in your home directory. The `dsv-engine run` command will automatically use the values in this file unless another configuration is specified. You can create multiple configuration files and use them by specifying the path with the run command (ie: `dsv-engine run --dsv-engine-config2.yml`).
+> 1. The first time an engine is created, a matching configuration file called **.dsv-engine-config.yml** will also be created in your home directory. The `dsv-engine run` command will automatically use the values in this file unless another configuration is specified. You can create multiple configuration files and use them by specifying the path along with the run command (ie: `dsv-engine run --dsv-engine-config2.yml`).
 > 1. Setting up the Engine with **Oracle** Databases has separate requirements. See the [Oracle](../dynamic-secrets/databases/oracle.md) page for instructions.
 
 ### Engine Wizard
@@ -53,7 +53,7 @@ To start a DSV Engine, perform the following actions. The example uses the place
 |-------------------------|------|
 |1. Create an **Engine pool**.| `dsv pool create --name examplepool`|
 |2. Create an **Engine** and assign it to the pool. **Notes:** The create command will return a private key and endpoint. **Make sure to save the private key for Engine registration. It cannot be retrieved later.** An Engine can only be assigned to one pool.| `dsv engine create --name exampleengine --pool-name examplepool`|
-|3. Install the **dsv-engine Binary**. The example uses **dsv-engine** as the program name. *If you use the same name, make sure to include the dash when performing registration in step 4.*| https://dsv.thycotic.com/downloads|
+|3. Install the **dsv-engine program**. The example uses **dsv-engine** as the program name. *If you use the same name, make sure to include the dash when performing registration in step 4.*| https://dsv.thycotic.com/downloads|
 |4. **Run** the Engine.| `dsv-engine run --endpoint <tenantname>.<secretsvaultcloud.com>` `--engine-name exampleengine --private-key exampleprivatekey`|
 |5. (Optional) **Ping** the Engine to ensure connectivity.| `dsv engine ping --name exampleengine`|
 |6. (Optional) For support using the Engine Binary, use the built-in CLI help commands.| `dsv-engine register -h` and `dsv-engine run -h`|
@@ -85,7 +85,7 @@ If you already have a registered engine and want to run it in the container, the
 docker run --name eng --rm -e DSV_ENGINE=exampleengine -e DSV_ENDPOINT=<tenantname>.secretsvaultcloud.com -e DSV_PRIVATE_KEY=<privatekey> dsv-engine
 ```
 
-In either case, on successful engine start, you should a message saying that the engine is ready and waiting for messages.
+On a successful engine start, you should receive a response saying that the engine is ready and waiting for messages.
 
 ##### List of environment variables for engine Docker container
 - ENGINE_NAME
