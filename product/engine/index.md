@@ -25,7 +25,7 @@ There are three methods for creating and starting an engine:
 * Using the CLI and DSV-Engine Program **separately**. This option allows creation of an engine and engine pool in the CLI before running the engine using the dsv-engine program.
 
 >**NOTES:** 
-> 1. The first time an engine is created, a matching configuration file called **.dsv-engine-config.yml** will also be created in your home directory. The `dsv-engine run` command will automatically use the values in this file unless another configuration is specified. You can create multiple configuration files and use them by specifying the path along with the run command (ie: `dsv-engine run --dsv-engine-config2.yml`).
+> 1. The first time an engine is created, a matching configuration file called **.dsv-engine-config.yml** will also be created in your home directory. The `dsv-engine run` command will automatically use the values in this file unless another configuration is specified. You can create multiple configuration files and use them by specifying the path along with the run command (ie: `dsv-engine run --config dsv-engine-config2.yml`).
 > 1. Setting up the Engine with **Oracle** Databases has separate requirements. See the [Oracle](../dynamic-secrets/databases/oracle.md) page for instructions.
 
 ### Engine Wizard
@@ -93,4 +93,4 @@ On a successful engine start, you should receive a response saying that the engi
 - DSV_TOKEN
 - DSV_PRIVATE_KEY
 - DSV_ENDPOINT
-- DSV_VERBOSITY (WARN,DEBUG,ERROR,INFO)
+- DSV_VERBOSITY (warn,debug,error,info)
