@@ -40,7 +40,7 @@ To retrive the root certificate and private key, run `dsv secret read --path ca/
 ```json
 {
   "attributes": {
-    "type": "CA"
+    "type": "root-cert"
   },
   "created": "2020-04-09T20:29:41Z",
   "createdBy": "users:thy-one:dsvtest9519@mailinator.com",
