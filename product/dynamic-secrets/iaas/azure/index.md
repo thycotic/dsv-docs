@@ -14,6 +14,8 @@ In order for DSV to generate dynamic Secrets, a base secret must first be create
 
 These permissions can be configured through the Azure Portal, CLI tool, or PowerShell. A guide to setting up the Azure service principals in the Azure portal is provided in the [Azure Service Principal](azure-sp.md) section.
 
+DSV also supports the use of [Azure Microsoft Graph](msgraph/index.md).
+
 
 ## Create the Base Secret
 

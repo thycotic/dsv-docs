@@ -1,6 +1,6 @@
-[title]: # (Azure Dynamic Secrets)
+[title]: # (Azure Microsoft Graph Dynamic Secrets)
 [tags]: # (DevOps Secrets Vault,DSV,)
-[priority]: # (6200)
+[priority]: # (6230)
 
 ## Create the Base Secret
 
