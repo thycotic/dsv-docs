@@ -2,6 +2,14 @@
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (6230)
 
+# Microsoft Graph Dynamic Secrets
+
+To create dynamic secrets for Azure Microsoft Graph:
+
+* Create an [Azure Service Principal](azure-sp.md) for Microsoft Graph.
+* Create a base secret.
+* Create the dynamic secret.
+
 ## Create the Base Secret
 
 The base Secret holds the credentials required for DSV to perform API calls to Azure to query roles and create/delete service principals.   
