@@ -13,7 +13,7 @@ An Azure **service principal** is an identity created for use with applications,
 1. Login to the [Microsoft Azure portal](https://portal.azure.com).
 1. Go to **Azure Active Directory**.
 1. Click **App registrations**, then **New registration**.  Enter an application name and then click **Register**.
-1. Take note of the **Application (client) ID** and **Directory (tenant) ID**.  They are the DSV Base secret `clientId` and `tenantId` parameters respectively.
+1. Take note of the **Application (client) ID** and **Directory (tenant) ID**.  They are the DSV Base secret `clientId` and `tenantId` parameters, respectively.
 
     ![](../../../images/applicationIDs.png "applications")
 
@@ -53,7 +53,7 @@ In the [Azure Dynamic Secrets](azure.md) section, we discuss DSV using an "exist
 3. Click **App registrations** and select application to add a new appRole or to pick an existing appRole. 
 6. Take note of the **ID**. That is the DSV Dynamic Secret `appRoleId` parameter.
 
-    ![](../../../images/msgraphAppRole.png "graph app role")
+    ![](../../../images/msgraphapprole.png "graph app role")
 
 4. Navigate to **Active Directory  > Enterprise applications**.
 5. Select the **application name** that you configured in the above steps. 
