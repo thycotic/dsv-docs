@@ -10,7 +10,7 @@ Supported Types:
 
 IaaS Dynamic Secrets
 * [AWS](iaas/aws.md)
-* [Azure](iaas/azure/index.md)
+* [Azure](iaas/azure/index.md) and [Azure Microsoft Graph](iaas/azure/msgraph/index.md)
 * [GCP](iaas/gcp.md)
 
 [Database](databases/index.md) Dynamic Secrets

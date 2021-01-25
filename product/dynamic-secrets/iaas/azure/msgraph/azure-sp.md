@@ -1,4 +1,4 @@
-[title]: # (Azure Microsoft Graph Service Principal)
+[title]: # (Microsoft Graph Service Principal)
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (6231)
 
@@ -22,7 +22,6 @@ An Azure **service principal** is an identity created for use with applications,
 
     ![](../../../images/clientsecret.png "client secret")
 
-
 1. Select **API permissions** and then **Add a permission**.
 1. Under Microsoft Graph APIs, first select **Delegated** permissions on the left. Expand the **Application** drop-down and check the **Application.Read.All** and **Application.ReadWrite.All** boxes.
 
@@ -30,7 +29,7 @@ An Azure **service principal** is an identity created for use with applications,
 
 1. Now, select **Application** permissions on the right. Expand both the **Application** and **AppRoleAssignment** drop-down, and then check the **Application.Read.All**, **Application.ReadWrite.All**, and **Application.ReadWrite.OwnedBy** boxes under Application and the **AppRoleAssignment.ReadWrite.All** box under AppRoleAssignment.
 
-    ![](../../../images/msgraphapplicationpermissions.png)
+    ![](../../../images/msgraphapplicationpermissions.png "application permissions")
 
 1. Select **Add permisssions** at the bottom of the page. This takes you back to the API Permissions page. Notice that the Application permissions have warnings that those permissions are not yet granted.
 1. Click **Grant admin consent** and then **Yes** (You will need administrative privileges to complete this step).

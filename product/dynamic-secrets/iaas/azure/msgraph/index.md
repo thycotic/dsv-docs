@@ -1,4 +1,4 @@
-[title]: # (Azure Microsoft Graph Dynamic Secrets)
+[title]: # (Microsoft Graph Dynamic Secrets)
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (6230)
 
