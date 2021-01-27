@@ -59,8 +59,8 @@ dsv secret create --path azure/base/api-account --data '@secret_base.json' --att
 		"linkedSecret": "azure:base:api-graph"
 	},
 	"ttl": 360,
-	"resourceId": "8c828069-ab9c-4a3b-b30e-4184325024ba",
-	"appRoleId": "c6d6abd5-4021-4d46-8f18-1810e671f3a9",
+	"resourceId": "resourceID",
+	"appRoleId": "appRoleId",
 	"msApiType": "msgraph"
     }
 }
@@ -87,7 +87,7 @@ dsv secret create --path /azure/dynamic/api-graph --attributes '@secret_attribut
         "resourceId": "8c828069-ab9c-4a3b-b30e-xxxxxxxxxxxx",
         "ttl": 360
     },
-    "description": "azure root credtial",
+    "description": "azure root credential",
     "data": {
        
         "clientId": "xxxxxxxx-eaa5-4c82-a177-f526742f8881",
@@ -99,8 +99,8 @@ dsv secret create --path /azure/dynamic/api-graph --attributes '@secret_attribut
     },
     "created": "2020-12-13T03:31:07Z",
     "lastModified": "2021-01-12T19:50:24Z",
-    "createdBy": "users:mal",
-    "lastModifiedBy": "users:mal",
+    "createdBy": "users:user1",
+    "lastModifiedBy": "users:user1",
     "version": "15"
 }
 ```
