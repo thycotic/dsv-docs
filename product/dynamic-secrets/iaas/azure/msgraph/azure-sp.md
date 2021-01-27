@@ -15,7 +15,7 @@ An Azure **service principal** is an identity created for use with applications,
 1. Click **App registrations**, then **New registration**.  Enter an application name and then click **Register**.
 1. Take note of the **Application (client) ID** and **Directory (tenant) ID**.  They are the DSV Base secret `clientId` and `tenantId` parameters, respectively.
 
-    ![](../../../images/applicationIDs.png "applications")
+    ![](../../../images/applicationids.png "applications")
 
 1. Select **Certifications & secrets** then **New client secret**. Enter a description and expiration date.  Click **Add**.
 1. Take note of the newly generated secret which will be the `clientSecret` parameter in the DSV Base Secret.
@@ -31,7 +31,7 @@ An Azure **service principal** is an identity created for use with applications,
 
     ![](../../../images/msgraphapplicationpermissions.png "application permissions")
 
-1. Select **Add permisssions** at the bottom of the page. This takes you back to the API Permissions page. Notice that the Application permissions have warnings that those permissions are not yet granted.
+1. Select **Add permissions** at the bottom of the page. This takes you back to the API Permissions page. Notice that the Application permissions have warnings that those permissions are not yet granted.
 1. Click **Grant admin consent** and then **Yes** (You will need administrative privileges to complete this step).
 
     ![](../../../images/grantpermission.png "grant permissions")
