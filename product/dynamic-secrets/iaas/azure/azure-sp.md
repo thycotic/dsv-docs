@@ -16,97 +16,61 @@ These are the links to azure documentation on service principal:
 ## Creating a Service Principal for the DSV Base Secret
 
 1. Go to the [Microsoft Azure portal](https://portal.azure.com) and login.
-2. Go to **Azure Active Directory**.
-3. Click **App registrations** then **New registration**.  Enter an application name and then click **Register**.
-4. Take note of the **Application (client) ID** and **Directory (tenant) ID**.  They are the DSV Base secret `clientId` and `tenantId` parameters respectively.
+1. Go to **Azure Active Directory**.
+1. Click **App registrations** then **New registration**.  Enter an application name and then click **Register**.
+1. Take note of the **Application (client) ID** and **Directory (tenant) ID**.  They are the DSV Base secret `clientId` and `tenantId` parameters respectively.
 
-![](..//images/spacer/.png)
+    ![applicationIDs](../../images/applicationids.png "Application IDs")
 
-![](../../images/applicationIDs.png)
+1. Select **Certifications & secrets** then **New client secret**.  Enter a description and when it should expire.  Click **Add**.
+1. Take note of the newly generated secret which will be the `clientSecret` parameter in the DSV Base Secret.
 
-![](../images/spacer.png)
+    ![clientsecret](../../images/clientsecret.png "Client Secret")
 
-5. Select **Certifications & secrets** then **New client secret**.  Enter a description and when it should expire.  Click **Add**.
-6. Take note of the newly generated secret which will be the `clientSecret` parameter in the DSV Base Secret.
+1. Select **API permissions** and then **Add a permission**.
+1. Under Supported Legacy APIs, select **Azure Active Directory Graph**.
+1. Select **Delegated permissions**, expand the **User** accordion, and then check the **User.Read** box.
 
-![](../images/spacer.png)
+    ![delegated](../../images/delegated.png "Delegated Permissions")
 
-![](../../images/clientsecret.png)
+1. Select **Application permissions** and expand the **Application** and **Directory** accordions.  Check the **Application.ReadWrite.All** and **Directory.ReadWrite.All** boxes.
 
-![](../images/spacer.png)
+    ![application](../../images/application.png "Application Permissions")
 
-7. Select **API permissions** and then **Add a permission**.
-8. Under Supported Legacy APIs, select **Azure Active Directory Graph**.
-9. Select **Delegated permissions**, expand the **User** accordion, and then check the **User.Read** box.
+1. Select **Add permissions** at the bottom of the page.  This takes you back to the API Permissions page.  Notice that the Application permissions have warnings that those permissions are not yet granted.  
+1. Click **Grant admin consent for Default Directory** and then **Yes**.  This step can be easy to miss.
 
-![](../images/spacer.png)
+    ![grantpermissions](../../images/grantpermission.png "Grant Permissions")
 
-![](../../images/delegated.png)
+1. Navigate to **Home > Subscriptions** and take note of the **Subscription ID** that you will be using.  This is the `subscriptionId` in the DSV Base Secret.
 
-![](../images/spacer.png)
+    ![subscription](../../images/subscription.png "Subscription ID")
 
-10.  Select **Application permissions** and expand the **Application** and **Directory** accordions.  Check the **Application.ReadWrite.All** and **Directory.ReadWrite.All** boxes.
+1. Click into the **Subscription ID** then **Access control (IAM)** then **Add** in the **Add role assignment** box on the right.
+1. Select **Owner** in the **Role** dropdown.
+1. Select **Azure AD user, group, or service principal** in the **Assign access to** dropdown.
+1. In the **Select** field, enter the application name or Application (client) ID saved previously and select it so that it shows up under **Selected Members** below.
+1.  Click **Save**
 
-![](../images/spacer.png)
-
-![](../../images/application.png)
-
-![](../images/spacer.png)
-
-11. Select **Add permisssions** at the bottom of the page.  This takes you back to the API Permissions page.  Notice that the Application permissions have warnings that those permissions are not yet granted.  
-
-12. Click **Grant admin consent for Default Directory** and then **Yes**.  This step can be easy to miss.
-
-![](../images/spacer.png)
-
-![](../../images/grantpermission.png)
-
-![](../images/spacer.png)
-
-13. Navigate to **Home > Subscriptions** and take note of the **Subscription ID** that you will be using.  This is the `subscriptionId` in the DSV Base Secret.
-
-![](../images/spacer.png)
-
-![](../../images/subscription.png)
-
-![](../images/spacer.png)
-
-14. Click into the **Subscription ID** then **Access control (IAM)** then **Add** in the **Add role assignment** box on the right.
-15. Select **Owner** in the **Role** dropdown.
-16. Select **Azure AD user, group, or service principal** in the **Assign access to** dropdown.
-17. In the **Select** field, enter the application name or Application (client) ID saved previously and select it so that it shows up under **Selected Members** below.
-18.  Click **Save**
-
-![](../images/spacer.png)
-
-![](../../images/roleassignment.png)
-
-![](../images/spacer.png)
+    ![roleassignment](../../images/roleassignment.png "Role Assignment")
 
 ## Creating a Service Principal for a DSV Dynamic Secret
 
 In the [Azure Dynamic Secrets](index.md) section, we discuss DSV using an "existing service principal" vs DSV creating a "temporary service principal".  This is guidance on creating an existing service principal in the Azure portal.  In the case of the temporary service principal, no guidance in Azure is needed because DSV creates them.
 
 1. Go to the [Microsoft Azure portal](https://portal.azure.com) and login.
-2. Go to **Azure Active Directory**.
-3. Click **App registrations** then **New registration**.  Enter an application name and then click **Register**.
-4. Take note of the **Application (client) ID** and **Object ID**.  They are the DSV Dynamic Secret `appId` and `appObjectId` parameters respectively.
+1. Go to **Azure Active Directory**.
+1. Click **App registrations** then **New registration**.  Enter an application name and then click **Register**.
+1. Take note of the **Application (client) ID** and **Object ID**.  They are the DSV Dynamic Secret `appId` and `appObjectId` parameters respectively.
 
-![](../images/spacer.png)
+    ![appobjectid](../../images/appobjectid.png "App Object ID")
 
-![](../../images/appobjectid.png)
+1. Navigate to **Home > Subscriptions** 
+1. Click into the **Subscription ID** that you are using and then **Access control (IAM)** then **Add** in the **Add role assignment** box on the right.
+1. Select **Role** dropdown, select the role you wish to provide.  In this example, we will use **Contributor**.
+1. Select **Azure AD user, group, or service principal** in the **Assign access to** dropdown.
+1. In the **Select** field, enter the application name or Application (client) ID saved previously and select it so that it shows up under **Selected Members** below.
+1.  Click **Save**
 
-![](../images/spacer.png)
+    ![roleassign2](../../images/roleassign2.png "Add Role Assignment")
 
-5. Navigate to **Home > Subscriptions** 
-6. Click into the **Subscription ID** that you are using and then **Access control (IAM)** then **Add** in the **Add role assignment** box on the right.
-7. Select **Role** dropdown, select the role you wish to provide.  In this example, we will use **Contributor**.
-8. Select **Azure AD user, group, or service principal** in the **Assign access to** dropdown.
-9. In the **Select** field, enter the application name or Application (client) ID saved previously and select it so that it shows up under **Selected Members** below.
-10.  Click **Save**
-
-![](../images/spacer.png)
-
-![](../../images/roleassign2.png)
-
-![](../images/spacer.png)

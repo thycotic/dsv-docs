@@ -1,6 +1,6 @@
 [title]: # (Azure Dynamic Secrets)
 [tags]: # (DevOps Secrets Vault,DSV,)
-[priority]: # (6200)
+[priority]: # (6220)
 
 # Azure Dynamic Secrets
 
@@ -13,6 +13,8 @@ In order for DSV to generate dynamic Secrets, a base secret must first be create
 *  Your account must have Microsoft.Authorization/*/Write access to assign an active directory application to a role.
 
 These permissions can be configured through the Azure Portal, CLI tool, or PowerShell. A guide to setting up the Azure service principals in the Azure portal is provided in the [Azure Service Principal](azure-sp.md) section.
+
+>**NOTE**: As of June 30th, 2020, Microsoft stopped updating Azure Active Directory in favor of Azure Microsoft Graph. See [Azure Microsoft Graph](msgraph/index.md) to get started using DSV with MS Graph.
 
 
 ## Create the Base Secret
