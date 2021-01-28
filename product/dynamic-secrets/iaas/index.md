@@ -5,6 +5,7 @@
 # IaaS Dynamic Secrets
 
 DSV currently supports dynamic secrets for:
-1. [Azure AD](azure/index.md) and [Azure AD Microsoft Graph](azure/msgraph/index.md)
+1. [AAD Graph](azure/index.md)
 1. [AWS](aws.md)
 1. [GCP](gcp.md)
+1. [MS Graph](msgraph/index.md)

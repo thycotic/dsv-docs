@@ -1,6 +1,6 @@
-[title]: # (Microsoft Graph Dynamic Secrets)
+[title]: # (MS Graph Dynamic Secrets)
 [tags]: # (DevOps Secrets Vault,DSV,)
-[priority]: # (6230)
+[priority]: # (6310)
 
 # Microsoft Graph Dynamic Secrets
 
