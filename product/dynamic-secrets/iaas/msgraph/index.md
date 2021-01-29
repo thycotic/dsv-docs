@@ -1,6 +1,6 @@
-[title]: # (MS Graph Dynamic Secrets)
+[title]: # (Azure MS Graph Dynamic Secrets)
 [tags]: # (DevOps Secrets Vault,DSV,)
-[priority]: # (6310)
+[priority]: # (6250)
 
 # Microsoft Graph Dynamic Secrets
 
@@ -48,15 +48,13 @@ dsv secret create --path azure/base/api-account --data '@secret_base.json' --att
 | ResourceID                 | Required - The id of the resource servicePrincipal (the API) which has defined the app role (the application permission).
 | ttl                       | Optional - Time to live in seconds of the generated token. If none is specified it will default to 900. |
 
-1. Create an attributes json file named `secret_attributes.json` substituting your values.
+1. Create an attributes json file named `secret_attributes.json` substituting your base secret path, resourceID, and AppRoleID.
 
 ```json
 {
-    "description": "azure root credential",
-    "attributes": {
-		 "linkConfig": {
+		"linkConfig": {
 		"linkType": "dynamic",
-		"linkedSecret": "azure:base:api-graph"
+		"linkedSecret": "azure:base:msgraph"
 	},
 	"ttl": 360,
 	"resourceId": "resourceID",

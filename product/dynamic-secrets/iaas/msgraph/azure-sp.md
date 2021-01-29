@@ -32,31 +32,30 @@ An Azure **service principal** is an identity created for use with applications,
     ![](../../images/msgraphapplicationpermissions.png "application permissions")
 
 1. Select **Add permissions** at the bottom of the page. This takes you back to the API Permissions page. Notice that the Application permissions have warnings that those permissions are not yet granted.
-1. Click **Grant admin consent** and then **Yes** (You will need administrative privileges to complete this step).
-
-    ![](../../images/grantpermission.png "grant permissions")
-    
+1. Click **Grant admin consent** and then **Yes** (You will need administrative privileges to complete this step).    
 1. The completed api permissions should look like this:
 
-    ![](../../images/msgraphpermission.png "completed permissions")
+    ![](../../images/msgraphgrantadmin.png "completed permissions")
 
 1. Navigate to **Home > Subscriptions** and take note of the **Subscription ID** that you will be using.  This is the `subscriptionId` in the DSV Base Secret.
 
     ![](../../images/subscription.png "subscription")
 
-## Add appRole in root application or any application  
+## Add appRole in Root Application or Any Application  
 
-In the [Azure Dynamic Secrets](../azure/index.md) section, we discuss DSV using an "existing service principal" vs DSV creating a "temporary service principal".  This is guidance on creating an existing service principal in the Azure portal.  In the case of the temporary service principal, no guidance in Azure is needed because DSV creates them.
+In the [Azure Dynamic Secrets](../azure/index.md) section, we discuss DSV using an "existing service principal" vs DSV creating a "temporary service principal".  This is guidance on creating an **existing service principal** in the Azure portal.  In the case of the **temporary service principal**, no guidance in Azure is necessary because DSV will create them.
+
+> **NOTE:** Any existing or new application can be used in place of the base service principal.
 
 1. Go to the [Microsoft Azure portal](https://portal.azure.com) and login.
-2. Go to **Azure Active Directory**.
-3. Click **App registrations** and select application to add a new appRole or to pick an existing appRole. 
-6. Take note of the **ID**. That is the DSV Dynamic Secret `appRoleId` parameter.
+1. Go to **Azure Active Directory**.
+1. Click **App registrations** and then **Create App Role** to create a new one, or select an existing appRole. 
+1. Take note of the **ID**. That is the DSV Dynamic Secret `appRoleId` parameter.
 
     ![](../../images/msgraphapprole.png "graph app role")
 
-4. Navigate to **Active Directory  > Enterprise applications**.
-5. Select the **application name** that you configured in the above steps. 
-6. Take note of the **Object ID**. This is the DSV Dynamic Secret `resourceId` parameter.
+1. Navigate to **Active Directory  > Enterprise applications**.
+1. Select the **application name** that you configured in the above steps. 
+1. Take note of the **Object ID**. This is the DSV Dynamic Secret `resourceId` parameter.
 
     ![](../../images/msgraphenterprise.png "msgraph enterprise")
