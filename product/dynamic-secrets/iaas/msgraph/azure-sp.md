@@ -41,15 +41,15 @@ An Azure **service principal** is an identity created for use with applications,
 
     ![](../../images/subscription.png "subscription")
 
-## Add appRole in root application or any application  
+## Add appRole in Root Application or Any Application  
 
-In the [Azure Dynamic Secrets](../azure/index.md) section, we discuss DSV using an "existing service principal" vs DSV creating a "temporary service principal".  This is guidance on creating an existing service principal in the Azure portal.  In the case of the temporary service principal, no guidance in Azure is needed because DSV creates them.
+In the [Azure Dynamic Secrets](../azure/index.md) section, we discuss DSV using an "existing service principal" vs DSV creating a "temporary service principal".  This is guidance on creating an **existing service principal** in the Azure portal.  In the case of the **temporary service principal**, no guidance in Azure is necessary because DSV will create them.
 
 > **NOTE:** Any existing or new application can be used in place of the base service principal.
 
 1. Go to the [Microsoft Azure portal](https://portal.azure.com) and login.
 1. Go to **Azure Active Directory**.
-1. Click **App registrations** and select application to add a new appRole or to pick an existing appRole. 
+1. Click **App registrations** and then **Create App Role** to create a new one, or select an existing appRole. 
 1. Take note of the **ID**. That is the DSV Dynamic Secret `appRoleId` parameter.
 
     ![](../../images/msgraphapprole.png "graph app role")
