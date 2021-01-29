@@ -1,4 +1,4 @@
-[title]: # (Azure Service Principal)
+[title]: # (Azure AD Service Principal)
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (6220)
 

@@ -1,6 +1,6 @@
-[title]: # (AAD Graph Dynamic Secrets)
+[title]: # (Azure AD Graph Dynamic Secrets)
 [tags]: # (DevOps Secrets Vault,DSV,)
-[priority]: # (6220)
+[priority]: # (6200)
 
 # AAD Graph Dynamic Secrets
 
