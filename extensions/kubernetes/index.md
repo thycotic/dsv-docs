@@ -6,9 +6,8 @@
 The Kubernetes extension to DevOps Secrets Vault consists of several images available from Docker. These illustrate how to build containers incorporating DevOps Secrets Vault functionality. To obtain these images, at your Docker command line, use *docker pull* commands for each image:
 
 ```BASH
-docker pull quay.io/thycotic/devops-secrets-vault-client
-docker pull quay.io/thycotic/devops-secrets-vault-broker
-docker pull quay.io/thycotic/devops-secrets-vault-example
+docker pull thycotic/dsv-k8s-controller:latest
+docker pull thycotic/dsv-k8s-client:latest
 ```
 
 ## Overview
