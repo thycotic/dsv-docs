@@ -198,7 +198,7 @@ set GOOGLE_APPLICATION_CREDENTIALS="C:\Users\username\Downloads\[FILE_NAME].json
 
 After creating the User, modify the `config` to give that User access to the default administrator permission policy.
 
-> NOTE: Adding a User to the admin policy is not security best practices.  This is for example purposes only.  Ideally,  you would create a separate policy for this GCP service account with restricted access.   For details on limiting access through policies, see the [Policy](../product/cli-ref/policy.md) section.
+> NOTE: Adding a User to the admin policy is not security best practices.  This is for example purposes only.  Ideally,  you would create a separate policy for this GCP service account with restricted access.   For details on limiting access through policies, see the [Policy](../../cli-ref/policy.md) section.
 
 ```BASH
 dsv config edit
@@ -338,7 +338,7 @@ Run `dsv user create --username gce-test --provider gcloud-gce --external-id {de
 ```
 After creating the User, modify the config to give that User access to the default administrator permission policy.
 
-> NOTE: Adding a User to the admin policy is not security best practices.  This is for example purposes only.  Ideally,  you would create a separate policy for this GCP service account with restricted access.   For details on limiting access through policies, see the [Policy](../product/cli-ref/policy.md) section.
+> NOTE: Adding a User to the admin policy is not security best practices.  This is for example purposes only.  Ideally,  you would create a separate policy for this GCP service account with restricted access.   For details on limiting access through policies, see the [Policy](../../cli-ref/policy.md) section.
 
 ```BASH
 dsv config edit
@@ -346,7 +346,7 @@ dsv config edit
 
 Add *gcloud:gce-test* as a User to the **Default Admin Policy**. Third party accounts must be prefixed with the provider name; in this case, the fully qualified username would be *glcoud-gce:gce-test*.
 
-> NOTE: Adding a user to the admin policy is not security best practices.  This is for example purposes only.  Ideally,  you would create a separate policy for this AWS user with restricted access.   For details on limiting access through policies, see the [Policy](../product/cli-ref/policy.md) section.
+> NOTE: Adding a user to the admin policy is not security best practices.  This is for example purposes only.  Ideally,  you would create a separate policy for this AWS user with restricted access.   For details on limiting access through policies, see the [Policy](../../cli-ref/policy.md) section.
 
 ```BASH
 dsv config edit -e yaml

@@ -67,7 +67,7 @@ dsv user create --username test-api --provider azure-prod --external-id /subscri
 
 Modify the config to give that User access to the default administrator permission policy. 
 
-> NOTE: Adding a user to the admin policy is not security best practices.  This is for example purposes only.  Ideally,  you would create a separate policy for this Azure user with restricted access.   For details on limiting access through policies, see the [Policy](../product/cli-ref/policy.md) section.
+> NOTE: Adding a user to the admin policy is not security best practices.  This is for example purposes only.  Ideally,  you would create a separate policy for this Azure user with restricted access.   For details on limiting access through policies, see the [Policy](../../cli-ref/policy.md) section.
 
 `dsv config edit --encoding yaml`
 
@@ -124,7 +124,7 @@ dsv role create --name identity-rg  --external-id /subscriptions/xxxxxxxx-xxxx-x
 
 Modify the config to give that Role access to the default administrator permission policy. 
 
-> NOTE: Adding a role to the admin policy is not security best practices.  This is for example purposes only.  Ideally,  you would create a separate policy for this Azure role with restricted access.   For details on limiting access through policies, see the [Policy](../product/cli-ref/policy.md) section.
+> NOTE: Adding a role to the admin policy is not security best practices.  This is for example purposes only.  Ideally,  you would create a separate policy for this Azure role with restricted access.   For details on limiting access through policies, see the [Policy](../../cli-ref/policy.md) section.
 
 ```BASH
 dsv config edit --encoding yaml
