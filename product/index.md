@@ -45,7 +45,7 @@ Thycotic offers a feature-complete, non-time-limited free version of DevOps Secr
 
 Signing up for the free version is the first step in getting a DevOps Secrets Vault tenant even if you plan to upgrade to a paid plan immediately.
 
-To get started with guided help, go to the [Quick Start](./QuickStart/index.md) section.
+To get started with guided help, go to the [Quick Start](./quickstart/index.md) section.
 
 When you are ready to begin your trial, head here to sign-up for a free tenant:  [DevOps Secrets Vault Free](https://thycotic.com/products/devops-secrets-vault-password-management/) and download the CLI here: [DevOps Secrets Vault CLI](https://dsv.thycotic.com/downloads)
 
