@@ -20,7 +20,7 @@
 
 |                                                                                                                                |
 |---------------------------------------------------------------------------------------------------|
-| [jq Library](<https://stedolan.github.io/jq/>) *for filtering JSON results*                              |
+| [jq Library](https://stedolan.github.io/jq/) *for filtering JSON results*                              |
 | [Linux pass](https://www.passwordstore.org/)                            |
 | [Windows Credential Manager](https://support.microsoft.com/en-us/help/4026814/windows-accessing-credential-manager)            |
 | [AWS CLI](https://aws.amazon.com/cli/)                               |
