@@ -66,7 +66,7 @@ dsv user create --username test-admin --external-id arn:aws:iam::xxxxxxxxxxx:use
 
 After creating the User, modify the config to give that User access to the default administrator permission policy.
 
-> NOTE: Adding a user to the admin policy is not security best practices.  This is for example purposes only.  Ideally,  you would create a separate policy for this AWS user with restricted access.   For details on limiting access through policies, see the [Policy](../product/cli-ref/policy.md) section.
+> NOTE: Adding a user to the admin policy is not security best practices.  This is for example purposes only.  Ideally,  you would create a separate policy for this AWS user with restricted access.   For details on limiting access through policies, see the [Policy](../../cli-ref/policy.md) section.
 
 ```BASH
 dsv config edit -e yaml
@@ -147,7 +147,7 @@ You should see a result similar to this:
 
 Add the Role *aws-dev:test-role* to the **Default Admin Policy** in your vault config to grant the new Role admin access.  
 
-> NOTE: Adding a role to the admin policy is not security best practices.  This is for example purposes only.  Ideally,  you would create a separate policy for this AWS role with restricted access.   For details on limiting access through policies, see the [Policy](../product/cli-ref/policy.md) section.
+> NOTE: Adding a role to the admin policy is not security best practices.  This is for example purposes only.  Ideally,  you would create a separate policy for this AWS role with restricted access.   For details on limiting access through policies, see the [Policy](../../cli-ref/policy.md) section.
 
 
 Use the command `dsv config edit -e yaml`

@@ -19,6 +19,12 @@ The Command Line Interface (CLI) is locally installed using OS-specific executab
 
 | **Update**             | **Notes**                                  |
 |------------------------|--------------------------------------------|
+|February 2021           |**CLI Version**: 1.18.0|
+|                        |**Engine Version**: 1.4|
+|                        |**new feature**: Added wizards for run and register in the DSV Engine.|
+|                        |**new feature**:Added dynamic secret support for Azure Microsoft Graph API.|
+|                        |**improvement**: Added DSV_VERBOSITY flag for use with docker image scripts.|
+|                        |**fixed**: Engines registered in containers will now run using the newly created configuration file.|
 |January 2021            |**CLI Version**: 1.17.0|
 |                        |**Engine Version**: 1.3|
 |                        |**new feature**: Added `sendWelcomeEmail` property. When a user is created using Thycotic One for authentication, setting `sendWelcomeEmail` to `true` will send a new login email to the user.|
