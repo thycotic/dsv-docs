@@ -10,7 +10,8 @@ Supported Types:
 
 IaaS Dynamic Secrets
 * [AWS](iaas/aws.md)
-* [Azure](iaas/azure/index.md)
+* [Azure AD Graph](iaas/azure/index.md) 
+* [Azure MS Graph](iaas/msgraph/index.md)
 * [GCP](iaas/gcp.md)
 
 [Database](databases/index.md) Dynamic Secrets
@@ -25,7 +26,7 @@ IaaS Dynamic Secrets
 In order for Dynamic Secrets to be generated, they rely on a Base Secret stored in DSV that contains the provider's credentials that are used to automatically generate the ephemeral access keys.
 ![](./images/spacer.png)
 
-![](./images/DynamicSecretLinking.png)
+![](./images/dynamicsecretlinking.png)
 
 ![](./images/spacer.png)
 
@@ -36,7 +37,7 @@ The linking is done through the `attributes` section in the Secret JSON.  For ex
 
 | Attribute                 | Description                                                                                       |
 | --------------            | ------------------------------                                                                    |
-| linkConfig                | link type and path to the linked Secret.                                                          |
+| linkConfig                | Link type and path to the linked Secret.                                                          |
 | linkConfig.linkType       | The only valid value is "dynamic"                                                                 |
 | linkConfig.linkedSecret   | Secret path to the base credential                                                                |
 
