@@ -60,7 +60,6 @@ dsv secret create --path azure/base/api-account --data '@secret_base.json' --att
 	"resourceId": "resourceID",
 	"appRoleId": "appRoleId",
 	"msApiType": "msgraph"
-    }
 }
 
 ```
