@@ -76,7 +76,7 @@ The admin has to create a policy for the Group to get access to the Secrets.  He
 If we decide that the *developer2@company.com* should no longer have access to the secrets at `servers:us-east:production`, we can write another policy to deny access. The command would look like this:
 
 ```bash
-dsv policy create --path secrets:servers:us-east:production --actions '<.*>' --desc 'Deny Policy' --subjects 'users:<developer2@company.com>' --effect deny`
+dsv policy create --path secrets:servers:us-east:production --actions '<.*>' --desc 'Deny Policy' --subjects 'users:<developer2@company.com>' --effect deny
 ```
 
 Use the command **`dsv policy read secrets:servers:us-east:production -e yaml`** to view the resulting policy:
