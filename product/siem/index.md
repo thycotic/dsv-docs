@@ -2,12 +2,12 @@
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (8000)
 
-# Audits:  
-DSV captures audits of activities and persists them for future reference. If the User wants to ship their audits to a third party logging system (e.g. Security Information and Event Management (SIEM)), they can register an endpoint where DSV will send any recorded audit events to that endpoint in near real time.  
+# SIEM Audits:  
+DSV captures and stores logs of actions taken. The audit logs can then be sent to registered Security Information and Event Management (SIEM) endpoints in near real time.
 
-Audit Fields: 
+The following fields are captured in log data: 
 
-attribute  | description | example 
+Attribute  | Description | Example 
 ------------ | ------------- |------------
 id | Audit id | "dxv7389e463s72jbo345"
 tenant | Tenant ID | "bjr738973p3s72jbo090"
@@ -21,14 +21,22 @@ ipaddress  | IP Address logged from client  | "52.23.227.163",
 created | Audit created date  | "2020-05-01T01:09:07.225694779Z",
 message |  Additional details | "login succeeded"
 
+## Logging Format and Transport Protocols supported.
 
-# Logging Format and Transport Protocols supported.
+DSV supports the following logging **output formats** to a registered endpoint: 
+* [syslog](https://tools.ietf.org/html/rfc5424)
+* [CEF](https://kc.mcafee.com/resources/sites/MCAFEE/content/live/CORP_KNOWLEDGEBASE/78000/KB78712/en_US/CEF_White_Paper_20100722.pdf)
+* [JSON](https://tools.ietf.org/html/rfc7159) 
 
-DSV supports the following logging output formats: [syslog](https://tools.ietf.org/html/rfc5424),  [CEF](https://kc.mcafee.com/resources/sites/MCAFEE/content/live/CORP_KNOWLEDGEBASE/78000/KB78712/en_US/CEF_White_Paper_20100722.pdf), and [JSON](https://tools.ietf.org/html/rfc7159) to a registered endpoint.
+DSV supports the following **transport protocols**: transport-level security (TLS) 1.2 over
+* TCP
+* UDP
+* HTTP
+* HTTPS
 
-DSV supports the following transport protocols: transport-level security (TLS) 1.2 over TCP,TCP, UDP, HTTP and HTTPS.
+>**NOTE**: For every audit action, DSV will try twice to reach the endpoint. If the endpoint is unresponsive after **ten actions and retries**, DSV will deregister the endpoint and mark it as `failed`. When viewed with `siem read`, deregistered endpoints will have the field and value: `"failed": true,`. The endpoint must be recreated to be used again.
 
-## SYSlog
+### SYSlog
 
 Syslog messages must be in RFC 5424-compliant form. DSV will truncate messages over 64KB in length.
   
@@ -50,7 +58,7 @@ Sample syslog output
 ```
 <191>1 2020-06-02T14:53:48Z tenantName.dsvdomain.com DSV - - [1 action=POST created=2020-06-02T14:51:36.519620577Z ipaddress=75.188.210.58 path=token principal=users:tenantaame principalItemId=f18b5bda-51ea-4bfa-b272-80b12e43b676 tenant=tenant tenantName=tenantName] abcdef "
 ```
-### Configure Syslog 
+#### Configure Syslog 
  
 To start a SIEM configuration workflow, use the command:
 
@@ -85,7 +93,7 @@ Sample Values
 
 ```
 
-## CEF
+### CEF
 
 CEF | DSV Audit   | description   
 -------|------ |-----------
@@ -114,7 +122,7 @@ Sample CEF output
 CEF:0|thycotic|dsv|-|b40e07d3-6fb9-41e8-9816-356de992b8fa|POST|0|{action:POST,created:2020-06-02T17:52:30.841020649Z,id:b40e07d3-6fb9-41e8-9816-356de992b8fa,ipaddress:75.188.210.58,message:login succeeded,path:token,principal:users:user,principalItemId:f18b5bda-51ea-4bfa-b272-80b12e43b676,status:200,tenant:tenat,tenantName:tenantName}
 ```   
 
-### Configure CEF 
+#### Configure CEF 
 
 To start a SIEM configuration workflow, use the command:
  
@@ -149,7 +157,7 @@ Sample Values
 
 ```
 
-## JSON
+### JSON
 
 DSV will send raw JSON audit via configure transport 
 
@@ -158,7 +166,7 @@ Sample JSON output
 ```json
 {\"action\":\"POST\",\"created\":\"2020-06-02T17:52:30.841020649Z\",\"id\":\"b40e07d3-6fb9-41e8-9816-356de992b8fa\",\"ipaddress\":\"75.188.210.58\",\"message\":\"login succeeded\",\"path\":\"token\",\"principal\":\"users:user\",\"principalItemId\":\"f18b5bda-51ea-4bfa-b272-80b12e43b676\",\"status\":\"\",\"tenant\":\"tenat\",\"tenantName\":\"tenantName\"}
 ```
-### Configure JSON
+#### Configure JSON
 
 To start a SIEM configuration workflow, use the command:
  
