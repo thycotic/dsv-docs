@@ -19,6 +19,14 @@ The Command Line Interface (CLI) is locally installed using OS-specific executab
 
 | **Update**             | **Notes**                                  |
 |------------------------|--------------------------------------------|
+|March 2021              |**CLI Version**: 1.19.0|
+|                        |**Engine Version**: 1.5|
+|                        |**improvement**: Unresponsive SIEM endpoints will be automatically deregistered after ten failed attempts.|
+|                        |**improvement**: DSV now supports syslog SIEM integration over TCP.|
+|                        |**improvement**: The dsv-engine now prioritizes flags over configuration files.|
+|                        |**improvement**: The help menu for the `audit` command has been updated.|
+|                        |**fixed**: When creating a new thycotic-one user, passing an external-id flag will no longer prevent account creation.|
+|                        |**fixed**: The dsv-engine wizard for Windows PowerShell and MacOS bash no longer truncates user-token and private-key.|
 |February 2021           |**CLI Version**: 1.18.0|
 |                        |**Engine Version**: 1.4|
 |                        |**new feature**: Added wizards for run and register in the DSV Engine.|

@@ -3,9 +3,9 @@
 [priority]: # (8000)
 
 # SIEM Audits:  
-DSV captures and stores logs of actions taken. The audit logs can then be sent to registered Security Information and Event Management (SIEM) endpoints in near real time.
+DSV captures and stores audit logs of actions taken. The audit logs can then be sent to registered Security Information and Event Management (SIEM) endpoints in near real time.
 
-The following fields are captured in log data: 
+The following fields are captured in audit data: 
 
 Attribute  | Description | Example 
 ------------ | ------------- |------------
@@ -21,7 +21,7 @@ ipaddress  | IP Address logged from client  | "52.23.227.163",
 created | Audit created date  | "2020-05-01T01:09:07.225694779Z",
 message |  Additional details | "login succeeded"
 
-## Logging Format and Transport Protocols supported.
+## Supported Audit Logging Formats and Transport Protocols
 
 DSV supports the following logging **output formats** to a registered endpoint: 
 * [syslog](https://tools.ietf.org/html/rfc5424)
