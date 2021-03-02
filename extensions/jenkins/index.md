@@ -96,7 +96,7 @@ Download the [latest version of the Jenkins HPI extension](https://github.com/th
 
 In Jenkins, select **Manage Jenkins > Manage Plugins > Advanced**.
 
-In the *Upload Plugin* section, click **Browse**.
+In the *Upload Plugin* section, click **Choose File**.
 
 Locate the **dsv-jenkins.hpi** you downloaded, select it, then click **Upload**.
 
@@ -140,10 +140,11 @@ At the bottom of the page, click **Save**
 
 Back at the Jenkins home page, select a **New item**, enter a name, and then select **Freestyle project** and click **OK**
 
-Under **Build Environment**, mark the **Use Thycotic Light DevOps Secrets Vault Secrets** checkbox active.
+Under **Build Environment**, mark the **Use Thycotic DevOps Secrets Vault Secrets** checkbox active.
 * Enter the secret path, in the example above, it would be *resources/server01* 
 * The environment variable to which you want to bind the Secret value
 * The Secret data field from which to get the value; in this case we are getting the value from the *password* field of our previously created Secret
+* Save and run the build
 
 Notice that you can:
 * Can add additional fields from the secret if needed.
