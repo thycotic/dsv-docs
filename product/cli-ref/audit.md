@@ -15,7 +15,7 @@ DSV audit logs can be searched with the `dsv audit` command followed by the **re
 |`--enddate`| Along with `--startdate`, sets the time frame for search. If omitted, `enddate` will return all events from the startdate to the search date. **Make sure to use the YYYY-MM-DD format. You must include a zero before single-digit dates.**| `--enddate 2021-02-01`|
 |`--limit`| Sets the maximum number of results per cursor. If omitted, `limit` will default to 25.| `--limit 10`|
 |`--path`| Searches for actions within a given path. If omitted, all `paths` will return.| `--path secrets:us-east:server01`
-|`--principal`| Searches for a specific principal or user within DSV.| `--principal users:thy-one:your.username@organization.com` |
+|`--principal`| Searches for a specific principal or user within DSV. If omitted, all principals will return.| `--principal users:thy-one:your.username@organization.com` |
 |`--startdate`| Along with `--enddate`, sets the time frame for search. **Make sure to use the YYYY-MM-DD format. You must include a zero before single-digit dates.** This flag is required.| `--startdate 2020-08-21`|
 
 ## Usage Examples
