@@ -4,9 +4,7 @@
 
 # Encryption as a Service
 
-DSV offers Encryption as a Service (EaaS) directly in the CLI. DSV can encrypt and decrypt strings and files.
-
-Encryption is performed using the 'crypto' command.
+DSV offers **fully managed** Encryption as a Service (EaaS). DSV can encrypt/decrypt **strings** and **files** in the CLI using the `crypto` command.
 
 |Subcommands|Function|Example|
 |-|-|-|
@@ -18,6 +16,8 @@ Encryption is performed using the 'crypto' command.
 |`key-restore`| Restores a key that is marked for deletion. Fully removed keys cannot be restored.| `dsv crypto key-restore --path mykeyfolder/key1`|
 |`rotate`| Rotate an encryption key to a new version.| `dsv crypto rotate --path mykeyfolder/key1 --data 'ciphertextstring' --version-start 0`|
 
+<br>
+
 |Flags|Function|Example|
 |-|-|-|
 |`--data`| Selects the file or string to be encrypted or decrypted| `--data 'secret string'`|
@@ -25,6 +25,9 @@ Encryption is performed using the 'crypto' command.
 |`--path`| Points to the location of the encryption key| `--path mykeyfolder/key1`|
 |`--version-end`| 
 |`--version-start`| Sets the key version to begin rotation.| `--version-start 0`|
+
+<br>
+
 ## Encrypting Data
 
 Encrypting data requires three steps:
