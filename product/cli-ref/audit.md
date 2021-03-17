@@ -162,15 +162,15 @@ dsv audit --stardate 2021-01-01 --enddate 2021-02-02 --limit 2 --cursor MGJiYmYx
 |config|GET|500,404,200|Log when config is read|
 |config:version:{version}|GET|404,500,200|Log when config is read by version|
 |config|POST|400,500,201|Log when config is created or updated|
-|secrets:{path|id}|GET|404,200|Log when secret is read|
-|secrets:{path|id}:version:{version}|GET|404,200|Log when secret is read by version|
-|secrets:{path|id}:rollback:{version}|PUT|404,200|Log when secret is rolled back|
-|secrets:{path|id}::description|GET|404,200|Log when secret is described|
+|secrets:{path,id}|GET|404,200|Log when secret is read|
+|secrets:{path,id}:version:{version}|GET|404,200|Log when secret is read by version|
+|secrets:{path,id}:rollback:{version}|PUT|404,200|Log when secret is rolled back|
+|secrets:{path,id}::description|GET|404,200|Log when secret is described|
 |secrets:{path}::listpaths|GET|0|Log when secret paths are listed [disabled]|
 |secrets:{path}|POST|201|Log when secret is created|
-|secrets:{path|id}|PUT|200| Log when secret is updated|
-|secrets:{path|id}|DELETE|200|Log when secret is deleted|
-|secrets:{path|id}:restore|GET|200|Not logged|
+|secrets:{path,id}|PUT|200| Log when secret is updated|
+|secrets:{path,id}|DELETE|200|Log when secret is deleted|
+|secrets:{path,id}:restore|GET|200|Not logged|
 |secrets|GET|200|Log when secrets are searched|
 |home:{principal}:{path}|GET|404,200|Log when home secret is read|
 |home:{principal}:{path}|POST|201|Log when home secret is created|
@@ -179,5 +179,3 @@ dsv audit --stardate 2021-01-01 --enddate 2021-02-02 --limit 2 --cursor MGJiYmYx
 |home:{principal}:{path}::description|GET|404,200|Log when home secret is described|
 |home:{principal}|GET|200|Log when home is searched|
 |home:{principal}:{path}:version:{version}|GET|404,200|Log when home secret is read by version|
-|home:{principal}:{path}:restore|GET|--|Not logged|
-|home:{principal}:{path}:rollback:{version}|PUT|--|Not logged|
