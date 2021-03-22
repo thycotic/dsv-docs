@@ -4,7 +4,7 @@
 
 # Encryption as a Service
 
-DSV offers **fully managed** Encryption as a Service (EaaS). DSV can encrypt/decrypt **strings** and **files** in the CLI using the `crypto` command.
+DSV offers a **fully managed** Encryption as a Service (EaaS). DSV is able to encrypt/decrypt **strings** and **files** via the [API](https://dsv.thycotic.com/api#tag/Crypto) or in the CLI using the `crypto` command. The key used for the encryption and decryption is stored as a secret object within DSV's architecture.  The operations of encrypting and decrypting data is done on-the-fly, those results are returned to the caller immediately, and are not saved within DSV.
 
 ## Operation Subcommands
 
@@ -12,7 +12,7 @@ DSV offers **fully managed** Encryption as a Service (EaaS). DSV can encrypt/dec
 
 |Subcommand|Function|Example|
 |-|-|-|
-|`decrypt`| Decrypts a file or string.| `dsv crypto decrypt --path mykeys/key1 --data @file.txt.enc` |
+|`decrypt` | Function Decrypts a file or string.| `dsv crypto decrypt --path mykeys/key1 --data @file.txt.enc` |
 |`encrypt`| Encrypts a file or string.| `dsv crypto encrypt --path mykeys/key1 --data @file.txt` |
 |`rotate`| Rotates both data and encryption keys to new versions.| `dsv crypto rotate --path mykeys/key1 --data 'ciphertextstring' --version-start 0`|
 
@@ -76,15 +76,15 @@ Encrypting data requires three steps:
 1. The CLI returns a confirmation of encryption:
     ```json
     {
-    "ciphertext": "ciphertextstring",
+    "ciphertext": "zIPFkidTB51...cz2CEZ4+n",
     "path": "mykeys/key1",
     "version": "0"
     }
     ```
-1. Make sure to **save the ciphertext string** to use when decrypting the data.
+1. Make sure you **save the ciphertext string and version**. You will need that information when attempting to decrypt in the future.
 1. **Decrypt** the string using the `dsv crypto decrypt` subcommand along with the same encryption key `--path` and the ciphertext as the `--data` value:
     ```
-    dsv crypto decrypt --path mykeys/key1 --data 'ciphertextstring'
+    dsv crypto decrypt --path mykeys/key1 --data 'zIPFkidTB51...cz2CEZ4+n'
     ```
 1. the CLI returns the value of the decrypted string:
     ```json
@@ -120,12 +120,20 @@ Encrypting data requires three steps:
     ```
 1. **Decrypt** the file using the `dsv crypto decrypt` subcommand along with the same encryption key `--path` and the new .enc file as the `--data` value. (*Optional*) Give the decrypted file a new name using the `--out` flag. If no new filename is specified, DSV will append **.txt** to the file name. :
     ```
-    dsv crypto decrypt --path mykeys/key1 --data @file.txt.enc --out decryptedfile.txt
+    dsv crypto decrypt --path mykeys/key1 --data @file.txt.enc --out decryptedfile.decrypted
     ```
 1. DSV decrypts and saves the file. The CLI returns confirmation of decryption:
     ```
-    Decrypted data with metadata successfully saved in decryptedfile.txt
+    Decrypted data with metadata successfully saved in decryptedfile.decrypted
     ```
+The decrypted file will contain the metadata associated with the original encrypted file (i.e. version, path, and data). The data value remains base64 encoded. If you want to obtain the original file, you will need to base64 decode the data value:
+```bash
+# Linux -- prerequisites: jq, base64, md5sum
+> jq -r '.data' decryptedfile.decrypted | base64 -d > decryptedfile.original
+> md5sum file.txt decryptedfile.original
+adbb83c57dc433b3a1d0e887ea3c029f  file.txt
+adbb83c57dc433b3a1d0e887ea3c029f  decryptedfile.original
+```
 
 ## Key Rotation and Versioning
 
@@ -144,7 +152,7 @@ A new key version is created automatically when encrypted data is rotated *using
     * (Optional) For files, the `--out` flag can be used to specify the name of the reencrypted file.
 
     ```
-    dsv crypto rotate --path mykeys/key1 --data 'ciphertextstring' --version-start 0
+    dsv crypto rotate --path mykeys/key1 --data 'zIPFkidTB51...cz2CEZ4+n' --version-start 0
     ```
 1. The data is now re-encrypted as version 1, and key version 1 has been created.
     
@@ -154,7 +162,7 @@ A new key version is created automatically when encrypted data is rotated *using
 
     ```json
     {
-    "ciphertext": "newciphertextstring",
+    "ciphertext": "pcrvO6gXy0a...k9RKKHV9n",
     "path": "mykeys/key1",
     "version": "1"
     }
@@ -162,7 +170,7 @@ A new key version is created automatically when encrypted data is rotated *using
 
 1. The string or file can now be decrypted by passing the new `--data` value along with the `--version` number. If no `--version` is set, DSV will default to the most recent version of the key.
     ```
-    dsv crypto decrypt --path mykeys/key1 --data 'newciphertextstring' --version 1
+    dsv crypto decrypt --path mykeys/key1 --data 'pcrvO6gXy0a...k9RKKHV9n' --version 1
     ```
 
 ### Rotating to an Existing Key Version
