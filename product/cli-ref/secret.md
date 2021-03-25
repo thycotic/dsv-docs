@@ -150,7 +150,7 @@ dsv secret update servers/us-east/server01 --data '{\"host\":\"unknown\"}' --ove
 
 ### Search
 
-You can search for Secrets by path or attribute
+You can search for Secrets by path, attribute, or id.
 
 Some examples
 

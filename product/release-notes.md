@@ -19,6 +19,12 @@ The Command Line Interface (CLI) is locally installed using OS-specific executab
 
 | **Update**             | **Notes**                                  |
 |------------------------|--------------------------------------------|
+|March 2021 Release 2    |**CLI Version**: 1.2.0|
+|                        |**Engine Version**: 1.6|
+|                        |**new feature**: DSV now offers a fully managed [Encryption as a Service](eaas/index.md).|
+|                        |**improvement**: Users can be given a display name using the `--displayname` flag.|
+|                        |**improvement**: Maximum policy limit per tenant has been increased from 500 to 1,000.|
+|                        |**improvement**: Secrets can now be accessed by ID using the `--id` flag.|
 |March 2021              |**CLI Version**: 1.19.0|
 |                        |**Engine Version**: 1.5|
 |                        |**improvement**: Unresponsive SIEM endpoints will be automatically deregistered after ten failed attempts.|
