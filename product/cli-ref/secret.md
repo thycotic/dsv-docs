@@ -184,6 +184,8 @@ flags
 
 `--search-type`                Specify the value type for advanced field searching, can be 'number' or 'string'. Defaults to 'string' (optional)
 
+`--sort`                       Change the sort order using `asc` or `desc` as values. Sort defaults to descending. (optional)
+
 
 For a search where there are more results than returned in the first set, the API returns a cursor—a large piece of text. You pass that back to get the next set of results.
 
