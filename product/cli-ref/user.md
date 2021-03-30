@@ -24,6 +24,7 @@ The name qualifier format *provider name:local name* means for example that the 
 | read           | read a User's details          |
 | delete         | delete a User from the vault   |
 | restore        | restore a deleted User (if within 72 hours of deletion and not hard deleted) |
+| update         | change a User's parameters|
 
 ![](./images/spacer.png)
 
@@ -62,6 +63,7 @@ The *create* command takes several `--parameters` that spec foundational aspects
 | `--password`    | password for local authentication by username and password |
 | `--provider`    | matches the *name* attribute of the authentication provider in the *settings* section of the config |
 | `--external-id` | identifier recognized by third-party federated authentication providers, such as AWS or ARN |
+| `--displayname` | locally used display name for identifying users in DSV|
 
 ![](./images/spacer.png)
   

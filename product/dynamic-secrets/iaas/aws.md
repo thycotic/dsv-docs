@@ -197,7 +197,7 @@ In the AWS account for the IAM user, create or modify an IAM user policy to incl
             "Action": [
                 "sts:AssumeRole"
             ],
-            "Resource": "arn:aws:iam::{account id of role}:role/{role-name}""
+            "Resource": "arn:aws:iam::{account id of role}:role/{role-name}"
         }
     ]
 }
