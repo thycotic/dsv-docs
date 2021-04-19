@@ -4,7 +4,18 @@
 
 # Encryption as a Service
 
-DSV offers a **fully managed** Encryption as a Service (EaaS). DSV is able to encrypt/decrypt **strings** and **files** via the [API](https://dsv.thycotic.com/api#tag/Crypto) or in the CLI using the `crypto` command. The key used for the encryption and decryption is stored as a secret object within DSV's architecture.  The operations of encrypting and decrypting data is done on-the-fly, those results are returned to the caller immediately, and are not saved within DSV.
+DSV offers both a **fully managed** and a **user supplied** Encryption as a Service (EaaS). DSV is able to encrypt/decrypt **strings** and **files** under 2MB via the [API](https://dsv.thycotic.com/api#tag/Crypto) or in the CLI using the `crypto` command. The key used for the encryption and decryption is stored as a secret object within DSV's architecture. The operations of encrypting and decrypting data are done on-the-fly. Those results are returned to the caller immediately and are not saved within DSV.
+
+## Management Subcommands
+
+**Management** subcommands distinguish whether the encryption key is generated automatically or provided manually.
+
+|Subcommand|Function|
+|-|-|
+|`auto`| DSV *automatically* generates the encryption key. DSV will default to `auto` if manual is not specified.|
+|`manual`| Users *manually* provide the encryption key. Manual must be specified for each input when encrypting with user-supplied keys.|
+
+<br>
 
 ## Operation Subcommands
 
@@ -14,7 +25,7 @@ DSV offers a **fully managed** Encryption as a Service (EaaS). DSV is able to en
 |-|-|-|
 |`decrypt` | Function Decrypts a file or string.| `dsv crypto decrypt --path mykeys/key1 --data @file.txt.enc` |
 |`encrypt`| Encrypts a file or string.| `dsv crypto encrypt --path mykeys/key1 --data @file.txt` |
-|`rotate`| Rotates both data and encryption keys to new versions.| `dsv crypto rotate --path mykeys/key1 --data 'ciphertextstring' --version-start 0`|
+|`rotate`| Rotates both data and encryption keys to new versions. **For use with `auto` EaaS only.**| `dsv crypto rotate --path mykeys/key1 --data 'ciphertextstring' --version-start 0`|
 
 <br>
 
@@ -24,10 +35,12 @@ DSV offers a **fully managed** Encryption as a Service (EaaS). DSV is able to en
 
 |Subcommands|Function|Example|
 |-|-|-|
-|`key-create`| Creates a new encryption key.| `dsv crypto key-create --path mykeys/key1`|
+|`key-create`| Generates a new encryption key. *Used only with managed (`auto`) encryption. Use `key-upload` to supply your own key.*| `dsv crypto key-create --path mykeys/key1`|
 |`key-delete`| Mark an encryption key for deletion. The key **and all of its versions** will be removed in about 72 hours. A key that is marked for deletion but not yet removed can be restored using `key-restore`.| `dsv crypto key-delete --path mykeys/key1`|
-|`key-read`| Shows the metadata of the encryption key. As keys are currently **fully managed** by DSV, the actual encryption key cannot be read.| `dsv crypto key-read --path mykeys/key1`|
+|`key-read`| Displays the readable data of the encryption key. Reading a `manual` key will show the key and metadata. Reading an `auto` key will display only metadata.| `dsv crypto key-read --path mykeys/key1`|
 |`key-restore`| Restores a key that is marked for deletion. Fully removed keys cannot be restored.| `dsv crypto key-restore --path mykeys/key1`|
+|`key-update`| Creates a new version of a user supplied encryption key. The `--private-key` flag is required. *For use with `manual` encryption only.* |`dsv crypto manual key-update --path mykeys/key1 --private-key MnI1dTh4L0E/RCHK0...QiY=`|
+|`key-upload`| Uploads a new, user-supplied encryption key to DSV. The `--scheme` and `--private-key` flags are required. **The encryption key must be AES-256, symmetric, base 64 encoded**.| `dsv crypto manual key-upload --path mykeys/key1 --scheme symmetric --private-key MnI1dTh4L0E/RchHk0tiUGVTaFZt...QiY= --nonce S1Nze...1Bz`|
 
 <br>
 
@@ -38,8 +51,10 @@ DSV offers a **fully managed** Encryption as a Service (EaaS). DSV is able to en
 |Flag|Function|Example|
 |-|-|-|
 |`--data`| Selects the file or string to be encrypted or decrypted| `--data 'secret string'`|
+|`--nonce`| Sets the nonce value for `manual` encryption. If omitted, DSV will generate a nonce value.| `--nonce S1Nze...1Bz`|
 |`--out`| Sets the output name of a decrypted file.| `--out secret.txt`|
 |`--path`| Points to the location of the encryption key.| `--path mykeys/key1`|
+|`--scheme`| Sets the scheme for `manual` keys.| `--scheme symmetric`|
 |`--version`| Sets the version of the key to use when decrypting data.| `--version 0`|
 |`--version-end`| Sets the target key version when reencrypting data.| `--version-end 4`|
 |`--version-start`| Sets the current key version to begin rotation.| `--version-start 0`|
@@ -50,11 +65,15 @@ DSV offers a **fully managed** Encryption as a Service (EaaS). DSV is able to en
 
 Encrypting data requires three steps:
 
-* Create an encryption key.
+* Create or Upload an encryption key.
 * Encrypt the file or string.
 * Decrypt the file or string.
 
-### Encrypting a String
+>**NOTE:** Fully-managed encryption uses the `auto` subcommand. When using fully-managed encryption, you do not need to specify `auto` because it is the default for the `crypto` command. When providing your own keys, be sure to use the `manual` subcommand for each input.
+
+### Automatic Key Creation
+
+To create a fully-managed, automatically generated encryption-key:
 
 1. In DSV, create an encryption key using the subcommand and flags: `dsv crypto key-create --path mykeys/key1`. Substitute your own path and key name for `mykeys` and `key1`.
 1. The CLI returns a confirmation of key creation. This metadata can also be read using the `dsv crypto key-read --path mykeys/key1` command:
@@ -69,6 +88,36 @@ Encrypting data requires three steps:
      "version": "0"
     }
     ```
+
+### Manual Key Creation
+
+To upload your own encryption key:
+
+1. In DSV, upload an encryption key using the subcommand and flags: `dsv crypto manual key-upload --path mykeys/key1 --scheme symmetric --private-key MnI1dTh4L0E/RchHk0tiUGVTaFZt...QiY= --nonce S1Nze...1Bz`. **The `private-key` that you supply must be AES 256, symmetric, 64 bit encoded. The `scheme` value must be "symmetric".** If the `nonce` value is omitted, DSV will generate it for you.
+1. The CLI returns a confirmation of key upload. This data can also be read using the `dsv crypto manual key-read --path mykeys/key1` command:
+    ```json
+    {
+    "created": "2021-03-01T19:12:58z",
+     "createdBy": "users:thy-one:your.username@organization.com",
+     "data": {
+        "metadata": null,
+        "nonce": "S1Nze...1Bz",
+        "privateKey": "MnI1dTh4L0E/RchHk0tiUGVTaFZt...QiY=",
+        "scheme": "symmetric"
+    },
+     "description": "",
+     "id": "identificationstring",
+     "lastModified": "2021-03-01T19:12:58z",
+     "lastModifiedBy": "users:thy-one:your.username@organization.com",
+     "path": "mykeys:key1",
+     "version": "0"
+    }
+    ```
+
+### String Encryption
+
+After creating or uploading an encryption key, follow these steps to encrypt a string. If you are using a manually supplied key, be sure to include the `manual` subcommand after the `crypto` command in the examples.
+
 1. **Encrypt** the string using the `dsv crypto encrypt` subcommand along with the encryption key `--path` and the string `--data`:
     ```
     dsv crypto encrypt --path mykeys/key1 --data 'Example String'
@@ -95,21 +144,12 @@ Encrypting data requires three steps:
     }
     ```
 
-### Encrypting a File
+### File Encryption
 
-1. In DSV, create an encryption key using the subcommand and flags `dsv crypto key-create --path mykeys/key1`. Substitute your own path and key name for `mykeys` and `key1`.
-1. The CLI returns a confirmation of key creation. This metadata can also be read using the `dsv crypto key-read --path mykeys/key1` command:
-    ```json
-    {
-     "created": "2021-03-01T19:12:58z",
-     "createdBy": "users:thy-one:your.username@organization.com",
-     "id": "identificationstring",
-     "lastModified": "2021-03-01T19:12:58z",
-     "lastModifiedBy": "users:thy-one:your.username@organization.com",
-     "path": "mykeys:key1",
-     "version": "0"
-    }
-    ```
+After creating or uploading an encryption key, follow these steps to encrypt a file. If you are using a manually supplied key, be sure to include the `manual` subcommand after the `crypto` command in the examples.
+
+>**NOTE**: The maximum file size is 2MB.
+
 1. **Encrypt** the file using the `dsv crypto encrypt` subcommand along with the encryption key `--path` and the `--data` flag pointing to the file location. (*Optional*) Give the encrypted file a new name using the `--out` flag. If no new filename is specified, DSV will append **.enc** to the original filename.
     ```
     dsv crypto encrypt --path mykeys/key1 --data @file.txt
@@ -137,7 +177,7 @@ adbb83c57dc433b3a1d0e887ea3c029f  decryptedfile.original
 
 ## Key Rotation and Versioning
 
-Both keys and data can be rotated. **A new version of a key can only be created by rotating data**. When data is rotated, it is decrypted using the original encryption key, and reencrypted with the new version. 
+For fully-managed (`auto`) encryption, both keys and data can be rotated. **A new version of a key can only be created by rotating data**. When data is rotated, it is decrypted using the original encryption key, and reencrypted with the new version. 
 
 >**Note**: The original version of a key is designated as **Version 0**.
 
@@ -188,7 +228,6 @@ To rotate data to an existing version of a key:
     dsv crypto rotate --path mykeys/key1 --data @passwordv3.enc --version-start 3 --version-end 6 --out @passwordv6.enc
     ```
 1. The CLI returns a confirmation of data rotation:
-1. 
     ```json
     {
     "file": "@passwordv6.enc",
@@ -197,3 +236,37 @@ To rotate data to an existing version of a key:
     }
     ```
 1. The new file can now be decrypted using version 6 of the key.
+
+## Manual Key Updating
+
+For user supplied (`manual`) encryption, key values can be updated. Note that the original version of a key is designated as version 0.
+
+To update a key:
+
+1. Use the `key-update` subcommand along with
+    * the `--path` to the existing key
+    * the new key as the value for `--private-key`.
+    * (optional) a new `--nonce` string.
+    
+    **Example**: `dsv crypto manual key-update --path mykeys/key1 --private key MnI1dTh4L0E/RchHk0tiUGVTaFZt...QiY=`
+1. The CLI returns a confirmation of the key update. Note that the newly updated key is now designated as version 1:
+    ```json
+    {
+     "attributes": null,
+     "created": "2021-03-01T19:12:58z",
+     "createdBy": "users:thy-one:your.username@organization.com",
+     "data": {
+        "metadata": null,
+        "nonce": "S1Nze...1Bz",
+        "privateKey": "MnI1dTh4L0E/RchHk0tiUGVTaFZt...QiY=",
+        "scheme": "symmetric"
+    },
+     "description": "",
+     "id": "identificationstring",
+     "lastModified": "2021-03-01T19:12:58z",
+     "lastModifiedBy": "users:thy-one:your.username@organization.com",
+     "path": "mykeys:key1",
+     "version": "1"
+    }
+    ```
+1. All encrypted files or strings must be decrypted with the key **`--version`** that was used for encryption. DSV defaults to using the most recent version unless a version is specified.
