@@ -40,7 +40,7 @@ DSV offers both a **fully managed** and a **user managed** Encryption as a Servi
 |`key-read`| Displays the readable data of the encryption key. Reading a `manual` key will show the key and metadata. Reading an `auto` key will display only metadata.| `dsv crypto key-read --path mykeys/key1`|
 |`key-restore`| Restores a key that is marked for deletion. Fully removed keys cannot be restored.| `dsv crypto key-restore --path mykeys/key1`|
 |`key-update`| Creates a new version of a user supplied encryption key. The `--private-key` flag is required. *For use with `manual` encryption only.* |`dsv crypto manual key-update --path mykeys/key1 --private-key MnI1dTh4L0E/RCHK0...QiY=`|
-|`key-upload`| Uploads a new, user supplied, AES256 (symmetric) encryption key to DSV. The `--scheme` and `--private-key` flags are required. **The encryption key must be AES-256, symmetric, base 64 encoded**.| `dsv crypto manual key-upload --path mykeys/key1 --scheme symmetric --private-key MnI1dTh4L0E/RchHk0tiUGVTaFZt...QiY= --nonce S1Nze...1Bz`|
+|`key-upload`| Uploads a new, user supplied, AES256 (symmetric) encryption key to DSV. The `--scheme` and `--private-key` flags are required. **The encryption key must be AES-256, symmetric, base 64 encoded**.| `dsv crypto manual key-upload --path mykeys/key1 --scheme symmetric` <br> `--private-key MnI1dTh4L0E/RchHk0tiUGVTaFZt...QiY= --nonce S1Nze...1Bz`|
 
 <br>
 
