@@ -19,6 +19,8 @@ Use the **secret** subcommand to retrieve a list of secrets and secret actions a
 |`--user`| Searches for secrets available to a specified user.| `dsv report secret --user john`|
 |`--limit`| Sets the number of retrieved secrets.| `dsv report secret --limit 25`|
 
+<br>
+
 ### Example Secret Query
 
 **Input**:
@@ -65,6 +67,8 @@ Use the **group** subcommand to retrieve a list of groups associated with a user
 |`--role`| Searches for the groups associated with a specified role.| `dsv report group --role automation`|
 |`--user`| Searches for the group memberships of a specified user.| `dsv report group --user john`|
 |`--limit`| Sets the number of retrieved groups.| `dsv report group --limit 25`|
+
+<br>
 
 ### Example Group Query
 
