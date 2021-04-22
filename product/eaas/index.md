@@ -247,8 +247,7 @@ To update a key:
     * the `--path` to the existing key
     * the new key as the value for `--private-key`.
     * (optional) a new `--nonce` string.
-    
-    **Example**: `dsv crypto manual key-update --path mykeys/key1 --private key MnI1dTh4L0E/RchHk0tiUGVTaFZt...QiY=`
+    * **Example**: `dsv crypto manual key-update --path mykeys/key1 --private key MnI1dTh4L0E/RchHk0tiUGVTaFZt...QiY=`
 1. The CLI returns a confirmation of the key update. Note that the newly updated key is now designated as version 1:
     ```json
     {
