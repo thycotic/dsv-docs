@@ -102,7 +102,7 @@ dsv report secret --user john
 
 ## Group Reporting
 
-Use the **group** subcommand to retrieve a list of groups associated with a user or role. Running a group report without flags will generate a list of groups associated with the user running the query. Secrets are sorted by the most recent modification.
+Use the **group** subcommand to retrieve a list of groups associated with a user or role. Running a group report without flags will generate a list of groups associated with the user running the query. 
 
 |Command/Flags|Function|Example|
 |-|-|-|
