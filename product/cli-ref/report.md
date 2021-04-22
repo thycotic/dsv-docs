@@ -113,6 +113,8 @@ Use the **group** subcommand to retrieve a list of groups associated with a user
 
 <br>
 
+### Example Group Queries
+
 #### Personal Group Query
 
 The following input will return a list of the groups to which the user performing the query belongs.
@@ -145,7 +147,7 @@ dsv report group
 }
 ```
 
-### Example Group Query
+#### User Group Query
 
 The following input will return a list of groups to which the specified user belongs. Note that this query is only available to administrators and users with **reports/query** permission.
 
