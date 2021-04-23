@@ -19,6 +19,11 @@ The Command Line Interface (CLI) is locally installed using OS-specific executab
 
 | **Update**             | **Notes**                                  |
 |------------------------|--------------------------------------------|
+|April 2021              |**CLI Version**: 1.21.0|
+|                        |**new feature**: DSV now supports [Encryption as a Service](eaas/index.md) using user-supplied keys.|
+|                        |**new feature**: The [`report`](cli-ref/report.md) command generates a list of secrets or groups. Use the `secret` subcommand to see the secrets available to a user, group, or role. Use the `group` subcommand to see the group memberships of a user or role.|
+|                        |**improvement**: Users and roles can now be searched by provider or fully-qualified name.|
+|                        |**improvement**: Thycotic One user login is now interactive in the CLI. The API login route has been disabled.|
 |March 2021 Release 2    |**CLI Version**: 1.2.0|
 |                        |**Engine Version**: 1.6|
 |                        |**new feature**: DSV now offers a fully managed [Encryption as a Service](eaas/index.md).|
