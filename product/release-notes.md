@@ -19,7 +19,7 @@ The Command Line Interface (CLI) is locally installed using OS-specific executab
 
 | **Update**             | **Notes**                                  |
 |------------------------|--------------------------------------------|
-|April 2021              |**CLI Version**: 1.2.1|
+|April 2021              |**CLI Version**: 1.21.0|
 |                        |**new feature**: DSV now supports [Encryption as a Service](eaas/index.md) using user-supplied keys.|
 |                        |**new feature**: The [`report`](cli-ref/report.md) command generates a list of secrets or groups. Use the `secret` subcommand to see the secrets available to a user, group, or role. Use the `group` subcommand to see the group memberships of a user or role.|
 |                        |**improvement**: Users and roles can now be searched by provider or fully-qualified name.|
