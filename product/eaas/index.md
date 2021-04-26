@@ -148,7 +148,7 @@ After creating or uploading an encryption key, follow these steps to encrypt a s
 
 After creating or uploading an encryption key, follow these steps to encrypt a file. If you are using a manually supplied key, be sure to include the `manual` subcommand after the `crypto` command in the examples.
 
->**NOTE**: The maximum file size is 2MB including overhead associated with DSV encoding and transporting..
+>**NOTE**: The maximum file size is 2MB including overhead associated with DSV encoding and transporting.
 
 1. **Encrypt** the file using the `dsv crypto encrypt` subcommand along with the encryption key `--path` and the `--data` flag pointing to the file location. (*Optional*) Give the encrypted file a new name using the `--out` flag. If no new filename is specified, DSV will append **.enc** to the original filename.
     ```
