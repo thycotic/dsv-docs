@@ -406,6 +406,31 @@ permissionDocument:
 version: "0"
 ```
 
-![](./images/spacer.png)
+### Create Reports
 
-![](./images/spacer.png)
+**Case:** A user needs to be able to read reports
+
+**Solution:** Add a policy for the reports:query resource path
+
+The command to create this policy is 
+```
+dsv policy create --path report:query --subjects users:user1@organization.com --actions create --effect allow --resources report:query
+```
+
+```json
+{
+  "path": "report:query",
+  "permissionDocument": [
+    {
+      "actions": ["create"],
+      "conditions": {},
+      "description": "",
+      "effect": "allow",
+      "id": "c23f8...h0hfgg",
+      "meta": null,
+      "resources": ["report:query"],
+      "subjects": ["users:user1@organization.com"]
+    }
+  ],
+  "version": "0"
+}

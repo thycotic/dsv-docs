@@ -4,7 +4,7 @@
 
 # Report Command
 
-The **report** command acts on secrets and groups. All users can generate a report containing their own secrets and groups. Only **administrators** and users with a **policy allowing access to reports/query** can generate a report for other users.
+The **report** command acts on secrets and groups. All users can generate a report containing their own secrets and groups. Only **administrators** and users with a **policy allowing access to reports/query** can generate a report for other users. See **Create Reports** in [policy](policy.md) for an example.
 
 ## Secret Reporting
 
