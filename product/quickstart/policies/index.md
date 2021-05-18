@@ -112,7 +112,7 @@ This tutorial addresses a use case in which the initial DSV admin wishes to:
 
 ### Policy Structure
 
-Policies are the single source of all permissions in RAC. A policy contains a list of permissions that are then delegated to Groups, Roles, and/or individual Users. 
+Policies are the single source of all permissions in DSV. A policy contains a list of permissions that are then delegated to Groups, Roles, and/or individual Users. 
 
 The following image demonstrates the three methods that apply policies to Users:
 
@@ -404,10 +404,10 @@ Now that the administrators have been created and delegated permissions, we can 
   ```json
     {
   "created": "2021-04-13T13:34:43Z",
-  "createdBy": "users:thy-one:ty.brannock.dsvtestingacct1@mg.thyllc.com",
+  "createdBy": "users:thy-one:superadmin@organization.com",
   "id": "2d56bf8a-99a7-4a3e-9a30-db5596208480",
   "lastModified": "2021-04-13T13:34:43Z",
-  "lastModifiedBy": "users:thy-one:ty.brannock.dsvtestingacct1@mg.thyllc.com",
+  "lastModifiedBy": "users:thy-one:superadmin@organization.com",
   "path": "secrets:servers:us-west:devopsgrp1secrets",
   "permissionDocument": [
     {
@@ -496,11 +496,11 @@ Now that the administrators have been created and delegated permissions, we can 
     "version": "0"
     }
     ```
-1. Initialize with the devopsusr1 account. In order to test the permissions granted to devopsusr1 we need to initialize the account. This will create a new profile for devopsusr1 in your config file. Be sure to choose auth type “1” as this is a local user.
+1. Initialize with the devopsusr1 account. In order to test the permissions granted to devopsusr1 we need to initialize the account. This will create a new profile for devopsusr1 in your config file. Be sure to choose auth type "1" as this is a local user.
 1. Enter the command `dsv init`.
 1. Choose `[a] add a new profile to the config`.
 1. Enter the profile name: `devopsusr1`.
-1. Initialize `devopsusr2` and `devopsusr3` using the same sequence. Once the profiles are created, we will be able to run a single commands as devopsusr1 and devopsusr3 in the next step.
+1. Initialize `devopsusr2` and `devopsusr3` using the same sequence. Once the profiles are created, we will be able to run single commands as devopsusr1 and devopsusr3 in the next step.
 1. Read the secrets with the profile of "devopsusr1". This profile should have the permissions to read the secret under "test" while not having the permissions to read the secret under "devopsgrp1secrets".
     
     **INPUT**: 
@@ -561,7 +561,7 @@ We will:
   "created": "2020-04-06T12:34:57Z", 
   "createdBy": "system", 
   "lastModified": "2021-04-30T14:34:09Z", 
-  "lastModifiedBy": "users:thy-one:ty.brannock.dsvtestingacct1@mg.thyllc.com", 
+  "lastModifiedBy": "users:thy-one:superadmin@organization.com", 
   "permissionDocument": [
     {
       "actions": ["<.*>"], 
@@ -572,7 +572,7 @@ We will:
       "meta": null, 
       "resources": ["<.*>"], 
       "subjects": [
-        "users:<thy-one:ty.brannock.dsvtestingacct1@mg.thyllc.com|thy-one:tdbrannock@outlook.com|thy-one:ty.brannock@thycotic.net|aws-auth:test-admin>", 
+        "users:<users:thy-one:superadmin@organization.com|aws-auth:test-admin>", 
         "roles:<bootrole|aws-auth:aws-role|client-role|k8ext-role>", 
         "groups:<admingroup|testgroup>"
       ]
@@ -586,7 +586,7 @@ We will:
       "meta": null, 
       "resources": ["home:<.*>"], 
       "subjects": [
-        "users:<thy-one:ty.brannock.dsvtestingacct1@mg.thyllc.com|user1|azure-auth:azuretestuser1|anotheruser1>", 
+        "users:thy-one:superadmin@organization.com|user1|azure-auth:azuretestuser1|anotheruser1>", 
         "roles:<k8ext-role>", 
         "groups:<admingroup>"
       ]
@@ -699,10 +699,10 @@ Give "devopsusr1" the rights to create, read, update, and delete polices on the 
 ```json
 {
   "created": "2021-04-13T13:34:43Z", 
-  "createdBy": "users:thy-one:ty.brannock.dsvtestingacct1@mg.thyllc.com", 
+  "createdBy": "users:thy-one:superadmin@organization.com", 
   "id": "2d56bf8a-99a7-4a3e-9a30-db5596208480", 
   "lastModified": "2021-04-13T13:34:43Z", 
-  "lastModifiedBy": "users:thy-one:ty.brannock.dsvtestingacct1@mg.thyllc.com", 
+  "lastModifiedBy": "users:thy-one:superadmin@organization.com", 
   "path": "secrets:servers:us-west:devopsgrp1secrets", 
   "permissionDocument": [
 {
@@ -725,6 +725,13 @@ Give "devopsusr1" the rights to create, read, update, and delete polices on the 
       "resources": ["secrets:servers:us-west:devopsgrp1secrets:<.*>"],
       "subjects": ["users:devopsusr3"]
     },
+  ```
+
+<div style="overflow-x:auto;">
+<table>
+<td style="border: 2px solid red">
+
+```json
     {
       "actions": ["create", "read", "update", "delete"], 
       "conditions": {}, 
@@ -733,15 +740,7 @@ Give "devopsusr1" the rights to create, read, update, and delete polices on the 
       "meta": null, 
       "resources": ["config:policies:secrets:servers:us-west:devopsgrp1secrets:devopsgrp1policy_<.*>"], 
       "subjects": ["users:devopsusr1"]
-    }
-```
-
-<div style="overflow-x:auto;">
-<table>
-<td style="border: 2px solid red">
-
-```json
-,
+    },
     {
       "actions": ["read"], 
       "conditions": {}, 
@@ -765,7 +764,7 @@ Give "devopsusr1" the rights to create, read, update, and delete polices on the 
 
 ### Test DevOpsUsr1's Permission to Create Policies
 
-Create a policy using the profile "devopsusr1", then read the policy using the profile "devopsusr2". The first attempt to create a policy should fail because devopsusr1 is not permitted to create on the path “testfailure”. The 2nd attempt will succeed. This policy grants devopsgroup1 full privileges to manage secrets beyond the path servers:us-west:devopsgrp1secrets:devopsgrp1policy_1.
+Create a policy using the profile "devopsusr1", then read the policy using the profile "devopsusr2". The first attempt to create a policy should fail because devopsusr1 is not permitted to create on the path "testfailure". The 2nd attempt will succeed. This policy grants devopsgroup1 full privileges to manage secrets beyond the path servers:us-west:devopsgrp1secrets:devopsgrp1policy_1.
 
 **INPUT**:
 
@@ -938,7 +937,7 @@ We will also give "devopsgroup1" read permissions for any role created by "devop
 
 ### Create DevOpsTeam1's Client Credentials for an Application
 
-Using the role that we just created with the dev "devopsgrp1-role1", we will create client credentials. The credentials will be associated with the role and inherit the permissions that the role has been delegated
+Using the role that we just created with the devopsusr1 "devopsgrp1-role1", we will create client credentials. The credentials will be associated with the role and inherit the permissions that the role has been delegated
 
 1. Add the role to the "devopsgrp1policy_1" Policy. We will use the "update" flag to add the role as an additional subject of the policy.
 
@@ -990,10 +989,10 @@ Using the role that we just created with the dev "devopsgrp1-role1", we will cre
 
 1. Initialize with the client using `dsv init`. 
 1. Select [a] add a new profile to the config) and name your profile name "clienttest". 
-1. Choose “(2) Client Credential” for the Auth Type. 
+1. Choose "(2) Client Credential" for the Auth Type. 
 1. When prompted, provide the Client ID and Client Secret below:
     ```yaml
-    Found an existing cli-config located at 'C:\Users\tbrannock\.thy.yml' 
+    Found an existing cli-config located at 'C:\Users\superadmin\.thy.yml' 
     Select an option: 
         [o] overwrite the config 
         [a] add a new profile to the config 
@@ -1011,7 +1010,7 @@ Using the role that we just created with the dev "devopsgrp1-role1", we will cre
         (2) None (no caching) 
         (3) Pass (Linux only) 
         (4) Windows Credential Manager (Windows only) 
-    Selection: Please enter directory for file store (default:C:\Users\tbrannock\.thy): Please enter cache strategy for secrets: 
+    Selection: Please enter directory for file store (default:C:\Users\superadmin\.thy): Please enter cache strategy for secrets: 
         (1) Never (default) 
         (2) Server then cache 
         (3) Cache then server 
@@ -1056,4 +1055,4 @@ Using the role that we just created with the dev "devopsgrp1-role1", we will cre
     ```
     dsv secret read secrets:servers:us-west:devopsgrp1secrets:devopsgrp1policy_1:test --profile Clienttest
     ```
-1. Repeat the procedure for Team 2 and Team 3.
+1. You have successfully delegated permissions to DevOps Team1. Repeat the procedure above for Team 2 and Team 3.
