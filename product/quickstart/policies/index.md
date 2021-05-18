@@ -256,6 +256,7 @@ First, as the Super Admin, we will create and delegate permissions to the admini
     }
   ```
 
+<div style="overflow-x:auto;">
 <table>
 <td style="border: 2px solid red">
 
@@ -276,6 +277,7 @@ First, as the Super Admin, we will create and delegate permissions to the admini
 
 </td>
 </table>
+</div>
 
 ### Initialize the New Admin Account
 
@@ -420,6 +422,7 @@ Now that the administrators have been created and delegated permissions, we can 
     },
   ```
 
+<div style="overflow-x:auto;">
 <table>
 <td style="border: 2px solid red">
 
@@ -442,6 +445,7 @@ Now that the administrators have been created and delegated permissions, we can 
 
 </td>
 </table>
+</div>
 
 ### Testing the DevOps Team Permission to Read Secrets
 
@@ -607,6 +611,7 @@ We will:
     }
 ```
 
+<div style="overflow-x:auto;">
 <table>
 <td style="border: 2px solid red">
 
@@ -625,6 +630,7 @@ We will:
 
 </td>
 </table>
+</div>
 
 ```
   ], 
@@ -730,6 +736,7 @@ Give "devopsusr1" the rights to create, read, update, and delete polices on the 
     }
 ```
 
+<div style="overflow-x:auto;">
 <table>
 <td style="border: 2px solid red">
 
@@ -748,6 +755,7 @@ Give "devopsusr1" the rights to create, read, update, and delete polices on the 
 
 </td>
 </table>
+</div>
 
 ```json
   ], 
@@ -866,6 +874,7 @@ We will also give "devopsgroup1" read permissions for any role created by "devop
     }
 ```
 
+<div style="overflow-x:auto;">
 <table>
 <td style="border: 2px solid red">
 
@@ -885,6 +894,7 @@ We will also give "devopsgroup1" read permissions for any role created by "devop
 
 </td>
 </table>
+</div>
 
 ```json
   ],
