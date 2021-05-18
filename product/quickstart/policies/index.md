@@ -256,7 +256,8 @@ First, as the Super Admin, we will create and delegate permissions to the admini
     }
   ```
 
-<table style="border: 2px solid red">
+<table>
+<td style="border: 2px solid red">
 
 ```json
     , 
@@ -273,6 +274,7 @@ First, as the Super Admin, we will create and delegate permissions to the admini
 
 ```
 
+</td>
 </table>
 
 ### Initialize the New Admin Account
@@ -349,6 +351,7 @@ Now that the administrators have been created and delegated permissions, we can 
     }
     ```
 1. Create the DevOps group. In the same input, we will also add the three DevOps users and the admin user to the group.
+
     **INPUT**: 
     ```
     dsv group create --group-name devopsgroup1 --members devopsusr1,devopsusr2,devopsusr3,adminusr1
@@ -361,6 +364,7 @@ Now that the administrators have been created and delegated permissions, we can 
     }
     ```
 1. Give the new group (devopsgroup1) access to the path `servers:us-west:devopsgroup1secrets:<*>`. This gives all members of DevOps Team 1 full rights to manage secrets on the path.
+
     **INPUT**:
     ```
     dsv policy create --path secrets:servers:us-west:devopsgroup1secrets --subjects groups:devopsgroup1 --actions create,read,update,delete --resources "secrets:servers:us-west:devopsgroup1secrets:<.*>" --desc "Devopsgroup1 Secret Management Permissions"
@@ -415,7 +419,9 @@ Now that the administrators have been created and delegated permissions, we can 
       "subjects": ["groups:devopsgroup1"]
     },
   ```
-<table style="border: 2px solid red">
+
+<table>
+<td style="border: 2px solid red">
 
   ```json
   {
@@ -433,6 +439,8 @@ Now that the administrators have been created and delegated permissions, we can 
   "version": "0"
   }
   ```
+
+</td>
 </table>
 
 ### Testing the DevOps Team Permission to Read Secrets
@@ -599,7 +607,8 @@ We will:
     }
 ```
 
-<table style="border: 2px solid red">
+<table>
+<td style="border: 2px solid red">
 
 ```json
 , 
@@ -613,6 +622,8 @@ We will:
       "subjects": ["groups:<devopsgroup1>"]
     }
 ```
+
+</td>
 </table>
 
 ```
@@ -719,7 +730,8 @@ Give "devopsusr1" the rights to create, read, update, and delete polices on the 
     }
 ```
 
-<table style="border: 2px solid red">
+<table>
+<td style="border: 2px solid red">
 
 ```json
 ,
@@ -734,6 +746,7 @@ Give "devopsusr1" the rights to create, read, update, and delete polices on the 
     }
 ```
 
+</td>
 </table>
 
 ```json
@@ -852,7 +865,9 @@ We will also give "devopsgroup1" read permissions for any role created by "devop
       "subjects": ["users:devopsusr1"]
     }
 ```
-<table style="border: 2px solid red">
+
+<table>
+<td style="border: 2px solid red">
 
 ```json
     ,
@@ -867,6 +882,8 @@ We will also give "devopsgroup1" read permissions for any role created by "devop
     }
  
 ```
+
+</td>
 </table>
 
 ```json
@@ -914,6 +931,7 @@ We will also give "devopsgroup1" read permissions for any role created by "devop
 Using the role that we just created with the dev "devopsgrp1-role1", we will create client credentials. The credentials will be associated with the role and inherit the permissions that the role has been delegated
 
 1. Add the role to the "devopsgrp1policy_1" Policy. We will use the "update" flag to add the role as an additional subject of the policy.
+
     **INPUT**:
     ```
     dsv policy update --path secrets:servers:us-west:devopsgrp1secrets:devopsgrp1policy_1 --subjects groups:devopsgroup1,roles:devopsgrp1_role1 --actions create,read,update,delete --desc "Devopsgrp1 User-Created Polciy1"
@@ -941,6 +959,7 @@ Using the role that we just created with the dev "devopsgrp1-role1", we will cre
     }
     ```
 1. Create the devops team1 Client. A Client ID and Client Secret will be provided for the next step.
+
     **INPUT**:
     ```
     dsv client create --role devopsgrp1_role
@@ -1000,6 +1019,7 @@ Using the role that we just created with the dev "devopsgrp1-role1", we will cre
     Please enter client id for client auth: 33c2b014-27af-49fa-b4b3-44e8c1cad2b9 Please enter client secret for client auth: *******************************************
     ```
 1. Create a secret on the path: secrets:servers:us-west:devopsgrp1secrets:devopsgrp1polcicy_1:test
+
     **INPUT**:
     ```
     dsv secret create secrets:servers:us-west:devopsgrp1secrets:devopsgrp1policy_1:test --data "{\"username\":\"secretuser\",\"password\":\"passwordtext123\"
