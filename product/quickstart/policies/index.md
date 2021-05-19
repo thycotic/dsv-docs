@@ -234,10 +234,7 @@ First, as the Super Admin, we will create and delegate permissions to the admini
       "meta": null, 
       "resources": ["<.*>"], 
       "subjects": [
-        "users:<users:thy-one:superadmin@organization.com|
-        aws-auth:test-admin>", 
-        "roles:<bootrole|aws-auth:aws-role|client-role|k8ext-role>", 
-        "groups:<admingroup|testgroup>"
+        "users:<users:thy-one:superadmin@organization.com>" 
       ]
     }, 
     {
@@ -249,9 +246,7 @@ First, as the Super Admin, we will create and delegate permissions to the admini
       "meta": null, 
       "resources": ["home:<.*>"], 
       "subjects": [
-        "users:<users:thy-one:superadmin@organization.com|user1|azure-auth:azuretestuser1|anotheruser1>", 
-        "roles:<k8ext-role>", 
-        "groups:<admingroup>"
+        "users:<users:thy-one:superadmin@organization.com>" 
       ]
     }
   ```
@@ -474,6 +469,7 @@ Now that the administrators have been created and delegated permissions, we can 
       }
       ```
 1. Create another secret on the path `secrets:servers:us-west:devopsgroup1secrets:test`.
+
     **INPUT**:
     ```
     dsv secret create secrets:servers:us-west:devopsgrp1secrets  --data "{\"username\":\"secretuser\",\"password\":\"passwordtext123\"}"
@@ -509,6 +505,7 @@ Now that the administrators have been created and delegated permissions, we can 
     ```
     **OUTPUT**:
     ```json
+    {
       "attributes": {},
       "created": "2021-04-30T15:40:14Z",
       "createdBy": "users:adminusr1",
@@ -522,6 +519,7 @@ Now that the administrators have been created and delegated permissions, we can 
       "lastModifiedBy": "users:adminusr1",
       "path": "us-west:devopsgrp1secrets:test",
       "version": "0"
+    }
     ```
     **INPUT**:
     ```
@@ -572,9 +570,7 @@ We will:
       "meta": null, 
       "resources": ["<.*>"], 
       "subjects": [
-        "users:<users:thy-one:superadmin@organization.com|aws-auth:test-admin>", 
-        "roles:<bootrole|aws-auth:aws-role|client-role|k8ext-role>", 
-        "groups:<admingroup|testgroup>"
+        "users:<users:thy-one:superadmin@organization.com>"
       ]
     }, 
     {
@@ -586,9 +582,7 @@ We will:
       "meta": null, 
       "resources": ["home:<.*>"], 
       "subjects": [
-        "users:thy-one:superadmin@organization.com|user1|azure-auth:azuretestuser1|anotheruser1>", 
-        "roles:<k8ext-role>", 
-        "groups:<admingroup>"
+        "users:<thy-one:superadmin@organization.com>" 
       ]
     }, 
     {
@@ -632,7 +626,7 @@ We will:
 </table>
 </div>
 
-```
+```json
   ], 
   "tenantName": "dsvtestlab", 
   "version": "2"
