@@ -47,7 +47,9 @@ To get your callback URL:
 
 ![](./images/spacer.png)
 
-## Creating a User in Thycotic One and DSV
+## Post OIDC Configuration Steps
+
+### Creating a User in Thycotic One and DSV
 
 In order to login using OIDC, the user must exist in the external provider, Thycotic One, and in DSV. 
 
@@ -60,7 +62,7 @@ If your current user, such as your initial admin already exists in all places, t
 3. In the [cloud manager portal](https://portal.thycotic.com), you can see your users by logging in and clicking on the **Users** link.
 
 
-## Logging In
+### Logging In
 
 Initialize the CLI:
 
