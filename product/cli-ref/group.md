@@ -26,6 +26,8 @@ A Group facilitate the application of the same policies to all members of a give
 
 ### Create
 
+#### File Example
+
 This example command would create a Group named **admins** from a file **data.json** containing *{"groupName": "admins"}* (or same with single-quote marks, for Powershell) and located in the **tmp** folder:
 
 ```BASH
@@ -38,6 +40,8 @@ dsv group create --data @/tmp/data.json
   "metaData": null
 }
 ```
+
+#### Direct Data Example
 
 This example would create a Group without referencing a file:
 
@@ -57,7 +61,14 @@ Note that in Powershell, single quotes are required and double quotes escaped, l
 dsv group  create --data  '{\"groupName\": \"admins\"}'
 ```
 
-#### Find Group Membership
+#### Wizard Example
+
+A group can also be created using the wizard:
+```BASH
+dsv group create
+```
+
+### Find Group Membership
 
 To see what Groups the user Billy belongs to, you would use:
 
