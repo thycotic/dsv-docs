@@ -18,8 +18,8 @@ To trigger a Break Glass event, a user will run the `breakglass` command along w
 |`apply`| Subcommand to trigger the break glass event and recover Super Admin credentials.||
 ||`--shares`| Flag used to pass in the distributed secret `shares` needed to recover Super Admin credentials. Pass the distributed shares for this flag.|
 |`generate`| Subcommand to enable the break glass feature.||
-||`--min-number-of-shares`| Flag used to set the minimum number of distributed `shares` needed to recover Super Admin credentials. Pass in a numerical value for this flag. **Case Sensitive**|
-||`--new-admins`| Flag used to choose who the new administrators will be after the Break Glass event. Pass in a list of usernames for this flag. **Case Sensitive**|
+||`--min-number-of-shares`| Flag used to set the minimum number of distributed `shares` needed to recover Super Admin credentials. Pass in a numerical value for this flag.|
+||`--new-admins`| Flag used to choose who the new administrators will be after the Break Glass event. Pass in a list of usernames for this flag.|
 |`status`| Subcommand to return current status of Break Glass implementation.||
 <br>
 
