@@ -1,6 +1,7 @@
 [title]: # (Download the CLI)
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (2200)
+[display]: # (toc/search/content/all/none/print)
 
 # Configuring the CLI
 

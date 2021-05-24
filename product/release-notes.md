@@ -19,6 +19,12 @@ The Command Line Interface (CLI) is locally installed using OS-specific executab
 
 | **Update**             | **Notes**                                  |
 |------------------------|--------------------------------------------|
+|May 2021                |**CLI Version**: 1.22.0|
+|                        |**Engine Version**:1.7.0|
+|                        |**new feature**: The emergency [Break Glass](arch-and-security/break-glass.md) feature allows DSV users to recover Super Administrator access if those credentials are lost or compromised.|
+|                        |**new feature**: Introduced the first version of a web GUI. It includes the ability to list secrets that you have access to.|
+|                        |**new feature**: SIEM integration is now available through the [DSV engine](engine/index.md).|
+|                        |**new feature**: The DSV Engine can now be run as a service.|
 |April 2021              |**CLI Version**: 1.21.0|
 |                        |**new feature**: DSV now supports [Encryption as a Service](eaas/index.md) using user-supplied keys.|
 |                        |**new feature**: The [`report`](cli-ref/report.md) command generates a list of secrets or groups. Use the `secret` subcommand to see the secrets available to a user, group, or role. Use the `group` subcommand to see the group memberships of a user or role.|
