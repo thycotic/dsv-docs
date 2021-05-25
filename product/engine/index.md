@@ -94,3 +94,39 @@ On a successful engine start, you should receive a response saying that the engi
 - DSV_PRIVATE_KEY
 - DSV_ENDPOINT
 - DSV_VERBOSITY (warn,debug,error,info)
+
+
+## Installing the Engine as a Service/Daemon
+
+### Supported Service Frameworks/Process Managers
+
+The DSV Engine can be installed as a service/daemon using:
+
+**Windows**
+
+* Windows Services Manager
+
+**Linux**
+* SystemD
+* SysV
+* Upstart
+
+**MacOS/OSX**
+* LaunchD
+
+### Installation Commands
+
+|Commands/Subcommands|Usage|
+|-|-|
+|`dsv-engine service install`| Install the engine as a service with one of the supported service frameworks / process managers.|
+|`dsv-engine service uninstall`|Uninstall the engine service.|
+|`dsv-engine service start`|Start the engine service.|
+|`dsv-engine service stop`|Stop the engine service.|
+|`dsv-engine service restart`|Restart the engine service.|
+|`dsv-engine service status`|Get the current status of the service.|
+
+### Installation Steps
+
+1. Register the engine using the normal workflow (e.g. `dsv-engine register`)
+1. Using an account with the appropriate permissions, run: `dsv-engine service install`.
+1. Run: `dsv-engine service start`, or restart the machine.

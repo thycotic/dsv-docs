@@ -1,6 +1,7 @@
 ﻿[title]: # (Secrets Examples)
 [tags]: # (DevOps Secrets Vault,DSV,)
 [priority]: # (2400)
+[display]: # (toc/search/content/all/none/print)
 
 # CLI Secrets Examples
 

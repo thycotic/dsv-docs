@@ -84,14 +84,14 @@ a subject entry could be written as `["users:<bob|alice>"]`. Here, users `bob` a
 
 ## Policy Examples
 
-When creating or updating a Policy, a workflow can be started using `dsv policy create` or `dsv policy update` without flags.  This will start step-by-step quesitons to guide you though the process.  However, in the following examples, the direct command will be shown.
+When creating or updating a Policy, a workflow can be started using `dsv policy create` or `dsv policy update` without flags.  This will start step-by-step questions to guide you though the process.  However, in the following examples, the direct command will be shown.
 
 
 ### Deny Access at a Lower Level
 
 **Case:** Subjects need access to Secrets for an environment, but that logical environment contains a more restricted area.
 
-**Solution:** Two Policies. The first provides the Subjects (*developer1@thycotic.com|developer2@thycotic.com*) general access to the Secrets resources at the path *secrets:servers:us-east-1:<.*>*.
+**Solution:** Two Policies. The first provides the Subjects (*developer1@thycotic.com|developer2@thycotic.com*) general access to the Secrets resources at the path `secrets:servers:us-east-1:<.*>`.
 
 The direct command to create this policy is 
 ```CLI
