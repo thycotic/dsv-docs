@@ -19,6 +19,10 @@ The Command Line Interface (CLI) is locally installed using OS-specific executab
 
 | **Update**             | **Notes**                                  |
 |------------------------|--------------------------------------------|
+|June 2021               |**CLI Version**: 1.23.0|
+|                        |**Engine Version**: 1.8.0|
+|                        |**new feature**: DSV now supports authentication by certificate.|
+|                        |**fixed**: Fixed a bug preventing the DSV Engine from connecting in .au regions.|
 |May 2021                |**CLI Version**: 1.22.0|
 |                        |**Engine Version**:1.7.0|
 |                        |**new feature**: The emergency [Break Glass](arch-and-security/break-glass.md) feature allows DSV users to recover Super Administrator access if those credentials are lost or compromised.|
